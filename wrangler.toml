@@ -1,0 +1,16 @@
+name = "twp-monitor"
+main = "worker/monitor.js"
+compatibility_date = "2026-06-01"
+
+# Run every Monday at 9:00 AM CST (14:00 UTC)
+[triggers]
+crons = ["0 14 * * 1"]
+
+# KV namespace for storing check results
+[[kv_namespaces]]
+binding = "TWP_MONITOR"
+id = "54ef76b2a6304fbb80f34053827df506"
+
+[vars]
+SITE_URL = "https://www.theworkspacepro.com"
+ALERT_EMAIL = ""
