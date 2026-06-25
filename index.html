@@ -24,6 +24,7 @@
   
   <!-- Styles -->
   <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/bold.css">
   
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -105,7 +106,8 @@
   </nav>
 
   <!-- Hero with Assessment Tool -->
-  <section class="hero" id="assessment">
+  <section class="hero" id="assessment" style="position:relative;">
+    <div class="hero-gradient"></div>
     <div class="container">
       <div class="hero__grid">
         <!-- Left: Pitch -->
@@ -388,10 +390,28 @@
     </div>
   </section>
 
-  <!-- Why it matters -->
-  <section class="section section-alt">
+  <!-- Deal of the Week -->
+  <section style="padding: var(--space-xl) 0;">
     <div class="container">
-      <div style="text-align:center; max-width:640px; margin:0 auto var(--space-2xl);">
+      <div class="deal-banner" id="dealBanner">
+        <div class="deal-banner__badge">Deal of the Week</div>
+        <div class="deal-banner__content">
+          <div class="deal-banner__title">Branch Ergonomic Chair — 15% Off</div>
+          <div class="deal-banner__desc">Best budget ergonomic chair with full adjustability. Limited time.</div>
+          <div class="deal-banner__price">
+            <span class="deal-banner__price-old">$329</span>
+            <span class="deal-banner__price-new">$280</span>
+          </div>
+        </div>
+        <a href="#" target="_blank" class="deal-banner__cta">Get Deal →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why it matters -->
+  <section class="section section-alt mesh-bg">
+    <div class="container">
+      <div style="text-align:center; max-width:640px; margin:0 auto var(--space-2xl);" class="fade-in-up">
         <div class="hero__eyebrow" style="justify-content:center;">Why It Matters</div>
         <h2>Your desk is quietly affecting your health</h2>
         <p class="lead" style="margin: var(--space-md) auto 0;">
@@ -513,5 +533,6 @@
 
   <script src="/assets/js/assessment.js"></script>
   <script src="/assets/js/enhancements.js"></script>
+  <script src="/assets/js/bold.js"></script>
 </body>
 </html>
