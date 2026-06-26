@@ -666,14 +666,44 @@ function showResults() {
     
     <div style="text-align: center; margin-top: var(--space-2xl);">
       <button id="restartAssessment" class="btn btn--secondary">↻ Retake Assessment</button>
+      <button id="saveAssessmentResults" class="btn btn--outline" style="margin-left: var(--space-sm); border: 2px solid var(--c-primary); background: transparent; color: var(--c-primary); padding: var(--space-sm) var(--space-lg); border-radius: var(--radius); font-weight: 600; font-size: 0.875rem; cursor: pointer; transition: all var(--t-fast);">💾 Save my results</button>
       <a href="#newsletter" class="btn btn--primary" style="margin-left: var(--space-sm);">Get Weekly Tips</a>
     </div>
   `;
   
   resultsEl.innerHTML = html;
   
+  // Auto-save results to localStorage
+  try {
+    localStorage.setItem('twp-assessment-results', JSON.stringify({
+      persona: persona,
+      personaName: personaData.name,
+      recommendedProducts: recommendations.map(function (r) { return r.name; }),
+      total: total,
+      timestamp: Date.now()
+    }));
+  } catch (e) {}
+
   // Rebind events
   document.getElementById('restartAssessment')?.addEventListener('click', restartAssessment);
+  
+  // Save button click handler
+  var saveBtn = document.getElementById('saveAssessmentResults');
+  if (saveBtn) {
+    saveBtn.addEventListener('click', function () {
+      var btn = this;
+      btn.textContent = '✓ Saved!';
+      btn.style.background = 'var(--c-accent)';
+      btn.style.color = '#fff';
+      btn.style.borderColor = 'var(--c-accent)';
+      setTimeout(function () {
+        btn.textContent = '💾 Save my results';
+        btn.style.background = 'transparent';
+        btn.style.color = 'var(--c-primary)';
+        btn.style.borderColor = 'var(--c-primary)';
+      }, 3000);
+    });
+  }
   
   // Track completion
   if (typeof gtag !== 'undefined') {

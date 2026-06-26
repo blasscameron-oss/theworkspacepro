@@ -1,7 +1,20 @@
 /* ============================================
-   BOLD ENHANCEMENTS — v3
+   BOLD ENHANCEMENTS — v4
    Aggressive design upgrades to outclass competition
+   + Visual spruce-ups: smooth scroll, hover effects,
+     accessibility, print styles, and more.
    ============================================ */
+
+/* Smooth scroll behavior site-wide */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
 
 /* Animated gradient hero background */
 .hero-gradient {
@@ -390,14 +403,156 @@
 .stagger > *:nth-child(5) { transition-delay: 0.4s; }
 .stagger > *:nth-child(6) { transition-delay: 0.5s; }
 
-/* Hover lift effect for cards */
+/* Card hover effects: lift + shadow + border color shift to terracotta */
 .lift-on-hover {
-  transition: transform var(--t-med), box-shadow var(--t-med);
+  transition: transform var(--t-med), box-shadow var(--t-med), border-color var(--t-med);
 }
 
 .lift-on-hover:hover {
   transform: translateY(-6px);
   box-shadow: var(--shadow-lg);
+}
+
+/* Apply border color shift to cards with borders */
+.guide-card.lift-on-hover:hover,
+.card.lift-on-hover:hover,
+.podcast-card.lift-on-hover:hover {
+  border-color: var(--c-primary, #c2410c);
+}
+
+/* Button hover: slight scale + shadow */
+.btn {
+  transition: transform var(--t-fast), box-shadow var(--t-fast), background var(--t-fast), border-color var(--t-fast);
+}
+
+.btn:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-md);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* Image hover in guides: subtle zoom inside overflow:hidden container */
+.article-body img,
+.guide-content img,
+article img {
+  transition: transform 400ms ease;
+  will-change: transform;
+}
+
+.article-body p img,
+.guide-content p img,
+article p img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Wrap standalone images in overflow:hidden for zoom effect */
+.article-body figure,
+.article-body p:has(> img:only-child),
+.guide-content figure,
+.guide-content p:has(> img:only-child) {
+  overflow: hidden;
+  border-radius: var(--radius, 8px);
+}
+
+.article-body figure:hover img,
+.article-body p:has(> img:only-child):hover img,
+.guide-content figure:hover img,
+.guide-content p:has(> img:only-child):hover img {
+  transform: scale(1.05);
+}
+
+/* Guide comparison tables: alternating row colors, sticky header on scroll */
+.article-body table,
+.article-body .table-wrapper table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.article-body thead,
+.article-body .table-wrapper thead {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.article-body thead th,
+.article-body .table-wrapper thead th {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  box-shadow: 0 2px 4px rgba(26, 24, 21, 0.06);
+}
+
+.article-body tbody tr:nth-child(even),
+.article-body .table-wrapper tbody tr:nth-child(even) {
+  background: var(--c-bg-alt, #f3efe9);
+}
+
+.article-body tbody tr:hover,
+.article-body .table-wrapper tbody tr:hover {
+  background: var(--c-primary-soft, #fed7aa);
+  transition: background 200ms ease;
+}
+
+[data-theme="dark"] .article-body tbody tr:nth-child(even),
+[data-theme="dark"] .article-body .table-wrapper tbody tr:nth-child(even) {
+  background: var(--c-bg-alt, #26221e);
+}
+
+[data-theme="dark"] .article-body tbody tr:hover,
+[data-theme="dark"] .article-body .table-wrapper tbody tr:hover {
+  background: rgba(249, 115, 22, 0.12);
+}
+
+/* Focus-visible outlines for accessibility (2px solid terracotta) */
+:focus-visible {
+  outline: 2px solid var(--c-primary, #c2410c);
+  outline-offset: 2px;
+}
+
+/* Buttons and interactive elements should preserve their own border-radius */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  border-radius: 4px;
+}
+
+/* Remove focus-visible outline for mouse users (not keyboard) */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Selection color: terracotta-tinted */
+::selection {
+  background: var(--c-primary-soft, #fed7aa);
+  color: var(--c-text, #1a1815);
+}
+
+::-moz-selection {
+  background: var(--c-primary-soft, #fed7aa);
+  color: var(--c-text, #1a1815);
+}
+
+/* Subtle gradient texture to section-alt backgrounds */
+.section-alt {
+  position: relative;
+  background-image: 
+    radial-gradient(ellipse at 15% 20%, rgba(194, 65, 12, 0.03) 0%, transparent 60%),
+    radial-gradient(ellipse at 85% 80%, rgba(74, 124, 89, 0.03) 0%, transparent 60%);
+  background-color: var(--c-bg-alt, #f3efe9);
+}
+
+[data-theme="dark"] .section-alt {
+  background-image: 
+    radial-gradient(ellipse at 15% 20%, rgba(249, 115, 22, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse at 85% 80%, rgba(134, 239, 172, 0.03) 0%, transparent 60%);
+  background-color: var(--c-bg-alt, #26221e);
 }
 
 /* Gradient text */
@@ -551,18 +706,6 @@
   z-index: 2;
 }
 
-/* Smooth scroll progress indicator (enhanced) */
-.reading-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--c-primary), var(--c-accent));
-  z-index: 9999;
-  transition: width 0.1s ease;
-  width: 0%;
-}
-
 /* Social proof notification */
 .social-proof {
   position: fixed;
@@ -607,6 +750,122 @@
 
 .social-proof__text strong {
   color: var(--c-text);
+}
+
+/* ============================================
+   IMPROVED MOBILE NAV ANIMATION (slide + fade)
+   ============================================ */
+
+.mobile-nav {
+  transition: transform var(--t-med) ease, opacity var(--t-med) ease;
+  opacity: 0;
+}
+
+.mobile-nav.open {
+  opacity: 1;
+}
+
+.mobile-overlay {
+  transition: opacity var(--t-med) ease;
+  opacity: 0;
+}
+
+.mobile-overlay.open {
+  opacity: 1;
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  /* Hide navigation, footer, ads */
+  .site-header,
+  .mobile-nav,
+  .mobile-overlay,
+  .nav,
+  footer,
+  .site-footer__grid,
+  .site-footer__bottom,
+  .newsletter-bar,
+  .cta-section,
+  .back-to-top,
+  .reading-progress-wrapper,
+  .reading-progress-bar,
+  .checklist__copy,
+  .price-alert-btn,
+  .price-alert-overlay,
+  .progress-toast,
+  .assessment-results-banner,
+  .deal-banner,
+  .trust-row,
+  .social-proof,
+  .editors-choice,
+  .step-indicator,
+  #assessmentNav,
+  .assessment-card__nav,
+  .header-actions {
+    display: none !important;
+  }
+
+  /* Show URLs for affiliate links */
+  a[href]:not(.logo):not(.nav__link):not(.mobile-nav__link):not(.mobile-nav__cta):not(.btn):not(.guide-card)::after {
+    content: " (" attr(href) ")";
+    font-size: 0.75em;
+    font-weight: normal;
+    color: #666;
+    text-decoration: none;
+  }
+
+  /* Reset body spacing for print */
+  body {
+    font-size: 11pt;
+    line-height: 1.5;
+    color: #000;
+    background: #fff;
+  }
+
+  /* Ensure article pages print full width */
+  .container,
+  .container-prose {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Keep article content visible */
+  article,
+  .article-body {
+    page-break-inside: avoid;
+  }
+
+  /* Avoid page breaks inside important elements */
+  h2, h3, h4 {
+    page-break-after: avoid;
+  }
+
+  /* Remove background colors for print economy */
+  * {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  /* Ensure links remain visible as text */
+  a {
+    color: #000 !important;
+    text-decoration: underline;
+  }
+
+  /* Keep tables readable */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th, td {
+    border: 1px solid #ccc !important;
+    padding: 4px 8px;
+  }
 }
 
 /* Responsive */
