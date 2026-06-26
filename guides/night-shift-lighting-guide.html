@@ -7,7 +7,7 @@
   <meta name="description" content="Reduce blue light exposure and eye strain with the right lighting setup for nighttime work. Product picks and science-backed tips.">
   <meta property="og:title" content="Night Shift Lighting Guide">
   <meta property="og:description" content="Reduce blue light exposure and eye strain with the right lighting setup for nighttime work.">
-    <meta property="og:image" content="https://www.theworkspacepro.com/images/og-default.jpg">
+    <meta property="og:image" content="https://www.theworkspacepro.com/assets/images/og-default.jpg">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://www.theworkspacepro.com/guides/night-shift-lighting-guide/">
   <link rel="canonical" href="https://www.theworkspacepro.com/guides/night-shift-lighting-guide/">
@@ -30,6 +30,190 @@
     }
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Is blue light actually harmful, or is it just a marketing trend?","acceptedAnswer":{"@type":"Answer","text":"It's real, but the marketing has definitely inflated it. Blue light itself isn't harmful to your eyes at normal screen brightness levels — the concerns about retinal damage from screens have been largely overstated. What is well-supported by research is blue light's effect on circadian rhythm and sleep timing. The issue isn't that blue light damages your eyes; it's that it tricks your brain into thinking it's daytime at 11 PM. This is a well-documented biological mechanism, not a marketing gimmick. That said, you don't need to buy expensive \"blue light blocking\" products — the simple solutions in this guide (warm bulbs, f.lux, bias lighting) are just as effective as premium alternatives."}},
+      {"@type":"Question","name":"What color temperature should I use for daytime work?","acceptedAnswer":{"@type":"Answer","text":"For daytime work, aim for 3,500–4,000 K (neutral white) for general tasks and up to 5,000 K for tasks requiring high alertness or color accuracy. This matches the color of midday natural light and supports focus and energy. Many smart bulbs let you automate this shift so you don't have to think about it."}},
+      {"@type":"Question","name":"Can I just use dark mode instead of changing my lighting?","acceptedAnswer":{"@type":"Answer","text":"Dark mode helps with brightness but doesn't eliminate blue light — text and UI elements still emit it. Dark mode + f.lux is better than either alone, but you still need warm ambient lighting to fully protect melatonin production."}},
+      {"@type":"Question","name":"Does bias lighting really help with eye strain, or is it placebo?","acceptedAnswer":{"@type":"Answer","text":"Yes — the visual accommodation problem (pupils rapidly contracting and dilating in response to a bright screen in a dark room) is a real physiological cause of eye fatigue. Bias lighting eliminates the root cause, and multiple ergonomics organizations recommend it. It's one of the most effective single changes for reducing nighttime eye strain."}},
+      {"@type":"Question","name":"Do I need expensive glasses, or will cheap ones work?","acceptedAnswer":{"@type":"Answer","text":"Cheap ones work fine if they actually block the right wavelengths. The Uvex Skyper ($10) blocks more blue light than most $50–$100 \"gaming glasses\" because it uses a dense orange tint. The trade-off: everything looks yellow. For glasses you can wear in public without color distortion, you'll need a more subtle (and pricier) tint — or stick with software solutions entirely."}},
+      {"@type":"Question","name":"Will warm lighting make it hard to see my keyboard or read documents?","acceptedAnswer":{"@type":"Answer","text":"No — warm light at 2,700 K is perfectly adequate for reading, typing, and most desk work. The difference between 2,700 K and 4,000 K is color tone, not brightness or legibility. If you're struggling to see under warm light, the issue is insufficient brightness (lumens), not color temperature. Make sure your warm bulbs are rated for adequate lumens (450+ for a desk lamp, 800+ for a room light) and that the light is positioned to illuminate your work surface without casting shadows."}},
+      {"@type":"Question","name":"Do LED bulbs with high CRI matter for warm lighting?","acceptedAnswer":{"@type":"Answer","text":"Yes, especially if you do any kind of color-sensitive work or simply prefer your space to look natural. Low-CRI (Color Rendering Index) warm bulbs can make colors look muddy or greyish, which is unappealing. Aim for CRI 90+ for any bulb in your workspace. The difference between a CRI 80 bulb and a CRI 90 bulb is noticeable when you're reading or working with colored materials. High-CRI warm bulbs are available at most hardware stores for $8–$15, so the premium over basic bulbs is minimal."}},
+      {"@type":"Question","name":"How do I measure color temperature to make sure my lights are right?","acceptedAnswer":{"@type":"Answer","text":"You don't need a spectrometer. Check the bulb's packaging or product page for the Kelvin (K) rating. \"Soft White\" = 2,700 K. \"Warm White\" = 3,000 K. \"Cool White\" = 4,000 K. \"Daylight\" = 5,000 K+. If the bulb doesn't list a Kelvin number, don't buy it — you can't tell by visual inspection alone. For monitor light bars and smart bulbs, the color temperature is adjustable and displayed in the settings or app."}}
+    ]
+  }
+  </script>
+
+  <style>
+    /* FAQ Accordion */
+    .faq-accordion {
+      margin: var(--space-lg) 0;
+    }
+    .faq-item {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      margin-bottom: var(--space-sm, 8px);
+      overflow: hidden;
+      background: var(--color-surface, #fff);
+    }
+    .faq-question {
+      width: 100%;
+      padding: var(--space-md, 12px) var(--space-lg, 16px);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-display, inherit);
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--color-text, #1a202c);
+      line-height: 1.4;
+    }
+    .faq-question:hover {
+      background: var(--color-bg-alt, #f7fafc);
+    }
+    .faq-chevron {
+      transition: transform 0.3s ease;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      margin-left: var(--space-sm, 8px);
+    }
+    .faq-question[aria-expanded="true"] .faq-chevron {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      padding: 0 var(--space-lg, 16px) var(--space-md, 12px);
+      color: var(--color-muted, #718096);
+      line-height: 1.6;
+    }
+    .faq-answer p {
+      margin: 0;
+    }
+    
+    /* Best For Badges */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+    .badge--best {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+    .badge--value {
+      background: #dcfce7;
+      color: #166534;
+    }
+    .badge--budget {
+      background: #fed7aa;
+      color: #9a3412;
+    }
+    .badge--premium {
+      background: #fef3c7;
+      color: #92400e;
+    }
+    .badge--ergonomic {
+      background: #e9d5ff;
+      color: #6b21a8;
+    }
+    
+    /* Product Thumbnails */
+    .product-thumb {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      object-fit: cover;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    
+    /* Related Guides Carousel */
+    .related-guides {
+      max-width: var(--max-width, 1200px);
+      margin: var(--space-2xl, 32px) auto;
+      padding: 0 var(--space-lg, 16px);
+    }
+    .related-guides__title {
+      font-family: var(--font-display, serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: var(--space-lg, 16px);
+    }
+    .related-guides__carousel {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--space-md, 12px);
+    }
+    @media (max-width: 640px) {
+      .related-guides__carousel {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: var(--space-sm, 8px);
+        padding-bottom: var(--space-sm, 8px);
+      }
+      .related-guides__carousel .guide-card {
+        min-width: 240px;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+      }
+    }
+    .related-guides .guide-card {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      padding: var(--space-lg, 16px);
+      background: var(--color-surface, #fff);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .related-guides .guide-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+    .guide-card__badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--color-primary-light, #e0f2fe);
+      color: var(--color-primary, #0369a1);
+      margin-bottom: var(--space-xs, 4px);
+    }
+    .guide-card__title {
+      font-family: var(--font-display, serif);
+      font-size: 1rem;
+      font-weight: 600;
+      margin: var(--space-xs, 4px) 0;
+      line-height: 1.3;
+    }
+    .guide-card__desc {
+      font-size: 0.85rem;
+      color: var(--color-muted, #718096);
+      line-height: 1.4;
+      margin: var(--space-xs, 4px) 0;
+    }
+    .guide-card__link {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-primary, #0369a1);
+      margin-top: var(--space-xs, 4px);
+    }
+  </style>
+<link rel="stylesheet" href="/assets/css/reviews.css">
 </head>
 <body>
   <header class="site-header">
@@ -355,34 +539,80 @@
         <p>The total for Phases 1–3 (software, bias lighting, one warm bulb) is under $50 and takes about 30 minutes to implement. That alone will significantly reduce your nighttime blue light exposure. The full system (through Phase 6) runs $150–$250 but gives you complete, automated control over your lighting environment.</p>
 
         <h2 id="faq">Frequently Asked Questions</h2>
-
-        <h3>Is blue light actually harmful, or is it just a marketing trend?</h3>
-        <p>It's real, but the marketing has definitely inflated it. Blue light itself isn't harmful to your eyes at normal screen brightness levels — the concerns about retinal damage from screens have been largely overstated. What <em>is</em> well-supported by research is blue light's effect on circadian rhythm and sleep timing. The issue isn't that blue light damages your eyes; it's that it tricks your brain into thinking it's daytime at 11 PM. This is a well-documented biological mechanism, not a marketing gimmick. That said, you don't need to buy expensive "blue light blocking" products — the simple solutions in this guide (warm bulbs, f.lux, bias lighting) are just as effective as premium alternatives.</p>
-
-        <h3>What color temperature should I use for daytime work?</h3>
-        <p>For daytime work, aim for <strong>3,500–4,000 K</strong> (neutral white) for general tasks and up to 5,000 K for tasks requiring high alertness or color accuracy. This matches the color of midday natural light and supports focus and energy. Many smart bulbs let you automate this shift so you don't have to think about it.</p>
-
-        <h3>Can I just use dark mode instead of changing my lighting?</h3>
-        <p>Dark mode helps with brightness but doesn't eliminate blue light — text and UI elements still emit it. Dark mode + f.lux is better than either alone, but you still need warm ambient lighting to fully protect melatonin production.</p>
-
-        <h3>Does bias lighting really help with eye strain, or is it placebo?</h3>
-        <p>Yes — the visual accommodation problem (pupils rapidly contracting and dilating in response to a bright screen in a dark room) is a real physiological cause of eye fatigue. Bias lighting eliminates the root cause, and multiple ergonomics organizations recommend it. It's one of the most effective single changes for reducing nighttime eye strain.</p>
-
-        <h3>Do I need expensive glasses, or will cheap ones work?</h3>
-        <p>Cheap ones work fine if they actually block the right wavelengths. The Uvex Skyper ($10) blocks more blue light than most $50–$100 "gaming glasses" because it uses a dense orange tint. The trade-off: everything looks yellow. For glasses you can wear in public without color distortion, you'll need a more subtle (and pricier) tint — or stick with software solutions entirely.</p>
-
-        <h3>Will warm lighting make it hard to see my keyboard or read documents?</h3>
-        <p>No — warm light at 2,700 K is perfectly adequate for reading, typing, and most desk work. The difference between 2,700 K and 4,000 K is color tone, not brightness or legibility. If you're struggling to see under warm light, the issue is insufficient <em>brightness</em> (lumens), not color temperature. Make sure your warm bulbs are rated for adequate lumens (450+ for a desk lamp, 800+ for a room light) and that the light is positioned to illuminate your work surface without casting shadows.</p>
-
-        
-
-        <h3>Do LED bulbs with high CRI matter for warm lighting?</h3>
-        <p>Yes, especially if you do any kind of color-sensitive work or simply prefer your space to look natural. Low-CRI (Color Rendering Index) warm bulbs can make colors look muddy or greyish, which is unappealing. Aim for <strong>CRI 90+</strong> for any bulb in your workspace. The difference between a CRI 80 bulb and a CRI 90 bulb is noticeable when you're reading or working with colored materials. High-CRI warm bulbs are available at most hardware stores for $8–$15, so the premium over basic bulbs is minimal.</p>
-
-        <h3>How do I measure color temperature to make sure my lights are right?</h3>
-        <p>You don't need a spectrometer. Check the bulb's packaging or product page for the Kelvin (K) rating. "Soft White" = 2,700 K. "Warm White" = 3,000 K. "Cool White" = 4,000 K. "Daylight" = 5,000 K+. If the bulb doesn't list a Kelvin number, don't buy it — you can't tell by visual inspection alone. For monitor light bars and smart bulbs, the color temperature is adjustable and displayed in the settings or app.</p>
-
-        <h2>Summary</h2>
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="true" aria-controls="faq-answer-0">
+              Is blue light actually harmful, or is it just a marketing trend?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-0">
+              <p>It's real, but the marketing has definitely inflated it. Blue light itself isn't harmful to your eyes at normal screen brightness levels — the concerns about retinal damage from screens have been largely overstated. What is well-supported by research is blue light's effect on circadian rhythm and sleep timing. The issue isn't that blue light damages your eyes; it's that it tricks your brain into thinking it's daytime at 11 PM. This is a well-documented biological mechanism, not a marketing gimmick. That said, you don't need to buy expensive "blue light blocking" products — the simple solutions in this guide (warm bulbs, f.lux, bias lighting) are just as effective as premium alternatives.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
+              What color temperature should I use for daytime work?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-1" hidden>
+              <p>For daytime work, aim for 3,500–4,000 K (neutral white) for general tasks and up to 5,000 K for tasks requiring high alertness or color accuracy. This matches the color of midday natural light and supports focus and energy. Many smart bulbs let you automate this shift so you don't have to think about it.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
+              Can I just use dark mode instead of changing my lighting?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-2" hidden>
+              <p>Dark mode helps with brightness but doesn't eliminate blue light — text and UI elements still emit it. Dark mode + f.lux is better than either alone, but you still need warm ambient lighting to fully protect melatonin production.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
+              Does bias lighting really help with eye strain, or is it placebo?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-3" hidden>
+              <p>Yes — the visual accommodation problem (pupils rapidly contracting and dilating in response to a bright screen in a dark room) is a real physiological cause of eye fatigue. Bias lighting eliminates the root cause, and multiple ergonomics organizations recommend it. It's one of the most effective single changes for reducing nighttime eye strain.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
+              Do I need expensive glasses, or will cheap ones work?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-4" hidden>
+              <p>Cheap ones work fine if they actually block the right wavelengths. The Uvex Skyper ($10) blocks more blue light than most $50–$100 "gaming glasses" because it uses a dense orange tint. The trade-off: everything looks yellow. For glasses you can wear in public without color distortion, you'll need a more subtle (and pricier) tint — or stick with software solutions entirely.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-5">
+              Will warm lighting make it hard to see my keyboard or read documents?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-5" hidden>
+              <p>No — warm light at 2,700 K is perfectly adequate for reading, typing, and most desk work. The difference between 2,700 K and 4,000 K is color tone, not brightness or legibility. If you're struggling to see under warm light, the issue is insufficient brightness (lumens), not color temperature. Make sure your warm bulbs are rated for adequate lumens (450+ for a desk lamp, 800+ for a room light) and that the light is positioned to illuminate your work surface without casting shadows.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-6">
+              Do LED bulbs with high CRI matter for warm lighting?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-6" hidden>
+              <p>Yes, especially if you do any kind of color-sensitive work or simply prefer your space to look natural. Low-CRI (Color Rendering Index) warm bulbs can make colors look muddy or greyish, which is unappealing. Aim for CRI 90+ for any bulb in your workspace. The difference between a CRI 80 bulb and a CRI 90 bulb is noticeable when you're reading or working with colored materials. High-CRI warm bulbs are available at most hardware stores for $8–$15, so the premium over basic bulbs is minimal.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-7">
+              How do I measure color temperature to make sure my lights are right?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-7" hidden>
+              <p>You don't need a spectrometer. Check the bulb's packaging or product page for the Kelvin (K) rating. "Soft White" = 2,700 K. "Warm White" = 3,000 K. "Cool White" = 4,000 K. "Daylight" = 5,000 K+. If the bulb doesn't list a Kelvin number, don't buy it — you can't tell by visual inspection alone. For monitor light bars and smart bulbs, the color temperature is adjustable and displayed in the settings or app.</p>
+            </div>
+          </div>
+        </div><h2>Summary</h2>
 
         <p>The science is clear: blue-rich light after sunset disrupts your sleep. The fix is equally clear: shift toward warm, amber-toned light in the evening. Start with free software in five minutes, add bias lighting for $25, and upgrade your primary light source for $15–$50. The full system costs under $250 and takes about an hour to set up — for noticeably better sleep quality and reduced eye fatigue.</p>
 
@@ -400,8 +630,46 @@
     </div>
   </section>
 
-
   <!-- Newsletter -->
+        <section class="related-guides">
+          <h2 class="related-guides__title">Related Guides</h2>
+          <div class="related-guides__carousel">
+            <a href="/guides/home-office-lighting-guide/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Lighting</span>
+        <h3 class="guide-card__title">Home Office Lighting Guide</h3>
+        <p class="guide-card__desc">The definitive guide to lighting your home office for productivity and comfort.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/back-pain-ergonomic-setup/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Ergonomics</span>
+        <h3 class="guide-card__title">Back Pain Ergonomic Setup</h3>
+        <p class="guide-card__desc">Set up your workspace to prevent and manage back pain with proper ergonomics.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/best-ergonomic-office-chairs-2026/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Chairs</span>
+        <h3 class="guide-card__title">Best Ergonomic Office Chairs 2026</h3>
+        <p class="guide-card__desc">Full comparison of the best ergonomic office chairs across every budget tier.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/best-standing-desk-mat-for-concrete-floors/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Accessories</span>
+        <h3 class="guide-card__title">Best Standing Desk Mats for Concrete Floors</h3>
+        <p class="guide-card__desc">Top anti-fatigue mats for standing desks on concrete floors.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          </div>
+        </section>
+
+  
   <section class="newsletter-bar" id="newsletter">
     <div class="container">
       <h2 class="newsletter-bar__title">Get Weekly Workspace Tips</h2>
@@ -425,5 +693,23 @@
   <script src="/assets/js/enhancements.js"></script>
   <script src="/assets/js/bold.js"></script>
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{"token": "26781bf348b1406aaaab5ed9a3e72d38"}"></script><!-- End Cloudflare Web Analytics -->
+
+  <script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var answer = this.nextElementSibling;
+        
+        this.setAttribute('aria-expanded', !expanded);
+        if (answer) {
+          answer.hidden = expanded;
+        }
+      });
+    });
+  });
+  </script>
+<script src="/assets/js/product-reviews.js"></script>
+<script src="/assets/js/review-injector.js"></script>
 </body>
 </html>

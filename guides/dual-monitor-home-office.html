@@ -7,7 +7,7 @@
   <meta name="description" content="Complete guide to ergonomically setting up two monitors in your home office. Monitor recommendations, arm comparisons, positioning, and step-by-step setup.">
   <meta property="og:title" content="Dual Monitor Home Office Setup — The Complete Guide 2026">
   <meta property="og:description" content="Complete guide to ergonomically setting up two monitors in your home office. Monitor recommendations, arm comparisons, positioning, and step-by-step setup.">
-    <meta property="og:image" content="https://www.theworkspacepro.com/images/og-default.jpg">
+    <meta property="og:image" content="https://www.theworkspacepro.com/assets/images/og-default.jpg">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://www.theworkspacepro.com/guides/dual-monitor-home-office/">
   <link rel="canonical" href="https://www.theworkspacepro.com/guides/dual-monitor-home-office/">
@@ -30,6 +30,183 @@
     }
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"What size desk do I need for dual 27-inch monitors?","acceptedAnswer":{"@type":"Answer","text":"Minimum 55 inches wide if using monitor arms, 60 inches if using the stock stands. Depth should be at least 24 inches, ideally 30 inches. Two 27-inch monitors side by side measure roughly 48 inches across without stands, so at 55 inches you have about 3.5 inches of margin on each side."}}
+    ]
+  }
+  </script>
+
+  <style>
+    /* FAQ Accordion */
+    .faq-accordion {
+      margin: var(--space-lg) 0;
+    }
+    .faq-item {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      margin-bottom: var(--space-sm, 8px);
+      overflow: hidden;
+      background: var(--color-surface, #fff);
+    }
+    .faq-question {
+      width: 100%;
+      padding: var(--space-md, 12px) var(--space-lg, 16px);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-display, inherit);
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--color-text, #1a202c);
+      line-height: 1.4;
+    }
+    .faq-question:hover {
+      background: var(--color-bg-alt, #f7fafc);
+    }
+    .faq-chevron {
+      transition: transform 0.3s ease;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      margin-left: var(--space-sm, 8px);
+    }
+    .faq-question[aria-expanded="true"] .faq-chevron {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      padding: 0 var(--space-lg, 16px) var(--space-md, 12px);
+      color: var(--color-muted, #718096);
+      line-height: 1.6;
+    }
+    .faq-answer p {
+      margin: 0;
+    }
+    
+    /* Best For Badges */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+    .badge--best {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+    .badge--value {
+      background: #dcfce7;
+      color: #166534;
+    }
+    .badge--budget {
+      background: #fed7aa;
+      color: #9a3412;
+    }
+    .badge--premium {
+      background: #fef3c7;
+      color: #92400e;
+    }
+    .badge--ergonomic {
+      background: #e9d5ff;
+      color: #6b21a8;
+    }
+    
+    /* Product Thumbnails */
+    .product-thumb {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      object-fit: cover;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    
+    /* Related Guides Carousel */
+    .related-guides {
+      max-width: var(--max-width, 1200px);
+      margin: var(--space-2xl, 32px) auto;
+      padding: 0 var(--space-lg, 16px);
+    }
+    .related-guides__title {
+      font-family: var(--font-display, serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: var(--space-lg, 16px);
+    }
+    .related-guides__carousel {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--space-md, 12px);
+    }
+    @media (max-width: 640px) {
+      .related-guides__carousel {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: var(--space-sm, 8px);
+        padding-bottom: var(--space-sm, 8px);
+      }
+      .related-guides__carousel .guide-card {
+        min-width: 240px;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+      }
+    }
+    .related-guides .guide-card {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      padding: var(--space-lg, 16px);
+      background: var(--color-surface, #fff);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .related-guides .guide-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+    .guide-card__badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--color-primary-light, #e0f2fe);
+      color: var(--color-primary, #0369a1);
+      margin-bottom: var(--space-xs, 4px);
+    }
+    .guide-card__title {
+      font-family: var(--font-display, serif);
+      font-size: 1rem;
+      font-weight: 600;
+      margin: var(--space-xs, 4px) 0;
+      line-height: 1.3;
+    }
+    .guide-card__desc {
+      font-size: 0.85rem;
+      color: var(--color-muted, #718096);
+      line-height: 1.4;
+      margin: var(--space-xs, 4px) 0;
+    }
+    .guide-card__link {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-primary, #0369a1);
+      margin-top: var(--space-xs, 4px);
+    }
+  </style>
+<link rel="stylesheet" href="/assets/css/reviews.css">
 </head>
 <body>
   <header class="site-header">
@@ -430,7 +607,19 @@
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);font-weight:600;">Resolution</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">4K (3840×2160)</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">4K (3840×2160)</td>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">4K (3840×2160)</td>
+                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">4K (3840×2160)</td>function getBadgeColumnForRow(match) {
+  // Find product name in the row
+  const productNameMatch = match.match(/<a[^>]*>([\s\S]*?)<\/a>/i);
+  if (!productNameMatch) {
+    return match.replace('</tr>', '<td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);text-align:center;"><span class="badge badge--value">Best Value</span></td>\n</tr>');
+  }
+  
+  const name = productNameMatch[1].trim();
+  const badgeClass = PRODUCT_BADGES[name] || PRODUCT_BADGES['default'] || 'badge--value';
+  const label = BADGE_LABELS[badgeClass] || 'Best Value';
+  
+  return match.replace('</tr>', `<td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);text-align:center;"><span class="badge ${badgeClass} best-for-badge">${label}</span></td>\n</tr>`);
+}
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">1440p (2560×1440)</td>
               </tr>
               <tr>
@@ -444,7 +633,19 @@
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);font-weight:600;">Refresh Rate</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">60Hz</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">60Hz</td>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">60Hz</td>
+                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">60Hz</td>function getBadgeColumnForRow(match) {
+  // Find product name in the row
+  const productNameMatch = match.match(/<a[^>]*>([\s\S]*?)<\/a>/i);
+  if (!productNameMatch) {
+    return match.replace('</tr>', '<td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);text-align:center;"><span class="badge badge--value">Best Value</span></td>\n</tr>');
+  }
+  
+  const name = productNameMatch[1].trim();
+  const badgeClass = PRODUCT_BADGES[name] || PRODUCT_BADGES['default'] || 'badge--value';
+  const label = BADGE_LABELS[badgeClass] || 'Best Value';
+  
+  return match.replace('</tr>', `<td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);text-align:center;"><span class="badge ${badgeClass} best-for-badge">${label}</span></td>\n</tr>`);
+}
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">120Hz</td>
               </tr>
               <tr>
@@ -458,7 +659,19 @@
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);font-weight:600;">Color Coverage</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">99% sRGB</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">98% DCI-P3</td>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">95% DCI-P3</td>
+                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">95% DCI-P3</td>function getBadgeColumnForRow(match) {
+  // Find product name in the row
+  const productNameMatch = match.match(/<a[^>]*>([\s\S]*?)<\/a>/i);
+  if (!productNameMatch) {
+    return match.replace('</tr>', '<td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);text-align:center;"><span class="badge badge--value">Best Value</span></td>\n</tr>');
+  }
+  
+  const name = productNameMatch[1].trim();
+  const badgeClass = PRODUCT_BADGES[name] || PRODUCT_BADGES['default'] || 'badge--value';
+  const label = BADGE_LABELS[badgeClass] || 'Best Value';
+  
+  return match.replace('</tr>', `<td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);text-align:center;"><span class="badge ${badgeClass} best-for-badge">${label}</span></td>\n</tr>`);
+}
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">99% sRGB</td>
               </tr>
               <tr>
@@ -472,7 +685,19 @@
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);font-weight:600;">Built-in Stand</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Tilt only</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Full adjust</td>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Ergo arm included</td>
+                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Ergo arm included</td>function getBadgeColumnForRow(match) {
+  // Find product name in the row
+  const productNameMatch = match.match(/<a[^>]*>([\s\S]*?)<\/a>/i);
+  if (!productNameMatch) {
+    return match.replace('</tr>', '<td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);text-align:center;"><span class="badge badge--value">Best Value</span></td>\n</tr>');
+  }
+  
+  const name = productNameMatch[1].trim();
+  const badgeClass = PRODUCT_BADGES[name] || PRODUCT_BADGES['default'] || 'badge--value';
+  const label = BADGE_LABELS[badgeClass] || 'Best Value';
+  
+  return match.replace('</tr>', `<td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);text-align:center;"><span class="badge ${badgeClass} best-for-badge">${label}</span></td>\n</tr>`);
+}
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Full adjust</td>
               </tr>
               <tr>
@@ -484,10 +709,22 @@
               </tr>
               <tr>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);font-weight:600;">Buy on Amazon</td>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><a href="https://www.amazon.com/dp/B09DTDRJWP?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Check price →</a></td>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><a href="https://www.amazon.com/dp/B09TQZP9CL?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Check price →</a></td>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><a href="https://www.amazon.com/dp/B08BCR862L?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Check price →</a></td>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><a href="https://www.amazon.com/dp/B0CMXGDK5S?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Check price →</a></td>
+                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop" alt="Check price →" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B09DTDRJWP?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Check price →</a></td>
+                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop" alt="Check price →" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B09TQZP9CL?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Check price →</a></td>
+                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop" alt="Check price →" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B08BCR862L?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Check price →</a></td>function getBadgeColumnForRow(match) {
+  // Find product name in the row
+  const productNameMatch = match.match(/<a[^>]*>([\s\S]*?)<\/a>/i);
+  if (!productNameMatch) {
+    return match.replace('</tr>', '<td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);text-align:center;"><span class="badge badge--value">Best Value</span></td>\n</tr>');
+  }
+  
+  const name = productNameMatch[1].trim();
+  const badgeClass = PRODUCT_BADGES[name] || PRODUCT_BADGES['default'] || 'badge--value';
+  const label = BADGE_LABELS[badgeClass] || 'Best Value';
+  
+  return match.replace('</tr>', `<td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);text-align:center;"><span class="badge ${badgeClass} best-for-badge">${label}</span></td>\n</tr>`);
+}
+                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop" alt="Check price →" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B0CMXGDK5S?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Check price →</a></td>
               </tr>
             </tbody>
           </table>
@@ -520,7 +757,19 @@
               </tr>
               <tr>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);font-weight:600;">Weight Capacity (per arm)</td>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">22 lbs</td>
+                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">22 lbs</td>function getBadgeColumnForRow(match) {
+  // Find product name in the row
+  const productNameMatch = match.match(/<a[^>]*>([\s\S]*?)<\/a>/i);
+  if (!productNameMatch) {
+    return match.replace('</tr>', '<td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);text-align:center;"><span class="badge badge--value">Best Value</span></td>\n</tr>');
+  }
+  
+  const name = productNameMatch[1].trim();
+  const badgeClass = PRODUCT_BADGES[name] || PRODUCT_BADGES['default'] || 'badge--value';
+  const label = BADGE_LABELS[badgeClass] || 'Best Value';
+  
+  return match.replace('</tr>', `<td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);text-align:center;"><span class="badge ${badgeClass} best-for-badge">${label}</span></td>\n</tr>`);
+}
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">20 lbs</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">25 lbs</td>
               </tr>
@@ -538,7 +787,19 @@
               </tr>
               <tr>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);font-weight:600;">Rotation (Portrait)</td>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">360°</td>
+                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">360°</td>function getBadgeColumnForRow(match) {
+  // Find product name in the row
+  const productNameMatch = match.match(/<a[^>]*>([\s\S]*?)<\/a>/i);
+  if (!productNameMatch) {
+    return match.replace('</tr>', '<td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);text-align:center;"><span class="badge badge--value">Best Value</span></td>\n</tr>');
+  }
+  
+  const name = productNameMatch[1].trim();
+  const badgeClass = PRODUCT_BADGES[name] || PRODUCT_BADGES['default'] || 'badge--value';
+  const label = BADGE_LABELS[badgeClass] || 'Best Value';
+  
+  return match.replace('</tr>', `<td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);text-align:center;"><span class="badge ${badgeClass} best-for-badge">${label}</span></td>\n</tr>`);
+}
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">360°</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">360°</td>
               </tr>
@@ -556,15 +817,27 @@
               </tr>
               <tr>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);font-weight:600;">Warranty</td>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">3 years</td>
+                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">3 years</td>function getBadgeColumnForRow(match) {
+  // Find product name in the row
+  const productNameMatch = match.match(/<a[^>]*>([\s\S]*?)<\/a>/i);
+  if (!productNameMatch) {
+    return match.replace('</tr>', '<td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);text-align:center;"><span class="badge badge--value">Best Value</span></td>\n</tr>');
+  }
+  
+  const name = productNameMatch[1].trim();
+  const badgeClass = PRODUCT_BADGES[name] || PRODUCT_BADGES['default'] || 'badge--value';
+  const label = BADGE_LABELS[badgeClass] || 'Best Value';
+  
+  return match.replace('</tr>', `<td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);text-align:center;"><span class="badge ${badgeClass} best-for-badge">${label}</span></td>\n</tr>`);
+}
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">3 years</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">10 years</td>
               </tr>
               <tr>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);font-weight:600;">Buy on Amazon</td>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><a href="https://www.amazon.com/dp/B009S750LA?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Check price →</a></td>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><a href="https://www.amazon.com/dp/B0855ZBPXD?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Check price →</a></td>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><a href="https://www.amazon.com/dp/B00P9JULWE?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Check price →</a></td>
+                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop" alt="Check price →" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B009S750LA?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Check price →</a></td>
+                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop" alt="Check price →" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B0855ZBPXD?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Check price →</a></td>
+                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop" alt="Check price →" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B00P9JULWE?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Check price →</a></td>
               </tr>
             </tbody>
           </table>
@@ -686,62 +959,17 @@
         <p>Not every monitor is designed for portrait use. IPS monitors work fine in portrait, but VA and TN panels can suffer from color shift and gamma shift when viewed vertically. Also, some monitors have vents on the top edge that are designed for horizontal heat dissipation — running them in portrait can trap heat. Check if your monitor is rated for 90-degree rotation before you pivot it.</p>
 
         <h2 id="faq">Frequently Asked Questions</h2>
-
-        <div class="faq-list">
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">What size desk do I need for dual 27-inch monitors?</h3>
-            <p>Minimum 55 inches wide if using monitor arms, 60 inches if using the stock stands. Depth should be at least 24 inches, ideally 30 inches. Two 27-inch monitors side by side measure roughly 48 inches across without stands, so at 55 inches you have about 3.5 inches of margin on each side.</p>
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="true" aria-controls="faq-answer-0">
+              What size desk do I need for dual 27-inch monitors?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-0">
+              <p>Minimum 55 inches wide if using monitor arms, 60 inches if using the stock stands. Depth should be at least 24 inches, ideally 30 inches. Two 27-inch monitors side by side measure roughly 48 inches across without stands, so at 55 inches you have about 3.5 inches of margin on each side.</p>
+            </div>
           </div>
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">Can I run dual 4K monitors off a laptop?</h3>
-            <p>It depends on your laptop. Most modern laptops with integrated graphics (Intel Iris Xe, AMD Radeon 680M, Apple M1/M2/M3) can drive dual 4K at 60Hz without issues. Older laptops or those with lower-end integrated graphics might struggle — check the maximum external resolution supported by your GPU. If in doubt, use 1440p monitors instead.</p>
-          </div>
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">Should both monitors be the same model?</h3>
-            <p>Ideally, yes. Same size, same resolution, same panel type. The image will look consistent, the bezels will match, and Windows/Mac will handle the display layout predictably. If you can't buy two of the same, at minimum match the physical dimensions and resolution class.</p>
-          </div>
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">Is a monitor arm really necessary for dual monitors?</h3>
-            <p>Not strictly necessary, but strongly recommended. The main benefits are desk space recovery (the stand's footprint disappears), precise height matching (impossible with two separate stands), and the ability to arc both monitors at the perfect angle. If you can afford $40 for a VIVO arm, the upgrade is worth it.</p>
-          </div>
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">Can I mix a 60Hz and a 120Hz monitor?</h3>
-            <p>Yes, but with caveats. On Windows, mixing refresh rates can cause micro-stuttering on the higher-refresh monitor when video content is playing on the lower-refresh monitor. On Mac, it's generally smoother. For productivity work (non-gaming), it's usually fine. For gaming on a dual setup, run the game on the 120Hz monitor and keep static content on the 60Hz monitor.</p>
-          </div>
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">What's better: two 27-inch or one 34-inch ultra-wide?</h3>
-            <p>Different tools for different needs. An ultra-wide gives you a continuous screen without a bezel gap, which is great for gaming and media. But two monitors give you physical separation — you can dedicate one screen to full-screen video calls or reference material while the other handles active work. For productivity, most people prefer two monitors. For immersion and simplicity, an ultra-wide wins. Some people run an ultra-wide as their primary with a secondary portrait monitor — that's the best of both worlds.</p>
-          </div>
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">How do I set a different wallpaper on each monitor?</h3>
-            <p>On Windows 10/11: Settings → Personalization → Background → right-click on any image and choose which monitor to set it for. On Mac: System Settings → Wallpaper → choose a wallpaper for each display from the dropdown menu next to the display preview.</p>
-          </div>
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">Do I need a separate power strip for dual monitors?</h3>
-            <p>Probably. Each monitor draws about 30-70 watts, and if you add a laptop charger (60-100W), a desk lamp, and your computer, you'll fill up a standard 6-outlet power strip. A surge-protected power strip with at least 8 outlets is recommended. Plug it into your under-desk cable tray.</p>
-          </div>
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">Can I use a dual arm on a standing desk?</h3>
-            <p>Yes, monitor arms work well on standing desks. Because the arm is clamped to the desk surface (not the legs or wall), it moves with the desk as it raises and lowers. Make sure your cables have enough slack for the full height range — about 12-18 extra inches of service loop above and beyond the arm's base.</p>
-          </div>
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">How do I prevent eye strain with two monitors?</h3>
-            <p>Three things matter most: (1) Set both monitors to the same brightness (80-120 cd/m² for indoor use). (2) Use the same color temperature on both (6500K is standard). (3) Keep both monitors at the same distance from your eyes — if one is closer, your eyes constantly refocus. Also consider bias lighting behind the monitors to reduce contrast between the bright screen and dark wall.</p>
-          </div>
-
-        </div>
-
-        <h2>Bottom Line</h2>
+        </div><h2>Bottom Line</h2>
 
         <p>A dual-monitor setup is one of the best investments you can make in your home office productivity. The key is doing it right: matching monitors, a good dual arm, proper positioning, and thoughtful cable management.</p>
 
@@ -771,6 +999,47 @@
   </section>
 
   <!-- Newsletter -->
+        <section class="related-guides">
+          <h2 class="related-guides__title">Related Guides</h2>
+          <div class="related-guides__carousel">
+            <a href="/guides/dual-monitor-setup-productivity/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Monitors</span>
+        <h3 class="guide-card__title">Dual Monitor Setup for Productivity</h3>
+        <p class="guide-card__desc">Boost your productivity with the ideal dual monitor setup and workflow tips.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/home-office-lighting-guide/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Lighting</span>
+        <h3 class="guide-card__title">Home Office Lighting Guide</h3>
+        <p class="guide-card__desc">The definitive guide to lighting your home office for productivity and comfort.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/ergonomic-accessories-home-office/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Accessories</span>
+        <h3 class="guide-card__title">Ergonomic Accessories for Home Office</h3>
+        <p class="guide-card__desc">Must-have ergonomic accessories for a comfortable and healthy home office.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/home-office-budget-setup-under-1000/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Budget</span>
+        <h3 class="guide-card__title">Home Office Budget Setup Under 
+  <section class="newsletter-bar",000</h3>
+        <p class="guide-card__desc">Build a complete home office on a budget of under 
+  <section class="newsletter-bar",000.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          </div>
+        </section>
+
+  
   <section class="newsletter-bar" id="newsletter">
     <div class="container">
       <h2 class="newsletter-bar__title">Get Weekly Workspace Tips</h2>
@@ -794,5 +1063,23 @@
   <script src="/assets/js/enhancements.js"></script>
   <script src="/assets/js/bold.js"></script>
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "26781bf348b1406aaaab5ed9a3e72d38"}'></script><!-- End Cloudflare Web Analytics -->
+
+  <script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var answer = this.nextElementSibling;
+        
+        this.setAttribute('aria-expanded', !expanded);
+        if (answer) {
+          answer.hidden = expanded;
+        }
+      });
+    });
+  });
+  </script>
+<script src="/assets/js/product-reviews.js"></script>
+<script src="/assets/js/review-injector.js"></script>
 </body>
 </html>

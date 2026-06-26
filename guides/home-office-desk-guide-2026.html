@@ -36,6 +36,183 @@
     }
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Should I get a standing desk or a fixed desk?","acceptedAnswer":{"@type":"Answer","text":"Standing desks are almost always the better choice for home offices where you spend 4+ hours a day. The ability to switch between sitting and standing reduces back pain, improves circulation, and keeps you more alert. Fixed desks still make sense for very tight budgets ($200 or less), spaces where you can't run power to the desk, or secondary workspaces used for short periods."}}
+    ]
+  }
+  </script>
+
+  <style>
+    /* FAQ Accordion */
+    .faq-accordion {
+      margin: var(--space-lg) 0;
+    }
+    .faq-item {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      margin-bottom: var(--space-sm, 8px);
+      overflow: hidden;
+      background: var(--color-surface, #fff);
+    }
+    .faq-question {
+      width: 100%;
+      padding: var(--space-md, 12px) var(--space-lg, 16px);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-display, inherit);
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--color-text, #1a202c);
+      line-height: 1.4;
+    }
+    .faq-question:hover {
+      background: var(--color-bg-alt, #f7fafc);
+    }
+    .faq-chevron {
+      transition: transform 0.3s ease;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      margin-left: var(--space-sm, 8px);
+    }
+    .faq-question[aria-expanded="true"] .faq-chevron {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      padding: 0 var(--space-lg, 16px) var(--space-md, 12px);
+      color: var(--color-muted, #718096);
+      line-height: 1.6;
+    }
+    .faq-answer p {
+      margin: 0;
+    }
+    
+    /* Best For Badges */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+    .badge--best {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+    .badge--value {
+      background: #dcfce7;
+      color: #166534;
+    }
+    .badge--budget {
+      background: #fed7aa;
+      color: #9a3412;
+    }
+    .badge--premium {
+      background: #fef3c7;
+      color: #92400e;
+    }
+    .badge--ergonomic {
+      background: #e9d5ff;
+      color: #6b21a8;
+    }
+    
+    /* Product Thumbnails */
+    .product-thumb {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      object-fit: cover;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    
+    /* Related Guides Carousel */
+    .related-guides {
+      max-width: var(--max-width, 1200px);
+      margin: var(--space-2xl, 32px) auto;
+      padding: 0 var(--space-lg, 16px);
+    }
+    .related-guides__title {
+      font-family: var(--font-display, serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: var(--space-lg, 16px);
+    }
+    .related-guides__carousel {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--space-md, 12px);
+    }
+    @media (max-width: 640px) {
+      .related-guides__carousel {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: var(--space-sm, 8px);
+        padding-bottom: var(--space-sm, 8px);
+      }
+      .related-guides__carousel .guide-card {
+        min-width: 240px;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+      }
+    }
+    .related-guides .guide-card {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      padding: var(--space-lg, 16px);
+      background: var(--color-surface, #fff);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .related-guides .guide-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+    .guide-card__badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--color-primary-light, #e0f2fe);
+      color: var(--color-primary, #0369a1);
+      margin-bottom: var(--space-xs, 4px);
+    }
+    .guide-card__title {
+      font-family: var(--font-display, serif);
+      font-size: 1rem;
+      font-weight: 600;
+      margin: var(--space-xs, 4px) 0;
+      line-height: 1.3;
+    }
+    .guide-card__desc {
+      font-size: 0.85rem;
+      color: var(--color-muted, #718096);
+      line-height: 1.4;
+      margin: var(--space-xs, 4px) 0;
+    }
+    .guide-card__link {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-primary, #0369a1);
+      margin-top: var(--space-xs, 4px);
+    }
+  </style>
+<link rel="stylesheet" href="/assets/css/reviews.css">
 </head>
 <body>
   <header class="site-header">
@@ -315,7 +492,19 @@
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">355 lbs</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">42"–80" × 30"</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Dual, 3-stage</td>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">★★★★★</td>
+                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">★★★★★</td>function getBadgeColumnForRow(match) {
+  // Find product name in the row
+  const productNameMatch = match.match(/<a[^>]*>([\s\S]*?)<\/a>/i);
+  if (!productNameMatch) {
+    return match.replace('</tr>', '<td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);text-align:center;"><span class="badge badge--value">Best Value</span></td>\n</tr>');
+  }
+  
+  const name = productNameMatch[1].trim();
+  const badgeClass = PRODUCT_BADGES[name] || PRODUCT_BADGES['default'] || 'badge--value';
+  const label = BADGE_LABELS[badgeClass] || 'Best Value';
+  
+  return match.replace('</tr>', `<td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);text-align:center;"><span class="badge ${badgeClass} best-for-badge">${label}</span></td>\n</tr>`);
+}
               </tr>
               <tr>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><strong>FlexiSpot E7</strong></td>
@@ -325,7 +514,19 @@
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">308 lbs</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">55"–72" × 28"</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Dual, 2-stage</td>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">★★★★☆</td>
+                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">★★★★☆</td>function getBadgeColumnForRow(match) {
+  // Find product name in the row
+  const productNameMatch = match.match(/<a[^>]*>([\s\S]*?)<\/a>/i);
+  if (!productNameMatch) {
+    return match.replace('</tr>', '<td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);text-align:center;"><span class="badge badge--value">Best Value</span></td>\n</tr>');
+  }
+  
+  const name = productNameMatch[1].trim();
+  const badgeClass = PRODUCT_BADGES[name] || PRODUCT_BADGES['default'] || 'badge--value';
+  const label = BADGE_LABELS[badgeClass] || 'Best Value';
+  
+  return match.replace('</tr>', `<td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);text-align:center;"><span class="badge ${badgeClass} best-for-badge">${label}</span></td>\n</tr>`);
+}
               </tr>
               <tr>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><strong>Branch Standing</strong></td>
@@ -335,7 +536,19 @@
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">310 lbs</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">48" or 60" × 30"</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Dual, 2-stage</td>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">★★★★☆</td>
+                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">★★★★☆</td>function getBadgeColumnForRow(match) {
+  // Find product name in the row
+  const productNameMatch = match.match(/<a[^>]*>([\s\S]*?)<\/a>/i);
+  if (!productNameMatch) {
+    return match.replace('</tr>', '<td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);text-align:center;"><span class="badge badge--value">Best Value</span></td>\n</tr>');
+  }
+  
+  const name = productNameMatch[1].trim();
+  const badgeClass = PRODUCT_BADGES[name] || PRODUCT_BADGES['default'] || 'badge--value';
+  const label = BADGE_LABELS[badgeClass] || 'Best Value';
+  
+  return match.replace('</tr>', `<td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);text-align:center;"><span class="badge ${badgeClass} best-for-badge">${label}</span></td>\n</tr>`);
+}
               </tr>
               <tr>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><strong>Vari Electric</strong></td>
@@ -345,7 +558,19 @@
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">245 lbs</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">48" or 60" × 30"</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Dual, 2-stage</td>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">★★★☆☆</td>
+                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">★★★☆☆</td>function getBadgeColumnForRow(match) {
+  // Find product name in the row
+  const productNameMatch = match.match(/<a[^>]*>([\s\S]*?)<\/a>/i);
+  if (!productNameMatch) {
+    return match.replace('</tr>', '<td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);text-align:center;"><span class="badge badge--value">Best Value</span></td>\n</tr>');
+  }
+  
+  const name = productNameMatch[1].trim();
+  const badgeClass = PRODUCT_BADGES[name] || PRODUCT_BADGES['default'] || 'badge--value';
+  const label = BADGE_LABELS[badgeClass] || 'Best Value';
+  
+  return match.replace('</tr>', `<td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);text-align:center;"><span class="badge ${badgeClass} best-for-badge">${label}</span></td>\n</tr>`);
+}
               </tr>
               <tr>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><strong>FlexiSpot E7L L-Shape</strong></td>
@@ -355,7 +580,19 @@
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">308 lbs (per section)</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">~70" × 60" L</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Dual per section</td>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">★★★★☆</td>
+                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">★★★★☆</td>function getBadgeColumnForRow(match) {
+  // Find product name in the row
+  const productNameMatch = match.match(/<a[^>]*>([\s\S]*?)<\/a>/i);
+  if (!productNameMatch) {
+    return match.replace('</tr>', '<td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);text-align:center;"><span class="badge badge--value">Best Value</span></td>\n</tr>');
+  }
+  
+  const name = productNameMatch[1].trim();
+  const badgeClass = PRODUCT_BADGES[name] || PRODUCT_BADGES['default'] || 'badge--value';
+  const label = BADGE_LABELS[badgeClass] || 'Best Value';
+  
+  return match.replace('</tr>', `<td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);text-align:center;"><span class="badge ${badgeClass} best-for-badge">${label}</span></td>\n</tr>`);
+}
               </tr>
               <tr>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><strong>SHW 48" Sit-Stand</strong></td>
@@ -365,7 +602,19 @@
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">265 lbs</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">48" × 24"</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Single, 2-stage</td>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">★★☆☆☆</td>
+                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">★★☆☆☆</td>function getBadgeColumnForRow(match) {
+  // Find product name in the row
+  const productNameMatch = match.match(/<a[^>]*>([\s\S]*?)<\/a>/i);
+  if (!productNameMatch) {
+    return match.replace('</tr>', '<td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);text-align:center;"><span class="badge badge--value">Best Value</span></td>\n</tr>');
+  }
+  
+  const name = productNameMatch[1].trim();
+  const badgeClass = PRODUCT_BADGES[name] || PRODUCT_BADGES['default'] || 'badge--value';
+  const label = BADGE_LABELS[badgeClass] || 'Best Value';
+  
+  return match.replace('</tr>', `<td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);text-align:center;"><span class="badge ${badgeClass} best-for-badge">${label}</span></td>\n</tr>`);
+}
               </tr>
             </tbody>
           </table>
@@ -561,57 +810,17 @@
         <p><a href="https://www.amazon.com/dp/B076VNFZJG?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Check the BenQ ScreenBar on Amazon →</a></p>
 
         <h2 id="faq">Frequently Asked Questions</h2>
-
-        <div class="faq-list">
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">Should I get a standing desk or a fixed desk?</h3>
-            <p>Standing desks are almost always the better choice for home offices where you spend 4+ hours a day. The ability to switch between sitting and standing reduces back pain, improves circulation, and keeps you more alert. Fixed desks still make sense for very tight budgets ($200 or less), spaces where you can't run power to the desk, or secondary workspaces used for short periods.</p>
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="true" aria-controls="faq-answer-0">
+              Should I get a standing desk or a fixed desk?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-0">
+              <p>Standing desks are almost always the better choice for home offices where you spend 4+ hours a day. The ability to switch between sitting and standing reduces back pain, improves circulation, and keeps you more alert. Fixed desks still make sense for very tight budgets ($200 or less), spaces where you can't run power to the desk, or secondary workspaces used for short periods.</p>
+            </div>
           </div>
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">How much should I spend on a desk?</h3>
-            <p>Think of it as a 5–10 year investment. A quality standing desk costs $400–$850. Spread over a decade, that's $40–$85 per year — less than a streaming subscription. A fixed desk that fits your ergonomic needs can be had for $150–$400. Don't go below $200 for a desk you'll use daily — the build quality and stability drop off sharply below that.</p>
-          </div>
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">Is a 48" desk wide enough for dual monitors?</h3>
-            <p>Barely. With two 24" monitors (about 22" wide each) plus bezels, you're looking at 46" of monitor width alone, leaving only 2" for the monitor bases. Most 48" desks are 24" deep, which makes fitting dual monitors even harder. You can make it work with a monitor arm (mounting the monitors above the surface), but a 60" desk is much more comfortable for dual-screen setups.</p>
-          </div>
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">Do standing desks really help with back pain?</h3>
-            <p>Yes, according to multiple peer-reviewed studies. A 2018 Cochrane review of sit-stand desks found moderate evidence that they reduce sitting time and decrease upper back and neck pain. But the benefit comes from alternating positions, not just standing. Sitting for 8 hours is bad. Standing for 8 hours is also bad. Switching every 30–60 minutes is what helps.</p>
-          </div>
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">What desktop material is best?</h3>
-            <p>Bamboo is the best all-around material at a reasonable price — harder than most hardwoods, sustainable, and naturally moisture-resistant. Solid hardwood (reclaimed fir, rubberwood) is premium but heavy and expensive. Laminate over MDF (what most desks use) is durable and cheap but can chip at the edges. Solid wood tops from butcher block suppliers (~$200–$300) are an excellent middle option that lets you mix and match with a standing desk frame.</p>
-          </div>
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">Can I put my desk in a corner?</h3>
-            <p>Yes, but pay attention to depth. A corner desk with two 30"-deep sections will have a very deep corner (about 42" diagonally), meaning you'll need to reach far to access anything placed in the center. An L-shaped desk is better for corners than a rectangular desk pushed into one, because the L shape follows the walls and leaves more usable space at the center.</p>
-          </div>
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">Do I need a keyboard tray?</h3>
-            <p>If your desk height is fixed and doesn't match your seated elbow height, yes — a keyboard tray is the cheapest fix. If you have a height-adjustable desk, you don't need one (the desk itself adjusts to the height you need). That said, some standing desk users prefer a keyboard tray because it lets them keep the primary surface higher (for monitor height) while the keyboard sits at the correct typing height.</p>
-          </div>
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">How do I make a standing desk stable on carpet?</h3>
-            <p>Thick carpet amplifies wobble. Options: place a rigid sheet of plywood or a standing mat under the desk's feet to distribute weight. Or remove the desk's standard feet and attach larger, weighted base plates (available from desk manufacturers). Some users also add sandbags or dumbbells to the frame's crossbar for ballast. If you're buying new, look for a desk with wide feet (28"+) and high weight capacity — the extra mass helps dampen wobble.</p>
-          </div>
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">What about manual crank desks? Are they worth it?</h3>
-            <p>Manual crank desks are a compromise. They're cheaper than electric ($150–$250), don't need power, and won't break mechanically (there's no motor to fail). But cranking a desk up and down takes 30–60 seconds each time, which is long enough that you'll do it less often. For most people, the extra $150–$200 for a budget electric desk is worth the convenience that gets you standing more frequently.</p>
-          </div>
-
-        </div>
-
-        <h2>Bottom Line</h2>
+        </div><h2>Bottom Line</h2>
 
         <p>Your desk is not a commodity. It's the platform where your entire workday happens. Getting it right — the right height, the right surface area, the right shape for your space — is one of the highest-impact investments you can make in your home office.</p>
 
@@ -641,6 +850,47 @@
   </section>
 
   <!-- Newsletter -->
+        <section class="related-guides">
+          <h2 class="related-guides__title">Related Guides</h2>
+          <div class="related-guides__carousel">
+            <a href="/guides/best-standing-desks-under-500/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Desks</span>
+        <h3 class="guide-card__title">Best Standing Desks Under $500</h3>
+        <p class="guide-card__desc">Best budget-friendly standing desks under $500 for your home office.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/dual-monitor-home-office/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Monitors</span>
+        <h3 class="guide-card__title">Dual Monitor Home Office Setup</h3>
+        <p class="guide-card__desc">Everything you need for a productive dual-monitor home office setup.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/ergonomic-accessories-home-office/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Accessories</span>
+        <h3 class="guide-card__title">Ergonomic Accessories for Home Office</h3>
+        <p class="guide-card__desc">Must-have ergonomic accessories for a comfortable and healthy home office.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/home-office-budget-setup-under-1000/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Budget</span>
+        <h3 class="guide-card__title">Home Office Budget Setup Under 
+  <section class="newsletter-bar",000</h3>
+        <p class="guide-card__desc">Build a complete home office on a budget of under 
+  <section class="newsletter-bar",000.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          </div>
+        </section>
+
+  
   <section class="newsletter-bar" id="newsletter">
     <div class="container">
       <h2 class="newsletter-bar__title">Get Weekly Workspace Tips</h2>
@@ -664,5 +914,23 @@
   <script src="/assets/js/enhancements.js"></script>
   <script src="/assets/js/bold.js"></script>
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{ token: "26781bf348b1406aaaab5ed9a3e72d38" }"></script><!-- End Cloudflare Web Analytics -->
+
+  <script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var answer = this.nextElementSibling;
+        
+        this.setAttribute('aria-expanded', !expanded);
+        if (answer) {
+          answer.hidden = expanded;
+        }
+      });
+    });
+  });
+  </script>
+<script src="/assets/js/product-reviews.js"></script>
+<script src="/assets/js/review-injector.js"></script>
 </body>
 </html>

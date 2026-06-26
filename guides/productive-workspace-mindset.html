@@ -7,7 +7,7 @@
   <meta name="description" content="Your physical environment shapes your mental state more than you think. Research-backed guide to workspace design for better focus, creativity, and calm.">
   <meta property="og:title" content="Productive Workspace Mindset — How Your Environment Shapes Focus">
   <meta property="og:description" content="Your physical environment shapes your mental state more than you think. Research-backed guide to workspace design for better focus, creativity, and calm.">
-    <meta property="og:image" content="https://www.theworkspacepro.com/images/og-default.jpg">
+    <meta property="og:image" content="https://www.theworkspacepro.com/assets/images/og-default.jpg">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://www.theworkspacepro.com/guides/productive-workspace-mindset/">
   <link rel="canonical" href="https://www.theworkspacepro.com/guides/productive-workspace-mindset/">
@@ -30,6 +30,183 @@
     }
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Is a minimalist desk actually better for productivity?","acceptedAnswer":{"@type":"Answer","text":"For focused, detail-oriented tasks — yes, generally. Visual minimalism reduces cognitive load. But for creative or brainstorming work, some visual variety can help. The ideal is a flexible workspace: clear the surface for focus, spread things out for creative sessions."}}
+    ]
+  }
+  </script>
+
+  <style>
+    /* FAQ Accordion */
+    .faq-accordion {
+      margin: var(--space-lg) 0;
+    }
+    .faq-item {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      margin-bottom: var(--space-sm, 8px);
+      overflow: hidden;
+      background: var(--color-surface, #fff);
+    }
+    .faq-question {
+      width: 100%;
+      padding: var(--space-md, 12px) var(--space-lg, 16px);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-display, inherit);
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--color-text, #1a202c);
+      line-height: 1.4;
+    }
+    .faq-question:hover {
+      background: var(--color-bg-alt, #f7fafc);
+    }
+    .faq-chevron {
+      transition: transform 0.3s ease;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      margin-left: var(--space-sm, 8px);
+    }
+    .faq-question[aria-expanded="true"] .faq-chevron {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      padding: 0 var(--space-lg, 16px) var(--space-md, 12px);
+      color: var(--color-muted, #718096);
+      line-height: 1.6;
+    }
+    .faq-answer p {
+      margin: 0;
+    }
+    
+    /* Best For Badges */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+    .badge--best {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+    .badge--value {
+      background: #dcfce7;
+      color: #166534;
+    }
+    .badge--budget {
+      background: #fed7aa;
+      color: #9a3412;
+    }
+    .badge--premium {
+      background: #fef3c7;
+      color: #92400e;
+    }
+    .badge--ergonomic {
+      background: #e9d5ff;
+      color: #6b21a8;
+    }
+    
+    /* Product Thumbnails */
+    .product-thumb {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      object-fit: cover;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    
+    /* Related Guides Carousel */
+    .related-guides {
+      max-width: var(--max-width, 1200px);
+      margin: var(--space-2xl, 32px) auto;
+      padding: 0 var(--space-lg, 16px);
+    }
+    .related-guides__title {
+      font-family: var(--font-display, serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: var(--space-lg, 16px);
+    }
+    .related-guides__carousel {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--space-md, 12px);
+    }
+    @media (max-width: 640px) {
+      .related-guides__carousel {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: var(--space-sm, 8px);
+        padding-bottom: var(--space-sm, 8px);
+      }
+      .related-guides__carousel .guide-card {
+        min-width: 240px;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+      }
+    }
+    .related-guides .guide-card {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      padding: var(--space-lg, 16px);
+      background: var(--color-surface, #fff);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .related-guides .guide-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+    .guide-card__badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--color-primary-light, #e0f2fe);
+      color: var(--color-primary, #0369a1);
+      margin-bottom: var(--space-xs, 4px);
+    }
+    .guide-card__title {
+      font-family: var(--font-display, serif);
+      font-size: 1rem;
+      font-weight: 600;
+      margin: var(--space-xs, 4px) 0;
+      line-height: 1.3;
+    }
+    .guide-card__desc {
+      font-size: 0.85rem;
+      color: var(--color-muted, #718096);
+      line-height: 1.4;
+      margin: var(--space-xs, 4px) 0;
+    }
+    .guide-card__link {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-primary, #0369a1);
+      margin-top: var(--space-xs, 4px);
+    }
+  </style>
+<link rel="stylesheet" href="/assets/css/reviews.css">
 </head>
 <body>
   <header class="site-header">
@@ -290,52 +467,17 @@
         <p>Research offers general principles, but you're not an average. If you focus better with music playing, don't let someone tell you silence is superior. If a warm orange accent wall makes you feel creative, use it. <strong>Your own experience is the most relevant data you have.</strong></p>
 
         <h2 id="faq">Frequently Asked Questions</h2>
-
-        <div class="faq-list">
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">Is a minimalist desk actually better for productivity?</h3>
-            <p>For focused, detail-oriented tasks — yes, generally. Visual minimalism reduces cognitive load. But for creative or brainstorming work, some visual variety can help. The ideal is a flexible workspace: clear the surface for focus, spread things out for creative sessions.</p>
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="true" aria-controls="faq-answer-0">
+              Is a minimalist desk actually better for productivity?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-0">
+              <p>For focused, detail-oriented tasks — yes, generally. Visual minimalism reduces cognitive load. But for creative or brainstorming work, some visual variety can help. The ideal is a flexible workspace: clear the surface for focus, spread things out for creative sessions.</p>
+            </div>
           </div>
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">What color should I paint my home office?</h3>
-            <p>Safest options: warm neutrals (beige, warm gray, cream), soft blues, or muted greens. Use saturated colors as accents — a chair, desk accessories, or a single accent wall behind your monitor.</p>
-          </div>
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">Does working in the same room where I sleep affect my sleep?</h3>
-            <p>Yes. When work and sleep share a space, your brain struggles to form distinct associations. Create visual separation — a room divider or even a rug defining the work zone. At end of day, cover or put away work tools to signal "work is done."</p>
-          </div>
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">How many plants do I need?</h3>
-            <p>Even one plant makes a measurable difference. Visibility matters more than quantity — keep it within your line of sight.</p>
-          </div>
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">Should I use a standing desk for productivity?</h3>
-            <p>Standing changes your posture and autonomic state, shifting cognitive mode. Many people think more dynamically standing and focus more deeply sitting. The real benefit is the <strong>ability to change posture</strong> — variation itself supports sustained cognitive performance. If you're looking to add one, a budget-friendly option like the <a href="https://www.amazon.com/dp/B0BVQMQMY2?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Flexispot E7</a> gives you electric height adjustment and plenty of stability.</p>
-          </div>
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">Do blue light glasses help?</h3>
-            <p>Evidence is mixed. Blue light from screens is relatively small compared to daylight, and modern devices have built-in night modes. Glasses <em>may</em> help for evening screen use, but the bigger wins come from adjusting your overall lighting environment and reducing screen time before bed.</p>
-          </div>
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">How long does it take to adapt to a new setup?</h3>
-            <p>About 3-7 days. Things may feel off during adaptation — that's normal. Give each change at least a week before evaluating it.</p>
-          </div>
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">Is it okay to work from coffee shops sometimes?</h3>
-            <p>Absolutely. The change of environment can break mental ruts and provide fresh cognitive context. Match environment to task: coffee shops for brainstorming and creative work; quiet home office for deep focus.</p>
-          </div>
-
-        </div>
-
-        <h2>Putting It All Together</h2>
+        </div><h2>Putting It All Together</h2>
 
         <p>If this feels like a lot, here's the condensed version: <strong>your workspace is not neutral.</strong> Every element is actively shaping your cognitive state. The goal isn't a perfect workspace — it's an <em>aware</em> one, where you've made intentional choices about the big factors and left room to adapt.</p>
 
@@ -375,6 +517,45 @@
   </section>
 
   <!-- Newsletter -->
+        <section class="related-guides">
+          <h2 class="related-guides__title">Related Guides</h2>
+          <div class="related-guides__carousel">
+            <a href="/guides/dual-monitor-home-office/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Monitors</span>
+        <h3 class="guide-card__title">Dual Monitor Home Office Setup</h3>
+        <p class="guide-card__desc">Everything you need for a productive dual-monitor home office setup.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/dual-monitor-setup-productivity/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Monitors</span>
+        <h3 class="guide-card__title">Dual Monitor Setup for Productivity</h3>
+        <p class="guide-card__desc">Boost your productivity with the ideal dual monitor setup and workflow tips.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/home-office-desk-guide-2026/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Desks</span>
+        <h3 class="guide-card__title">Home Office Desk Guide 2026</h3>
+        <p class="guide-card__desc">The complete guide to choosing the right desk for your home office.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/home-office-lighting-guide/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Lighting</span>
+        <h3 class="guide-card__title">Home Office Lighting Guide</h3>
+        <p class="guide-card__desc">The definitive guide to lighting your home office for productivity and comfort.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          </div>
+        </section>
+
+  
   <section class="newsletter-bar" id="newsletter">
     <div class="container">
       <h2 class="newsletter-bar__title">Get Weekly Workspace Tips</h2>
@@ -398,5 +579,23 @@
   <script src="/assets/js/enhancements.js"></script>
   <script src="/assets/js/bold.js"></script>
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "26781bf348b1406aaaab5ed9a3e72d38"}'></script><!-- End Cloudflare Web Analytics -->
+
+  <script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var answer = this.nextElementSibling;
+        
+        this.setAttribute('aria-expanded', !expanded);
+        if (answer) {
+          answer.hidden = expanded;
+        }
+      });
+    });
+  });
+  </script>
+<script src="/assets/js/product-reviews.js"></script>
+<script src="/assets/js/review-injector.js"></script>
 </body>
 </html>

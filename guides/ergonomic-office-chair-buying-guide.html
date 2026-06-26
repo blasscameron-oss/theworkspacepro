@@ -7,7 +7,7 @@
   <meta name="description" content="Everything you need to know about seat height, lumbar support, armrests, and choosing the right chair for your body and budget.">
   <meta property="og:title" content="Ergonomic Office Chair Buying Guide">
   <meta property="og:description" content="Everything you need to know about seat height, lumbar support, armrests, and choosing the right chair for your body and budget.">
-    <meta property="og:image" content="https://www.theworkspacepro.com/images/og-default.jpg">
+    <meta property="og:image" content="https://www.theworkspacepro.com/assets/images/og-default.jpg">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://www.theworkspacepro.com/guides/ergonomic-office-chair-buying-guide/">
   <link rel="canonical" href="https://www.theworkspacepro.com/guides/ergonomic-office-chair-buying-guide/">
@@ -30,6 +30,190 @@
     }
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"How much should I spend on an ergonomic office chair?","acceptedAnswer":{"@type":"Answer","text":"For a part-time desk worker, $200-400 gets you a meaningful upgrade over a standard office chair. For full-time remote work, budget $500-900 for a chair that will last 8-10 years with proper adjustability. If you have chronic back pain, spend $900+ — the cost is negligible compared to chiropractor visits or time lost to discomfort."}},
+      {"@type":"Question","name":"Is mesh or foam better for an office chair?","acceptedAnswer":{"@type":"Answer","text":"Neither is objectively better — they serve different needs. Mesh is more breathable and conforms dynamically to your shape, making it ideal for warm environments or people who run warm. Foam provides more uniform pressure distribution and feels plusher, but lower-quality foam degrades within a year. High-density foam (like in the Leap V2) holds up for a decade or more. The best approach: try both if you can, and prioritize quality over type."}},
+      {"@type":"Question","name":"Can I use a gaming chair for ergonomic office work?","acceptedAnswer":{"@type":"Answer","text":"Generally no. Most gaming chairs are designed to mimic racing bucket seats — they're narrow, have fixed lumbar support, lack seat depth adjustment, and use low-density foam that compresses quickly. They look aggressive but perform poorly for long-term seated work. The main exceptions are high-end gaming chairs from brands like Herman Miller (the Embody gaming chair) or Logitech/Steelcase collaborations, but those cost as much as premium ergonomic chairs and essentially are ergonomic chairs in different styling."}},
+      {"@type":"Question","name":"How long should an ergonomic chair last?","acceptedAnswer":{"@type":"Answer","text":"A good ergonomic chair should last 10-15 years with normal daily use. Budget chairs ($200-500) typically start showing wear at 3-5 years — the gas cylinder loses pressure, foam compresses, and armrest padding wears through. Premium chairs ($900+) are designed for 10+ years of daily, full-time use, and most come with warranties that reflect that. The Herman Miller Aeron from 1994 is still going strong in many offices — that's the durability benchmark."}},
+      {"@type":"Question","name":"Should I get a chair with a headrest?","acceptedAnswer":{"@type":"Answer","text":"Headrests are useful for reclining and passive sitting — if you lean back while reading or thinking, a headrest prevents neck strain. However, most ergonomic experts recommend against using a headrest while actively working at a desk, because it encourages you to lean your head back, which can strain your neck when you're looking forward at a monitor. The general rule: a headrest is nice to have for breaks, but shouldn't be primary support during active work. If you work fully reclined (e.g., a lot of reading or media work), prioritize a headrest."}},
+      {"@type":"Question","name":"Do I need seat depth adjustment?","acceptedAnswer":{"@type":"Answer","text":"If you're between 5'4\" and 5'11\" with average proportions, seat depth adjustment is a nice-to-have but not critical — most fixed-depth chairs are designed for this range. If you're under 5'4\" or over 6'0\", seat depth adjustment becomes important. Without it, shorter users risk the seat pressing behind their knees, and taller users risk insufficient thigh support. The ability to slide the seat pan forward or back by 3-4 inches makes a massive difference in long-term comfort for non-average builds."}},
+      {"@type":"Question","name":"Can I use a standing desk with any ergonomic chair?","acceptedAnswer":{"@type":"Answer","text":"Yes. An ergonomic chair pairs well with a standing desk — you adjust your chair for seated work and raise the desk for standing periods. In fact, this is the ideal setup: alternate between sitting and standing throughout the day, with each position properly dialed in. If you're using a standing desk, make sure your chair's seat height range works with the desk's minimum height when the desk is lowered. A chair that's too high or too low can't compensate for desk height."}},
+      {"@type":"Question","name":"Is buying a used ergonomic chair worth it?","acceptedAnswer":{"@type":"Answer","text":"Absolutely — if you're smart about it. Premium ergonomic chairs are built to outlast the companies that buy them, so the used market is flooded with Aerons and Leaps from office closures and relocations. You can often find them for 40-60% of retail. Key things to check: test the gas cylinder (does it hold position?), check for torn mesh or compressed foam, inspect the armrest pads for wear, and make sure all adjustments work smoothly. Buy from a reputable refurbisher who offers a warranty. Crandall Office Furniture and BTOD.com are two well-known options that refurbish and warranty used chairs."}}
+    ]
+  }
+  </script>
+
+  <style>
+    /* FAQ Accordion */
+    .faq-accordion {
+      margin: var(--space-lg) 0;
+    }
+    .faq-item {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      margin-bottom: var(--space-sm, 8px);
+      overflow: hidden;
+      background: var(--color-surface, #fff);
+    }
+    .faq-question {
+      width: 100%;
+      padding: var(--space-md, 12px) var(--space-lg, 16px);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-display, inherit);
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--color-text, #1a202c);
+      line-height: 1.4;
+    }
+    .faq-question:hover {
+      background: var(--color-bg-alt, #f7fafc);
+    }
+    .faq-chevron {
+      transition: transform 0.3s ease;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      margin-left: var(--space-sm, 8px);
+    }
+    .faq-question[aria-expanded="true"] .faq-chevron {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      padding: 0 var(--space-lg, 16px) var(--space-md, 12px);
+      color: var(--color-muted, #718096);
+      line-height: 1.6;
+    }
+    .faq-answer p {
+      margin: 0;
+    }
+    
+    /* Best For Badges */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+    .badge--best {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+    .badge--value {
+      background: #dcfce7;
+      color: #166534;
+    }
+    .badge--budget {
+      background: #fed7aa;
+      color: #9a3412;
+    }
+    .badge--premium {
+      background: #fef3c7;
+      color: #92400e;
+    }
+    .badge--ergonomic {
+      background: #e9d5ff;
+      color: #6b21a8;
+    }
+    
+    /* Product Thumbnails */
+    .product-thumb {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      object-fit: cover;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    
+    /* Related Guides Carousel */
+    .related-guides {
+      max-width: var(--max-width, 1200px);
+      margin: var(--space-2xl, 32px) auto;
+      padding: 0 var(--space-lg, 16px);
+    }
+    .related-guides__title {
+      font-family: var(--font-display, serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: var(--space-lg, 16px);
+    }
+    .related-guides__carousel {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--space-md, 12px);
+    }
+    @media (max-width: 640px) {
+      .related-guides__carousel {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: var(--space-sm, 8px);
+        padding-bottom: var(--space-sm, 8px);
+      }
+      .related-guides__carousel .guide-card {
+        min-width: 240px;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+      }
+    }
+    .related-guides .guide-card {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      padding: var(--space-lg, 16px);
+      background: var(--color-surface, #fff);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .related-guides .guide-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+    .guide-card__badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--color-primary-light, #e0f2fe);
+      color: var(--color-primary, #0369a1);
+      margin-bottom: var(--space-xs, 4px);
+    }
+    .guide-card__title {
+      font-family: var(--font-display, serif);
+      font-size: 1rem;
+      font-weight: 600;
+      margin: var(--space-xs, 4px) 0;
+      line-height: 1.3;
+    }
+    .guide-card__desc {
+      font-size: 0.85rem;
+      color: var(--color-muted, #718096);
+      line-height: 1.4;
+      margin: var(--space-xs, 4px) 0;
+    }
+    .guide-card__link {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-primary, #0369a1);
+      margin-top: var(--space-xs, 4px);
+    }
+  </style>
+<link rel="stylesheet" href="/assets/css/reviews.css">
 </head>
 <body>
   <header class="site-header">
@@ -446,52 +630,81 @@
         <!-- ================================================================== -->
         <!-- SECTION 7: FAQ -->
         <!-- ================================================================== -->
-        <h2 id="faq">7. Frequently Asked Questions</h2>
-
-        <div style="background:var(--color-surface);padding:var(--space-lg);border-radius:var(--radius-md);margin:var(--space-lg) 0;">
-          <h4 style="margin-top:0;">How much should I spend on an ergonomic office chair?</h4>
-          <p>For a part-time desk worker, $200-400 gets you a meaningful upgrade over a standard office chair. For full-time remote work, budget $500-900 for a chair that will last 8-10 years with proper adjustability. If you have chronic back pain, spend $900+ — the cost is negligible compared to chiropractor visits or time lost to discomfort.</p>
-        </div>
-
-        <div style="background:var(--color-surface);padding:var(--space-lg);border-radius:var(--radius-md);margin:var(--space-lg) 0;">
-          <h4 style="margin-top:0;">Is mesh or foam better for an office chair?</h4>
-          <p>Neither is objectively better — they serve different needs. Mesh is more breathable and conforms dynamically to your shape, making it ideal for warm environments or people who run warm. Foam provides more uniform pressure distribution and feels plusher, but lower-quality foam degrades within a year. High-density foam (like in the Leap V2) holds up for a decade or more. The best approach: try both if you can, and prioritize quality over type.</p>
-        </div>
-
-        <div style="background:var(--color-surface);padding:var(--space-lg);border-radius:var(--radius-md);margin:var(--space-lg) 0;">
-          <h4 style="margin-top:0;">Can I use a gaming chair for ergonomic office work?</h4>
-          <p>Generally no. Most gaming chairs are designed to mimic racing bucket seats — they're narrow, have fixed lumbar support, lack seat depth adjustment, and use low-density foam that compresses quickly. They look aggressive but perform poorly for long-term seated work. The main exceptions are high-end gaming chairs from brands like Herman Miller (the Embody gaming chair) or Logitech/Steelcase collaborations, but those cost as much as premium ergonomic chairs and essentially are ergonomic chairs in different styling.</p>
-        </div>
-
-        <div style="background:var(--color-surface);padding:var(--space-lg);border-radius:var(--radius-md);margin:var(--space-lg) 0;">
-          <h4 style="margin-top:0;">How long should an ergonomic chair last?</h4>
-          <p>A good ergonomic chair should last 10-15 years with normal daily use. Budget chairs ($200-500) typically start showing wear at 3-5 years — the gas cylinder loses pressure, foam compresses, and armrest padding wears through. Premium chairs ($900+) are designed for 10+ years of daily, full-time use, and most come with warranties that reflect that. The Herman Miller Aeron from 1994 is still going strong in many offices — that's the durability benchmark.</p>
-        </div>
-
-        <div style="background:var(--color-surface);padding:var(--space-lg);border-radius:var(--radius-md);margin:var(--space-lg) 0;">
-          <h4 style="margin-top:0;">Should I get a chair with a headrest?</h4>
-          <p>Headrests are useful for reclining and passive sitting — if you lean back while reading or thinking, a headrest prevents neck strain. However, most ergonomic experts recommend against using a headrest while actively working at a desk, because it encourages you to lean your head back, which can strain your neck when you're looking forward at a monitor. The general rule: a headrest is nice to have for breaks, but shouldn't be primary support during active work. If you work fully reclined (e.g., a lot of reading or media work), prioritize a headrest.</p>
-        </div>
-
-        <div style="background:var(--color-surface);padding:var(--space-lg);border-radius:var(--radius-md);margin:var(--space-lg) 0;">
-          <h4 style="margin-top:0;">Do I need seat depth adjustment?</h4>
-          <p>If you're between 5'4" and 5'11" with average proportions, seat depth adjustment is a nice-to-have but not critical — most fixed-depth chairs are designed for this range. If you're under 5'4" or over 6'0", seat depth adjustment becomes important. Without it, shorter users risk the seat pressing behind their knees, and taller users risk insufficient thigh support. The ability to slide the seat pan forward or back by 3-4 inches makes a massive difference in long-term comfort for non-average builds.</p>
-        </div>
-
-        <div style="background:var(--color-surface);padding:var(--space-lg);border-radius:var(--radius-md);margin:var(--space-lg) 0;">
-          <h4 style="margin-top:0;">Can I use a standing desk with any ergonomic chair?</h4>
-          <p>Yes. An ergonomic chair pairs well with a standing desk — you adjust your chair for seated work and raise the desk for standing periods. In fact, this is the ideal setup: alternate between sitting and standing throughout the day, with each position properly dialed in. If you're using a standing desk, make sure your chair's seat height range works with the desk's minimum height when the desk is lowered. A chair that's too high or too low can't compensate for desk height.</p>
-        </div>
-
-        <div style="background:var(--color-surface);padding:var(--space-lg);border-radius:var(--radius-md);margin:var(--space-lg) 0;">
-          <h4 style="margin-top:0;">Is buying a used ergonomic chair worth it?</h4>
-          <p>Absolutely — if you're smart about it. Premium ergonomic chairs are built to outlast the companies that buy them, so the used market is flooded with Aerons and Leaps from office closures and relocations. You can often find them for 40-60% of retail. Key things to check: test the gas cylinder (does it hold position?), check for torn mesh or compressed foam, inspect the armrest pads for wear, and make sure all adjustments work smoothly. Buy from a reputable refurbisher who offers a warranty. Crandall Office Furniture and BTOD.com are two well-known options that refurbish and warranty used chairs.</p>
-        </div>
-
-        <!-- ================================================================== -->
-        <!-- CONCLUSION -->
-        <!-- ================================================================== -->
-        <h2>Ready to Choose Your Chair?</h2>
+        <h2 id="faq">Frequently Asked Questions</h2>
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="true" aria-controls="faq-answer-0">
+              How much should I spend on an ergonomic office chair?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-0">
+              <p>For a part-time desk worker, $200-400 gets you a meaningful upgrade over a standard office chair. For full-time remote work, budget $500-900 for a chair that will last 8-10 years with proper adjustability. If you have chronic back pain, spend $900+ — the cost is negligible compared to chiropractor visits or time lost to discomfort.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
+              Is mesh or foam better for an office chair?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-1" hidden>
+              <p>Neither is objectively better — they serve different needs. Mesh is more breathable and conforms dynamically to your shape, making it ideal for warm environments or people who run warm. Foam provides more uniform pressure distribution and feels plusher, but lower-quality foam degrades within a year. High-density foam (like in the Leap V2) holds up for a decade or more. The best approach: try both if you can, and prioritize quality over type.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
+              Can I use a gaming chair for ergonomic office work?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-2" hidden>
+              <p>Generally no. Most gaming chairs are designed to mimic racing bucket seats — they're narrow, have fixed lumbar support, lack seat depth adjustment, and use low-density foam that compresses quickly. They look aggressive but perform poorly for long-term seated work. The main exceptions are high-end gaming chairs from brands like Herman Miller (the Embody gaming chair) or Logitech/Steelcase collaborations, but those cost as much as premium ergonomic chairs and essentially are ergonomic chairs in different styling.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
+              How long should an ergonomic chair last?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-3" hidden>
+              <p>A good ergonomic chair should last 10-15 years with normal daily use. Budget chairs ($200-500) typically start showing wear at 3-5 years — the gas cylinder loses pressure, foam compresses, and armrest padding wears through. Premium chairs ($900+) are designed for 10+ years of daily, full-time use, and most come with warranties that reflect that. The Herman Miller Aeron from 1994 is still going strong in many offices — that's the durability benchmark.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
+              Should I get a chair with a headrest?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-4" hidden>
+              <p>Headrests are useful for reclining and passive sitting — if you lean back while reading or thinking, a headrest prevents neck strain. However, most ergonomic experts recommend against using a headrest while actively working at a desk, because it encourages you to lean your head back, which can strain your neck when you're looking forward at a monitor. The general rule: a headrest is nice to have for breaks, but shouldn't be primary support during active work. If you work fully reclined (e.g., a lot of reading or media work), prioritize a headrest.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-5">
+              Do I need seat depth adjustment?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-5" hidden>
+              <p>If you're between 5'4" and 5'11" with average proportions, seat depth adjustment is a nice-to-have but not critical — most fixed-depth chairs are designed for this range. If you're under 5'4" or over 6'0", seat depth adjustment becomes important. Without it, shorter users risk the seat pressing behind their knees, and taller users risk insufficient thigh support. The ability to slide the seat pan forward or back by 3-4 inches makes a massive difference in long-term comfort for non-average builds.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-6">
+              Can I use a standing desk with any ergonomic chair?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-6" hidden>
+              <p>Yes. An ergonomic chair pairs well with a standing desk — you adjust your chair for seated work and raise the desk for standing periods. In fact, this is the ideal setup: alternate between sitting and standing throughout the day, with each position properly dialed in. If you're using a standing desk, make sure your chair's seat height range works with the desk's minimum height when the desk is lowered. A chair that's too high or too low can't compensate for desk height.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-7">
+              Is buying a used ergonomic chair worth it?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-7" hidden>
+              <p>Absolutely — if you're smart about it. Premium ergonomic chairs are built to outlast the companies that buy them, so the used market is flooded with Aerons and Leaps from office closures and relocations. You can often find them for 40-60% of retail. Key things to check: test the gas cylinder (does it hold position?), check for torn mesh or compressed foam, inspect the armrest pads for wear, and make sure all adjustments work smoothly. Buy from a reputable refurbisher who offers a warranty. Crandall Office Furniture and BTOD.com are two well-known options that refurbish and warranty used chairs.</p>
+            </div>
+          </div>
+        </div><h2>Ready to Choose Your Chair?</h2>
 
         <p>Here's the bottom line: the right ergonomic chair is the one that fits your body, supports your work, and stays within your budget. The most adjustable chair in the world is useless if you don't set it up. The cheapest chair is a waste if it leaves you in pain.</p>
 
@@ -533,6 +746,45 @@
   </section>
 
   <!-- Newsletter -->
+        <section class="related-guides">
+          <h2 class="related-guides__title">Related Guides</h2>
+          <div class="related-guides__carousel">
+            <a href="/guides/best-ergonomic-office-chairs-2026/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Chairs</span>
+        <h3 class="guide-card__title">Best Ergonomic Office Chairs 2026</h3>
+        <p class="guide-card__desc">Full comparison of the best ergonomic office chairs across every budget tier.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/back-pain-ergonomic-setup/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Ergonomics</span>
+        <h3 class="guide-card__title">Back Pain Ergonomic Setup</h3>
+        <p class="guide-card__desc">Set up your workspace to prevent and manage back pain with proper ergonomics.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/ergonomic-accessories-home-office/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Accessories</span>
+        <h3 class="guide-card__title">Ergonomic Accessories for Home Office</h3>
+        <p class="guide-card__desc">Must-have ergonomic accessories for a comfortable and healthy home office.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/ergonomic-setup-for-gamers/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Gaming</span>
+        <h3 class="guide-card__title">Ergonomic Setup for Gamers</h3>
+        <p class="guide-card__desc">Build an ergonomic gaming setup that keeps you comfortable during long sessions.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          </div>
+        </section>
+
+  
   <section class="newsletter-bar" id="newsletter">
     <div class="container">
       <h2 class="newsletter-bar__title">Get Weekly Workspace Tips</h2>
@@ -556,5 +808,23 @@
   <script src="/assets/js/enhancements.js"></script>
   <script src="/assets/js/bold.js"></script>
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{"token": "26781bf348b1406aaaab5ed9a3e72d38"}"></script><!-- End Cloudflare Web Analytics -->
+
+  <script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var answer = this.nextElementSibling;
+        
+        this.setAttribute('aria-expanded', !expanded);
+        if (answer) {
+          answer.hidden = expanded;
+        }
+      });
+    });
+  });
+  </script>
+<script src="/assets/js/product-reviews.js"></script>
+<script src="/assets/js/review-injector.js"></script>
 </body>
 </html>

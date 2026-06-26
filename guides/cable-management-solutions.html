@@ -7,7 +7,7 @@
   <meta name="description" content="Master desk cable management from $5 to $60. Full guide with product recommendations, step-by-step instructions, DIY hacks, and a comparison table.">
   <meta property="og:title" content="Cable Management Solutions — The Complete Guide 2026">
   <meta property="og:description" content="Master desk cable management from $5 to $60. Full guide with product recommendations, step-by-step instructions, DIY hacks, and a comparison table.">
-    <meta property="og:image" content="https://www.theworkspacepro.com/images/og-default.jpg">
+    <meta property="og:image" content="https://www.theworkspacepro.com/assets/images/og-default.jpg">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://www.theworkspacepro.com/guides/cable-management-solutions/">
   <link rel="canonical" href="https://www.theworkspacepro.com/guides/cable-management-solutions/">
@@ -30,6 +30,183 @@
     }
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Do I need to drill holes for under-desk cable trays?","acceptedAnswer":{"@type":"Answer","text":"Not necessarily. Some trays use a clamp-on mechanism instead of screws. That said, screw-mounted trays are significantly more secure — a tray full of power bricks is heavy, and adhesive pads will eventually fail. If you're renting and can't drill, look for a clamp-on tray or use a lightweight adhesive wire channel instead of a full basket."}}
+    ]
+  }
+  </script>
+
+  <style>
+    /* FAQ Accordion */
+    .faq-accordion {
+      margin: var(--space-lg) 0;
+    }
+    .faq-item {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      margin-bottom: var(--space-sm, 8px);
+      overflow: hidden;
+      background: var(--color-surface, #fff);
+    }
+    .faq-question {
+      width: 100%;
+      padding: var(--space-md, 12px) var(--space-lg, 16px);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-display, inherit);
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--color-text, #1a202c);
+      line-height: 1.4;
+    }
+    .faq-question:hover {
+      background: var(--color-bg-alt, #f7fafc);
+    }
+    .faq-chevron {
+      transition: transform 0.3s ease;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      margin-left: var(--space-sm, 8px);
+    }
+    .faq-question[aria-expanded="true"] .faq-chevron {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      padding: 0 var(--space-lg, 16px) var(--space-md, 12px);
+      color: var(--color-muted, #718096);
+      line-height: 1.6;
+    }
+    .faq-answer p {
+      margin: 0;
+    }
+    
+    /* Best For Badges */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+    .badge--best {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+    .badge--value {
+      background: #dcfce7;
+      color: #166534;
+    }
+    .badge--budget {
+      background: #fed7aa;
+      color: #9a3412;
+    }
+    .badge--premium {
+      background: #fef3c7;
+      color: #92400e;
+    }
+    .badge--ergonomic {
+      background: #e9d5ff;
+      color: #6b21a8;
+    }
+    
+    /* Product Thumbnails */
+    .product-thumb {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      object-fit: cover;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    
+    /* Related Guides Carousel */
+    .related-guides {
+      max-width: var(--max-width, 1200px);
+      margin: var(--space-2xl, 32px) auto;
+      padding: 0 var(--space-lg, 16px);
+    }
+    .related-guides__title {
+      font-family: var(--font-display, serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: var(--space-lg, 16px);
+    }
+    .related-guides__carousel {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--space-md, 12px);
+    }
+    @media (max-width: 640px) {
+      .related-guides__carousel {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: var(--space-sm, 8px);
+        padding-bottom: var(--space-sm, 8px);
+      }
+      .related-guides__carousel .guide-card {
+        min-width: 240px;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+      }
+    }
+    .related-guides .guide-card {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      padding: var(--space-lg, 16px);
+      background: var(--color-surface, #fff);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .related-guides .guide-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+    .guide-card__badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--color-primary-light, #e0f2fe);
+      color: var(--color-primary, #0369a1);
+      margin-bottom: var(--space-xs, 4px);
+    }
+    .guide-card__title {
+      font-family: var(--font-display, serif);
+      font-size: 1rem;
+      font-weight: 600;
+      margin: var(--space-xs, 4px) 0;
+      line-height: 1.3;
+    }
+    .guide-card__desc {
+      font-size: 0.85rem;
+      color: var(--color-muted, #718096);
+      line-height: 1.4;
+      margin: var(--space-xs, 4px) 0;
+    }
+    .guide-card__link {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-primary, #0369a1);
+      margin-top: var(--space-xs, 4px);
+    }
+  </style>
+<link rel="stylesheet" href="/assets/css/reviews.css">
 </head>
 <body>
   <header class="site-header">
@@ -366,28 +543,28 @@
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Peel and stick</td>
               </tr>
               <tr>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><a href="https://www.amazon.com/dp/B0CNDBN213?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">VIVO Under-Desk Cable Tray</a></td>
+                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><img src="https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=80&h=80&fit=crop" alt="VIVO Under-Desk Cable Tray" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B0CNDBN213?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">VIVO Under-Desk Cable Tray</a></td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">~$17</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Tray / Basket</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Hiding power strip and slack</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Screw-in (drill recommended)</td>
               </tr>
               <tr>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><a href="https://www.amazon.com/dp/B07Y23TMZ4?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Eveo Cable Management Sleeve</a></td>
+                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=80&h=80&fit=crop" alt="Eveo Cable Management Sleeve" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B07Y23TMZ4?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Eveo Cable Management Sleeve</a></td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">~$13</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Sleeve</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Bundling visible runs</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Wrap and zip</td>
               </tr>
               <tr>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><a href="https://www.amazon.com/dp/B06Y1DVNQD?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">J Channel Raceway (3-pack)</a></td>
+                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=80&h=80&fit=crop" alt="J Channel Raceway (3-pack)" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B06Y1DVNQD?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">J Channel Raceway (3-pack)</a></td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">~$15</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Raceway</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Wall-mounted cable runs</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Adhesive or screw</td>
               </tr>
               <tr>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><a href="https://www.amazon.com/dp/B0CM6V5GL2?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Anker USB C Charger Station</a></td>
+                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop" alt="Anker USB C Charger Station" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B0CM6V5GL2?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Anker USB C Charger Station</a></td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">~$60</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Charging hub</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Reducing charger cable clutter</td>
@@ -398,57 +575,17 @@
         </div>
 
         <h2 id="faq">Frequently Asked Questions</h2>
-
-        <div class="faq-list">
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">Do I need to drill holes for under-desk cable trays?</h3>
-            <p>Not necessarily. Some trays use a clamp-on mechanism instead of screws. That said, screw-mounted trays are significantly more secure — a tray full of power bricks is heavy, and adhesive pads will eventually fail. If you're renting and can't drill, look for a clamp-on tray or use a lightweight adhesive wire channel instead of a full basket.</p>
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="true" aria-controls="faq-answer-0">
+              Do I need to drill holes for under-desk cable trays?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-0">
+              <p>Not necessarily. Some trays use a clamp-on mechanism instead of screws. That said, screw-mounted trays are significantly more secure — a tray full of power bricks is heavy, and adhesive pads will eventually fail. If you're renting and can't drill, look for a clamp-on tray or use a lightweight adhesive wire channel instead of a full basket.</p>
+            </div>
           </div>
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">Can I paint over cable raceways to match my wall?</h3>
-            <p>Yes, most plastic raceways can be painted with water-based (latex) paint. Avoid oil-based paints — they can soften or warp the plastic over time. Lightly sand the surface first for better adhesion. Some raceway manufacturers sell paint-compatible versions specifically for this purpose.</p>
-          </div>
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">What's the difference between a cable sleeve and a raceway?</h3>
-            <p>A cable sleeve is a flexible fabric tube with a zipper — it bundles cables that are already routed and makes them look like a single cable. A raceway is a rigid plastic channel that mounts to a wall or desk — it hides cables inside a track. Use sleeves for exposed runs that need flexibility, use raceways for permanent wall-mounted routes.</p>
-          </div>
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">How do I manage cables on a standing desk?</h3>
-            <p>The key is a service loop — a loop of excess cable that provides slack when the desk rises and retracts when it lowers. Mount your cable tray to the underside of the desk (not the wall or legs). Bundle cables with enough slack for the full height range. Use Velcro straps (not zip ties) so you can adjust the loop. Run cables down one desk leg with adhesive clips to prevent swinging.</p>
-          </div>
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">Are zip ties bad for cables?</h3>
-            <p>Zip ties are fine if you don't overtighten them. The problem is when people cinch them as tight as possible — that can crush or deform cable insulation, especially on thin charging cables. Use your thumb as a spacer: tighten until the cable bundle is snug but you can still slide a finger between the tie and the cables. Or just use Velcro straps instead — they're more forgiving and reusable.</p>
-          </div>
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">How much should I spend on cable management?</h3>
-            <p>You can get great results for under $30: a bag of zip ties ($5), a pack of adhesive cable clips ($6), and a cable sleeve ($13) will cover the basics. Add an under-desk cable tray ($17) and you're still under $50. If you want the full premium setup — tray, sleeve, raceways, charging station — expect to spend around $100-$120. But honestly, you don't need everything. Start with $10 worth of zip ties and clips, see how far that gets you, then add components as needed.</p>
-          </div>
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">How often should I redo my cable management?</h3>
-            <p>If you set it up properly the first time, you shouldn't need to redo it unless you change your desk layout or add/remove equipment. Once a year, unplug everything, dust off the cable tray and power strip, and re-tension any bundles that have loosened up. That's usually enough.</p>
-          </div>
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">What about cable clips that leave adhesive residue?</h3>
-            <p>If you're worried about residue on your desk, look for <strong>removable adhesive</strong> cable clips — they use a gel-like adhesive that peels off cleanly. Command brand makes good ones (about $6 for a 4-pack at any hardware store). If you already have standard adhesive clips in place, use a bit of rubbing alcohol, goo-gone, or a hair dryer on low heat to soften the adhesive before peeling.</p>
-          </div>
-
-          <div class="faq-item" style="margin-bottom:var(--space-lg);">
-            <h3 style="margin-bottom:var(--space-xs);">Should I go wireless to avoid cables?</h3>
-            <p>Wireless peripherals (keyboard, mouse, headphones) can reduce cable clutter, but they introduce their own problems — battery life, charging, latency, and interference. A cleanly managed wired setup is often more reliable than a wireless one. The best approach is hybrid: wireless for devices that benefit from mobility (mouse, headphones), wired for stationary devices that need consistent power and data (monitor, keyboard, network).</p>
-          </div>
-
-        </div>
-
-        <h2>Bottom Line</h2>
+        </div><h2>Bottom Line</h2>
 
         <p>Cable management isn't about making your desk look like a sterile tech showroom. It's about safety, focus, and not having a panic attack every time you need to plug something in behind your desk.</p>
 
@@ -478,6 +615,45 @@
   </section>
 
   <!-- Newsletter -->
+        <section class="related-guides">
+          <h2 class="related-guides__title">Related Guides</h2>
+          <div class="related-guides__carousel">
+            <a href="/guides/small-home-office-organization-hacks/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Organization</span>
+        <h3 class="guide-card__title">Small Home Office Organization Hacks</h3>
+        <p class="guide-card__desc">Maximize tight spaces with wall-mounted storage, fold-away desks, and vertical organization.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/back-pain-ergonomic-setup/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Ergonomics</span>
+        <h3 class="guide-card__title">Back Pain Ergonomic Setup</h3>
+        <p class="guide-card__desc">Set up your workspace to prevent and manage back pain with proper ergonomics.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/best-ergonomic-office-chairs-2026/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Chairs</span>
+        <h3 class="guide-card__title">Best Ergonomic Office Chairs 2026</h3>
+        <p class="guide-card__desc">Full comparison of the best ergonomic office chairs across every budget tier.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/best-standing-desk-mat-for-concrete-floors/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Accessories</span>
+        <h3 class="guide-card__title">Best Standing Desk Mats for Concrete Floors</h3>
+        <p class="guide-card__desc">Top anti-fatigue mats for standing desks on concrete floors.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          </div>
+        </section>
+
+  
   <section class="newsletter-bar" id="newsletter">
     <div class="container">
       <h2 class="newsletter-bar__title">Get Weekly Workspace Tips</h2>
@@ -501,5 +677,23 @@
   <script src="/assets/js/enhancements.js"></script>
   <script src="/assets/js/bold.js"></script>
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{"token": "26781bf348b1406aaaab5ed9a3e72d38"}"></script><!-- End Cloudflare Web Analytics -->
+
+  <script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var answer = this.nextElementSibling;
+        
+        this.setAttribute('aria-expanded', !expanded);
+        if (answer) {
+          answer.hidden = expanded;
+        }
+      });
+    });
+  });
+  </script>
+<script src="/assets/js/product-reviews.js"></script>
+<script src="/assets/js/review-injector.js"></script>
 </body>
 </html>
