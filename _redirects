@@ -5,3 +5,11 @@
 /community-setups/  /  301
 /deals/  /guides/  301
 /resources/  /guides/  301
+/community/  /  301
+
+# Old guide URLs (without /guides/ prefix) → new locations
+/back-pain-ergonomic-setup/  /guides/back-pain-ergonomic-setup/  301
+/cable-management-solutions/  /guides/cable-management-solutions/  301
+/ergonomic-setup-for-gamers/  /guides/ergonomic-setup-for-gamers/  301
+/home-office-desk-guide-2026/  /guides/home-office-desk-guide-2026/  301
+/ergonomic-accessories-home-office/  /guides/ergonomic-accessories-home-office/  301
