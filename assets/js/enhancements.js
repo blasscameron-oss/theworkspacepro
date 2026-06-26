@@ -251,52 +251,63 @@ document.addEventListener('DOMContentLoaded', function () {
     var currentPercent = 0;
     var scrollSpeeds = []; // keep last 5 speed samples for smoothing
 
+    var lastPercent = -1;
+    var lastEtaText = '';
+    var isFinished = false;
+
     function updateProgress() {
       var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       var percent = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0;
       currentPercent = percent;
 
-      // Update bar width
-      bar.style.width = percent + '%';
+      // Only update DOM if percent changed by at least 1%
+      var roundedPercent = Math.round(percent);
+      if (roundedPercent !== Math.round(lastPercent)) {
+        // Use transform instead of width for better performance (no layout recalc)
+        bar.style.transform = 'scaleX(' + (percent / 100) + ')';
+        bar.style.width = '100%';
+        tooltip.childNodes[0].textContent = roundedPercent + '%';
+        lastPercent = percent;
+      }
 
-      // Update tooltip
-      tooltip.childNodes[0].textContent = Math.round(percent) + '%';
-
-      // Color change at 90%+ ("finished")
-      if (percent >= 90) {
+      // Color change at 90%+ ("finished") — only toggle once
+      if (percent >= 90 && !isFinished) {
+        isFinished = true;
         bar.style.background = 'var(--c-accent, #4a7c59)';
         etaSpan.textContent = 'Almost done!';
-      } else {
+        lastEtaText = 'Almost done!';
+      } else if (percent < 90 && isFinished) {
+        isFinished = false;
         bar.style.background = 'linear-gradient(90deg, var(--c-primary, #c2410c), var(--c-accent, #4a7c59))';
-        // Estimate time remaining based on scroll speed
+      }
+
+      // ETA calculation — only update text when it changes (not every frame)
+      if (percent < 90) {
         var now = Date.now();
         var dt = now - lastUpdateTime;
-        if (dt > 50) {
+        if (dt > 200) { // Less frequent updates for iOS performance
           var scrollDelta = Math.abs(scrollTop - lastScrollTop);
-          var speed = scrollDelta / dt; // pixels per ms
+          var speed = scrollDelta / dt;
           scrollSpeeds.push(speed);
           if (scrollSpeeds.length > 5) scrollSpeeds.shift();
 
+          var newEta = '';
           if (scrollSpeeds.length >= 2) {
             var avgSpeed = scrollSpeeds.reduce(function (a, b) { return a + b; }, 0) / scrollSpeeds.length;
             var remainingPixels = docHeight - scrollTop;
-            var remainingMs = remainingPixels / avgSpeed;
-            var remainingSec = Math.round(remainingMs / 1000);
+            var remainingSec = Math.round((remainingPixels / avgSpeed) / 1000);
 
             if (remainingSec > 0 && remainingSec < 3600 && avgSpeed > 0.1) {
-              if (remainingSec < 60) {
-                etaSpan.textContent = remainingSec + ' sec left';
-              } else {
-                etaSpan.textContent = Math.round(remainingSec / 60) + ' min left';
-              }
+              newEta = remainingSec < 60 ? remainingSec + ' sec left' : Math.round(remainingSec / 60) + ' min left';
             } else if (remainingSec <= 0) {
-              etaSpan.textContent = 'Just a bit more';
-            } else {
-              etaSpan.textContent = '';
+              newEta = 'Just a bit more';
             }
-          } else {
-            etaSpan.textContent = '';
+          }
+
+          if (newEta !== lastEtaText) {
+            etaSpan.textContent = newEta;
+            lastEtaText = newEta;
           }
 
           lastScrollTop = scrollTop;
@@ -305,6 +316,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
+    // Use passive listener + rAF for smooth iOS Safari scrolling
     window.addEventListener('scroll', function () {
       if (!ticking) {
         requestAnimationFrame(function () {
@@ -315,7 +327,8 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }, { passive: true });
 
-    // Set initial width
+    // Set initial state
+    bar.style.transformOrigin = 'left center';
     updateProgress();
 
     return {
@@ -1013,12 +1026,14 @@ document.addEventListener('DOMContentLoaded', function () {
     '}',
     '',
     '/* Reading progress bar sits atop everything */',
-    '.reading-progress-wrapper {',
-    '  pointer-events: auto;',
-    '}',
-    '.reading-progress-bar {',
-    '  pointer-events: none;',
-    '}',
+   '.reading-progress-wrapper {',
+   '  pointer-events: auto;',
+   '  transform: translateZ(0);',
+   '}',
+   '.reading-progress-bar {',
+   '  pointer-events: none;',
+   '  will-change: transform;',
+   '}',
     '',
     '/* Checklist copy button spacing fix */',
     '.checklist__item {',
