@@ -216,6 +216,173 @@
     }
   </style>
 <link rel="stylesheet" href="/assets/css/reviews.css">
+
+  <style>
+    /* FAQ Accordion */
+    .faq-accordion {
+      margin: var(--space-lg) 0;
+    }
+    .faq-item {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      margin-bottom: var(--space-sm, 8px);
+      overflow: hidden;
+      background: var(--color-surface, #fff);
+    }
+    .faq-question {
+      width: 100%;
+      padding: var(--space-md, 12px) var(--space-lg, 16px);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-display, inherit);
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--color-text, #1a202c);
+      line-height: 1.4;
+    }
+    .faq-question:hover {
+      background: var(--color-bg-alt, #f7fafc);
+    }
+    .faq-chevron {
+      transition: transform 0.3s ease;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      margin-left: var(--space-sm, 8px);
+    }
+    .faq-question[aria-expanded="true"] .faq-chevron {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      padding: 0 var(--space-lg, 16px) var(--space-md, 12px);
+      color: var(--color-muted, #718096);
+      line-height: 1.6;
+    }
+    .faq-answer p {
+      margin: 0;
+    }
+    
+    /* Best For Badges */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+    .badge--best {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+    .badge--value {
+      background: #dcfce7;
+      color: #166534;
+    }
+    .badge--budget {
+      background: #fed7aa;
+      color: #9a3412;
+    }
+    .badge--premium {
+      background: #fef3c7;
+      color: #92400e;
+    }
+    .badge--ergonomic {
+      background: #e9d5ff;
+      color: #6b21a8;
+    }
+    
+    /* Product Thumbnails */
+    .product-thumb {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      object-fit: cover;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    
+    /* Related Guides Carousel */
+    .related-guides {
+      max-width: var(--max-width, 1200px);
+      margin: var(--space-2xl, 32px) auto;
+      padding: 0 var(--space-lg, 16px);
+    }
+    .related-guides__title {
+      font-family: var(--font-display, serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: var(--space-lg, 16px);
+    }
+    .related-guides__carousel {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--space-md, 12px);
+    }
+    @media (max-width: 640px) {
+      .related-guides__carousel {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: var(--space-sm, 8px);
+        padding-bottom: var(--space-sm, 8px);
+      }
+      .related-guides__carousel .guide-card {
+        min-width: 240px;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+      }
+    }
+    .related-guides .guide-card {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      padding: var(--space-lg, 16px);
+      background: var(--color-surface, #fff);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .related-guides .guide-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+    .guide-card__badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--color-primary-light, #e0f2fe);
+      color: var(--color-primary, #0369a1);
+      margin-bottom: var(--space-xs, 4px);
+    }
+    .guide-card__title {
+      font-family: var(--font-display, serif);
+      font-size: 1rem;
+      font-weight: 600;
+      margin: var(--space-xs, 4px) 0;
+      line-height: 1.3;
+    }
+    .guide-card__desc {
+      font-size: 0.85rem;
+      color: var(--color-muted, #718096);
+      line-height: 1.4;
+      margin: var(--space-xs, 4px) 0;
+    }
+    .guide-card__link {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-primary, #0369a1);
+      margin-top: var(--space-xs, 4px);
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -511,83 +678,72 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td><a href="https://www.amazon.com/dp/B0CQXMT3QC?tag=workspacepro-20" rel="sponsored noopener noreferrer">Amazon Basics Monitor Arm</a></td>
+                              <td><span class="badge badge--budget best-for-badge">Budget Pick</span> <a href="https://www.amazon.com/dp/B0CQXMT3QC?tag=workspacepro-20" rel="sponsored noopener noreferrer"><img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=80&h=80&fit=crop" alt="Amazon Basics Monitor Arm" class="product-thumb" loading="lazy"> Amazon Basics Monitor Arm</a></td>
                 <td>Monitor Arm</td>
                 <td>$22</td>
                 <td>Budget buyers; single 22-32" monitors</td>
                 <td>★★★★½</td>
-              </tr>
-              <tr>
-                <td><a href="https://www.amazon.com/dp/B00358RIRC?tag=workspacepro-20" rel="sponsored noopener noreferrer">Ergotron LX</a></td>
+</tr>
+                              <td><span class="badge badge--premium best-for-badge">Premium Pick</span> <a href="https://www.amazon.com/dp/B00358RIRC?tag=workspacepro-20" rel="sponsored noopener noreferrer"><img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop" alt="Ergotron LX" class="product-thumb" loading="lazy"> Ergotron LX</a></td>
                 <td>Monitor Arm</td>
                 <td>$139</td>
                 <td>Buy-it-for-life; heavy monitors</td>
                 <td>★★★★★</td>
-              </tr>
-              <tr>
-                <td><a href="https://www.amazon.com/dp/B0002DR45E?tag=workspacepro-20" rel="sponsored noopener noreferrer">Kensington Solemate Plus</a></td>
+</tr>
+                              <td><span class="badge badge--best best-for-badge">Editor's Choice</span> <a href="https://www.amazon.com/dp/B0002DR45E?tag=workspacepro-20" rel="sponsored noopener noreferrer"><img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=80&h=80&fit=crop" alt="Kensington Solemate Plus" class="product-thumb" loading="lazy"> Kensington Solemate Plus</a></td>
                 <td>Footrest</td>
                 <td>$45</td>
                 <td>Tall users; anyone whose feet don't reach the floor</td>
                 <td>★★★★★</td>
-              </tr>
-              <tr>
-                <td><a href="https://www.amazon.com/dp/B01M2319VR?tag=workspacepro-20" rel="sponsored noopener noreferrer">Vivo Keyboard Tray</a></td>
+</tr>
+                              <td><span class="badge badge--value best-for-badge">Best Value</span> <a href="https://www.amazon.com/dp/B01M2319VR?tag=workspacepro-20" rel="sponsored noopener noreferrer"><img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=80&h=80&fit=crop" alt="Vivo Keyboard Tray" class="product-thumb" loading="lazy"> Vivo Keyboard Tray</a></td>
                 <td>Keyboard Tray</td>
                 <td>$39</td>
                 <td>Standard desks with no height adjustment</td>
                 <td>★★★★¼</td>
-              </tr>
-              <tr>
-                <td><a href="https://www.amazon.com/dp/B07C7WJSQL?tag=workspacepro-20" rel="sponsored noopener noreferrer">Glorious Gaming Wrist Pad</a></td>
+</tr>
+                              <td><span class="badge badge--value best-for-badge">Best Value</span> <a href="https://www.amazon.com/dp/B07C7WJSQL?tag=workspacepro-20" rel="sponsored noopener noreferrer"><img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=80&h=80&fit=crop" alt="Glorious Gaming Wrist Pad" class="product-thumb" loading="lazy"> Glorious Gaming Wrist Pad</a></td>
                 <td>Wrist Rest</td>
                 <td>$14</td>
                 <td>Wrist support between typing sessions</td>
                 <td>★★★★½</td>
-              </tr>
-              <tr>
-                <td><a href="https://www.amazon.com/dp/B00OUFX0YY?tag=workspacepro-20" rel="sponsored noopener noreferrer">Cloudpeak Anti-Fatigue Mat</a></td>
+</tr>
+                              <td><span class="badge badge--budget best-for-badge">Budget Pick</span> <a href="https://www.amazon.com/dp/B00OUFX0YY?tag=workspacepro-20" rel="sponsored noopener noreferrer"><img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=80&h=80&fit=crop" alt="Cloudpeak Anti-Fatigue Mat" class="product-thumb" loading="lazy"> Cloudpeak Anti-Fatigue Mat</a></td>
                 <td>Standing Mat</td>
                 <td>$33</td>
                 <td>Standing desk users on a budget</td>
                 <td>★★★★</td>
-              </tr>
-              <tr>
-                <td><a href="https://www.amazon.com/dp/B00V3TO9RC?tag=workspacepro-20" rel="sponsored noopener noreferrer">Ergodriven Topo</a></td>
+</tr>
+                              <td><span class="badge badge--premium best-for-badge">Premium Pick</span> <a href="https://www.amazon.com/dp/B00V3TO9RC?tag=workspacepro-20" rel="sponsored noopener noreferrer"><img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=80&h=80&fit=crop" alt="Ergodriven Topo" class="product-thumb" loading="lazy"> Ergodriven Topo</a></td>
                 <td>Standing Mat</td>
                 <td>$119</td>
                 <td>Long hours standing (4+ hours/day)</td>
                 <td>★★★★½</td>
-              </tr>
-              <tr>
-                <td><a href="https://www.amazon.com/dp/B09HM94VDS?tag=workspacepro-20" rel="sponsored noopener noreferrer">Logitech MX Master 3S</a></td>
+</tr>
+                              <td><span class="badge badge--best best-for-badge">Editor's Choice</span> <a href="https://www.amazon.com/dp/B09HM94VDS?tag=workspacepro-20" rel="sponsored noopener noreferrer"><img src="https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=80&h=80&fit=crop" alt="Logitech MX Master 3S" class="product-thumb" loading="lazy"> Logitech MX Master 3S</a></td>
                 <td>Mouse</td>
                 <td>$99</td>
                 <td>Traditional mouse users wanting ergonomic shape</td>
                 <td>★★★★½</td>
-              </tr>
-              <tr>
-                <td><a href="https://www.amazon.com/dp/B0050SPZMK?tag=workspacepro-20" rel="sponsored noopener noreferrer">Kensington Orbit Trackball</a></td>
+</tr>
+                              <td><span class="badge badge--value best-for-badge">Best Value</span> <a href="https://www.amazon.com/dp/B0050SPZMK?tag=workspacepro-20" rel="sponsored noopener noreferrer"><img src="https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=80&h=80&fit=crop" alt="Kensington Orbit Trackball" class="product-thumb" loading="lazy"> Kensington Orbit Trackball</a></td>
                 <td>Trackball</td>
                 <td>$39</td>
                 <td>Wrist pain; limited desk space; first trackball</td>
                 <td>★★★★</td>
-              </tr>
-              <tr>
-                <td><a href="https://www.amazon.com/dp/B0DB5DMDW3?tag=workspacepro-20" rel="sponsored noopener noreferrer">Logitech ERGO M575</a></td>
+</tr>
+                              <td><span class="badge badge--value best-for-badge">Best Value</span> <a href="https://www.amazon.com/dp/B0DB5DMDW3?tag=workspacepro-20" rel="sponsored noopener noreferrer"><img src="https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=80&h=80&fit=crop" alt="Logitech ERGO M575" class="product-thumb" loading="lazy"> Logitech ERGO M575</a></td>
                 <td>Trackball</td>
                 <td>$49</td>
                 <td>Wireless convenience; thumb-operated trackball</td>
                 <td>★★★★¼</td>
-              </tr>
-              <tr>
-                <td><a href="https://www.amazon.com/dp/B0089ZLENA?tag=workspacepro-20" rel="sponsored noopener noreferrer">Kinesis Freestyle2</a></td>
+</tr>
+                              <td><span class="badge badge--best best-for-badge">Editor's Choice</span> <a href="https://www.amazon.com/dp/B0089ZLENA?tag=workspacepro-20" rel="sponsored noopener noreferrer"><img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=80&h=80&fit=crop" alt="Kinesis Freestyle2" class="product-thumb" loading="lazy"> Kinesis Freestyle2</a></td>
                 <td>Split Keyboard</td>
                 <td>$89</td>
                 <td>Anyone wanting better wrist/shoulder posture while typing</td>
                 <td>★★★★½</td>
-              </tr>
+</tr>
             </tbody>
           </table>
         </div>
@@ -747,6 +903,45 @@
     </a>
           </div>
         </section>
+        <section class="related-guides">
+          <h2 class="related-guides__title">Related Guides</h2>
+          <div class="related-guides__carousel">
+            <a href="/guides/best-standing-desk-mat-for-concrete-floors/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Accessories</span>
+        <h3 class="guide-card__title">Best Standing Desk Mats for Concrete Floors</h3>
+        <p class="guide-card__desc">Top anti-fatigue mats for standing desks on concrete floors.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/back-pain-ergonomic-setup/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Ergonomics</span>
+        <h3 class="guide-card__title">Back Pain Ergonomic Setup</h3>
+        <p class="guide-card__desc">Set up your workspace to prevent and manage back pain with proper ergonomics.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/dual-monitor-home-office/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Monitors</span>
+        <h3 class="guide-card__title">Dual Monitor Home Office Setup</h3>
+        <p class="guide-card__desc">Everything you need for a productive dual-monitor home office setup.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/ergonomic-office-chair-buying-guide/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Chairs</span>
+        <h3 class="guide-card__title">Ergonomic Office Chair Buying Guide</h3>
+        <p class="guide-card__desc">Complete guide to buying the right ergonomic office chair for your needs.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          </div>
+        </section>
+
+  
 
   
   <section class="newsletter-bar" id="newsletter">
@@ -790,5 +985,21 @@
   </script>
 <script src="/assets/js/product-reviews.js"></script>
 <script src="/assets/js/review-injector.js"></script>
+
+  <script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var answer = this.nextElementSibling;
+        
+        this.setAttribute('aria-expanded', !expanded);
+        if (answer) {
+          answer.hidden = expanded;
+        }
+      });
+    });
+  });
+  </script>
 </body>
 </html>

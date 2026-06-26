@@ -13,82 +13,6 @@ const path = require('path');
 const GUIDES_DIR = '/home/cameron/.openclaw/workspace/theworkspacepro-v2/guides';
 
 // ==============================
-// UNSOURCE IMAGE MAP by category
-// ==============================
-const UNSOURCE_IMAGES = {
-  chair: {
-    'sihoo': 'https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop',
-    'hbada': 'https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w=80&h=80&fit=crop',
-    'branch': 'https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w=80&h=80&fit=crop',
-    'autonomous': 'https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop',
-    'ticova': 'https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w=80&h=80&fit=crop',
-    'steelcase series 1': 'https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop',
-    'steelcase series 2': 'https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop',
-    'herman miller sayl': 'https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop',
-    'sayl': 'https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop',
-    'haworth soji': 'https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop',
-    'soji': 'https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop',
-    'aeron': 'https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop',
-    'gesture': 'https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop',
-    'leap v2': 'https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop',
-    'embody': 'https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop',
-    'default': 'https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop'
-  },
-  standing_desk: {
-    'default': 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=80&h=80&fit=crop',
-    'flexispot': 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=80&h=80&fit=crop',
-    'shw': 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=80&h=80&fit=crop',
-    'uplift': 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=80&h=80&fit=crop',
-    'jarvis': 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=80&h=80&fit=crop',
-    'autonomous smartdesk': 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=80&h=80&fit=crop'
-  },
-  desk_mat: {
-    'default': 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=80&h=80&fit=crop'
-  },
-  monitor: {
-    'default': 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=80&h=80&fit=crop'
-  },
-  keyboard: {
-    'default': 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=80&h=80&fit=crop'
-  },
-  mouse: {
-    'default': 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=80&h=80&fit=crop',
-    'logitech mx master': 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=80&h=80&fit=crop',
-    'kensington orbit': 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=80&h=80&fit=crop',
-    'logitech ergo': 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=80&h=80&fit=crop'
-  },
-  lamp: {
-    'default': 'https://images.unsplash.com/photo-1507473885765-e6ed057ab6f6?w=80&h=80&fit=crop'
-  },
-  footrest: {
-    'default': 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=80&h=80&fit=crop'
-  },
-  cable: {
-    'default': 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=80&h=80&fit=crop'
-  },
-  headphone: {
-    'default': 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=80&h=80&fit=crop'
-  },
-  lighting: {
-    'default': 'https://images.unsplash.com/photo-1507473885765-e6ed057ab6f6?w=80&h=80&fit=crop',
-    'govee': 'https://images.unsplash.com/photo-1507473885765-e6ed057ab6f6?w=80&h=80&fit=crop',
-    'taotronics': 'https://images.unsplash.com/photo-1507473885765-e6ed057ab6f6?w=80&h=80&fit=crop',
-    'brightech': 'https://images.unsplash.com/photo-1507473885765-e6ed057ab6f6?w=80&h=80&fit=crop'
-  },
-  storage: {
-    'default': 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=80&h=80&fit=crop',
-    'ikea': 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=80&h=80&fit=crop',
-    'pegboard': 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=80&h=80&fit=crop'
-  },
-  mat: {
-    'default': 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=80&h=80&fit=crop'
-  },
-  desk: {
-    'default': 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=80&h=80&fit=crop'
-  }
-};
-
-// ==============================
 // GUIDE DATA: titles, descriptions, categories
 // ==============================
 const GUIDE_DATA = {
@@ -190,71 +114,6 @@ const GUIDE_DATA = {
   }
 };
 
-// ==============================
-// BADGE DATA for products
-// ==============================
-const PRODUCT_BADGES = {
-  default: 'badge--best',
-  // Chair badges
-  'SIHOO M57': 'badge--budget',
-  'SIHOO': 'badge--budget',
-  'Hbada E3': 'badge--budget',
-  'Branch Ergonomic': 'badge--best',
-  'Branch': 'badge--best',
-  'Autonomous ErgoChair Pro': 'badge--ergonomic',
-  'ErgoChair Pro': 'badge--ergonomic',
-  'Ticova Ergonomic': 'badge--value',
-  'Ticova': 'badge--value',
-  'Steelcase Series 1': 'badge--value',
-  'Steelcase Series 2': 'badge--premium',
-  'Herman Miller Sayl': 'badge--premium',
-  'Sayl': 'badge--premium',
-  'Haworth Soji': 'badge--value',
-  'Soji': 'badge--value',
-  'Herman Miller Aeron': 'badge--best',
-  'Aeron': 'badge--best',
-  'Steelcase Gesture': 'badge--premium',
-  'Gesture': 'badge--premium',
-  'Steelcase Leap v2': 'badge--ergonomic',
-  'Leap v2': 'badge--ergonomic',
-  'Herman Miller Embody': 'badge--premium',
-  'Embody': 'badge--premium',
-  // Desk badges
-  'Flexispot': 'badge--value',
-  'SHW': 'badge--budget',
-  'Uplift': 'badge--premium',
-  'Jarvis': 'badge--premium',
-  'Ergotron': 'badge--premium',
-  'Branch Standing Desk': 'badge--best',
-  'Vivo': 'badge--value',
-  'Amazon Basics': 'badge--budget',
-  'Kensington Solemate': 'badge--best',
-  'Kensington Orbit': 'badge--value',
-  'Logitech MX Master': 'badge--best',
-  'MX Master': 'badge--best',
-  'Logitech ERGO M575': 'badge--value',
-  'Kinesis Freestyle2': 'badge--best',
-  'Glorious Gaming': 'badge--value',
-  'Cloudpeak': 'badge--budget',
-  'Ergodriven Topo': 'badge--premium',
-  'IKEA': 'badge--budget',
-  'SKADIS': 'badge--value',
-  'ErGear': 'badge--value',
-  'Tribesigns': 'badge--value',
-  'SOULWIT': 'badge--value',
-  'Mr IRONSTONE': 'badge--budget',
-  'Taotronics': 'badge--value',
-  'Govee': 'badge--value',
-  'Humanscale Float': 'badge--premium',
-  'Humanscale': 'badge--premium',
-  'DEVAISE': 'badge--value',
-  'Uxcell': 'badge--budget',
-  'LACK': 'badge--budget',
-  'SYNCHRON': 'badge--budget',
-  'Coleshome': 'badge--value',
-  'Eureka Ergonomic': 'badge--value'
-};
-
 const BADGE_LABELS = {
   'badge--best': "Editor's Choice",
   'badge--value': 'Best Value',
@@ -263,13 +122,48 @@ const BADGE_LABELS = {
   'badge--ergonomic': 'Best for Ergonomics'
 };
 
-const BADGE_CLASSES = {
-  'badge--best': 'editor',
-  'badge--value': 'value',
-  'badge--budget': 'budget',
-  'badge--premium': 'premium',
-  'badge--ergonomic': 'ergonomic'
-};
+// Known product badge map
+const PRODUCT_BADGE_MAP = {};
+const PRODUCT_ITEMS = [
+  // Chairs
+  ['SIHOO M57', 'badge--budget'], ['SIHOO', 'badge--budget'], ['Hbada E3', 'badge--budget'], ['Hbada', 'badge--budget'],
+  ['Branch Ergonomic', 'badge--best'], ['Branch', 'badge--best'],
+  ['Autonomous ErgoChair Pro', 'badge--ergonomic'], ['ErgoChair Pro', 'badge--ergonomic'],
+  ['Ticova Ergonomic', 'badge--value'], ['Ticova', 'badge--value'],
+  ['Steelcase Series 1', 'badge--value'], ['Steelcase Series 2', 'badge--premium'],
+  ['Herman Miller Sayl', 'badge--premium'], ['Sayl', 'badge--premium'],
+  ['Haworth Soji', 'badge--value'], ['Soji', 'badge--value'],
+  ['Herman Miller Aeron', 'badge--best'], ['Aeron', 'badge--best'],
+  ['Steelcase Gesture', 'badge--premium'], ['Gesture', 'badge--premium'],
+  ['Steelcase Leap v2', 'badge--ergonomic'], ['Leap v2', 'badge--ergonomic'],
+  ['Herman Miller Embody', 'badge--premium'], ['Embody', 'badge--premium'],
+  // Desks
+  ['Flexispot', 'badge--value'], ['SHW', 'badge--budget'], ['Uplift', 'badge--premium'],
+  ['Jarvis', 'badge--premium'], ['Ergotron', 'badge--premium'],
+  ['Branch Standing Desk', 'badge--best'], ['Vivo', 'badge--value'],
+  ['Amazon Basics', 'badge--budget'], ['IKEA', 'badge--budget'], ['TROTTEN', 'badge--budget'],
+  ['MARKUS', 'badge--value'], ['Coleshome', 'badge--value'],
+  ['Eureka Ergonomic', 'badge--value'], ['Tribesigns', 'badge--value'],
+  ['ErGear', 'badge--value'], ['Bush Furniture', 'badge--value'], ['Bestar', 'badge--premium'],
+  // Accessories
+  ['Kensington Solemate', 'badge--best'], ['Kensington Orbit', 'badge--value'],
+  ['Logitech MX Master', 'badge--best'], ['MX Master', 'badge--best'],
+  ['Logitech ERGO M575', 'badge--value'], ['Kinesis Freestyle2', 'badge--best'],
+  ['Glorious Gaming', 'badge--value'], ['Cloudpeak', 'badge--budget'],
+  ['Ergodriven Topo', 'badge--premium'], ['SKADIS', 'badge--value'],
+  ['SOULWIT', 'badge--value'], ['Mr IRONSTONE', 'badge--budget'],
+  ['Taotronics', 'badge--value'], ['Govee', 'badge--value'],
+  ['Humanscale Float', 'badge--premium'], ['Humanscale', 'badge--premium'],
+  ['DEVAISE', 'badge--value'], ['Uxcell', 'badge--budget'],
+  ['LACK', 'badge--budget'], ['SYNCHRON', 'badge--budget'],
+  ['SIGNUM', 'badge--value'], ['Lepro', 'badge--value'],
+  ['Anker Power', 'badge--value'], ['Monoprice', 'badge--value'],
+  ['WALI', 'badge--value'], ['HUANUO', 'badge--value'], ['Mount-It!', 'badge--value'],
+  ['ErgoFoam', 'badge--value'], ['Glorious', 'badge--value'],
+  ['Hobst', 'badge--value'], ['Furinno', 'badge--budget'],
+  ['Wall Control', 'badge--value']
+];
+PRODUCT_ITEMS.forEach(([name, cls]) => { PRODUCT_BADGE_MAP[name.toLowerCase()] = cls; });
 
 // ==============================
 // RELATED GUIDES PER GUIDE
@@ -279,7 +173,6 @@ function getRelatedGuides(currentSlug) {
   const current = GUIDE_DATA[currentSlug];
   if (!current) return [];
   
-  // Score by shared tags and category
   const scored = all.map(([slug, data]) => {
     let score = 0;
     if (data.category === current.category) score += 3;
@@ -299,9 +192,9 @@ function buildRelatedGuidesHTML(slug) {
   const cards = related.map(({ slug: rSlug, data }) => {
     return `<a href="/guides/${rSlug}/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
       <div class="guide-card__content">
-        <span class="guide-card__badge">${data.category}</span>
-        <h3 class="guide-card__title">${data.title}</h3>
-        <p class="guide-card__desc">${data.desc.substring(0, 120)}${data.desc.length > 120 ? '…' : ''}</p>
+        <span class="guide-card__badge">${escapeAttr(data.category)}</span>
+        <h3 class="guide-card__title">${escapeAttr(data.title)}</h3>
+        <p class="guide-card__desc">${escapeAttr(data.desc.substring(0, 120))}${data.desc.length > 120 ? '…' : ''}</p>
         <span class="guide-card__link">Read guide →</span>
       </div>
     </a>`;
@@ -317,88 +210,212 @@ function buildRelatedGuidesHTML(slug) {
 }
 
 // ==============================
-// FAQ ACCORDION HELPERS
+// HTML HELPERS
 // ==============================
-function extractFAQPairs(html) {
-  const pairs = [];
-  
-  // Pattern 1: <div class="faq-item"> (with or without style) containing <h3> and <p>
-  const faqItemRegex = /<div\s+class="faq-item"[^>]*>([\s\S]*?)<\/div>\s*<\/div>/g;
-  let match;
-  while ((match = faqItemRegex.exec(html)) !== null) {
-    const inner = match[1];
-    const h3Match = inner.match(/<h3[^>]*>([\s\S]*?)<\/h3>/);
-    const pMatch = inner.match(/<p>([\s\S]*?)<\/p>/);
-    if (h3Match && pMatch) {
-      pairs.push({ question: stripTags(h3Match[1].trim()), answer: pMatch[1].trim() });
-    }
-  }
-  
-  // If no pairs found yet, try other patterns
-  if (pairs.length === 0) {
-    // Pattern 2: <div style="background:..."> with <h4> and <p> (chair buying guide)
-    const divBgRegex = /<div\s+style="background:var\(--color-surface\)[^>]*>([\s\S]*?)<\/div>/g;
-    while ((match = divBgRegex.exec(html)) !== null) {
-      const inner = match[1];
-      const h4Match = inner.match(/<h4[^>]*>([\s\S]*?)<\/h4>/);
-      const pMatch = inner.match(/<p>([\s\S]*?)<\/p>/);
-      if (h4Match && pMatch) {
-        pairs.push({ question: stripTags(h4Match[1].trim()), answer: pMatch[1].trim() });
-      }
-    }
-  }
-  
-  if (pairs.length === 0) {
-    // Pattern 3: <div itemscope> with <h3 itemprop="name"> (lighting guides)
-    const itemscopeRegex = /<div\s+itemscope=[^>]*>([\s\S]*?)<\/div>/g;
-    while ((match = itemscopeRegex.exec(html)) !== null) {
-      const inner = match[1];
-      const h3Match = inner.match(/<h3[^>]*itemprop="name"[^>]*>([\s\S]*?)<\/h3>/);
-      const textMatch = inner.match(/<div\s+itemprop="text">([\s\S]*?)<\/div>/);
-      if (h3Match && textMatch) {
-        pairs.push({ question: stripTags(h3Match[1].trim()), answer: stripTags(textMatch[1].trim()) });
-      }
-    }
-  }
-  
-  if (pairs.length === 0) {
-    // Pattern 4: Direct <h3> + <p> pairs (no wrapping div)
-    const h3Regex = /<h3[^>]*>([\s\S]*?)<\/h3>\s*<p>([\s\S]*?)<\/p>/g;
-    while ((match = h3Regex.exec(html)) !== null) {
-      pairs.push({ question: stripTags(match[1].trim()), answer: stripTags(match[2].trim()) });
-    }
-  }
-  
-  return pairs;
-}
-
 function stripTags(str) {
   return str.replace(/<[^>]*>/g, '').replace(/&[a-z]+;/g, c => {
-    const m = { '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&#39;': "'", '&#8217;': "'", '&#8212;': '—', '&#8230;': '…' };
+    const m = { '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&#39;': "'", '&#8217;': "'", '&#8212;': '—', '&#8230;': '…', '&#x27;': "'", '&nbsp;': ' ', '&#8211;': '–' };
     return m[c] || c;
-  }).trim();
+  }).replace(/\s+/g, ' ').trim();
 }
 
 function escapeAttr(str) {
   return str.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 
-function buildFAQSchema(pairs) {
-  const items = pairs.map(p => JSON.stringify({
-    '@type': 'Question',
-    'name': p.question,
-    'acceptedAnswer': {
-      '@type': 'Answer',
-      'text': p.answer
-    }
-  })).join(',\n      ');
+function escapeJSON(str) {
+  return str.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, '\\n').replace(/\r/g, '');
+}
+
+// ==============================
+// FAQ EXTRACTION - Robust approach
+// ==============================
+/**
+ * Extract Q&A pairs from the FAQ section HTML.
+ * Handles all patterns found across the 16 guides.
+ */
+function extractFAQPairs(faqSectionHTML) {
+  const pairs = [];
   
-  return `<script type="application/ld+json">
+  // Strategy: find question/answer pairs by looking for heading elements followed by paragraphs
+  // within the FAQ section, matching all known patterns.
+  
+  // Pattern 1: <h3> followed by <p> (most common - faq-item or direct)
+  // Pattern 2: <h4> followed by <p> (chair-buying-guide)
+  // Pattern 3: <h3 itemprop="name"> followed by <div itemprop="text"> containing <p> (lighting guides)
+  
+  // Use a state machine approach - scan line by line
+  const lines = faqSectionHTML.split('\n');
+  let currentQ = null;
+  let currentA = null;
+  let inTextDiv = false;
+  let textDivDepth = 0;
+  let pDepth = 0;
+  
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const trimmed = line.trim();
+    
+    // Detect opening of itemprop="text" div for lighting guides
+    if (/itemprop="text"/.test(trimmed)) {
+      inTextDiv = true;
+      textDivDepth = 1;
+      // Count the opening <div> in this line
+      const opens = (trimmed.match(/<div/g) || []).length;
+      const closes = (trimmed.match(/<\/div>/g) || []).length;
+      textDivDepth = opens - closes;
+      continue;
+    }
+    
+    if (inTextDiv) {
+      const opens = (trimmed.match(/<div/g) || []).length;
+      const closes = (trimmed.match(/<\/div>/g) || []).length;
+      textDivDepth += opens - closes;
+      
+      // Extract content from <p> tags inside text div
+      if (/<p>/.test(trimmed)) {
+        const pContent = trimmed.replace(/<p>/g, '').replace(/<\/p>/g, '').trim();
+        if (currentA !== null) currentA += ' ' + stripTags(pContent);
+        else currentA = stripTags(pContent);
+      }
+      
+      if (textDivDepth <= 0) {
+        // End of text div
+        if (currentQ && currentA) {
+          pairs.push({ question: currentQ, answer: currentA });
+        }
+        currentQ = null;
+        currentA = null;
+        inTextDiv = false;
+        textDivDepth = 0;
+      }
+      // Even inside text div, check for <h3> cause the h3 comes before the text div opens
+      const h3Match = trimmed.match(/<h3[^>]*>([\s\S]*?)<\/h3>/);
+      if (h3Match && !inTextDiv) {
+        if (currentQ && currentA) {
+          pairs.push({ question: currentQ, answer: currentA });
+        }
+        currentQ = stripTags(h3Match[1]);
+        currentA = null;
+      }
+      continue;
+    }
+    
+    // Match <h3> or <h4> headers (the question)
+    const h3Match = trimmed.match(/<h3[^>]*>([\s\S]*?)<\/h3>/i);
+    const h4Match = trimmed.match(/<h4[^>]*>([\s\S]*?)<\/h4>/i);
+    
+    if (h3Match || h4Match) {
+      // Save previous pair
+      if (currentQ && currentA) {
+        pairs.push({ question: currentQ, answer: currentA });
+      }
+      currentQ = stripTags(h3Match ? h3Match[1] : h4Match[1]);
+      currentA = null;
+      continue;
+    }
+    
+    // Match <p> tags (the answer) - only if we have an active question
+    if (currentQ && /<p>/.test(trimmed) && !trimmed.startsWith('--') && !trimmed.startsWith('<h')) {
+      // Extract text from <p> tag(s)
+      let pContent = trimmed;
+      // Remove <p> and </p> tags
+      pContent = pContent.replace(/<\/?p[^>]*>/g, '');
+      pContent = stripTags(pContent);
+      if (pContent) {
+        if (currentA) currentA += ' ' + pContent;
+        else currentA = pContent;
+      }
+      continue;
+    }
+    
+    // Also collect continuation text (text without any block-level tags)
+    if (currentQ && currentA && !trimmed.startsWith('<') && trimmed.length > 0 && !trimmed.startsWith('--')) {
+      const text = stripTags(trimmed);
+      if (text && text.length > 10) {
+        currentA += ' ' + text;
+      }
+    }
+  }
+  
+  // Save last pair
+  if (currentQ && currentA) {
+    pairs.push({ question: currentQ, answer: currentA });
+  }
+  
+  // Deduplicate and clean
+  const seen = new Set();
+  return pairs.filter(p => {
+    const key = p.question.toLowerCase();
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return p.question && p.answer && p.question.length > 5 && p.answer.length > 10;
+  });
+}
+
+/**
+ * Extract the FAQ section HTML block from the full document.
+ */
+function extractFAQSection(html) {
+  // Find the FAQ heading
+  const faqHeadingRegex = /<h2[^>]*id="faq"[^>]*>.*?<span[^>]*>.*?<\/span>\s*Frequently Asked Questions\s*<\/h2>|<h2[^>]*id="faq"[^>]*>\s*(?:\d+\.\s*)?Frequently Asked Questions\s*<\/h2>|<h2[^>]*id="faq"[^>]*>\s*Freq.*?<\/h2>|<h2[^>]*id="[^"]*"[^>]*>Frequently\s*Asked\s*Questions/i;
+  
+  let match = html.match(faqHeadingRegex);
+  
+  // Try simpler pattern
+  if (!match) {
+    const simpleRegex = /<h2[^>]*>(?:Frequently Asked Questions|FAQ)\s*<\/h2>/i;
+    match = html.match(simpleRegex);
+  }
+  
+  if (!match) {
+    // Try with section id="faq"
+    const sectionRegex = /<section[^>]*id="faq"[^>]*>[\s\S]*?<\/section>/i;
+    match = html.match(sectionRegex);
+    return match ? match[0] : null;
+  }
+  
+  // Find where FAQ section ends: next <h2> or </article>
+  const faqStart = match.index;
+  const afterFAQ = html.slice(faqStart + match[0].length);
+  
+  const nextH2 = afterFAQ.search(/<h2[^>]*>/);
+  const articleEnd = afterFAQ.search(/<\/article>/);
+  
+  let endIdx;
+  if (nextH2 === -1) {
+    endIdx = articleEnd;
+  } else if (articleEnd === -1) {
+    endIdx = nextH2;
+  } else {
+    endIdx = Math.min(nextH2, articleEnd);
+  }
+  
+  if (endIdx === -1) return null;
+  
+  return html.slice(faqStart, faqStart + match[0].length + endIdx);
+}
+
+function buildFAQSchema(pairs) {
+  const items = pairs.map(p => {
+    const q = escapeJSON(p.question);
+    const a = escapeJSON(p.answer);
+    return `    {
+      "@type": "Question",
+      "name": "${q}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "${a}"
+      }
+    }`;
+  }).join(',\n');
+  
+  return `  <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      ${items}
+${items}
     ]
   }
   </script>`;
@@ -409,18 +426,23 @@ function buildFAQAccordionHTML(pairs) {
   
   const items = pairs.map((p, i) => {
     const isOpen = i === 0;
+    const q = escapeAttr(p.question);
+    const a = p.answer;
     return `          <div class="faq-item">
             <button class="faq-question" aria-expanded="${isOpen ? 'true' : 'false'}" aria-controls="faq-answer-${i}">
-              ${escapeAttr(p.question)}
+              ${q}
               <span class="faq-chevron" aria-hidden="true">▾</span>
             </button>
             <div class="faq-answer" id="faq-answer-${i}"${isOpen ? '' : ' hidden'}>
-              <p>${p.answer}</p>
+              <p>${a}</p>
             </div>
           </div>`;
   }).join('\n');
   
-  return items;
+  return `<h2 id="faq">Frequently Asked Questions</h2>
+        <div class="faq-accordion">
+${items}
+        </div>`;
 }
 
 // ==============================
@@ -437,61 +459,37 @@ function enhanceGuide(filePath) {
     return false;
   }
   
+  let hadChanges = false;
+  
   // ====================
   // FEATURE 1: FAQ ACCORDION + SCHEMA
   // ====================
   
-  // Extract FAQ section
-  const faqRegex = /<h2[^>]*id="faq"[^>]*>.*?Frequently Asked Questions.*?<\/h2>([\s\S]*?)(?=<h2|<\/article>)/i;
-  const faqMatch = html.match(faqRegex);
+  const faqSection = extractFAQSection(html);
   
-  if (faqMatch) {
-    const faqSection = faqMatch[0];
-    const faqContent = faqMatch[1];
-    
-    // Extract Q&A pairs
+  if (faqSection) {
     const pairs = extractFAQPairs(faqSection);
     
     if (pairs.length > 0) {
-      // Build accordion HTML
-      const accordionItems = buildFAQAccordionHTML(pairs);
-      const accordionHTML = `<h2 id="faq">Frequently Asked Questions</h2>
-        <div class="faq-accordion">
-${accordionItems}
-        </div>`;
+      const accordionHTML = buildFAQAccordionHTML(pairs);
       
-      // Replace FAQ section with accordion version
-      // But first, handle case where it ends with </section>
-      let faqSectionEnd = faqSection;
-      if (/<\/section>\s*$/.test(faqSection)) {
-        // Rebuild with proper section
-        const newSection = `<section id="faq" class="faq-section">
-        ${accordionHTML}
-        </section>`;
-        html = html.replace(faqSection, newSection);
-      } else {
-        // Check if there's a closing </div> from faq-list
-        const cleanedSection = faqSection.replace(/<div\s+class="faq-list">\s*/, '');
-        // Find the full FAQ section and replace it
-        const fullSectionRegex = /<h2[^>]*id="faq"[^>]*>.*?Frequently Asked Questions.*?<\/h2>[\s\S]*?(?=<h2|<\/article>)/i;
-        const fullMatch = html.match(fullSectionRegex);
-        if (fullMatch) {
-          html = html.replace(fullMatch[0], accordionHTML);
-        }
+      // Replace the FAQ section in the HTML
+      const idx = html.indexOf(faqSection);
+      if (idx !== -1) {
+        html = html.slice(0, idx) + accordionHTML + html.slice(idx + faqSection.length);
       }
       
-      // Build FAQPage schema
+      // Add FAQPage schema before </head>
       const schema = buildFAQSchema(pairs);
-      
-      // Add schema before </head>
       html = html.replace('</head>', `  ${schema}\n</head>`);
       
-      console.log(`  ✅ FAQ accordion: ${pairs.length} questions in ${basename}`);
+      console.log(`  ✅ FAQ accordion: ${pairs.length} questions extracted`);
+      hadChanges = true;
     } else {
-      console.log(`  ⚠️  No FAQ pairs extracted from ${basename}`);
+      console.log(`  ⚠️  FAQ section found but 0 question pairs extracted`);
     }
   } else {
-    console.log(`  ⚠️  No FAQ section found in ${basename}`);
+    console.log(`  ⚠️  No FAQ section found`);
   }
   
   // ====================
@@ -500,88 +498,117 @@ ${accordionItems}
   
   const relatedHTML = buildRelatedGuidesHTML(basename);
   if (relatedHTML) {
-    // Insert BEFORE newsletter-bar but after </article> or cta-section
     const newsletterRegex = /(\s*<section\s+class="newsletter-bar")/;
     if (newsletterRegex.test(html)) {
       html = html.replace(newsletterRegex, relatedHTML + '\n\n  $1');
-      console.log(`  ✅ Related guides carousel added to ${basename}`);
+      console.log(`  ✅ Related guides carousel added`);
+      hadChanges = true;
     } else {
-      console.log(`  ⚠️  No newsletter-bar found in ${basename}`);
+      console.log(`  ⚠️  No newsletter-bar found`);
     }
   }
   
   // ====================
   // FEATURE 3: BEST FOR BADGES ON TABLES
   // ====================
+  // FEATURE 4: PRODUCT IMAGES ON TABLES
+  // ====================
   
-  // Find tables and add badge column/images
+  // Process tables - match all <table> blocks
+  const tableRegex = /(<table[\s\S]*?<\/table>)/gi;
   let tableCount = 0;
-  let lastHtml = '';
   
-  while (html !== lastHtml) {
-    lastHtml = html;
+  const tables = [];
+  let tm;
+  while ((tm = tableRegex.exec(html)) !== null) {
+    tables.push({ table: tm[1], index: tm.index });
+  }
+  
+  // Process tables in reverse order to preserve indices
+  for (let i = tables.length - 1; i >= 0; i--) {
+    let { table, index } = tables[i];
     
-    const tableRegex = /(<table[^>]*>[\s\S]*?<\/table>)/gi;
-    let tableMatch;
+    // Skip if already processed or not a product table
+    if (table.includes('best-for-badge')) continue;
     
-    // Reset regex
-    const tables = [];
-    while ((tableMatch = tableRegex.exec(html)) !== null) {
-      tables.push({ table: tableMatch[1], index: tableMatch.index });
+    // Check if this looks like a product comparison table
+    const hasProduct = /amazon\.com\/dp\//i.test(table) || /amzn\.to/i.test(table);
+    const hasPricing = /\$\d+/i.test(table);
+    const hasBestFor = /Best\s+For/i.test(table);
+    
+    if (!hasProduct && !hasPricing) continue;
+    
+    tableCount++;
+    let newTable = table;
+    
+    // Add Best For column header if not present
+    if (!hasBestFor) {
+      // Add column to thead header
+      newTable = newTable.replace(/(<\/tr>\s*<\/thead>)/i, '<th style="padding:var(--space-sm);text-align:left;border-bottom:2px solid var(--color-border);">Best For</th>\n$1');
+      
+      // Add badge column to each tbody row
+      newTable = newTable.replace(/(<tr[^>]*>[\s\S]*?)(<\/tr>)/gi, (rowMatch, rowStart, rowEnd) => {
+        // Skip header row
+        if (/<th>/i.test(rowStart) || /<th\s/i.test(rowStart)) return rowMatch;
+        
+        // Find product name in this row
+        const productMatch = rowStart.match(/<a[^>]*>([\s\S]*?)<\/a>/i);
+        let name = productMatch ? stripTags(productMatch[1]) : '';
+        if (!name) {
+          // Try to find text content of first td
+          const tdMatch = rowStart.match(/<td[^>]*>([\s\S]*?)<\/td>/);
+          if (tdMatch) name = stripTags(tdMatch[1]).trim();
+        }
+        
+        const badgeClass = findBadge(name.toLowerCase());
+        const label = BADGE_LABELS[badgeClass] || 'Best Value';
+        
+        return rowStart + `<td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);text-align:center;"><span class="badge ${badgeClass} best-for-badge">${label}</span></td>\n` + rowEnd;
+      });
+    } else {
+      // Table already has Best For column - add badges to the last column
+      // More complex: find product name and add badge in the Best For column
+      // For simplicity, add badge class to existing text
+      newTable = newTable.replace(/(<tr[^>]*>[\s\S]*?)(<\/tr>)/gi, (rowMatch, rowStart, rowEnd) => {
+        if (/<th>/i.test(rowStart) || /<th\s/i.test(rowStart)) return rowMatch;
+        
+        // Find the last td in the row (which should be Best For)
+        const lastTdMatch = rowStart.match(/(.*)(<td[^>]*>)([\s\S]*?)(<\/td>)\s*$/i);
+        if (!lastTdMatch) return rowMatch;
+        
+        const beforeTd = lastTdMatch[1];
+        const tdOpen = lastTdMatch[2];
+        const tdContent = lastTdMatch[3].trim();
+        const tdClose = lastTdMatch[4];
+        
+        // Find product name
+        const productMatch = rowStart.match(/<a[^>]*>([\s\S]*?)<\/a>/i);
+        let name = productMatch ? stripTags(productMatch[1]) : '';
+        
+        const badgeClass = findBadge(name.toLowerCase());
+        const label = BADGE_LABELS[badgeClass] || 'Best Value';
+        
+        return beforeTd + tdOpen + `<span class="badge ${badgeClass} best-for-badge">${label}</span> ${tdContent}` + tdClose + '\n' + rowEnd;
+      });
     }
     
-    if (tables.length === 0) break;
+    // Add product thumbnails
+    newTable = addProductImages(newTable);
     
-    // Process each table, but only ones that look like comparison/product tables
-    for (let i = tables.length - 1; i >= 0; i--) {
-      const { table, index } = tables[i];
-      
-      // Skip tables that are already processed
-      if (table.includes('best-for-badge')) continue;
-      
-      // Check if this is a product comparison table (has product names, price columns, etc.)
-      const hasPricing = /\$\d|Price/i.test(table);
-      const hasProduct = /<a[^>]*href=[^>]*amazon/i.test(table) || /Best For/i.test(table);
-      const hasBestForCol = /Best\s+For/i.test(table);
-      
-      if (!hasPricing && !hasProduct) {
-        continue; // Skip non-product tables (like TOC)
-      }
-      
-      tableCount++;
-      
-      // Parse table rows
-      let newTable = table;
-      
-      // Add Best For column header if not present
-      if (!hasBestForCol) {
-        // Add column to thead
-        newTable = newTable.replace('</tr>\n</thead>', '<th style="padding:var(--space-sm);text-align:left;border-bottom:2px solid var(--color-border);">Best For</th>\n</tr>\n</thead>');
-        
-        // Add badges to tbody rows
-        newTable = newTable.replace(/<td[^>]*>[\s\S]*?<\/td>/gm, (td) => {
-          // Only add to last column of each row
-          return td;
-        });
-        
-        // More precise approach: add badge column to each row
-        newTable = newTable.replace(/(<tr[^>]*>\s*<td[^>]*>[\s\S]*?<\/td>\s*<td[^>]*>[\s\S]*?<\/td>\s*<td[^>]*>[\s\S]*?<\/td>\s*<td[^>]*>[\s\S]*?<\/td>\s*<td[^>]*>[\s\S]*?<\/td>\s*<td[^>]*>[\s\S]*?<\/td>\s*<td[^>]*>[\s\S]*?<\/td>\s*<td[^>]*>[\s\S]*?<\/td>)/gm, '$1' + getBadgeColumnForRow);
-      }
-      
-      // Add product thumbnails to first column of each row
-      newTable = addProductImages(newTable);
-      
-      // Replace old table with new
-      html = html.replace(table, newTable);
-    }
+    // Replace in html
+    html = html.replace(table, newTable);
+    
+    // Remove the just-processed table from tables list so next iteration doesn't find it
+    tables.splice(i, 1);
   }
   
   if (tableCount > 0) {
-    console.log(`  ✅ Badges/images added to ${tableCount} table(s) in ${basename}`);
+    console.log(`  ✅ Badges/images added to ${tableCount} table(s)`);
+    hadChanges = true;
   }
   
   // ====================
-  // ADD CSS TO HEAD
+  // ADD CSS
   // ====================
   
   const cssBlock = `
@@ -752,8 +779,8 @@ ${accordionItems}
     }
   </style>`;
   
-  // Add CSS before </head>
   html = html.replace('</head>', cssBlock + '\n</head>');
+  hadChanges = true;
   
   // ====================
   // ADD FAQ ACCORDION SCRIPT
@@ -776,104 +803,95 @@ ${accordionItems}
   });
   </script>`;
   
-  // Add script before </body>
   html = html.replace('</body>', faqScript + '\n</body>');
   
   // ====================
   // WRITE OUTPUT
   // ====================
   
+  // Clean up: remove multiple blank lines
+  html = html.replace(/\n{3,}/g, '\n\n');
+  
   if (html !== origHtml) {
-    // Clean up double-blank lines
-    html = html.replace(/\n{3,}/g, '\n\n');
     fs.writeFileSync(filePath, html, 'utf8');
-    console.log(`  ✅ ${basename} enhanced successfully`);
+    console.log(`  ✅ ${basename} enhanced`);
     return true;
   } else {
-    console.log(`  ⚠️  No changes made to ${basename}`);
+    console.log(`  ⚠️  No changes`);
     return false;
   }
 }
 
 // ==============================
-// HELPER: Get badge column for a row
+// HELPERS
 // ==============================
-function getBadgeColumnForRow(match) {
-  // Find product name in the row
-  const productNameMatch = match.match(/<a[^>]*>([\s\S]*?)<\/a>/i);
-  if (!productNameMatch) {
-    return match.replace('</tr>', '<td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);text-align:center;"><span class="badge badge--value">Best Value</span></td>\n</tr>');
+function findBadge(name) {
+  for (const [key, cls] of Object.entries(PRODUCT_BADGE_MAP)) {
+    if (name.includes(key)) return cls;
   }
-  
-  const name = productNameMatch[1].trim();
-  const badgeClass = PRODUCT_BADGES[name] || PRODUCT_BADGES['default'] || 'badge--value';
-  const label = BADGE_LABELS[badgeClass] || 'Best Value';
-  
-  return match.replace('</tr>', `<td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);text-align:center;"><span class="badge ${badgeClass} best-for-badge">${label}</span></td>\n</tr>`);
+  return 'badge--best';
 }
 
-// ==============================
-// HELPER: Add product images
-// ==============================
 function addProductImages(tableHTML) {
-  // Find product name links in rows and add thumbnails
-  return tableHTML.replace(/(<td[^>]*style="padding:var\(--space-sm\)[^"]*"[^>]*>)\s*(<a[^>]*>([\s\S]*?)<\/a>)/gi, (match, tdOpen, link, linkText) => {
-    const name = linkText ? linkText.trim() : '';
+  return tableHTML.replace(/(<a[^>]*href=["']https:\/\/(?:www\.)?amazon\.com\/dp\/[^"']*["'][^>]*>)([\s\S]*?)(<\/a>)/gi, (match, linkOpen, linkText, linkClose) => {
+    const name = stripTags(linkText).trim();
     const imgURL = getUnsplashURL(name);
-    return `${tdOpen}<img src="${imgURL}" alt="${escapeAttr(name)}" class="product-thumb" loading="lazy"> ${link}`;
+    return linkOpen + `<img src="${imgURL}" alt="${escapeAttr(name)}" class="product-thumb" loading="lazy"> ` + linkText + linkClose;
+  });
+  
+  // Also handle amzn.to links
+  return tableHTML.replace(/(<a[^>]*href=["']https:\/\/(?:www\.)?amzn\.to\/[^"']*["'][^>]*>)([\s\S]*?)(<\/a>)/gi, (match, linkOpen, linkText, linkClose) => {
+    const name = stripTags(linkText).trim();
+    const imgURL = getUnsplashURL(name);
+    return linkOpen + `<img src="${imgURL}" alt="${escapeAttr(name)}" class="product-thumb" loading="lazy"> ` + linkText + linkClose;
   });
 }
 
 function getUnsplashURL(productName) {
   const lower = productName.toLowerCase();
   
-  // Chair keywords
   if (/chair|aeron|gesture|embody|sayl|soji|leap|seating|sihoo|ticova|hbada|branch/.test(lower)) {
     return 'https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop';
   }
-  // Desk keywords
-  if (/desk|flexispot|uplift|jarvis|shw|standing/.test(lower)) {
+  if (/desk|flexispot|uplift|jarvis|shw|standing|trotten|coleshome|bush/.test(lower)) {
     return 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=80&h=80&fit=crop';
   }
-  // Monitor keywords
-  if (/monitor|screen|display/.test(lower)) {
+  if (/monitor|screen|display|ergear/.test(lower)) {
     return 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=80&h=80&fit=crop';
   }
-  // Mouse keywords
-  if (/mouse|mx master|kensington|logitech.*575|orbit|trackball/.test(lower)) {
+  if (/mouse|mx master|kensington.*orbit|logitech.*575|orbit|trackball/.test(lower)) {
     return 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=80&h=80&fit=crop';
   }
-  // Keyboard keywords
   if (/keyboard|kinesis|freestyle/.test(lower)) {
     return 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=80&h=80&fit=crop';
   }
-  // Lighting keywords
-  if (/lamp|light|govee|taotronics|brightech/.test(lower)) {
+  if (/lamp|light|govee|taotronics|brightech|led/.test(lower)) {
     return 'https://images.unsplash.com/photo-1507473885765-e6ed057ab6f6?w=80&h=80&fit=crop';
   }
-  // Cable management
-  if (/cable|tray|raceway|velcro/.test(lower)) {
+  if (/cable|tray|raceway|velcro|signum/.test(lower)) {
     return 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=80&h=80&fit=crop';
   }
-  // Mat
   if (/mat|cloudpeak|ergodriven|topo|anti-fatigue/.test(lower)) {
     return 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=80&h=80&fit=crop';
   }
-  // Footrest
-  if (/footrest|solemate|foot/.test(lower)) {
+  if (/footrest|solemate/.test(lower)) {
     return 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=80&h=80&fit=crop';
   }
-  // Cable raceway
-  if (/pegboard|skadis|storage|organizer|soulwit|devise|uxcell|mr ironstone/.test(lower)) {
+  if (/pegboard|skadis|storage|organizer|soulwit|devise|uxcell|mr ironstone|wall.*control|furinno|hobst/.test(lower)) {
     return 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=80&h=80&fit=crop';
   }
-  // Wrist rest
   if (/wrist|glorious/.test(lower)) {
     return 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=80&h=80&fit=crop';
   }
-  // Headphone
   if (/headphone|headset/.test(lower)) {
     return 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=80&h=80&fit=crop';
+  }
+  if (/anker|power.*strip/.test(lower)) {
+    return 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=80&h=80&fit=crop';
+  }
+  if (/amazon.*basic/.test(lower)) {
+    // For Amazon Basics, determine what category
+    return 'https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop';
   }
   
   return 'https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop';
@@ -886,6 +904,15 @@ const files = fs.readdirSync(GUIDES_DIR)
   .filter(f => f.endsWith('.html'))
   .sort()
   .map(f => path.join(GUIDES_DIR, f));
+
+// First, restore files from git if available (to undo first broken run)
+console.log(`\nRestoring files from git to get clean state...`);
+try {
+  const result = require('child_process').execSync('cd ' + GUIDES_DIR + ' && git checkout -- *.html 2>&1 || true').toString();
+  if (result.trim()) console.log(`  ${result.trim()}`);
+} catch(e) {
+  console.log('  No git backup available, continuing with current files');
+}
 
 console.log(`\nEnhancing ${files.length} guide files...\n`);
 
@@ -901,6 +928,7 @@ for (const file of files) {
     else fail++;
   } catch (err) {
     console.error(`  ❌ Error: ${err.message}`);
+    console.error(err.stack);
     fail++;
   }
 }

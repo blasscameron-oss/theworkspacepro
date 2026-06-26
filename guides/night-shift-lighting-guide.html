@@ -214,6 +214,173 @@
     }
   </style>
 <link rel="stylesheet" href="/assets/css/reviews.css">
+
+  <style>
+    /* FAQ Accordion */
+    .faq-accordion {
+      margin: var(--space-lg) 0;
+    }
+    .faq-item {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      margin-bottom: var(--space-sm, 8px);
+      overflow: hidden;
+      background: var(--color-surface, #fff);
+    }
+    .faq-question {
+      width: 100%;
+      padding: var(--space-md, 12px) var(--space-lg, 16px);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-display, inherit);
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--color-text, #1a202c);
+      line-height: 1.4;
+    }
+    .faq-question:hover {
+      background: var(--color-bg-alt, #f7fafc);
+    }
+    .faq-chevron {
+      transition: transform 0.3s ease;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      margin-left: var(--space-sm, 8px);
+    }
+    .faq-question[aria-expanded="true"] .faq-chevron {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      padding: 0 var(--space-lg, 16px) var(--space-md, 12px);
+      color: var(--color-muted, #718096);
+      line-height: 1.6;
+    }
+    .faq-answer p {
+      margin: 0;
+    }
+    
+    /* Best For Badges */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+    .badge--best {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+    .badge--value {
+      background: #dcfce7;
+      color: #166534;
+    }
+    .badge--budget {
+      background: #fed7aa;
+      color: #9a3412;
+    }
+    .badge--premium {
+      background: #fef3c7;
+      color: #92400e;
+    }
+    .badge--ergonomic {
+      background: #e9d5ff;
+      color: #6b21a8;
+    }
+    
+    /* Product Thumbnails */
+    .product-thumb {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      object-fit: cover;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    
+    /* Related Guides Carousel */
+    .related-guides {
+      max-width: var(--max-width, 1200px);
+      margin: var(--space-2xl, 32px) auto;
+      padding: 0 var(--space-lg, 16px);
+    }
+    .related-guides__title {
+      font-family: var(--font-display, serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: var(--space-lg, 16px);
+    }
+    .related-guides__carousel {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--space-md, 12px);
+    }
+    @media (max-width: 640px) {
+      .related-guides__carousel {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: var(--space-sm, 8px);
+        padding-bottom: var(--space-sm, 8px);
+      }
+      .related-guides__carousel .guide-card {
+        min-width: 240px;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+      }
+    }
+    .related-guides .guide-card {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      padding: var(--space-lg, 16px);
+      background: var(--color-surface, #fff);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .related-guides .guide-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+    .guide-card__badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--color-primary-light, #e0f2fe);
+      color: var(--color-primary, #0369a1);
+      margin-bottom: var(--space-xs, 4px);
+    }
+    .guide-card__title {
+      font-family: var(--font-display, serif);
+      font-size: 1rem;
+      font-weight: 600;
+      margin: var(--space-xs, 4px) 0;
+      line-height: 1.3;
+    }
+    .guide-card__desc {
+      font-size: 0.85rem;
+      color: var(--color-muted, #718096);
+      line-height: 1.4;
+      margin: var(--space-xs, 4px) 0;
+    }
+    .guide-card__link {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-primary, #0369a1);
+      margin-top: var(--space-xs, 4px);
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -439,48 +606,42 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>IKEA TERTIAL + Warm Bulb</td>
+                              <td><span class="badge badge--best best-for-badge">Editor's Choice</span> IKEA TERTIAL + Warm Bulb</td>
                 <td>Desk Lamp</td>
                 <td>~$25</td>
                 <td>2,700 K (fixed)</td>
                 <td>Budget warm task light</td>
-              </tr>
-              <tr>
-                <td>BenQ ScreenBar Plus</td>
+</tr>
+                              <td><span class="badge badge--best best-for-badge">Editor's Choice</span> BenQ ScreenBar Plus</td>
                 <td>Monitor Light Bar</td>
                 <td>$109</td>
                 <td>2,700 K – 6,500 K</td>
                 <td>Evening desk illumination</td>
-              </tr>
-              <tr>
-                <td>Philips Hue White Ambiance</td>
+</tr>
+                              <td><span class="badge badge--best best-for-badge">Editor's Choice</span> Philips Hue White Ambiance</td>
                 <td>Smart Bulb</td>
                 <td>$50 / bulb</td>
                 <td>2,200 K – 6,500 K</td>
                 <td>Automated circadian lighting</td>
-              </tr>
-              <tr>
-                <td>Govee RGBIC Floor Lamp</td>
+</tr>
+                              <td><span class="badge badge--best best-for-badge">Editor's Choice</span> Govee RGBIC Floor Lamp</td>
                 <td>Floor Lamp</td>
                 <td>$60</td>
                 <td>2,700 K – 6,500 K</td>
                 <td>Warm ambient room light</td>
-              </tr>
-              <tr>
-                <td>Uvex Skyper Glasses</td>
+</tr>
+                              <td><span class="badge badge--best best-for-badge">Editor's Choice</span> Uvex Skyper Glasses</td>
                 <td>Blue-Blocking Glasses</td>
                 <td>$10</td>
                 <td>N/A (filter only)</td>
                 <td>Max blue light filtration</td>
-              </tr>
-              <tr>
-                <td>MediaLight Bias Lighting</td>
+</tr>
+                              <td><span class="badge badge--best best-for-badge">Editor's Choice</span> MediaLight Bias Lighting</td>
                 <td>Monitor Backlight</td>
                 <td>$25–$40</td>
                 <td>3,000 K / 6,500 K options</td>
                 <td>Reduce eye strain at night</td>
-              </tr>
+</tr>
             </tbody>
           </table>
         </div>
@@ -668,6 +829,45 @@
     </a>
           </div>
         </section>
+        <section class="related-guides">
+          <h2 class="related-guides__title">Related Guides</h2>
+          <div class="related-guides__carousel">
+            <a href="/guides/home-office-lighting-guide/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Lighting</span>
+        <h3 class="guide-card__title">Home Office Lighting Guide</h3>
+        <p class="guide-card__desc">The definitive guide to lighting your home office for productivity and comfort.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/back-pain-ergonomic-setup/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Ergonomics</span>
+        <h3 class="guide-card__title">Back Pain Ergonomic Setup</h3>
+        <p class="guide-card__desc">Set up your workspace to prevent and manage back pain with proper ergonomics.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/best-ergonomic-office-chairs-2026/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Chairs</span>
+        <h3 class="guide-card__title">Best Ergonomic Office Chairs 2026</h3>
+        <p class="guide-card__desc">Full comparison of the best ergonomic office chairs across every budget tier.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/best-standing-desk-mat-for-concrete-floors/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Accessories</span>
+        <h3 class="guide-card__title">Best Standing Desk Mats for Concrete Floors</h3>
+        <p class="guide-card__desc">Top anti-fatigue mats for standing desks on concrete floors.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          </div>
+        </section>
+
+  
 
   
   <section class="newsletter-bar" id="newsletter">
@@ -711,5 +911,21 @@
   </script>
 <script src="/assets/js/product-reviews.js"></script>
 <script src="/assets/js/review-injector.js"></script>
+
+  <script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var answer = this.nextElementSibling;
+        
+        this.setAttribute('aria-expanded', !expanded);
+        if (answer) {
+          answer.hidden = expanded;
+        }
+      });
+    });
+  });
+  </script>
 </body>
 </html>

@@ -207,6 +207,173 @@
     }
   </style>
 <link rel="stylesheet" href="/assets/css/reviews.css">
+
+  <style>
+    /* FAQ Accordion */
+    .faq-accordion {
+      margin: var(--space-lg) 0;
+    }
+    .faq-item {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      margin-bottom: var(--space-sm, 8px);
+      overflow: hidden;
+      background: var(--color-surface, #fff);
+    }
+    .faq-question {
+      width: 100%;
+      padding: var(--space-md, 12px) var(--space-lg, 16px);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-display, inherit);
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--color-text, #1a202c);
+      line-height: 1.4;
+    }
+    .faq-question:hover {
+      background: var(--color-bg-alt, #f7fafc);
+    }
+    .faq-chevron {
+      transition: transform 0.3s ease;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      margin-left: var(--space-sm, 8px);
+    }
+    .faq-question[aria-expanded="true"] .faq-chevron {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      padding: 0 var(--space-lg, 16px) var(--space-md, 12px);
+      color: var(--color-muted, #718096);
+      line-height: 1.6;
+    }
+    .faq-answer p {
+      margin: 0;
+    }
+    
+    /* Best For Badges */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+    .badge--best {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+    .badge--value {
+      background: #dcfce7;
+      color: #166534;
+    }
+    .badge--budget {
+      background: #fed7aa;
+      color: #9a3412;
+    }
+    .badge--premium {
+      background: #fef3c7;
+      color: #92400e;
+    }
+    .badge--ergonomic {
+      background: #e9d5ff;
+      color: #6b21a8;
+    }
+    
+    /* Product Thumbnails */
+    .product-thumb {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      object-fit: cover;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    
+    /* Related Guides Carousel */
+    .related-guides {
+      max-width: var(--max-width, 1200px);
+      margin: var(--space-2xl, 32px) auto;
+      padding: 0 var(--space-lg, 16px);
+    }
+    .related-guides__title {
+      font-family: var(--font-display, serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: var(--space-lg, 16px);
+    }
+    .related-guides__carousel {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--space-md, 12px);
+    }
+    @media (max-width: 640px) {
+      .related-guides__carousel {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: var(--space-sm, 8px);
+        padding-bottom: var(--space-sm, 8px);
+      }
+      .related-guides__carousel .guide-card {
+        min-width: 240px;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+      }
+    }
+    .related-guides .guide-card {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      padding: var(--space-lg, 16px);
+      background: var(--color-surface, #fff);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .related-guides .guide-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+    .guide-card__badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--color-primary-light, #e0f2fe);
+      color: var(--color-primary, #0369a1);
+      margin-bottom: var(--space-xs, 4px);
+    }
+    .guide-card__title {
+      font-family: var(--font-display, serif);
+      font-size: 1rem;
+      font-weight: 600;
+      margin: var(--space-xs, 4px) 0;
+      line-height: 1.3;
+    }
+    .guide-card__desc {
+      font-size: 0.85rem;
+      color: var(--color-muted, #718096);
+      line-height: 1.4;
+      margin: var(--space-xs, 4px) 0;
+    }
+    .guide-card__link {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-primary, #0369a1);
+      margin-top: var(--space-xs, 4px);
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -620,76 +787,66 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop" alt="Razer DeathAdder V3 Pro" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B09ZLV2531?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Razer DeathAdder V3 Pro</a></td>
+                              <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><span class="badge badge--best best-for-badge">Editor's Choice</span> <img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop" alt="Razer DeathAdder V3 Pro" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B09ZLV2531?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank"><img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop" alt="Razer DeathAdder V3 Pro" class="product-thumb" loading="lazy"> Razer DeathAdder V3 Pro</a></td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Mouse</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">~$150</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">63g, ergonomic shape, low-force optical switches</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Palm grippers, large hands</td>
-              </tr>
-              <tr>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><img src="https://images.unsplash.com/photo-1507473885765-e6ed057ab6f6?w=80&h=80&fit=crop" alt="Logitech G Pro X Superlight 2" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B09NBWQDKX?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Logitech G Pro X Superlight 2</a></td>
+</tr>
+                              <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><span class="badge badge--best best-for-badge">Editor's Choice</span> <img src="https://images.unsplash.com/photo-1507473885765-e6ed057ab6f6?w=80&h=80&fit=crop" alt="Logitech G Pro X Superlight 2" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B09NBWQDKX?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank"><img src="https://images.unsplash.com/photo-1507473885765-e6ed057ab6f6?w=80&h=80&fit=crop" alt="Logitech G Pro X Superlight 2" class="product-thumb" loading="lazy"> Logitech G Pro X Superlight 2</a></td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Mouse</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">~$160</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">60g, ambidextrous, low click force</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Claw/fingertip grip, competitive FPS</td>
-              </tr>
-              <tr>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop" alt="Secretlab Titan Evo 2022" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B0B3RHCV9R?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Secretlab Titan Evo 2022</a></td>
+</tr>
+                              <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><span class="badge badge--best best-for-badge">Editor's Choice</span> <img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop" alt="Secretlab Titan Evo 2022" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B0B3RHCV9R?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank"><img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop" alt="Secretlab Titan Evo 2022" class="product-thumb" loading="lazy"> Secretlab Titan Evo 2022</a></td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Chair</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">~$550</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Built-in adjustable lumbar, cold-cure foam, 4D armrests</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Gaming aesthetic + ergonomics hybrid</td>
-              </tr>
-              <tr>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop" alt="Herman Miller Embody Gaming" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B07NH69TWB?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Herman Miller Embody Gaming</a></td>
+</tr>
+                              <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><span class="badge badge--premium best-for-badge">Premium Pick</span> <img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop" alt="Herman Miller Embody Gaming" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B07NH69TWB?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank"><img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop" alt="Herman Miller Embody Gaming" class="product-thumb" loading="lazy"> Herman Miller Embody Gaming</a></td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Chair</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">~$1,700</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Pixelated Support back system, dynamic backrest flex, seat depth adjust</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Serious gamers, existing back pain, 8+ hr/day sitters</td>
-              </tr>
-              <tr>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop" alt="Razer Iskur V2" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B0CPH72BMN?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Razer Iskur V2</a></td>
+</tr>
+                              <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><span class="badge badge--best best-for-badge">Editor's Choice</span> <img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop" alt="Razer Iskur V2" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B0CPH72BMN?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank"><img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop" alt="Razer Iskur V2" class="product-thumb" loading="lazy"> Razer Iskur V2</a></td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Chair</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">~$500</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Adjustable 6D lumbar curve, dense foam</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Gamers who want Razer ecosystem, lumbar-focused support</td>
-              </tr>
-              <tr>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=80&h=80&fit=crop" alt="Ergotron HX Monitor Arm" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B00358RIRC?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Ergotron HX Monitor Arm</a></td>
+</tr>
+                              <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><span class="badge badge--premium best-for-badge">Premium Pick</span> <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=80&h=80&fit=crop" alt="Ergotron HX Monitor Arm" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B00358RIRC?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank"><img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=80&h=80&fit=crop" alt="Ergotron HX Monitor Arm" class="product-thumb" loading="lazy"> Ergotron HX Monitor Arm</a></td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Monitor Arm</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">~$150</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Gas spring, tool-less tension, supports up to 42"</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Perfect monitor positioning, large monitors</td>
-              </tr>
-              <tr>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop" alt="SteelSeries Arctis Nova Pro" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B0DJRZG3Q9?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">SteelSeries Arctis Nova Pro</a></td>
+</tr>
+                              <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><span class="badge badge--best best-for-badge">Editor's Choice</span> <img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop" alt="SteelSeries Arctis Nova Pro" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B0DJRZG3Q9?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank"><img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop" alt="SteelSeries Arctis Nova Pro" class="product-thumb" loading="lazy"> SteelSeries Arctis Nova Pro</a></td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Headset</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">~$350</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">290g, suspension headband, breathable fabric earpads</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Long sessions, competitive audio</td>
-              </tr>
-              <tr>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><img src="https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=80&h=80&fit=crop" alt="Flexispot E7" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B0B7865Z11?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Flexispot E7</a></td>
+</tr>
+                              <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><span class="badge badge--value best-for-badge">Best Value</span> <img src="https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=80&h=80&fit=crop" alt="Flexispot E7" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B0B7865Z11?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank"><img src="https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=80&h=80&fit=crop" alt="Flexispot E7" class="product-thumb" loading="lazy"> Flexispot E7</a></td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Standing Desk</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">~$450</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">T-frame stability, dual motors, 28-48" height range</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Sit-stand gaming, tall gamers</td>
-              </tr>
-              <tr>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=80&h=80&fit=crop" alt="Benq ScreenBar Halo" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B0DK59YKRS?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Benq ScreenBar Halo</a></td>
+</tr>
+                              <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><span class="badge badge--best best-for-badge">Editor's Choice</span> <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=80&h=80&fit=crop" alt="Benq ScreenBar Halo" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B0DK59YKRS?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank"><img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=80&h=80&fit=crop" alt="Benq ScreenBar Halo" class="product-thumb" loading="lazy"> Benq ScreenBar Halo</a></td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Lighting</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">~$110</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Asymmetrical light, zero screen glare, ambient backlight</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Eye strain reduction, evening gaming</td>
-              </tr>
-              <tr>
-                <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop" alt="Philips Hue Play Gradient" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B08P2D215V?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Philips Hue Play Gradient</a></td>
+</tr>
+                              <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><span class="badge badge--best best-for-badge">Editor's Choice</span> <img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop" alt="Philips Hue Play Gradient" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B08P2D215V?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank"><img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=80&h=80&fit=crop" alt="Philips Hue Play Gradient" class="product-thumb" loading="lazy"> Philips Hue Play Gradient</a></td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Lighting</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">~$100</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Screen-synced bias lighting, 3-zone color, immersive halo</td>
                 <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Immersive gaming, stream setup, RGB aesthetic</td>
-              </tr>
+</tr>
             </tbody>
           </table>
         </div>
@@ -798,7 +955,48 @@
           <a href="/guides/home-office-budget-setup-under-1000/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
       <div class="guide-card__content">
         <span class="guide-card__badge">Budget</span>
-        <h3 class="guide-card__title">Home Office Budget Setup Under 
+        <h3 class="guide-card__title">Home Office Budget Setup Under
+        <section class="related-guides">
+          <h2 class="related-guides__title">Related Guides</h2>
+          <div class="related-guides__carousel">
+            <a href="/guides/back-pain-ergonomic-setup/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Ergonomics</span>
+        <h3 class="guide-card__title">Back Pain Ergonomic Setup</h3>
+        <p class="guide-card__desc">Set up your workspace to prevent and manage back pain with proper ergonomics.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/ergonomic-accessories-home-office/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Accessories</span>
+        <h3 class="guide-card__title">Ergonomic Accessories for Home Office</h3>
+        <p class="guide-card__desc">Must-have ergonomic accessories for a comfortable and healthy home office.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/ergonomic-office-chair-buying-guide/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Chairs</span>
+        <h3 class="guide-card__title">Ergonomic Office Chair Buying Guide</h3>
+        <p class="guide-card__desc">Complete guide to buying the right ergonomic office chair for your needs.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/home-office-budget-setup-under-1000/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Budget</span>
+        <h3 class="guide-card__title">Home Office Budget Setup Under  
+  <section class="newsletter-bar",000</h3>
+        <p class="guide-card__desc">Build a complete home office on a budget of under  
+  <section class="newsletter-bar",000.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          </div>
+        </section>
+
+   
   <section class="newsletter-bar",000</h3>
         <p class="guide-card__desc">Build a complete home office on a budget of under 
   <section class="newsletter-bar",000.</p>
@@ -850,5 +1048,21 @@
   </script>
 <script src="/assets/js/product-reviews.js"></script>
 <script src="/assets/js/review-injector.js"></script>
+
+  <script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var answer = this.nextElementSibling;
+        
+        this.setAttribute('aria-expanded', !expanded);
+        if (answer) {
+          answer.hidden = expanded;
+        }
+      });
+    });
+  });
+  </script>
 </body>
 </html>

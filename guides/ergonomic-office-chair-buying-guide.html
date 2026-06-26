@@ -214,6 +214,173 @@
     }
   </style>
 <link rel="stylesheet" href="/assets/css/reviews.css">
+
+  <style>
+    /* FAQ Accordion */
+    .faq-accordion {
+      margin: var(--space-lg) 0;
+    }
+    .faq-item {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      margin-bottom: var(--space-sm, 8px);
+      overflow: hidden;
+      background: var(--color-surface, #fff);
+    }
+    .faq-question {
+      width: 100%;
+      padding: var(--space-md, 12px) var(--space-lg, 16px);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-display, inherit);
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--color-text, #1a202c);
+      line-height: 1.4;
+    }
+    .faq-question:hover {
+      background: var(--color-bg-alt, #f7fafc);
+    }
+    .faq-chevron {
+      transition: transform 0.3s ease;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      margin-left: var(--space-sm, 8px);
+    }
+    .faq-question[aria-expanded="true"] .faq-chevron {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      padding: 0 var(--space-lg, 16px) var(--space-md, 12px);
+      color: var(--color-muted, #718096);
+      line-height: 1.6;
+    }
+    .faq-answer p {
+      margin: 0;
+    }
+    
+    /* Best For Badges */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+    .badge--best {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+    .badge--value {
+      background: #dcfce7;
+      color: #166534;
+    }
+    .badge--budget {
+      background: #fed7aa;
+      color: #9a3412;
+    }
+    .badge--premium {
+      background: #fef3c7;
+      color: #92400e;
+    }
+    .badge--ergonomic {
+      background: #e9d5ff;
+      color: #6b21a8;
+    }
+    
+    /* Product Thumbnails */
+    .product-thumb {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      object-fit: cover;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    
+    /* Related Guides Carousel */
+    .related-guides {
+      max-width: var(--max-width, 1200px);
+      margin: var(--space-2xl, 32px) auto;
+      padding: 0 var(--space-lg, 16px);
+    }
+    .related-guides__title {
+      font-family: var(--font-display, serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: var(--space-lg, 16px);
+    }
+    .related-guides__carousel {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--space-md, 12px);
+    }
+    @media (max-width: 640px) {
+      .related-guides__carousel {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: var(--space-sm, 8px);
+        padding-bottom: var(--space-sm, 8px);
+      }
+      .related-guides__carousel .guide-card {
+        min-width: 240px;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+      }
+    }
+    .related-guides .guide-card {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      padding: var(--space-lg, 16px);
+      background: var(--color-surface, #fff);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .related-guides .guide-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+    .guide-card__badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--color-primary-light, #e0f2fe);
+      color: var(--color-primary, #0369a1);
+      margin-bottom: var(--space-xs, 4px);
+    }
+    .guide-card__title {
+      font-family: var(--font-display, serif);
+      font-size: 1rem;
+      font-weight: 600;
+      margin: var(--space-xs, 4px) 0;
+      line-height: 1.3;
+    }
+    .guide-card__desc {
+      font-size: 0.85rem;
+      color: var(--color-muted, #718096);
+      line-height: 1.4;
+      margin: var(--space-xs, 4px) 0;
+    }
+    .guide-card__link {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-primary, #0369a1);
+      margin-top: var(--space-xs, 4px);
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -483,86 +650,76 @@
               </tr>
             </thead>
             <tbody>
-              <tr style="border-bottom:1px solid var(--color-border);">
-                <td style="padding:var(--space-sm);font-weight:600;">Price</td>
+                              <td style="padding:var(--space-sm);font-weight:600;"><span class="badge badge--best best-for-badge">Editor's Choice</span> Price</td>
                 <td style="padding:var(--space-sm);">$229</td>
                 <td style="padding:var(--space-sm);">$329</td>
                 <td style="padding:var(--space-sm);">$545</td>
                 <td style="padding:var(--space-sm);">$899</td>
                 <td style="padding:var(--space-sm);">$1,395</td>
-              </tr>
-              <tr style="border-bottom:1px solid var(--color-border);">
-                <td style="padding:var(--space-sm);font-weight:600;">Seat Height Range</td>
+</tr>
+                              <td style="padding:var(--space-sm);font-weight:600;"><span class="badge badge--best best-for-badge">Editor's Choice</span> Seat Height Range</td>
                 <td style="padding:var(--space-sm);">18" – 21"</td>
                 <td style="padding:var(--space-sm);">15.5" – 19.5"</td>
                 <td style="padding:var(--space-sm);">15.5" – 20"</td>
                 <td style="padding:var(--space-sm);">15.5" – 20"</td>
                 <td style="padding:var(--space-sm);">15.5" – 20.5"*</td>
-              </tr>
-              <tr style="border-bottom:1px solid var(--color-border);">
-                <td style="padding:var(--space-sm);font-weight:600;">Seat Depth</td>
+</tr>
+                              <td style="padding:var(--space-sm);font-weight:600;"><span class="badge badge--best best-for-badge">Editor's Choice</span> Seat Depth</td>
                 <td style="padding:var(--space-sm);">~18" (fixed)</td>
                 <td style="padding:var(--space-sm);">~17" (fixed)</td>
                 <td style="padding:var(--space-sm);">~16.5" (fixed)</td>
                 <td style="padding:var(--space-sm);">15.5" – 19" (adjustable)</td>
                 <td style="padding:var(--space-sm);">16" – 18"* (varies by size)</td>
-              </tr>
-              <tr style="border-bottom:1px solid var(--color-border);">
-                <td style="padding:var(--space-sm);font-weight:600;">Seat Material</td>
+</tr>
+                              <td style="padding:var(--space-sm);font-weight:600;"><span class="badge badge--best best-for-badge">Editor's Choice</span> Seat Material</td>
                 <td style="padding:var(--space-sm);">High-density foam</td>
                 <td style="padding:var(--space-sm);">Foam + mesh back</td>
                 <td style="padding:var(--space-sm);">Foam + suspended back</td>
                 <td style="padding:var(--space-sm);">High-density foam</td>
                 <td style="padding:var(--space-sm);">Pellicle mesh</td>
-              </tr>
-              <tr style="border-bottom:1px solid var(--color-border);">
-                <td style="padding:var(--space-sm);font-weight:600;">Lumbar Support</td>
+</tr>
+                              <td style="padding:var(--space-sm);font-weight:600;"><span class="badge badge--best best-for-badge">Editor's Choice</span> Lumbar Support</td>
                 <td style="padding:var(--space-sm);">Fixed integrated</td>
                 <td style="padding:var(--space-sm);">Height-adjustable</td>
                 <td style="padding:var(--space-sm);">Integrated tension</td>
                 <td style="padding:var(--space-sm);">Height + depth adjustable</td>
                 <td style="padding:var(--space-sm);">PostureFit SL (adjustable pads)</td>
-              </tr>
-              <tr style="border-bottom:1px solid var(--color-border);">
-                <td style="padding:var(--space-sm);font-weight:600;">Armrest Adjustability</td>
+</tr>
+                              <td style="padding:var(--space-sm);font-weight:600;"><span class="badge badge--best best-for-badge">Editor's Choice</span> Armrest Adjustability</td>
                 <td style="padding:var(--space-sm);">Fixed</td>
                 <td style="padding:var(--space-sm);">3D (Ht, Width, Depth)</td>
                 <td style="padding:var(--space-sm);">1D or 3D (config)</td>
                 <td style="padding:var(--space-sm);">4D</td>
                 <td style="padding:var(--space-sm);">Adjustable (config)</td>
-              </tr>
-              <tr style="border-bottom:1px solid var(--color-border);">
-                <td style="padding:var(--space-sm);font-weight:600;">Weight Capacity</td>
+</tr>
+                              <td style="padding:var(--space-sm);font-weight:600;"><span class="badge badge--best best-for-badge">Editor's Choice</span> Weight Capacity</td>
                 <td style="padding:var(--space-sm);">275 lbs</td>
                 <td style="padding:var(--space-sm);">300 lbs</td>
                 <td style="padding:var(--space-sm);">300 lbs</td>
                 <td style="padding:var(--space-sm);">400 lbs</td>
                 <td style="padding:var(--space-sm);">350 lbs (Size C)</td>
-              </tr>
-              <tr style="border-bottom:1px solid var(--color-border);">
-                <td style="padding:var(--space-sm);font-weight:600;">Tilt Lock</td>
+</tr>
+                              <td style="padding:var(--space-sm);font-weight:600;"><span class="badge badge--best best-for-badge">Editor's Choice</span> Tilt Lock</td>
                 <td style="padding:var(--space-sm);">Yes (2 positions)</td>
                 <td style="padding:var(--space-sm);">Yes (multi-position)</td>
                 <td style="padding:var(--space-sm);">Yes (multi-position)</td>
                 <td style="padding:var(--space-sm);">Yes (multi-position + forward tilt)</td>
                 <td style="padding:var(--space-sm);">Yes (multi-position + forward tilt)</td>
-              </tr>
-              <tr style="border-bottom:1px solid var(--color-border);">
-                <td style="padding:var(--space-sm);font-weight:600;">Warranty</td>
+</tr>
+                              <td style="padding:var(--space-sm);font-weight:600;"><span class="badge badge--best best-for-badge">Editor's Choice</span> Warranty</td>
                 <td style="padding:var(--space-sm);">10 years</td>
                 <td style="padding:var(--space-sm);">7 years</td>
                 <td style="padding:var(--space-sm);">12 years</td>
                 <td style="padding:var(--space-sm);">Lifetime frame / 12 yr mech</td>
                 <td style="padding:var(--space-sm);">12 years</td>
-              </tr>
-              <tr>
-                <td style="padding:var(--space-sm);font-weight:600;">Best For</td>
+</tr>
+                              <td style="padding:var(--space-sm);font-weight:600;"><span class="badge badge--best best-for-badge">Editor's Choice</span> Best For</td>
                 <td style="padding:var(--space-sm);">Tall budget shoppers</td>
                 <td style="padding:var(--space-sm);">Best value under $500</td>
                 <td style="padding:var(--space-sm);">Design-forward midsize</td>
                 <td style="padding:var(--space-sm);">Maximum adjustability</td>
                 <td style="padding:var(--space-sm);">Breathability + durability</td>
-              </tr>
+</tr>
             </tbody>
           </table>
         </div>
@@ -783,6 +940,45 @@
     </a>
           </div>
         </section>
+        <section class="related-guides">
+          <h2 class="related-guides__title">Related Guides</h2>
+          <div class="related-guides__carousel">
+            <a href="/guides/best-ergonomic-office-chairs-2026/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Chairs</span>
+        <h3 class="guide-card__title">Best Ergonomic Office Chairs 2026</h3>
+        <p class="guide-card__desc">Full comparison of the best ergonomic office chairs across every budget tier.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/back-pain-ergonomic-setup/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Ergonomics</span>
+        <h3 class="guide-card__title">Back Pain Ergonomic Setup</h3>
+        <p class="guide-card__desc">Set up your workspace to prevent and manage back pain with proper ergonomics.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/ergonomic-accessories-home-office/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Accessories</span>
+        <h3 class="guide-card__title">Ergonomic Accessories for Home Office</h3>
+        <p class="guide-card__desc">Must-have ergonomic accessories for a comfortable and healthy home office.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/ergonomic-setup-for-gamers/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Gaming</span>
+        <h3 class="guide-card__title">Ergonomic Setup for Gamers</h3>
+        <p class="guide-card__desc">Build an ergonomic gaming setup that keeps you comfortable during long sessions.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          </div>
+        </section>
+
+  
 
   
   <section class="newsletter-bar" id="newsletter">
@@ -826,5 +1022,21 @@
   </script>
 <script src="/assets/js/product-reviews.js"></script>
 <script src="/assets/js/review-injector.js"></script>
+
+  <script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var answer = this.nextElementSibling;
+        
+        this.setAttribute('aria-expanded', !expanded);
+        if (answer) {
+          answer.hidden = expanded;
+        }
+      });
+    });
+  });
+  </script>
 </body>
 </html>
