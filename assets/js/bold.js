@@ -32,56 +32,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ========================================================================
-     2. SOCIAL PROOF NOTIFICATIONS
-        Shows rotating "Someone took the assessment" notifications
-        Creates urgency and trust.
-     ======================================================================== */
-  function initSocialProof() {
-    // Only on homepage
-    if (!document.getElementById('assessment')) return;
-
-    var messages = [
-      { icon: '👩‍💻', text: '<strong>Sarah from Austin</strong> just completed the workspace assessment' },
-      { icon: '👨‍💼', text: '<strong>Mike from Denver</strong> found their perfect chair match' },
-      { icon: '👩‍🎨', text: '<strong>Jen from Portland</strong> got a personalized setup checklist' },
-      { icon: '👨‍💻', text: '<strong>David from Seattle</strong> discovered they need a monitor arm' },
-      { icon: '👩‍🏫', text: '<strong>Lisa from Chicago</strong> matched with The Budget Builder persona' },
-      { icon: '🧑‍✈️', text: '<strong>Tom from NYC</strong> saved $200 with the right chair pick' },
-    ];
-
-    var container = document.createElement('div');
-    container.className = 'social-proof';
-    container.innerHTML = '<div class="social-proof__avatar"></div><div class="social-proof__text"></div>';
-    document.body.appendChild(container);
-
-    var avatar = container.querySelector('.social-proof__avatar');
-    var textEl = container.querySelector('.social-proof__text');
-    var index = 0;
-    var shown = 0;
-    var maxShows = 4; // Don't spam
-
-    function showNext() {
-      if (shown >= maxShows) return;
-      var msg = messages[index % messages.length];
-      avatar.textContent = msg.icon;
-      textEl.innerHTML = msg.text;
-      container.classList.add('visible');
-
-      setTimeout(function () {
-        container.classList.remove('visible');
-        index++;
-        shown++;
-        if (shown < maxShows) {
-          setTimeout(showNext, 8000 + Math.random() * 4000);
-        }
-      }, 5000);
-    }
-
-    // Start after 5 seconds, then rotate
-    setTimeout(showNext, 5000);
-  }
-
-  /* ========================================================================
      3. TABBED INTERFACES
         Auto-wires [data-tabs] containers with .tab and .tab-panel elements
      ======================================================================== */
@@ -226,7 +176,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Initialize everything
   initScrollAnimations();
-  initSocialProof();
   initTabs();
   enhanceAssessment();
   initDealBanner();
