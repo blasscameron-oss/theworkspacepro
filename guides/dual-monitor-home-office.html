@@ -374,6 +374,238 @@
       margin-top: var(--space-xs, 4px);
     }
   </style>
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much should I spend on a dual monitor home office setup?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can build a solid dual-monitor setup for $600-1,200 depending on monitor quality. Budget-friendly: two 24-inch 1080p monitors at $150-200 each plus a $50-70 dual monitor arm. Mid-range: two 27-inch QHD monitors at $300-400 each plus a $100-150 arm. Premium: two 27-inch 4K monitors at $500-700 each plus a premium arm. Factor in a good monitor arm—it's the most important accessory."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need two identical monitors for a dual monitor setup?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not at all. Many people run a primary monitor (larger, higher resolution) and a secondary monitor (smaller, lower resolution) perfectly happily. The main consideration is that mismatched resolutions and sizes can create a jarring experience when moving the cursor between screens. As long as the refresh rates and response times are close enough for your use case, mixing monitors works fine."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can my computer support dual monitors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most modern computers support dual monitors. Check your PC's graphics card or laptop's video outputs: you need at least two video outputs (HDMI, DisplayPort, USB-C, or Thunderbolt). If your computer only has one output, a USB-to-HDMI adapter ($15-30) can add a second display. Apple Silicon Macs (M1, M2, M3) have specific limitations—some only support one external display natively and need a DisplayLink adapter for dual monitors. Always check your specific model's specs before buying."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I use a dual monitor arm or two single arms?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Two single arms give you more flexibility—you can position each monitor independently, move them closer or farther apart, and adjust height and tilt separately. A dual monitor arm is cleaner (one clamp, one cable management channel) but limits independent positioning. For most home offices, two single arms are the better choice. If desk space is extremely tight, a dual arm saves clamp area."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the ideal desk size for a dual monitor setup?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Minimum: 55 inches wide by 28 inches deep. This gives you enough width for two 24-inch monitors side by side with some space for a laptop or speakers. Recommended: 60-72 inches wide by 30 inches deep. This comfortably fits two 27-inch monitors, leaves room for a laptop and accessories, and gives proper viewing distance. Depth is critical—at 24 inches deep, 27-inch monitors will feel uncomfortably close."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I handle cable management for two monitors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A dual monitor arm with built-in cable management is the cleanest solution—most arms have channels that route cables along the arm and down a single central post to the desk. Below the desk, a cable tray collects both monitor cables plus your keyboard, mouse, and power cables. Use velcro ties to bundle pairs (power + signal for each monitor) every 6-8 inches. Label both ends of each cable with small wraps or tape for future troubleshooting."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I mount both monitors on arms or keep one on its stand?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mount both on arms. Once you experience the adjustability of a monitor arm—height, tilt, swivel, rotation, and distance—you'll never want to go back to a fixed stand. The disparity between an arm-mounted and stand-mounted monitor side by side will drive you crazy because they'll never match height or distance perfectly. Budget $50-70 per arm (or $100-150 for a quality dual arm) and consider it a required investment."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use a 34-inch ultrawide instead of two monitors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, and many people prefer it. An ultrawide gives you the screen real estate of two monitors without the bezel gap in the middle. It's better for full-screen applications (no break between screens) and works beautifully with window management tools. The trade-offs: you can't angle monitors toward you (which reduces side-screen glare), and if the monitor fails, you lose everything. For gaming and creative work, ultrawide is often superior. For productivity with lots of side-by-side windows, dual monitors still have advantages."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I reduce eye strain with two monitors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Four strategies: (1) Match brightness and color temperature on both monitors—disparity forces your eyes to constantly adjust. (2) Position monitors at the same distance from your eyes—don't have one closer than the other. (3) Use bias lighting behind the monitors to reduce the perceived contrast between the bright screens and the dark wall. (4) Take frequent breaks and look at something 20+ feet away for 20 seconds every 20 minutes (the 20-20-20 rule)."
+      }
+    }
+    ]
+  }
+  </script>
+
+  <style>
+    /* FAQ Accordion */
+    .faq-accordion {
+      margin: var(--space-lg) 0;
+    }
+    .faq-item {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      margin-bottom: var(--space-sm, 8px);
+      overflow: hidden;
+      background: var(--color-surface, #fff);
+    }
+    .faq-question {
+      width: 100%;
+      padding: var(--space-md, 12px) var(--space-lg, 16px);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-display, inherit);
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--color-text, #1a202c);
+      line-height: 1.4;
+    }
+    .faq-question:hover {
+      background: var(--color-bg-alt, #f7fafc);
+    }
+    .faq-chevron {
+      transition: transform 0.3s ease;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      margin-left: var(--space-sm, 8px);
+    }
+    .faq-question[aria-expanded="true"] .faq-chevron {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      padding: 0 var(--space-lg, 16px) var(--space-md, 12px);
+      color: var(--color-muted, #718096);
+      line-height: 1.6;
+    }
+    .faq-answer p {
+      margin: 0;
+    }
+    
+    /* Best For Badges */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+    .badge--best { background: #dbeafe; color: #1e40af; }
+    .badge--value { background: #dcfce7; color: #166534; }
+    .badge--budget { background: #fed7aa; color: #9a3412; }
+    .badge--premium { background: #fef3c7; color: #92400e; }
+    .badge--ergonomic { background: #e9d5ff; color: #6b21a8; }
+    
+    /* Product Thumbnails */
+    .product-thumb {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      object-fit: cover;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    
+    /* Related Guides Carousel */
+    .related-guides {
+      max-width: var(--max-width, 1200px);
+      margin: var(--space-2xl, 32px) auto;
+      padding: 0 var(--space-lg, 16px);
+    }
+    .related-guides__title {
+      font-family: var(--font-display, serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: var(--space-lg, 16px);
+    }
+    .related-guides__carousel {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--space-md, 12px);
+    }
+    @media (max-width: 640px) {
+      .related-guides__carousel {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: var(--space-sm, 8px);
+        padding-bottom: var(--space-sm, 8px);
+      }
+      .related-guides__carousel .guide-card {
+        min-width: 240px;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+      }
+    }
+    .related-guides .guide-card {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      padding: var(--space-lg, 16px);
+      background: var(--color-surface, #fff);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .related-guides .guide-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+    .guide-card__badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--color-primary-light, #e0f2fe);
+      color: var(--color-primary, #0369a1);
+      margin-bottom: var(--space-xs, 4px);
+    }
+    .guide-card__title {
+      font-family: var(--font-display, serif);
+      font-size: 1rem;
+      font-weight: 600;
+      margin: var(--space-xs, 4px) 0;
+      line-height: 1.3;
+    }
+    .guide-card__desc {
+      font-size: 0.85rem;
+      color: var(--color-muted, #718096);
+      line-height: 1.4;
+      margin: var(--space-xs, 4px) 0;
+    }
+    .guide-card__link {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-primary, #0369a1);
+      margin-top: var(--space-xs, 4px);
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -1129,11 +1361,83 @@
         <div class="faq-accordion">
           <div class="faq-item">
             <button class="faq-question" aria-expanded="true" aria-controls="faq-answer-0">
-              What size desk do I need for dual 27-inch monitors?
+              How much should I spend on a dual monitor home office setup?
               <span class="faq-chevron" aria-hidden="true">▾</span>
             </button>
             <div class="faq-answer" id="faq-answer-0">
-              <p>Minimum 55 inches wide if using monitor arms, 60 inches if using the stock stands. Depth should be at least 24 inches, ideally 30 inches. Two 27-inch monitors side by side measure roughly 48 inches across without stands, so at 55 inches you have about 3.5 inches of margin on each side.</p>
+              <p>You can build a solid dual-monitor setup for $600-1,200 depending on monitor quality. Budget-friendly: two 24-inch 1080p monitors at $150-200 each plus a $50-70 dual monitor arm. Mid-range: two 27-inch QHD monitors at $300-400 each plus a $100-150 arm. Premium: two 27-inch 4K monitors at $500-700 each plus a premium arm. Factor in a good monitor arm—it&#39;s the most important accessory.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
+              Do I need two identical monitors for a dual monitor setup?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-1" hidden>
+              <p>Not at all. Many people run a primary monitor (larger, higher resolution) and a secondary monitor (smaller, lower resolution) perfectly happily. The main consideration is that mismatched resolutions and sizes can create a jarring experience when moving the cursor between screens. As long as the refresh rates and response times are close enough for your use case, mixing monitors works fine.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
+              Can my computer support dual monitors?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-2" hidden>
+              <p>Most modern computers support dual monitors. Check your PC&#39;s graphics card or laptop&#39;s video outputs: you need at least two video outputs (HDMI, DisplayPort, USB-C, or Thunderbolt). If your computer only has one output, a USB-to-HDMI adapter ($15-30) can add a second display. Apple Silicon Macs (M1, M2, M3) have specific limitations—some only support one external display natively and need a DisplayLink adapter for dual monitors. Always check your specific model&#39;s specs before buying.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
+              Should I use a dual monitor arm or two single arms?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-3" hidden>
+              <p>Two single arms give you more flexibility—you can position each monitor independently, move them closer or farther apart, and adjust height and tilt separately. A dual monitor arm is cleaner (one clamp, one cable management channel) but limits independent positioning. For most home offices, two single arms are the better choice. If desk space is extremely tight, a dual arm saves clamp area.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
+              What&#39;s the ideal desk size for a dual monitor setup?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-4" hidden>
+              <p>Minimum: 55 inches wide by 28 inches deep. This gives you enough width for two 24-inch monitors side by side with some space for a laptop or speakers. Recommended: 60-72 inches wide by 30 inches deep. This comfortably fits two 27-inch monitors, leaves room for a laptop and accessories, and gives proper viewing distance. Depth is critical—at 24 inches deep, 27-inch monitors will feel uncomfortably close.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-5">
+              How do I handle cable management for two monitors?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-5" hidden>
+              <p>A dual monitor arm with built-in cable management is the cleanest solution—most arms have channels that route cables along the arm and down a single central post to the desk. Below the desk, a cable tray collects both monitor cables plus your keyboard, mouse, and power cables. Use velcro ties to bundle pairs (power + signal for each monitor) every 6-8 inches. Label both ends of each cable with small wraps or tape for future troubleshooting.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-6">
+              Should I mount both monitors on arms or keep one on its stand?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-6" hidden>
+              <p>Mount both on arms. Once you experience the adjustability of a monitor arm—height, tilt, swivel, rotation, and distance—you&#39;ll never want to go back to a fixed stand. The disparity between an arm-mounted and stand-mounted monitor side by side will drive you crazy because they&#39;ll never match height or distance perfectly. Budget $50-70 per arm (or $100-150 for a quality dual arm) and consider it a required investment.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-7">
+              Can I use a 34-inch ultrawide instead of two monitors?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-7" hidden>
+              <p>Yes, and many people prefer it. An ultrawide gives you the screen real estate of two monitors without the bezel gap in the middle. It&#39;s better for full-screen applications (no break between screens) and works beautifully with window management tools. The trade-offs: you can&#39;t angle monitors toward you (which reduces side-screen glare), and if the monitor fails, you lose everything. For gaming and creative work, ultrawide is often superior. For productivity with lots of side-by-side windows, dual monitors still have advantages.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-8">
+              How do I reduce eye strain with two monitors?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-8" hidden>
+              <p>Four strategies: (1) Match brightness and color temperature on both monitors—disparity forces your eyes to constantly adjust. (2) Position monitors at the same distance from your eyes—don&#39;t have one closer than the other. (3) Use bias lighting behind the monitors to reduce the perceived contrast between the bright screens and the dark wall. (4) Take frequent breaks and look at something 20+ feet away for 20 seconds every 20 minutes (the 20-20-20 rule).</p>
             </div>
           </div>
         </div><h2>Bottom Line</h2>
@@ -1227,7 +1531,48 @@
           <a href="/guides/home-office-budget-setup-under-1000/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
       <div class="guide-card__content">
         <span class="guide-card__badge">Budget</span>
-        <h3 class="guide-card__title">Home Office Budget Setup Under  
+        <h3 class="guide-card__title">Home Office Budget Setup Under
+        <section class="related-guides">
+          <h2 class="related-guides__title">Related Guides</h2>
+          <div class="related-guides__carousel">
+            <a href="/guides/dual-monitor-setup-productivity/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Monitors</span>
+        <h3 class="guide-card__title">Dual Monitor Setup for Productivity</h3>
+        <p class="guide-card__desc">Boost your productivity with the ideal dual monitor setup and workflow tips.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/home-office-lighting-guide/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Lighting</span>
+        <h3 class="guide-card__title">Home Office Lighting Guide</h3>
+        <p class="guide-card__desc">The definitive guide to lighting your home office for productivity and comfort.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/ergonomic-accessories-home-office/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Accessories</span>
+        <h3 class="guide-card__title">Ergonomic Accessories for Home Office</h3>
+        <p class="guide-card__desc">Must-have ergonomic accessories for a comfortable and healthy home office.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/home-office-budget-setup-under-1000/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Budget</span>
+        <h3 class="guide-card__title">Home Office Budget Setup Under   
+  <section class="newsletter-bar",000</h3>
+        <p class="guide-card__desc">Build a complete home office on a budget of under   
+  <section class="newsletter-bar",000.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          </div>
+        </section>
+
+    
   <section class="newsletter-bar",000</h3>
         <p class="guide-card__desc">Build a complete home office on a budget of under  
   <section class="newsletter-bar",000.</p>
@@ -1297,6 +1642,21 @@
         var expanded = this.getAttribute('aria-expanded') === 'true';
         var answer = this.nextElementSibling;
         
+        this.setAttribute('aria-expanded', !expanded);
+        if (answer) {
+          answer.hidden = expanded;
+        }
+      });
+    });
+  });
+  </script>
+
+  <script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var answer = this.nextElementSibling;
         this.setAttribute('aria-expanded', !expanded);
         if (answer) {
           answer.hidden = expanded;

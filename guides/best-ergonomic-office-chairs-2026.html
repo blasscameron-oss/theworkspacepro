@@ -374,6 +374,238 @@
       margin-top: var(--space-xs, 4px);
     }
   </style>
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much should I spend on an ergonomic office chair?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on how many hours you sit per day. For 4-6 hours/day, a $250-$500 chair (SIHOO, Branch, Ticova) is a solid investment. For 6-8 hours/day, jump to the $500-$1,000 range (Haworth Soji, Steelcase Series 1). For 8+ hours/day, the $1,000+ flagship chairs (Aeron, Leap v2, Gesture, Embody) are worth every penny—they'll last 10-15 years and save you from chronic back pain."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Mesh or foam seat—which is better?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mesh is more breathable (cooler for long sessions), easier to clean, and distributes pressure differently than foam. Foam is more familiar, provides a more consistent surface pressure, and can be softer initially. There's no universal winner—it's personal preference. If you tend to run hot or sit for very long sessions, mesh is probably better. If you prefer a cushioned feel and don't have temperature concerns, foam is fine."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I buy a used or refurbished high-end chair?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely—this is one of the best ways to get a flagship chair at a mid-range price. The Aeron, Leap v2, and Gesture are all built to last 10-15 years, and the used market for them is excellent. Expect to pay $400-$700 for a used Aeron or Leap v2, compared to $1,200-$1,500 new. Look for refurbishers that replace the gas cylinder, casters, and arm pads."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long should an ergonomic office chair last?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Budget-tier chairs ($200-$500) should last 3-5 years with daily use. Mid-range chairs ($500-$1,000) typically last 5-8 years. Flagship chairs ($1,000-$1,800) are built to last 10-15 years—and they come with 12-year warranties to back that up. The key limiting factors are: mesh sagging (mesh chairs), seat cushion compression (foam chairs), gas cylinder degradation, and caster wear."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need a headrest on my ergonomic chair?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Headrests are useful for reclining and passive sitting—if you lean back while reading or thinking, a headrest prevents neck strain. However, most ergonomic experts recommend against using a headrest while actively working at a desk, because it encourages you to lean your head back, which can strain your neck when you're looking forward at a monitor. A headrest is nice to have for breaks, but shouldn't be primary support during active work."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What size chair do I need?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Size matters more than most people realize. Under 5'4\": look for chairs with a low minimum seat height (15\" or lower) and shorter seat depth like the Aeron Size A or Haworth Soji Small. 5'4\"-5'10\": the sweet spot for most chairs, focus on adjustability. 5'10\"-6'3\": you need taller seat height range and longer depth, look at the Hbada E3, Steelcase Gesture, or Aeron Size C. Over 6'3\": prioritize chairs with tall backrests and headrest options."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it worth spending $1,000+ on an office chair?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If you sit for 8+ hours a day, yes. A $1,395 Aeron amortized over 12 years is about $0.30 per day. For that, you get a chair that supports your spine properly, lasts longer than any budget option, and has high resale value. The math changes if you sit less than 4 hours a day—in that case, a $350 Branch is likely sufficient."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do seat depth adjustment, 3D vs 4D armrests, and lumbar support affect comfort?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Seat depth adjustment is critical for anyone outside average height range—it prevents pressure behind the knees or insufficient thigh support. 4D armrests (height, width, depth, pivot) are significantly better than 3D (missing depth), especially if you use multiple devices. Lumbar support with both height and depth adjustment is the gold standard; height-only is acceptable; fixed lumbar bumps are not worth considering."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I finance a high-end ergonomic chair?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes—many retailers offer financing through Affirm, Klarna, or store-specific payment plans. Herman Miller, Steelcase, and Branch all offer financing options. Interest rates vary from 0% promotional offers to standard APR. Financing makes sense if the chair will improve your health and productivity, and you can pay it off within the promotional period. Avoid high-interest longer-term plans—a used chair is better than paying 20%+ APR."
+      }
+    }
+    ]
+  }
+  </script>
+
+  <style>
+    /* FAQ Accordion */
+    .faq-accordion {
+      margin: var(--space-lg) 0;
+    }
+    .faq-item {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      margin-bottom: var(--space-sm, 8px);
+      overflow: hidden;
+      background: var(--color-surface, #fff);
+    }
+    .faq-question {
+      width: 100%;
+      padding: var(--space-md, 12px) var(--space-lg, 16px);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-display, inherit);
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--color-text, #1a202c);
+      line-height: 1.4;
+    }
+    .faq-question:hover {
+      background: var(--color-bg-alt, #f7fafc);
+    }
+    .faq-chevron {
+      transition: transform 0.3s ease;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      margin-left: var(--space-sm, 8px);
+    }
+    .faq-question[aria-expanded="true"] .faq-chevron {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      padding: 0 var(--space-lg, 16px) var(--space-md, 12px);
+      color: var(--color-muted, #718096);
+      line-height: 1.6;
+    }
+    .faq-answer p {
+      margin: 0;
+    }
+    
+    /* Best For Badges */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+    .badge--best { background: #dbeafe; color: #1e40af; }
+    .badge--value { background: #dcfce7; color: #166534; }
+    .badge--budget { background: #fed7aa; color: #9a3412; }
+    .badge--premium { background: #fef3c7; color: #92400e; }
+    .badge--ergonomic { background: #e9d5ff; color: #6b21a8; }
+    
+    /* Product Thumbnails */
+    .product-thumb {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      object-fit: cover;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    
+    /* Related Guides Carousel */
+    .related-guides {
+      max-width: var(--max-width, 1200px);
+      margin: var(--space-2xl, 32px) auto;
+      padding: 0 var(--space-lg, 16px);
+    }
+    .related-guides__title {
+      font-family: var(--font-display, serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: var(--space-lg, 16px);
+    }
+    .related-guides__carousel {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--space-md, 12px);
+    }
+    @media (max-width: 640px) {
+      .related-guides__carousel {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: var(--space-sm, 8px);
+        padding-bottom: var(--space-sm, 8px);
+      }
+      .related-guides__carousel .guide-card {
+        min-width: 240px;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+      }
+    }
+    .related-guides .guide-card {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      padding: var(--space-lg, 16px);
+      background: var(--color-surface, #fff);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .related-guides .guide-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+    .guide-card__badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--color-primary-light, #e0f2fe);
+      color: var(--color-primary, #0369a1);
+      margin-bottom: var(--space-xs, 4px);
+    }
+    .guide-card__title {
+      font-family: var(--font-display, serif);
+      font-size: 1rem;
+      font-weight: 600;
+      margin: var(--space-xs, 4px) 0;
+      line-height: 1.3;
+    }
+    .guide-card__desc {
+      font-size: 0.85rem;
+      color: var(--color-muted, #718096);
+      line-height: 1.4;
+      margin: var(--space-xs, 4px) 0;
+    }
+    .guide-card__link {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-primary, #0369a1);
+      margin-top: var(--space-xs, 4px);
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -807,7 +1039,79 @@
               <span class="faq-chevron" aria-hidden="true">▾</span>
             </button>
             <div class="faq-answer" id="faq-answer-0">
-              <p>It depends on how many hours you sit per day. For 4-6 hours/day, a $250-$500 chair (SIHOO, Branch, Ticova) is a solid investment. For 6-8 hours/day, jump to the $500-$1,000 range (Haworth Soji, Steelcase Series 1). For 8+ hours/day, the $1,000+ flagship chairs (Aeron, Leap v2, Gesture, Embody) are worth every penny — they'll last 10-15 years and save you from chronic back pain.</p>
+              <p>It depends on how many hours you sit per day. For 4-6 hours/day, a $250-$500 chair (SIHOO, Branch, Ticova) is a solid investment. For 6-8 hours/day, jump to the $500-$1,000 range (Haworth Soji, Steelcase Series 1). For 8+ hours/day, the $1,000+ flagship chairs (Aeron, Leap v2, Gesture, Embody) are worth every penny—they&#39;ll last 10-15 years and save you from chronic back pain.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
+              Mesh or foam seat—which is better?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-1" hidden>
+              <p>Mesh is more breathable (cooler for long sessions), easier to clean, and distributes pressure differently than foam. Foam is more familiar, provides a more consistent surface pressure, and can be softer initially. There&#39;s no universal winner—it&#39;s personal preference. If you tend to run hot or sit for very long sessions, mesh is probably better. If you prefer a cushioned feel and don&#39;t have temperature concerns, foam is fine.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
+              Should I buy a used or refurbished high-end chair?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-2" hidden>
+              <p>Absolutely—this is one of the best ways to get a flagship chair at a mid-range price. The Aeron, Leap v2, and Gesture are all built to last 10-15 years, and the used market for them is excellent. Expect to pay $400-$700 for a used Aeron or Leap v2, compared to $1,200-$1,500 new. Look for refurbishers that replace the gas cylinder, casters, and arm pads.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
+              How long should an ergonomic office chair last?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-3" hidden>
+              <p>Budget-tier chairs ($200-$500) should last 3-5 years with daily use. Mid-range chairs ($500-$1,000) typically last 5-8 years. Flagship chairs ($1,000-$1,800) are built to last 10-15 years—and they come with 12-year warranties to back that up. The key limiting factors are: mesh sagging (mesh chairs), seat cushion compression (foam chairs), gas cylinder degradation, and caster wear.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
+              Do I need a headrest on my ergonomic chair?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-4" hidden>
+              <p>Headrests are useful for reclining and passive sitting—if you lean back while reading or thinking, a headrest prevents neck strain. However, most ergonomic experts recommend against using a headrest while actively working at a desk, because it encourages you to lean your head back, which can strain your neck when you&#39;re looking forward at a monitor. A headrest is nice to have for breaks, but shouldn&#39;t be primary support during active work.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-5">
+              What size chair do I need?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-5" hidden>
+              <p>Size matters more than most people realize. Under 5&#39;4&quot;: look for chairs with a low minimum seat height (15&quot; or lower) and shorter seat depth like the Aeron Size A or Haworth Soji Small. 5&#39;4&quot;-5&#39;10&quot;: the sweet spot for most chairs, focus on adjustability. 5&#39;10&quot;-6&#39;3&quot;: you need taller seat height range and longer depth, look at the Hbada E3, Steelcase Gesture, or Aeron Size C. Over 6&#39;3&quot;: prioritize chairs with tall backrests and headrest options.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-6">
+              Is it worth spending $1,000+ on an office chair?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-6" hidden>
+              <p>If you sit for 8+ hours a day, yes. A $1,395 Aeron amortized over 12 years is about $0.30 per day. For that, you get a chair that supports your spine properly, lasts longer than any budget option, and has high resale value. The math changes if you sit less than 4 hours a day—in that case, a $350 Branch is likely sufficient.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-7">
+              How do seat depth adjustment, 3D vs 4D armrests, and lumbar support affect comfort?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-7" hidden>
+              <p>Seat depth adjustment is critical for anyone outside average height range—it prevents pressure behind the knees or insufficient thigh support. 4D armrests (height, width, depth, pivot) are significantly better than 3D (missing depth), especially if you use multiple devices. Lumbar support with both height and depth adjustment is the gold standard; height-only is acceptable; fixed lumbar bumps are not worth considering.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-8">
+              Can I finance a high-end ergonomic chair?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-8" hidden>
+              <p>Yes—many retailers offer financing through Affirm, Klarna, or store-specific payment plans. Herman Miller, Steelcase, and Branch all offer financing options. Interest rates vary from 0% promotional offers to standard APR. Financing makes sense if the chair will improve your health and productivity, and you can pay it off within the promotional period. Avoid high-interest longer-term plans—a used chair is better than paying 20%+ APR.</p>
             </div>
           </div>
         </div><h2>Related Resources</h2>
@@ -929,6 +1233,45 @@
     </a>
           </div>
         </section>
+        <section class="related-guides">
+          <h2 class="related-guides__title">Related Guides</h2>
+          <div class="related-guides__carousel">
+            <a href="/guides/ergonomic-office-chair-buying-guide/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Chairs</span>
+        <h3 class="guide-card__title">Ergonomic Office Chair Buying Guide</h3>
+        <p class="guide-card__desc">Complete guide to buying the right ergonomic office chair for your needs.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/back-pain-ergonomic-setup/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Ergonomics</span>
+        <h3 class="guide-card__title">Back Pain Ergonomic Setup</h3>
+        <p class="guide-card__desc">Set up your workspace to prevent and manage back pain with proper ergonomics.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/best-standing-desk-mat-for-concrete-floors/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Accessories</span>
+        <h3 class="guide-card__title">Best Standing Desk Mats for Concrete Floors</h3>
+        <p class="guide-card__desc">Top anti-fatigue mats for standing desks on concrete floors.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/best-standing-desks-under-500/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Desks</span>
+        <h3 class="guide-card__title">Best Standing Desks Under $500</h3>
+        <p class="guide-card__desc">Best budget-friendly standing desks under $500 for your home office.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          </div>
+        </section>
+
+  
 
   
 
@@ -982,6 +1325,21 @@
         var expanded = this.getAttribute('aria-expanded') === 'true';
         var answer = this.nextElementSibling;
         
+        this.setAttribute('aria-expanded', !expanded);
+        if (answer) {
+          answer.hidden = expanded;
+        }
+      });
+    });
+  });
+  </script>
+
+  <script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var answer = this.nextElementSibling;
         this.setAttribute('aria-expanded', !expanded);
         if (answer) {
           answer.hidden = expanded;

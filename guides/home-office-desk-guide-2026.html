@@ -380,6 +380,230 @@
       margin-top: var(--space-xs, 4px);
     }
   </style>
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What size desk do I need for a home office?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Minimum: 48 x 24 inches for a single monitor setup. Sweet spot: 55-60 x 28-30 inches for a dual monitor setup with room for paperwork. If you have the space, 72 x 30 inches is ideal for a full workstation with room to spread out. Depth is more important than most people realize—24 inches minimum, 30 is better for comfortable viewing distance with larger monitors."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is a standing desk really worth the extra cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If you already stand during the day or plan to, yes. The health benefits of alternating between sitting and standing are well-documented: reduced back pain, better circulation, and improved energy levels. But a standing desk is only worth it if you actually use the standing feature. If you suspect you'll keep the desk at sitting height 95% of the time, spend the money on a better chair instead."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Fixed height vs. adjustable—which is better for most people?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For most home office workers, an adjustable standing desk is better. Even if you rarely stand, being able to change the desk height slightly throughout the day—a few inches up for a more open posture, a few inches down for focused work—provides ergonomic benefits. Fixed-height desks are simpler, cheaper, and more stable, but they offer zero flexibility."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How important is desk depth for ergonomics?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Very important. At 24 inches deep, a 27-inch monitor at proper viewing distance (arm's length, about 20-28 inches) leaves almost no room for a keyboard and mouse. At 30 inches deep, you can position the monitor at the ideal distance with room for comfortable typing. For dual monitors or ultrawide setups, 30 inches is strongly recommended."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I get a desk with drawers or keep it open?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Drawers are convenient but reduce legroom and can interfere with chair positioning. If your desk is against a wall, a shallow pencil drawer is fine. For corner desks or situations where you sit facing the desk straight on, skip the drawers—they'll bump your knees. Under-desk storage (rolling file cabinet or adhesive drawer) is a better solution that doesn't sacrifice legroom."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much weight do I need a desk to support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most home office setups (monitor, laptop, keyboard, mouse, lamp) weigh under 50 lbs total. Add another 10-15 lbs for a monitor arm. For dual monitor setups, plan for 60-80 lbs. Standing desks should have a weight capacity of at least 150 lbs to handle the load plus some margin. Fixed-height desks with steel frames often support 300+ lbs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use a dining table or countertop as a desk?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can, and many people do. The key consideration is height: dining tables are typically 30 inches (slightly higher than a 29-inch desk) and kitchen counters are 36 inches (standing height). If the height works for your body, any flat, stable surface can function as a desk. The limitations are depth (tables are often shallower than desks) and cable management (no grommets)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does desk material matter for ergonomics?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Material doesn't directly affect ergonomics (you're not touching the desk surface while typing), but it affects durability, appearance, and feel. Solid wood feels premium and lasts decades. Laminate/particleboard is affordable but can chip or warp. Steel frames provide the best stability. The ergonomics come from proper height, depth, and positioning—not the material of the surface."
+      }
+    }
+    ]
+  }
+  </script>
+
+  <style>
+    /* FAQ Accordion */
+    .faq-accordion {
+      margin: var(--space-lg) 0;
+    }
+    .faq-item {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      margin-bottom: var(--space-sm, 8px);
+      overflow: hidden;
+      background: var(--color-surface, #fff);
+    }
+    .faq-question {
+      width: 100%;
+      padding: var(--space-md, 12px) var(--space-lg, 16px);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-display, inherit);
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--color-text, #1a202c);
+      line-height: 1.4;
+    }
+    .faq-question:hover {
+      background: var(--color-bg-alt, #f7fafc);
+    }
+    .faq-chevron {
+      transition: transform 0.3s ease;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      margin-left: var(--space-sm, 8px);
+    }
+    .faq-question[aria-expanded="true"] .faq-chevron {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      padding: 0 var(--space-lg, 16px) var(--space-md, 12px);
+      color: var(--color-muted, #718096);
+      line-height: 1.6;
+    }
+    .faq-answer p {
+      margin: 0;
+    }
+    
+    /* Best For Badges */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+    .badge--best { background: #dbeafe; color: #1e40af; }
+    .badge--value { background: #dcfce7; color: #166534; }
+    .badge--budget { background: #fed7aa; color: #9a3412; }
+    .badge--premium { background: #fef3c7; color: #92400e; }
+    .badge--ergonomic { background: #e9d5ff; color: #6b21a8; }
+    
+    /* Product Thumbnails */
+    .product-thumb {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      object-fit: cover;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    
+    /* Related Guides Carousel */
+    .related-guides {
+      max-width: var(--max-width, 1200px);
+      margin: var(--space-2xl, 32px) auto;
+      padding: 0 var(--space-lg, 16px);
+    }
+    .related-guides__title {
+      font-family: var(--font-display, serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: var(--space-lg, 16px);
+    }
+    .related-guides__carousel {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--space-md, 12px);
+    }
+    @media (max-width: 640px) {
+      .related-guides__carousel {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: var(--space-sm, 8px);
+        padding-bottom: var(--space-sm, 8px);
+      }
+      .related-guides__carousel .guide-card {
+        min-width: 240px;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+      }
+    }
+    .related-guides .guide-card {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      padding: var(--space-lg, 16px);
+      background: var(--color-surface, #fff);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .related-guides .guide-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+    .guide-card__badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--color-primary-light, #e0f2fe);
+      color: var(--color-primary, #0369a1);
+      margin-bottom: var(--space-xs, 4px);
+    }
+    .guide-card__title {
+      font-family: var(--font-display, serif);
+      font-size: 1rem;
+      font-weight: 600;
+      margin: var(--space-xs, 4px) 0;
+      line-height: 1.3;
+    }
+    .guide-card__desc {
+      font-size: 0.85rem;
+      color: var(--color-muted, #718096);
+      line-height: 1.4;
+      margin: var(--space-xs, 4px) 0;
+    }
+    .guide-card__link {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-primary, #0369a1);
+      margin-top: var(--space-xs, 4px);
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -980,11 +1204,74 @@
         <div class="faq-accordion">
           <div class="faq-item">
             <button class="faq-question" aria-expanded="true" aria-controls="faq-answer-0">
-              Should I get a standing desk or a fixed desk?
+              What size desk do I need for a home office?
               <span class="faq-chevron" aria-hidden="true">▾</span>
             </button>
             <div class="faq-answer" id="faq-answer-0">
-              <p>Standing desks are almost always the better choice for home offices where you spend 4+ hours a day. The ability to switch between sitting and standing reduces back pain, improves circulation, and keeps you more alert. Fixed desks still make sense for very tight budgets ($200 or less), spaces where you can't run power to the desk, or secondary workspaces used for short periods.</p>
+              <p>Minimum: 48 x 24 inches for a single monitor setup. Sweet spot: 55-60 x 28-30 inches for a dual monitor setup with room for paperwork. If you have the space, 72 x 30 inches is ideal for a full workstation with room to spread out. Depth is more important than most people realize—24 inches minimum, 30 is better for comfortable viewing distance with larger monitors.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
+              Is a standing desk really worth the extra cost?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-1" hidden>
+              <p>If you already stand during the day or plan to, yes. The health benefits of alternating between sitting and standing are well-documented: reduced back pain, better circulation, and improved energy levels. But a standing desk is only worth it if you actually use the standing feature. If you suspect you&#39;ll keep the desk at sitting height 95% of the time, spend the money on a better chair instead.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
+              Fixed height vs. adjustable—which is better for most people?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-2" hidden>
+              <p>For most home office workers, an adjustable standing desk is better. Even if you rarely stand, being able to change the desk height slightly throughout the day—a few inches up for a more open posture, a few inches down for focused work—provides ergonomic benefits. Fixed-height desks are simpler, cheaper, and more stable, but they offer zero flexibility.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
+              How important is desk depth for ergonomics?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-3" hidden>
+              <p>Very important. At 24 inches deep, a 27-inch monitor at proper viewing distance (arm&#39;s length, about 20-28 inches) leaves almost no room for a keyboard and mouse. At 30 inches deep, you can position the monitor at the ideal distance with room for comfortable typing. For dual monitors or ultrawide setups, 30 inches is strongly recommended.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
+              Should I get a desk with drawers or keep it open?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-4" hidden>
+              <p>Drawers are convenient but reduce legroom and can interfere with chair positioning. If your desk is against a wall, a shallow pencil drawer is fine. For corner desks or situations where you sit facing the desk straight on, skip the drawers—they&#39;ll bump your knees. Under-desk storage (rolling file cabinet or adhesive drawer) is a better solution that doesn&#39;t sacrifice legroom.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-5">
+              How much weight do I need a desk to support?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-5" hidden>
+              <p>Most home office setups (monitor, laptop, keyboard, mouse, lamp) weigh under 50 lbs total. Add another 10-15 lbs for a monitor arm. For dual monitor setups, plan for 60-80 lbs. Standing desks should have a weight capacity of at least 150 lbs to handle the load plus some margin. Fixed-height desks with steel frames often support 300+ lbs.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-6">
+              Can I use a dining table or countertop as a desk?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-6" hidden>
+              <p>You can, and many people do. The key consideration is height: dining tables are typically 30 inches (slightly higher than a 29-inch desk) and kitchen counters are 36 inches (standing height). If the height works for your body, any flat, stable surface can function as a desk. The limitations are depth (tables are often shallower than desks) and cable management (no grommets).</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-7">
+              Does desk material matter for ergonomics?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-7" hidden>
+              <p>Material doesn&#39;t directly affect ergonomics (you&#39;re not touching the desk surface while typing), but it affects durability, appearance, and feel. Solid wood feels premium and lasts decades. Laminate/particleboard is affordable but can chip or warp. Steel frames provide the best stability. The ergonomics come from proper height, depth, and positioning—not the material of the surface.</p>
             </div>
           </div>
         </div><h2>Bottom Line</h2>
@@ -1078,7 +1365,48 @@
           <a href="/guides/home-office-budget-setup-under-1000/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
       <div class="guide-card__content">
         <span class="guide-card__badge">Budget</span>
-        <h3 class="guide-card__title">Home Office Budget Setup Under  
+        <h3 class="guide-card__title">Home Office Budget Setup Under
+        <section class="related-guides">
+          <h2 class="related-guides__title">Related Guides</h2>
+          <div class="related-guides__carousel">
+            <a href="/guides/best-standing-desks-under-500/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Desks</span>
+        <h3 class="guide-card__title">Best Standing Desks Under $500</h3>
+        <p class="guide-card__desc">Best budget-friendly standing desks under $500 for your home office.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/dual-monitor-home-office/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Monitors</span>
+        <h3 class="guide-card__title">Dual Monitor Home Office Setup</h3>
+        <p class="guide-card__desc">Everything you need for a productive dual-monitor home office setup.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/ergonomic-accessories-home-office/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Accessories</span>
+        <h3 class="guide-card__title">Ergonomic Accessories for Home Office</h3>
+        <p class="guide-card__desc">Must-have ergonomic accessories for a comfortable and healthy home office.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/home-office-budget-setup-under-1000/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Budget</span>
+        <h3 class="guide-card__title">Home Office Budget Setup Under   
+  <section class="newsletter-bar",000</h3>
+        <p class="guide-card__desc">Build a complete home office on a budget of under   
+  <section class="newsletter-bar",000.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          </div>
+        </section>
+
+    
   <section class="newsletter-bar",000</h3>
         <p class="guide-card__desc">Build a complete home office on a budget of under  
   <section class="newsletter-bar",000.</p>
@@ -1148,6 +1476,21 @@
         var expanded = this.getAttribute('aria-expanded') === 'true';
         var answer = this.nextElementSibling;
         
+        this.setAttribute('aria-expanded', !expanded);
+        if (answer) {
+          answer.hidden = expanded;
+        }
+      });
+    });
+  });
+  </script>
+
+  <script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var answer = this.nextElementSibling;
         this.setAttribute('aria-expanded', !expanded);
         if (answer) {
           answer.hidden = expanded;

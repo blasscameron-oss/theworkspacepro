@@ -374,6 +374,238 @@
       margin-top: var(--space-xs, 4px);
     }
   </style>
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Are gaming chairs actually good for ergonomics?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most gaming chairs are not good for ergonomics—they're designed to look like racing bucket seats, with aggressive side bolsters that force your hips into a narrowed position. This restricts natural movement and can worsen lower back tension. The fixed lumbar pillows included with most gaming chairs provide one-size-fits-none support. If you want both aesthetics and ergonomics, look at the Herman Miller Embody Gaming chair, Steelcase Gesture, or a quality ergonomic chair with a headrest."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I use a standing desk for gaming?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A standing desk is excellent for gaming because it lets you change posture between matches. During loading screens, between rounds, or during cutscenes, you can stand up, stretch, and reset your position. This breaks up the continuous sitting that causes the most fatigue. A desktop that sits on your existing desk works well if you don't want to replace your entire gaming desk."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does monitor height really matter for gaming?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely—it affects both comfort and performance. If your monitor is too low, you'll crane your neck forward, causing upper back and neck strain during long sessions. If it's too high, you'll look up, straining your eyes and causing dry eye. The top of the screen should be at or slightly below eye level. A monitor arm gives you the ability to fine-tune height, angle, and distance for each game genre."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the best desk height for gaming?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For keyboard and mouse gaming, your elbows should be at roughly 90 degrees with forearms parallel to the floor. For controller gaming, you may want the desk slightly lower so your arms rest more naturally in your lap. A standard desk at 29-30 inches works for most people, but if you find yourself hunching, a keyboard tray can help. Standing desk converters are also great for switching between seated and standing gaming."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How important is wrist support for gaming?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Very important—especially for mouse-heavy genres like FPS, MOBA, and RTS games. A good mouse pad with a wrist rest provides support between intense aiming sessions. A vertical mouse or trackball can help if you already have wrist pain. If you game for 3+ hours at a time, wrist stretches and regular breaks are essential to prevent repetitive strain injuries."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I get a headset or speakers for gaming ergonomics?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A good headset keeps your neck in a neutral position—no hunching to hear better. Look for lightweight headsets under 300g to reduce neck strain during long sessions. If you prefer speakers, position them at ear level and equal distance from your head. Wireless headsets eliminate cable pull that can tug on your head during intense moments."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the ideal room lighting for gaming?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bias lighting behind your monitor reduces eye strain by balancing the contrast between the bright screen and dark walls. Avoid having a bright light source directly behind or above your monitor—it creates glare. A dimmable lamp to the side provides ambient light without washing out the screen. RGB strip lighting can look great but make sure it's indirect light, not directly in your field of view."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I set up cable management for a gaming PC?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cable management for gaming is more complex because you have thicker cables (display cables, power cables, headset cables) and peripheral cables that may need to reach further. Use a cable raceway under the desk to bundle the large power and display cables. Use a cable sleeve for the bundle going from your desk to your PC tower. Keep keyboard and mouse cables tidy with a cable bungee or adhesive clips."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is RGB lighting helpful or just a distraction for gaming ergonomics?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "RGB can help with ergonomics if used as indirect ambient lighting—it reduces the contrast between your screen and the room, which reduces eye strain. Set RGB strips to a warm white or soft color at about 30-50% brightness. Avoid flashing or strobing effects in your peripheral vision—they can cause eye fatigue and headaches during long sessions."
+      }
+    }
+    ]
+  }
+  </script>
+
+  <style>
+    /* FAQ Accordion */
+    .faq-accordion {
+      margin: var(--space-lg) 0;
+    }
+    .faq-item {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      margin-bottom: var(--space-sm, 8px);
+      overflow: hidden;
+      background: var(--color-surface, #fff);
+    }
+    .faq-question {
+      width: 100%;
+      padding: var(--space-md, 12px) var(--space-lg, 16px);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-display, inherit);
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--color-text, #1a202c);
+      line-height: 1.4;
+    }
+    .faq-question:hover {
+      background: var(--color-bg-alt, #f7fafc);
+    }
+    .faq-chevron {
+      transition: transform 0.3s ease;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      margin-left: var(--space-sm, 8px);
+    }
+    .faq-question[aria-expanded="true"] .faq-chevron {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      padding: 0 var(--space-lg, 16px) var(--space-md, 12px);
+      color: var(--color-muted, #718096);
+      line-height: 1.6;
+    }
+    .faq-answer p {
+      margin: 0;
+    }
+    
+    /* Best For Badges */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+    .badge--best { background: #dbeafe; color: #1e40af; }
+    .badge--value { background: #dcfce7; color: #166534; }
+    .badge--budget { background: #fed7aa; color: #9a3412; }
+    .badge--premium { background: #fef3c7; color: #92400e; }
+    .badge--ergonomic { background: #e9d5ff; color: #6b21a8; }
+    
+    /* Product Thumbnails */
+    .product-thumb {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      object-fit: cover;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    
+    /* Related Guides Carousel */
+    .related-guides {
+      max-width: var(--max-width, 1200px);
+      margin: var(--space-2xl, 32px) auto;
+      padding: 0 var(--space-lg, 16px);
+    }
+    .related-guides__title {
+      font-family: var(--font-display, serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: var(--space-lg, 16px);
+    }
+    .related-guides__carousel {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--space-md, 12px);
+    }
+    @media (max-width: 640px) {
+      .related-guides__carousel {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: var(--space-sm, 8px);
+        padding-bottom: var(--space-sm, 8px);
+      }
+      .related-guides__carousel .guide-card {
+        min-width: 240px;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+      }
+    }
+    .related-guides .guide-card {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      padding: var(--space-lg, 16px);
+      background: var(--color-surface, #fff);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .related-guides .guide-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+    .guide-card__badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--color-primary-light, #e0f2fe);
+      color: var(--color-primary, #0369a1);
+      margin-bottom: var(--space-xs, 4px);
+    }
+    .guide-card__title {
+      font-family: var(--font-display, serif);
+      font-size: 1rem;
+      font-weight: 600;
+      margin: var(--space-xs, 4px) 0;
+      line-height: 1.3;
+    }
+    .guide-card__desc {
+      font-size: 0.85rem;
+      color: var(--color-muted, #718096);
+      line-height: 1.4;
+      margin: var(--space-xs, 4px) 0;
+    }
+    .guide-card__link {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-primary, #0369a1);
+      margin-top: var(--space-xs, 4px);
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -882,11 +1114,83 @@
         <div class="faq-accordion">
           <div class="faq-item">
             <button class="faq-question" aria-expanded="true" aria-controls="faq-answer-0">
-              I&#39;m a competitive FPS player. Should I get a gaming chair or an office chair?
+              Are gaming chairs actually good for ergonomics?
               <span class="faq-chevron" aria-hidden="true">▾</span>
             </button>
             <div class="faq-answer" id="faq-answer-0">
-              <p>It depends on your budget and how long you play. For under $400, an ergonomic office chair from a reputable brand (Steelcase Series 1 or V2, or a refurbished Aeron) will outperform any gaming chair in the same price range. Above $500, the Secretlab Titan Evo is competitive with office chairs and offers better aesthetic options. Above $1,000, the Herman Miller Embody Gaming or Logitech Embody is objectively better than any gaming chair.</p>
+              <p>Most gaming chairs are not good for ergonomics—they&#39;re designed to look like racing bucket seats, with aggressive side bolsters that force your hips into a narrowed position. This restricts natural movement and can worsen lower back tension. The fixed lumbar pillows included with most gaming chairs provide one-size-fits-none support. If you want both aesthetics and ergonomics, look at the Herman Miller Embody Gaming chair, Steelcase Gesture, or a quality ergonomic chair with a headrest.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
+              Should I use a standing desk for gaming?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-1" hidden>
+              <p>A standing desk is excellent for gaming because it lets you change posture between matches. During loading screens, between rounds, or during cutscenes, you can stand up, stretch, and reset your position. This breaks up the continuous sitting that causes the most fatigue. A desktop that sits on your existing desk works well if you don&#39;t want to replace your entire gaming desk.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
+              Does monitor height really matter for gaming?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-2" hidden>
+              <p>Absolutely—it affects both comfort and performance. If your monitor is too low, you&#39;ll crane your neck forward, causing upper back and neck strain during long sessions. If it&#39;s too high, you&#39;ll look up, straining your eyes and causing dry eye. The top of the screen should be at or slightly below eye level. A monitor arm gives you the ability to fine-tune height, angle, and distance for each game genre.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
+              What&#39;s the best desk height for gaming?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-3" hidden>
+              <p>For keyboard and mouse gaming, your elbows should be at roughly 90 degrees with forearms parallel to the floor. For controller gaming, you may want the desk slightly lower so your arms rest more naturally in your lap. A standard desk at 29-30 inches works for most people, but if you find yourself hunching, a keyboard tray can help. Standing desk converters are also great for switching between seated and standing gaming.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
+              How important is wrist support for gaming?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-4" hidden>
+              <p>Very important—especially for mouse-heavy genres like FPS, MOBA, and RTS games. A good mouse pad with a wrist rest provides support between intense aiming sessions. A vertical mouse or trackball can help if you already have wrist pain. If you game for 3+ hours at a time, wrist stretches and regular breaks are essential to prevent repetitive strain injuries.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-5">
+              Should I get a headset or speakers for gaming ergonomics?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-5" hidden>
+              <p>A good headset keeps your neck in a neutral position—no hunching to hear better. Look for lightweight headsets under 300g to reduce neck strain during long sessions. If you prefer speakers, position them at ear level and equal distance from your head. Wireless headsets eliminate cable pull that can tug on your head during intense moments.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-6">
+              What&#39;s the ideal room lighting for gaming?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-6" hidden>
+              <p>Bias lighting behind your monitor reduces eye strain by balancing the contrast between the bright screen and dark walls. Avoid having a bright light source directly behind or above your monitor—it creates glare. A dimmable lamp to the side provides ambient light without washing out the screen. RGB strip lighting can look great but make sure it&#39;s indirect light, not directly in your field of view.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-7">
+              How do I set up cable management for a gaming PC?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-7" hidden>
+              <p>Cable management for gaming is more complex because you have thicker cables (display cables, power cables, headset cables) and peripheral cables that may need to reach further. Use a cable raceway under the desk to bundle the large power and display cables. Use a cable sleeve for the bundle going from your desk to your PC tower. Keep keyboard and mouse cables tidy with a cable bungee or adhesive clips.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-8">
+              Is RGB lighting helpful or just a distraction for gaming ergonomics?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-8" hidden>
+              <p>RGB can help with ergonomics if used as indirect ambient lighting—it reduces the contrast between your screen and the room, which reduces eye strain. Set RGB strips to a warm white or soft color at about 30-50% brightness. Avoid flashing or strobing effects in your peripheral vision—they can cause eye fatigue and headaches during long sessions.</p>
             </div>
           </div>
         </div><h2>Bottom Line: Start With Your Pain Points</h2>
@@ -986,7 +1290,48 @@
           <a href="/guides/home-office-budget-setup-under-1000/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
       <div class="guide-card__content">
         <span class="guide-card__badge">Budget</span>
-        <h3 class="guide-card__title">Home Office Budget Setup Under  
+        <h3 class="guide-card__title">Home Office Budget Setup Under
+        <section class="related-guides">
+          <h2 class="related-guides__title">Related Guides</h2>
+          <div class="related-guides__carousel">
+            <a href="/guides/back-pain-ergonomic-setup/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Ergonomics</span>
+        <h3 class="guide-card__title">Back Pain Ergonomic Setup</h3>
+        <p class="guide-card__desc">Set up your workspace to prevent and manage back pain with proper ergonomics.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/ergonomic-accessories-home-office/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Accessories</span>
+        <h3 class="guide-card__title">Ergonomic Accessories for Home Office</h3>
+        <p class="guide-card__desc">Must-have ergonomic accessories for a comfortable and healthy home office.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/ergonomic-office-chair-buying-guide/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Chairs</span>
+        <h3 class="guide-card__title">Ergonomic Office Chair Buying Guide</h3>
+        <p class="guide-card__desc">Complete guide to buying the right ergonomic office chair for your needs.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/home-office-budget-setup-under-1000/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Budget</span>
+        <h3 class="guide-card__title">Home Office Budget Setup Under   
+  <section class="newsletter-bar",000</h3>
+        <p class="guide-card__desc">Build a complete home office on a budget of under   
+  <section class="newsletter-bar",000.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          </div>
+        </section>
+
+    
   <section class="newsletter-bar",000</h3>
         <p class="guide-card__desc">Build a complete home office on a budget of under  
   <section class="newsletter-bar",000.</p>
@@ -1056,6 +1401,21 @@
         var expanded = this.getAttribute('aria-expanded') === 'true';
         var answer = this.nextElementSibling;
         
+        this.setAttribute('aria-expanded', !expanded);
+        if (answer) {
+          answer.hidden = expanded;
+        }
+      });
+    });
+  });
+  </script>
+
+  <script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var answer = this.nextElementSibling;
         this.setAttribute('aria-expanded', !expanded);
         if (answer) {
           answer.hidden = expanded;

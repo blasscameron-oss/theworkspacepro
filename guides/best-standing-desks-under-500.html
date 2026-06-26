@@ -445,6 +445,238 @@
       margin-top: var(--space-xs, 4px);
     }
   </style>
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is a $300 standing desk worth buying, or should I save up for a more expensive one?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A $300 standing desk is absolutely worth buying if you need a desk now and have a hard budget cap. The Flexispot E7 and SHW both offer electric height adjustment at this price, and they'll get the job done for 3-5 years. The main trade-offs are stability at max height (some wobble), fewer features (no programmable presets or anti-collision), and shorter warranties. If you expect to keep the desk for 7+ years, saving for a $600-800 model makes sense. If you need a desk today, $300 gets you a perfectly serviceable one."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between a single-motor and dual-motor standing desk?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Single-motor desks use one motor connected to both legs via a crossbar. Dual-motor desks have separate motors in each leg. For the sub-$500 category, single-motor is the norm. Dual-motor is better for heavier loads, faster lifting, and smoother operation—but they rarely appear under $500. At this price point, focus on stability and weight capacity rather than motor count."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hand crank vs. electric—which is better for daily use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Electric is dramatically more convenient for daily adjustments. Pressing a button takes 5 seconds; cranking takes 30-60 seconds. That friction adds up over a year of daily transitions. A hand-crank desk is fine if you only adjust height once a day, or if you're on a very tight budget, but for frequent transitions, the $50-100 premium for electric is one of the best investments you can make."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much wobble is normal for a budget standing desk at full height?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Some wobble is normal at standing height (40-50 inches) on any desk, but it should be minimal—a few millimeters of sway when you lean on it, not a full-fledged shimmy when you type. The Flexispot E7 is the most stable in the sub-$500 range, with minimal wobble even at max height. C-frame desks wobble more than T-frame desks. If wobble bothers you, keep the desk at a lower height or budget for a T-frame model."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use a standing desk with a treadmill or under-desk bike?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, with a few caveats. You need a desk with enough height range to accommodate your setup—most standing desks go from 28-48 inches, which works for standard treadmills. At walking/biking height, you'll want the desk at 40-45 inches depending on your height. Make sure the desk has enough depth to fit your monitor arm off-center so the treadmill can sit under the desk. A wider desktop (55-60 inches) is ideal for treadmill setups."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What size desktop should I get for a home office?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "48x24 inches is the minimum for a single-monitor laptop setup. 55x24 inches is the sweet spot for single-monitor with paperwork. 60x30 inches (if you can fit it) is ideal for dual monitors or an ultrawide. Depth matters more than most people realize—24 inches minimum, 30 inches is better for comfortable viewing distance with large monitors."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How difficult is it to assemble a budget standing desk?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most budget standing desks take 30-60 minutes to assemble with basic tools. The Flexispot E7 and SHW both come with illustrated instructions and include an Allen wrench. The hardest part is typically mounting the legs to the frame crossbars and flipping the desk upright. Two people make assembly much easier."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do standing desks come with cable management features?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most budget standing desks include a basic mesh cable tray that mounts under the desktop. These are functional but not elegant—they'll hold a power strip and some cables, but you'll want aftermarket velcro ties and possibly a J-channel raceway for a truly clean look. Some models (Flexispot E7) include grommet holes for routing cables through the desktop, which is a nice touch."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will a standing desk under $500 hold a dual-monitor setup?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, if the total load (monitors + mount + laptop + accessories) stays under 100-150 lbs. Most monitors weigh 10-15 lbs each, a dual monitor arm adds 5-8 lbs, and a laptop adds 3-5 lbs—so you're well within the weight capacity. The bigger concern is desktop depth: 24 inches minimum for dual 24-inch monitors, 30 inches recommended for 27-inch monitors. Also budget for a good monitor arm since you'll want to reposition screens."
+      }
+    }
+    ]
+  }
+  </script>
+
+  <style>
+    /* FAQ Accordion */
+    .faq-accordion {
+      margin: var(--space-lg) 0;
+    }
+    .faq-item {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      margin-bottom: var(--space-sm, 8px);
+      overflow: hidden;
+      background: var(--color-surface, #fff);
+    }
+    .faq-question {
+      width: 100%;
+      padding: var(--space-md, 12px) var(--space-lg, 16px);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-display, inherit);
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--color-text, #1a202c);
+      line-height: 1.4;
+    }
+    .faq-question:hover {
+      background: var(--color-bg-alt, #f7fafc);
+    }
+    .faq-chevron {
+      transition: transform 0.3s ease;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      margin-left: var(--space-sm, 8px);
+    }
+    .faq-question[aria-expanded="true"] .faq-chevron {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      padding: 0 var(--space-lg, 16px) var(--space-md, 12px);
+      color: var(--color-muted, #718096);
+      line-height: 1.6;
+    }
+    .faq-answer p {
+      margin: 0;
+    }
+    
+    /* Best For Badges */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+    .badge--best { background: #dbeafe; color: #1e40af; }
+    .badge--value { background: #dcfce7; color: #166534; }
+    .badge--budget { background: #fed7aa; color: #9a3412; }
+    .badge--premium { background: #fef3c7; color: #92400e; }
+    .badge--ergonomic { background: #e9d5ff; color: #6b21a8; }
+    
+    /* Product Thumbnails */
+    .product-thumb {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      object-fit: cover;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    
+    /* Related Guides Carousel */
+    .related-guides {
+      max-width: var(--max-width, 1200px);
+      margin: var(--space-2xl, 32px) auto;
+      padding: 0 var(--space-lg, 16px);
+    }
+    .related-guides__title {
+      font-family: var(--font-display, serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: var(--space-lg, 16px);
+    }
+    .related-guides__carousel {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--space-md, 12px);
+    }
+    @media (max-width: 640px) {
+      .related-guides__carousel {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: var(--space-sm, 8px);
+        padding-bottom: var(--space-sm, 8px);
+      }
+      .related-guides__carousel .guide-card {
+        min-width: 240px;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+      }
+    }
+    .related-guides .guide-card {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      padding: var(--space-lg, 16px);
+      background: var(--color-surface, #fff);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .related-guides .guide-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+    .guide-card__badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--color-primary-light, #e0f2fe);
+      color: var(--color-primary, #0369a1);
+      margin-bottom: var(--space-xs, 4px);
+    }
+    .guide-card__title {
+      font-family: var(--font-display, serif);
+      font-size: 1rem;
+      font-weight: 600;
+      margin: var(--space-xs, 4px) 0;
+      line-height: 1.3;
+    }
+    .guide-card__desc {
+      font-size: 0.85rem;
+      color: var(--color-muted, #718096);
+      line-height: 1.4;
+      margin: var(--space-xs, 4px) 0;
+    }
+    .guide-card__link {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-primary, #0369a1);
+      margin-top: var(--space-xs, 4px);
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -892,83 +1124,83 @@
         <div class="faq-accordion">
           <div class="faq-item">
             <button class="faq-question" aria-expanded="true" aria-controls="faq-answer-0">
-              How much should I spend on a standing desk?
+              Is a $300 standing desk worth buying, or should I save up for a more expensive one?
               <span class="faq-chevron" aria-hidden="true">▾</span>
             </button>
             <div class="faq-answer" id="faq-answer-0">
-              <p>For a reliable electric standing desk that won't wobble, expect to spend $300-$500. Under $300, you'll get either a manual crank desk or a single-motor electric desk with compromises in height range, stability, or build quality. Over $500, the returns diminish quickly for typical use - you're paying for larger desktops, more customization, and slightly better stability at maximum height.</p>
+              <p>A $300 standing desk is absolutely worth buying if you need a desk now and have a hard budget cap. The Flexispot E7 and SHW both offer electric height adjustment at this price, and they&#39;ll get the job done for 3-5 years. The main trade-offs are stability at max height (some wobble), fewer features (no programmable presets or anti-collision), and shorter warranties. If you expect to keep the desk for 7+ years, saving for a $600-800 model makes sense. If you need a desk today, $300 gets you a perfectly serviceable one.</p>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
-              Is a manual crank standing desk worth it?
+              What&#39;s the difference between a single-motor and dual-motor standing desk?
               <span class="faq-chevron" aria-hidden="true">▾</span>
             </button>
             <div class="faq-answer" id="faq-answer-1" hidden>
-              <p>Yes, if your budget is tight and you won't adjust your desk more than 2-3 times a day. Manual crank desks are simpler, cheaper, and more reliable than electric ones - there's nothing electronic to break. The downside is effort and time: a full height adjustment takes 30-60 seconds of turning. If you're the type who switches between sitting and standing every hour, you'll want electric.</p>
+              <p>Single-motor desks use one motor connected to both legs via a crossbar. Dual-motor desks have separate motors in each leg. For the sub-$500 category, single-motor is the norm. Dual-motor is better for heavier loads, faster lifting, and smoother operation—but they rarely appear under $500. At this price point, focus on stability and weight capacity rather than motor count.</p>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
-              Do standing desks help with back pain?
+              Hand crank vs. electric—which is better for daily use?
               <span class="faq-chevron" aria-hidden="true">▾</span>
             </button>
             <div class="faq-answer" id="faq-answer-2" hidden>
-              <p>For many people, yes - but with caveats. Standing reduces the static load on your lumbar spine and engages your core and leg muscles. A 2018 Cochrane review found moderate evidence that sit-stand desks reduce sitting time, which is associated with reduced back pain in some studies. However, standing all day can cause its own pain (foot fatigue, joint strain, lower back tightness from poor posture). The key is alternating between sitting and standing every 30-45 minutes, not replacing one static posture with another.</p>
+              <p>Electric is dramatically more convenient for daily adjustments. Pressing a button takes 5 seconds; cranking takes 30-60 seconds. That friction adds up over a year of daily transitions. A hand-crank desk is fine if you only adjust height once a day, or if you&#39;re on a very tight budget, but for frequent transitions, the $50-100 premium for electric is one of the best investments you can make.</p>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
-              How much weight can a standing desk hold?
+              How much wobble is normal for a budget standing desk at full height?
               <span class="faq-chevron" aria-hidden="true">▾</span>
             </button>
             <div class="faq-answer" id="faq-answer-3" hidden>
-              <p>It depends on the model. Budget manual crank desks like the IKEA TROTTEN are rated for around 110 pounds. Mid-range electric desks hold 150-175 pounds. The best budget options (like the Branch at 243 lbs) and premium desks (Uplift V2 at 355 lbs) can handle multi-monitor setups with heavy PCs. Keep in mind that load capacity decreases and wobble increases as the desk rises - your heaviest gear should be centered on the desktop.</p>
+              <p>Some wobble is normal at standing height (40-50 inches) on any desk, but it should be minimal—a few millimeters of sway when you lean on it, not a full-fledged shimmy when you type. The Flexispot E7 is the most stable in the sub-$500 range, with minimal wobble even at max height. C-frame desks wobble more than T-frame desks. If wobble bothers you, keep the desk at a lower height or budget for a T-frame model.</p>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
-              What&#39;s the ideal height range for a standing desk?
+              Can I use a standing desk with a treadmill or under-desk bike?
               <span class="faq-chevron" aria-hidden="true">▾</span>
             </button>
             <div class="faq-answer" id="faq-answer-4" hidden>
-              <p>For most people between 5'4" and 6', a range of 28 to 48 inches works well. The desk should reach below your seated elbow height (sitting, about 25-29 inches) and above your standing elbow height (standing, about 40-45 inches). If you're outside that height range, look for desks with extended ranges - the Branch (25-50 in) and Uplift V2 (25.5-51.5 in) are both good options for shorter and taller users.</p>
+              <p>Yes, with a few caveats. You need a desk with enough height range to accommodate your setup—most standing desks go from 28-48 inches, which works for standard treadmills. At walking/biking height, you&#39;ll want the desk at 40-45 inches depending on your height. Make sure the desk has enough depth to fit your monitor arm off-center so the treadmill can sit under the desk. A wider desktop (55-60 inches) is ideal for treadmill setups.</p>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-5">
-              What size desk should I get?
+              What size desktop should I get for a home office?
               <span class="faq-chevron" aria-hidden="true">▾</span>
             </button>
             <div class="faq-answer" id="faq-answer-5" hidden>
-              <p>A 48" x 30" desktop is the standard recommendation for most home offices. It comfortably fits two 24" monitors on arms, a laptop, keyboard, mouse, and a desk lamp. If you have more gear (speakers, a large desktop tower, multiple ultrawide monitors), go for 60" x 30" or larger. Under $500, 48" is the most common size. The Branch's 48" x 30" is a good sweet spot - wide enough for dual monitors without dominating the room.</p>
+              <p>48x24 inches is the minimum for a single-monitor laptop setup. 55x24 inches is the sweet spot for single-monitor with paperwork. 60x30 inches (if you can fit it) is ideal for dual monitors or an ultrawide. Depth matters more than most people realize—24 inches minimum, 30 inches is better for comfortable viewing distance with large monitors.</p>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-6">
-              Are standing desks hard to assemble?
+              How difficult is it to assemble a budget standing desk?
               <span class="faq-chevron" aria-hidden="true">▾</span>
             </button>
             <div class="faq-answer" id="faq-answer-6" hidden>
-              <p>Expect 30-60 minutes for most models. Electric desks involve more steps - attaching the frame, mounting motors, routing cables through the legs, installing the control box, and attaching the desktop. Manual crank desks are simpler. The IKEA TROTTEN takes about 45 minutes with an Allen key; the SHW electric is similar. The Branch desk comes mostly pre-assembled - you just attach the feet and control box, then mount the desktop - and takes about 20-30 minutes. For any model, having a drill with a hex bit attachment speeds up the process significantly.</p>
+              <p>Most budget standing desks take 30-60 minutes to assemble with basic tools. The Flexispot E7 and SHW both come with illustrated instructions and include an Allen wrench. The hardest part is typically mounting the legs to the frame crossbars and flipping the desk upright. Two people make assembly much easier.</p>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-7">
-              Do I need a keyboard tray for a standing desk?
+              Do standing desks come with cable management features?
               <span class="faq-chevron" aria-hidden="true">▾</span>
             </button>
             <div class="faq-answer" id="faq-answer-7" hidden>
-              <p>No, and in fact most ergonomists recommend against adding a keyboard tray to a standing desk for daily use. The ideal typing position is with your elbows at 90 degrees and forearms parallel to the floor, which is usually achievable by setting the main desktop at or just below elbow height. Keyboard trays add cost, reduce leg clearance, and create their own ergonomic problems (wrist angle, limited mouse space). The exception is if you use a very thick desktop (deeper than 30 inches) and can't position your monitors close enough. In that case, a shallow keyboard tray can help bridge the gap.</p>
+              <p>Most budget standing desks include a basic mesh cable tray that mounts under the desktop. These are functional but not elegant—they&#39;ll hold a power strip and some cables, but you&#39;ll want aftermarket velcro ties and possibly a J-channel raceway for a truly clean look. Some models (Flexispot E7) include grommet holes for routing cables through the desktop, which is a nice touch.</p>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-8">
-              Still not sure which standing desk fits your body and budget?
+              Will a standing desk under $500 hold a dual-monitor setup?
               <span class="faq-chevron" aria-hidden="true">▾</span>
             </button>
             <div class="faq-answer" id="faq-answer-8" hidden>
-              <p>Take our 2-minute workspace assessment. You'll get personalized recommendations based on your height, gear, and work style - no fluff, no guesswork.</p>
+              <p>Yes, if the total load (monitors + mount + laptop + accessories) stays under 100-150 lbs. Most monitors weigh 10-15 lbs each, a dual monitor arm adds 5-8 lbs, and a laptop adds 3-5 lbs—so you&#39;re well within the weight capacity. The bigger concern is desktop depth: 24 inches minimum for dual 24-inch monitors, 30 inches recommended for 27-inch monitors. Also budget for a good monitor arm since you&#39;ll want to reposition screens.</p>
             </div>
           </div>
         </div></article>
@@ -1027,7 +1259,48 @@
           <a href="/guides/home-office-budget-setup-under-1000/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
       <div class="guide-card__content">
         <span class="guide-card__badge">Budget</span>
-        <h3 class="guide-card__title">Home Office Budget Setup Under  
+        <h3 class="guide-card__title">Home Office Budget Setup Under
+        <section class="related-guides">
+          <h2 class="related-guides__title">Related Guides</h2>
+          <div class="related-guides__carousel">
+            <a href="/guides/home-office-desk-guide-2026/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Desks</span>
+        <h3 class="guide-card__title">Home Office Desk Guide 2026</h3>
+        <p class="guide-card__desc">The complete guide to choosing the right desk for your home office.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/best-standing-desk-mat-for-concrete-floors/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Accessories</span>
+        <h3 class="guide-card__title">Best Standing Desk Mats for Concrete Floors</h3>
+        <p class="guide-card__desc">Top anti-fatigue mats for standing desks on concrete floors.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/home-office-budget-setup-under-1000/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Budget</span>
+        <h3 class="guide-card__title">Home Office Budget Setup Under   
+  <section class="newsletter-bar",000</h3>
+        <p class="guide-card__desc">Build a complete home office on a budget of under   
+  <section class="newsletter-bar",000.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/back-pain-ergonomic-setup/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Ergonomics</span>
+        <h3 class="guide-card__title">Back Pain Ergonomic Setup</h3>
+        <p class="guide-card__desc">Set up your workspace to prevent and manage back pain with proper ergonomics.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          </div>
+        </section>
+
+    
   <section class="newsletter-bar",000</h3>
         <p class="guide-card__desc">Build a complete home office on a budget of under  
   <section class="newsletter-bar",000.</p>
@@ -1114,6 +1387,21 @@
         var expanded = this.getAttribute('aria-expanded') === 'true';
         var answer = this.nextElementSibling;
         
+        this.setAttribute('aria-expanded', !expanded);
+        if (answer) {
+          answer.hidden = expanded;
+        }
+      });
+    });
+  });
+  </script>
+
+  <script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var answer = this.nextElementSibling;
         this.setAttribute('aria-expanded', !expanded);
         if (answer) {
           answer.hidden = expanded;

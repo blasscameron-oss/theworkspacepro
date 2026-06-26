@@ -374,6 +374,222 @@
       margin-top: var(--space-xs, 4px);
     }
   </style>
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I really need a mat for concrete floors, or can I just stand without one?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You really need a mat. Concrete is one of the hardest surfaces you can stand on—it transfers nearly 100% of impact back into your joints. Without a mat, most people can stand comfortably for about 20-30 minutes. With a quality mat, that extends to 2-4 hours. The difference is the mat's ability to encourage micro-movements in your feet and legs, which keeps blood flowing and prevents the joint stiffness that makes standing miserable."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How thick should a standing desk mat be for concrete floors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For concrete, 3/4 inch (about 19mm) is the sweet spot. Thinner mats (1/2 inch or less) don't provide enough cushioning on a hard substrate like concrete—your feet will feel the floor through them. Thicker mats (1 inch+) can feel unstable and create a tripping hazard at the edges. The Sky Mat and Ergodriven Topo are both in this ideal thickness range. If you're on carpet or vinyl over concrete, you might get away with 1/2 inch, but 3/4 is the safe bet."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are standing desk mats worth it, or are they just another thing to buy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Worth it—but only if you actually stand at your desk. If you're buying a mat hoping it will make you stand more, it probably won't. The mat makes standing more comfortable, which makes it easier to choose to stand when you want to. But the motivation to stand has to come first. If you already stand for at least an hour a day, a mat is a no-brainer upgrade. If you never stand, buy a mat after you've built the habit, not before."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use an anti-fatigue mat on carpet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, but the effect is reduced. Carpet already provides some cushioning and encourages micro-movements on its own (the surface gives slightly under your weight). On low-pile carpet, a mat with a hard base (like the Topo or Ergodriven) works well. On thick plush carpet, the mat may feel unstable or sink into the carpet—look for mats specifically designed for carpet use. The Sky Mat works on both hard floors and low-pile carpet."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are standing desk mats easy to clean? I eat at my desk.",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on the mat material. Rubber mats (Sky Mat) are the easiest to clean—wipe with a damp cloth and mild soap. Fabric or textured mats (Topo) collect crumbs and dust in their crevices and need occasional vacuuming or spot cleaning. Leather or PU mats are wipe-clean but can stain if spills sit too long. If you eat at your desk, get a rubber mat or a smooth-surface mat that you can wipe down easily. Avoid anything with deep texture or fabric."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do standing desk mats work on heated floors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most mats will reduce the effectiveness of radiant floor heating because the mat creates an insulating layer between your feet and the heat source. Rubber and foam are both good insulators. If you have heated floors and want a standing mat, a thinner mat (1/2 inch) will transfer more heat than a thick one. The Ergodriven Topo's hard composite base conducts heat slightly better than thick foam. In practice, most users don't notice a significant difference."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I get a flat mat or a textured/ergonomic mat?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Flat mats (Sky Mat, Cloudpeak) are simpler, cheaper, and easier to clean. They work by providing a cushioned surface that reduces pressure. Textured mats (Topo, Ergodriven) have raised nodes, bumps, and surface contours designed to encourage active standing—shifting weight, rolling your feet, and engaging different muscle groups. The textured mats are more effective for long standing sessions (4+ hours), but they're more expensive and harder to clean. For most people, a quality flat mat is sufficient."
+      }
+    }
+    ]
+  }
+  </script>
+
+  <style>
+    /* FAQ Accordion */
+    .faq-accordion {
+      margin: var(--space-lg) 0;
+    }
+    .faq-item {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      margin-bottom: var(--space-sm, 8px);
+      overflow: hidden;
+      background: var(--color-surface, #fff);
+    }
+    .faq-question {
+      width: 100%;
+      padding: var(--space-md, 12px) var(--space-lg, 16px);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-display, inherit);
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--color-text, #1a202c);
+      line-height: 1.4;
+    }
+    .faq-question:hover {
+      background: var(--color-bg-alt, #f7fafc);
+    }
+    .faq-chevron {
+      transition: transform 0.3s ease;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      margin-left: var(--space-sm, 8px);
+    }
+    .faq-question[aria-expanded="true"] .faq-chevron {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      padding: 0 var(--space-lg, 16px) var(--space-md, 12px);
+      color: var(--color-muted, #718096);
+      line-height: 1.6;
+    }
+    .faq-answer p {
+      margin: 0;
+    }
+    
+    /* Best For Badges */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+    .badge--best { background: #dbeafe; color: #1e40af; }
+    .badge--value { background: #dcfce7; color: #166534; }
+    .badge--budget { background: #fed7aa; color: #9a3412; }
+    .badge--premium { background: #fef3c7; color: #92400e; }
+    .badge--ergonomic { background: #e9d5ff; color: #6b21a8; }
+    
+    /* Product Thumbnails */
+    .product-thumb {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      object-fit: cover;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    
+    /* Related Guides Carousel */
+    .related-guides {
+      max-width: var(--max-width, 1200px);
+      margin: var(--space-2xl, 32px) auto;
+      padding: 0 var(--space-lg, 16px);
+    }
+    .related-guides__title {
+      font-family: var(--font-display, serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: var(--space-lg, 16px);
+    }
+    .related-guides__carousel {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--space-md, 12px);
+    }
+    @media (max-width: 640px) {
+      .related-guides__carousel {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: var(--space-sm, 8px);
+        padding-bottom: var(--space-sm, 8px);
+      }
+      .related-guides__carousel .guide-card {
+        min-width: 240px;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+      }
+    }
+    .related-guides .guide-card {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      padding: var(--space-lg, 16px);
+      background: var(--color-surface, #fff);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .related-guides .guide-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+    .guide-card__badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--color-primary-light, #e0f2fe);
+      color: var(--color-primary, #0369a1);
+      margin-bottom: var(--space-xs, 4px);
+    }
+    .guide-card__title {
+      font-family: var(--font-display, serif);
+      font-size: 1rem;
+      font-weight: 600;
+      margin: var(--space-xs, 4px) 0;
+      line-height: 1.3;
+    }
+    .guide-card__desc {
+      font-size: 0.85rem;
+      color: var(--color-muted, #718096);
+      line-height: 1.4;
+      margin: var(--space-xs, 4px) 0;
+    }
+    .guide-card__link {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-primary, #0369a1);
+      margin-top: var(--space-xs, 4px);
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -737,11 +953,65 @@
         <div class="faq-accordion">
           <div class="faq-item">
             <button class="faq-question" aria-expanded="true" aria-controls="faq-answer-0">
-              Can I use any anti-fatigue mat on concrete?
+              Do I really need a mat for concrete floors, or can I just stand without one?
               <span class="faq-chevron" aria-hidden="true">▾</span>
             </button>
             <div class="faq-answer" id="faq-answer-0">
-              <p>Technically yes, but thin mats (under 3/8") and low-density foam will compress to near-zero effectiveness quickly. On concrete, the mat bears the entire load — there's no carpet or underlayment to help. Spend more on a thicker, denser mat or you'll be standing on a thin rubber layer over concrete, barely better than bare floor.</p>
+              <p>You really need a mat. Concrete is one of the hardest surfaces you can stand on—it transfers nearly 100% of impact back into your joints. Without a mat, most people can stand comfortably for about 20-30 minutes. With a quality mat, that extends to 2-4 hours. The difference is the mat&#39;s ability to encourage micro-movements in your feet and legs, which keeps blood flowing and prevents the joint stiffness that makes standing miserable.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
+              How thick should a standing desk mat be for concrete floors?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-1" hidden>
+              <p>For concrete, 3/4 inch (about 19mm) is the sweet spot. Thinner mats (1/2 inch or less) don&#39;t provide enough cushioning on a hard substrate like concrete—your feet will feel the floor through them. Thicker mats (1 inch+) can feel unstable and create a tripping hazard at the edges. The Sky Mat and Ergodriven Topo are both in this ideal thickness range. If you&#39;re on carpet or vinyl over concrete, you might get away with 1/2 inch, but 3/4 is the safe bet.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
+              Are standing desk mats worth it, or are they just another thing to buy?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-2" hidden>
+              <p>Worth it—but only if you actually stand at your desk. If you&#39;re buying a mat hoping it will make you stand more, it probably won&#39;t. The mat makes standing more comfortable, which makes it easier to choose to stand when you want to. But the motivation to stand has to come first. If you already stand for at least an hour a day, a mat is a no-brainer upgrade. If you never stand, buy a mat after you&#39;ve built the habit, not before.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
+              Can I use an anti-fatigue mat on carpet?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-3" hidden>
+              <p>Yes, but the effect is reduced. Carpet already provides some cushioning and encourages micro-movements on its own (the surface gives slightly under your weight). On low-pile carpet, a mat with a hard base (like the Topo or Ergodriven) works well. On thick plush carpet, the mat may feel unstable or sink into the carpet—look for mats specifically designed for carpet use. The Sky Mat works on both hard floors and low-pile carpet.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
+              Are standing desk mats easy to clean? I eat at my desk.
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-4" hidden>
+              <p>It depends on the mat material. Rubber mats (Sky Mat) are the easiest to clean—wipe with a damp cloth and mild soap. Fabric or textured mats (Topo) collect crumbs and dust in their crevices and need occasional vacuuming or spot cleaning. Leather or PU mats are wipe-clean but can stain if spills sit too long. If you eat at your desk, get a rubber mat or a smooth-surface mat that you can wipe down easily. Avoid anything with deep texture or fabric.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-5">
+              Do standing desk mats work on heated floors?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-5" hidden>
+              <p>Most mats will reduce the effectiveness of radiant floor heating because the mat creates an insulating layer between your feet and the heat source. Rubber and foam are both good insulators. If you have heated floors and want a standing mat, a thinner mat (1/2 inch) will transfer more heat than a thick one. The Ergodriven Topo&#39;s hard composite base conducts heat slightly better than thick foam. In practice, most users don&#39;t notice a significant difference.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-6">
+              Should I get a flat mat or a textured/ergonomic mat?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-6" hidden>
+              <p>Flat mats (Sky Mat, Cloudpeak) are simpler, cheaper, and easier to clean. They work by providing a cushioned surface that reduces pressure. Textured mats (Topo, Ergodriven) have raised nodes, bumps, and surface contours designed to encourage active standing—shifting weight, rolling your feet, and engaging different muscle groups. The textured mats are more effective for long standing sessions (4+ hours), but they&#39;re more expensive and harder to clean. For most people, a quality flat mat is sufficient.</p>
             </div>
           </div>
         </div><h2>Bottom Line</h2>
@@ -848,6 +1118,45 @@
     </a>
           </div>
         </section>
+        <section class="related-guides">
+          <h2 class="related-guides__title">Related Guides</h2>
+          <div class="related-guides__carousel">
+            <a href="/guides/ergonomic-accessories-home-office/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Accessories</span>
+        <h3 class="guide-card__title">Ergonomic Accessories for Home Office</h3>
+        <p class="guide-card__desc">Must-have ergonomic accessories for a comfortable and healthy home office.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/best-standing-desks-under-500/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Desks</span>
+        <h3 class="guide-card__title">Best Standing Desks Under $500</h3>
+        <p class="guide-card__desc">Best budget-friendly standing desks under $500 for your home office.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/back-pain-ergonomic-setup/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Ergonomics</span>
+        <h3 class="guide-card__title">Back Pain Ergonomic Setup</h3>
+        <p class="guide-card__desc">Set up your workspace to prevent and manage back pain with proper ergonomics.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/best-ergonomic-office-chairs-2026/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Chairs</span>
+        <h3 class="guide-card__title">Best Ergonomic Office Chairs 2026</h3>
+        <p class="guide-card__desc">Full comparison of the best ergonomic office chairs across every budget tier.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          </div>
+        </section>
+
+  
 
   
 
@@ -901,6 +1210,21 @@
         var expanded = this.getAttribute('aria-expanded') === 'true';
         var answer = this.nextElementSibling;
         
+        this.setAttribute('aria-expanded', !expanded);
+        if (answer) {
+          answer.hidden = expanded;
+        }
+      });
+    });
+  });
+  </script>
+
+  <script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var answer = this.nextElementSibling;
         this.setAttribute('aria-expanded', !expanded);
         if (answer) {
           answer.hidden = expanded;

@@ -381,6 +381,230 @@
       margin-top: var(--space-xs, 4px);
     }
   </style>
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does using two monitors actually make you more productive?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes—but the gain depends on your workflow. Meta-analyses of dual-monitor studies show a 9-30% productivity increase depending on the task. The biggest gains come from tasks that require frequent cross-referencing: coding (reference + editor), writing (research + document), design (tools + canvas), and financial analysis (spreadsheets + reports). For single-focus tasks like deep reading or data entry, the second screen can be a distraction."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which monitor should be my primary display?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The one directly in front of you. Your primary monitor should be centered on your desk and at eye level. Your secondary monitor should be to the side, angled slightly toward you. If one monitor is higher resolution, larger, or has better color accuracy, that should be your primary. For most people, the primary monitor handles active work and the secondary handles reference material, communication tools, and media."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How should I arrange my two monitors—side by side or stacked?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Side by side is more common and works better for most workflows because it preserves the natural horizontal scanning pattern of your eyes. Stacked monitors (one above the other) save horizontal desk space and can work well for tasks where you need vertical reference (coding with documentation above, video editing with timeline below). Stacked setups require a very sturdy mount and a neck-friendly viewing angle. If you have the desk width, side by side is the safer choice."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the best way to manage windows across two monitors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Built-in OS tools work well: Windows Snap (Win + arrow keys) and macOS (hold Option while dragging). Third-party tools take it further: DisplayFusion (Windows), Magnet (macOS), or Rectangle (macOS, free). These let you create custom snap zones, save window layouts, and move windows between screens with keyboard shortcuts. The key habit: develop muscle memory for sending specific types of windows to specific monitors."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I use the same wallpaper on both monitors or a spanned image?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use different wallpapers or a single spanned image—not the same wallpaper duplicated. A duplicated wallpaper makes the two monitors feel like separate devices rather than one unified workspace. A spanned image creates visual continuity across both screens. Many tools (DisplayFusion, Wallpaper Engine) can set a spanned image across mismatched resolutions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I prevent neck strain with a dual monitor setup?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Proper positioning is critical. The center of your primary monitor should be at eye level. The secondary monitor should be positioned so you don't have to rotate your neck more than 30 degrees to see it. Sit at arm's length from the monitors. Take breaks and consciously move your neck through its full range of motion. If you find yourself constantly turning to one side, consider swapping the primary and secondary roles."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need a high refresh rate monitor for office productivity?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No—60Hz is perfectly adequate for spreadsheets, documents, email, and coding. Higher refresh rates (120Hz, 144Hz) make cursor movement and scrolling feel smoother, which can reduce perceived eye strain during long sessions, but the productivity benefit is marginal. The one exception: if you frequently scroll through long documents or code, the smoother scrolling of 120Hz can subjectively reduce fatigue."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I get a third monitor for ultimate productivity?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Three monitors can be productive for very specific workflows: day trading (multiple real-time data feeds), video editing (preview + timeline + tools), or system administration (multiple server dashboards). For most people, three monitors create too much head movement and visual noise. Two monitors is the sweet spot; three is for specialists. Start with two and add a third only if you consistently find yourself needing more screen real estate."
+      }
+    }
+    ]
+  }
+  </script>
+
+  <style>
+    /* FAQ Accordion */
+    .faq-accordion {
+      margin: var(--space-lg) 0;
+    }
+    .faq-item {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      margin-bottom: var(--space-sm, 8px);
+      overflow: hidden;
+      background: var(--color-surface, #fff);
+    }
+    .faq-question {
+      width: 100%;
+      padding: var(--space-md, 12px) var(--space-lg, 16px);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-display, inherit);
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--color-text, #1a202c);
+      line-height: 1.4;
+    }
+    .faq-question:hover {
+      background: var(--color-bg-alt, #f7fafc);
+    }
+    .faq-chevron {
+      transition: transform 0.3s ease;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      margin-left: var(--space-sm, 8px);
+    }
+    .faq-question[aria-expanded="true"] .faq-chevron {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      padding: 0 var(--space-lg, 16px) var(--space-md, 12px);
+      color: var(--color-muted, #718096);
+      line-height: 1.6;
+    }
+    .faq-answer p {
+      margin: 0;
+    }
+    
+    /* Best For Badges */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+    .badge--best { background: #dbeafe; color: #1e40af; }
+    .badge--value { background: #dcfce7; color: #166534; }
+    .badge--budget { background: #fed7aa; color: #9a3412; }
+    .badge--premium { background: #fef3c7; color: #92400e; }
+    .badge--ergonomic { background: #e9d5ff; color: #6b21a8; }
+    
+    /* Product Thumbnails */
+    .product-thumb {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      object-fit: cover;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    
+    /* Related Guides Carousel */
+    .related-guides {
+      max-width: var(--max-width, 1200px);
+      margin: var(--space-2xl, 32px) auto;
+      padding: 0 var(--space-lg, 16px);
+    }
+    .related-guides__title {
+      font-family: var(--font-display, serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: var(--space-lg, 16px);
+    }
+    .related-guides__carousel {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--space-md, 12px);
+    }
+    @media (max-width: 640px) {
+      .related-guides__carousel {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: var(--space-sm, 8px);
+        padding-bottom: var(--space-sm, 8px);
+      }
+      .related-guides__carousel .guide-card {
+        min-width: 240px;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+      }
+    }
+    .related-guides .guide-card {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      padding: var(--space-lg, 16px);
+      background: var(--color-surface, #fff);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .related-guides .guide-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+    .guide-card__badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--color-primary-light, #e0f2fe);
+      color: var(--color-primary, #0369a1);
+      margin-bottom: var(--space-xs, 4px);
+    }
+    .guide-card__title {
+      font-family: var(--font-display, serif);
+      font-size: 1rem;
+      font-weight: 600;
+      margin: var(--space-xs, 4px) 0;
+      line-height: 1.3;
+    }
+    .guide-card__desc {
+      font-size: 0.85rem;
+      color: var(--color-muted, #718096);
+      line-height: 1.4;
+      margin: var(--space-xs, 4px) 0;
+    }
+    .guide-card__link {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-primary, #0369a1);
+      margin-top: var(--space-xs, 4px);
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -785,74 +1009,74 @@
         <div class="faq-accordion">
           <div class="faq-item">
             <button class="faq-question" aria-expanded="true" aria-controls="faq-answer-0">
-              Can my computer support dual monitors?
+              Does using two monitors actually make you more productive?
               <span class="faq-chevron" aria-hidden="true">▾</span>
             </button>
             <div class="faq-answer" id="faq-answer-0">
-              <p>Most modern computers can. Check your GPU — if you have at least two video outputs (HDMI, DisplayPort, USB-C, or Thunderbolt), you're set. Most laptops from the last five years support at least one external monitor. Apple Silicon Macs (M1/M2/M3/M4) support one or two external displays depending on the chip. If you're unsure, look up your specific model's specifications or check display settings — if it shows two monitors when you plug them in, you're good.</p>
+              <p>Yes—but the gain depends on your workflow. Meta-analyses of dual-monitor studies show a 9-30% productivity increase depending on the task. The biggest gains come from tasks that require frequent cross-referencing: coding (reference + editor), writing (research + document), design (tools + canvas), and financial analysis (spreadsheets + reports). For single-focus tasks like deep reading or data entry, the second screen can be a distraction.</p>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
-              Do I need two identical monitors?
+              Which monitor should be my primary display?
               <span class="faq-chevron" aria-hidden="true">▾</span>
             </button>
             <div class="faq-answer" id="faq-answer-1" hidden>
-              <p>No, but it helps. Matching resolution is the most important factor — mismatched resolutions create size distortion when dragging windows between screens. Matching size and panel type is nice to have but not essential. If your monitors are different sizes, a monitor arm is almost mandatory to get them to the same height and distance. The secondary monitor is often smaller or lower-resolution in practice, and that works fine for reference tasks, communication tools, and media.</p>
+              <p>The one directly in front of you. Your primary monitor should be centered on your desk and at eye level. Your secondary monitor should be to the side, angled slightly toward you. If one monitor is higher resolution, larger, or has better color accuracy, that should be your primary. For most people, the primary monitor handles active work and the secondary handles reference material, communication tools, and media.</p>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
-              Should I use the same wallpaper on both monitors?
+              How should I arrange my two monitors—side by side or stacked?
               <span class="faq-chevron" aria-hidden="true">▾</span>
             </button>
             <div class="faq-answer" id="faq-answer-2" hidden>
-              <p>Personal preference, but there's a practical tip: use a different wallpaper on each monitor, or a single spanning wallpaper with distinct left/right sections. This helps your brain instantly recognize which screen is which when you glance over. If both monitors look identical, you'll occasionally move your mouse to the wrong screen — especially in the first week of a new setup. Tools like DisplayFusion (Windows) let you set per-monitor wallpapers easily.</p>
+              <p>Side by side is more common and works better for most workflows because it preserves the natural horizontal scanning pattern of your eyes. Stacked monitors (one above the other) save horizontal desk space and can work well for tasks where you need vertical reference (coding with documentation above, video editing with timeline below). Stacked setups require a very sturdy mount and a neck-friendly viewing angle. If you have the desk width, side by side is the safer choice.</p>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
-              How do I handle a laptop + external monitor dual setup?
+              What&#39;s the best way to manage windows across two monitors?
               <span class="faq-chevron" aria-hidden="true">▾</span>
             </button>
             <div class="faq-answer" id="faq-answer-3" hidden>
-              <p>Your laptop screen becomes the secondary monitor. The external monitor — ideally larger and at the correct ergonomic height — becomes your primary. Position your laptop off to one side (on a laptop stand at the same height as your external monitor) and angle it toward you. Alternatively, keep your laptop closed in clamshell mode and use two external monitors — this is the most ergonomic option and the setup most power users eventually land on.</p>
+              <p>Built-in OS tools work well: Windows Snap (Win + arrow keys) and macOS (hold Option while dragging). Third-party tools take it further: DisplayFusion (Windows), Magnet (macOS), or Rectangle (macOS, free). These let you create custom snap zones, save window layouts, and move windows between screens with keyboard shortcuts. The key habit: develop muscle memory for sending specific types of windows to specific monitors.</p>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
-              Will dual monitors hurt my productivity?
+              Should I use the same wallpaper on both monitors or a spanned image?
               <span class="faq-chevron" aria-hidden="true">▾</span>
             </button>
             <div class="faq-answer" id="faq-answer-4" hidden>
-              <p>Counterintuitive, but yes — if you set them up poorly. Common pitfalls: putting the primary monitor off-center (you'll twist your neck constantly), mismatching resolutions (drag-and-drop becomes frustrating), or using ultrawide wallpapers that make the bezel gap distracting. The biggest risk is turning your secondary monitor into a distraction machine — keeping email, Slack, and social media always visible. A 2012 University of Michigan study found that visible notifications alone can reduce focus-task performance by up to 20%. Use your second screen for reference materials and active tools, not passive attention drains.</p>
+              <p>Use different wallpapers or a single spanned image—not the same wallpaper duplicated. A duplicated wallpaper makes the two monitors feel like separate devices rather than one unified workspace. A spanned image creates visual continuity across both screens. Many tools (DisplayFusion, Wallpaper Engine) can set a spanned image across mismatched resolutions.</p>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-5">
-              Is 27 inches too big for a dual monitor setup?
+              How do I prevent neck strain with a dual monitor setup?
               <span class="faq-chevron" aria-hidden="true">▾</span>
             </button>
             <div class="faq-answer" id="faq-answer-5" hidden>
-              <p>For most people, 27 inches is the sweet spot. It gives you enough space for two documents side by side on each screen, but it's not so wide that you have to turn your head uncomfortably to see the far edges. If you have a shallow desk (less than 24 inches deep), consider 24-inch monitors instead. If you have a deep desk and sit far enough back, 32-inch monitors can work — but you'll need to sit at least 36 inches away to comfortably see the full width.</p>
+              <p>Proper positioning is critical. The center of your primary monitor should be at eye level. The secondary monitor should be positioned so you don&#39;t have to rotate your neck more than 30 degrees to see it. Sit at arm&#39;s length from the monitors. Take breaks and consciously move your neck through its full range of motion. If you find yourself constantly turning to one side, consider swapping the primary and secondary roles.</p>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-6">
-              Curved or flat monitors for dual setup?
+              Do I need a high refresh rate monitor for office productivity?
               <span class="faq-chevron" aria-hidden="true">▾</span>
             </button>
             <div class="faq-answer" id="faq-answer-6" hidden>
-              <p>Flat. A curved monitor's center of curvature works against you when you pair it with another monitor — the curve is designed for a single screen viewed from a centered position. Two curved monitors in a dual setup create a strange visual mismatch. Stick with flat monitors for dual setups. If you want an ultrawide, get a single curved ultrawide — that's where curves actually work well.</p>
+              <p>No—60Hz is perfectly adequate for spreadsheets, documents, email, and coding. Higher refresh rates (120Hz, 144Hz) make cursor movement and scrolling feel smoother, which can reduce perceived eye strain during long sessions, but the productivity benefit is marginal. The one exception: if you frequently scroll through long documents or code, the smoother scrolling of 120Hz can subjectively reduce fatigue.</p>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-7">
-              How much should I spend on a dual monitor setup?
+              Should I get a third monitor for ultimate productivity?
               <span class="faq-chevron" aria-hidden="true">▾</span>
             </button>
             <div class="faq-answer" id="faq-answer-7" hidden>
-              <p>A realistic budget is $600 to $900 for two mid-range monitors (like the LG 27UN850-W) plus a basic monitor arm. A premium setup with two Dell U2723QE monitors and an Ergotron LX arm runs about $1,200 to $1,400. The entry point — two ASUS ProArt monitors and the Amazon Basics arm — comes in around $650. Remember that this is a setup you'll use for 8+ hours a day for several years. The cost per hour of use is negligible. Don't cheap out on the arm; it's the most impactful $35-to-$250 investment you can make in your daily comfort.</p>
+              <p>Three monitors can be productive for very specific workflows: day trading (multiple real-time data feeds), video editing (preview + timeline + tools), or system administration (multiple server dashboards). For most people, three monitors create too much head movement and visual noise. Two monitors is the sweet spot; three is for specialists. Start with two and add a third only if you consistently find yourself needing more screen real estate.</p>
             </div>
           </div>
         </div><h2>Final Thoughts</h2>
@@ -954,6 +1178,45 @@
     </a>
           </div>
         </section>
+        <section class="related-guides">
+          <h2 class="related-guides__title">Related Guides</h2>
+          <div class="related-guides__carousel">
+            <a href="/guides/dual-monitor-home-office/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Monitors</span>
+        <h3 class="guide-card__title">Dual Monitor Home Office Setup</h3>
+        <p class="guide-card__desc">Everything you need for a productive dual-monitor home office setup.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/home-office-lighting-guide/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Lighting</span>
+        <h3 class="guide-card__title">Home Office Lighting Guide</h3>
+        <p class="guide-card__desc">The definitive guide to lighting your home office for productivity and comfort.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/productive-workspace-mindset/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Mindset</span>
+        <h3 class="guide-card__title">Productive Workspace Mindset</h3>
+        <p class="guide-card__desc">Cultivate a mindset and workspace that maximizes productivity and focus.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/back-pain-ergonomic-setup/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Ergonomics</span>
+        <h3 class="guide-card__title">Back Pain Ergonomic Setup</h3>
+        <p class="guide-card__desc">Set up your workspace to prevent and manage back pain with proper ergonomics.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          </div>
+        </section>
+
+  
 
   
 
@@ -1008,6 +1271,21 @@
         var expanded = this.getAttribute('aria-expanded') === 'true';
         var answer = this.nextElementSibling;
         
+        this.setAttribute('aria-expanded', !expanded);
+        if (answer) {
+          answer.hidden = expanded;
+        }
+      });
+    });
+  });
+  </script>
+
+  <script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var answer = this.nextElementSibling;
         this.setAttribute('aria-expanded', !expanded);
         if (answer) {
           answer.hidden = expanded;

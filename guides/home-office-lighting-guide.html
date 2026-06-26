@@ -374,6 +374,222 @@
       margin-top: var(--space-xs, 4px);
     }
   </style>
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What color temperature is best for a home office?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "3500K-4500K is the sweet spot for most offices. It's warm enough to feel natural and comfortable but cool enough to keep you alert during focused work. If you can adjust your lamp's temperature, use the cooler end during your peak productivity hours (mid-morning through early afternoon) and warm it up as evening approaches. Avoid anything below 2700K during work hours—it's too warm to support concentration. And anything above 5000K for extended periods can feel clinical and increase eye fatigue."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is natural light better than artificial light for working?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, with caveats. Natural light has a CRI of 100 (perfect color rendering) and its shifting color temperature throughout the day supports your natural circadian rhythm automatically. But natural light isn't controllable—it changes with weather, time of day, and season. You need blinds or curtains to manage it. The ideal setup uses natural light as your ambient source (side-positioned desk, perpendicular to the window) supplemented by adjustable artificial task lighting for consistent illumination throughout the day."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How bright should my desk lamp be?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For reading and writing, you want 500-1000 lux at the work surface. For computer work, the light should be bright enough to illuminate your keyboard and any documents without washing out your monitor. A good rule of thumb: if you can hold a book at arm's length in the light of your desk lamp and read it comfortably, the brightness is sufficient. Most quality task lights offer adjustable brightness—set it so the desk area is clearly lit but the screen remains the brightest thing in your field of view."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I get a ring light for video calls?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A ring light works, but it's usually overkill and creates a very specific look—flat, shadowless, and slightly artificial—that's recognizable as a ring light. A better approach is a desk lamp with a diffused shade positioned 45 degrees to the side and slightly above eye level. This gives you directional light that adds depth to your face while still being flattering. If you really want a ring light, get one with adjustable color temperature and brightness."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use smart bulbs instead of a new lamp?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Smart bulbs are a great solution because they let you adjust brightness and color temperature without buying a new lamp. Put a smart bulb in an existing lamp and you've got an adjustable task light. The Hue White Ambiance ($25-30) and LIFX Color ($30) are both excellent options. Smart bulbs won't fix a poorly positioned light source, so make sure your lamp is at the right height and angle before upgrading the bulb."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the best position for a desk lamp?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The ideal position is 45 degrees to the side and slightly above eye level. For a right-handed person, position the lamp on the left side (so your writing hand doesn't cast shadows). For a left-handed person, position it on the right. The light should illuminate your work surface without shining directly in your eyes or creating glare on your monitor. If you can see the bulb from your seated position, it's too high or too bright."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does monitor brightness affect eye strain more than room lighting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes—monitor brightness is the primary driver of eye strain because it's the brightest thing in your field of view and you look at it directly for hours. Your monitor should be bright enough to read comfortably but not so bright that it feels like a light source. A good starting point: set monitor brightness to match the ambient light level in your room. If the room is dark, lower the monitor brightness. If the room is bright, raise it."
+      }
+    }
+    ]
+  }
+  </script>
+
+  <style>
+    /* FAQ Accordion */
+    .faq-accordion {
+      margin: var(--space-lg) 0;
+    }
+    .faq-item {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      margin-bottom: var(--space-sm, 8px);
+      overflow: hidden;
+      background: var(--color-surface, #fff);
+    }
+    .faq-question {
+      width: 100%;
+      padding: var(--space-md, 12px) var(--space-lg, 16px);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-display, inherit);
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--color-text, #1a202c);
+      line-height: 1.4;
+    }
+    .faq-question:hover {
+      background: var(--color-bg-alt, #f7fafc);
+    }
+    .faq-chevron {
+      transition: transform 0.3s ease;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      margin-left: var(--space-sm, 8px);
+    }
+    .faq-question[aria-expanded="true"] .faq-chevron {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      padding: 0 var(--space-lg, 16px) var(--space-md, 12px);
+      color: var(--color-muted, #718096);
+      line-height: 1.6;
+    }
+    .faq-answer p {
+      margin: 0;
+    }
+    
+    /* Best For Badges */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+    .badge--best { background: #dbeafe; color: #1e40af; }
+    .badge--value { background: #dcfce7; color: #166534; }
+    .badge--budget { background: #fed7aa; color: #9a3412; }
+    .badge--premium { background: #fef3c7; color: #92400e; }
+    .badge--ergonomic { background: #e9d5ff; color: #6b21a8; }
+    
+    /* Product Thumbnails */
+    .product-thumb {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      object-fit: cover;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    
+    /* Related Guides Carousel */
+    .related-guides {
+      max-width: var(--max-width, 1200px);
+      margin: var(--space-2xl, 32px) auto;
+      padding: 0 var(--space-lg, 16px);
+    }
+    .related-guides__title {
+      font-family: var(--font-display, serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: var(--space-lg, 16px);
+    }
+    .related-guides__carousel {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--space-md, 12px);
+    }
+    @media (max-width: 640px) {
+      .related-guides__carousel {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: var(--space-sm, 8px);
+        padding-bottom: var(--space-sm, 8px);
+      }
+      .related-guides__carousel .guide-card {
+        min-width: 240px;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+      }
+    }
+    .related-guides .guide-card {
+      border: 1px solid var(--color-border, #e2e8f0);
+      border-radius: var(--radius, 8px);
+      padding: var(--space-lg, 16px);
+      background: var(--color-surface, #fff);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .related-guides .guide-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+    .guide-card__badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--color-primary-light, #e0f2fe);
+      color: var(--color-primary, #0369a1);
+      margin-bottom: var(--space-xs, 4px);
+    }
+    .guide-card__title {
+      font-family: var(--font-display, serif);
+      font-size: 1rem;
+      font-weight: 600;
+      margin: var(--space-xs, 4px) 0;
+      line-height: 1.3;
+    }
+    .guide-card__desc {
+      font-size: 0.85rem;
+      color: var(--color-muted, #718096);
+      line-height: 1.4;
+      margin: var(--space-xs, 4px) 0;
+    }
+    .guide-card__link {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-primary, #0369a1);
+      margin-top: var(--space-xs, 4px);
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -663,76 +879,64 @@
           <div class="faq-item">
             <button class="faq-question" aria-expanded="true" aria-controls="faq-answer-0">
               What color temperature is best for a home office?
-          
-            
-              3500K-4500K is the sweet spot for most offices. It&#8217;s warm enough to feel natural and comfortable but cool enough to keep you alert during focused work. If you can adjust your lamp&#8217;s temperature, use the cooler end during your peak productivity hours (mid-morning through early afternoon) and warm it up as evening approaches. Avoid anything below 2700K during work hours &#8212; it&#8217;s too warm to support concentration. And anything above 5000K for extended periods can feel clinical and increase eye fatigue.
-            
-          
-        
-
-        
-          Is natural light better than artificial light for working?
-          
-            
-              Yes, with caveats. Natural light has a CRI of 100 (perfect color rendering) and its shifting color temperature throughout the day supports your natural circadian rhythm automatically. But natural light isn&#8217;t controllable &#8212; it changes with weather, time of day, and season. You need blinds or curtains to manage it. The ideal setup uses natural light as your ambient source (side-positioned desk, perpendicular to the window) supplemented by adjustable artificial task lighting for consistent illumination throughout the day.
-            
-          
-        
-
-        
-          How bright should my desk lamp be?
-          
-            
-              For reading and writing, you want 500-1000 lux at the work surface. For computer work, the light should be bright enough to illuminate your keyboard and any documents without washing out your monitor. A good rule of thumb: if you can hold a book at arm&#8217;s length in the light of your desk lamp and read it comfortably, the brightness is sufficient. Most quality task lights offer adjustable brightness &#8212; set it so the desk area is clearly lit but the screen remains the brightest thing in your field of view.
-            
-          
-        
-
-        
-          Should I get a ring light for video calls?
-          
-            
-              A ring light works, but it&#8217;s usually overkill and creates a very specific look &#8212; flat, shadowless, and slightly artificial &#8212; that&#8217;s recognizable as a ring light. A better approach is a desk lamp with a diffused shade positioned 45 degrees to the side and slightly above eye level. This gives you directional light that adds depth to your face while still being flattering. If you really want a ring light, get one with adjustable color temperature and brightness (the GVM 8-inch is a solid choice at $40), and position it off to the side rather than directly behind your camera for a more natural look.
-            
-          
-        
-
-        
-          Can I use smart bulbs instead of a new lamp?
-          
-            
-              Absolutely. If you already have a desk lamp with a standard socket, replacing the bulb with an adjustable smart bulb (like the Philips Hue White Ambiance at $25 or the Wyze Bulb at $10) is the cheapest way to get adjustable color temperature and brightness. The limitation is that the light pattern is still determined by the lamp&#8217;s shade and positioning. A smart bulb in a fixed desk lamp won&#8217;t give you the adjustable arm or directional control of a proper task light. Think of smart bulbs as a good first step and a budget upgrade path rather than a permanent solution.
-            
-          
-        
-
-        
-          What&#8217;s bias lighting and do I need it?
-          
-            
-              Bias lighting is a light source placed behind your monitor that illuminates the wall behind it. It reduces the perceived contrast between the bright screen and the dark wall, which significantly reduces eye strain. Yes, you should do it &#8212; it&#8217;s one of the cheapest and most effective things you can do for your visual comfort. A $15 USB-powered LED strip stuck to the back of your monitor is sufficient. If you want something nicer, the MediaLight or Luminoodle bias lighting kits ($25-$40) are designed specifically for this purpose with accurate 6500K color temperature. Just make sure it&#8217;s behind the monitor, not visible from the front, and matches your room&#8217;s ambient color temperature as closely as possible.
-            
-          
-        
-
-        
-          How much should I spend on a desk lamp?
-          
-            
-              You can get a perfectly functional desk lamp for $15 (IKEA TERTIAL plus a decent LED bulb). For $25-$30 you get adjustable color temperature and brightness built in (Tomons, TaoTronics). At the $100+ level, you get premium build quality, zero-glare optical design, and auto-dimming features (BenQ ScreenBar, Dyson Lightcycle). The sweet spot for most people is the $50-80 range from brands like TaoTronics, Brightech, or the Ikea Forsa, which offer adjustable color temp, good CRI (90+), and durable construction. Spend more if eye strain is a chronic problem or if video-call appearance matters to your work. Spend less if you primarily work in a naturally lit room and just need supplemental light for evenings.
-            
-          
-        
-
-        
-        
-        
-        
-          Ready to fix your workspace?
               <span class="faq-chevron" aria-hidden="true">▾</span>
             </button>
             <div class="faq-answer" id="faq-answer-0">
-              <p>Lighting is just one piece of the puzzle. Your chair, desk height, monitor position, keyboard, and mouse all affect how you feel at the end of the day.</p>
+              <p>3500K-4500K is the sweet spot for most offices. It&#39;s warm enough to feel natural and comfortable but cool enough to keep you alert during focused work. If you can adjust your lamp&#39;s temperature, use the cooler end during your peak productivity hours (mid-morning through early afternoon) and warm it up as evening approaches. Avoid anything below 2700K during work hours—it&#39;s too warm to support concentration. And anything above 5000K for extended periods can feel clinical and increase eye fatigue.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
+              Is natural light better than artificial light for working?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-1" hidden>
+              <p>Yes, with caveats. Natural light has a CRI of 100 (perfect color rendering) and its shifting color temperature throughout the day supports your natural circadian rhythm automatically. But natural light isn&#39;t controllable—it changes with weather, time of day, and season. You need blinds or curtains to manage it. The ideal setup uses natural light as your ambient source (side-positioned desk, perpendicular to the window) supplemented by adjustable artificial task lighting for consistent illumination throughout the day.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
+              How bright should my desk lamp be?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-2" hidden>
+              <p>For reading and writing, you want 500-1000 lux at the work surface. For computer work, the light should be bright enough to illuminate your keyboard and any documents without washing out your monitor. A good rule of thumb: if you can hold a book at arm&#39;s length in the light of your desk lamp and read it comfortably, the brightness is sufficient. Most quality task lights offer adjustable brightness—set it so the desk area is clearly lit but the screen remains the brightest thing in your field of view.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
+              Should I get a ring light for video calls?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-3" hidden>
+              <p>A ring light works, but it&#39;s usually overkill and creates a very specific look—flat, shadowless, and slightly artificial—that&#39;s recognizable as a ring light. A better approach is a desk lamp with a diffused shade positioned 45 degrees to the side and slightly above eye level. This gives you directional light that adds depth to your face while still being flattering. If you really want a ring light, get one with adjustable color temperature and brightness.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
+              Can I use smart bulbs instead of a new lamp?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-4" hidden>
+              <p>Smart bulbs are a great solution because they let you adjust brightness and color temperature without buying a new lamp. Put a smart bulb in an existing lamp and you&#39;ve got an adjustable task light. The Hue White Ambiance ($25-30) and LIFX Color ($30) are both excellent options. Smart bulbs won&#39;t fix a poorly positioned light source, so make sure your lamp is at the right height and angle before upgrading the bulb.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-5">
+              What&#39;s the best position for a desk lamp?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-5" hidden>
+              <p>The ideal position is 45 degrees to the side and slightly above eye level. For a right-handed person, position the lamp on the left side (so your writing hand doesn&#39;t cast shadows). For a left-handed person, position it on the right. The light should illuminate your work surface without shining directly in your eyes or creating glare on your monitor. If you can see the bulb from your seated position, it&#39;s too high or too bright.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-6">
+              Does monitor brightness affect eye strain more than room lighting?
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-6" hidden>
+              <p>Yes—monitor brightness is the primary driver of eye strain because it&#39;s the brightest thing in your field of view and you look at it directly for hours. Your monitor should be bright enough to read comfortably but not so bright that it feels like a light source. A good starting point: set monitor brightness to match the ambient light level in your room. If the room is dark, lower the monitor brightness. If the room is bright, raise it.</p>
             </div>
           </div>
         </div></article>
@@ -820,6 +1024,45 @@
     </a>
           </div>
         </section>
+        <section class="related-guides">
+          <h2 class="related-guides__title">Related Guides</h2>
+          <div class="related-guides__carousel">
+            <a href="/guides/night-shift-lighting-guide/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Lighting</span>
+        <h3 class="guide-card__title">Night Shift Lighting Guide</h3>
+        <p class="guide-card__desc">Optimize your workspace lighting for late-night and night shift work.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/dual-monitor-home-office/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Monitors</span>
+        <h3 class="guide-card__title">Dual Monitor Home Office Setup</h3>
+        <p class="guide-card__desc">Everything you need for a productive dual-monitor home office setup.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/dual-monitor-setup-productivity/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Monitors</span>
+        <h3 class="guide-card__title">Dual Monitor Setup for Productivity</h3>
+        <p class="guide-card__desc">Boost your productivity with the ideal dual monitor setup and workflow tips.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          <a href="/guides/ergonomic-accessories-home-office/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+      <div class="guide-card__content">
+        <span class="guide-card__badge">Accessories</span>
+        <h3 class="guide-card__title">Ergonomic Accessories for Home Office</h3>
+        <p class="guide-card__desc">Must-have ergonomic accessories for a comfortable and healthy home office.</p>
+        <span class="guide-card__link">Read guide →</span>
+      </div>
+    </a>
+          </div>
+        </section>
+
+  
 
   
 
@@ -874,6 +1117,21 @@
         var expanded = this.getAttribute('aria-expanded') === 'true';
         var answer = this.nextElementSibling;
         
+        this.setAttribute('aria-expanded', !expanded);
+        if (answer) {
+          answer.hidden = expanded;
+        }
+      });
+    });
+  });
+  </script>
+
+  <script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var answer = this.nextElementSibling;
         this.setAttribute('aria-expanded', !expanded);
         if (answer) {
           answer.hidden = expanded;
