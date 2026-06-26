@@ -1,0 +1,172 @@
+/* ============================================
+   Product Review Widget — Real reviews from Amazon & experts
+   Injected next to affiliate product links in guides
+   ============================================ */
+
+.review-widget {
+  background: #f8f6f3;
+  border: 1px solid #e8e0d8;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin: 16px 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.review-widget__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.review-widget__stars {
+  color: #e8a838;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.review-widget__rating {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.review-widget__count {
+  color: #7f8c8d;
+  font-size: 0.82rem;
+}
+
+.review-widget__snippet {
+  color: #4a5a6a;
+  font-style: italic;
+  margin: 6px 0;
+  border-left: 3px solid #c69b6d;
+  padding-left: 10px;
+}
+
+.review-widget__source {
+  font-size: 0.78rem;
+  color: #95a0aa;
+  margin-top: 4px;
+}
+
+.review-widget__pros-cons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 10px;
+  font-size: 0.82rem;
+}
+
+.review-widget__pros ul,
+.review-widget__cons ul {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 0;
+}
+
+.review-widget__pros li::before {
+  content: '✓ ';
+  color: #27ae60;
+  font-weight: 700;
+}
+
+.review-widget__cons li::before {
+  content: '✗ ';
+  color: #c0392b;
+  font-weight: 700;
+}
+
+.review-widget__pros strong,
+.review-widget__cons strong {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #95a0aa;
+}
+
+.review-widget__expert-badge {
+  display: inline-block;
+  background: #c69b6d;
+  color: white;
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+/* Expert review badge for guide headers */
+.expert-review-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f0ebe5;
+  border: 1px solid #d4c9bc;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  color: #5a6a7a;
+  margin-bottom: 16px;
+}
+
+.expert-review-badge__icon {
+  width: 18px;
+  height: 18px;
+  background: #c69b6d;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.expert-review-badge__text strong {
+  color: #2c3e50;
+}
+
+.expert-review-badge__date {
+  color: #95a0aa;
+  font-size: 0.75rem;
+}
+
+/* Dark mode */
+[data-theme="dark"] .review-widget {
+  background: #2a2a2a;
+  border-color: #3a3a3a;
+}
+
+[data-theme="dark"] .review-widget__rating {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .review-widget__snippet {
+  color: #b0b0b0;
+  border-left-color: #c69b6d;
+}
+
+[data-theme="dark"] .review-widget__count,
+[data-theme="dark"] .review-widget__source {
+  color: #888;
+}
+
+[data-theme="dark"] .expert-review-badge {
+  background: #2a2a2a;
+  border-color: #444;
+  color: #aaa;
+}
+
+[data-theme="dark"] .expert-review-badge__text strong {
+  color: #e0e0e0;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .review-widget__pros-cons {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
