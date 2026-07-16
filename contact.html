@@ -5,11 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact — The Workspace Pro</title>
     <meta property="og:image" content="https://www.theworkspacepro.com/assets/images/og-default.jpg">
-  <meta name="description" content="Get in touch with The Workspace Pro. Questions, suggestions, product review requests — we read everything.">
+  <meta name="description" content="Get in touch with The Workspace Pro. Questions, suggestions, product review requests — we read everything."
+  <meta property="og:title" content="Contact — The Workspace Pro">
+  <meta property="og:description" content="Get in touch with The Workspace Pro. Questions, suggestions, product review requests — we read everything.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+>
   <link rel="canonical" href="https://www.theworkspacepro.com/contact/">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/fonts.css">
   <link rel="stylesheet" href="/assets/css/style.css">
   <script type="application/ld+json">
   {
@@ -25,31 +28,53 @@
   }
 }
   </script>
+  <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/images/favicon.svg">
+  <meta name="theme-color" content="#c2410c">
+  <script>
+    (function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
   <header class="site-header">
     <div class="site-header__inner">
       <a href="/" class="logo"><span class="logo__mark">W</span><span>The Workspace Pro</span></a>
-      <nav class="nav">
+            <nav class="nav" aria-label="Primary">
         <a href="/" class="nav__link">Home</a>
         <a href="/guides/" class="nav__link">Guides</a>
+        <a href="/tools/" class="nav__link">Tools</a>
         <a href="/tips/" class="nav__link">Tips</a>
-        <a href="/podcasts/" class="nav__link">Podcasts</a>
         <a href="/about/" class="nav__link">About</a>
         <a href="/#assessment" class="nav__link nav__cta">Take the Quiz</a>
       </nav>
       <div class="header-actions">
-        <button class="theme-toggle"><span class="theme-toggle__icon">☾</span></button>
-        <button class="menu-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode"><span class="theme-toggle__icon">☾</span></button>
+        <button class="menu-toggle" type="button" aria-label="Open menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
       </div>
     </div>
   </header>
   <div class="mobile-overlay"></div>
   <nav class="mobile-nav">
-    <div class="mobile-nav__header"><span style="font-weight:700;">Menu</span><button class="menu-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
-    <a href="/" class="mobile-nav__link">Home</a><a href="/guides/" class="mobile-nav__link">Guides</a><a href="/tips/" class="mobile-nav__link">Tips</a><a href="/podcasts/" class="mobile-nav__link">Podcasts</a><a href="/about/" class="mobile-nav__link">About</a><a href="/#assessment" class="mobile-nav__cta">Take the Quiz</a>
+    <div class="mobile-nav__header">
+      <span style="font-weight:700;">Menu</span>
+      <button class="menu-toggle" type="button" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <a href="/" class="mobile-nav__link">Home</a>
+    <a href="/guides/" class="mobile-nav__link">Guides</a>
+    <a href="/tools/" class="mobile-nav__link">Tools</a>
+    <a href="/build-your-office/" class="mobile-nav__link">Build Your Office</a>
+    <a href="/ergonomic-height-calculator/" class="mobile-nav__link">Height Calculator</a>
+    <a href="/workspace-setup-calculator/" class="mobile-nav__link">Setup Calculator</a>
+    <a href="/tips/" class="mobile-nav__link">Tips</a>
+    <a href="/podcasts/" class="mobile-nav__link">Podcasts</a>
+    <a href="/about/" class="mobile-nav__link">About</a>
+    <a href="/contact/" class="mobile-nav__link">Contact</a>
+    <a href="/#assessment" class="mobile-nav__cta">Take the Quiz</a>
   </nav>
 
+  <main id="main-content">
   <section class="page-header">
     <div class="container">
       <div class="page-header__eyebrow">Contact</div>
@@ -75,6 +100,8 @@
         </div>
         <div>
           <form class="contact-form" action="https://formspree.io/f/xpwagjrk" method="POST">
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;height:0;width:0;opacity:0;">
+            <input type="hidden" name="_subject" value="The Workspace Pro — Contact">
             <div class="form-group">
               <label class="form-label" for="name">Name</label>
               <input type="text" id="name" name="name" class="text-input" required>
@@ -116,17 +143,55 @@
     </div>
   </section>
 
-  <footer
+    </main>
+<footer class="site-footer">
     <div class="site-footer__grid">
-      <div class="footer-brand"><div style="display:flex;align-items:center;gap:var(--space-sm);font-family:var(--font-display);font-weight:700;font-size:1.125rem;"><span class="logo__mark">W</span><span>The Workspace Pro</span></div><p>Helping you build a workspace that fits your body, your work, and your budget.</p></div>
-      <div class="footer-col"><h4>Explore</h4><ul><li><a href="/">Home</a></li><li><a href="/guides/">Guides</a></li><li><a href="/tips/">Tips</a></li><li><a href="/podcasts/">Podcasts</a></li></ul></div>
-      <div class="footer-col"><h4>About</h4><ul><li><a href="/about/">About Us</a></li><li><a href="/contact/">Contact</a></li><li><a href="/affiliate-disclosure/">Affiliate Disclosure</a></li></ul></div>
-      <div class="footer-col"><h4>Legal</h4><ul><li><a href="/privacy/">Privacy Policy</a></li><li><a href="/terms/">Terms of Service</a></li></ul></div>
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:var(--space-sm);font-family:var(--font-display);font-weight:700;font-size:1.125rem;">
+          <span class="logo__mark">W</span>
+          <span>The Workspace Pro</span>
+        </div>
+        <p>Helping you build a workspace that fits your body, your work, and your budget. Independent, research-backed recommendations.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/guides/">Guides</a></li>
+          <li><a href="/tips/">Tips</a></li>
+          <li><a href="/podcasts/">Podcasts</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="/tools/">All Tools</a></li>
+          <li><a href="/#assessment">Workspace Assessment</a></li>
+          <li><a href="/build-your-office/">Build Your Office</a></li>
+          <li><a href="/ergonomic-height-calculator/">Height Calculator</a></li>
+          <li><a href="/workspace-setup-calculator/">Setup Calculator</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about/">About Us</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/affiliate-disclosure/">Affiliate Disclosure</a></li>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="site-footer__bottom"><span>© 2026 The Workspace Pro. All rights reserved.</span><span>This site uses affiliate links. We only recommend products we genuinely believe in.</span></div>
+    <div class="site-footer__bottom">
+      <span>© 2026 The Workspace Pro. All rights reserved.</span>
+      <span>This site uses affiliate links. We only recommend products we genuinely believe in.</span>
+    </div>
   </footer>
-  <script src="/assets/js/assessment.js"></script>
-  <script src="/assets/js/enhancements.js"></script>
+  <script src="/assets/js/analytics.js" defer></script>
+  <script src="/assets/js/site.js" defer></script>
+  <script src="/assets/js/perf-lite.js" defer></script>
+<script src="/assets/js/enhancements.js" defer></script>
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{"token": "26781bf348b1406aaaab5ed9a3e72d38"}"></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

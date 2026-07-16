@@ -15,7 +15,7 @@ const BYOState = {
   }
 };
 
-// Product database — real products with real prices
+// Product database — Amazon ASINs browser-verified live (Jul 2026), tag=workspacepro-20
 const BYO_PRODUCTS = {
   chairs: [
     {
@@ -28,11 +28,11 @@ const BYO_PRODUCTS = {
       bestFor: ["general", "writer", "budget"]
     },
     {
-      name: "HON Ignition 2.0 Task Chair",
+      name: "HON Ignition 2.0 Mid-Back",
       price: 379,
-      url: "https://www.amazon.com/dp/B07YFF3JG7/?tag=workspacepro-20",
+      url: "https://www.amazon.com/dp/B06Y3PGPR2/?tag=workspacepro-20",
       category: "Chair",
-      desc: "Highly adjustable mid-back chair with 4-way armrests, adjustable lumbar, and breathable mesh. Best value ergonomic chair.",
+      desc: "Mesh task chair with lumbar support — strong value pick for full workdays. Confirm current price on Amazon.",
       tiers: ["budget", "mid"],
       bestFor: ["general", "developer", "writer", "ergonomics", "budget"]
     },
@@ -41,36 +41,36 @@ const BYO_PRODUCTS = {
       price: 329,
       url: "https://www.branchfurniture.com/products/ergonomic-chair",
       category: "Chair",
-      desc: "Seven points of adjustment including lumbar, armrests, seat depth, and tilt. Strong warranty and modern design.",
+      desc: "Seven points of adjustment including lumbar, armrests, seat depth, and tilt. Modern design from Branch.",
       tiers: ["budget", "mid"],
       bestFor: ["general", "creative", "writer", "ergonomics", "aesthetics"]
     },
     {
-      name: "SIDIZ T50 Task Chair",
-      price: 399,
-      url: "https://www.amazon.com/dp/B07P1L5Y3V/?tag=workspacepro-20",
+      name: "Autonomous ErgoChair",
+      price: 499,
+      url: "https://www.amazon.com/dp/B092ZNFF8P/?tag=workspacepro-20",
       category: "Chair",
-      desc: "Forward tilt, 4D armrests, and excellent lumbar support. Popular with developers for long coding sessions.",
+      desc: "Feature-rich ergonomic chair often compared to premium models at a lower street price.",
       tiers: ["mid"],
       bestFor: ["developer", "gaming", "ergonomics"]
     },
     {
-      name: "Steelcase Leap V2 (Refurbished)",
-      price: 649,
-      url: "https://www.amazon.com/dp/B08D8W6F8C/?tag=workspacepro-20",
+      name: "Herman Miller Sayl",
+      price: 545,
+      url: "https://www.amazon.com/dp/B07R62FKFZ/?tag=workspacepro-20",
       category: "Chair",
-      desc: "Refurbished premium chair with Natural Glide seat, adjustable lumbar, and 12-year design life. Half the price of new.",
+      desc: "Designer mid-range Herman Miller with a distinctive Y-Tower back. Check seller condition and warranty.",
       tiers: ["mid", "premium"],
-      bestFor: ["general", "developer", "writer", "ergonomics", "productivity"]
+      bestFor: ["general", "developer", "writer", "ergonomics", "aesthetics"]
     },
     {
-      name: "Herman Miller Aeron (Refurbished, Size B)",
-      price: 799,
-      url: "https://www.amazon.com/dp/B0BV6Z3L3Q/?tag=workspacepro-20",
+      name: "Herman Miller Embody",
+      price: 1395,
+      url: "https://www.amazon.com/dp/B07NH69TWB/?tag=workspacepro-20",
       category: "Chair",
-      desc: "Iconic mesh chair with PostureFit SL support. Refurbished models offer 70% savings over new with years of life remaining.",
+      desc: "Premium posture-focused chair for long sessions. High price — only if budget allows.",
       tiers: ["premium"],
-      bestFor: ["general", "developer", "creative", "ergonomics", "aesthetics", "productivity"]
+      bestFor: ["general", "developer", "creative", "ergonomics", "productivity"]
     }
   ],
 
@@ -80,34 +80,25 @@ const BYO_PRODUCTS = {
       price: 89,
       url: "https://www.ikea.com/us/en/p/lagkapten-desk-black-brown-bamboo-00503604/",
       category: "Desk",
-      desc: "Simple sitting desk with bamboo top. Budget-friendly for tight spaces. Pair with a monitor riser for height.",
+      desc: "Simple sitting desk. Budget-friendly for tight spaces. Pair with a monitor arm for height.",
       tiers: ["budget"],
       bestFor: ["general", "writer", "budget", "small"]
     },
     {
       name: "SHW Electric Standing Desk 55\"",
       price: 299,
-      url: "https://www.amazon.com/dp/B07C2T7B68/?tag=workspacepro-20",
+      url: "https://www.amazon.com/dp/B085KBN2DN/?tag=workspacepro-20",
       category: "Desk",
-      desc: "Budget electric standing desk with memory presets, 55\" desktop, and 176 lb capacity. Best value standing desk on Amazon.",
+      desc: "Budget electric standing desk with drawer options. Popular Amazon pick — verify capacity and height range for your body.",
       tiers: ["budget", "mid"],
       bestFor: ["general", "developer", "budget", "standing"]
     },
     {
-      name: "FlexiSpot E1 Standing Desk",
-      price: 257,
-      url: "https://www.amazon.com/dp/B08TV2HWPW/?tag=workspacepro-20",
-      category: "Desk",
-      desc: "Ultra-budget electric standing desk with 48\" desktop. Slightly cheaper than SHW with comparable specs.",
-      tiers: ["budget"],
-      bestFor: ["general", "writer", "budget", "standing", "small"]
-    },
-    {
       name: "Branch Standing Desk",
       price: 499,
-      url: "https://www.branchfurniture.com/products/standing-desk/?ref=the_workspace_pro",
+      url: "https://www.branchfurniture.com/products/standing-desk",
       category: "Desk",
-      desc: "Dual-motor, 4 memory presets, 243 lb capacity, bamboo top. 7-year warranty. Best overall standing desk under $500.",
+      desc: "Dual-motor standing desk from Branch with solid warranty and clean design.",
       tiers: ["mid"],
       bestFor: ["general", "developer", "creative", "ergonomics", "aesthetics", "productivity", "standing", "large"]
     },
@@ -116,7 +107,7 @@ const BYO_PRODUCTS = {
       price: 599,
       url: "https://www.upliftdesk.com/uplift-v2-standing-desk-v2-or-v2-commercial/",
       category: "Desk",
-      desc: "Premium dual-motor desk with 355 lb capacity, 25.5-51.5\" height range, and dozens of desktop options. Best for tall/short users.",
+      desc: "Highly configurable dual-motor frame. Check live configuration pricing on Uplift.",
       tiers: ["premium"],
       bestFor: ["developer", "ergonomics", "productivity", "standing", "large"]
     }
@@ -124,82 +115,91 @@ const BYO_PRODUCTS = {
 
   deskConverters: [
     {
-      name: "VIVO Standing Desk Converter",
-      price: 119,
-      url: "https://www.amazon.com/dp/B07PVG4Y4R/?tag=workspacepro-20",
-      category: "Desk Converter",
-      desc: "Gas-spring riser that converts any desk to standing. 36\" wide, holds dual monitors. Budget-friendly standing option.",
+      name: "Amazon Basics Monitor Stand (height)",
+      price: 25,
+      url: "https://www.amazon.com/dp/B07DHK5DHN/?tag=workspacepro-20",
+      category: "Monitor Stand",
+      desc: "Simple riser for eye-level monitors when a full arm isn’t in budget. Not a sit-stand converter.",
       tiers: ["budget"],
-      bestFor: ["general", "writer", "budget", "standing", "small"]
+      bestFor: ["general", "writer", "budget", "small"]
     },
     {
-      name: "FlexiSpot M2B Converter",
-      price: 170,
-      url: "https://www.amazon.com/dp/B075G5HJBB/?tag=workspacepro-20",
-      category: "Desk Converter",
-      desc: "Wider 35\" desktop with 12 height settings and keyboard tray. More stable than budget risers.",
+      name: "WALI Dual Monitor Stand",
+      price: 35,
+      url: "https://www.amazon.com/dp/B018MSDG84/?tag=workspacepro-20",
+      category: "Monitor Stand",
+      desc: "Freestanding dual monitor stand — frees desk depth without clamp mounts.",
       tiers: ["budget", "mid"],
-      bestFor: ["general", "developer", "standing", "small"]
+      bestFor: ["general", "developer", "small"]
     }
   ],
 
   monitors: [
     {
-      name: "AOC 24G2 24\" 1080p",
-      price: 120,
-      url: "https://www.amazon.com/dp/B07WVN4CV9/?tag=workspacepro-20",
-      category: "Monitor",
-      desc: "Budget 24\" IPS monitor. Fine for basic office work, but consider upgrading to 27\" if budget allows.",
-      tiers: ["budget"],
-      bestFor: ["general", "budget", "small"]
-    },
-    {
-      name: "ASUS ProArt 27\" 1440p",
+      name: "ASUS ProArt PA278QV 27\" 1440p",
       price: 299,
-      url: "https://www.amazon.com/dp/B08DF6QD8N/?tag=workspacepro-20",
+      url: "https://www.amazon.com/dp/B088BC5HMM/?tag=workspacepro-20",
       category: "Monitor",
-      desc: "27\" 1440p IPS panel with 100% sRGB. Excellent value for general office work and light creative work.",
+      desc: "27\" 1440p IPS with strong color coverage for office and light creative work.",
       tiers: ["budget", "mid"],
       bestFor: ["general", "developer", "writer", "creative", "budget", "productivity"]
     },
     {
-      name: "Dell U2723QE 27\" 4K USB-C",
-      price: 480,
-      url: "https://www.amazon.com/dp/B09QN2B6MJ/?tag=workspacepro-20",
+      name: "Dell S2722QC 27\" 4K USB-C",
+      price: 350,
+      url: "https://www.amazon.com/dp/B09DTDRJWP/?tag=workspacepro-20",
       category: "Monitor",
-      desc: "4K USB-C hub monitor with 90W power delivery, daisy-chain, and excellent color accuracy. Developer favorite.",
+      desc: "4K with USB-C — sharper text and laptop charging for a cleaner setup.",
+      tiers: ["mid"],
+      bestFor: ["general", "developer", "creative", "productivity"]
+    },
+    {
+      name: "Dell UltraSharp U2723QE 27\" 4K",
+      price: 480,
+      url: "https://www.amazon.com/dp/B09TQZP9CL/?tag=workspacepro-20",
+      category: "Monitor",
+      desc: "4K USB-C hub monitor — strong productivity pick. Prices fluctuate; check Amazon.",
       tiers: ["mid", "premium"],
       bestFor: ["developer", "creative", "productivity", "large"]
     },
     {
-      name: "LG 27UN850-W 27\" 4K USB-C",
-      price: 396,
-      url: "https://www.amazon.com/dp/B08P3LJ7VQ/?tag=workspacepro-20",
+      name: "LG 32UN880-B 32\" 4K Ergo",
+      price: 550,
+      url: "https://www.amazon.com/dp/B08BCR862L/?tag=workspacepro-20",
       category: "Monitor",
-      desc: "4K USB-C monitor with 60W charging, IPS panel, and HDR10. Great all-around 4K pick.",
-      tiers: ["mid"],
-      bestFor: ["general", "developer", "creative", "productivity"]
+      desc: "32\" 4K with Ergo stand — lots of space for multi-window work.",
+      tiers: ["premium"],
+      bestFor: ["developer", "creative", "productivity", "large"]
     }
   ],
 
   monitorArms: [
     {
-      name: "VIVO Single Monitor Gas-Spring Arm",
-      price: 30,
-      url: "https://www.amazon.com/dp/B07PVG4Y4R/?tag=workspacepro-20",
+      name: "WALI Dual Monitor Stand",
+      price: 35,
+      url: "https://www.amazon.com/dp/B018MSDG84/?tag=workspacepro-20",
       category: "Monitor Arm",
-      desc: "Budget gas-spring monitor arm. Full motion, clamp mount, holds up to 27\". Essential ergonomic upgrade.",
+      desc: "Budget dual-monitor stand for two screens up to ~27\". Essential height upgrade.",
       tiers: ["budget"],
       bestFor: ["general", "developer", "writer", "ergonomics", "budget", "small"]
     },
     {
-      name: "Ergotron LX Desk Mount",
-      price: 139,
-      url: "https://www.amazon.com/dp/B075G5HJBB/?tag=workspacepro-20",
+      name: "Ergotron LX Single Monitor Arm",
+      price: 189,
+      url: "https://www.amazon.com/dp/B00358RIRC/?tag=workspacepro-20",
       category: "Monitor Arm",
-      desc: "Premium monitor arm with smoother motion and better durability. Worth it for heavy monitors or daily height changes.",
+      desc: "Premium gas-spring arm with smooth motion. Worth it for heavy monitors or frequent height changes.",
       tiers: ["mid", "premium"],
       bestFor: ["developer", "creative", "ergonomics", "productivity"]
+    },
+    {
+      name: "Ergotron LX Dual Monitor Arm",
+      price: 299,
+      url: "https://www.amazon.com/dp/B00P9JULWE/?tag=workspacepro-20",
+      category: "Monitor Arm",
+      desc: "Dual-arm Ergotron for two monitors — clean dual setup without freestanding base bulk.",
+      tiers: ["premium"],
+      bestFor: ["developer", "productivity"]
     }
   ],
 
@@ -209,56 +209,47 @@ const BYO_PRODUCTS = {
       price: 15,
       url: "https://www.ikea.com/us/en/p/tertial-work-lamp-gray-80342987/",
       category: "Lighting",
-      desc: "Classic adjustable desk lamp. Add a warm LED bulb for evening use. Cheapest lighting option.",
+      desc: "Classic adjustable desk lamp. Add a warm LED bulb for evening use.",
       tiers: ["budget"],
       bestFor: ["general", "writer", "budget", "small"]
     },
     {
-      name: "Tomons LED Desk Lamp",
-      price: 27,
-      url: "https://www.amazon.com/dp/B07QB4QW2H/?tag=workspacepro-20",
+      name: "tomons LED Desk Lamp",
+      price: 30,
+      url: "https://www.amazon.com/dp/B071CXPSDN/?tag=workspacepro-20",
       category: "Lighting",
-      desc: "LED desk lamp with 5 color temperatures and 5 brightness levels. Good all-around budget pick.",
+      desc: "Multi-angle LED desk lamp — solid budget task light.",
       tiers: ["budget"],
       bestFor: ["general", "writer", "budget"]
     },
     {
-      name: "BenQ ScreenBar Plus",
-      price: 109,
-      url: "https://www.amazon.com/dp/B07B4C6K2Q/?tag=workspacepro-20",
+      name: "BenQ ScreenBar",
+      price: 99,
+      url: "https://www.amazon.com/dp/B076VNFZJG/?tag=workspacepro-20",
       category: "Lighting",
-      desc: "Monitor light bar with adjustable color temperature and auto-dimming. Zero desk space, eliminates screen glare.",
-      tiers: ["mid", "premium"],
-      bestFor: ["developer", "creative", "writer", "ergonomics", "productivity", "aesthetics", "small"]
+      desc: "Monitor light bar — zero desk footprint, reduces glare.",
+      tiers: ["mid"],
+      bestFor: ["developer", "writer", "ergonomics", "small"]
     },
     {
-      name: "Govee RGBIC Floor Lamp",
-      price: 60,
-      url: "https://www.amazon.com/dp/B09KGNVC2L/?tag=workspacepro-20",
+      name: "BenQ ScreenBar Plus",
+      price: 129,
+      url: "https://www.amazon.com/dp/B07DP7RYXV/?tag=workspacepro-20",
       category: "Lighting",
-      desc: "Smart floor lamp with app control and RGB lighting. Great for ambient lighting and room aesthetics.",
-      tiers: ["mid"],
-      bestFor: ["creative", "gaming", "aesthetics", "large"]
+      desc: "ScreenBar with desktop dial for brightness/color temp. Strong for late sessions.",
+      tiers: ["mid", "premium"],
+      bestFor: ["developer", "creative", "writer", "ergonomics", "productivity", "aesthetics", "small"]
     }
   ],
 
   keyboards: [
     {
-      name: "Logitech MX Keys S",
-      price: 109,
-      url: "https://www.amazon.com/dp/B0BV6Z3L3Q/?tag=workspacepro-20",
-      category: "Keyboard",
-      desc: "Low-profile mechanical keyboard with backlit keys, multi-device pairing, and excellent typing feel.",
-      tiers: ["mid"],
-      bestFor: ["developer", "writer", "creative", "productivity"]
-    },
-    {
-      name: "Keychron K2 Wireless Mechanical",
-      price: 99,
-      url: "https://www.amazon.com/dp/B08B3MQRC1/?tag=workspacepro-20",
-      category: "Keyboard",
-      desc: "Compact 75% mechanical keyboard with hot-swappable switches. Developer and writer favorite.",
-      tiers: ["mid"],
+      name: "Glorious Gaming Wrist Rest (TKL)",
+      price: 25,
+      url: "https://www.amazon.com/dp/B07C7WJSQL/?tag=workspacepro-20",
+      category: "Keyboard Acc",
+      desc: "Wrist pad for TKL keyboards — small comfort upgrade if you type all day.",
+      tiers: ["budget", "mid"],
       bestFor: ["developer", "writer", "gaming"]
     }
   ],
@@ -269,48 +260,57 @@ const BYO_PRODUCTS = {
       price: 99,
       url: "https://www.amazon.com/dp/B09HM94VDS/?tag=workspacepro-20",
       category: "Mouse",
-      desc: "Premium productivity mouse with MagSpeed scroll, app-specific shortcuts, and 70-day battery.",
+      desc: "Premium productivity mouse with MagSpeed scroll and multi-device pairing.",
       tiers: ["mid", "premium"],
       bestFor: ["developer", "creative", "writer", "productivity"]
     },
     {
-      name: "Logitech G305 Lightspeed",
+      name: "Logitech M720 Triathlon",
       price: 40,
-      url: "https://www.amazon.com/dp/B07VGRJ7YT/?tag=workspacepro-20",
+      url: "https://www.amazon.com/dp/B087Z6LSHW/?tag=workspacepro-20",
       category: "Mouse",
-      desc: "Wireless gaming mouse that's great for productivity too. Budget-friendly, lightweight, long battery.",
+      desc: "Multi-device wireless mouse — solid budget productivity pick.",
       tiers: ["budget"],
-      bestFor: ["general", "gaming", "budget"]
+      bestFor: ["general", "budget"]
     }
   ],
 
   accessories: [
     {
-      name: "ComfiLife Anti-Fatigue Mat",
-      price: 33,
-      url: "https://www.amazon.com/dp/B07JGFBKQ1/?tag=workspacepro-20",
+      name: "Amazon Basics Anti-Fatigue Standing Mat",
+      price: 30,
+      url: "https://www.amazon.com/dp/B00OUFX0YY/?tag=workspacepro-20",
       category: "Accessory",
-      desc: "Cushioned floor mat for standing desk use. Reduces foot and back fatigue during standing sessions.",
+      desc: "Cushioned standing mat for standing-desk sessions.",
       tiers: ["budget"],
       bestFor: ["general", "standing", "ergonomics"]
     },
     {
-      name: "VIVO Under-Desk Cable Tray",
-      price: 17,
-      url: "https://www.amazon.com/dp/B08TV2HWPW/?tag=workspacepro-20",
+      name: "KANGAROO Anti-Fatigue Mat",
+      price: 45,
+      url: "https://www.amazon.com/dp/B01H6AZC5Y/?tag=workspacepro-20",
       category: "Accessory",
-      desc: "Cable management tray that mounts under your desk. Keeps cables hidden and organized.",
+      desc: "Thicker cushioned mat for longer standing periods.",
+      tiers: ["mid"],
+      bestFor: ["standing", "ergonomics"]
+    },
+    {
+      name: "Simple Cord Under-Desk Cable Channel",
+      price: 15,
+      url: "https://www.amazon.com/dp/B06Y1DVNQD/?tag=workspacepro-20",
+      category: "Accessory",
+      desc: "J-channel cable management for a cleaner desk underside.",
       tiers: ["budget"],
       bestFor: ["general", "developer", "aesthetics", "productivity"]
     },
     {
-      name: "Ergodriven Topo Anti-Fatigue Mat",
-      price: 60,
-      url: "https://www.amazon.com/dp/B075G5HJBB/?tag=workspacepro-20",
+      name: "Kensington Solemate Plus Footrest",
+      price: 45,
+      url: "https://www.amazon.com/dp/B0002DR45E/?tag=workspacepro-20",
       category: "Accessory",
-      desc: "Textured standing mat with contoured surface that encourages micro-movement. Premium standing desk accessory.",
-      tiers: ["mid"],
-      bestFor: ["standing", "ergonomics", "productivity"]
+      desc: "Adjustable footrest for better seated posture when feet don’t plant flat.",
+      tiers: ["budget", "mid"],
+      bestFor: ["general", "ergonomics"]
     }
   ]
 };
@@ -634,3 +634,21 @@ function byoShare() {
     alert('Setup copied to clipboard!');
   });
 }
+
+
+/* Optional catalog.json refresh (PR12) — fails open to inline PRODUCTS */
+(function loadCatalogOptional() {
+  if (typeof fetch === 'undefined') return;
+  fetch('/assets/data/catalog.json', { credentials: 'same-origin' })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (data) {
+      if (!data || !data.products || !data.products.length) return;
+      window.__TWP_CATALOG__ = data;
+      // Non-destructive: attach for tools; inline DBs remain authoritative for quiz logic
+      if (typeof console !== 'undefined' && console.debug) {
+        console.debug('[TWP] catalog loaded', data.products.length, 'products');
+      }
+    })
+    .catch(function () { /* offline / first paint — ignore */ });
+})();
+

@@ -9,7 +9,8 @@ const AssessmentState = {
   answers: {}
 };
 
-// Product database — real products with real specs
+// Product database — Amazon links verified live (browser, Jul 2026) with tag=workspacepro-20
+// Non-Amazon maker links kept for Branch / IKEA / etc.
 const PRODUCTS = {
   chairs: [
     {
@@ -29,52 +30,44 @@ const PRODUCTS = {
       bestFor: ["budget", "general", "back-pain"]
     },
     {
-      name: "HON Ignition 2.0",
+      name: "HON Ignition 2.0 Mid-Back",
       price: 379,
-      url: "https://www.amazon.com/dp/B07YFF3JG7?tag=workspacepro-20",
+      url: "https://www.amazon.com/dp/B06Y3PGPR2/?tag=workspacepro-20",
       heightRange: "5'2\" - 6'4\"",
+      adjustability: "medium",
+      bestFor: ["budget", "general", "developer"]
+    },
+    {
+      name: "HON Ignition 2.0 Low-Back",
+      price: 349,
+      url: "https://www.amazon.com/dp/B0C83YRK84/?tag=workspacepro-20",
+      heightRange: "5'0\" - 6'2\"",
       adjustability: "medium",
       bestFor: ["budget", "general"]
     },
     {
       name: "Herman Miller Sayl",
       price: 545,
-      url: "https://www.hermanmiller.com/products/seating/office-chairs/sayl-chairs/",
+      url: "https://www.amazon.com/dp/B07R62FKFZ/?tag=workspacepro-20",
       heightRange: "5'0\" - 6'6\"",
       adjustability: "medium",
-      bestFor: ["general", "design"]
+      bestFor: ["general", "design", "premium"]
     },
     {
-      name: "Steelcase Leap V2",
-      price: 899,
-      url: "https://www.steelcase.com/products/office-chairs/leap/",
-      heightRange: "5'2\" - 6'5\"",
+      name: "Autonomous ErgoChair",
+      price: 499,
+      url: "https://www.amazon.com/dp/B092ZNFF8P/?tag=workspacepro-20",
+      heightRange: "5'2\" - 6'4\"",
       adjustability: "high",
-      bestFor: ["back-pain", "long-hours", "premium"]
+      bestFor: ["general", "back-pain", "developer"]
     },
     {
-      name: "Herman Miller Aeron (Size B)",
+      name: "Herman Miller Embody",
       price: 1395,
-      url: "https://www.hermanmiller.com/products/seating/office-chairs/aeron-chairs/",
+      url: "https://www.amazon.com/dp/B07NH69TWB/?tag=workspacepro-20",
       heightRange: "5'3\" - 6'6\"",
       adjustability: "high",
       bestFor: ["long-hours", "premium", "back-pain"]
-    },
-    {
-      name: "SIDIZ T50",
-      price: 399,
-      url: "https://www.amazon.com/dp/B07P1L5Y3V?tag=workspacepro-20",
-      heightRange: "5'1\" - 6'3\"",
-      adjustability: "high",
-      bestFor: ["budget", "developer", "general"]
-    },
-    {
-      name: " Nouhaus Ergo3D",
-      price: 350,
-      url: "https://www.amazon.com/dp/B08D8W6F8C?tag=workspacepro-20",
-      heightRange: "5'3\" - 6'3\"",
-      adjustability: "medium",
-      bestFor: ["budget", "general"]
     }
   ],
   desks: [
@@ -84,6 +77,13 @@ const PRODUCTS = {
       url: "https://www.ikea.com/us/en/p/trotten-desk-stand-up-black-s09322329/",
       type: "standing",
       bestFor: ["budget"]
+    },
+    {
+      name: "SHW Electric Standing Desk 55\"",
+      price: 299,
+      url: "https://www.amazon.com/dp/B085KBN2DN/?tag=workspacepro-20",
+      type: "standing",
+      bestFor: ["budget", "general"]
     },
     {
       name: "Branch Standing Desk",
@@ -105,60 +105,52 @@ const PRODUCTS = {
       url: "https://www.upliftdesk.com/uplift-v2-standing-desk-v2-or-v2-commercial/",
       type: "standing",
       bestFor: ["general", "premium", "tall"]
-    },
-    {
-      name: "Vari Electric Standing Desk",
-      price: 650,
-      url: "https://www.vari.com/desks/standing-desks/electric-standing-desk/",
-      type: "standing",
-      bestFor: ["general", "premium"]
-    },
-    {
-      name: "SHW Electric Standing Desk",
-      price: 299,
-      url: "https://www.amazon.com/dp/B07Z5K6DFM?tag=workspacepro-20",
-      type: "standing",
-      bestFor: ["budget"]
     }
   ],
   monitors: [
     {
-      name: "ASUS ProArt 27\" 1440p",
+      name: "ASUS ProArt PA278QV 27\" 1440p",
       price: 299,
-      url: "https://www.amazon.com/dp/B08DF6QD8N?tag=workspacepro-20",
+      url: "https://www.amazon.com/dp/B088BC5HMM/?tag=workspacepro-20",
       bestFor: ["budget", "general"]
     },
     {
-      name: "LG 27UN850-W 27\" 4K",
-      price: 396,
-      url: "https://www.lg.com/us/monitors/lg-27un850-w-4k-uhd-led-monitor",
+      name: "Dell S2722QC 27\" 4K USB-C",
+      price: 350,
+      url: "https://www.amazon.com/dp/B09DTDRJWP/?tag=workspacepro-20",
       bestFor: ["general", "developer"]
     },
     {
-      name: "Dell U2723QE 27\" 4K",
+      name: "Dell UltraSharp U2723QE 27\" 4K",
       price: 480,
-      url: "https://www.dell.com/en-us/shop/dell-ultrasharp-27-4k-usb-c-hub-monitor-u2723qe/apd/210-bclf/monitors-monitor-accessories",
+      url: "https://www.amazon.com/dp/B09TQZP9CL/?tag=workspacepro-20",
       bestFor: ["developer", "premium"]
     },
     {
-      name: "Samsung Odyssey G7 32\"",
-      price: 700,
-      url: "https://www.amazon.com/dp/B08DHH7M47?tag=workspacepro-20",
-      bestFor: ["developer", "premium", "gaming"]
+      name: "LG 32UN880-B 32\" 4K Ergo",
+      price: 550,
+      url: "https://www.amazon.com/dp/B08BCR862L/?tag=workspacepro-20",
+      bestFor: ["developer", "premium"]
     }
   ],
   monitorArms: [
     {
-      name: "Amazon Basics Single Monitor Arm",
-      price: 22,
-      url: "https://www.amazon.com/dp/B0725Q5L2M?tag=workspacepro-20",
+      name: "WALI Dual Monitor Stand",
+      price: 35,
+      url: "https://www.amazon.com/dp/B018MSDG84/?tag=workspacepro-20",
       bestFor: ["budget"]
     },
     {
-      name: "Ergotron LX Desk Mount",
-      price: 139,
-      url: "https://www.ergotron.com/en-us/products/product-details/45-241-026",
-      bestFor: ["general", "premium"]
+      name: "Ergotron LX Single Monitor Arm",
+      price: 189,
+      url: "https://www.amazon.com/dp/B00358RIRC/?tag=workspacepro-20",
+      bestFor: ["general", "premium", "back-pain"]
+    },
+    {
+      name: "Ergotron LX Dual Monitor Arm",
+      price: 299,
+      url: "https://www.amazon.com/dp/B00P9JULWE/?tag=workspacepro-20",
+      bestFor: ["developer", "premium"]
     }
   ],
   lighting: [
@@ -169,66 +161,66 @@ const PRODUCTS = {
       bestFor: ["budget"]
     },
     {
-      name: "Tomons LED Desk Lamp",
-      price: 27,
-      url: "https://www.amazon.com/dp/B07QB4QW2H?tag=workspacepro-20",
+      name: "tomons LED Desk Lamp",
+      price: 30,
+      url: "https://www.amazon.com/dp/B071CXPSDN/?tag=workspacepro-20",
       bestFor: ["budget", "general"]
     },
     {
-      name: "BenQ ScreenBar Plus",
-      price: 109,
-      url: "https://www.benq.com/en-us/monitor-light/bar/monitor-light-screenbar-plus.html",
+      name: "BenQ ScreenBar",
+      price: 99,
+      url: "https://www.amazon.com/dp/B076VNFZJG/?tag=workspacepro-20",
       bestFor: ["general", "night-shift"]
     },
     {
-      name: "Govee RGBIC Floor Lamp",
-      price: 60,
-      url: "https://www.amazon.com/dp/B09KGNVC2L?tag=workspacepro-20",
-      bestFor: ["general", "design"]
+      name: "BenQ ScreenBar Plus",
+      price: 129,
+      url: "https://www.amazon.com/dp/B07DP7RYXV/?tag=workspacepro-20",
+      bestFor: ["general", "night-shift", "premium"]
     }
   ],
   accessories: [
     {
-      name: "Cloudpeak Anti-Fatigue Mat",
-      price: 33,
-      url: "https://www.amazon.com/dp/B07VF3ZB5S?tag=workspacepro-20",
+      name: "Amazon Basics Anti-Fatigue Standing Mat",
+      price: 30,
+      url: "https://www.amazon.com/dp/B00OUFX0YY/?tag=workspacepro-20",
       bestFor: ["standing"]
+    },
+    {
+      name: "KANGAROO Anti-Fatigue Mat",
+      price: 45,
+      url: "https://www.amazon.com/dp/B01H6AZC5Y/?tag=workspacepro-20",
+      bestFor: ["standing", "premium"]
     },
     {
       name: "Kensington Solemate Plus Footrest",
       price: 45,
-      url: "https://www.kensington.com/p/products/ergonomics/footrests/solemate-plus-adjustable-footrest/",
+      url: "https://www.amazon.com/dp/B0002DR45E/?tag=workspacepro-20",
       bestFor: ["general", "short"]
     },
     {
       name: "Logitech MX Master 3S",
       price: 99,
-      url: "https://www.logitech.com/en-us/products/mice/mx-master-3s.html",
+      url: "https://www.amazon.com/dp/B09HM94VDS/?tag=workspacepro-20",
       bestFor: ["developer", "general"]
     },
     {
-      name: "Kinesis Freestyle2 Split Keyboard",
-      price: 89,
-      url: "https://kinesis-ergo.com/shop/freestyle2-for-pc-us/",
-      bestFor: ["ergonomic", "developer"]
+      name: "Logitech M720 Triathlon Mouse",
+      price: 40,
+      url: "https://www.amazon.com/dp/B087Z6LSHW/?tag=workspacepro-20",
+      bestFor: ["budget", "general"]
     },
     {
-      name: "Logitech MX Keys S",
-      price: 109,
-      url: "https://www.logitech.com/en-us/products/keyboards/mx-keys-s.html",
-      bestFor: ["developer", "general"]
-    },
-    {
-      name: "VIVO Under-Desk Cable Management Tray",
-      price: 17,
-      url: "https://www.amazon.com/dp/B07KG6Q4B5?tag=workspacepro-20",
+      name: "Simple Cord Under-Desk Cable Channel",
+      price: 15,
+      url: "https://www.amazon.com/dp/B06Y1DVNQD/?tag=workspacepro-20",
       bestFor: ["general", "space-saver"]
     },
     {
-      name: "Ergodriven Topo Mat",
-      price: 119,
-      url: "https://www.amazon.com/dp/B07P1L5Y3V?tag=workspacepro-20",
-      bestFor: ["standing", "premium"]
+      name: "VELCRO Brand Cable Ties (100-pack)",
+      price: 12,
+      url: "https://www.amazon.com/dp/B08BLCZDYL/?tag=workspacepro-20",
+      bestFor: ["general", "budget"]
     }
   ]
 };
@@ -284,7 +276,15 @@ function bindEvents() {
     btn.addEventListener('click', prevStep);
   });
   document.querySelectorAll('.choice-card').forEach(card => {
+    card.setAttribute('type', 'button');
+    if (!card.hasAttribute('tabindex')) card.setAttribute('tabindex', '0');
     card.addEventListener('click', () => selectChoice(card));
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        selectChoice(card);
+      }
+    });
   });
   document.querySelectorAll('input[type="range"]').forEach(input => {
     input.addEventListener('input', updateRangeValue);
@@ -634,16 +634,20 @@ function showResults() {
   `;
   
   recommendations.forEach(rec => {
+    var asinMatch = (rec.url || '').match(/\/dp\/([A-Z0-9]{10})/i);
+    var thumb = asinMatch
+      ? `<img class="recommendation__thumb" src="/assets/images/products/${asinMatch[1].toUpperCase()}.jpg" alt="" width="72" height="72" loading="lazy" decoding="async" onerror="this.style.display='none'">`
+      : `<div class="recommendation__icon">${rec.icon}</div>`;
     html += `
       <div class="recommendation">
-        <div class="recommendation__icon">${rec.icon}</div>
+        ${thumb}
         <div class="recommendation__content">
           <div class="recommendation__category">${rec.category}</div>
           <div class="recommendation__name">${rec.name}</div>
           <div class="recommendation__why">${rec.why}</div>
-          <div class="recommendation__price">$${rec.price}</div>
+          <div class="recommendation__price">~$${rec.price} <span class="recommendation__price-note">check live price</span></div>
           <a href="${rec.url}" target="_blank" rel="sponsored noopener noreferrer" class="recommendation__link">
-            View on retailer site →
+            View product →
           </a>
         </div>
       </div>
@@ -653,10 +657,10 @@ function showResults() {
   html += `
     </div>
     
-    <div style="text-align:center; margin: ${'var(--space-2xl)'} 0; padding: ${'var(--space-xl)'}; background: var(--c-bg-alt); border-radius: var(--radius-lg);">
-      <div style="font-size: 0.8125rem; color: var(--c-text-muted); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;">Estimated Total</div>
-      <div style="font-family: var(--font-display); font-size: 2.5rem; font-weight: 700; color: var(--c-primary);">$${total}</div>
-      <p style="margin-top: var(--space-sm); font-size: 0.875rem; color: var(--c-text-muted);">Prices are approximate and may vary by retailer. Some links are affiliate links — we may earn a commission at no cost to you.</p>
+    <div class="result-total">
+      <div class="result-total__label">Estimated Total</div>
+      <div class="result-total__amount">~$${total}</div>
+      <p class="result-total__note">Prices are approximate — always check the live price on the retailer. Some links are affiliate links; we may earn a commission at no extra cost to you.</p>
     </div>
     
     <div class="checklist">
@@ -664,38 +668,127 @@ function showResults() {
       ${checklist.map(item => `<div class="checklist__item">${item}</div>`).join('')}
     </div>
     
-    <div style="text-align: center; margin-top: var(--space-2xl);">
-      <button id="restartAssessment" class="btn btn--secondary">↻ Retake Assessment</button>
-      <button id="saveAssessmentResults" class="btn btn--outline" style="margin-left: var(--space-sm); border: 2px solid var(--c-primary); background: transparent; color: var(--c-primary); padding: var(--space-sm) var(--space-lg); border-radius: var(--radius); font-weight: 600; font-size: 0.875rem; cursor: pointer; transition: all var(--t-fast);">💾 Save my results</button>
-      <a href="#newsletter" class="btn btn--primary" style="margin-left: var(--space-sm);">Get Weekly Tips</a>
+    <div class="result-next-steps">
+      <h3 class="result-next-steps__title">What to do next</h3>
+      <div class="result-next-steps__grid">
+        <a href="/ergonomic-height-calculator/" class="result-next-steps__card">📏 Dial in desk &amp; chair height</a>
+        <a href="/build-your-office/" class="result-next-steps__card">🛠️ Refine with Build Your Office</a>
+        <a href="/guides/" class="result-next-steps__card">📚 Read the deep-dive guides</a>
+        <a href="/tools/" class="result-next-steps__card">🧰 Browse all free tools</a>
+      </div>
     </div>
+
+    <div class="result-actions">
+      <button type="button" id="restartAssessment" class="btn btn--secondary">↻ Retake</button>
+      <button type="button" id="printAssessmentResults" class="btn btn--secondary">🖨 Print / PDF</button>
+      <button type="button" id="copyAssessmentResults" class="btn btn--secondary">📋 Copy summary</button>
+      <button type="button" id="shareAssessmentResults" class="btn btn--secondary">🔗 Share results</button>
+      <button type="button" id="saveAssessmentResults" class="btn btn--outline result-save-btn">💾 Save my results</button>
+      <a href="#newsletter" class="btn btn--primary">Get Weekly Tips</a>
+    </div>
+    <p class="result-actions__hint" id="resultActionHint" aria-live="polite"></p>
   `;
   
   resultsEl.innerHTML = html;
   
   // Auto-save results to localStorage
+  var payload = {
+    persona: persona,
+    personaName: personaData.name,
+    recommendedProducts: recommendations.map(function (r) { return { name: r.name, price: r.price, category: r.category, url: r.url }; }),
+    checklist: checklist,
+    total: total,
+    answers: AssessmentState.answers,
+    timestamp: Date.now()
+  };
   try {
-    localStorage.setItem('twp-assessment-results', JSON.stringify({
-      persona: persona,
-      personaName: personaData.name,
-      recommendedProducts: recommendations.map(function (r) { return r.name; }),
-      total: total,
-      timestamp: Date.now()
-    }));
+    localStorage.setItem('twp-assessment-results', JSON.stringify(payload));
   } catch (e) {}
 
-  // Rebind events
+  // Update URL with shareable (non-PII) answer payload for traffic + return visits
+  var shareUrl = buildShareUrl(AssessmentState.answers, persona);
+  try {
+    if (window.history && history.replaceState) {
+      history.replaceState(null, '', shareUrl);
+    }
+  } catch (e) {}
+
+  function setHint(msg) {
+    var el = document.getElementById('resultActionHint');
+    if (el) el.textContent = msg || '';
+  }
+
+  function buildSummaryText() {
+    var lines = [
+      'The Workspace Pro — My Setup',
+      'Persona: ' + personaData.name,
+      'Estimated total: ~$' + total,
+      '',
+      'Recommendations:'
+    ];
+    recommendations.forEach(function (r) {
+      lines.push('- ' + r.category + ': ' + r.name + ' (~$' + r.price + ')');
+    });
+    lines.push('', 'Checklist:');
+    checklist.forEach(function (c) { lines.push('- ' + c); });
+    lines.push('', 'Retake or share: ' + (shareUrl.indexOf('http') === 0 ? shareUrl : (location.origin + shareUrl)));
+    return lines.join('\n');
+  }
+
   document.getElementById('restartAssessment')?.addEventListener('click', restartAssessment);
-  
-  // Save button click handler
+
+  document.getElementById('printAssessmentResults')?.addEventListener('click', function () {
+    window.print();
+  });
+
+  document.getElementById('copyAssessmentResults')?.addEventListener('click', function () {
+    var text = buildSummaryText();
+    function done() {
+      setHint('Summary copied — paste into Notes, email, or a shopping list.');
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done).catch(function () {
+        window.prompt('Copy your summary:', text);
+        done();
+      });
+    } else {
+      window.prompt('Copy your summary:', text);
+      done();
+    }
+  });
+
+  document.getElementById('shareAssessmentResults')?.addEventListener('click', function () {
+    var absolute = shareUrl.indexOf('http') === 0 ? shareUrl : (location.origin + shareUrl);
+    var title = 'My workspace plan — ' + personaData.name;
+    var text = 'I got “' + personaData.name + '” on The Workspace Pro free setup quiz. Estimated ~$' + total + '.';
+    if (navigator.share) {
+      navigator.share({ title: title, text: text, url: absolute }).then(function () {
+        setHint('Shared — thanks for spreading the free tools.');
+        if (typeof gtag !== 'undefined') gtag('event', 'assessment_share', { method: 'web_share' });
+      }).catch(function () { /* user cancelled */ });
+    } else if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(absolute).then(function () {
+        setHint('Share link copied. Anyone with it can reopen these results.');
+        if (typeof gtag !== 'undefined') gtag('event', 'assessment_share', { method: 'copy_link' });
+      });
+    } else {
+      window.prompt('Copy this share link:', absolute);
+      setHint('Share link ready to paste.');
+    }
+  });
+
   var saveBtn = document.getElementById('saveAssessmentResults');
   if (saveBtn) {
     saveBtn.addEventListener('click', function () {
+      try {
+        localStorage.setItem('twp-assessment-results', JSON.stringify(payload));
+      } catch (e) {}
       var btn = this;
-      btn.textContent = '✓ Saved!';
+      btn.textContent = '✓ Saved on this device';
       btn.style.background = 'var(--c-accent)';
       btn.style.color = '#fff';
       btn.style.borderColor = 'var(--c-accent)';
+      setHint('Saved in this browser. Use Share for a permanent link you can open later.');
       setTimeout(function () {
         btn.textContent = '💾 Save my results';
         btn.style.background = 'transparent';
@@ -717,6 +810,45 @@ function showResults() {
   scrollToTop();
 }
 
+/** Compact share URL: /#assessment&a=base64url(answers json) */
+function buildShareUrl(answers, persona) {
+  try {
+    var data = { a: answers, p: persona, v: 1 };
+    var json = JSON.stringify(data);
+    var b64 = btoa(unescape(encodeURIComponent(json)))
+      .replace(/\+/g, '-')
+      .replace(/\//g, '_')
+      .replace(/=+$/, '');
+    return '/#assessment&r=' + b64;
+  } catch (e) {
+    return '/#assessment';
+  }
+}
+
+function parseSharePayload() {
+  try {
+    var hash = window.location.hash || '';
+    var m = hash.match(/[?&]r=([A-Za-z0-9_-]+)/) || hash.match(/r=([A-Za-z0-9_-]+)/);
+    // also support #assessment&r=
+    if (!m) {
+      var parts = hash.replace(/^#/, '').split(/[&]/);
+      for (var i = 0; i < parts.length; i++) {
+        if (parts[i].indexOf('r=') === 0) {
+          m = [null, parts[i].slice(2)];
+          break;
+        }
+      }
+    }
+    if (!m || !m[1]) return null;
+    var b64 = m[1].replace(/-/g, '+').replace(/_/g, '/');
+    while (b64.length % 4) b64 += '=';
+    var json = decodeURIComponent(escape(atob(b64)));
+    return JSON.parse(json);
+  } catch (e) {
+    return null;
+  }
+}
+
 function restartAssessment() {
   AssessmentState.step = 0;
   AssessmentState.answers = {};
@@ -733,57 +865,46 @@ function restartAssessment() {
   scrollToTop();
 }
 
-// Theme toggle
-function toggleTheme() {
-  const current = document.documentElement.getAttribute('data-theme');
-  const next = current === 'dark' ? 'light' : 'dark';
-  document.documentElement.setAttribute('data-theme', next);
-  localStorage.setItem('theme', next);
-  
-  const icon = document.querySelector('.theme-toggle__icon');
-  if (icon) icon.textContent = next === 'dark' ? '☀' : '☾';
-}
+// Theme + mobile menu live in site.js (loaded site-wide).
+// Assessment only wires the quiz when present.
 
 // Init on load
 document.addEventListener('DOMContentLoaded', () => {
-  // Restore theme
-  const savedTheme = localStorage.getItem('theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const theme = savedTheme || (prefersDark ? 'dark' : 'light');
-  document.documentElement.setAttribute('data-theme', theme);
-  
-  const icon = document.querySelector('.theme-toggle__icon');
-  if (icon) icon.textContent = theme === 'dark' ? '☀' : '☾';
-  
-  // Theme toggle
-  document.querySelector('.theme-toggle')?.addEventListener('click', toggleTheme);
-  
-  // Mobile menu — wire ALL menu-toggle buttons (open + close)
-  const mobileNav = document.querySelector('.mobile-nav');
-  const mobileOverlay = document.querySelector('.mobile-overlay');
-  
-  document.querySelectorAll('.menu-toggle').forEach(btn => {
-    btn.addEventListener('click', () => {
-      mobileNav?.classList.toggle('open');
-      mobileOverlay?.classList.toggle('open');
-    });
-  });
-  
-  mobileOverlay?.addEventListener('click', () => {
-    mobileNav?.classList.remove('open');
-    mobileOverlay?.classList.remove('open');
-  });
-  
-  // Close mobile nav when a link is clicked
-  document.querySelectorAll('.mobile-nav__link, .mobile-nav__cta').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileNav?.classList.remove('open');
-      mobileOverlay?.classList.remove('open');
-    });
-  });
-  
-  // Init assessment
-  if (document.getElementById('assessment')) {
+  if (!document.getElementById('assessment')) return;
+
+  // Restore from share link if present (answers only — no PII)
+  var shared = parseSharePayload();
+  if (shared && shared.a && typeof shared.a === 'object') {
+    AssessmentState.answers = shared.a;
+    AssessmentState.step = AssessmentState.totalSteps - 1;
+    try {
+      sessionStorage.setItem('assessmentState', JSON.stringify(AssessmentState));
+    } catch (e) {}
     initAssessment();
+    // Jump straight to results when enough answers exist
+    if (Object.keys(AssessmentState.answers).length >= 4) {
+      showResults();
+    }
+    return;
   }
+
+  initAssessment();
 });
+
+
+/* Optional catalog.json refresh (PR12) — fails open to inline PRODUCTS */
+(function loadCatalogOptional() {
+  if (typeof fetch === 'undefined') return;
+  fetch('/assets/data/catalog.json', { credentials: 'same-origin' })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (data) {
+      if (!data || !data.products || !data.products.length) return;
+      window.__TWP_CATALOG__ = data;
+      // Non-destructive: attach for tools; inline DBs remain authoritative for quiz logic
+      if (typeof console !== 'undefined' && console.debug) {
+        console.debug('[TWP] catalog loaded', data.products.length, 'products');
+      }
+    })
+    .catch(function () { /* offline / first paint — ignore */ });
+})();
+

@@ -1,0 +1,689 @@
+{
+  "asin_count": 111,
+  "asins": [
+    "B0002DR45E",
+    "B000USRG90",
+    "B00358RIRC",
+    "B0050SPZMK",
+    "B005Y0LDW0",
+    "B007WU4NFO",
+    "B0089ZLENA",
+    "B009S750LA",
+    "B00BJ17WKK",
+    "B00ENMK1DW",
+    "B00GKD9PTI",
+    "B00JU8P8VY",
+    "B00M8O122G",
+    "B00OUFX0YY",
+    "B00P9JULWE",
+    "B00V3TO9EK",
+    "B00V3TO9RC",
+    "B014F18ZGU",
+    "B016OIF2JU",
+    "B018MSDG84",
+    "B0192CO34K",
+    "B01EXDI2CM",
+    "B01H6AZC5Y",
+    "B01LR3O8SI",
+    "B01LYVCEIB",
+    "B01M2319VR",
+    "B06XH1F1KS",
+    "B06Y1DVNQD",
+    "B06Y3PGPR2",
+    "B071CXPSDN",
+    "B073G1K465",
+    "B076HB7NZS",
+    "B076VNFZJG",
+    "B077XDWT7X",
+    "B078HDP8NY",
+    "B07BDFW1Y7",
+    "B07C7WJSQL",
+    "B07DHK5DHN",
+    "B07DP7RYXV",
+    "B07G3LQKZM",
+    "B07H2N84CM",
+    "B07MTMC6YY",
+    "B07MTS4H7P",
+    "B07NH69TWB",
+    "B07Q8TJ2KL",
+    "B07QLWTLLN",
+    "B07R62FKFZ",
+    "B07SCWHLJT",
+    "B07SZHWCH5",
+    "B07T7VZR1L",
+    "B07W42DSG8",
+    "B07XLJX1SL",
+    "B07XQKJK4K",
+    "B07Y23TMZ4",
+    "B083FBN9BH",
+    "B0855ZBPXD",
+    "B085KBN2DN",
+    "B087Z6LSHW",
+    "B088BC5HMM",
+    "B08BCR862L",
+    "B08BLCZDYL",
+    "B08DG2LY5B",
+    "B08LBJXVSP",
+    "B08LMM1148",
+    "B08P2D215V",
+    "B092ZNFF8P",
+    "B095KSHGYW",
+    "B099WTN2TR",
+    "B09BDR49TH",
+    "B09BQLZK5P",
+    "B09DTDRJWP",
+    "B09HM94VDS",
+    "B09J5HH2LR",
+    "B09JG8278X",
+    "B09NBWQDKX",
+    "B09TQZP9CL",
+    "B09VT1Q1M2",
+    "B09XS7JWHH",
+    "B09ZLV2531",
+    "B0B3RHCV9R",
+    "B0BCQ9YQYW",
+    "B0BLSGHRXB",
+    "B0BS9J2TR5",
+    "B0BSS3QBP6",
+    "B0BVQMQMY2",
+    "B0BZ3GHM8N",
+    "B0BZ9ZS78J",
+    "B0C15B3HN1",
+    "B0C3WV6QVZ",
+    "B0C5J6ZJG6",
+    "B0C83YRK84",
+    "B0CCZ1L489",
+    "B0CDGYKVFZ",
+    "B0CM6V5GL2",
+    "B0CMXGDK5S",
+    "B0CNDBN213",
+    "B0CPH72BMN",
+    "B0CQXMT3QC",
+    "B0CQXPGNCH",
+    "B0CT8XYKCL",
+    "B0CTJYYSML",
+    "B0CTZBR5CG",
+    "B0D2RR1245",
+    "B0DB5DMDW3",
+    "B0DCPBTZ7W",
+    "B0DJRZG3Q9",
+    "B0DK59YKRS",
+    "B0GFSYH7K4",
+    "B0GSF63QT8",
+    "B0GX19V226",
+    "B0GY7TGDVQ"
+  ],
+  "denylist_hits": [],
+  "locations": {
+    "B0002DR45E": [
+      "guides/ergonomic-accessories-home-office.html",
+      "guides/ergonomic-accessories-home-office.html",
+      "guides/ergonomic-accessories-home-office.html",
+      "assets/js/assessment.js",
+      "assets/js/build-your-office.js"
+    ],
+    "B000USRG90": [
+      "guides/night-shift-lighting-guide.html",
+      "guides/night-shift-lighting-guide.html"
+    ],
+    "B00358RIRC": [
+      "guides/ergonomic-accessories-home-office.html",
+      "guides/ergonomic-accessories-home-office.html",
+      "guides/ergonomic-accessories-home-office.html",
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/home-office-budget-setup-under-1000.html",
+      "assets/js/assessment.js",
+      "assets/js/build-your-office.js"
+    ],
+    "B0050SPZMK": [
+      "guides/ergonomic-accessories-home-office.html",
+      "guides/ergonomic-accessories-home-office.html",
+      "guides/ergonomic-accessories-home-office.html"
+    ],
+    "B005Y0LDW0": [
+      "guides/best-ergonomic-office-chairs-2026.html",
+      "guides/best-ergonomic-office-chairs-2026.html",
+      "guides/best-ergonomic-office-chairs-2026.html"
+    ],
+    "B007WU4NFO": [
+      "guides/back-pain-ergonomic-setup.html",
+      "guides/back-pain-ergonomic-setup.html",
+      "guides/best-ergonomic-office-chairs-2026.html",
+      "guides/best-ergonomic-office-chairs-2026.html",
+      "guides/best-ergonomic-office-chairs-2026.html"
+    ],
+    "B0089ZLENA": [
+      "guides/ergonomic-accessories-home-office.html",
+      "guides/ergonomic-accessories-home-office.html",
+      "guides/ergonomic-accessories-home-office.html",
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/ergonomic-setup-for-gamers.html"
+    ],
+    "B009S750LA": [
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/dual-monitor-home-office.html",
+      "guides/dual-monitor-home-office.html",
+      "guides/dual-monitor-home-office.html"
+    ],
+    "B00BJ17WKK": [
+      "guides/ergonomic-setup-for-gamers.html"
+    ],
+    "B00ENMK1DW": [
+      "guides/ergonomic-setup-for-gamers.html"
+    ],
+    "B00GKD9PTI": [
+      "guides/ergonomic-accessories-home-office.html"
+    ],
+    "B00JU8P8VY": [
+      "guides/productive-workspace-mindset.html"
+    ],
+    "B00M8O122G": [
+      "guides/best-standing-desk-mat-for-concrete-floors.html",
+      "guides/best-standing-desk-mat-for-concrete-floors.html",
+      "guides/best-standing-desk-mat-for-concrete-floors.html",
+      "guides/best-standing-desk-mat-for-concrete-floors.html"
+    ],
+    "B00OUFX0YY": [
+      "workspace-setup-calculator.html",
+      "guides/ergonomic-accessories-home-office.html",
+      "guides/ergonomic-accessories-home-office.html",
+      "guides/ergonomic-accessories-home-office.html",
+      "compare/branch-vs-uplift.html",
+      "assets/js/assessment.js",
+      "assets/js/build-your-office.js"
+    ],
+    "B00P9JULWE": [
+      "guides/dual-monitor-home-office.html",
+      "guides/dual-monitor-home-office.html",
+      "guides/dual-monitor-home-office.html",
+      "guides/dual-monitor-setup-productivity.html",
+      "guides/dual-monitor-setup-productivity.html",
+      "guides/dual-monitor-setup-productivity.html",
+      "assets/js/assessment.js",
+      "assets/js/build-your-office.js"
+    ],
+    "B00V3TO9EK": [
+      "guides/best-standing-desks-under-500.html"
+    ],
+    "B00V3TO9RC": [
+      "guides/ergonomic-accessories-home-office.html",
+      "guides/ergonomic-accessories-home-office.html",
+      "guides/ergonomic-accessories-home-office.html",
+      "guides/best-standing-desk-mat-for-concrete-floors.html",
+      "guides/best-standing-desk-mat-for-concrete-floors.html",
+      "guides/best-standing-desk-mat-for-concrete-floors.html",
+      "guides/best-standing-desk-mat-for-concrete-floors.html",
+      "guides/best-standing-desk-mat-for-concrete-floors.html",
+      "guides/best-standing-desk-mat-for-concrete-floors.html",
+      "guides/best-standing-desk-mat-for-concrete-floors.html",
+      "guides/best-standing-desk-mat-for-concrete-floors.html"
+    ],
+    "B014F18ZGU": [
+      "guides/ergonomic-setup-for-gamers.html"
+    ],
+    "B016OIF2JU": [
+      "guides/best-ergonomic-office-chairs-2026.html",
+      "guides/best-ergonomic-office-chairs-2026.html",
+      "guides/best-ergonomic-office-chairs-2026.html"
+    ],
+    "B018MSDG84": [
+      "workspace-setup-calculator.html",
+      "guides/best-standing-desks-under-500.html",
+      "compare/branch-vs-uplift.html",
+      "compare/branch-vs-uplift.html",
+      "assets/js/assessment.js",
+      "assets/js/build-your-office.js",
+      "assets/js/build-your-office.js"
+    ],
+    "B0192CO34K": [
+      "guides/home-office-desk-guide-2026.html"
+    ],
+    "B01EXDI2CM": [
+      "guides/ergonomic-accessories-home-office.html"
+    ],
+    "B01H6AZC5Y": [
+      "workspace-setup-calculator.html",
+      "workspace-setup-calculator.html",
+      "guides/best-standing-desk-mat-for-concrete-floors.html",
+      "guides/best-standing-desk-mat-for-concrete-floors.html",
+      "guides/best-standing-desk-mat-for-concrete-floors.html",
+      "guides/best-standing-desk-mat-for-concrete-floors.html",
+      "assets/js/assessment.js",
+      "assets/js/build-your-office.js"
+    ],
+    "B01LR3O8SI": [
+      "guides/ergonomic-setup-for-gamers.html"
+    ],
+    "B01LYVCEIB": [
+      "guides/best-standing-desks-under-500.html"
+    ],
+    "B01M2319VR": [
+      "guides/ergonomic-accessories-home-office.html",
+      "guides/ergonomic-accessories-home-office.html",
+      "guides/ergonomic-accessories-home-office.html",
+      "guides/ergonomic-setup-for-gamers.html"
+    ],
+    "B06XH1F1KS": [
+      "guides/best-standing-desk-mat-for-concrete-floors.html",
+      "guides/best-standing-desk-mat-for-concrete-floors.html",
+      "guides/best-standing-desk-mat-for-concrete-floors.html",
+      "guides/best-standing-desk-mat-for-concrete-floors.html"
+    ],
+    "B06Y1DVNQD": [
+      "workspace-setup-calculator.html",
+      "workspace-setup-calculator.html",
+      "guides/cable-management-solutions.html",
+      "guides/cable-management-solutions.html",
+      "guides/cable-management-solutions.html",
+      "compare/branch-vs-uplift.html",
+      "assets/js/assessment.js",
+      "assets/js/build-your-office.js"
+    ],
+    "B06Y3PGPR2": [
+      "workspace-setup-calculator.html",
+      "guides/back-pain-ergonomic-setup.html",
+      "guides/back-pain-ergonomic-setup.html",
+      "assets/js/assessment.js",
+      "assets/js/build-your-office.js"
+    ],
+    "B071CXPSDN": [
+      "workspace-setup-calculator.html",
+      "guides/home-office-lighting-guide.html",
+      "assets/js/assessment.js",
+      "assets/js/build-your-office.js"
+    ],
+    "B073G1K465": [
+      "guides/back-pain-ergonomic-setup.html",
+      "guides/back-pain-ergonomic-setup.html",
+      "guides/best-ergonomic-office-chairs-2026.html",
+      "guides/best-ergonomic-office-chairs-2026.html",
+      "guides/best-ergonomic-office-chairs-2026.html"
+    ],
+    "B076HB7NZS": [
+      "guides/back-pain-ergonomic-setup.html"
+    ],
+    "B076VNFZJG": [
+      "workspace-setup-calculator.html",
+      "guides/home-office-desk-guide-2026.html",
+      "guides/productive-workspace-mindset.html",
+      "assets/js/assessment.js",
+      "assets/js/build-your-office.js"
+    ],
+    "B077XDWT7X": [
+      "guides/ergonomic-setup-for-gamers.html"
+    ],
+    "B078HDP8NY": [
+      "guides/best-ergonomic-office-chairs-2026.html",
+      "guides/best-ergonomic-office-chairs-2026.html",
+      "guides/best-ergonomic-office-chairs-2026.html"
+    ],
+    "B07BDFW1Y7": [
+      "guides/best-ergonomic-office-chairs-2026.html",
+      "guides/best-ergonomic-office-chairs-2026.html",
+      "guides/best-ergonomic-office-chairs-2026.html"
+    ],
+    "B07C7WJSQL": [
+      "workspace-setup-calculator.html",
+      "workspace-setup-calculator.html",
+      "guides/ergonomic-accessories-home-office.html",
+      "guides/ergonomic-accessories-home-office.html",
+      "guides/ergonomic-accessories-home-office.html",
+      "assets/js/build-your-office.js"
+    ],
+    "B07DHK5DHN": [
+      "guides/back-pain-ergonomic-setup.html",
+      "assets/js/build-your-office.js"
+    ],
+    "B07DP7RYXV": [
+      "workspace-setup-calculator.html",
+      "guides/night-shift-lighting-guide.html",
+      "assets/js/assessment.js",
+      "assets/js/bold.js",
+      "assets/js/build-your-office.js"
+    ],
+    "B07G3LQKZM": [
+      "compare/shw-vs-flexispot.html"
+    ],
+    "B07H2N84CM": [
+      "guides/home-office-lighting-guide.html"
+    ],
+    "B07MTMC6YY": [
+      "guides/best-ergonomic-office-chairs-2026.html",
+      "guides/best-ergonomic-office-chairs-2026.html",
+      "guides/best-ergonomic-office-chairs-2026.html"
+    ],
+    "B07MTS4H7P": [
+      "guides/home-office-budget-setup-under-1000.html"
+    ],
+    "B07NH69TWB": [
+      "workspace-setup-calculator.html",
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/ergonomic-setup-for-gamers.html",
+      "assets/js/assessment.js",
+      "assets/js/build-your-office.js"
+    ],
+    "B07Q8TJ2KL": [
+      "guides/back-pain-ergonomic-setup.html"
+    ],
+    "B07QLWTLLN": [
+      "guides/home-office-budget-setup-under-1000.html"
+    ],
+    "B07R62FKFZ": [
+      "workspace-setup-calculator.html",
+      "guides/best-ergonomic-office-chairs-2026.html",
+      "guides/best-ergonomic-office-chairs-2026.html",
+      "guides/best-ergonomic-office-chairs-2026.html",
+      "assets/js/assessment.js",
+      "assets/js/build-your-office.js"
+    ],
+    "B07SCWHLJT": [
+      "guides/best-standing-desks-under-500.html"
+    ],
+    "B07SZHWCH5": [
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/home-office-desk-guide-2026.html",
+      "guides/home-office-desk-guide-2026.html",
+      "guides/home-office-desk-guide-2026.html"
+    ],
+    "B07T7VZR1L": [
+      "compare/shw-vs-flexispot.html"
+    ],
+    "B07W42DSG8": [
+      "guides/home-office-budget-setup-under-1000.html"
+    ],
+    "B07XLJX1SL": [
+      "guides/home-office-budget-setup-under-1000.html"
+    ],
+    "B07XQKJK4K": [
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/ergonomic-setup-for-gamers.html"
+    ],
+    "B07Y23TMZ4": [
+      "guides/cable-management-solutions.html",
+      "guides/cable-management-solutions.html",
+      "guides/cable-management-solutions.html"
+    ],
+    "B083FBN9BH": [
+      "guides/home-office-budget-setup-under-1000.html"
+    ],
+    "B0855ZBPXD": [
+      "guides/dual-monitor-home-office.html",
+      "guides/dual-monitor-home-office.html",
+      "guides/dual-monitor-home-office.html"
+    ],
+    "B085KBN2DN": [
+      "workspace-setup-calculator.html",
+      "workspace-setup-calculator.html",
+      "guides/best-standing-desks-under-500.html",
+      "compare/shw-vs-flexispot.html",
+      "assets/js/assessment.js",
+      "assets/js/build-your-office.js"
+    ],
+    "B087Z6LSHW": [
+      "workspace-setup-calculator.html",
+      "guides/home-office-budget-setup-under-1000.html",
+      "assets/js/assessment.js",
+      "assets/js/build-your-office.js"
+    ],
+    "B088BC5HMM": [
+      "workspace-setup-calculator.html",
+      "workspace-setup-calculator.html",
+      "guides/dual-monitor-setup-productivity.html",
+      "guides/dual-monitor-setup-productivity.html",
+      "assets/js/assessment.js",
+      "assets/js/build-your-office.js"
+    ],
+    "B08BCR862L": [
+      "guides/dual-monitor-home-office.html",
+      "guides/dual-monitor-home-office.html",
+      "guides/dual-monitor-home-office.html",
+      "assets/js/assessment.js",
+      "assets/js/build-your-office.js"
+    ],
+    "B08BLCZDYL": [
+      "workspace-setup-calculator.html",
+      "guides/ergonomic-accessories-home-office.html",
+      "assets/js/assessment.js"
+    ],
+    "B08DG2LY5B": [
+      "guides/ergonomic-accessories-home-office.html"
+    ],
+    "B08LBJXVSP": [
+      "guides/best-ergonomic-office-chairs-2026.html",
+      "guides/best-ergonomic-office-chairs-2026.html",
+      "guides/best-ergonomic-office-chairs-2026.html"
+    ],
+    "B08LMM1148": [
+      "guides/ergonomic-setup-for-gamers.html"
+    ],
+    "B08P2D215V": [
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/ergonomic-setup-for-gamers.html"
+    ],
+    "B092ZNFF8P": [
+      "workspace-setup-calculator.html",
+      "guides/best-ergonomic-office-chairs-2026.html",
+      "guides/best-ergonomic-office-chairs-2026.html",
+      "guides/best-ergonomic-office-chairs-2026.html",
+      "assets/js/assessment.js",
+      "assets/js/build-your-office.js"
+    ],
+    "B095KSHGYW": [
+      "guides/night-shift-lighting-guide.html"
+    ],
+    "B099WTN2TR": [
+      "guides/home-office-lighting-guide.html"
+    ],
+    "B09BDR49TH": [
+      "guides/ergonomic-setup-for-gamers.html"
+    ],
+    "B09BQLZK5P": [
+      "guides/productive-workspace-mindset.html"
+    ],
+    "B09DTDRJWP": [
+      "workspace-setup-calculator.html",
+      "guides/dual-monitor-home-office.html",
+      "guides/dual-monitor-home-office.html",
+      "guides/dual-monitor-home-office.html",
+      "guides/dual-monitor-setup-productivity.html",
+      "guides/dual-monitor-setup-productivity.html",
+      "assets/js/assessment.js",
+      "assets/js/build-your-office.js"
+    ],
+    "B09HM94VDS": [
+      "workspace-setup-calculator.html",
+      "guides/ergonomic-accessories-home-office.html",
+      "guides/ergonomic-accessories-home-office.html",
+      "guides/ergonomic-accessories-home-office.html",
+      "guides/home-office-budget-setup-under-1000.html",
+      "guides/home-office-budget-setup-under-1000.html",
+      "guides/home-office-budget-setup-under-1000.html",
+      "assets/js/assessment.js",
+      "assets/js/build-your-office.js"
+    ],
+    "B09J5HH2LR": [
+      "guides/best-standing-desks-under-500.html",
+      "guides/best-standing-desks-under-500.html"
+    ],
+    "B09JG8278X": [
+      "guides/productive-workspace-mindset.html"
+    ],
+    "B09NBWQDKX": [
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/ergonomic-setup-for-gamers.html"
+    ],
+    "B09TQZP9CL": [
+      "workspace-setup-calculator.html",
+      "guides/dual-monitor-home-office.html",
+      "guides/dual-monitor-home-office.html",
+      "guides/dual-monitor-home-office.html",
+      "guides/dual-monitor-setup-productivity.html",
+      "guides/dual-monitor-setup-productivity.html",
+      "assets/js/assessment.js",
+      "assets/js/build-your-office.js"
+    ],
+    "B09VT1Q1M2": [
+      "guides/cable-management-solutions.html"
+    ],
+    "B09XS7JWHH": [
+      "guides/productive-workspace-mindset.html"
+    ],
+    "B09ZLV2531": [
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/ergonomic-setup-for-gamers.html"
+    ],
+    "B0B3RHCV9R": [
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/ergonomic-setup-for-gamers.html"
+    ],
+    "B0BCQ9YQYW": [
+      "guides/ergonomic-setup-for-gamers.html"
+    ],
+    "B0BLSGHRXB": [
+      "guides/night-shift-lighting-guide.html"
+    ],
+    "B0BS9J2TR5": [
+      "guides/home-office-desk-guide-2026.html",
+      "guides/home-office-desk-guide-2026.html"
+    ],
+    "B0BSS3QBP6": [
+      "guides/best-standing-desk-mat-for-concrete-floors.html",
+      "guides/best-standing-desk-mat-for-concrete-floors.html",
+      "guides/best-standing-desk-mat-for-concrete-floors.html",
+      "guides/best-standing-desk-mat-for-concrete-floors.html"
+    ],
+    "B0BVQMQMY2": [
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/home-office-desk-guide-2026.html",
+      "guides/home-office-desk-guide-2026.html",
+      "guides/home-office-desk-guide-2026.html"
+    ],
+    "B0BZ3GHM8N": [
+      "guides/ergonomic-accessories-home-office.html"
+    ],
+    "B0BZ9ZS78J": [
+      "guides/ergonomic-setup-for-gamers.html"
+    ],
+    "B0C15B3HN1": [
+      "guides/best-ergonomic-office-chairs-2026.html",
+      "guides/best-ergonomic-office-chairs-2026.html",
+      "guides/best-ergonomic-office-chairs-2026.html"
+    ],
+    "B0C3WV6QVZ": [
+      "guides/home-office-desk-guide-2026.html",
+      "guides/home-office-desk-guide-2026.html",
+      "guides/home-office-desk-guide-2026.html"
+    ],
+    "B0C5J6ZJG6": [
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/ergonomic-setup-for-gamers.html"
+    ],
+    "B0C83YRK84": [
+      "guides/home-office-budget-setup-under-1000.html",
+      "assets/js/assessment.js"
+    ],
+    "B0CCZ1L489": [
+      "guides/productive-workspace-mindset.html"
+    ],
+    "B0CDGYKVFZ": [
+      "compare/branch-vs-uplift.html"
+    ],
+    "B0CM6V5GL2": [
+      "guides/cable-management-solutions.html",
+      "guides/cable-management-solutions.html",
+      "guides/cable-management-solutions.html"
+    ],
+    "B0CMXGDK5S": [
+      "guides/dual-monitor-home-office.html",
+      "guides/dual-monitor-home-office.html",
+      "guides/dual-monitor-home-office.html"
+    ],
+    "B0CNDBN213": [
+      "guides/cable-management-solutions.html",
+      "guides/cable-management-solutions.html",
+      "guides/cable-management-solutions.html"
+    ],
+    "B0CPH72BMN": [
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/ergonomic-setup-for-gamers.html"
+    ],
+    "B0CQXMT3QC": [
+      "guides/ergonomic-accessories-home-office.html",
+      "guides/ergonomic-accessories-home-office.html",
+      "guides/ergonomic-accessories-home-office.html",
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/home-office-budget-setup-under-1000.html"
+    ],
+    "B0CQXPGNCH": [
+      "guides/dual-monitor-setup-productivity.html",
+      "guides/dual-monitor-setup-productivity.html",
+      "guides/dual-monitor-setup-productivity.html"
+    ],
+    "B0CT8XYKCL": [
+      "guides/home-office-desk-guide-2026.html",
+      "guides/home-office-desk-guide-2026.html",
+      "guides/home-office-desk-guide-2026.html"
+    ],
+    "B0CTJYYSML": [
+      "guides/home-office-budget-setup-under-1000.html",
+      "guides/home-office-budget-setup-under-1000.html"
+    ],
+    "B0CTZBR5CG": [
+      "guides/home-office-budget-setup-under-1000.html"
+    ],
+    "B0D2RR1245": [
+      "guides/home-office-budget-setup-under-1000.html"
+    ],
+    "B0DB5DMDW3": [
+      "guides/ergonomic-accessories-home-office.html",
+      "guides/ergonomic-accessories-home-office.html"
+    ],
+    "B0DCPBTZ7W": [
+      "guides/ergonomic-setup-for-gamers.html"
+    ],
+    "B0DJRZG3Q9": [
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/ergonomic-setup-for-gamers.html"
+    ],
+    "B0DK59YKRS": [
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/ergonomic-setup-for-gamers.html",
+      "guides/ergonomic-setup-for-gamers.html"
+    ],
+    "B0GFSYH7K4": [
+      "guides/home-office-budget-setup-under-1000.html"
+    ],
+    "B0GSF63QT8": [
+      "guides/ergonomic-setup-for-gamers.html"
+    ],
+    "B0GX19V226": [
+      "guides/best-ergonomic-office-chairs-2026.html",
+      "guides/best-ergonomic-office-chairs-2026.html",
+      "guides/best-ergonomic-office-chairs-2026.html"
+    ],
+    "B0GY7TGDVQ": [
+      "guides/home-office-desk-guide-2026.html",
+      "guides/home-office-desk-guide-2026.html",
+      "guides/home-office-desk-guide-2026.html"
+    ]
+  }
+}

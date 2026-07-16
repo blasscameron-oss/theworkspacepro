@@ -83,48 +83,53 @@ document.addEventListener('DOMContentLoaded', function () {
     var banner = document.getElementById('dealBanner');
     if (!banner) return;
 
-    // Rotate deals weekly
-    var deals = [
+    // Rotate featured picks weekly — no invented discounts or "sale" prices
+    var picks = [
       {
-        badge: 'Deal of the Week',
-        title: 'Branch Ergonomic Chair — 15% Off',
-        desc: 'Best budget ergonomic chair with full adjustability. Limited time.',
-        oldPrice: '$329',
-        newPrice: '$280',
-        cta: 'Get Deal',
+        badge: 'Editor’s pick',
+        title: 'Branch Ergonomic Chair',
+        desc: 'Solid adjustability in the budget-to-mid range. Confirm live pricing on Branch.',
+        priceLabel: 'See live price',
+        cta: 'View product',
         url: 'https://www.branchfurniture.com/products/ergonomic-chair'
       },
       {
-        badge: 'Price Drop',
-        title: 'Uplift V2 Standing Desk — $50 Off',
-        desc: 'Our top-rated standing desk. Now starting at $549.',
-        oldPrice: '$599',
-        newPrice: '$549',
-        cta: 'View Deal',
+        badge: 'Standing desks',
+        title: 'Uplift V2 Standing Desk',
+        desc: 'Highly configurable frame. Check current configuration pricing on Uplift.',
+        priceLabel: 'See live price',
+        cta: 'View product',
         url: 'https://www.upliftdesk.com/uplift-v2-standing-desk-v2-or-v2-commercial/'
       },
       {
-        badge: 'Limited Time',
-        title: 'BenQ ScreenBar Plus — 20% Off',
-        desc: 'Reduce eye strain with the best monitor light bar on the market.',
-        oldPrice: '$109',
-        newPrice: '$87',
-        cta: 'Get Deal',
-        url: 'https://www.benq.com/en-us/monitor-light/bar/monitor-light-screenbar-plus.html'
+        badge: 'Lighting',
+        title: 'BenQ ScreenBar Plus',
+        desc: 'Monitor light bar that frees desk space and cuts glare. Price varies by retailer.',
+        priceLabel: 'See live price',
+        cta: 'View product',
+        url: 'https://www.amazon.com/dp/B07DP7RYXV/?tag=workspacepro-20'
       }
     ];
 
-    // Pick deal based on week number
     var week = Math.floor(Date.now() / (7 * 24 * 60 * 60 * 1000));
-    var deal = deals[week % deals.length];
+    var deal = picks[week % picks.length];
 
-    banner.querySelector('.deal-banner__badge').textContent = deal.badge;
-    banner.querySelector('.deal-banner__title').textContent = deal.title;
-    banner.querySelector('.deal-banner__desc').textContent = deal.desc;
-    banner.querySelector('.deal-banner__price-old').textContent = deal.oldPrice;
-    banner.querySelector('.deal-banner__price-new').textContent = deal.newPrice;
-    banner.querySelector('.deal-banner__cta').href = deal.url;
-    banner.querySelector('.deal-banner__cta').setAttribute('rel', 'sponsored noopener noreferrer');
+    var badge = banner.querySelector('.deal-banner__badge');
+    var title = banner.querySelector('.deal-banner__title');
+    var desc = banner.querySelector('.deal-banner__desc');
+    var oldP = banner.querySelector('.deal-banner__price-old');
+    var newP = banner.querySelector('.deal-banner__price-new');
+    var cta = banner.querySelector('.deal-banner__cta');
+    if (badge) badge.textContent = deal.badge;
+    if (title) title.textContent = deal.title;
+    if (desc) desc.textContent = deal.desc;
+    if (oldP) oldP.style.display = 'none';
+    if (newP) newP.textContent = deal.priceLabel;
+    if (cta) {
+      cta.href = deal.url;
+      cta.textContent = deal.cta + ' →';
+      cta.setAttribute('rel', 'sponsored noopener noreferrer');
+    }
   }
 
   /* ========================================================================
@@ -156,10 +161,10 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!hero) return;
 
     var trustData = [
-      { icon: '🔬', text: 'Research-backed recommendations' },
-      { icon: '💰', text: 'No pay-to-play — ever' },
-      { icon: '⚡', text: 'Instant results, no signup' },
-      { icon: '🔄', text: 'Updated monthly with new products' },
+      { icon: '🔬', text: 'Spec-based recommendations' },
+      { icon: '💰', text: 'No pay-to-play rankings' },
+      { icon: '⚡', text: 'Instant tools, no signup' },
+      { icon: '🔗', text: 'Affiliate links disclosed' },
     ];
 
     var trustRow = document.createElement('div');

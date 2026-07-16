@@ -14,3 +14,7 @@ id = "54ef76b2a6304fbb80f34053827df506"
 [vars]
 SITE_URL = "https://www.theworkspacepro.com"
 ALERT_EMAIL = ""
+
+# Optional auth for manual HTTP health checks:
+#   npx wrangler secret put MONITOR_SECRET
+# Then call: GET /?key=YOUR_SECRET  or  GET /?action=latest (public last result)

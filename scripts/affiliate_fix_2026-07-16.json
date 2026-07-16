@@ -1,0 +1,32 @@
+{
+  "verified_date": "2026-07-16",
+  "method": "agent-browser open amazon.com/dp/ASIN title check",
+  "live_image_asins": 40,
+  "replacements": {
+    "B07YFF3JG7": "B06Y3PGPR2",
+    "B07P1L5Y3V": "B092ZNFF8P",
+    "B08D8W6F8C": "B07R62FKFZ",
+    "B0BV6Z3L3Q": "B07NH69TWB",
+    "B07C2T7B68": "B085KBN2DN",
+    "B07Z5K6DFM": "B085KBN2DN",
+    "B08TV2HWPW": "B06Y1DVNQD",
+    "B08DF6QD8N": "B088BC5HMM",
+    "B07WVN4CV9": "B088BC5HMM",
+    "B09QN2B6MJ": "B09TQZP9CL",
+    "B08P3LJ7VQ": "B09DTDRJWP",
+    "B08DHH7M47": "B08BCR862L",
+    "B07PVG4Y4R": "B018MSDG84",
+    "B075G5HJBB": "B00358RIRC",
+    "B0725Q5L2M": "B07DHK5DHN",
+    "B0793425TR": "B018MSDG84",
+    "B07QB4QW2H": "B071CXPSDN",
+    "B07B4C6K2Q": "B07DP7RYXV",
+    "B09KGNVC2L": "B076VNFZJG",
+    "B07JGFBKQ1": "B00OUFX0YY",
+    "B07VF3ZB5S": "B00OUFX0YY",
+    "B07VGRJ7YT": "B087Z6LSHW",
+    "B07KG6Q4B5": "B06Y1DVNQD",
+    "B08B3MQRC1": "B07C7WJSQL"
+  },
+  "note": "Quiz and Build Your Office product DBs rebuilt to live ASINs only for Amazon links."
+}

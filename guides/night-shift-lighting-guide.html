@@ -11,10 +11,8 @@
  <meta property="og:type" content="article">
  <meta property="og:url" content="https://www.theworkspacepro.com/guides/night-shift-lighting-guide/">
  <link rel="canonical" href="https://www.theworkspacepro.com/guides/night-shift-lighting-guide/">
- <link rel="preconnect" href="https://fonts.googleapis.com">
- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
- <link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/fonts.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
  <link rel="stylesheet" href="/assets/css/bold.css">
  <script type="application/ld+json">
  {
@@ -608,30 +606,51 @@
 <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.theworkspacepro.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://www.theworkspacepro.com/guides/"},{"@type":"ListItem","position":3,"name":"Night Shift Lighting Guide","item":"https://www.theworkspacepro.com/guides/night-shift-lighting-guide/"}]}
     </script>
+  <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/images/favicon.svg">
+  <meta name="theme-color" content="#c2410c">
+  <script>
+    (function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
  <header class="site-header">
  <div class="site-header__inner">
  <a href="/" class="logo"><span class="logo__mark">W</span><span>The Workspace Pro</span></a>
- <nav class="nav">
- <a href="/" class="nav__link">Home</a>
- <a href="/guides/" class="nav__link nav__link--active">Guides</a>
- <a href="/tips/" class="nav__link">Tips</a>
- <a href="/podcasts/" class="nav__link">Podcasts</a>
- <a href="/about/" class="nav__link">About</a>
- <a href="/#assessment" class="nav__link nav__cta">Take the Quiz</a>
- </nav>
+       <nav class="nav" aria-label="Primary">
+        <a href="/" class="nav__link">Home</a>
+        <a href="/guides/" class="nav__link nav__link--active">Guides</a>
+        <a href="/tools/" class="nav__link">Tools</a>
+        <a href="/tips/" class="nav__link">Tips</a>
+        <a href="/about/" class="nav__link">About</a>
+        <a href="/#assessment" class="nav__link nav__cta">Take the Quiz</a>
+      </nav>
  <div class="header-actions">
- <button class="theme-toggle"><span class="theme-toggle__icon">☾</span></button>
- <button class="menu-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+ <button class="theme-toggle" type="button" aria-label="Toggle dark mode"><span class="theme-toggle__icon">☾</span></button>
+ <button class="menu-toggle" type="button" aria-label="Open menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
  </div>
  </div>
  </header>
  <div class="mobile-overlay"></div>
  <nav class="mobile-nav">
- <div class="mobile-nav__header"><span style="font-weight:700;">Menu</span><button class="menu-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
- <a href="/" class="mobile-nav__link">Home</a><a href="/guides/" class="mobile-nav__link">Guides</a><a href="/tips/" class="mobile-nav__link">Tips</a><a href="/podcasts/" class="mobile-nav__link">Podcasts</a><a href="/about/" class="mobile-nav__link">About</a><a href="/#assessment" class="mobile-nav__cta">Take the Quiz</a>
- </nav>
+    <div class="mobile-nav__header">
+      <span style="font-weight:700;">Menu</span>
+      <button class="menu-toggle" type="button" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <a href="/" class="mobile-nav__link">Home</a>
+    <a href="/guides/" class="mobile-nav__link">Guides</a>
+    <a href="/tools/" class="mobile-nav__link">Tools</a>
+    <a href="/build-your-office/" class="mobile-nav__link">Build Your Office</a>
+    <a href="/ergonomic-height-calculator/" class="mobile-nav__link">Height Calculator</a>
+    <a href="/workspace-setup-calculator/" class="mobile-nav__link">Setup Calculator</a>
+    <a href="/tips/" class="mobile-nav__link">Tips</a>
+    <a href="/podcasts/" class="mobile-nav__link">Podcasts</a>
+    <a href="/about/" class="mobile-nav__link">About</a>
+    <a href="/contact/" class="mobile-nav__link">Contact</a>
+    <a href="/#assessment" class="mobile-nav__cta">Take the Quiz</a>
+  </nav>
 
  <article>
  <div class="container-prose">
@@ -760,7 +779,7 @@
  <h3>Blue-Blocking Glasses</h3>
  <p>Yellow- or amber-tinted glasses filter blue light at the lens level. Research is mixed — some studies show significant melatonin improvements, others find minimal benefit — but they're useful in environments where you can't control the lighting, or if you're particularly sensitive to blue light.</p>
 
- <p>Look for glasses that block at least 90% of light in the 400–460 nm range. Budget options from brands like <strong>Uvex</strong> (<a href="https://www.amazon.com/Uvex-S1933X-Eyeshields-Spectrum-SCT-Orange/dp/B000USRG90/?tag=workspacepro-20" rel="sponsored noopener noreferrer">Uvex Skyper</a>, around $10) are surprisingly effective — they're safety glasses designed for industrial use but work perfectly as blue blockers.</p>
+ <p>Look for glasses that block at least 90% of light in the 400–460 nm range. Budget options from brands like <strong>Uvex</strong> (<a href="https://www.amazon.com/dp/B000USRG90/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Uvex Skyper</a>, around $10) are surprisingly effective — they're safety glasses designed for industrial use but work perfectly as blue blockers.</p>
 
  <h2 id="hardware-solutions">Hardware Solutions: Bulbs, Lamps, and Light Bars</h2>
 
@@ -801,23 +820,23 @@
  <p><strong>BenQ ScreenBar Plus ($109)</strong><br>
  The gold-standard monitor light bar. Sits on top of any standard or ultrawide monitor via counterweight (no adhesive), distributes light asymmetrically onto your desk without hitting your screen or eyes. Color temperature dial from cool daylight to warm amber, auto-dimming sensor, USB-powered.<br>
  Key specs: 2,700 K – 6,500 K range, CR 90, 8-level brightness.<br>
- <img src="/assets/images/products/B07DP7RYXV.jpg" alt="BenQ ScreenBar Plus on Amazon" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B07DP7RYXV/?tag=workspacepro-20" rel="sponsored noopener noreferrer">BenQ ScreenBar Plus on Amazon</a></p>
+ <img width="72" height="72" src="/assets/images/products/B07DP7RYXV.jpg" alt="BenQ ScreenBar Plus on Amazon" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B07DP7RYXV/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">BenQ ScreenBar Plus on Amazon</a></p>
 
  <h3>Best Smart Bulb for Schedules</h3>
  <p><strong>Philips Hue White Ambiance A19 ($50 per bulb)</strong><br>
  Philips Hue is the ecosystem that others are measured against. The White Ambiance line spans 2,200 K (very warm candlelight) to 6,500 K (cool daylight), so you can program it to shift throughout the day automatically. The Hue app lets you set "Routines" — wake up with a gentle warm brightening, work in neutral white, and transition to warm amber after sunset. Works with Alexa, Google Home, and Apple HomeKit.<br>
  The main downside is cost: at $50 per bulb, outfitting a whole room gets expensive. But if you want the most reliable, best-integrated smart lighting, this is it.<br>
- <img src="/assets/images/products/B095KSHGYW.jpg" alt="Philips Hue White Ambiance on Amazon" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B095KSHGYW/?tag=workspacepro-20" rel="sponsored noopener noreferrer">Philips Hue White Ambiance on Amazon</a></p>
+ <img width="72" height="72" src="/assets/images/products/B095KSHGYW.jpg" alt="Philips Hue White Ambiance on Amazon" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B095KSHGYW/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Philips Hue White Ambiance on Amazon</a></p>
 
  <h3>Best Ambient Floor Light</h3>
  <p><strong>Govee RGBIC Floor Lamp ($60)</strong><br>
  The Govee RGBIC Floor Lamp is a tall, LED-filled floor lamp that can produce over 16 million colors, but for our purposes, the key feature is the adjustable white temperature range (2,700 K – 6,500 K). You can set it to warm white for evening work and schedule it to switch automatically. It's also dimmable, so you can dial in the right brightness for your room. The app supports custom scenes and timers — useful for setting an "evening wind-down" scene that dims gradually over the last hour of your work session.<br>
- <a href="https://www.amazon.com/dp/B0BLSGHRXB/?tag=workspacepro-20" rel="sponsored noopener noreferrer">Govee RGBIC Floor Lamp on Amazon</a></p>
+ <a href="https://www.amazon.com/dp/B0BLSGHRXB/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Govee RGBIC Floor Lamp on Amazon</a></p>
 
  <h3>Best Budget Blue-Blocking Glasses</h3>
  <p><strong>Uvex Skyper S1933X ($10)</strong><br>
  These aren't designed as "gaming glasses" or fashion frames — they're industrial safety glasses with SCT-Orange lenses that block over 98% of blue light below 500 nm. They look a bit like lab goggles, so style points are minimal, but the effectiveness is real. Multiple studies have used these exact glasses in sleep research. If you want maximum blue-blocking for minimum money, this is it.<br>
- <a href="https://www.amazon.com/Uvex-S1933X-Eyeshields-Spectrum-SCT-Orange/dp/B000USRG90/?tag=workspacepro-20" rel="sponsored noopener noreferrer">Uvex Skyper on Amazon</a></p>
+ <a href="https://www.amazon.com/dp/B000USRG90/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Uvex Skyper on Amazon</a></p>
 
  <h2 id="comparison-table">Comparison Table</h2>
 
@@ -1146,18 +1165,55 @@
  </div>
  </section>
 
- <footer
- <div class="site-footer__grid">
- <div class="footer-brand"><div style="display:flex;align-items:center;gap:var(--space-sm);font-family:var(--font-display);font-weight:700;font-size:1.125rem;"><span class="logo__mark">W</span><span>The Workspace Pro</span></div><p>Helping you build a workspace that fits your body, your work, and your budget.</p></div>
- <div class="footer-col"><h4>Explore</h4><ul><li><a href="/">Home</a></li><li><a href="/guides/">Guides</a></li><li><a href="/tips/">Tips</a></li><li><a href="/podcasts/">Podcasts</a></li></ul></div>
- <div class="footer-col"><h4>About</h4><ul><li><a href="/about/">About Us</a></li><li><a href="/contact/">Contact</a></li><li><a href="/affiliate-disclosure/">Affiliate Disclosure</a></li></ul></div>
- <div class="footer-col"><h4>Legal</h4><ul><li><a href="/privacy/">Privacy Policy</a></li><li><a href="/terms/">Terms of Service</a></li></ul></div>
- </div>
- <div class="site-footer__bottom"><span>© 2026 The Workspace Pro. All rights reserved.</span><span>This site uses affiliate links. We only recommend products we genuinely believe in.</span></div>
- </footer>
- <script src="/assets/js/assessment.js"></script>
- <script src="/assets/js/enhancements.js"></script>
- <script src="/assets/js/bold.js"></script>
+   <footer class="site-footer">
+    <div class="site-footer__grid">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:var(--space-sm);font-family:var(--font-display);font-weight:700;font-size:1.125rem;">
+          <span class="logo__mark">W</span>
+          <span>The Workspace Pro</span>
+        </div>
+        <p>Helping you build a workspace that fits your body, your work, and your budget. Independent, research-backed recommendations.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/guides/">Guides</a></li>
+          <li><a href="/tips/">Tips</a></li>
+          <li><a href="/podcasts/">Podcasts</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="/tools/">All Tools</a></li>
+          <li><a href="/#assessment">Workspace Assessment</a></li>
+          <li><a href="/build-your-office/">Build Your Office</a></li>
+          <li><a href="/ergonomic-height-calculator/">Height Calculator</a></li>
+          <li><a href="/workspace-setup-calculator/">Setup Calculator</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about/">About Us</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/affiliate-disclosure/">Affiliate Disclosure</a></li>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <span>© 2026 The Workspace Pro. All rights reserved.</span>
+      <span>This site uses affiliate links. We only recommend products we genuinely believe in.</span>
+    </div>
+  </footer>
+ <script src="/assets/js/analytics.js" defer></script>
+  <script src="/assets/js/site.js" defer></script>
+  <script src="/assets/js/perf-lite.js" defer></script>
+<script src="/assets/js/enhancements.js" defer></script>
+ <script src="/assets/js/bold.js" defer></script>
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{"token": "26781bf348b1406aaaab5ed9a3e72d38"}"></script><!-- End Cloudflare Web Analytics -->
 
  <script is:inline>
@@ -1175,8 +1231,7 @@
  });
  });
  </script>
-<script src="/assets/js/product-reviews.js"></script>
-<script src="/assets/js/review-injector.js"></script>
+<script src="/assets/js/review-injector.js" defer></script>
 
  <script is:inline>
  document.addEventListener('DOMContentLoaded', function() {

@@ -1,0 +1,11 @@
+{
+  "description": "ASINs that must never reappear (wrong product, dead, or known bad).",
+  "asins": [
+    "B0B7865Z11",
+    "B09RK8XWJB"
+  ],
+  "notes": {
+    "B0B7865Z11": "Was boat bimini; wrongly labeled FlexiSpot in gamers guide",
+    "B09RK8XWJB": "Was wall mural; wrongly labeled CumulusPRO mat"
+  }
+}

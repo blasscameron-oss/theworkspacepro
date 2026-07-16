@@ -1,22 +1,33 @@
 /**
  * TWP Monitor — Cloudflare Worker
- * Runs weekly to check site health: broken links, 404s, SSL, performance
- * Results stored in KV and logged
+ * Weekly site health: broken links, 404s, SSL, performance
+ * Results stored in KV
  */
 
 const SITE_URL = 'https://www.theworkspacepro.com';
 
-// All known site URLs to check
 const URLS_TO_CHECK = [
   '/',
   '/guides/',
   '/tips/',
   '/podcasts/',
   '/about/',
+  '/assets/js/height-math.js',
+  '/assets/js/analytics.js',
+  '/embed/height/',
+  '/changelog/',
   '/contact/',
   '/affiliate-disclosure/',
   '/privacy/',
   '/terms/',
+  '/tools/',
+  '/compare/',
+  '/assets/data/products-matrix.json',
+  '/build-your-office/',
+  '/ergonomic-height-calculator/',
+  '/workspace-setup-calculator/',
+  '/home-office-setup-guide/',
+  '/assets/images/favicon.svg',
   // Guides
   '/guides/ergonomic-office-chair-buying-guide/',
   '/guides/best-ergonomic-office-chairs-2026/',
@@ -34,6 +45,10 @@ const URLS_TO_CHECK = [
   '/guides/back-pain-ergonomic-setup/',
   '/guides/ergonomic-setup-for-gamers/',
   '/guides/productive-workspace-mindset/',
+  // Compare
+  '/compare/branch-vs-uplift/',
+  '/compare/herman-miller-vs-steelcase/',
+  '/compare/shw-vs-flexispot/',
   // Redirects
   '/deals/',
   '/quiz/',
@@ -41,13 +56,61 @@ const URLS_TO_CHECK = [
   '/resources/',
   // Assets
   '/assets/css/style.css',
+  '/assets/css/bold.css',
   '/assets/js/assessment.js',
   '/assets/js/enhancements.js',
+  '/assets/js/bold.js',
   '/robots.txt',
   '/sitemap.xml',
 ];
 
-// URLs that should redirect (301/302)
+
+// Soft Amazon ASIN sample (warnings only — flaky / ToS-sensitive)
+const SAMPLE_ASINS = [
+  'B09HM94VDS', // MX Master 3S — known live
+  'B06Y3PGPR2', // HON Ignition
+  'B085KBN2DN', // SHW desk
+  'B07R62FKFZ', // Sayl
+  'B00358RIRC', // Ergotron LX
+];
+
+async function softAsinSample(results) {
+  for (const asin of SAMPLE_ASINS) {
+    const url = `https://www.amazon.com/dp/${asin}/?tag=workspacepro-20`;
+    const start = Date.now();
+    try {
+      const response = await fetch(url, {
+        method: 'GET',
+        redirect: 'follow',
+        headers: { 'User-Agent': 'TWP-Monitor/1.0 (+https://www.theworkspacepro.com)' },
+      });
+      const elapsed = Date.now() - start;
+      results.responseTimes['asin:' + asin] = elapsed;
+      if (response.status === 404) {
+        results.warnings++;
+        results.warningsList.push({
+          path: 'asin:' + asin,
+          message: `Amazon ASIN returned ${response.status} (soft check; may be geo/bot)`,
+        });
+      } else if (response.status >= 500) {
+        results.warnings++;
+        results.warningsList.push({
+          path: 'asin:' + asin,
+          message: `Amazon ASIN soft check HTTP ${response.status}`,
+        });
+      }
+      // 200/301/302/503 from bot walls → do not fail hard
+    } catch (err) {
+      results.warnings++;
+      results.warningsList.push({
+        path: 'asin:' + asin,
+        message: 'Amazon ASIN soft check error: ' + err.message,
+      });
+    }
+  }
+}
+
+
 const EXPECTED_REDIRECTS = {
   '/deals/': [301, 302],
   '/quiz/': [301, 302],
@@ -55,19 +118,58 @@ const EXPECTED_REDIRECTS = {
   '/resources/': [301, 302],
 };
 
+function authorized(request, env) {
+  // Cron path is scheduled(), not fetch. For HTTP: require secret if set.
+  const secret = env.MONITOR_SECRET;
+  if (!secret) {
+    // No secret configured — allow read of latest check only via ?action=latest
+    return { ok: true, write: false };
+  }
+  const url = new URL(request.url);
+  const key = url.searchParams.get('key') || request.headers.get('x-monitor-key') || '';
+  if (key === secret) return { ok: true, write: true };
+  return { ok: false, write: false };
+}
+
 export default {
   async scheduled(event, env, ctx) {
     ctx.waitUntil(runHealthCheck(env));
   },
 
   async fetch(request, env) {
-    // Manual trigger via HTTP
+    const url = new URL(request.url);
+    const auth = authorized(request, env);
+
+    if (url.searchParams.get('action') === 'latest') {
+      if (!env.TWP_MONITOR) {
+        return json({ error: 'KV not bound' }, 503);
+      }
+      const latest = await env.TWP_MONITOR.get('latest-check');
+      if (!latest) return json({ error: 'No checks yet' }, 404);
+      return new Response(latest, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Cache-Control': 'public, max-age=60',
+        },
+      });
+    }
+
+    // Running a full check requires auth when MONITOR_SECRET is set
+    if (env.MONITOR_SECRET && !auth.write) {
+      return json({ error: 'Unauthorized. Pass ?key= or X-Monitor-Key header.' }, 401);
+    }
+
     const result = await runHealthCheck(env);
-    return new Response(JSON.stringify(result, null, 2), {
-      headers: { 'Content-Type': 'application/json' }
-    });
-  }
+    return json(result);
+  },
 };
+
+function json(data, status = 200) {
+  return new Response(JSON.stringify(data, null, 2), {
+    status,
+    headers: { 'Content-Type': 'application/json' },
+  });
+}
 
 async function runHealthCheck(env) {
   const results = {
@@ -88,8 +190,8 @@ async function runHealthCheck(env) {
     try {
       const response = await fetch(url, {
         method: 'GET',
-        redirect: 'manual', // Don't follow redirects automatically
-        headers: { 'User-Agent': 'TWP-Monitor/1.0' }
+        redirect: 'manual',
+        headers: { 'User-Agent': 'TWP-Monitor/1.0' },
       });
 
       const elapsed = Date.now() - start;
@@ -108,31 +210,25 @@ async function runHealthCheck(env) {
             path,
             status,
             expected: `Redirect ${expectedRedirects.join(' or ')}`,
-            elapsed
+            elapsed,
           });
         }
       } else if (status === 200 || status === 308) {
-        // 308 = Cloudflare Pages trailing slash redirect, which is normal
         results.passed++;
-
-        // Check response time warning
         if (elapsed > 2000) {
           results.warnings++;
           results.warningsList.push({
             path,
-            message: `Slow response: ${elapsed}ms`
+            message: `Slow response: ${elapsed}ms`,
           });
         }
-      } else if (status === 404 && path === '/nonexistent-test/') {
-        // This is expected to 404
-        results.passed++;
       } else {
         results.failed++;
         results.errors.push({
           path,
           status,
           expected: 200,
-          elapsed
+          elapsed,
         });
       }
     } catch (err) {
@@ -141,23 +237,19 @@ async function runHealthCheck(env) {
       results.errors.push({
         path,
         error: err.message,
-        elapsed: Date.now() - start
+        elapsed: Date.now() - start,
       });
     }
   }
 
-  // Check SSL certificate
   try {
     const sslResponse = await fetch(SITE_URL, { method: 'HEAD' });
-    if (sslResponse.ok) {
-      results.passed++;
-    }
+    if (sslResponse.ok) results.passed++;
   } catch (err) {
     results.failed++;
     results.errors.push({ path: '/', error: 'SSL check failed: ' + err.message });
   }
 
-  // Check sitemap is accessible
   try {
     const sitemapResponse = await fetch(SITE_URL + '/sitemap.xml');
     if (!sitemapResponse.ok) {
@@ -169,13 +261,20 @@ async function runHealthCheck(env) {
     results.warningsList.push({ path: '/sitemap.xml', message: 'Sitemap check failed' });
   }
 
-  // Store results in KV if available
+  // Soft ASIN sample — warnings only (never hard-fail the site check)
+  await softAsinSample(results);
+
   if (env.TWP_MONITOR) {
     await env.TWP_MONITOR.put('latest-check', JSON.stringify(results));
-    await env.TWP_MONITOR.put('history:' + new Date().toISOString().split('T')[0], JSON.stringify(results));
+    await env.TWP_MONITOR.put(
+      'history:' + new Date().toISOString().split('T')[0],
+      JSON.stringify(results)
+    );
   }
 
-  console.log(`Health check complete: ${results.passed} passed, ${results.failed} failed, ${results.warnings} warnings`);
+  console.log(
+    `Health check complete: ${results.passed} passed, ${results.failed} failed, ${results.warnings} warnings`
+  );
 
   return results;
 }

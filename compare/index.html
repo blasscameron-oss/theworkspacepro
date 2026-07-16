@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compare Workspace Products — The Workspace Pro</title>
+  <meta name="description" content="Filter chairs, desks, monitors, and accessories by category and budget. Spec-based picks with live retailer links — no fake star ratings.">
+  <meta property="og:title" content="Compare Workspace Products — The Workspace Pro">
+  <meta property="og:description" content="Filter chairs, desks, monitors, and accessories by budget. Check live prices.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.theworkspacepro.com/compare/">
+  <meta property="og:image" content="https://www.theworkspacepro.com/assets/images/og-default.jpg">
+  <link rel="canonical" href="https://www.theworkspacepro.com/compare/">
+<link rel="stylesheet" href="/assets/css/fonts.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#c2410c">
+  <script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);else if(matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"CollectionPage","name":"Compare Workspace Products","url":"https://www.theworkspacepro.com/compare/","isPartOf":{"@type":"WebSite","name":"The Workspace Pro","url":"https://www.theworkspacepro.com"}}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a href="/" class="logo"><span class="logo__mark">W</span><span>The Workspace Pro</span></a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/" class="nav__link">Home</a>
+        <a href="/guides/" class="nav__link">Guides</a>
+        <a href="/tools/" class="nav__link">Tools</a>
+        <a href="/compare/" class="nav__link nav__link--active">Compare</a>
+        <a href="/about/" class="nav__link">About</a>
+        <a href="/#assessment" class="nav__link nav__cta">Take the Quiz</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode"><span class="theme-toggle__icon">☾</span></button>
+        <button class="menu-toggle" type="button" aria-label="Open menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      </div>
+    </div>
+  </header>
+  <div class="mobile-overlay"></div>
+  <nav class="mobile-nav" aria-label="Mobile">
+    <div class="mobile-nav__header"><span style="font-weight:700;">Menu</span>
+      <button class="menu-toggle" type="button" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <a href="/" class="mobile-nav__link">Home</a>
+    <a href="/guides/" class="mobile-nav__link">Guides</a>
+    <a href="/tools/" class="mobile-nav__link">Tools</a>
+    <a href="/compare/" class="mobile-nav__link">Compare</a>
+    <a href="/#assessment" class="mobile-nav__cta">Take the Quiz</a>
+  </nav>
+
+  <main id="main-content">
+    <section class="page-header">
+      <div class="container">
+        <div class="page-header__eyebrow">Compare</div>
+        <h1 class="page-header__title">Filter products by category &amp; budget</h1>
+        <p class="page-header__desc">Spec-based shortlist from our tools and guides. Prices are approximate — always check the live listing. Affiliate links may earn us a commission at no extra cost to you. <strong>No fabricated star ratings.</strong></p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="matrix-filters" role="search">
+          <div class="matrix-filters__row">
+            <label class="matrix-label" for="filterSearch">Search</label>
+            <input type="search" id="filterSearch" class="matrix-input" placeholder="e.g. standing desk, monitor arm…" autocomplete="off">
+          </div>
+          <div class="matrix-filters__row">
+            <label class="matrix-label" for="filterCategory">Category</label>
+            <select id="filterCategory" class="matrix-select">
+              <option value="all">All categories</option>
+              <option value="chair">Chairs</option>
+              <option value="desk">Desks</option>
+              <option value="monitor">Monitors</option>
+              <option value="arm">Monitor arms / stands</option>
+              <option value="lighting">Lighting</option>
+              <option value="input">Keyboards / mice</option>
+              <option value="accessory">Accessories</option>
+            </select>
+          </div>
+          <div class="matrix-filters__row">
+            <label class="matrix-label" for="filterBudget">Budget band</label>
+            <select id="filterBudget" class="matrix-select">
+              <option value="all">Any budget</option>
+              <option value="under-150">Under ~$150</option>
+              <option value="under-350">Under ~$350</option>
+              <option value="under-600">Under ~$600</option>
+              <option value="under-1000">Under ~$1,000</option>
+              <option value="premium">Premium / $1,000+</option>
+            </select>
+          </div>
+          <div class="matrix-filters__actions">
+            <button type="button" id="filterClear" class="btn btn--secondary">Clear filters</button>
+            <p class="matrix-count" id="matrixCount" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <div class="matrix-grid" id="matrixGrid">
+          <p class="matrix-empty">Loading products…</p>
+        </div>
+
+        <div class="matrix-deep" style="margin-top:var(--space-2xl);">
+          <h2>Longer written comparisons</h2>
+          <div class="guide-grid" style="margin-top:var(--space-lg);">
+            <a class="guide-card" href="/compare/branch-vs-uplift/">
+              <span class="guide-card__category">Desks</span>
+              <h3 class="guide-card__title">Branch vs Uplift</h3>
+              <p class="guide-card__desc">Standing desk trade-offs: assembly, motors, customization.</p>
+            </a>
+            <a class="guide-card" href="/compare/herman-miller-vs-steelcase/">
+              <span class="guide-card__category">Chairs</span>
+              <h3 class="guide-card__title">Herman Miller vs Steelcase</h3>
+              <p class="guide-card__desc">Premium chair ecosystems and when each makes sense.</p>
+            </a>
+            <a class="guide-card" href="/compare/shw-vs-flexispot/">
+              <span class="guide-card__category">Desks</span>
+              <h3 class="guide-card__title">SHW vs FlexiSpot</h3>
+              <p class="guide-card__desc">Budget standing desks compared by value and build.</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__bottom" style="max-width:var(--max-width);margin:0 auto;padding:var(--space-xl);display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;">
+      <span>© 2026 The Workspace Pro</span>
+      <span><a href="/affiliate-disclosure/">Affiliate disclosure</a> · <a href="/tools/">Tools</a> · <a href="/changelog/">Changelog</a></span>
+    </div>
+  </footer>
+
+  <script src="/assets/js/analytics.js" defer></script>
+  <script src="/assets/js/site.js" defer></script>
+  <script src="/assets/js/perf-lite.js" defer></script>
+  <script src="/assets/js/compare-matrix.js" defer></script>
+</body>
+</html>

@@ -11,10 +11,8 @@
  <meta property="og:url" content="https://www.theworkspacepro.com/guides/ergonomic-setup-for-gamers/">
  <meta property="og:image" content="https://www.theworkspacepro.com/assets/images/guides/ergonomic-gaming-setup.jpg">
  <link rel="canonical" href="https://www.theworkspacepro.com/guides/ergonomic-setup-for-gamers/">
- <link rel="preconnect" href="https://fonts.googleapis.com">
- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
- <link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/fonts.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
  <link rel="stylesheet" href="/assets/css/bold.css">
  <script type="application/ld+json">
  {
@@ -609,30 +607,51 @@
 <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.theworkspacepro.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://www.theworkspacepro.com/guides/"},{"@type":"ListItem","position":3,"name":"Ergonomic Gaming Setup Guide 2026","item":"https://www.theworkspacepro.com/guides/ergonomic-setup-for-gamers/"}]}
     </script>
+  <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/images/favicon.svg">
+  <meta name="theme-color" content="#c2410c">
+  <script>
+    (function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
  <header class="site-header">
  <div class="site-header__inner">
  <a href="/" class="logo"><span class="logo__mark">W</span><span>The Workspace Pro</span></a>
- <nav class="nav">
- <a href="/" class="nav__link">Home</a>
- <a href="/guides/" class="nav__link nav__link--active">Guides</a>
- <a href="/tips/" class="nav__link">Tips</a>
- <a href="/podcasts/" class="nav__link">Podcasts</a>
- <a href="/about/" class="nav__link">About</a>
- <a href="/#assessment" class="nav__link nav__cta">Take the Quiz</a>
- </nav>
+       <nav class="nav" aria-label="Primary">
+        <a href="/" class="nav__link">Home</a>
+        <a href="/guides/" class="nav__link nav__link--active">Guides</a>
+        <a href="/tools/" class="nav__link">Tools</a>
+        <a href="/tips/" class="nav__link">Tips</a>
+        <a href="/about/" class="nav__link">About</a>
+        <a href="/#assessment" class="nav__link nav__cta">Take the Quiz</a>
+      </nav>
  <div class="header-actions">
- <button class="theme-toggle"><span class="theme-toggle__icon">☾</span></button>
- <button class="menu-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+ <button class="theme-toggle" type="button" aria-label="Toggle dark mode"><span class="theme-toggle__icon">☾</span></button>
+ <button class="menu-toggle" type="button" aria-label="Open menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
  </div>
  </div>
  </header>
  <div class="mobile-overlay"></div>
  <nav class="mobile-nav">
- <div class="mobile-nav__header"><span style="font-weight:700;">Menu</span><button class="menu-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
- <a href="/" class="mobile-nav__link">Home</a><a href="/guides/" class="mobile-nav__link">Guides</a><a href="/tips/" class="mobile-nav__link">Tips</a><a href="/podcasts/" class="mobile-nav__link">Podcasts</a><a href="/about/" class="mobile-nav__link">About</a><a href="/#assessment" class="mobile-nav__cta">Take the Quiz</a>
- </nav>
+    <div class="mobile-nav__header">
+      <span style="font-weight:700;">Menu</span>
+      <button class="menu-toggle" type="button" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <a href="/" class="mobile-nav__link">Home</a>
+    <a href="/guides/" class="mobile-nav__link">Guides</a>
+    <a href="/tools/" class="mobile-nav__link">Tools</a>
+    <a href="/build-your-office/" class="mobile-nav__link">Build Your Office</a>
+    <a href="/ergonomic-height-calculator/" class="mobile-nav__link">Height Calculator</a>
+    <a href="/workspace-setup-calculator/" class="mobile-nav__link">Setup Calculator</a>
+    <a href="/tips/" class="mobile-nav__link">Tips</a>
+    <a href="/podcasts/" class="mobile-nav__link">Podcasts</a>
+    <a href="/about/" class="mobile-nav__link">About</a>
+    <a href="/contact/" class="mobile-nav__link">Contact</a>
+    <a href="/#assessment" class="mobile-nav__cta">Take the Quiz</a>
+  </nav>
 
  <article>
  <div class="container-prose">
@@ -716,7 +735,7 @@
 
  <p>The test: sit in your chair and slide your fingers under your thigh at the front edge of the seat. If you can't fit your fingers, the seat is too high. If you can slide them in with lots of room, the seat is too low. You're looking for a snug fit — your fingers should contact both your thigh and the seat.</p>
 
- <p>Most gaming chairs and office chairs have pneumatic height adjustment. If you're between heights (e.g., 5'10" with longer legs), err on the side of a slightly higher seat and add a footrest. The <a href="https://www.amazon.com/dp/B09BDR49TH?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Ergofactor Foot Rest</a> (~$30) is a solid choice for maintaining proper leg angle without switching to a shorter desk.</p>
+ <p>Most gaming chairs and office chairs have pneumatic height adjustment. If you're between heights (e.g., 5'10" with longer legs), err on the side of a slightly higher seat and add a footrest. The <a href="https://www.amazon.com/dp/B09BDR49TH/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Ergofactor Foot Rest</a> (~$30) is a solid choice for maintaining proper leg angle without switching to a shorter desk.</p>
 
  <h3>Recline Angle</h3>
  <p>Here's where gaming ergonomics diverges from office ergonomics significantly. In an office, the standard recommendation is a 100-110 degree recline — slightly tilted back, supported by the backrest. For gaming, a slightly more upright posture (90-100 degrees) is often better because it keeps you closer to the screen and reduces the distance your arms need to reach for the mouse and keyboard.</p>
@@ -728,14 +747,14 @@
 
  <p>The proper position for the lumbar support is right at the curve of your lower back — typically between your belt line and the bottom of your rib cage. It should feel supportive, not poking. If the support is pushing your hips forward, it's too aggressive. If you don't feel it at all, it's not doing anything.</p>
 
- <p>If your current chair doesn't have adjustable lumbar support, you can use a <a href="https://www.amazon.com/dp/B014F18ZGU?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">memory foam lumbar cushion</a> (~$25) as a temporary fix. It's not as good as built-in support, but it's miles better than nothing.</p>
+ <p>If your current chair doesn't have adjustable lumbar support, you can use a <a href="https://www.amazon.com/dp/B014F18ZGU/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">memory foam lumbar cushion</a> (~$25) as a temporary fix. It's not as good as built-in support, but it's miles better than nothing.</p>
 
  <h3>Armrest Position</h3>
  <p>This is the most neglected adjustment on gaming chairs. Most gamers have their armrests set way too low — or they've removed them entirely because they were in the way.</p>
 
  <p>Your armrests should be set so that your elbows rest at a 90-degree angle with your forearms parallel to the floor. Your shoulders should be relaxed — not shrugged up toward your ears, not slouched forward. If your armrests are too low, your shoulders hunch up to compensate. If they're too high, your elbows get pinned up, leading to shoulder impingement over time.</p>
 
- <p>4D armrests — adjustment up/down, forward/back, left/right, and rotation — are a game-changer for gaming. They let you dial in the exact position that supports your arms during different types of gameplay. Wide armrests (like the ones on the <a href="https://www.amazon.com/dp/B0B3RHCV9R?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Secretlab Titan Evo</a> or <a href="https://www.amazon.com/dp/B08LMM1148?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Steelcase Gesture</a>) give you more surface area to spread the load of your forearms.</p>
+ <p>4D armrests — adjustment up/down, forward/back, left/right, and rotation — are a game-changer for gaming. They let you dial in the exact position that supports your arms during different types of gameplay. Wide armrests (like the ones on the <a href="https://www.amazon.com/dp/B0B3RHCV9R/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Secretlab Titan Evo</a> or <a href="https://www.amazon.com/dp/B08LMM1148/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Steelcase Gesture</a>) give you more surface area to spread the load of your forearms.</p>
 
  <h2 id="gaming-vs-office">Gaming Chairs vs. Ergonomic Office Chairs — The Honest Truth</h2>
 
@@ -745,9 +764,9 @@
 
  <p>The bucket bolsters on gaming chairs pinch your hips and restrict your leg movement. The stiff foam doesn't conform to your body — it pushes against pressure points. The fixed lumbar pillow is almost always positioned too high for shorter gamers and too low for taller ones. The seat pan is often too deep (front to back) for anyone under 5'8", forcing you to sit forward with your lower back unsupported.</p>
 
- <p>There are exceptions. The <a href="https://www.amazon.com/dp/B0B3RHCV9R?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Secretlab Titan Evo 2022</a> uses a cold-cure foam that actually holds up over years, and their lumbar support system (a built-in, adjustable mechanism inside the backrest) is genuinely good. The <a href="https://www.amazon.com/dp/B0CPH72BMN?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Razer Iskur V2</a> has an adjustable lumbar curve that's far better than the standard pillow system. But for every Secretlab or Razer, there are twenty cheap "racing" chairs on Amazon with the same bucket design, the same inadequate lumbar pillow, and the same foam that goes flat in six months.</p>
+ <p>There are exceptions. The <a href="https://www.amazon.com/dp/B0B3RHCV9R/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Secretlab Titan Evo 2022</a> uses a cold-cure foam that actually holds up over years, and their lumbar support system (a built-in, adjustable mechanism inside the backrest) is genuinely good. The <a href="https://www.amazon.com/dp/B0CPH72BMN/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Razer Iskur V2</a> has an adjustable lumbar curve that's far better than the standard pillow system. But for every Secretlab or Razer, there are twenty cheap "racing" chairs on Amazon with the same bucket design, the same inadequate lumbar pillow, and the same foam that goes flat in six months.</p>
 
- <p>Meanwhile, a high-end ergonomic office chair like the <a href="https://www.amazon.com/dp/B07NH69TWB?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Herman Miller Embody Gaming</a> or the <a href="https://www.amazon.com/dp/B0C5J6ZJG6?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Steelcase Series 2</a> or the <a href="https://www.amazon.com/dp/B0C5J6ZJG6?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Haworth Fern</a> is designed by ergonomics researchers and physical therapists. The seat pan is adjustable in depth. The lumbar support moves vertically and horizontally. The backrest flexes with your movement instead of fighting it. The foam is designed to maintain its properties over a decade of daily use.</p>
+ <p>Meanwhile, a high-end ergonomic office chair like the <a href="https://www.amazon.com/dp/B07NH69TWB/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Herman Miller Embody Gaming</a> or the <a href="https://www.amazon.com/dp/B0C5J6ZJG6/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Steelcase Series 2</a> or the <a href="https://www.amazon.com/dp/B0C5J6ZJG6/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Haworth Fern</a> is designed by ergonomics researchers and physical therapists. The seat pan is adjustable in depth. The lumbar support moves vertically and horizontally. The backrest flexes with your movement instead of fighting it. The foam is designed to maintain its properties over a decade of daily use.</p>
 
  <p>So which should you get?</p>
 
@@ -774,9 +793,9 @@
  <li>6'0" and above: 30-32 inch desk (look for "extra tall" desks or use risers)</li>
  </ul>
 
- <p>If you can't change your desk height, use a keyboard tray. The <a href="https://www.amazon.com/dp/B01M2319VR?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">VIVO Height-Adjustable Keyboard Tray</a> (~$40) mounts under your desk and lets you dial in the exact keyboard height independently of the desk surface.</p>
+ <p>If you can't change your desk height, use a keyboard tray. The <a href="https://www.amazon.com/dp/B01M2319VR/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">VIVO Height-Adjustable Keyboard Tray</a> (~$40) mounts under your desk and lets you dial in the exact keyboard height independently of the desk surface.</p>
 
- <p>Even better: a standing desk. Being able to switch between sitting and standing mid-session is transformative for gaming. The <a href="https://www.amazon.com/dp/B0B7865Z11?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Flexispot E7</a> (~$450) is the most recommended standing desk frame in the mid-range. For a full desktop package, the <a href="https://www.amazon.com/dp/B07SZHWCH5?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Uplift V2</a> (~$600 with a bamboo top) is the premium choice.</p>
+ <p>Even better: a standing desk. Being able to switch between sitting and standing mid-session is transformative for gaming. The <a href="https://www.amazon.com/dp/B0BVQMQMY2/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">FlexiSpot E6</a> (~$450) is the most recommended standing desk frame in the mid-range. For a full desktop package, the <a href="https://www.amazon.com/dp/B07SZHWCH5/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Uplift V2</a> (~$600 with a bamboo top) is the premium choice.</p>
 
  <h3>Monitor Height and Distance</h3>
  <p>This is the most important ergonomic adjustment for gamers, and the most commonly botched.</p>
@@ -796,7 +815,7 @@
 
  <p>You absolutely need a <strong>monitor arm</strong> to get this positioning right. The stock stands that come with monitors are terrible — they're too short, they don't tilt properly, and they waste desk space. A good monitor arm gives you infinite adjustment.</p>
 
- <p>The <a href="https://www.amazon.com/dp/B00358RIRC?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Ergotron HX</a> (~$150) is the best single-monitor arm on the market — heavy-duty, gas-spring, supports monitors up to 42 inches. The <a href="https://www.amazon.com/dp/B0CQXMT3QC?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Amazon Basics Premium Single Monitor Arm</a> (~$80) is a close second at half the price. For dual monitors, the <a href="https://www.amazon.com/dp/B009S750LA?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">VIVO Dual Monitor Desk Mount</a> (~$45) is the budget king — basic but functional.</p>
+ <p>The <a href="https://www.amazon.com/dp/B00358RIRC/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Ergotron HX</a> (~$150) is the best single-monitor arm on the market — heavy-duty, gas-spring, supports monitors up to 42 inches. The <a href="https://www.amazon.com/dp/B0CQXMT3QC/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Amazon Basics Premium Single Monitor Arm</a> (~$80) is a close second at half the price. For dual monitors, the <a href="https://www.amazon.com/dp/B009S750LA/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">VIVO Dual Monitor Desk Mount</a> (~$45) is the budget king — basic but functional.</p>
 
  <h3>Dual Monitor Setup for Gamers</h3>
  <p>If you have two monitors — one for gaming, one for Discord/Spotify/streaming — position your main gaming monitor directly in front of you. The secondary monitor should be angled slightly to the side, with its inner edge meeting the inner edge of your main monitor. The top edges should be at the same height so your eyes don't have to adjust vertically when you glance over.</p>
@@ -812,12 +831,12 @@
 
  <p>With a standard flat keyboard, your wrists are naturally in slight extension (bent upward). That's not ideal for long sessions. A <strong>split mechanical keyboard</strong> or a keyboard with <strong>negative tilt</strong> (feet flipped out so the back is lower than the front) can reduce that extension angle.</p>
 
- <p>The ultimate gaming keyboard for ergonomics is a <strong>tented split keyboard</strong> — one where the two halves are separated and angled upward. The <a href="https://www.amazon.com/dp/B0089ZLENA?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Moonlander Mark I</a> and the <a href="https://www.amazon.com/dp/B0089ZLENA?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Kinesis Freestyle Pro</a> are the best options for gamers who want full wrist-neutral positioning. If a split keyboard isn't your thing (the learning curve is real), the <a href="https://www.amazon.com/dp/B0BZ9ZS78J?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Razer DeathStalker V2 Pro</a> has a low-profile design that keeps your wrists flatter than a typical mechanical keyboard.</p>
+ <p>The ultimate gaming keyboard for ergonomics is a <strong>tented split keyboard</strong> — one where the two halves are separated and angled upward. The <a href="https://www.amazon.com/dp/B0089ZLENA/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Moonlander Mark I</a> and the <a href="https://www.amazon.com/dp/B0089ZLENA/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Kinesis Freestyle Pro</a> are the best options for gamers who want full wrist-neutral positioning. If a split keyboard isn't your thing (the learning curve is real), the <a href="https://www.amazon.com/dp/B0BZ9ZS78J/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Razer DeathStalker V2 Pro</a> has a low-profile design that keeps your wrists flatter than a typical mechanical keyboard.</p>
 
  <h3>Wrist Rests — Yes or No?</h3>
  <p>Controversial take: you probably don't need a wrist rest. Wrist rests are designed to keep your wrists in a neutral position <em>while resting</em> — not while typing. If you rest your wrists on the pad while gaming, you're actually compressing the carpal tunnel and putting more pressure on the median nerve.</p>
 
- <p>If you do use a wrist rest, use it as a <em>palm rest</em> — support the meaty part of your palm, not the bony part of your wrist, and lift your hands when you're actually gaming. The <a href="https://www.amazon.com/dp/B0DCPBTZ7W?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Glorious Wooden Wrist Rest</a> (~$25) is a good option — solid surface, doesn't compress, stays cool.</p>
+ <p>If you do use a wrist rest, use it as a <em>palm rest</em> — support the meaty part of your palm, not the bony part of your wrist, and lift your hands when you're actually gaming. The <a href="https://www.amazon.com/dp/B0DCPBTZ7W/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Glorious Wooden Wrist Rest</a> (~$25) is a good option — solid surface, doesn't compress, stays cool.</p>
 
  <h3>Mouse Grip and Sensitivity</h3>
  <p>Your mouse grip determines how much tension is in your forearm and wrist. There are three main grips:</p>
@@ -830,13 +849,13 @@
 
  <p>If you're a claw or fingertip gripper, you need to pay extra attention to mouse weight and shape. A lighter mouse reduces the load on your fingertips. An ergonomic shape (one that supports your hand's natural curvature) reduces the need to grip tightly.</p>
 
- <p>The <a href="https://www.amazon.com/dp/B09NBWQDKX?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Logitech G Pro X Superlight 2</a> (60g, ambidextrous shape) is the gold standard for competitive gaming and works well for claw/fingertip grip. The <a href="https://www.amazon.com/dp/B09ZLV2531?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Razer DeathAdder V3 Pro</a> (63g, ergonomic right-handed shape) is better for palm grip and larger hands.</p>
+ <p>The <a href="https://www.amazon.com/dp/B09NBWQDKX/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Logitech G Pro X Superlight 2</a> (60g, ambidextrous shape) is the gold standard for competitive gaming and works well for claw/fingertip grip. The <a href="https://www.amazon.com/dp/B09ZLV2531/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Razer DeathAdder V3 Pro</a> (63g, ergonomic right-handed shape) is better for palm grip and larger hands.</p>
 
  <p>Mouse sensitivity also matters for ergonomics. A very high sensitivity means you're making tiny micromovements with your wrist for hours — that's how you get repetitive strain injuries. A lower sensitivity forces you to use your whole arm (shoulder and elbow) instead of just your wrist. Arm aiming is fundamentally more ergonomic than wrist aiming because the larger muscles (shoulder, chest, back) share the load instead of concentrating everything in the small muscles of the forearm.</p>
 
  <p>A good range for most competitive games is 400-800 DPI combined with an in-game sensitivity that gives you roughly 12-20 inches per 360-degree turn. If you're currently playing at 1600+ DPI with a tiny wrist flick to do a full rotation, consider dropping your sensitivity gradually over a few weeks. Your wrist will thank you.</p>
 
- <p>A large mousepad is essential for low-sensitivity gaming. The <a href="https://www.amazon.com/dp/B0GSF63QT8?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">SteelSeries QcK Heavy</a> (3XL, ~$45) gives you a 36x16 inch surface — plenty of room for arm aiming without running out of desk space.</p>
+ <p>A large mousepad is essential for low-sensitivity gaming. The <a href="https://www.amazon.com/dp/B0GSF63QT8/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">SteelSeries QcK Heavy</a> (3XL, ~$45) gives you a 36x16 inch surface — plenty of room for arm aiming without running out of desk space.</p>
 
  <h2 id="audio-eyestrain">Audio and Eye Strain: Headphones, Blue Light, and Brightness</h2>
 
@@ -855,9 +874,9 @@
  <li><strong>Open-back vs. closed-back.</strong> Open-back headsets are lighter and more breathable, but they leak sound (not ideal for voice chat in a noisy room). Closed-back isolates sound but traps more heat.</li>
  </ul>
 
- <p>The <a href="https://www.amazon.com/dp/B0DJRZG3Q9?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">SteelSeries Arctis Nova Pro</a> (290g, suspension band, breathable fabric earpads) is the best ergonomic gaming headset on the market. The <a href="https://www.amazon.com/dp/B00ENMK1DW?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Philips SHP9500</a> (~$70, 260g, open-back, velour pads) is an amazing budget option — it's technically an audiophile headphone, not a gaming headset, but it's incredibly light and comfortable, and you can add a <a href="https://www.amazon.com/dp/B00BJ17WKK?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">VModa BoomPro microphone</a> (~$35) to turn it into a gaming headset.</p>
+ <p>The <a href="https://www.amazon.com/dp/B0DJRZG3Q9/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">SteelSeries Arctis Nova Pro</a> (290g, suspension band, breathable fabric earpads) is the best ergonomic gaming headset on the market. The <a href="https://www.amazon.com/dp/B00ENMK1DW/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Philips SHP9500</a> (~$70, 260g, open-back, velour pads) is an amazing budget option — it's technically an audiophile headphone, not a gaming headset, but it's incredibly light and comfortable, and you can add a <a href="https://www.amazon.com/dp/B00BJ17WKK/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">VModa BoomPro microphone</a> (~$35) to turn it into a gaming headset.</p>
 
- <p>If you want maximum comfort and can afford it, the <a href="https://www.amazon.com/dp/B077XDWT7X?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Hifiman Sundara</a> (~$300, 250g, open-back) is even lighter and has the best soundstage under $500. You'll need a separate mic or desk mic setup.</p>
+ <p>If you want maximum comfort and can afford it, the <a href="https://www.amazon.com/dp/B077XDWT7X/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Hifiman Sundara</a> (~$300, 250g, open-back) is even lighter and has the best soundstage under $500. You'll need a separate mic or desk mic setup.</p>
 
  <h3>Blue Light and Screen Brightness</h3>
  <p>Blue light from screens suppresses melatonin production and disrupts your circadian rhythm. For gamers who play primarily in the evening — which is most of us — this is a real problem. It's not just about sleeping worse; it's about eye fatigue compounding over time.</p>
@@ -869,7 +888,7 @@
  <li><strong>Use software solutions.</strong> <a href="https://justgetflux.com">f.lux</a> (free) adjusts your screen's color temperature based on time of day. Windows has a built-in "Night Light" feature. Both work well.</li>
  </ul>
 
- <p>You can also get <strong>blue light filtering glasses</strong> specifically for gaming. The <a href="https://www.amazon.com/dp/B07XQKJK4K?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Gunnar Intercept</a> (~$60) and <a href="https://www.amazon.com/dp/B07XQKJK4K?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Gunnar Optiks Torpedo</a> (~$70) are made specifically for gaming — they have a slight magnification (about 0.2) that reduces accommodation strain at typical monitor distances.</p>
+ <p>You can also get <strong>blue light filtering glasses</strong> specifically for gaming. The <a href="https://www.amazon.com/dp/B07XQKJK4K/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Gunnar Intercept</a> (~$60) and <a href="https://www.amazon.com/dp/B07XQKJK4K/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Gunnar Optiks Torpedo</a> (~$70) are made specifically for gaming — they have a slight magnification (about 0.2) that reduces accommodation strain at typical monitor distances.</p>
 
  <p>But here's an unpopular truth: blue light glasses aren't magic. The most effective thing you can do for eye strain is to <strong>take 20-second breaks every 20 minutes</strong> and look at something 20+ feet away (the 20-20-20 rule). That's harder than buying glasses, but it works better.</p>
 
@@ -883,9 +902,9 @@
 
  <p>Bias lighting has been standard in television setups for years (Philips Ambilight, anyone?), but it's only recently caught on in gaming. The principle is the same: balanced ambient light = less eye fatigue.</p>
 
- <p>The gold standard for gaming bias lighting is the <a href="https://www.amazon.com/dp/B08P2D215V?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Philips Hue Play Gradient Lightstrip</a> (~$100). It's pricey, but it's the only bias lighting that actually follows what's on your screen (via the Hue Sync app), creating an immersive halo effect that extends your peripheral vision. For a simpler option, the <a href="https://www.amazon.com/dp/B0BCQ9YQYW?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Govee Immersion TV LED Backlight</a> (~$55) also does screen-matching colors at half the price.</p>
+ <p>The gold standard for gaming bias lighting is the <a href="https://www.amazon.com/dp/B08P2D215V/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Philips Hue Play Gradient Lightstrip</a> (~$100). It's pricey, but it's the only bias lighting that actually follows what's on your screen (via the Hue Sync app), creating an immersive halo effect that extends your peripheral vision. For a simpler option, the <a href="https://www.amazon.com/dp/B0BCQ9YQYW/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Govee Immersion TV LED Backlight</a> (~$55) also does screen-matching colors at half the price.</p>
 
- <p>If you just want a static warm-white bias light — which is actually better for pure eye strain reduction than RGB — the <a href="https://www.amazon.com/dp/B01LR3O8SI?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">MediaLight Mk2 Flex</a> (~$30) is the recommendation from the International Color Consortium for accurate CRI bias lighting. It's not flashy, but it's the best thing you can do for your eyes during long sessions.</p>
+ <p>If you just want a static warm-white bias light — which is actually better for pure eye strain reduction than RGB — the <a href="https://www.amazon.com/dp/B01LR3O8SI/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">MediaLight Mk2 Flex</a> (~$30) is the recommendation from the International Color Consortium for accurate CRI bias lighting. It's not flashy, but it's the best thing you can do for your eyes during long sessions.</p>
 
  <h3>RGB Lighting — Use It Wisely</h3>
  <p>RGB lighting gets a bad rap from an ergonomics perspective, but it's not inherently bad. The problem is how people use it: bright direct-light RGB strips on the desk surface pointing at your eyes, or rainbow strobe effects that create visual noise.</p>
@@ -897,7 +916,7 @@
  <li><strong>Warm colors.</strong> Stick to warm white (2700-3500K), amber, or dim deep blues. Avoid bright reds and greens at high intensity — they create glare and force your pupils to contract.</li>
  </ul>
 
- <p>A simple desk lamp with a warm LED bulb positioned to the side of your monitor provides better ambient lighting than any RGB strip. The <a href="https://www.amazon.com/dp/B0DK59YKRS?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Benq ScreenBar Halo</a> (~$110) is the ultimate gaming desk lamp — it mounts on top of your monitor, shines downward (no screen glare), has ambient lighting on the back, and includes a wireless controller. The <a href="https://www.amazon.com/dp/B0DK59YKRS?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Xiaomi Mi Computer Monitor Light Bar</a> (~$40) is a solid budget alternative.</p>
+ <p>A simple desk lamp with a warm LED bulb positioned to the side of your monitor provides better ambient lighting than any RGB strip. The <a href="https://www.amazon.com/dp/B0DK59YKRS/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Benq ScreenBar Halo</a> (~$110) is the ultimate gaming desk lamp — it mounts on top of your monitor, shines downward (no screen glare), has ambient lighting on the back, and includes a wireless controller. The <a href="https://www.amazon.com/dp/B0DK59YKRS/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Xiaomi Mi Computer Monitor Light Bar</a> (~$40) is a solid budget alternative.</p>
 
  <h2 id="stretching">5-Minute Stretching Routine for Gamers (Between Matches)</h2>
 
@@ -943,67 +962,67 @@
 
  <div class="product-recs__item" style="background:var(--color-bg-alt);border-radius:var(--radius);padding:var(--space-lg);margin-bottom:var(--space-lg);">
  <h3 style="margin-bottom:var(--space-xs);">Razer DeathAdder V3 Pro</h3>
- <p class="product-recs__price" style="font-size:0.875rem;color:var(--color-muted);margin-bottom:var(--space-sm);"><strong>Best mouse for ergonomics</strong> · ~$150 · <a href="https://www.amazon.com/dp/B09ZLV2531?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Amazon</a></p>
+ <p class="product-recs__price" style="font-size:0.875rem;color:var(--c-text-muted);margin-bottom:var(--space-sm);"><strong>Best mouse for ergonomics</strong> · ~$150 · <a href="https://www.amazon.com/dp/B09ZLV2531/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Amazon</a></p>
  <p>63 grams. Ergonomic right-handed shape designed with esports pros. The hump supports the palm naturally, and the side buttons are positioned so you don't have to reach. The optical switches require less actuation force than mechanical switches, reducing finger fatigue during rapid clicking. Compatible with Razer HyperPolling for 4K Hz polling (smoother tracking means less micro-adjustment strain).</p>
  <p><strong>Best for:</strong> Palm grippers, medium-to-large hands, competitive FPS players.</p>
- <p><a href="https://www.amazon.com/dp/B09ZLV2531?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Check price on Amazon →</a></p>
+ <p><a href="https://www.amazon.com/dp/B09ZLV2531/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Check price on Amazon →</a></p>
  </div>
 
  <div class="product-recs__item" style="background:var(--color-bg-alt);border-radius:var(--radius);padding:var(--space-lg);margin-bottom:var(--space-lg);">
  <h3 style="margin-bottom:var(--space-xs);">Secretlab Titan Evo 2022</h3>
- <p class="product-recs__price" style="font-size:0.875rem;color:var(--color-muted);margin-bottom:var(--space-sm);"><strong>Best gaming chair</strong> · ~$550 · <a href="https://www.amazon.com/dp/B0B3RHCV9R?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Amazon</a></p>
+ <p class="product-recs__price" style="font-size:0.875rem;color:var(--c-text-muted);margin-bottom:var(--space-sm);"><strong>Best gaming chair</strong> · ~$550 · <a href="https://www.amazon.com/dp/B0B3RHCV9R/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Amazon</a></p>
  <p>The Titan Evo is the only gaming chair I can recommend without reservations. The cold-cure foam maintains its density for years (no sagging seat pan). The built-in lumbar support adjusts vertically and with tension (no pillow to slide around). The seat pan is available in three sizes (Small, Regular, XL) to match your height. 4D armrests with magnetic covers. The magnetic memory foam head pillow is actually usable — most gaming chair head pillows push your head forward, but this one supports the curve of your neck.</p>
  <p><strong>Best for:</strong> Gamers who want the racing aesthetic but need actual ergonomics, people between 5'4" and 6'9" (pick the right size).</p>
- <p><a href="https://www.amazon.com/dp/B0B3RHCV9R?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Check price on Amazon →</a></p>
+ <p><a href="https://www.amazon.com/dp/B0B3RHCV9R/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Check price on Amazon →</a></p>
  </div>
 
  <div class="product-recs__item" style="background:var(--color-bg-alt);border-radius:var(--radius);padding:var(--space-lg);margin-bottom:var(--space-lg);">
  <h3 style="margin-bottom:var(--space-xs);">Herman Miller Embody Gaming</h3>
- <p class="product-recs__price" style="font-size:0.875rem;color:var(--color-muted);margin-bottom:var(--space-sm);"><strong>Best overall ergonomic chair for gaming</strong> · ~$1,700 · <a href="https://www.amazon.com/dp/B07NH69TWB?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Amazon</a></p>
+ <p class="product-recs__price" style="font-size:0.875rem;color:var(--c-text-muted);margin-bottom:var(--space-sm);"><strong>Best overall ergonomic chair for gaming</strong> · ~$1,700 · <a href="https://www.amazon.com/dp/B07NH69TWB/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Amazon</a></p>
  <p>The Embody was designed with input from physical therapists, and the "gaming" version adds the same ergonomics in a darker colorway with slightly more breathable fabric. The Pixelated Support system distributes pressure across your entire back rather than concentrating it in one spot. The backrest follows your movement — you can lean, twist, and shift without losing support. The seat pan adjustability is unmatched (depth and angle). 12-year warranty.</p>
  <p>The Embody is not cheap, but it's one of the few products that genuinely justifies its price. If you spend 6+ hours a day gaming — or 12+ hours gaming + working from the same setup — the cost-per-hour over a decade of use is trivial compared to the medical bills from chronic back pain.</p>
  <p><strong>Best for:</strong> Serious gamers with back pain, anyone who sits 8+ hours a day, people who want a 10-year+ chair.</p>
- <p><a href="https://www.amazon.com/dp/B07NH69TWB?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Check price on Amazon →</a></p>
+ <p><a href="https://www.amazon.com/dp/B07NH69TWB/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Check price on Amazon →</a></p>
  </div>
 
  <div class="product-recs__item" style="background:var(--color-bg-alt);border-radius:var(--radius);padding:var(--space-lg);margin-bottom:var(--space-lg);">
  <h3 style="margin-bottom:var(--space-xs);">Ergotron HX Monitor Arm</h3>
- <p class="product-recs__price" style="font-size:0.875rem;color:var(--color-muted);margin-bottom:var(--space-sm);"><strong>Best monitor arm</strong> · ~$150 · <a href="https://www.amazon.com/dp/B00358RIRC?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Amazon</a></p>
+ <p class="product-recs__price" style="font-size:0.875rem;color:var(--c-text-muted);margin-bottom:var(--space-sm);"><strong>Best monitor arm</strong> · ~$150 · <a href="https://www.amazon.com/dp/B00358RIRC/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Amazon</a></p>
  <p>Heavy-duty gas spring that supports monitors up to 42 inches. Infinite adjustability in height, tilt, swivel, and rotation. The tension adjustment is tool-free (many arms require an Allen key). The cable management channel runs inside the arm — no external clips. This is the arm that will survive multiple monitor upgrades.</p>
  <p><strong>Best for:</strong> Anyone who wants perfect monitor positioning and has a monitor over 20 lbs.</p>
- <p><a href="https://www.amazon.com/dp/B00358RIRC?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Check price on Amazon →</a></p>
+ <p><a href="https://www.amazon.com/dp/B00358RIRC/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Check price on Amazon →</a></p>
  </div>
 
  <div class="product-recs__item" style="background:var(--color-bg-alt);border-radius:var(--radius);padding:var(--space-lg);margin-bottom:var(--space-lg);">
  <h3 style="margin-bottom:var(--space-xs);">SteelSeries Arctis Nova Pro</h3>
- <p class="product-recs__price" style="font-size:0.875rem;color:var(--color-muted);margin-bottom:var(--space-sm);"><strong>Best ergonomic gaming headset</strong> · ~$350 · <a href="https://www.amazon.com/dp/B0DJRZG3Q9?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Amazon</a></p>
+ <p class="product-recs__price" style="font-size:0.875rem;color:var(--c-text-muted);margin-bottom:var(--space-sm);"><strong>Best ergonomic gaming headset</strong> · ~$350 · <a href="https://www.amazon.com/dp/B0DJRZG3Q9/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Amazon</a></p>
  <p>290g with suspension headband — the weight distributes across the top of your head instead of clamping the sides. The earpads use a breathable fabric that doesn't trap heat. The ClearCast Gen 2 microphone is retractable (one less thing hanging on your desk). The DAC/amp base station includes a battery-swapping system for endless wireless use — no need to plug in mid-session.</p>
  <p><strong>Best for:</strong> Long gaming sessions (4+ hours), competitive audio, anyone who gets hot ears from leatherette pads.</p>
- <p><a href="https://www.amazon.com/dp/B0DJRZG3Q9?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Check price on Amazon →</a></p>
+ <p><a href="https://www.amazon.com/dp/B0DJRZG3Q9/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Check price on Amazon →</a></p>
  </div>
 
  <div class="product-recs__item" style="background:var(--color-bg-alt);border-radius:var(--radius);padding:var(--space-lg);margin-bottom:var(--space-lg);">
- <h3 style="margin-bottom:var(--space-xs);">Flexispot E7 Standing Desk Frame</h3>
- <p class="product-recs__price" style="font-size:0.875rem;color:var(--color-muted);margin-bottom:var(--space-sm);"><strong>Best standing desk for gaming</strong> · ~$450 · <a href="https://www.amazon.com/dp/B0B7865Z11?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Amazon</a></p>
+ <h3 style="margin-bottom:var(--space-xs);">FlexiSpot E6 Standing Desk Frame</h3>
+ <p class="product-recs__price" style="font-size:0.875rem;color:var(--c-text-muted);margin-bottom:var(--space-sm);"><strong>Best standing desk for gaming</strong> · ~$450 · <a href="https://www.amazon.com/dp/B0BVQMQMY2/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Amazon</a></p>
  <p>Dual motors, 330 lbs lifting capacity, programmable height presets, and a smart anti-collision system. The T-frame design is more stable than C-frames at standing height (less wobble when you're leaning into your game). The range goes from 28 to 48 inches — accommodates both sitting and standing for most heights. Add a 60x30" desktop from IKEA or a butcher block from Home Depot and you've got a pro-level gaming desk for under $600.</p>
  <p><strong>Best for:</strong> Gamers who want to switch between sitting and standing mid-session, tall gamers who need a higher desk.</p>
- <p><a href="https://www.amazon.com/dp/B0B7865Z11?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Check price on Amazon →</a></p>
+ <p><a href="https://www.amazon.com/dp/B0BVQMQMY2/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Check price on Amazon →</a></p>
  </div>
 
  <div class="product-recs__item" style="background:var(--color-bg-alt);border-radius:var(--radius);padding:var(--space-lg);margin-bottom:var(--space-lg);">
  <h3 style="margin-bottom:var(--space-xs);">Benq ScreenBar Halo</h3>
- <p class="product-recs__price" style="font-size:0.875rem;color:var(--color-muted);margin-bottom:var(--space-sm);"><strong>Best gaming desk lamp</strong> · ~$110 · <a href="https://www.amazon.com/dp/B0DK59YKRS?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Amazon</a></p>
+ <p class="product-recs__price" style="font-size:0.875rem;color:var(--c-text-muted);margin-bottom:var(--space-sm);"><strong>Best gaming desk lamp</strong> · ~$110 · <a href="https://www.amazon.com/dp/B0DK59YKRS/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Amazon</a></p>
  <p>Mounts on top of your monitor (zero desk space). The asymmetrical optical design shines light downward without reflecting off your screen. The ambient backlight reduces eye strain by illuminating the wall behind the monitor — it's bias lighting and task lighting in one device. Wireless round controller lets you adjust brightness and color temperature without reaching for the lamp.</p>
  <p><strong>Best for:</strong> Every gamer. This is the single best lighting upgrade you can make.</p>
- <p><a href="https://www.amazon.com/dp/B0DK59YKRS?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Check price on Amazon →</a></p>
+ <p><a href="https://www.amazon.com/dp/B0DK59YKRS/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Check price on Amazon →</a></p>
  </div>
 
  <div class="product-recs__item" style="background:var(--color-bg-alt);border-radius:var(--radius);padding:var(--space-lg);margin-bottom:var(--space-lg);">
  <h3 style="margin-bottom:var(--space-xs);">Philips Hue Play Gradient Lightstrip</h3>
- <p class="product-recs__price" style="font-size:0.875rem;color:var(--color-muted);margin-bottom:var(--space-sm);"><strong>Best bias lighting for gaming</strong> · ~$100 · <a href="https://www.amazon.com/dp/B08P2D215V?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Amazon</a></p>
+ <p class="product-recs__price" style="font-size:0.875rem;color:var(--c-text-muted);margin-bottom:var(--space-sm);"><strong>Best bias lighting for gaming</strong> · ~$100 · <a href="https://www.amazon.com/dp/B08P2D215V/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Amazon</a></p>
  <p>Light strip with three addressable zones that sync with your screen content via the Hue Sync app. Mounts to the back of your monitor with included brackets. Expands the color of your game into your peripheral vision, reducing the contrast between screen and dark wall. Requires a Hue Bridge ($50) for full functionality, but it's the only bias lighting that actually improves immersion rather than just providing ambient light.</p>
  <p><strong>Best for:</strong> Gamers who want premium bias lighting, immersive single-player experiences, streamers.</p>
- <p><a href="https://www.amazon.com/dp/B08P2D215V?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Check price on Amazon →</a></p>
+ <p><a href="https://www.amazon.com/dp/B08P2D215V/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Check price on Amazon →</a></p>
  </div>
 
  </div>
@@ -1014,73 +1033,73 @@
  <table style="width:100%;border-collapse:collapse;font-size:0.9rem;">
  <thead>
  <tr style="background:var(--color-bg-alt);">
- <th style="padding:var(--space-sm);text-align:left;border-bottom:2px solid var(--color-border);">Product</th>
- <th style="padding:var(--space-sm);text-align:left;border-bottom:2px solid var(--color-border);">Category</th>
- <th style="padding:var(--space-sm);text-align:left;border-bottom:2px solid var(--color-border);">Price</th>
- <th style="padding:var(--space-sm);text-align:left;border-bottom:2px solid var(--color-border);">Key Ergonomics Feature</th>
- <th style="padding:var(--space-sm);text-align:left;border-bottom:2px solid var(--color-border);">Best For</th>
+ <th style="padding:var(--space-sm);text-align:left;border-bottom:2px solid var(--c-border);">Product</th>
+ <th style="padding:var(--space-sm);text-align:left;border-bottom:2px solid var(--c-border);">Category</th>
+ <th style="padding:var(--space-sm);text-align:left;border-bottom:2px solid var(--c-border);">Price</th>
+ <th style="padding:var(--space-sm);text-align:left;border-bottom:2px solid var(--c-border);">Key Ergonomics Feature</th>
+ <th style="padding:var(--space-sm);text-align:left;border-bottom:2px solid var(--c-border);">Best For</th>
  </tr>
  </thead>
  <tbody>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><span class="badge badge--best best-for-badge">Editor's Choice</span> <img src="/assets/images/products/B09ZLV2531.jpg" alt="Razer DeathAdder V3 Pro" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B09ZLV2531?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank"><img src="/assets/images/products/B09ZLV2531.jpg" alt="Razer DeathAdder V3 Pro" class="product-thumb" loading="lazy"> Razer DeathAdder V3 Pro</a></td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Mouse</td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">~$150</td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">63g, ergonomic shape, low-force optical switches</td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Palm grippers, large hands</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);"><span class="badge badge--best best-for-badge">Editor's Choice</span> <img width="72" height="72" src="/assets/images/products/B09ZLV2531.jpg" alt="Razer DeathAdder V3 Pro" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B09ZLV2531/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank"><img width="72" height="72" src="/assets/images/products/B09ZLV2531.jpg" alt="Razer DeathAdder V3 Pro" class="product-thumb" loading="lazy"> Razer DeathAdder V3 Pro</a></td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">Mouse</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">~$150</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">63g, ergonomic shape, low-force optical switches</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">Palm grippers, large hands</td>
 </tr>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><span class="badge badge--best best-for-badge">Editor's Choice</span> <img src="/assets/images/products/B09NBWQDKX.jpg" alt="Logitech G Pro X Superlight 2" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B09NBWQDKX?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank"><img src="/assets/images/products/B09NBWQDKX.jpg" alt="Logitech G Pro X Superlight 2" class="product-thumb" loading="lazy"> Logitech G Pro X Superlight 2</a></td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Mouse</td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">~$160</td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">60g, ambidextrous, low click force</td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Claw/fingertip grip, competitive FPS</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);"><span class="badge badge--best best-for-badge">Editor's Choice</span> <img width="72" height="72" src="/assets/images/products/B09NBWQDKX.jpg" alt="Logitech G Pro X Superlight 2" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B09NBWQDKX/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank"><img width="72" height="72" src="/assets/images/products/B09NBWQDKX.jpg" alt="Logitech G Pro X Superlight 2" class="product-thumb" loading="lazy"> Logitech G Pro X Superlight 2</a></td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">Mouse</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">~$160</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">60g, ambidextrous, low click force</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">Claw/fingertip grip, competitive FPS</td>
 </tr>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><span class="badge badge--best best-for-badge">Editor's Choice</span> <a href="https://www.amazon.com/dp/B0B3RHCV9R?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Secretlab Titan Evo 2022</a></td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Chair</td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">~$550</td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Built-in adjustable lumbar, cold-cure foam, 4D armrests</td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Gaming aesthetic + ergonomics hybrid</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);"><span class="badge badge--best best-for-badge">Editor's Choice</span> <a href="https://www.amazon.com/dp/B0B3RHCV9R/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Secretlab Titan Evo 2022</a></td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">Chair</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">~$550</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">Built-in adjustable lumbar, cold-cure foam, 4D armrests</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">Gaming aesthetic + ergonomics hybrid</td>
 </tr>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><span class="badge badge--premium best-for-badge">Premium Pick</span> <img src="/assets/images/products/B07NH69TWB.jpg" alt="Herman Miller Embody Gaming" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B07NH69TWB?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank"><img src="/assets/images/products/B07NH69TWB.jpg" alt="Herman Miller Embody Gaming" class="product-thumb" loading="lazy"> Herman Miller Embody Gaming</a></td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Chair</td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">~$1,700</td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Pixelated Support back system, dynamic backrest flex, seat depth adjust</td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Serious gamers, existing back pain, 8+ hr/day sitters</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);"><span class="badge badge--premium best-for-badge">Premium Pick</span> <img width="72" height="72" src="/assets/images/products/B07NH69TWB.jpg" alt="Herman Miller Embody Gaming" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B07NH69TWB/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank"><img width="72" height="72" src="/assets/images/products/B07NH69TWB.jpg" alt="Herman Miller Embody Gaming" class="product-thumb" loading="lazy"> Herman Miller Embody Gaming</a></td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">Chair</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">~$1,700</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">Pixelated Support back system, dynamic backrest flex, seat depth adjust</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">Serious gamers, existing back pain, 8+ hr/day sitters</td>
 </tr>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><span class="badge badge--best best-for-badge">Editor's Choice</span> <img src="/assets/images/products/B0CPH72BMN.jpg" alt="Razer Iskur V2" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B0CPH72BMN?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank"><img src="/assets/images/products/B0CPH72BMN.jpg" alt="Razer Iskur V2" class="product-thumb" loading="lazy"> Razer Iskur V2</a></td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Chair</td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">~$500</td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Adjustable 6D lumbar curve, dense foam</td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Gamers who want Razer ecosystem, lumbar-focused support</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);"><span class="badge badge--best best-for-badge">Editor's Choice</span> <img width="72" height="72" src="/assets/images/products/B0CPH72BMN.jpg" alt="Razer Iskur V2" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B0CPH72BMN/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank"><img width="72" height="72" src="/assets/images/products/B0CPH72BMN.jpg" alt="Razer Iskur V2" class="product-thumb" loading="lazy"> Razer Iskur V2</a></td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">Chair</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">~$500</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">Adjustable 6D lumbar curve, dense foam</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">Gamers who want Razer ecosystem, lumbar-focused support</td>
 </tr>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><span class="badge badge--premium best-for-badge">Premium Pick</span> <img src="/assets/images/products/B00358RIRC.jpg" alt="Ergotron HX Monitor Arm" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B00358RIRC?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank"><img src="/assets/images/products/B00358RIRC.jpg" alt="Ergotron HX Monitor Arm" class="product-thumb" loading="lazy"> Ergotron HX Monitor Arm</a></td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Monitor Arm</td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">~$150</td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Gas spring, tool-less tension, supports up to 42"</td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Perfect monitor positioning, large monitors</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);"><span class="badge badge--premium best-for-badge">Premium Pick</span> <img width="72" height="72" src="/assets/images/products/B00358RIRC.jpg" alt="Ergotron HX Monitor Arm" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B00358RIRC/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank"><img width="72" height="72" src="/assets/images/products/B00358RIRC.jpg" alt="Ergotron HX Monitor Arm" class="product-thumb" loading="lazy"> Ergotron HX Monitor Arm</a></td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">Monitor Arm</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">~$150</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">Gas spring, tool-less tension, supports up to 42"</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">Perfect monitor positioning, large monitors</td>
 </tr>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><span class="badge badge--best best-for-badge">Editor's Choice</span> <a href="https://www.amazon.com/dp/B0DJRZG3Q9?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">SteelSeries Arctis Nova Pro</a></td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Headset</td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">~$350</td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">290g, suspension headband, breathable fabric earpads</td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Long sessions, competitive audio</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);"><span class="badge badge--best best-for-badge">Editor's Choice</span> <a href="https://www.amazon.com/dp/B0DJRZG3Q9/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">SteelSeries Arctis Nova Pro</a></td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">Headset</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">~$350</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">290g, suspension headband, breathable fabric earpads</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">Long sessions, competitive audio</td>
 </tr>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><span class="badge badge--value best-for-badge">Best Value</span> <a href="https://www.amazon.com/dp/B0B7865Z11?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Flexispot E7</a></td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Standing Desk</td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">~$450</td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">T-frame stability, dual motors, 28-48" height range</td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Sit-stand gaming, tall gamers</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);"><span class="badge badge--value best-for-badge">Best Value</span> <a href="https://www.amazon.com/dp/B0BVQMQMY2/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">FlexiSpot E6</a></td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">Standing Desk</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">~$450</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">T-frame stability, dual motors, 28-48" height range</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">Sit-stand gaming, tall gamers</td>
 </tr>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><span class="badge badge--best best-for-badge">Editor's Choice</span> <a href="https://www.amazon.com/dp/B0DK59YKRS?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Benq ScreenBar Halo</a></td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Lighting</td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">~$110</td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Asymmetrical light, zero screen glare, ambient backlight</td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Eye strain reduction, evening gaming</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);"><span class="badge badge--best best-for-badge">Editor's Choice</span> <a href="https://www.amazon.com/dp/B0DK59YKRS/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank">Benq ScreenBar Halo</a></td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">Lighting</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">~$110</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">Asymmetrical light, zero screen glare, ambient backlight</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">Eye strain reduction, evening gaming</td>
 </tr>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);"><span class="badge badge--best best-for-badge">Editor's Choice</span> <img src="/assets/images/products/B08P2D215V.jpg" alt="Philips Hue Play Gradient" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B08P2D215V?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank"><img src="/assets/images/products/B08P2D215V.jpg" alt="Philips Hue Play Gradient" class="product-thumb" loading="lazy"> Philips Hue Play Gradient</a></td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Lighting</td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">~$100</td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Screen-synced bias lighting, 3-zone color, immersive halo</td>
- <td style="padding:var(--space-sm);border-bottom:1px solid var(--color-border);">Immersive gaming, stream setup, RGB aesthetic</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);"><span class="badge badge--best best-for-badge">Editor's Choice</span> <img width="72" height="72" src="/assets/images/products/B08P2D215V.jpg" alt="Philips Hue Play Gradient" class="product-thumb" loading="lazy"> <a href="https://www.amazon.com/dp/B08P2D215V/?tag=workspacepro-20" rel="sponsored noopener noreferrer" target="_blank"><img width="72" height="72" src="/assets/images/products/B08P2D215V.jpg" alt="Philips Hue Play Gradient" class="product-thumb" loading="lazy"> Philips Hue Play Gradient</a></td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">Lighting</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">~$100</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">Screen-synced bias lighting, 3-zone color, immersive halo</td>
+ <td style="padding:var(--space-sm);border-bottom:1px solid var(--c-border);">Immersive gaming, stream setup, RGB aesthetic</td>
 </tr>
  </tbody>
  </table>
@@ -1212,12 +1231,12 @@
 
  <div style="text-align:center; margin: var(--space-2xl) 0;">
  <a href="/#assessment" class="btn btn--primary btn--lg">Take the Workspace Assessment →</a>
- <p style="margin-top:var(--space-sm); font-size:0.875rem; color:var(--color-muted);">Get personalized gaming setup recommendations based on your body, budget, and play style. Takes 2 minutes.</p>
+ <p style="margin-top:var(--space-sm); font-size:0.875rem; color:var(--c-text-muted);">Get personalized gaming setup recommendations based on your body, budget, and play style. Takes 2 minutes.</p>
  </div>
 
- <hr style="border:none;border-top:1px solid var(--color-border);margin:var(--space-2xl) 0;">
+ <hr style="border:none;border-top:1px solid var(--c-border);margin:var(--space-2xl) 0;">
 
- <p style="font-size:0.875rem; color:var(--color-muted);"><strong>Sources &amp; further reading:</strong> Cornell University Ergonomics Lab — computer workstation guidelines; RSI (Repetitive Strain Injury) awareness research from the American Academy of Orthopaedic Surgeons; Ohio State University Spine Research Institute — sitting biomechanics; community discussions on r/ErgonomicGaming, r/GamingSetups, and r/MechanicalKeyboards; product performance data from RTINGS.com and scientific reviews on PubMed for blue light and eye strain research.</p>
+ <p style="font-size:0.875rem; color:var(--c-text-muted);"><strong>Sources &amp; further reading:</strong> Cornell University Ergonomics Lab — computer workstation guidelines; RSI (Repetitive Strain Injury) awareness research from the American Academy of Orthopaedic Surgeons; Ohio State University Spine Research Institute — sitting biomechanics; community discussions on r/ErgonomicGaming, r/GamingSetups, and r/MechanicalKeyboards; product performance data from RTINGS.com and scientific reviews on PubMed for blue light and eye strain research.</p>
 
  </div>
  </div>
@@ -1374,9 +1393,11 @@
  </div>
  <div class="site-footer__bottom"><span>© 2026 The Workspace Pro. All rights reserved.</span><span>This site uses affiliate links. We only recommend products we genuinely believe in.</span></div>
  </footer>
- <script src="/assets/js/assessment.js"></script>
- <script src="/assets/js/enhancements.js"></script>
- <script src="/assets/js/bold.js"></script>
+ <script src="/assets/js/analytics.js" defer></script>
+  <script src="/assets/js/site.js" defer></script>
+  <script src="/assets/js/perf-lite.js" defer></script>
+<script src="/assets/js/enhancements.js" defer></script>
+ <script src="/assets/js/bold.js" defer></script>
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "26781bf348b1406aaaab5ed9a3e72d38"}'></script><!-- End Cloudflare Web Analytics -->
 
  <script is:inline>
@@ -1394,8 +1415,7 @@
  });
  });
  </script>
-<script src="/assets/js/product-reviews.js"></script>
-<script src="/assets/js/review-injector.js"></script>
+<script src="/assets/js/review-injector.js" defer></script>
 
  <script is:inline>
  document.addEventListener('DOMContentLoaded', function() {

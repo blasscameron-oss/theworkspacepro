@@ -1,0 +1,724 @@
+{
+  "version": 1,
+  "updated": "2026-07-15",
+  "affiliateTag": "workspacepro-20",
+  "products": [
+    {
+      "id": "ikea-markus-office-chair",
+      "name": "IKEA MARKUS Office Chair",
+      "price": 229,
+      "url": "https://www.ikea.com/us/en/p/markus-office-chair-vissle-dark-gray-70261150/",
+      "category": "Chair",
+      "desc": "Basic ergonomic office chair with built-in lumbar support and mesh back. Good entry-level option.",
+      "tiers": [
+        "budget"
+      ],
+      "bestFor": [
+        "general",
+        "writer",
+        "budget"
+      ],
+      "asin": null,
+      "retailer": "ikea",
+      "image": null
+    },
+    {
+      "id": "B06Y3PGPR2",
+      "name": "HON Ignition 2.0 Mid-Back",
+      "price": 379,
+      "url": "https://www.amazon.com/dp/B06Y3PGPR2/?tag=workspacepro-20",
+      "category": "Chair",
+      "desc": "Mesh task chair with lumbar support \u2014 strong value pick for full workdays. Confirm current price on Amazon.",
+      "tiers": [
+        "budget",
+        "mid"
+      ],
+      "bestFor": [
+        "general",
+        "developer",
+        "writer",
+        "ergonomics",
+        "budget"
+      ],
+      "asin": "B06Y3PGPR2",
+      "retailer": "amazon",
+      "image": "/assets/images/products/B06Y3PGPR2.jpg"
+    },
+    {
+      "id": "branch-ergonomic-chair",
+      "name": "Branch Ergonomic Chair",
+      "price": 329,
+      "url": "https://www.branchfurniture.com/products/ergonomic-chair",
+      "category": "Chair",
+      "desc": "Seven points of adjustment including lumbar, armrests, seat depth, and tilt. Modern design from Branch.",
+      "tiers": [
+        "budget",
+        "mid"
+      ],
+      "bestFor": [
+        "general",
+        "creative",
+        "writer",
+        "ergonomics",
+        "aesthetics"
+      ],
+      "asin": null,
+      "retailer": "branch",
+      "image": null
+    },
+    {
+      "id": "B092ZNFF8P",
+      "name": "Autonomous ErgoChair",
+      "price": 499,
+      "url": "https://www.amazon.com/dp/B092ZNFF8P/?tag=workspacepro-20",
+      "category": "Chair",
+      "desc": "Feature-rich ergonomic chair often compared to premium models at a lower street price.",
+      "tiers": [
+        "mid"
+      ],
+      "bestFor": [
+        "developer",
+        "gaming",
+        "ergonomics"
+      ],
+      "asin": "B092ZNFF8P",
+      "retailer": "amazon",
+      "image": "/assets/images/products/B092ZNFF8P.jpg"
+    },
+    {
+      "id": "B07R62FKFZ",
+      "name": "Herman Miller Sayl",
+      "price": 545,
+      "url": "https://www.amazon.com/dp/B07R62FKFZ/?tag=workspacepro-20",
+      "category": "Chair",
+      "desc": "Designer mid-range Herman Miller with a distinctive Y-Tower back. Check seller condition and warranty.",
+      "tiers": [
+        "mid",
+        "premium"
+      ],
+      "bestFor": [
+        "general",
+        "developer",
+        "writer",
+        "ergonomics",
+        "aesthetics"
+      ],
+      "asin": "B07R62FKFZ",
+      "retailer": "amazon",
+      "image": "/assets/images/products/B07R62FKFZ.jpg"
+    },
+    {
+      "id": "B07NH69TWB",
+      "name": "Herman Miller Embody",
+      "price": 1395,
+      "url": "https://www.amazon.com/dp/B07NH69TWB/?tag=workspacepro-20",
+      "category": "Chair",
+      "desc": "Premium posture-focused chair for long sessions. High price \u2014 only if budget allows.",
+      "tiers": [
+        "premium"
+      ],
+      "bestFor": [
+        "general",
+        "developer",
+        "creative",
+        "ergonomics",
+        "productivity"
+      ],
+      "asin": "B07NH69TWB",
+      "retailer": "amazon",
+      "image": "/assets/images/products/B07NH69TWB.jpg"
+    },
+    {
+      "id": "ikea-lagkapten-desk",
+      "name": "IKEA LAGKAPTEN Desk",
+      "price": 89,
+      "url": "https://www.ikea.com/us/en/p/lagkapten-desk-black-brown-bamboo-00503604/",
+      "category": "Desk",
+      "desc": "Simple sitting desk. Budget-friendly for tight spaces. Pair with a monitor arm for height.",
+      "tiers": [
+        "budget"
+      ],
+      "bestFor": [
+        "general",
+        "writer",
+        "budget",
+        "small"
+      ],
+      "asin": null,
+      "retailer": "ikea",
+      "image": null
+    },
+    {
+      "id": "B085KBN2DN",
+      "name": "SHW Electric Standing Desk 55\\\"",
+      "price": 299,
+      "url": "https://www.amazon.com/dp/B085KBN2DN/?tag=workspacepro-20",
+      "category": "Desk",
+      "desc": "Budget electric standing desk with drawer options. Popular Amazon pick \u2014 verify capacity and height range for your body.",
+      "tiers": [
+        "budget",
+        "mid"
+      ],
+      "bestFor": [
+        "general",
+        "developer",
+        "budget",
+        "standing"
+      ],
+      "asin": "B085KBN2DN",
+      "retailer": "amazon",
+      "image": "/assets/images/products/B085KBN2DN.jpg"
+    },
+    {
+      "id": "branch-standing-desk",
+      "name": "Branch Standing Desk",
+      "price": 499,
+      "url": "https://www.branchfurniture.com/products/standing-desk",
+      "category": "Desk",
+      "desc": "Dual-motor standing desk from Branch with solid warranty and clean design.",
+      "tiers": [
+        "mid"
+      ],
+      "bestFor": [
+        "general",
+        "developer",
+        "creative",
+        "ergonomics",
+        "aesthetics",
+        "productivity",
+        "standing",
+        "large"
+      ],
+      "asin": null,
+      "retailer": "branch",
+      "image": null
+    },
+    {
+      "id": "uplift-v2-standing-desk",
+      "name": "Uplift V2 Standing Desk",
+      "price": 599,
+      "url": "https://www.upliftdesk.com/uplift-v2-standing-desk-v2-or-v2-commercial/",
+      "category": "Desk",
+      "desc": "Highly configurable dual-motor frame. Check live configuration pricing on Uplift.",
+      "tiers": [
+        "premium"
+      ],
+      "bestFor": [
+        "developer",
+        "ergonomics",
+        "productivity",
+        "standing",
+        "large"
+      ],
+      "asin": null,
+      "retailer": "other",
+      "image": null
+    },
+    {
+      "id": "B07DHK5DHN",
+      "name": "Amazon Basics Monitor Stand (height)",
+      "price": 25,
+      "url": "https://www.amazon.com/dp/B07DHK5DHN/?tag=workspacepro-20",
+      "category": "Monitor Stand",
+      "desc": "Simple riser for eye-level monitors when a full arm isn\u2019t in budget. Not a sit-stand converter.",
+      "tiers": [
+        "budget"
+      ],
+      "bestFor": [
+        "general",
+        "writer",
+        "budget",
+        "small"
+      ],
+      "asin": "B07DHK5DHN",
+      "retailer": "amazon",
+      "image": "/assets/images/products/B07DHK5DHN.jpg"
+    },
+    {
+      "id": "B018MSDG84",
+      "name": "WALI Dual Monitor Stand",
+      "price": 35,
+      "url": "https://www.amazon.com/dp/B018MSDG84/?tag=workspacepro-20",
+      "category": "Monitor Stand",
+      "desc": "Freestanding dual monitor stand \u2014 frees desk depth without clamp mounts.",
+      "tiers": [
+        "budget",
+        "mid"
+      ],
+      "bestFor": [
+        "general",
+        "developer",
+        "small"
+      ],
+      "asin": "B018MSDG84",
+      "retailer": "amazon",
+      "image": "/assets/images/products/B018MSDG84.jpg"
+    },
+    {
+      "id": "B088BC5HMM",
+      "name": "ASUS ProArt PA278QV 27\\\" 1440p",
+      "price": 299,
+      "url": "https://www.amazon.com/dp/B088BC5HMM/?tag=workspacepro-20",
+      "category": "Monitor",
+      "desc": "27\\\" 1440p IPS with strong color coverage for office and light creative work.",
+      "tiers": [
+        "budget",
+        "mid"
+      ],
+      "bestFor": [
+        "general",
+        "developer",
+        "writer",
+        "creative",
+        "budget",
+        "productivity"
+      ],
+      "asin": "B088BC5HMM",
+      "retailer": "amazon",
+      "image": "/assets/images/products/B088BC5HMM.jpg"
+    },
+    {
+      "id": "B09DTDRJWP",
+      "name": "Dell S2722QC 27\\\" 4K USB-C",
+      "price": 350,
+      "url": "https://www.amazon.com/dp/B09DTDRJWP/?tag=workspacepro-20",
+      "category": "Monitor",
+      "desc": "4K with USB-C \u2014 sharper text and laptop charging for a cleaner setup.",
+      "tiers": [
+        "mid"
+      ],
+      "bestFor": [
+        "general",
+        "developer",
+        "creative",
+        "productivity"
+      ],
+      "asin": "B09DTDRJWP",
+      "retailer": "amazon",
+      "image": "/assets/images/products/B09DTDRJWP.jpg"
+    },
+    {
+      "id": "B09TQZP9CL",
+      "name": "Dell UltraSharp U2723QE 27\\\" 4K",
+      "price": 480,
+      "url": "https://www.amazon.com/dp/B09TQZP9CL/?tag=workspacepro-20",
+      "category": "Monitor",
+      "desc": "4K USB-C hub monitor \u2014 strong productivity pick. Prices fluctuate; check Amazon.",
+      "tiers": [
+        "mid",
+        "premium"
+      ],
+      "bestFor": [
+        "developer",
+        "creative",
+        "productivity",
+        "large"
+      ],
+      "asin": "B09TQZP9CL",
+      "retailer": "amazon",
+      "image": "/assets/images/products/B09TQZP9CL.jpg"
+    },
+    {
+      "id": "B08BCR862L",
+      "name": "LG 32UN880-B 32\\\" 4K Ergo",
+      "price": 550,
+      "url": "https://www.amazon.com/dp/B08BCR862L/?tag=workspacepro-20",
+      "category": "Monitor",
+      "desc": "32\\\" 4K with Ergo stand \u2014 lots of space for multi-window work.",
+      "tiers": [
+        "premium"
+      ],
+      "bestFor": [
+        "developer",
+        "creative",
+        "productivity",
+        "large"
+      ],
+      "asin": "B08BCR862L",
+      "retailer": "amazon",
+      "image": "/assets/images/products/B08BCR862L.jpg"
+    },
+    {
+      "id": "B00358RIRC",
+      "name": "Ergotron LX Single Monitor Arm",
+      "price": 189,
+      "url": "https://www.amazon.com/dp/B00358RIRC/?tag=workspacepro-20",
+      "category": "Monitor Arm",
+      "desc": "Premium gas-spring arm with smooth motion. Worth it for heavy monitors or frequent height changes.",
+      "tiers": [
+        "mid",
+        "premium"
+      ],
+      "bestFor": [
+        "developer",
+        "creative",
+        "ergonomics",
+        "productivity"
+      ],
+      "asin": "B00358RIRC",
+      "retailer": "amazon",
+      "image": "/assets/images/products/B00358RIRC.jpg"
+    },
+    {
+      "id": "B00P9JULWE",
+      "name": "Ergotron LX Dual Monitor Arm",
+      "price": 299,
+      "url": "https://www.amazon.com/dp/B00P9JULWE/?tag=workspacepro-20",
+      "category": "Monitor Arm",
+      "desc": "Dual-arm Ergotron for two monitors \u2014 clean dual setup without freestanding base bulk.",
+      "tiers": [
+        "premium"
+      ],
+      "bestFor": [
+        "developer",
+        "productivity"
+      ],
+      "asin": "B00P9JULWE",
+      "retailer": "amazon",
+      "image": "/assets/images/products/B00P9JULWE.jpg"
+    },
+    {
+      "id": "ikea-tertial-work-lamp",
+      "name": "IKEA TERTIAL Work Lamp",
+      "price": 15,
+      "url": "https://www.ikea.com/us/en/p/tertial-work-lamp-gray-80342987/",
+      "category": "Lighting",
+      "desc": "Classic adjustable desk lamp. Add a warm LED bulb for evening use.",
+      "tiers": [
+        "budget"
+      ],
+      "bestFor": [
+        "general",
+        "writer",
+        "budget",
+        "small"
+      ],
+      "asin": null,
+      "retailer": "ikea",
+      "image": null
+    },
+    {
+      "id": "B071CXPSDN",
+      "name": "tomons LED Desk Lamp",
+      "price": 30,
+      "url": "https://www.amazon.com/dp/B071CXPSDN/?tag=workspacepro-20",
+      "category": "Lighting",
+      "desc": "Multi-angle LED desk lamp \u2014 solid budget task light.",
+      "tiers": [
+        "budget"
+      ],
+      "bestFor": [
+        "general",
+        "writer",
+        "budget"
+      ],
+      "asin": "B071CXPSDN",
+      "retailer": "amazon",
+      "image": "/assets/images/products/B071CXPSDN.jpg"
+    },
+    {
+      "id": "B076VNFZJG",
+      "name": "BenQ ScreenBar",
+      "price": 99,
+      "url": "https://www.amazon.com/dp/B076VNFZJG/?tag=workspacepro-20",
+      "category": "Lighting",
+      "desc": "Monitor light bar \u2014 zero desk footprint, reduces glare.",
+      "tiers": [
+        "mid"
+      ],
+      "bestFor": [
+        "developer",
+        "writer",
+        "ergonomics",
+        "small"
+      ],
+      "asin": "B076VNFZJG",
+      "retailer": "amazon",
+      "image": "/assets/images/products/B076VNFZJG.jpg"
+    },
+    {
+      "id": "B07DP7RYXV",
+      "name": "BenQ ScreenBar Plus",
+      "price": 129,
+      "url": "https://www.amazon.com/dp/B07DP7RYXV/?tag=workspacepro-20",
+      "category": "Lighting",
+      "desc": "ScreenBar with desktop dial for brightness/color temp. Strong for late sessions.",
+      "tiers": [
+        "mid",
+        "premium"
+      ],
+      "bestFor": [
+        "developer",
+        "creative",
+        "writer",
+        "ergonomics",
+        "productivity",
+        "aesthetics",
+        "small"
+      ],
+      "asin": "B07DP7RYXV",
+      "retailer": "amazon",
+      "image": "/assets/images/products/B07DP7RYXV.jpg"
+    },
+    {
+      "id": "B07C7WJSQL",
+      "name": "Glorious Gaming Wrist Rest (TKL)",
+      "price": 25,
+      "url": "https://www.amazon.com/dp/B07C7WJSQL/?tag=workspacepro-20",
+      "category": "Keyboard Acc",
+      "desc": "Wrist pad for TKL keyboards \u2014 small comfort upgrade if you type all day.",
+      "tiers": [
+        "budget",
+        "mid"
+      ],
+      "bestFor": [
+        "developer",
+        "writer",
+        "gaming"
+      ],
+      "asin": "B07C7WJSQL",
+      "retailer": "amazon",
+      "image": "/assets/images/products/B07C7WJSQL.jpg"
+    },
+    {
+      "id": "B09HM94VDS",
+      "name": "Logitech MX Master 3S",
+      "price": 99,
+      "url": "https://www.amazon.com/dp/B09HM94VDS/?tag=workspacepro-20",
+      "category": "Mouse",
+      "desc": "Premium productivity mouse with MagSpeed scroll and multi-device pairing.",
+      "tiers": [
+        "mid",
+        "premium"
+      ],
+      "bestFor": [
+        "developer",
+        "creative",
+        "writer",
+        "productivity"
+      ],
+      "asin": "B09HM94VDS",
+      "retailer": "amazon",
+      "image": "/assets/images/products/B09HM94VDS.jpg"
+    },
+    {
+      "id": "B087Z6LSHW",
+      "name": "Logitech M720 Triathlon",
+      "price": 40,
+      "url": "https://www.amazon.com/dp/B087Z6LSHW/?tag=workspacepro-20",
+      "category": "Mouse",
+      "desc": "Multi-device wireless mouse \u2014 solid budget productivity pick.",
+      "tiers": [
+        "budget"
+      ],
+      "bestFor": [
+        "general",
+        "budget"
+      ],
+      "asin": "B087Z6LSHW",
+      "retailer": "amazon",
+      "image": "/assets/images/products/B087Z6LSHW.jpg"
+    },
+    {
+      "id": "B00OUFX0YY",
+      "name": "Amazon Basics Anti-Fatigue Standing Mat",
+      "price": 30,
+      "url": "https://www.amazon.com/dp/B00OUFX0YY/?tag=workspacepro-20",
+      "category": "Accessory",
+      "desc": "Cushioned standing mat for standing-desk sessions.",
+      "tiers": [
+        "budget"
+      ],
+      "bestFor": [
+        "general",
+        "standing",
+        "ergonomics"
+      ],
+      "asin": "B00OUFX0YY",
+      "retailer": "amazon",
+      "image": "/assets/images/products/B00OUFX0YY.jpg"
+    },
+    {
+      "id": "B01H6AZC5Y",
+      "name": "KANGAROO Anti-Fatigue Mat",
+      "price": 45,
+      "url": "https://www.amazon.com/dp/B01H6AZC5Y/?tag=workspacepro-20",
+      "category": "Accessory",
+      "desc": "Thicker cushioned mat for longer standing periods.",
+      "tiers": [
+        "mid"
+      ],
+      "bestFor": [
+        "standing",
+        "ergonomics"
+      ],
+      "asin": "B01H6AZC5Y",
+      "retailer": "amazon",
+      "image": "/assets/images/products/B01H6AZC5Y.jpg"
+    },
+    {
+      "id": "B06Y1DVNQD",
+      "name": "Simple Cord Under-Desk Cable Channel",
+      "price": 15,
+      "url": "https://www.amazon.com/dp/B06Y1DVNQD/?tag=workspacepro-20",
+      "category": "Accessory",
+      "desc": "J-channel cable management for a cleaner desk underside.",
+      "tiers": [
+        "budget"
+      ],
+      "bestFor": [
+        "general",
+        "developer",
+        "aesthetics",
+        "productivity"
+      ],
+      "asin": "B06Y1DVNQD",
+      "retailer": "amazon",
+      "image": "/assets/images/products/B06Y1DVNQD.jpg"
+    },
+    {
+      "id": "B0002DR45E",
+      "name": "Kensington Solemate Plus Footrest",
+      "price": 45,
+      "url": "https://www.amazon.com/dp/B0002DR45E/?tag=workspacepro-20",
+      "category": "Accessory",
+      "desc": "Adjustable footrest for better seated posture when feet don\u2019t plant flat.",
+      "tiers": [
+        "budget",
+        "mid"
+      ],
+      "bestFor": [
+        "general",
+        "ergonomics"
+      ],
+      "asin": "B0002DR45E",
+      "retailer": "amazon",
+      "image": "/assets/images/products/B0002DR45E.jpg"
+    },
+    {
+      "id": "ikea-markus",
+      "name": "IKEA Markus",
+      "price": 229,
+      "url": "https://www.ikea.com/us/en/p/markus-office-chair-vissle-dark-gray-70261150/",
+      "category": "Chair",
+      "desc": "",
+      "tiers": [
+        "budget",
+        "mid"
+      ],
+      "bestFor": [
+        "budget"
+      ],
+      "asin": null,
+      "retailer": "ikea",
+      "image": null
+    },
+    {
+      "id": "B0C83YRK84",
+      "name": "HON Ignition 2.0 Low-Back",
+      "price": 349,
+      "url": "https://www.amazon.com/dp/B0C83YRK84/?tag=workspacepro-20",
+      "category": "Chair",
+      "desc": "",
+      "tiers": [
+        "budget",
+        "mid"
+      ],
+      "bestFor": [
+        "budget",
+        "general"
+      ],
+      "asin": "B0C83YRK84",
+      "retailer": "amazon",
+      "image": "/assets/images/products/B0C83YRK84.jpg"
+    },
+    {
+      "id": "ikea-trotten-standing-desk",
+      "name": "IKEA TROTTEN Standing Desk",
+      "price": 199,
+      "url": "https://www.ikea.com/us/en/p/trotten-desk-stand-up-black-s09322329/",
+      "category": "Desk",
+      "desc": "",
+      "tiers": [
+        "budget"
+      ],
+      "bestFor": [
+        "budget"
+      ],
+      "asin": null,
+      "retailer": "ikea",
+      "image": null
+    },
+    {
+      "id": "fully-jarvis-bamboo",
+      "name": "Fully Jarvis Bamboo",
+      "price": 549,
+      "url": "https://www.fully.com/standing-desks/jarvis.html",
+      "category": "Desk",
+      "desc": "",
+      "tiers": [
+        "mid"
+      ],
+      "bestFor": [
+        "general",
+        "premium"
+      ],
+      "asin": null,
+      "retailer": "other",
+      "image": null
+    },
+    {
+      "id": "ikea-tertial-work-lamp",
+      "name": "IKEA TERTIAL Work Lamp",
+      "price": 15,
+      "url": "https://www.ikea.com/us/en/p/tertial-work-lamp-dark-gray-80342987/",
+      "category": "Lighting",
+      "desc": "",
+      "tiers": [
+        "budget"
+      ],
+      "bestFor": [
+        "budget"
+      ],
+      "asin": null,
+      "retailer": "ikea",
+      "image": null
+    },
+    {
+      "id": "B087Z6LSHW",
+      "name": "Logitech M720 Triathlon Mouse",
+      "price": 40,
+      "url": "https://www.amazon.com/dp/B087Z6LSHW/?tag=workspacepro-20",
+      "category": "Accessory",
+      "desc": "",
+      "tiers": [
+        "budget"
+      ],
+      "bestFor": [
+        "budget",
+        "general"
+      ],
+      "asin": "B087Z6LSHW",
+      "retailer": "amazon",
+      "image": "/assets/images/products/B087Z6LSHW.jpg"
+    },
+    {
+      "id": "B08BLCZDYL",
+      "name": "VELCRO Brand Cable Ties (100-pack)",
+      "price": 12,
+      "url": "https://www.amazon.com/dp/B08BLCZDYL/?tag=workspacepro-20",
+      "category": "Accessory",
+      "desc": "",
+      "tiers": [
+        "budget"
+      ],
+      "bestFor": [
+        "general",
+        "budget"
+      ],
+      "asin": "B08BLCZDYL",
+      "retailer": "amazon",
+      "image": "/assets/images/products/B08BLCZDYL.jpg"
+    }
+  ]
+}

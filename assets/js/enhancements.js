@@ -14,6 +14,21 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
+  /* Page capability flags — skip heavy features off-context */
+  var path = (location.pathname || '/').replace(/\/$/, '') || '/';
+  var isHome = path === '/' || path === '/index.html' || /\/index\.html$/.test(path);
+  var isArticle = path.indexOf('/guides/') === 0 || document.querySelector('article, .article-body, .guide-content');
+  var hasCounters = !!document.querySelector('[data-counter]');
+  var hasAssessment = !!document.getElementById('assessment');
+  var TWP_PAGE_FLAGS = {
+    counters: hasCounters,
+    readingProgress: !!isArticle,
+    assessmentBanner: isHome || hasAssessment,
+    priceAlerts: !!isArticle && !!document.querySelector('a[href*="amazon.com"]'),
+    checklistCopy: !!document.querySelector('.checklist, .checklist__item')
+  };
+
+
   /* ========================================================================
      1. ANIMATED STAT COUNTERS
         Counts up from 0 to the element's data-target value when it
@@ -72,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  initCounters();
+  if (TWP_PAGE_FLAGS.counters) initCounters();
 
 
   /* ========================================================================
@@ -336,7 +351,7 @@ document.addEventListener('DOMContentLoaded', function () {
     };
   }
 
-  var readingProgressAPI = initReadingProgress();
+  var readingProgressAPI = TWP_PAGE_FLAGS.readingProgress ? initReadingProgress() : null;
 
 
   /* ========================================================================
@@ -468,7 +483,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 2000);
   }
 
-  initClipboardChecklists();
+  if (TWP_PAGE_FLAGS.checklistCopy) initClipboardChecklists();
 
 
   /* ========================================================================
@@ -723,7 +738,7 @@ document.addEventListener('DOMContentLoaded', function () {
     return div.innerHTML;
   }
 
-  initGuideProgress();
+  if (TWP_PAGE_FLAGS.readingProgress) initGuideProgress();
 
 
   /* ========================================================================
@@ -793,7 +808,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  initAssessmentBanner();
+  if (TWP_PAGE_FLAGS.assessmentBanner) initAssessmentBanner();
 
 
   /* ========================================================================
@@ -1009,7 +1024,7 @@ document.addEventListener('DOMContentLoaded', function () {
     setTimeout(function () { emailInput.focus(); }, 400);
   }
 
-  initPriceAlerts();
+  if (TWP_PAGE_FLAGS.priceAlerts) initPriceAlerts();
 
 
   /* ========================================================================

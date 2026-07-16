@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Workspace Pro — Find Your Perfect Ergonomic Setup</title>
-  <meta name="description" content="Take the free 2-minute ergonomic workspace assessment. Get personalized product recommendations, a setup checklist, and expert guides for a healthier home office.">
+  <meta name="description" content="Take the free 2-minute ergonomic workspace assessment. Get personalized product recommendations, a setup checklist, and research-backed guides for a healthier home office.">
   
   <!-- Open Graph -->
   <meta property="og:title" content="The Workspace Pro — Find Your Perfect Ergonomic Setup">
@@ -18,11 +18,8 @@
   <link rel="canonical" href="https://www.theworkspacepro.com/">
   
   <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Styles -->
+<!-- Styles -->
+  <link rel="stylesheet" href="/assets/css/fonts.css">
   <link rel="stylesheet" href="/assets/css/style.css">
   <link rel="stylesheet" href="/assets/css/bold.css">
   
@@ -50,17 +47,17 @@
     }
   }
   </script>
-  
-  <!-- Analytics -->
-  <script data-cfasync="false" async src="https://www.googletagmanager.com/gtag/js?id=G-2DWRW4PE8Y"></script>
-  <script data-cfasync="false">
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag("js", new Date());
-    gtag("config", "G-2DWRW4PE8Y");
+
+  <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/images/favicon.svg">
+  <meta name="theme-color" content="#c2410c">
+  <script>
+    (function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();
   </script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
 
   <!-- Header -->
   <header class="site-header">
@@ -69,21 +66,19 @@
         <span class="logo__mark">W</span>
         <span>The Workspace Pro</span>
       </a>
-      <nav class="nav">
+            <nav class="nav" aria-label="Primary">
         <a href="/" class="nav__link nav__link--active">Home</a>
         <a href="/guides/" class="nav__link">Guides</a>
+        <a href="/tools/" class="nav__link">Tools</a>
         <a href="/tips/" class="nav__link">Tips</a>
-        <a href="/podcasts/" class="nav__link">Podcasts</a>
-        <a href="/ergonomic-height-calculator/" class="nav__link">Height Calc</a>
-        <a href="/workspace-setup-calculator/" class="nav__link">Setup Calc</a>
         <a href="/about/" class="nav__link">About</a>
         <a href="/#assessment" class="nav__link nav__cta">Take the Quiz</a>
       </nav>
       <div class="header-actions">
-        <button class="theme-toggle" aria-label="Toggle dark mode">
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
           <span class="theme-toggle__icon">☾</span>
         </button>
-        <button class="menu-toggle" aria-label="Open menu">
+        <button class="menu-toggle" type="button" aria-label="Open menu">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
       </div>
@@ -92,23 +87,25 @@
 
   <!-- Mobile nav -->
   <div class="mobile-overlay"></div>
-  <nav class="mobile-nav">
+  <nav class="mobile-nav" aria-label="Mobile">
     <div class="mobile-nav__header">
       <span style="font-weight:700;">Menu</span>
-      <button class="menu-toggle" aria-label="Close menu">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
+      <button class="menu-toggle" type="button" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
     <a href="/" class="mobile-nav__link">Home</a>
     <a href="/guides/" class="mobile-nav__link">Guides</a>
-    <a href="/tips/" class="mobile-nav__link">Tips</a>
-    <a href="/podcasts/" class="mobile-nav__link">Podcasts</a>
+    <a href="/tools/" class="mobile-nav__link">Tools</a>
+    <a href="/build-your-office/" class="mobile-nav__link">Build Your Office</a>
     <a href="/ergonomic-height-calculator/" class="mobile-nav__link">Height Calculator</a>
     <a href="/workspace-setup-calculator/" class="mobile-nav__link">Setup Calculator</a>
+    <a href="/tips/" class="mobile-nav__link">Tips</a>
+    <a href="/podcasts/" class="mobile-nav__link">Podcasts</a>
     <a href="/about/" class="mobile-nav__link">About</a>
+    <a href="/contact/" class="mobile-nav__link">Contact</a>
     <a href="/#assessment" class="mobile-nav__cta">Take the Quiz</a>
   </nav>
 
+  <main id="main-content">
   <!-- Hero with Assessment Tool -->
   <section class="hero" id="assessment" style="position:relative;">
     <div class="hero-gradient"></div>
@@ -394,53 +391,166 @@
     </div>
   </section>
 
-  <!-- Deal of the Week -->
+  <!-- Featured pick -->
   <section style="padding: var(--space-xl) 0;">
     <div class="container">
       <div class="deal-banner" id="dealBanner">
-        <div class="deal-banner__badge">Deal of the Week</div>
+        <div class="deal-banner__badge">Editor’s pick</div>
         <div class="deal-banner__content">
-          <div class="deal-banner__title">Branch Ergonomic Chair — 15% Off</div>
-          <div class="deal-banner__desc">Best budget ergonomic chair with full adjustability. Limited time.</div>
+          <div class="deal-banner__title">Branch Ergonomic Chair</div>
+          <div class="deal-banner__desc">Strong budget-to-mid pick with real adjustability. Check current price on the maker site — we don’t invent sale badges.</div>
           <div class="deal-banner__price">
-            <span class="deal-banner__price-old">$329</span>
-            <span class="deal-banner__price-new">$280</span>
+            <span class="deal-banner__price-new">See live price</span>
           </div>
         </div>
-        <a href="#" target="_blank" class="deal-banner__cta">Get Deal →</a>
+        <a href="https://www.branchfurniture.com/products/ergonomic-chair" target="_blank" rel="sponsored noopener noreferrer" class="deal-banner__cta">View product →</a>
       </div>
     </div>
   </section>
 
-  <!-- Why it matters -->
-  <section class="section section-alt mesh-bg">
+  <!-- How it works -->
+  <section class="section" id="how-it-works">
     <div class="container">
       <div style="text-align:center; max-width:640px; margin:0 auto var(--space-2xl);" class="fade-in-up">
-        <div class="hero__eyebrow" style="justify-content:center;">Why It Matters</div>
-        <h2>Your desk is quietly affecting your health</h2>
+        <div class="hero__eyebrow" style="justify-content:center;">How It Works</div>
+        <h2>From guesswork to a setup that fits</h2>
+        <p class="lead" style="margin: var(--space-md) auto 0;">Three steps. Two minutes. Zero fluff.</p>
+      <div class="quick-tools" aria-label="Popular free tools">
+        <a href="#assessment">🧭 Free quiz</a>
+        <a href="/ergonomic-height-calculator/">📏 Height calculator</a>
+        <a href="/build-your-office/">🛠️ Office builder</a>
+        <a href="/guides/best-standing-desks-under-500/">💰 Desks under $500</a>
+        <a href="/compare/">⚖️ Compare products</a>
+        <a href="/guides/best-ergonomic-office-chairs-2026/">🪑 Best chairs 2026</a>
+      </div>
+
+      </div>
+      <div class="how-grid">
+        <div class="how-step fade-in-up">
+          <div class="how-step__num">1</div>
+          <h3 class="how-step__title">Answer 6 quick questions</h3>
+          <p class="how-step__desc">Work style, hours, pain points, budget, space, and height — the factors that actually change recommendations.</p>
+        </div>
+        <div class="how-step fade-in-up">
+          <div class="how-step__num">2</div>
+          <h3 class="how-step__title">Get a persona + product plan</h3>
+          <p class="how-step__desc">We match you to a workspace persona and shortlist chairs, desks, and accessories that fit your body and budget.</p>
+        </div>
+        <div class="how-step fade-in-up">
+          <div class="how-step__num">3</div>
+          <h3 class="how-step__title">Build with confidence</h3>
+          <p class="how-step__desc">Use the printable checklist, height calculator, and deep guides so you buy once — not three times.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Free tools -->
+  <section class="section section-alt" id="tools">
+    <div class="container">
+      <div style="text-align:center; max-width:640px; margin:0 auto var(--space-2xl);" class="fade-in-up">
+        <div class="hero__eyebrow" style="justify-content:center;">Free Tools</div>
+        <h2>More than articles — interactive tools</h2>
+        <p class="lead" style="margin: var(--space-md) auto 0;">Use these anytime. No account required.</p>
+      </div>
+      <div class="tools-grid">
+        <a href="/#assessment" class="tool-card lift-on-hover">
+          <div class="tool-card__icon">🧭</div>
+          <h3 class="tool-card__title">Workspace Assessment</h3>
+          <p class="tool-card__desc">Personalized product recommendations and a setup checklist in ~2 minutes.</p>
+          <span class="tool-card__cta">Start quiz →</span>
+        </a>
+        <a href="/build-your-office/" class="tool-card lift-on-hover">
+          <div class="tool-card__icon">🛠️</div>
+          <h3 class="tool-card__title">Build Your Office</h3>
+          <p class="tool-card__desc">Pick a budget and walk room-by-room through the gear that actually matters.</p>
+          <span class="tool-card__cta">Open builder →</span>
+        </a>
+        <a href="/ergonomic-height-calculator/" class="tool-card lift-on-hover">
+          <div class="tool-card__icon">📏</div>
+          <h3 class="tool-card__title">Height Calculator</h3>
+          <p class="tool-card__desc">Ideal desk, chair, and monitor heights based on your body measurements.</p>
+          <span class="tool-card__cta">Calculate →</span>
+        </a>
+        <a href="/workspace-setup-calculator/" class="tool-card lift-on-hover">
+          <div class="tool-card__icon">📐</div>
+          <h3 class="tool-card__title">Setup Calculator</h3>
+          <p class="tool-card__desc">Plan desk dimensions, monitor distance, and layout for your space.</p>
+          <span class="tool-card__cta">Plan layout →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why it matters — honest framing, no fabricated stats -->
+  <section class="section mesh-bg">
+    <div class="container">
+      <div style="text-align:center; max-width:640px; margin:0 auto var(--space-2xl);" class="fade-in-up">
+        <div class="hero__eyebrow" style="justify-content:center;">Why Setup Matters</div>
+        <h2>Your desk quietly shapes how you feel at work</h2>
         <p class="lead" style="margin: var(--space-md) auto 0;">
-          The average remote worker spends 1,800+ hours per year at their desk. 
-          Most of those desks are set up wrong — wrong chair height, wrong monitor distance, 
-          wrong lighting. The damage accumulates slowly until it becomes chronic pain.
+          Long desk days add up. Chair height, monitor distance, and lighting aren’t fashion choices —
+          they affect posture, focus, and whether you end the day sore. We help you match gear to your body and budget
+          before you buy the wrong thing twice.
         </p>
       </div>
       <div class="card-grid">
         <div class="card">
           <div class="card__icon">🦴</div>
-          <h3 class="card__title">86% experience back pain</h3>
-          <p class="card__desc">Poor chair support and desk height are the leading causes of chronic lower back pain in office workers. The right chair can reduce symptoms by up to 60%.</p>
+          <h3 class="card__title">Posture &amp; back comfort</h3>
+          <p class="card__desc">Seat height, lumbar support, and desk height work together. Get one wrong and the others fight you all day. Our guides break down what to adjust first.</p>
         </div>
         <div class="card">
           <div class="card__icon">👁️</div>
-          <h3 class="card__title">60% report eye strain</h3>
-          <p class="card__desc">Improper monitor distance and poor lighting cause digital eye strain. Simple fixes — proper distance, task lighting, 20-20-20 rule — make a measurable difference.</p>
+          <h3 class="card__title">Eyes &amp; neck strain</h3>
+          <p class="card__desc">Monitor too high, too close, or poorly lit forces you to crane forward. Small placement and lighting fixes often beat expensive “ergonomic” gimmicks.</p>
         </div>
         <div class="card">
-          <div class="card__icon">📉</div>
-          <h3 class="card__title">$2,000+ in wasted spending</h3>
-          <p class="card__desc">The average remote worker buys 3-4 products that don't fit their setup before finding the right one. Our assessment eliminates the guesswork.</p>
+          <div class="card__icon">🎯</div>
+          <h3 class="card__title">Buy once, if you can</h3>
+          <p class="card__desc">Most regret comes from guessing. The free assessment and calculators narrow options by budget, height, and work style so you’re shopping with a plan.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Honest trust — no fake testimonials -->
+  <section class="section section-alt">
+    <div class="container">
+      <div style="text-align:center; max-width:640px; margin:0 auto var(--space-2xl);" class="fade-in-up">
+        <div class="hero__eyebrow" style="justify-content:center;">How We Work</div>
+        <h2>Straight talk — no fake reviews</h2>
+        <p class="lead" style="margin: var(--space-md) auto 0;">
+          We don’t invent user quotes or pretend to run a product lab. Recommendations are built from specs, ergonomic standards, and public retailer data — with affiliate links disclosed.
+        </p>
+      </div>
+      <div class="honest-grid">
+        <div class="honest-card">
+          <h3 class="honest-card__title">Spec-first</h3>
+          <p class="honest-card__desc">Height ranges, adjustability, weight capacity, and materials — not marketing blurbs alone.</p>
+        </div>
+        <div class="honest-card">
+          <h3 class="honest-card__title">Standards-aware</h3>
+          <p class="honest-card__desc">Guidance aligned with common ergonomic principles (neutral posture, monitor height, reach zones).</p>
+        </div>
+        <div class="honest-card">
+          <h3 class="honest-card__title">Affiliate transparent</h3>
+          <p class="honest-card__desc">We may earn a commission if you buy through Amazon and other links. Same price for you. See our <a href="/affiliate-disclosure/">disclosure</a>.</p>
+        </div>
+        <div class="honest-card">
+          <h3 class="honest-card__title">Independent</h3>
+          <p class="honest-card__desc">No pay-to-play rankings. If we wouldn’t recommend something for a given budget or body type, it stays off the shortlist.</p>
+        </div>
+      </div>
+
+      <p class="source-note" style="max-width:720px;margin:var(--space-xl) auto 0;text-align:left;">
+        <strong>Sources &amp; standards:</strong> Workspace guidance aligns with common ergonomic principles described by
+        <a href="https://www.osha.gov/etools/computer-workstations" target="_blank" rel="noopener noreferrer">OSHA’s computer workstation eTool</a>
+        and industry seating/furniture guidance such as
+        <a href="https://www.bifma.org/" target="_blank" rel="noopener noreferrer">BIFMA</a>.
+        We aggregate product specs and public retailer data — we do not run a clinical lab or invent user reviews.
+        Chronic pain warrants a qualified clinician.
+      </p>
     </div>
   </section>
 
@@ -449,8 +559,8 @@
     <div class="container">
       <div style="display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:var(--space-xl); flex-wrap:wrap; gap:var(--space-md);">
         <div>
-          <div class="hero__eyebrow">Expert Guides</div>
-          <h2>Deep-dive into every workspace topic</h2>
+          <div class="hero__eyebrow">In-depth Guides</div>
+          <h2>Guides for every major workspace decision</h2>
         </div>
         <a href="/guides/" class="btn btn--secondary">All 16 Guides →</a>
       </div>
@@ -483,22 +593,93 @@
     </div>
   </section>
 
+
+  <!-- FAQ — honest answers + FAQ schema for search -->
+  <section class="section section-alt" id="faq">
+    <div class="container">
+      <div style="text-align:center; max-width:640px; margin:0 auto var(--space-2xl);">
+        <div class="hero__eyebrow" style="justify-content:center;">FAQ</div>
+        <h2>Common questions</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Is the assessment really free?</summary>
+          <p>Yes. No account, no paywall. We earn money only if you later buy through optional affiliate links — same price for you.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do you run a product testing lab?</summary>
+          <p>No. We don’t pretend to. Recommendations use product specs, ergonomic standards, and public retailer data. We’re transparent about that on our About page.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Are Amazon links affiliate links?</summary>
+          <p>Many are. They use our Amazon Associates tag so we may earn a commission. We only shortlist products we’d recommend for a given budget and use case. Full details on our <a href="/affiliate-disclosure/">affiliate disclosure</a>.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I share my quiz results?</summary>
+          <p>Yes. After you finish, use <strong>Share results</strong> for a link that reopens your plan (answers only — no personal data). Great for comparing with a partner or posting in a remote-work chat.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What should I do first if I’m in pain?</summary>
+          <p>Start with height and posture basics (our height calculator + back-pain guide), then chair support. Chronic pain needs a clinician — we’re not medical advice.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Is the assessment really free?","acceptedAnswer":{"@type":"Answer","text":"Yes. No account, no paywall. Optional affiliate links may earn a commission at no extra cost to you."}},
+      {"@type":"Question","name":"Do you run a product testing lab?","acceptedAnswer":{"@type":"Answer","text":"No. Recommendations use product specs, ergonomic standards, and public retailer data."}},
+      {"@type":"Question","name":"Are Amazon links affiliate links?","acceptedAnswer":{"@type":"Answer","text":"Many are, using our Amazon Associates tag. Same price for you."}},
+      {"@type":"Question","name":"Can I share my quiz results?","acceptedAnswer":{"@type":"Answer","text":"Yes. Share results creates a link that reopens your plan without personal data."}}
+    ]
+  }
+  </script>
+
   <!-- Newsletter -->
   <section class="newsletter-bar" id="newsletter">
     <div class="container">
       <h2 class="newsletter-bar__title">Get Weekly Workspace Tips</h2>
       <p class="newsletter-bar__desc">Personalized advice, gear deals, and ergonomic tips — every Wednesday. No spam, unsubscribe anytime.</p>
-      <div class="newsletter-form">
-        <a href="https://theworkspacepro.beehiiv.com/subscribe" target="_blank" rel="noopener" class="btn btn--primary">Subscribe Free →</a>
-      </div>
+      <form class="newsletter-form newsletter-form--inline" action="https://theworkspacepro.beehiiv.com/subscribe" method="get" target="_blank" rel="noopener">
+        <label class="sr-only" for="newsletter-email">Email address</label>
+        <input type="email" id="newsletter-email" name="email" class="newsletter-form__input" placeholder="you@email.com" required autocomplete="email">
+        <button type="submit" class="btn btn--primary">Subscribe Free →</button>
+      </form>
+      <p class="newsletter-form__note">Opens our secure Beehiiv signup. We never sell your email.</p>
     </div>
   </section>
+
+  
+  <div class="sticky-quiz-cta" id="stickyQuizCta" hidden>
+    <a href="#assessment" class="btn btn--primary">Take the free 2‑min quiz →</a>
+  </div>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var bar = document.getElementById('stickyQuizCta');
+    var hero = document.getElementById('assessment');
+    if (!bar || !hero || window.matchMedia('(min-width: 769px)').matches) return;
+    bar.hidden = false;
+    function update() {
+      var rect = hero.getBoundingClientRect();
+      var past = rect.bottom < 80;
+      bar.classList.toggle('is-visible', past);
+      document.body.classList.toggle('has-sticky-cta', past);
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  });
+  </script>
+
+  </main>
 
   <!-- Footer -->
   <footer class="site-footer">
     <div class="site-footer__grid">
       <div class="footer-brand">
-        <div style="display:flex; align-items:center; gap:var(--space-sm); font-family:var(--font-display); font-weight:700; font-size:1.125rem;">
+        <div style="display:flex;align-items:center;gap:var(--space-sm);font-family:var(--font-display);font-weight:700;font-size:1.125rem;">
           <span class="logo__mark">W</span>
           <span>The Workspace Pro</span>
         </div>
@@ -514,18 +695,24 @@
         </ul>
       </div>
       <div class="footer-col">
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="/tools/">All Tools</a></li>
+          <li><a href="/#assessment">Workspace Assessment</a></li>
+          <li><a href="/build-your-office/">Build Your Office</a></li>
+          <li><a href="/ergonomic-height-calculator/">Height Calculator</a></li>
+          <li><a href="/workspace-setup-calculator/">Setup Calculator</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
         <h4>About</h4>
         <ul>
           <li><a href="/about/">About Us</a></li>
           <li><a href="/contact/">Contact</a></li>
           <li><a href="/affiliate-disclosure/">Affiliate Disclosure</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Legal</h4>
-        <ul>
           <li><a href="/privacy/">Privacy Policy</a></li>
           <li><a href="/terms/">Terms of Service</a></li>
+          <li><a href="/changelog/">Changelog</a></li>
         </ul>
       </div>
     </div>
@@ -535,9 +722,12 @@
     </div>
   </footer>
 
-  <script src="/assets/js/assessment.js"></script>
-  <script src="/assets/js/enhancements.js"></script>
-  <script src="/assets/js/bold.js"></script>
+  <script src="/assets/js/analytics.js" defer></script>
+  <script src="/assets/js/site.js" defer></script>
+  <script src="/assets/js/perf-lite.js" defer></script>
+  <script src="/assets/js/assessment.js" defer></script>
+  <script src="/assets/js/enhancements.js" defer></script>
+  <script src="/assets/js/bold.js" defer></script>
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{"token": "26781bf348b1406aaaab5ed9a3e72d38"}"></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
