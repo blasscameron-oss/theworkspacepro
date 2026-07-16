@@ -9,6 +9,55 @@ const AssessmentState = {
   answers: {}
 };
 
+const STEP_REQUIRED_ANSWERS = [
+  ["workType"],
+  ["hours", "pain"],
+  ["standing", "space"],
+  ["budget", "workTime"],
+  ["priority"],
+  ["height"]
+];
+
+const ALLOWED_ANSWERS = {
+  workType: ["developer", "creative", "writing", "general"],
+  hours: ["under-4", "4-6", "6-8", "8+"],
+  pain: ["back", "neck", "wrist", "eyes", "none"],
+  standing: ["yes", "sometimes", "no"],
+  space: ["small", "medium", "large"],
+  budget: ["under-500", "500-1000", "1000-2000", "2000+"],
+  workTime: ["day", "evening", "night"],
+  priority: ["budget", "health", "productivity", "space"]
+};
+
+function sanitizeStoredAnswers(answers) {
+  if (!answers || typeof answers !== "object" || Array.isArray(answers)) return {};
+  const clean = {};
+  for (const [key, allowed] of Object.entries(ALLOWED_ANSWERS)) {
+    if (allowed.includes(answers[key])) clean[key] = answers[key];
+  }
+  const height = Number(answers.height);
+  if (Number.isInteger(height) && height >= 54 && height <= 78) clean.height = String(height);
+  return clean;
+}
+
+function firstIncompleteStep(answers) {
+  const incomplete = STEP_REQUIRED_ANSWERS.findIndex(keys =>
+    keys.some(key => !Object.prototype.hasOwnProperty.call(answers, key))
+  );
+  return incomplete === -1 ? STEP_REQUIRED_ANSWERS.length - 1 : incomplete;
+}
+
+function isValidSharedAnswers(answers) {
+  if (!answers || typeof answers !== "object" || Array.isArray(answers)) return false;
+  const required = STEP_REQUIRED_ANSWERS.flat();
+  if (!required.every(key => Object.prototype.hasOwnProperty.call(answers, key))) return false;
+  for (const [key, allowed] of Object.entries(ALLOWED_ANSWERS)) {
+    if (!allowed.includes(answers[key])) return false;
+  }
+  const height = Number(answers.height);
+  return Number.isInteger(height) && height >= 54 && height <= 78;
+}
+
 // Product database — Amazon links verified live (browser, Jul 2026) with tag=workspacepro-20
 // Non-Amazon maker links kept for Branch / IKEA / etc.
 const PRODUCTS = {
@@ -257,12 +306,22 @@ const PERSONAS = {
 };
 
 function initAssessment() {
-  // Load saved state
+  // Migrate saved state defensively. Older builds could skip required questions.
   const saved = sessionStorage.getItem('assessmentState');
   if (saved) {
     try {
-      Object.assign(AssessmentState, JSON.parse(saved));
+      const parsed = JSON.parse(saved);
+      const answers = sanitizeStoredAnswers(parsed && parsed.answers);
+      const requestedStep = Number.isInteger(parsed && parsed.step)
+        ? Math.max(0, Math.min(parsed.step, AssessmentState.totalSteps - 1))
+        : 0;
+      AssessmentState.answers = answers;
+      AssessmentState.step = Math.min(requestedStep, firstIncompleteStep(answers));
     } catch(e) {}
+  }
+  const heightInput = document.querySelector('input[data-question="height"]');
+  if (heightInput && !AssessmentState.answers.height) {
+    AssessmentState.answers.height = heightInput.value;
   }
   renderStep();
   bindEvents();
@@ -274,6 +333,14 @@ function bindEvents() {
   });
   document.querySelectorAll('[data-prev]').forEach(btn => {
     btn.addEventListener('click', prevStep);
+  });
+  document.querySelectorAll('.choice-grid').forEach((grid, index) => {
+    const question = grid.previousElementSibling;
+    if (question && question.classList.contains('step-question')) {
+      if (!question.id) question.id = 'assessment-question-' + index;
+      grid.setAttribute('role', 'group');
+      grid.setAttribute('aria-labelledby', question.id);
+    }
   });
   document.querySelectorAll('.choice-card').forEach(card => {
     card.setAttribute('type', 'button');
@@ -298,17 +365,16 @@ function selectChoice(card) {
   const key = card.dataset.question;
   const value = card.dataset.value;
   
-  group.querySelectorAll('.choice-card').forEach(c => c.classList.remove('selected'));
+  group.querySelectorAll('.choice-card').forEach(c => {
+    c.classList.remove('selected');
+    c.setAttribute('aria-pressed', 'false');
+  });
   card.classList.add('selected');
+  card.setAttribute('aria-pressed', 'true');
   AssessmentState.answers[key] = value;
   saveState();
   
-  // Auto-advance after 400ms
-  setTimeout(() => {
-    if (AssessmentState.step < AssessmentState.totalSteps - 1) {
-      nextStep();
-    }
-  }, 400);
+  updateStepNavigation();
 }
 
 function updateRangeValue(e) {
@@ -329,17 +395,49 @@ function updateRangeValue(e) {
   }
   AssessmentState.answers[input.dataset.question] = input.value;
   saveState();
+  updateStepNavigation();
 }
 
 function nextStep() {
+  if (!isStepComplete(AssessmentState.step)) {
+    announceMissingAnswers();
+    return;
+  }
   if (AssessmentState.step < AssessmentState.totalSteps - 1) {
     AssessmentState.step++;
     saveState();
     renderStep();
+    focusCurrentQuestion();
     scrollToTop();
   } else {
     showResults();
   }
+}
+
+function focusCurrentQuestion() {
+  const question = document.querySelector(".assessment-step.active .step-question");
+  if (question) {
+    question.setAttribute("tabindex", "-1");
+    question.focus();
+  }
+}
+
+function isStepComplete(step) {
+  const required = STEP_REQUIRED_ANSWERS[step] || [];
+  return required.every(key => AssessmentState.answers[key] !== undefined && AssessmentState.answers[key] !== "");
+}
+
+function updateStepNavigation() {
+  const complete = isStepComplete(AssessmentState.step);
+  document.querySelectorAll("[data-next]").forEach(btn => {
+    const isVisible = btn.closest(".assessment-step") ? btn.closest(".assessment-step").classList.contains("active") : btn.offsetParent !== null;
+    if (isVisible) btn.disabled = !complete;
+  });
+}
+
+function announceMissingAnswers() {
+  const label = document.getElementById("stepLabel");
+  if (label) label.textContent += " — Please answer each question to continue";
 }
 
 function prevStep() {
@@ -347,14 +445,18 @@ function prevStep() {
     AssessmentState.step--;
     saveState();
     renderStep();
+    focusCurrentQuestion();
     scrollToTop();
   }
 }
 
 function renderStep() {
-  document.querySelectorAll('.assessment-step').forEach(s => s.classList.remove('active'));
-  const stepEl = document.querySelector(`.assessment-step[data-step="${AssessmentState.step}"]`);
-  if (stepEl) stepEl.classList.add('active');
+  document.querySelectorAll('.assessment-step').forEach(s => {
+    const active = Number(s.dataset.step) === AssessmentState.step;
+    s.classList.toggle('active', active);
+    s.hidden = !active;
+    s.setAttribute('aria-hidden', active ? 'false' : 'true');
+  });
   
   // Update step indicator
   document.querySelectorAll('.step-dot').forEach((dot, i) => {
@@ -372,8 +474,10 @@ function renderStep() {
   document.querySelectorAll('.choice-card').forEach(card => {
     if (AssessmentState.answers[card.dataset.question] === card.dataset.value) {
       card.classList.add('selected');
+      card.setAttribute('aria-pressed', 'true');
     } else {
       card.classList.remove('selected');
+      card.setAttribute('aria-pressed', 'false');
     }
   });
   
@@ -384,6 +488,12 @@ function renderStep() {
       updateRangeValue({ target: input });
     }
   });
+
+  const floatingNav = document.getElementById('assessmentNav-floating');
+  if (floatingNav) {
+    floatingNav.style.display = AssessmentState.step < AssessmentState.totalSteps - 1 ? 'flex' : 'none';
+  }
+  updateStepNavigation();
 }
 
 function saveState() {
@@ -461,11 +571,13 @@ function generateRecommendations() {
   if (a.budget === 'under-500' || a.priority === 'budget') {
     chair = PRODUCTS.chairs.find(c => c.bestFor.includes('budget'));
   } else if (a.pain === 'back' || a.priority === 'health') {
-    chair = a.budget === '1000-2000' ? PRODUCTS.chairs[3] : PRODUCTS.chairs[2];
+    chair = (a.budget === '1000-2000' || a.budget === '2000+')
+      ? PRODUCTS.chairs.find(item => item.name.includes('Embody'))
+      : PRODUCTS.chairs.find(item => item.bestFor.includes('back-pain') && item.bestFor.includes('budget'));
   } else if (a.hours === '8+') {
-    chair = PRODUCTS.chairs[2];
+    chair = PRODUCTS.chairs.find(item => item.bestFor.includes('long-hours'));
   } else {
-    chair = PRODUCTS.chairs[1];
+    chair = PRODUCTS.chairs.find(item => item.name.includes('Branch Ergonomic'));
   }
   recs.push({
     category: 'Chair',
@@ -514,11 +626,11 @@ function generateRecommendations() {
   // Lighting (always recommend)
   let light;
   if (a.workTime === 'night' || a.pain === 'eyes') {
-    light = PRODUCTS.lighting[0]; // BenQ ScreenBar
+    light = PRODUCTS.lighting.find(item => item.bestFor.includes('night-shift'));
   } else if (a.budget === 'under-500') {
-    light = PRODUCTS.lighting[1]; // IKEA
+    light = PRODUCTS.lighting.find(item => item.bestFor.includes('budget'));
   } else {
-    light = PRODUCTS.lighting[0];
+    light = PRODUCTS.lighting.find(item => item.bestFor.includes('general')) || PRODUCTS.lighting[0];
   }
   recs.push({
     category: 'Lighting',
@@ -534,13 +646,13 @@ function generateRecommendations() {
   // Accessory based on persona
   let accessory;
   if (a.standing === 'yes') {
-    accessory = PRODUCTS.accessories[0]; // Anti-fatigue mat
+    accessory = PRODUCTS.accessories.find(item => item.bestFor.includes('standing'));
   } else if (a.workType === 'developer') {
-    accessory = PRODUCTS.accessories[2]; // MX Master
+    accessory = PRODUCTS.accessories.find(item => item.bestFor.includes('developer'));
   } else if (a.pain === 'wrist') {
-    accessory = PRODUCTS.accessories[3]; // Split keyboard
+    accessory = PRODUCTS.accessories.find(item => item.name.includes('MX Master'));
   } else {
-    accessory = PRODUCTS.accessories[1]; // Footrest
+    accessory = PRODUCTS.accessories.find(item => item.name.includes('Footrest'));
   }
   recs.push({
     category: 'Accessory',
@@ -621,6 +733,7 @@ function showResults() {
   const checklist = generateChecklist();
   
   resultsEl.classList.add('active');
+  resultsEl.setAttribute('tabindex', '-1');
   
   // Build results HTML
   let html = `
@@ -634,10 +747,7 @@ function showResults() {
   `;
   
   recommendations.forEach(rec => {
-    var asinMatch = (rec.url || '').match(/\/dp\/([A-Z0-9]{10})/i);
-    var thumb = asinMatch
-      ? `<img class="recommendation__thumb" src="/assets/images/products/${asinMatch[1].toUpperCase()}.jpg" alt="" width="72" height="72" loading="lazy" decoding="async" onerror="this.style.display='none'">`
-      : `<div class="recommendation__icon">${rec.icon}</div>`;
+    var thumb = `<div class="recommendation__icon"></div>`;
     html += `
       <div class="recommendation">
         ${thumb}
@@ -671,10 +781,10 @@ function showResults() {
     <div class="result-next-steps">
       <h3 class="result-next-steps__title">What to do next</h3>
       <div class="result-next-steps__grid">
-        <a href="/ergonomic-height-calculator/" class="result-next-steps__card">📏 Dial in desk &amp; chair height</a>
-        <a href="/build-your-office/" class="result-next-steps__card">🛠️ Refine with Build Your Office</a>
-        <a href="/guides/" class="result-next-steps__card">📚 Read the deep-dive guides</a>
-        <a href="/tools/" class="result-next-steps__card">🧰 Browse all free tools</a>
+        <a href="/ergonomic-height-calculator" class="result-next-steps__card">📏 Dial in desk &amp; chair height</a>
+        <a href="/build-your-office" class="result-next-steps__card">🛠️ Refine with Build Your Office</a>
+        <a href="/guides" class="result-next-steps__card">📚 Read the deep-dive guides</a>
+        <a href="/tools" class="result-next-steps__card">🧰 Browse all free tools</a>
       </div>
     </div>
 
@@ -690,8 +800,9 @@ function showResults() {
   `;
   
   resultsEl.innerHTML = html;
+  resultsEl.focus();
   
-  // Auto-save results to localStorage
+  // Prepare an optional local save; persistence happens only when the user selects Save.
   var payload = {
     persona: persona,
     personaName: personaData.name,
@@ -701,17 +812,8 @@ function showResults() {
     answers: AssessmentState.answers,
     timestamp: Date.now()
   };
-  try {
-    localStorage.setItem('twp-assessment-results', JSON.stringify(payload));
-  } catch (e) {}
-
-  // Update URL with shareable (non-PII) answer payload for traffic + return visits
+  // Build a share URL in memory; the address bar changes only if the user shares it.
   var shareUrl = buildShareUrl(AssessmentState.answers, persona);
-  try {
-    if (window.history && history.replaceState) {
-      history.replaceState(null, '', shareUrl);
-    }
-  } catch (e) {}
 
   function setHint(msg) {
     var el = document.getElementById('resultActionHint');
@@ -851,7 +953,8 @@ function parseSharePayload() {
 
 function restartAssessment() {
   AssessmentState.step = 0;
-  AssessmentState.answers = {};
+  const heightInput = document.querySelector('input[data-question="height"]');
+  AssessmentState.answers = { height: heightInput ? heightInput.value : '69' };
   sessionStorage.removeItem('assessmentState');
   
   document.getElementById('resultsScreen')?.classList.remove('active');
@@ -859,7 +962,7 @@ function restartAssessment() {
   document.getElementById('stepLabel')?.classList.remove('hidden');
   document.getElementById('assessmentNav')?.classList.remove('hidden');
   
-  document.querySelectorAll('.choice-card').forEach(c => c.classList.remove('selected'));
+  document.querySelectorAll('.choice-card').forEach(c => { c.classList.remove('selected'); c.setAttribute('aria-pressed', 'false'); });
   
   renderStep();
   scrollToTop();
@@ -874,17 +977,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Restore from share link if present (answers only — no PII)
   var shared = parseSharePayload();
-  if (shared && shared.a && typeof shared.a === 'object') {
+  if (shared && isValidSharedAnswers(shared.a)) {
     AssessmentState.answers = shared.a;
     AssessmentState.step = AssessmentState.totalSteps - 1;
     try {
       sessionStorage.setItem('assessmentState', JSON.stringify(AssessmentState));
     } catch (e) {}
     initAssessment();
-    // Jump straight to results when enough answers exist
-    if (Object.keys(AssessmentState.answers).length >= 4) {
-      showResults();
-    }
+    // A validated share contains the complete answer set.
+    showResults();
     return;
   }
 

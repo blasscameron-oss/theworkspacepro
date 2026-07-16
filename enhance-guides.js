@@ -296,7 +296,7 @@ function buildRelatedGuidesHTML(slug) {
   const related = getRelatedGuides(slug);
   if (related.length === 0) return '';
   const cards = related.map(({ slug: rSlug, data }) => {
-    return `<a href="/guides/${rSlug}/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+    return `<a href="/guides/" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
       <div class="guide-card__content">
         <span class="guide-card__badge">${escapeAttr(data.category)}</span>
         <h3 class="guide-card__title">${escapeAttr(data.title)}</h3>

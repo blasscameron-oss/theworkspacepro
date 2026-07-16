@@ -8,12 +8,12 @@
   <meta property="og:title" content="Workspace Setup Calculator — The Workspace Pro">
   <meta property="og:description" content="Get a prioritized shopping list for your workspace based on your budget, pain points, and room size. Free interactive tool with real products.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.theworkspacepro.com/workspace-setup-calculator/">
+  <meta property="og:url" content="https://www.theworkspacepro.com/workspace-setup-calculator">
   <meta property="og:image" content="https://www.theworkspacepro.com/assets/images/og-default.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Workspace Setup Calculator">
   <meta name="twitter:description" content="Build your personalized workspace shopping list based on budget and priorities.">
-  <link rel="canonical" href="https://www.theworkspacepro.com/workspace-setup-calculator/">
+  <link rel="canonical" href="https://www.theworkspacepro.com/workspace-setup-calculator">
 <link rel="stylesheet" href="/assets/css/fonts.css">
   <link rel="stylesheet" href="/assets/css/style.css">
   <link rel="stylesheet" href="/assets/css/bold.css">
@@ -23,7 +23,7 @@
     "@type": "WebApplication",
     "name": "Workspace Setup Calculator",
     "description": "Interactive budget-based shopping list generator for workspace equipment. Recommends products based on budget, priorities, pain points, and room size.",
-    "url": "https://www.theworkspacepro.com/workspace-setup-calculator/",
+    "url": "https://www.theworkspacepro.com/workspace-setup-calculator",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web Browser",
     "offers": {
@@ -144,10 +144,10 @@
       <a href="/" class="logo"><span class="logo__mark">W</span><span>The Workspace Pro</span></a>
             <nav class="nav" aria-label="Primary">
         <a href="/" class="nav__link">Home</a>
-        <a href="/guides/" class="nav__link">Guides</a>
-        <a href="/tools/" class="nav__link nav__link--active">Tools</a>
-        <a href="/tips/" class="nav__link">Tips</a>
-        <a href="/about/" class="nav__link">About</a>
+        <a href="/guides" class="nav__link">Guides</a>
+        <a href="/tools" class="nav__link nav__link--active">Tools</a>
+        <a href="/tips" class="nav__link">Tips</a>
+        <a href="/about" class="nav__link">About</a>
         <a href="/#assessment" class="nav__link nav__cta">Take the Quiz</a>
       </nav>
       <div class="header-actions">
@@ -163,15 +163,15 @@
       <button class="menu-toggle" type="button" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
     <a href="/" class="mobile-nav__link">Home</a>
-    <a href="/guides/" class="mobile-nav__link">Guides</a>
-    <a href="/tools/" class="mobile-nav__link">Tools</a>
-    <a href="/build-your-office/" class="mobile-nav__link">Build Your Office</a>
-    <a href="/ergonomic-height-calculator/" class="mobile-nav__link">Height Calculator</a>
-    <a href="/workspace-setup-calculator/" class="mobile-nav__link">Setup Calculator</a>
-    <a href="/tips/" class="mobile-nav__link">Tips</a>
-    <a href="/podcasts/" class="mobile-nav__link">Podcasts</a>
-    <a href="/about/" class="mobile-nav__link">About</a>
-    <a href="/contact/" class="mobile-nav__link">Contact</a>
+    <a href="/guides" class="mobile-nav__link">Guides</a>
+    <a href="/tools" class="mobile-nav__link">Tools</a>
+    <a href="/build-your-office" class="mobile-nav__link">Build Your Office</a>
+    <a href="/ergonomic-height-calculator" class="mobile-nav__link">Height Calculator</a>
+    <a href="/workspace-setup-calculator" class="mobile-nav__link">Setup Calculator</a>
+    <a href="/tips" class="mobile-nav__link">Tips</a>
+    <a href="/podcasts" class="mobile-nav__link">Podcasts</a>
+    <a href="/about" class="mobile-nav__link">About</a>
+    <a href="/contact" class="mobile-nav__link">Contact</a>
     <a href="/#assessment" class="mobile-nav__cta">Take the Quiz</a>
   </nav>
 
@@ -193,7 +193,8 @@
       </div>
       <p class="wsc-step-desc">How much are you planning to spend on your workspace setup?</p>
       <div class="wsc-budget-display" id="wscBudgetDisplay">$1,000</div>
-      <input type="range" id="wscBudgetSlider" class="ehc-slider" min="100" max="5000" step="50" value="1000" style="width:100%;margin:var(--space-md) 0;">
+      <label class="sr-only" for="wscBudgetSlider">Total workspace budget</label>
+      <input type="range" id="wscBudgetSlider" aria-describedby="wscBudgetDisplay" aria-valuetext="$1,000" class="ehc-slider" min="100" max="5000" step="50" value="1000" style="width:100%;margin:var(--space-md) 0;">
       <div style="display:flex;justify-content:space-between;color:var(--c-text-muted);font-size:0.8rem;">
         <span>$100</span>
         <span>$2,500</span>
@@ -244,11 +245,11 @@
       </div>
       <p class="wsc-step-desc">Select any discomfort you're experiencing. We'll prioritize products that help.</p>
       <div class="wsc-pain-grid" id="wscPainGrid">
-        <button class="wsc-pain-btn" data-pain="back">🔙 Back Pain</button>
-        <button class="wsc-pain-btn" data-pain="neck">🦒 Neck Pain</button>
-        <button class="wsc-pain-btn" data-pain="eyes">👁️ Eye Strain</button>
-        <button class="wsc-pain-btn" data-pain="wrist">✋ Wrist Pain</button>
-        <button class="wsc-pain-btn" data-pain="none">✨ None / Prevention</button>
+        <button type="button" class="wsc-pain-btn" data-pain="back">🔙 Back Pain</button>
+        <button type="button" class="wsc-pain-btn" data-pain="neck">🦒 Neck Pain</button>
+        <button type="button" class="wsc-pain-btn" data-pain="eyes">👁️ Eye Strain</button>
+        <button type="button" class="wsc-pain-btn" data-pain="wrist">✋ Wrist Pain</button>
+        <button type="button" class="wsc-pain-btn" data-pain="none">✨ None / Prevention</button>
       </div>
     </div>
 
@@ -308,6 +309,7 @@
         </div>
       </div>
 
+      <p class="affiliate-notice">Some product links are affiliate links. We may earn a commission at no extra cost to you.</p>
       <div class="wsc-product-list" id="wscProductList"></div>
 
       <div class="wsc-actions">
@@ -327,8 +329,8 @@
   <section class="cta-section" style="max-width:var(--max-width);margin:var(--space-2xl) auto;">
     <div class="container">
       <h2>Read our detailed buying guides</h2>
-      <p>Deep-dive into every workspace category — chairs, desks, monitors, lighting, and more. Expert reviews, comparison tables, and budget recommendations.</p>
-      <a href="/guides/" class="btn btn--secondary btn--lg">Browse All Guides →</a>
+      <p>Deep-dive into every workspace category — chairs, desks, monitors, lighting, and more. Research-backed comparisons, practical tables, and budget recommendations.</p>
+      <a href="/guides" class="btn btn--secondary btn--lg">Browse All Guides →</a>
     </div>
   </section>
 
@@ -356,29 +358,29 @@
         <h4>Explore</h4>
         <ul>
           <li><a href="/">Home</a></li>
-          <li><a href="/guides/">Guides</a></li>
-          <li><a href="/tips/">Tips</a></li>
-          <li><a href="/podcasts/">Podcasts</a></li>
+          <li><a href="/guides">Guides</a></li>
+          <li><a href="/tips">Tips</a></li>
+          <li><a href="/podcasts">Podcasts</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Tools</h4>
         <ul>
-          <li><a href="/tools/">All Tools</a></li>
+          <li><a href="/tools">All Tools</a></li>
           <li><a href="/#assessment">Workspace Assessment</a></li>
-          <li><a href="/build-your-office/">Build Your Office</a></li>
-          <li><a href="/ergonomic-height-calculator/">Height Calculator</a></li>
-          <li><a href="/workspace-setup-calculator/">Setup Calculator</a></li>
+          <li><a href="/build-your-office">Build Your Office</a></li>
+          <li><a href="/ergonomic-height-calculator">Height Calculator</a></li>
+          <li><a href="/workspace-setup-calculator">Setup Calculator</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>About</h4>
         <ul>
-          <li><a href="/about/">About Us</a></li>
-          <li><a href="/contact/">Contact</a></li>
-          <li><a href="/affiliate-disclosure/">Affiliate Disclosure</a></li>
-          <li><a href="/privacy/">Privacy Policy</a></li>
-          <li><a href="/terms/">Terms of Service</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/affiliate-disclosure">Affiliate Disclosure</a></li>
+          <li><a href="/privacy">Privacy Policy</a></li>
+          <li><a href="/terms">Terms of Service</a></li>
         </ul>
       </div>
     </div>
@@ -412,16 +414,14 @@
       ],
       desks: [
         { name: "IKEA LAGKAPTEN Desk", price: 89, url: "https://www.ikea.com/us/en/p/lagkapten-desk-black-brown-bamboo-00503604/", cat: "Desk", bestFor: ["budget","small"], why: "Simple sitting desk with bamboo top. Budget-friendly for tight spaces. Pair with a monitor riser." },
-        { name: "SHW Electric Standing Desk 55"""", price: 299, url: "https://www.amazon.com/dp/B085KBN2DN/?tag=workspacepro-20", cat: "Desk", bestFor: ["budget","mid","standing","general"], why: "Budget electric standing desk. Verify height range and capacity for your body." },
-        { name: "SHW Electric Standing Desk 55\"", price: 299, url: "https://www.amazon.com/dp/B085KBN2DN/?tag=workspacepro-20", cat: "Desk", bestFor: ["budget","standing","small"], why: "Budget electric standing desk. Verify height range for your height." },
+        { name: "SHW Electric Standing Desk 55-inch", price: 299, url: "https://www.amazon.com/dp/B085KBN2DN/?tag=workspacepro-20", cat: "Desk", bestFor: ["budget","mid","standing","general","small"], why: "Budget electric standing desk. Verify its live height range and capacity for your body and equipment." },
         { name: "Branch Standing Desk", price: 499, url: "https://www.branchfurniture.com/products/standing-desk/?ref=the_workspace_pro", cat: "Desk", bestFor: ["mid","standing","general","large"], why: "Dual-motor, 4 memory presets, 243 lb capacity, bamboo top. 7-year warranty. Best under $500." },
         { name: "Uplift V2 Standing Desk", price: 599, url: "https://www.upliftdesk.com/uplift-v2-standing-desk-v2-or-v2-commercial/", cat: "Desk", bestFor: ["premium","standing","large","back"], why: "Premium dual-motor desk with 355 lb capacity and extensive height range. Best for tall/short users." }
       ],
       monitors: [
-        { name: "ASUS ProArt PA278QV 27" 1440p" 1440p" 1080p", price: 299, url: "https://www.amazon.com/dp/B088BC5HMM/?tag=workspacepro-20", cat: "Monitor", bestFor: ["budget","small"], why: "27" 1440p IPS with strong color for office work." 1440p IPS with strong color for office work." IPS monitor. Fine for basic office work and small spaces." },
-        { name: "ASUS ProArt PA278QV 27" 1440p" 1440p" 1440p", price: 299, url: "https://www.amazon.com/dp/B088BC5HMM/?tag=workspacepro-20", cat: "Monitor", bestFor: ["budget","mid","eyes","general"], why: "27" 1440p IPS with strong color for office work." 1440p IPS with strong color for office work." 1440p IPS panel with 100% sRGB. Reduces eye strain with better pixel density than 1080p." },
-        { name: "Dell S2722QC 27" 4K USB-C" 4K USB-C" 4K USB-C", price: 350, url: "https://www.amazon.com/dp/B09DTDRJWP/?tag=workspacepro-20", cat: "Monitor", bestFor: ["mid","eyes","general","productivity"], why: "4K with USB-C for sharper text and laptop charging." },
-        { name: "Dell UltraSharp U2723QE 27" 4K" 4K" 4K USB-C", price: 480, url: "https://www.amazon.com/dp/B09TQZP9CL/?tag=workspacepro-20", cat: "Monitor", bestFor: ["premium","eyes","productivity","large"], why: "4K USB-C hub monitor for productivity setups." }
+        { name: "ASUS ProArt PA278QV 27-inch 1440p", price: 299, url: "https://www.amazon.com/dp/B088BC5HMM/?tag=workspacepro-20", cat: "Monitor", bestFor: ["budget","mid","small","eyes","general"], why: "27-inch 1440p IPS display with strong color accuracy and sharper text than 1080p." },
+        { name: "Dell S2722QC 27-inch 4K USB-C", price: 350, url: "https://www.amazon.com/dp/B09DTDRJWP/?tag=workspacepro-20", cat: "Monitor", bestFor: ["mid","eyes","general","productivity"], why: "4K display with USB-C for sharp text, a single laptop cable, and charging." },
+        { name: "Dell UltraSharp U2723QE 27-inch 4K USB-C", price: 480, url: "https://www.amazon.com/dp/B09TQZP9CL/?tag=workspacepro-20", cat: "Monitor", bestFor: ["premium","eyes","productivity","large"], why: "Color-accurate 4K USB-C hub monitor for productivity-focused setups." }
       ],
       lighting: [
         { name: "IKEA TERTIAL Work Lamp", price: 15, url: "https://www.ikea.com/us/en/p/tertial-work-lamp-gray-80342987/", cat: "Lighting", bestFor: ["budget","small"], why: "Classic adjustable desk lamp. Add a warm LED bulb for evening work. Cheapest lighting option." },
@@ -440,8 +440,7 @@
       accessories: [
         { name: "Simple Cord Under-Desk Cable Channel", price: 15, url: "https://www.amazon.com/dp/B06Y1DVNQD/?tag=workspacepro-20", cat: "Accessory", bestFor: ["cable","budget","general"], why: "J-channel cable management for a cleaner desk underside." },
         { name: "Amazon Basics Anti-Fatigue Standing Mat", price: 30, url: "https://www.amazon.com/dp/B00OUFX0YY/?tag=workspacepro-20", cat: "Accessory", bestFor: ["back","budget","standing"], why: "Cushioned mat for standing-desk sessions." },
-        { name: "WALI Dual Monitor Stand", price: 35, url: "https://www.amazon.com/dp/B018MSDG84/?tag=workspacepro-20", cat: "Accessory", bestFor: ["neck","eyes","budget","general"], why: "Budget dual-monitor stand for two screens up to ~27"."." },
-        { name: "KANGAROO Anti-Fatigue Mat", price: 45, url: "https://www.amazon.com/dp/B01H6AZC5Y/?tag=workspacepro-20", cat: "Accessory", bestFor: ["back","mid","standing"], why: "Thicker cushioned standing mat for longer standing sessions." },
+        { name: "WALI Dual Monitor Stand", price: 35, url: "https://www.amazon.com/dp/B018MSDG84/?tag=workspacepro-20", cat: "Accessory", bestFor: ["neck","eyes","budget","general"], why: "Budget dual-monitor stand for two screens up to about 27 inches." },
         { name: "KANGAROO Anti-Fatigue Mat", price: 45, url: "https://www.amazon.com/dp/B01H6AZC5Y/?tag=workspacepro-20", cat: "Accessory", bestFor: ["back","mid","standing"], why: "Thicker cushioned standing mat for longer standing sessions." }
       ],
       cableManagement: [
@@ -466,23 +465,22 @@
     budgetSlider.addEventListener('input', function() {
       state.budget = parseInt(this.value);
       budgetDisplay.textContent = '$' + state.budget.toLocaleString();
+      this.setAttribute('aria-valuetext', budgetDisplay.textContent);
     });
 
     // ---- Priority checkboxes ----
     document.querySelectorAll('#wscPriorityGrid .wsc-check-card').forEach(function(card) {
-      card.addEventListener('click', function(e) {
-        if (e.target.tagName === 'INPUT') return; // let native handle
-        var cb = this.querySelector('input[type="checkbox"]');
-        cb.checked = !cb.checked;
-        this.classList.toggle('selected', cb.checked);
-      });
       card.querySelector('input[type="checkbox"]').addEventListener('change', function() {
         card.classList.toggle('selected', this.checked);
       });
     });
 
     // ---- Pain point buttons ----
+    var painGrid = document.getElementById('wscPainGrid');
+    painGrid.setAttribute('role', 'group');
+    painGrid.setAttribute('aria-label', 'Pain points');
     document.querySelectorAll('#wscPainGrid .wsc-pain-btn').forEach(function(btn) {
+      btn.setAttribute('aria-pressed', 'false');
       btn.addEventListener('click', function() {
         var pain = this.dataset.pain;
         if (pain === 'none') {
@@ -494,15 +492,34 @@
           if (noneBtn) noneBtn.classList.remove('selected');
           this.classList.toggle('selected');
         }
+        document.querySelectorAll('#wscPainGrid .wsc-pain-btn').forEach(function(b) {
+          b.setAttribute('aria-pressed', b.classList.contains('selected') ? 'true' : 'false');
+        });
       });
     });
 
     // ---- Room selection ----
+    var roomGrid = document.getElementById('wscRoomGrid');
+    roomGrid.setAttribute('role', 'radiogroup');
+    roomGrid.setAttribute('aria-label', 'Room size');
+    document.querySelectorAll('#wscRoomGrid .wsc-radio-card').forEach(function(card) {
+      card.setAttribute('role', 'radio');
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('aria-checked', 'false');
+      card.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          window.wscSelectRoom(card);
+        }
+      });
+    });
     window.wscSelectRoom = function(el) {
       document.querySelectorAll('#wscRoomGrid .wsc-radio-card').forEach(function(c) {
         c.classList.remove('selected');
+        c.setAttribute('aria-checked', 'false');
       });
       el.classList.add('selected');
+      el.setAttribute('aria-checked', 'true');
       state.room = el.dataset.room;
     };
 
@@ -731,7 +748,7 @@
         lines.push('• ' + item.name + ' — ' + item.price);
       });
       lines.push('');
-      lines.push('Build yours: https://www.theworkspacepro.com/workspace-setup-calculator/');
+      lines.push('Build yours: https://www.theworkspacepro.com/workspace-setup-calculator');
 
       var text = lines.join('\n');
       navigator.clipboard.writeText(text).then(function() {
@@ -767,10 +784,12 @@
 
       document.querySelectorAll('#wscPainGrid .wsc-pain-btn').forEach(function(b) {
         b.classList.remove('selected');
+        b.setAttribute('aria-pressed', 'false');
       });
 
       document.querySelectorAll('#wscRoomGrid .wsc-radio-card').forEach(function(c) {
         c.classList.remove('selected');
+        c.setAttribute('aria-checked', 'false');
       });
 
       document.getElementById('wscResults').classList.remove('active');

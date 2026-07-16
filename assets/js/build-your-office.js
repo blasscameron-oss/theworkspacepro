@@ -337,13 +337,17 @@ function byoPrev() {
 
 function byoSelect(el) {
   const parent = el.parentElement;
-  parent.querySelectorAll('.byo-option').forEach(o => o.classList.remove('selected'));
+  parent.querySelectorAll('.byo-option').forEach(o => {
+    o.classList.remove('selected');
+    o.setAttribute('aria-checked', 'false');
+  });
   el.classList.add('selected');
+  el.setAttribute('aria-checked', 'true');
   const key = ['workStyle', 'space', 'priority', 'standing'][BYOState.step - 1];
   if (key) {
     BYOState.answers[key] = el.dataset.value;
     // Enable next button
-    const nextBtn = document.getElementById('byoNext' + (BYOState.step - 1));
+    const nextBtn = document.getElementById('byoNext' + BYOState.step);
     if (nextBtn) nextBtn.disabled = false;
   }
 }
@@ -363,11 +367,29 @@ function byoRenderStep() {
 // --- Budget slider ---
 
 document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.byo-options').forEach(group => {
+    group.setAttribute('role', 'radiogroup');
+    const question = group.closest('.byo-step')?.querySelector('.byo-question');
+    if (question) group.setAttribute('aria-label', question.textContent.trim());
+  });
+  document.querySelectorAll('.byo-option').forEach(option => {
+    option.setAttribute('role', 'radio');
+    option.setAttribute('tabindex', '0');
+    option.setAttribute('aria-checked', option.classList.contains('selected') ? 'true' : 'false');
+    option.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        byoSelect(option);
+      }
+    });
+  });
   const slider = document.getElementById('budgetSlider');
   if (slider) {
     slider.addEventListener('input', function() {
-      BYOState.answers.budget = parseInt(this.value);
-      document.getElementById('budgetDisplay').textContent = '$' + this.value.toLocaleString();
+      BYOState.answers.budget = parseInt(this.value, 10);
+      var formattedBudget = '$' + BYOState.answers.budget.toLocaleString();
+      document.getElementById('budgetDisplay').textContent = formattedBudget;
+      this.setAttribute('aria-valuetext', formattedBudget);
     });
   }
 });
@@ -513,7 +535,7 @@ function byoRenderResults(setup) {
   const budget = BYOState.answers.budget;
   let total = 0;
   const grid = document.getElementById('productGrid');
-  grid.innerHTML = '';
+  grid.innerHTML = '<p class="affiliate-notice">Some product links are affiliate links. We may earn a commission at no extra cost to you.</p>';
 
   const categories = ['chair', 'desk', 'monitor', 'monitorArm', 'lighting', 'keyboard', 'mouse', 'accessory1'];
 
@@ -601,8 +623,9 @@ function byoRestart() {
   BYOState.answers = { budget: 1000, workStyle: null, space: null, priority: null, standing: null };
   document.getElementById('byoResults').classList.remove('active');
   document.getElementById('budgetSlider').value = 1000;
+  document.getElementById('budgetSlider').setAttribute('aria-valuetext', '$1,000');
   document.getElementById('budgetDisplay').textContent = '$1,000';
-  document.querySelectorAll('.byo-option').forEach(o => o.classList.remove('selected'));
+  document.querySelectorAll('.byo-option').forEach(o => { o.classList.remove('selected'); o.setAttribute('aria-checked', 'false'); });
   document.querySelectorAll('[id^="byoNext"]').forEach(b => {
     if (b.id !== 'byoNext0') b.disabled = true;
   });
@@ -619,7 +642,7 @@ function byoShare() {
     total += p.price;
   });
   text += `\nTotal: $${total}\nBudget: $${BYOState.answers.budget}\n`;
-  text += `\nBuild yours: https://www.theworkspacepro.com/build-your-office/`;
+  text += `\nBuild yours: https://www.theworkspacepro.com/build-your-office`;
 
   navigator.clipboard.writeText(text).then(() => {
     alert('Setup copied to clipboard!');

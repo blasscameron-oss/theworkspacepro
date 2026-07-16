@@ -54,6 +54,8 @@
 
     var navId = getNavId(nav);
     nav.classList.toggle('open', open);
+    nav.inert = !open;
+    nav.setAttribute('aria-hidden', open ? 'false' : 'true');
     if (overlay) overlay.classList.toggle('open', open);
     document.body.classList.toggle('menu-open', open);
     document.querySelectorAll('.menu-toggle').forEach(function (btn) {
@@ -62,9 +64,11 @@
     });
 
     if (open) {
+      if (lastMenuTrigger) lastMenuTrigger.setAttribute('aria-label', 'Close menu');
       var first = nav.querySelector('a, button');
       if (first) first.focus();
     } else if (lastMenuTrigger && typeof lastMenuTrigger.focus === 'function') {
+      lastMenuTrigger.setAttribute('aria-label', 'Open menu');
       lastMenuTrigger.focus();
       lastMenuTrigger = null;
     }
@@ -90,6 +94,8 @@
         btn.setAttribute('aria-expanded', 'false');
         if (!btn.hasAttribute('type')) btn.setAttribute('type', 'button');
       });
+      nav.inert = true;
+      nav.setAttribute('aria-hidden', 'true');
     }
 
     document.querySelectorAll('.theme-toggle').forEach(function (btn) {
@@ -121,7 +127,18 @@
     });
 
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') setMenuOpen(false);
+      var openNav = document.querySelector('.mobile-nav.open');
+      if (e.key === 'Escape') {
+        setMenuOpen(false);
+        return;
+      }
+      if (e.key !== 'Tab' || !openNav) return;
+      var focusable = Array.from(openNav.querySelectorAll('a[href], button:not([disabled])'));
+      if (!focusable.length) return;
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     });
 
     // Active nav highlight by path

@@ -10,12 +10,50 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Validate public source
+        run: |
+          find assets/js worker -name '*.js' -print0 | xargs -0 -n1 node --check
+          if rg -n 'function getBadgeColumnForRow|newsletter-bar",000|data-cf-beacon="\{' --glob '*.html'; then
+            echo "Generated-site corruption signature found"
+            exit 1
+          fi
+          if rg -n -U '<meta name="description"[^>]*"\n' --glob '*.html'; then
+            echo "Malformed HTML head signature found"
+            exit 1
+          fi
+
+      - name: Build allowlisted public artifact
+        run: |
+          mkdir -p dist
+          mkdir -p dist/assets
+          cp -R assets/css assets/data assets/fonts dist/assets/
+          mkdir -p dist/assets/js
+          cp assets/js/analytics.js assets/js/assessment.js assets/js/bold.js assets/js/build-your-office.js assets/js/compare-matrix.js assets/js/enhancements.js assets/js/height-math.js assets/js/perf-lite.js assets/js/review-injector.js assets/js/site.js dist/assets/js/
+          mkdir -p dist/assets/images
+          cp assets/images/favicon.svg assets/images/og-default.jpg dist/assets/images/
+          cp -R compare embed guides dist/
+          cp ./*.html ./*.xml ./*.svg _headers _redirects robots.txt dist/
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy . --project-name=the-workspace-pro
+          command: pages deploy dist --project-name=the-workspace-pro
 
-      - name: Trigger health check
-        run: curl -s https://twp-monitor.blasscameron.workers.dev || true
+      - name: Deploy health monitor Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy --config wrangler.toml
+
+      - name: Run authenticated health check
+        env:
+          MONITOR_SECRET: ${{ secrets.MONITOR_SECRET }}
+        run: |
+          curl --fail --silent --show-error --retry 5 --retry-delay 3 --retry-all-errors \
+            --header "X-Monitor-Key: $MONITOR_SECRET" \
+            --output monitor-result.json \
+            https://twp-monitor.blasscameron.workers.dev
+          node -e "const r=require('./monitor-result.json'); if(r.failed!==0) { console.error(r); process.exit(1) }"

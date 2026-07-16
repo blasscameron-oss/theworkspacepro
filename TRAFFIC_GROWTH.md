@@ -36,15 +36,21 @@ Already implemented or in progress:
 5. **FAQ accordion + FAQPage schema** — honesty + SEO
 6. **Prefetch on hover** — feels instant without SPA complexity
 
-## Cool features to build next (priority order)
+## Growth roadmap after the repair deploy (priority order)
 
-1. **Embeddable height calculator** — `/embed/height.html` for blogs (backlinks)
-2. **“Desk fit” PDF one-pager** — print already works; brand it for HR/remote stipends
-3. **Compare matrix tool** — filter chairs/desks by height range & budget (interactive)
-4. **Weekly honest pick email** — Beehiiv; no fake discounts, just “what we updated”
-5. **Guide TOC sticky + jump links** — dwell time
-6. **PWA install / offline checklist** — optional, keep tiny
-7. **Public changelog** — “ASINs verified July 2026” builds trust with power users
+1. **Desk-fit acquisition kit** — turn calculator results into a branded printable one-pager for employees and remote-work stipend managers; include a shareable result URL and embed outreach template.
+2. **Body-fit search cluster** — publish indexable desk-height and chair-height charts, chair seat-depth by height, and standing-desk picks for tall, short, and small-space users. Each page should route into the height calculator and a comparison page.
+3. **Commercial comparison cluster** — Aeron vs Embody vs Leap, Branch vs FlexiSpot, Uplift vs FlexiSpot, monitor arms for thick desks, and cable management for standing desks. Link guide → tool → comparison → clearly disclosed CTA.
+4. **Trust scorecards** — show research method, source links, scoring rubric, and spec or ASIN last-checked dates. Add a correction link instead of unsupported expert or tested language.
+5. **Authentic setup gallery** — moderated user submissions with consent, budget, body-fit notes, and product list. Do not seed fictional profiles or counters.
+6. **Per-page social cards** — unique OG art for calculators, comparisons, and the highest-impression guides to improve click-through when shared.
+7. **Useful email lead magnet** — offer the saved desk-fit checklist and a weekly verified pick. Only promise a cadence the newsletter actually maintains.
+
+## 30/60/90-day traffic plan
+
+- **Days 1–30:** deploy repairs, fix apex redirect, resubmit sitemap, mark revenue events in GA4, establish Search Console baselines, and publish two body-fit pages.
+- **Days 31–60:** publish four commercial comparison pages, create unique social cards for the top ten landing pages, and begin outreach for the embeddable height calculator.
+- **Days 61–90:** launch the moderated setup gallery pilot, refresh pages using query and conversion data, and expand only clusters showing impressions or affiliate intent.
 
 ## Distribution (non-code)
 

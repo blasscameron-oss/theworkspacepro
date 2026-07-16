@@ -1,23 +1,20 @@
 # Finch handoff — The Workspace Pro
 
-**Updated:** 2026-07-16 (status check — v2 ready locally, needs commit + deploy)  
-**Canonical path:** `/home/cameron/.openclaw/workspace/theworkspacepro-v2`  
-**Live:** https://www.theworkspacepro.com  
-**GitHub:** `https://github.com/blasscameron-oss/theworkspacepro`  
-**Hosting:** Cloudflare Pages (static) + optional Worker `twp-monitor`  
+**Updated:** 2026-07-16 (Luna full-stack audit complete; repair release is local and awaiting Finch deploy)
+**Canonical path:** `/home/cameron/.openclaw/workspace/theworkspacepro-v2`
+**Live:** https://www.theworkspacepro.com
+**GitHub:** `https://github.com/blasscameron-oss/theworkspacepro`
+**Hosting:** Cloudflare Pages (static) + required health Worker `twp-monitor`
 
-## ⚠️ STATUS (2026-07-16): v2 built locally — NOT deployed
+## ⚠️ STATUS (2026-07-16): v2 is live; audit repair release is NOT deployed
 
-**The live site at theworkspacepro.com is still v1.** CSP still references Google Fonts, no self-hosted fonts, no compare matrix, no embed, no changelog.
+The live site matches the v2 checkout and commit `668dff9`. The new Luna audit found and repaired several production-critical defects locally: a nonfunctional setup calculator, skipped assessment questions, incorrect product mappings, redirect loops, leaked generator code in guides, malformed analytics markup, weak deployment boundaries, and trust/compliance issues.
 
-**v2 code exists locally** — all 16 PRs are implemented in the working tree but **never committed or pushed**:
-- 49 tracked files modified (unstaged, some staged)
-- 30 files untracked (new v2 features: self-hosted fonts, analytics.js, compare matrix, embed, changelog, tools, scripts/, catalog.json, etc.)
-- Last git commit is `7d7125f seo: delete old sitemap...` (pre-v2)
+**Finch must review, commit, push, and verify this repair release.** Do not deploy from the older `repos/workspace-pro-minimal` checkout. The authoritative checkout is the canonical path above.
 
 ### ⏰ OWNER REMINDER — follow up TOMORROW
 
-**Cameron:** Enable / apply for official **Amazon product data API** for Associates (currently marketed as **Amazon Creators API** / successor to Product Advertising API — confirm name in Associates Central for your account). Then hand credentials to Finch (or set secrets) so Finch can implement **§ Amazon product images (API build plan)** below.
+**Cameron:** Enable / apply for official **Amazon Creators API** (successor to Product Advertising API — PA-API deprecated May 2026). ⚠️ Requires **10+ qualified sales in past 30 days**. Then hand credentials to Finch (or set secrets) so Finch can implement **§ Amazon product images (API build plan)** below.
 
 | Doc | Purpose |
 |-----|---------|
@@ -33,15 +30,15 @@
 | Surface | Role |
 |---------|------|
 | `/` | Assessment quiz (**only** page with `assessment.js`) |
-| `/tools/` | Tools hub + height embed snippet |
-| `/embed/height/` | Embeddable height calc (`noindex`) |
+| `/tools` | Tools hub + height embed snippet |
+| `/embed/height` | Embeddable height calc (`noindex`) |
 | `/compare/` | **Filter matrix** (query-shareable) |
 | `/compare/*` | Long-form written comparisons |
-| `/build-your-office/` | Budget builder |
-| `/ergonomic-height-calculator/` | Full height tool + `height-math.js` |
-| `/workspace-setup-calculator/` | Setup planner |
-| `/guides/` | 16 guides + search |
-| `/changelog/` | Honest ship log |
+| `/build-your-office` | Budget builder |
+| `/ergonomic-height-calculator` | Full height tool + `height-math.js` |
+| `/workspace-setup-calculator` | Setup planner |
+| `/guides` | 16 guides + search |
+| `/changelog` | Honest ship log |
 | Contact / Newsletter | Formspree / Beehiiv |
 | Affiliate | Amazon tag **`workspacepro-20`** |
 | Analytics | **`/assets/js/analytics.js`** only → GA4 `G-2DWRW4PE8Y` |
@@ -63,17 +60,17 @@
 | PR5 | Gate `enhancements.js` by page type | ✅ |
 | PR6 | ASIN inventory + denylist + runbook | ✅ |
 | PR7 | Extra product images (BenQ retry optional) | ✅ (most matrix thumbs present) |
-| PR8 | `/embed/height/` + header detach | ✅ |
+| PR8 | `/embed/height` + header detach | ✅ |
 | PR9 | Branded print CSS | ✅ |
 | PR10 | Sticky guide `.toc` | ✅ |
 | PR11 | `/compare/` matrix + JSON data | ✅ |
 | PR12 | `catalog.json` + optional JS load | ✅ |
-| PR13 | Monitor soft ASIN sample (warnings only) | ✅ |
-| PR14 | `/changelog/` + sitemap + monitor | ✅ |
+| PR13 | Monitor ASIN sample | ⏸ Disabled to keep the free Worker below its subrequest limit |
+| PR14 | `/changelog` + sitemap + monitor | ✅ |
 | PR15 | OSHA/BIFMA source notes (index + about) | ✅ |
 | PR16 | Self-hosted Inter + Fraunces woff2 | ✅ |
 
-Local verify (2026-07-15): **12/12 PASS** — report `/tmp/grok-1000/twp-verify-report.md`.
+Local verify (2026-07-16): JavaScript syntax PASS; 37 HTML files, 1,496 internal links, 90 inline scripts, 86 JSON-LD blocks, and 35 sitemap canonicals validated. The final allowlisted Pages artifact contains 64 files.
 
 ---
 
@@ -91,38 +88,15 @@ Local verify (2026-07-15): **12/12 PASS** — report `/tmp/grok-1000/twp-verify-
 
 Data:
 
-- `assets/data/products-matrix.json` — compare UI  
-- `assets/data/catalog.json` — product export / optional runtime load  
+- `assets/data/products-matrix.json` — compare UI
+- `assets/data/catalog.json` — product export / optional runtime load
 
 ---
 
 ## Headers (Cloudflare Pages)
 
-- Global: CSP (self fonts/styles), `X-Frame-Options: DENY`, asset cache  
+- Global: CSP (self fonts/styles), `X-Frame-Options: DENY`, asset cache
 - **`/embed/*`:** detach with `! X-Frame-Options` and `! Content-Security-Policy`, then re-set CSP with **`frame-ancestors *`**
-
----
-
-## Commit / deploy
-
-```bash
-cd /home/cameron/.openclaw/workspace/theworkspacepro-v2
-git status
-git add -A
-git commit -m "$(cat <<'EOF'
-Complete polish roadmap: compare matrix, fonts, embed, catalog, monitor
-
-Ship full design plan PRs: perf/analytics, self-hosted fonts, /compare/
-filter matrix, catalog.json, embed height CSP detach, ASIN ops, E-E-A-T
-source notes, and soft monitor ASIN sampling.
-EOF
-)"
-git push origin HEAD
-
-# Optional worker deploy (monitor URL list + soft ASIN sample):
-# npx wrangler deploy
-# npx wrangler secret put MONITOR_SECRET
-```
 
 ---
 
@@ -137,13 +111,13 @@ git push origin HEAD
 - [ ] `/compare/?category=chair&budget=under-350` filters restore
 - [ ] Matrix Amazon links include `tag=workspacepro-20`
 - [ ] Quiz share link restores results in private window
-- [ ] `/embed/height/` works in iframe; full tool UTM link works
+- [ ] `/embed/height` works in iframe; full tool UTM link works
 
 ### Headers
 ```bash
 curl -sI https://www.theworkspacepro.com/ | grep -i x-frame   # expect DENY
-curl -sI https://www.theworkspacepro.com/embed/height/ | grep -i x-frame  # expect empty
-curl -sI https://www.theworkspacepro.com/embed/height/ | grep -i content-security  # frame-ancestors *
+curl -sI https://www.theworkspacepro.com/embed/height | grep -i x-frame  # expect empty
+curl -sI https://www.theworkspacepro.com/embed/height | grep -i content-security  # frame-ancestors *
 ```
 
 ### Ops
@@ -170,16 +144,16 @@ Golden: 69 in → metric standing intermediate **96.4 cm**.
 
 ## Affiliate / ASIN
 
-- Tag: **`workspacepro-20`**  
-- Denylist: `B0B7865Z11` (bimini), `B09RK8XWJB` (mural)  
-- Monthly: `scripts/ASIN_RUNBOOK.md`  
-- Soft Amazon checks in Worker: **warnings only**, never hard-fail  
+- Tag: **`workspacepro-20`**
+- Denylist: `B0B7865Z11` (bimini), `B09RK8XWJB` (mural)
+- Monthly: `scripts/ASIN_RUNBOOK.md`
+- Soft Amazon checks in Worker: **warnings only**, never hard-fail
 
 ---
 
 ## Amazon product images — policy + API build plan
 
-> **Priority follow-up for Cameron (tomorrow):** get official API access for Associates product images.  
+> **Priority follow-up for Cameron (tomorrow):** get official API access for Associates product images.
 > **Priority for Finch (when credentials arrive):** implement the pipeline below. Do **not** “fix” images with Unsplash/stock lookalikes or more browser scrapes of `m.media-amazon.com` as the long-term system.
 
 ### Why this is important
@@ -207,21 +181,22 @@ Wrong or non-compliant product photos:
 
 ### Current site state (as of handoff)
 
-- Local files: `assets/images/products/{ASIN}.jpg` (~45 files)
-- Guides reference **local** paths (`/assets/images/products/…`)
-- Matrix/catalog: Amazon rows with files show thumbs; **non-Amazon** (IKEA, Branch, etc.) correctly have **no** fake Amazon photo
-- Scraped local JPGs were used to ship quickly — treat as **legacy cache**, not final architecture
+- Legacy local files remain in the repository for provenance review, but the allowlisted Pages build does not deploy either product-image directory.
+- Guides, assessment results, matrix, and catalog no longer reference those files; public product cards use text/icon presentation.
+- Restore Amazon imagery only from an authorized API/embed source or documented licensed assets.
 
-### Owner steps (Cameron — tomorrow)
+### Owner steps (Cameron)
 
-1. Log into [Amazon Associates Central](https://affiliate-program.amazon.com/).
-2. Confirm eligibility and open **Creators API** / product data API access (name may vary; formerly PA-API — use whatever Associates Central currently lists for product images/prices).
-3. Complete any approval / sales requirements Amazon requires for API access.
-4. Create API credentials (**Access Key**, **Secret**, **Partner Tag** = `workspacepro-20`, marketplace `www.amazon.com` / locale `US` unless multi-locale later).
+**Prerequisite:** Associates account must have **10+ qualified sales in the past 30 days**. Without this, the Creators API tab won't appear in your dashboard.
+
+1. Log into **Amazon.com** → Your Account → Your Associates Account (or go to `amazon.com/associates`). The old `affiliate-program.amazon.com` URLs may redirect unpredictably per region.
+2. In Associates Central, go to **Tools → Product Advertising API** (may show as "Creators API" or "API Credentials").
+3. If you don't see the Tools tab or API option, you haven't met the 10-sale threshold yet. No way around it — focus on driving qualified sales first.
+4. Once accessible, create API credentials (**Access Key**, **Secret**, **Partner Tag** = `workspacepro-20`, marketplace `www.amazon.com` / locale `US`).
 5. **Never commit secrets to git.** Give Finch secrets via:
    - Cloudflare Workers secrets / Pages env, and/or
    - Local `.env` (gitignored) for a one-shot sync script
-6. Tell Finch: “API credentials are set — run Amazon images pipeline.”
+6. Tell Finch: "API credentials are set — run Amazon images pipeline."
 
 ### Finch build plan when API arrives
 
@@ -325,7 +300,7 @@ Placeholder HTML pattern (honest):
 
 - Do **not** hard-fail site health on Amazon image 404s.
 - Optional: monthly GitHub Action runs `sync_amazon_catalog` with secrets → opens PR with JSON diff only.
-- Soft ASIN sample in `worker/monitor.js` stays **warnings only**.
+- The soft ASIN sample is disabled in the free Worker; run it separately only when the subrequest budget allows.
 
 **8. Acceptance criteria (Finch smoke after API PR)**
 
@@ -344,11 +319,64 @@ Placeholder HTML pattern (honest):
 
 ### Interim (until API is live)
 
-- Ship current site with local thumbs where files exist.
+- Ship the release-safe text/icon product presentation; local Amazon thumbnails are excluded from Pages.
 - Prefer **placeholder** over new scrapes.
 - Owner enables API tomorrow → Finch runs this section.
 
 ---
+
+## 2026-07-16 audit repair — Finch deployment checklist
+
+### What changed
+
+- Repaired workspace-setup-calculator.html malformed product JavaScript; recommendations and affiliate CTAs parse again.
+- Changed the homepage assessment to explicit validated navigation so all 9 answers are collected; corrected chair, lighting, and accessory mappings; validated shared-result payloads.
+- Removed leaked getBadgeColumnForRow generator code and malformed newsletter fragments from affected guides.
+- Removed unproven Amazon thumbnails from public output until authorized API assets are available; removed the fake local-only price alert and corrected unsupported “Tested & Ranked” claims to research-based language.
+- Added the exact Amazon Associates disclosure, accurate assessment privacy copy, and GA4 events for affiliate clicks, newsletter actions, quiz starts, and tool actions.
+- Fixed Cloudflare beacon JSON quoting and malformed metadata heads across public HTML; filled missing Open Graph URLs.
+- Removed the three redirect rules that looped tools, embed/height, and changelog. Canonicals, sitemap entries, internal links, and old redirect targets now use terminal no-slash URLs; compare remains a real directory URL.
+- Made mutable asset caches revalidate.
+- Hardened the monitor: authenticated runs fail closed, query-string secrets are gone, redirect loops fail, terminal 200 is required, and the check uses 28 planned URLs and at most 32 external subrequests.
+- CI now validates JavaScript, corruption signatures, and malformed meta heads, builds an allowlisted dist that excludes operational files and unproven Amazon thumbnails, deploys Pages from dist, deploys the Worker, and runs an authenticated health gate. Operational docs, scripts, Worker source, and handoff notes are no longer published as site files.
+
+### One-time owner/dashboard setup before push
+
+1. In Cloudflare Workers, set MONITOR_SECRET for twp-monitor with npx wrangler secret put MONITOR_SECRET; use a long random value.
+2. Add the same value as GitHub Actions secret MONITOR_SECRET. Existing Cloudflare API token and account ID secrets must remain available.
+3. In Cloudflare Redirect Rules, fix the apex-host rule:
+   - Match: http.host eq "theworkspacepro.com"
+   - Dynamic target: concat("https://www.theworkspacepro.com", http.request.uri.path)
+   - Preserve the query string.
+   The current apex rule drops path and query, so theworkspacepro.com/sitemap.xml incorrectly lands on the homepage.
+
+### Commit and deploy
+
+    cd /home/cameron/.openclaw/workspace/theworkspacepro-v2
+    git status --short
+    git diff --check
+    find assets/js worker -name "*.js" -print0 | xargs -0 -n1 node --check
+    git add -A
+    git commit -m "fix: repair conversion flows and harden site delivery"
+    git push origin main
+
+The push deploys Pages first, then the monitor, then runs the authenticated smoke check. A smoke failure stops CI but does not automatically roll back an already-live Pages deployment. Do not manually run pages deploy from the repository root; that republishes private repository files.
+
+### Production acceptance checks
+
+    curl -fsSIL -o /dev/null -w '%{http_code} %{url_effective}\n' https://www.theworkspacepro.com/tools
+    curl -fsSIL -o /dev/null -w '%{http_code} %{url_effective}\n' https://www.theworkspacepro.com/embed/height
+    curl -fsSIL -o /dev/null -w '%{http_code} %{url_effective}\n' https://www.theworkspacepro.com/changelog
+    curl -fsSIL -o /dev/null -w '%{http_code} %{url_effective}\n' https://www.theworkspacepro.com/workspace-setup-calculator
+    curl -fsSIL -o /dev/null -w '%{http_code} %{url_effective}\n' https://theworkspacepro.com/sitemap.xml
+    curl -sS -o /dev/null -w '%{http_code}\n' https://www.theworkspacepro.com/FINCH_HANDOFF.md
+    curl -sS -o /dev/null -w '%{http_code}\n' https://www.theworkspacepro.com/worker/monitor.js
+    curl --fail --silent --show-error --header "X-Monitor-Key: YOUR_SECRET" --output /tmp/twp-monitor.json https://twp-monitor.blasscameron.workers.dev
+    node -e "const r=require('/tmp/twp-monitor.json'); if(r.failed!==0){console.error(r);process.exit(1)}; console.log(r)"
+
+Expected: public pages end at HTTP 200 without loops; apex sitemap preserves the path; handoff and Worker source return 404; monitor returns JSON with failed equal to 0. In a browser, complete all 9 assessment answers, verify Night Owl recommends a BenQ light, run the workspace setup calculator, open and close the mobile menu by keyboard, and inspect GA4 DebugView for assessment_start, affiliate_click, newsletter_click, and tool_action.
+
+After deploy, resubmit the sitemap in Google Search Console and Bing Webmaster Tools. Mark affiliate and newsletter events as GA4 key events after confirming live traffic.
 
 ## Follow-ups
 
@@ -359,19 +387,19 @@ Placeholder HTML pattern (honest):
 
 ### Other optional polish
 
-- PR11 UX: sort by price, more deep-links from guide CTAs  
-- Real citation links for any remaining soft claims in older guide prose  
-- CWV measure after deploy; further font subsetting only if needed  
+- PR11 UX: sort by price, more deep-links from guide CTAs
+- Real citation links for any remaining soft claims in older guide prose
+- CWV measure after deploy; further font subsetting only if needed
 
 ---
 
 ## Do not
 
-- Re-add `assessment.js` sitewide  
-- Double-load GA4  
-- Invent reviews / sale theater  
-- **Use stock photos for specific Amazon ASINs**  
-- **Scrape Amazon product images as the permanent image system**  
-- Hard-fail health checks on Amazon bot walls  
-- Commit API keys / secrets  
-- Force-push without owner approval  
+- Re-add `assessment.js` sitewide
+- Double-load GA4
+- Invent reviews / sale theater
+- **Use stock photos for specific Amazon ASINs**
+- **Scrape Amazon product images as the permanent image system**
+- Hard-fail health checks on Amazon bot walls
+- Commit API keys / secrets
+- Force-push without owner approval

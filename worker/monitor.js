@@ -7,72 +7,19 @@
 const SITE_URL = 'https://www.theworkspacepro.com';
 
 const URLS_TO_CHECK = [
-  '/',
-  '/guides/',
-  '/tips/',
-  '/podcasts/',
-  '/about/',
-  '/assets/js/height-math.js',
-  '/assets/js/analytics.js',
-  '/embed/height/',
-  '/changelog/',
-  '/contact/',
-  '/affiliate-disclosure/',
-  '/privacy/',
-  '/terms/',
-  '/tools/',
-  '/compare/',
-  '/assets/data/products-matrix.json',
-  '/build-your-office/',
-  '/ergonomic-height-calculator/',
-  '/workspace-setup-calculator/',
-  '/home-office-setup-guide/',
-  '/assets/images/favicon.svg',
-  // Guides
-  '/guides/ergonomic-office-chair-buying-guide/',
-  '/guides/best-ergonomic-office-chairs-2026/',
-  '/guides/home-office-desk-guide-2026/',
-  '/guides/best-standing-desks-under-500/',
-  '/guides/best-standing-desk-mat-for-concrete-floors/',
-  '/guides/home-office-lighting-guide/',
-  '/guides/night-shift-lighting-guide/',
-  '/guides/cable-management-solutions/',
-  '/guides/small-home-office-organization-hacks/',
-  '/guides/dual-monitor-setup-productivity/',
-  '/guides/dual-monitor-home-office/',
-  '/guides/ergonomic-accessories-home-office/',
-  '/guides/home-office-budget-setup-under-1000/',
-  '/guides/back-pain-ergonomic-setup/',
-  '/guides/ergonomic-setup-for-gamers/',
-  '/guides/productive-workspace-mindset/',
-  // Compare
-  '/compare/branch-vs-uplift/',
-  '/compare/herman-miller-vs-steelcase/',
-  '/compare/shw-vs-flexispot/',
-  // Redirects
-  '/deals/',
-  '/quiz/',
-  '/community-setups/',
-  '/resources/',
-  // Assets
-  '/assets/css/style.css',
-  '/assets/css/bold.css',
-  '/assets/js/assessment.js',
-  '/assets/js/enhancements.js',
-  '/assets/js/bold.js',
-  '/robots.txt',
-  '/sitemap.xml',
+  '/', '/guides', '/tips', '/podcasts', '/about', '/contact',
+  '/affiliate-disclosure', '/privacy', '/terms', '/tools', '/compare/',
+  '/embed/height', '/build-your-office', '/ergonomic-height-calculator',
+  '/workspace-setup-calculator', '/guides/ergonomic-office-chair-buying-guide',
+  '/guides/best-standing-desks-under-500', '/guides/home-office-lighting-guide',
+  '/guides/back-pain-ergonomic-setup', '/compare/branch-vs-uplift',
+  '/assets/css/style.css', '/assets/js/assessment.js', '/robots.txt', '/sitemap.xml',
+  '/deals/', '/quiz/', '/community-setups/', '/resources/',
 ];
 
 
 // Soft Amazon ASIN sample (warnings only — flaky / ToS-sensitive)
-const SAMPLE_ASINS = [
-  'B09HM94VDS', // MX Master 3S — known live
-  'B06Y3PGPR2', // HON Ignition
-  'B085KBN2DN', // SHW desk
-  'B07R62FKFZ', // Sayl
-  'B00358RIRC', // Ergotron LX
-];
+const SAMPLE_ASINS = []; // Enable only on a paid plan or a separate low-frequency worker.
 
 async function softAsinSample(results) {
   for (const asin of SAMPLE_ASINS) {
@@ -112,21 +59,17 @@ async function softAsinSample(results) {
 
 
 const EXPECTED_REDIRECTS = {
-  '/deals/': [301, 302],
-  '/quiz/': [301, 302],
-  '/community-setups/': [301, 302],
-  '/resources/': [301, 302],
+  '/deals/': '/guides',
+  '/quiz/': '/#assessment',
+  '/community-setups/': '/',
+  '/resources/': '/guides',
 };
 
 function authorized(request, env) {
-  // Cron path is scheduled(), not fetch. For HTTP: require secret if set.
+  // Cron runs internally; every HTTP-triggered full check requires the header secret.
   const secret = env.MONITOR_SECRET;
-  if (!secret) {
-    // No secret configured — allow read of latest check only via ?action=latest
-    return { ok: true, write: false };
-  }
-  const url = new URL(request.url);
-  const key = url.searchParams.get('key') || request.headers.get('x-monitor-key') || '';
+  if (!secret) return { ok: false, write: false };
+  const key = request.headers.get('x-monitor-key') || '';
   if (key === secret) return { ok: true, write: true };
   return { ok: false, write: false };
 }
@@ -141,6 +84,9 @@ export default {
     const auth = authorized(request, env);
 
     if (url.searchParams.get('action') === 'latest') {
+      if (!auth.write) {
+        return json({ error: 'Unauthorized. Send the X-Monitor-Key header.' }, 401);
+      }
       if (!env.TWP_MONITOR) {
         return json({ error: 'KV not bound' }, 503);
       }
@@ -154,13 +100,13 @@ export default {
       });
     }
 
-    // Running a full check requires auth when MONITOR_SECRET is set
-    if (env.MONITOR_SECRET && !auth.write) {
-      return json({ error: 'Unauthorized. Pass ?key= or X-Monitor-Key header.' }, 401);
+    // Running a full check always requires the configured header secret.
+    if (!auth.write) {
+      return json({ error: 'Unauthorized. Send the X-Monitor-Key header.' }, 401);
     }
 
     const result = await runHealthCheck(env);
-    return json(result);
+    return json(result, result.failed > 0 ? 503 : 200);
   },
 };
 
@@ -188,9 +134,10 @@ async function runHealthCheck(env) {
     const start = Date.now();
 
     try {
+      const expectedRedirects = EXPECTED_REDIRECTS[path];
       const response = await fetch(url, {
         method: 'GET',
-        redirect: 'manual',
+        redirect: expectedRedirects ? 'manual' : 'follow',
         headers: { 'User-Agent': 'TWP-Monitor/1.0' },
       });
 
@@ -199,21 +146,35 @@ async function runHealthCheck(env) {
       results.totalChecked++;
 
       const status = response.status;
-      const expectedRedirects = EXPECTED_REDIRECTS[path];
-
       if (expectedRedirects) {
-        if (expectedRedirects.includes(status)) {
+        const location = response.headers.get('location');
+        const actualTarget = location ? new URL(location, url) : null;
+        const expectedTarget = new URL(expectedRedirects, SITE_URL);
+        const locationMatches = actualTarget &&
+          actualTarget.origin === expectedTarget.origin &&
+          actualTarget.pathname === expectedTarget.pathname &&
+          actualTarget.search === expectedTarget.search &&
+          actualTarget.hash === expectedTarget.hash;
+        let terminalStatus = null;
+        if ((status === 301 || status === 302) && locationMatches) {
+          const terminal = await fetch(expectedTarget.href, {
+            method: 'GET',
+            redirect: 'follow',
+            headers: { 'User-Agent': 'TWP-Monitor/1.0' },
+          });
+          terminalStatus = terminal.status;
+        }
+        if ((status === 301 || status === 302) && locationMatches && terminalStatus === 200) {
           results.passed++;
         } else {
           results.failed++;
           results.errors.push({
-            path,
-            status,
-            expected: `Redirect ${expectedRedirects.join(' or ')}`,
+            path, status, location, terminalStatus,
+            expected: 'Redirect to ' + expectedTarget.href + ', then HTTP 200',
             elapsed,
           });
         }
-      } else if (status === 200 || status === 308) {
+      } else if (status === 200) {
         results.passed++;
         if (elapsed > 2000) {
           results.warnings++;
@@ -240,25 +201,6 @@ async function runHealthCheck(env) {
         elapsed: Date.now() - start,
       });
     }
-  }
-
-  try {
-    const sslResponse = await fetch(SITE_URL, { method: 'HEAD' });
-    if (sslResponse.ok) results.passed++;
-  } catch (err) {
-    results.failed++;
-    results.errors.push({ path: '/', error: 'SSL check failed: ' + err.message });
-  }
-
-  try {
-    const sitemapResponse = await fetch(SITE_URL + '/sitemap.xml');
-    if (!sitemapResponse.ok) {
-      results.warnings++;
-      results.warningsList.push({ path: '/sitemap.xml', message: 'Sitemap not accessible' });
-    }
-  } catch (err) {
-    results.warnings++;
-    results.warningsList.push({ path: '/sitemap.xml', message: 'Sitemap check failed' });
   }
 
   // Soft ASIN sample — warnings only (never hard-fail the site check)

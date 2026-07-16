@@ -183,7 +183,7 @@
         var grid = $('#matrixGrid');
         if (grid)
           grid.innerHTML =
-            '<p class="matrix-empty">Could not load product data. Try refreshing, or browse <a href="/guides/">guides</a>.</p>';
+            '<p class="matrix-empty">Could not load product data. Try refreshing, or browse <a href="/guides">guides</a>.</p>';
       });
   }
 

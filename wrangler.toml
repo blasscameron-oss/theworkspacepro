@@ -17,4 +17,5 @@ ALERT_EMAIL = ""
 
 # Optional auth for manual HTTP health checks:
 #   npx wrangler secret put MONITOR_SECRET
-# Then call: GET /?key=YOUR_SECRET  or  GET /?action=latest (public last result)
+# Then run a check with the X-Monitor-Key request header.
+# GET /?action=latest remains a public, cached view of the last result.

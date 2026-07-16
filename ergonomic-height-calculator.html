@@ -8,12 +8,12 @@
   <meta property="og:title" content="Ergonomic Height Calculator — The Workspace Pro">
   <meta property="og:description" content="Get personalized desk height, chair height, and monitor position recommendations based on your body height. Free interactive tool.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.theworkspacepro.com/ergonomic-height-calculator/">
+  <meta property="og:url" content="https://www.theworkspacepro.com/ergonomic-height-calculator">
   <meta property="og:image" content="https://www.theworkspacepro.com/assets/images/og-default.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Ergonomic Height Calculator">
   <meta name="twitter:description" content="Calculate your ideal desk, chair, and monitor height in seconds.">
-  <link rel="canonical" href="https://www.theworkspacepro.com/ergonomic-height-calculator/">
+  <link rel="canonical" href="https://www.theworkspacepro.com/ergonomic-height-calculator">
 <link rel="stylesheet" href="/assets/css/fonts.css">
   <link rel="stylesheet" href="/assets/css/style.css">
   <link rel="stylesheet" href="/assets/css/bold.css">
@@ -24,7 +24,7 @@
     "@type": "WebApplication",
     "name": "Ergonomic Height Calculator",
     "description": "Interactive tool that calculates ideal desk height, chair height, and monitor position based on the user's body height.",
-    "url": "https://www.theworkspacepro.com/ergonomic-height-calculator/",
+    "url": "https://www.theworkspacepro.com/ergonomic-height-calculator",
     "applicationCategory": "HealthApplication",
     "operatingSystem": "Web Browser",
     "offers": {
@@ -122,10 +122,10 @@
       <a href="/" class="logo"><span class="logo__mark">W</span><span>The Workspace Pro</span></a>
             <nav class="nav" aria-label="Primary">
         <a href="/" class="nav__link">Home</a>
-        <a href="/guides/" class="nav__link">Guides</a>
-        <a href="/tools/" class="nav__link nav__link--active">Tools</a>
-        <a href="/tips/" class="nav__link">Tips</a>
-        <a href="/about/" class="nav__link">About</a>
+        <a href="/guides" class="nav__link">Guides</a>
+        <a href="/tools" class="nav__link nav__link--active">Tools</a>
+        <a href="/tips" class="nav__link">Tips</a>
+        <a href="/about" class="nav__link">About</a>
         <a href="/#assessment" class="nav__link nav__cta">Take the Quiz</a>
       </nav>
       <div class="header-actions">
@@ -141,15 +141,15 @@
       <button class="menu-toggle" type="button" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
     <a href="/" class="mobile-nav__link">Home</a>
-    <a href="/guides/" class="mobile-nav__link">Guides</a>
-    <a href="/tools/" class="mobile-nav__link">Tools</a>
-    <a href="/build-your-office/" class="mobile-nav__link">Build Your Office</a>
-    <a href="/ergonomic-height-calculator/" class="mobile-nav__link">Height Calculator</a>
-    <a href="/workspace-setup-calculator/" class="mobile-nav__link">Setup Calculator</a>
-    <a href="/tips/" class="mobile-nav__link">Tips</a>
-    <a href="/podcasts/" class="mobile-nav__link">Podcasts</a>
-    <a href="/about/" class="mobile-nav__link">About</a>
-    <a href="/contact/" class="mobile-nav__link">Contact</a>
+    <a href="/guides" class="mobile-nav__link">Guides</a>
+    <a href="/tools" class="mobile-nav__link">Tools</a>
+    <a href="/build-your-office" class="mobile-nav__link">Build Your Office</a>
+    <a href="/ergonomic-height-calculator" class="mobile-nav__link">Height Calculator</a>
+    <a href="/workspace-setup-calculator" class="mobile-nav__link">Setup Calculator</a>
+    <a href="/tips" class="mobile-nav__link">Tips</a>
+    <a href="/podcasts" class="mobile-nav__link">Podcasts</a>
+    <a href="/about" class="mobile-nav__link">About</a>
+    <a href="/contact" class="mobile-nav__link">Contact</a>
     <a href="/#assessment" class="mobile-nav__cta">Take the Quiz</a>
   </nav>
 
@@ -168,16 +168,18 @@
       <div class="ehc-card ehc-animate">
         <h2 style="font-family:var(--font-display);font-size:1.3rem;margin-bottom:var(--space-md);">Your Height</h2>
 
-        <div class="ehc-unit-toggle" id="unitToggle">
-          <button class="ehc-unit-btn active" data-unit="imperial" onclick="ehcSetUnit('imperial')">ft / in</button>
-          <button class="ehc-unit-btn" data-unit="metric" onclick="ehcSetUnit('metric')">cm</button>
+        <div class="ehc-unit-toggle" id="unitToggle" role="group" aria-label="Measurement unit">
+          <button type="button" class="ehc-unit-btn active" data-unit="imperial" aria-pressed="true" onclick="ehcSetUnit('imperial')">ft / in</button>
+          <button type="button" class="ehc-unit-btn" data-unit="metric" aria-pressed="false" onclick="ehcSetUnit('metric')">cm</button>
         </div>
 
         <div class="ehc-height-display" id="heightDisplay">5'9"</div>
 
+        <label class="sr-only" for="heightSlider">Your height</label>
+
         <div style="display:flex;align-items:center;gap:var(--space-md);">
           <span style="font-size:0.85rem;color:var(--c-text-muted);" id="heightMinLabel">4'0"</span>
-          <input type="range" class="ehc-slider" id="heightSlider" min="48" max="84" value="69" step="0.5" style="flex:1;">
+          <input type="range" class="ehc-slider" id="heightSlider" aria-describedby="heightDisplay" min="48" max="84" value="69" step="0.5" style="flex:1;">
           <span style="font-size:0.85rem;color:var(--c-text-muted);" id="heightMaxLabel">7'0"</span>
         </div>
 
@@ -311,29 +313,29 @@
         <h4>Explore</h4>
         <ul>
           <li><a href="/">Home</a></li>
-          <li><a href="/guides/">Guides</a></li>
-          <li><a href="/tips/">Tips</a></li>
-          <li><a href="/podcasts/">Podcasts</a></li>
+          <li><a href="/guides">Guides</a></li>
+          <li><a href="/tips">Tips</a></li>
+          <li><a href="/podcasts">Podcasts</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Tools</h4>
         <ul>
-          <li><a href="/tools/">All Tools</a></li>
+          <li><a href="/tools">All Tools</a></li>
           <li><a href="/#assessment">Workspace Assessment</a></li>
-          <li><a href="/build-your-office/">Build Your Office</a></li>
-          <li><a href="/ergonomic-height-calculator/">Height Calculator</a></li>
-          <li><a href="/workspace-setup-calculator/">Setup Calculator</a></li>
+          <li><a href="/build-your-office">Build Your Office</a></li>
+          <li><a href="/ergonomic-height-calculator">Height Calculator</a></li>
+          <li><a href="/workspace-setup-calculator">Setup Calculator</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>About</h4>
         <ul>
-          <li><a href="/about/">About Us</a></li>
-          <li><a href="/contact/">Contact</a></li>
-          <li><a href="/affiliate-disclosure/">Affiliate Disclosure</a></li>
-          <li><a href="/privacy/">Privacy Policy</a></li>
-          <li><a href="/terms/">Terms of Service</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/affiliate-disclosure">Affiliate Disclosure</a></li>
+          <li><a href="/privacy">Privacy Policy</a></li>
+          <li><a href="/terms">Terms of Service</a></li>
         </ul>
       </div>
     </div>
@@ -421,6 +423,7 @@
 
       // Update height display
       heightDisplay.textContent = formatHeight(h);
+      heightSlider.setAttribute('aria-valuetext', formatHeight(h));
 
       // Update results
       els.standingDesk.textContent = toInchString(standingDeskVal);
@@ -528,7 +531,7 @@
         '• Monitor Distance: ' + toInchString(Math.min(28, Math.max(18, h * 0.33))) + toUnitSuffix(),
         '• Keyboard Height: ' + toInchString(h * 0.27) + toUnitSuffix(),
         '',
-        'Calculate yours: https://www.theworkspacepro.com/ergonomic-height-calculator/'
+        'Calculate yours: https://www.theworkspacepro.com/ergonomic-height-calculator'
       ].join('\n');
 
       navigator.clipboard.writeText(lines).then(function() {
@@ -549,18 +552,20 @@
     function ehcShareTwitter() {
       var h = getHeightInches();
       var text = 'My ideal workspace measurements for ' + formatHeight(h) + ': standing desk ' + toInchString(h * 0.55) + toUnitSuffix() + ', chair ' + toInchString(h * 0.25) + toUnitSuffix() + '. Calculate yours free at ';
-      window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent('https://www.theworkspacepro.com/ergonomic-height-calculator/'), '_blank', 'noopener');
+      window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent('https://www.theworkspacepro.com/ergonomic-height-calculator'), '_blank', 'noopener');
     }
 
     function ehcShareFB() {
-      window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent('https://www.theworkspacepro.com/ergonomic-height-calculator/'), '_blank', 'noopener');
+      window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent('https://www.theworkspacepro.com/ergonomic-height-calculator'), '_blank', 'noopener');
     }
 
     // ---- Unit toggle ----
     window.ehcSetUnit = function(u) {
       unit = u;
       document.querySelectorAll('.ehc-unit-btn').forEach(function(b) {
-        b.classList.toggle('active', b.dataset.unit === u);
+        var selected = b.dataset.unit === u;
+        b.classList.toggle('active', selected);
+        b.setAttribute('aria-pressed', selected ? 'true' : 'false');
       });
 
       // Update slider labels
