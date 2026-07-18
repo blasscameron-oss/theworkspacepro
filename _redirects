@@ -1,6 +1,3 @@
-# Apex → www (preserve path + query string)
-https://theworkspacepro.com/* https://www.theworkspacepro.com/:splat 301
-
 # Redirect old URLs to new structure
 /quiz/  /#assessment  302
 /content/home/  /  301
@@ -35,3 +32,6 @@ https://theworkspacepro.com/* https://www.theworkspacepro.com/:splat 301
 # Tools hub
 
 /compare  /compare/  301
+
+# Apex → www (path-preserving; zone-level rule must be removed from dashboard for this to take effect)
+https://theworkspacepro.com/* https://www.theworkspacepro.com/:splat 301

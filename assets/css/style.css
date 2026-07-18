@@ -980,7 +980,12 @@ textarea.text-input { min-height: 120px; resize: vertical; }
 
 @media (max-width: 480px) {
   .cta-section { padding: var(--space-xl) var(--space-md); }
-  .cta-section .btn--lg { padding: var(--space-md) var(--space-lg); }
+  .btn--lg {
+    max-width: 100%;
+    padding: var(--space-md) var(--space-lg);
+    white-space: normal;
+    text-align: center;
+  }
   .site-footer__grid { grid-template-columns: 1fr; }
   .assessment-card { padding: var(--space-lg); }
   .hero__stats { flex-direction: column; gap: var(--space-md); }

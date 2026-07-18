@@ -1,12 +1,12 @@
 # Finch handoff — The Workspace Pro
 
-**Updated:** 2026-07-16 (Luna full-stack audit complete; repair release is local and awaiting Finch deploy)
+**Updated:** 2026-07-18 (final audit sweep complete locally; repair release awaits Finch deploy)
 **Canonical path:** `/home/cameron/.openclaw/workspace/theworkspacepro-v2`
 **Live:** https://www.theworkspacepro.com
 **GitHub:** `https://github.com/blasscameron-oss/theworkspacepro`
 **Hosting:** Cloudflare Pages (static) + required health Worker `twp-monitor`
 
-## ⚠️ STATUS (2026-07-16): v2 is live; audit repair release is NOT deployed
+## ⚠️ STATUS (2026-07-18): v2 is live; final audit repair release is NOT deployed
 
 The live site matches the v2 checkout and commit `668dff9`. The new Luna audit found and repaired several production-critical defects locally: a nonfunctional setup calculator, skipped assessment questions, incorrect product mappings, redirect loops, leaked generator code in guides, malformed analytics markup, weak deployment boundaries, and trust/compliance issues.
 
@@ -70,7 +70,7 @@ The live site matches the v2 checkout and commit `668dff9`. The new Luna audit f
 | PR15 | OSHA/BIFMA source notes (index + about) | ✅ |
 | PR16 | Self-hosted Inter + Fraunces woff2 | ✅ |
 
-Local verify (2026-07-16): JavaScript syntax PASS; 37 HTML files, 1,496 internal links, 90 inline scripts, 86 JSON-LD blocks, and 35 sitemap canonicals validated. The final allowlisted Pages artifact contains 64 files.
+Local verify (2026-07-18): JavaScript syntax PASS; all 37 public HTML files have one H1, one main landmark, and a valid skip target. The 64-file allowlisted Pages artifact excludes operational files and unapproved thumbnails; Wrangler parses 26 valid redirect rules and 8 header rules. A 390px preview sweep returned HTTP 200 for all 36 audited public routes, with no horizontal overflow on the repaired guide table, long comparison CTA, or height embed.
 
 ---
 
@@ -325,7 +325,7 @@ Placeholder HTML pattern (honest):
 
 ---
 
-## 2026-07-16 audit repair — Finch deployment checklist
+## 2026-07-18 audit repair — Finch deployment checklist
 
 ### What changed
 
@@ -339,6 +339,7 @@ Placeholder HTML pattern (honest):
 - Made mutable asset caches revalidate.
 - Hardened the monitor: authenticated runs fail closed, query-string secrets are gone, redirect loops fail, terminal 200 is required, and the check uses 28 planned URLs and at most 32 external subrequests.
 - CI now validates JavaScript, corruption signatures, and malformed meta heads, builds an allowlisted dist that excludes operational files and unproven Amazon thumbnails, deploys Pages from dist, deploys the Worker, and runs an authenticated health gate. Operational docs, scripts, Worker source, and handoff notes are no longer published as site files.
+- Final release sweep: contained wide guide tables with horizontal scrolling, made long mobile CTAs wrap safely, gave every long-form guide and the height embed a real main landmark and skip-link target, removed the unsupported absolute apex rule from Pages redirects, and ignored the generated _site build directory.
 
 ### One-time owner/dashboard setup before push
 
@@ -356,8 +357,9 @@ Placeholder HTML pattern (honest):
     git status --short
     git diff --check
     find assets/js worker -name "*.js" -print0 | xargs -0 -n1 node --check
+    ./scripts/build-for-pages.sh
     git add -A
-    git commit -m "fix: repair conversion flows and harden site delivery"
+    git commit -m "fix: complete accessibility and mobile release sweep"
     git push origin main
 
 The push deploys Pages first, then the monitor, then runs the authenticated smoke check. A smoke failure stops CI but does not automatically roll back an already-live Pages deployment. Do not manually run pages deploy from the repository root; that republishes private repository files.
