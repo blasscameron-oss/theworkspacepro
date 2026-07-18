@@ -395,6 +395,37 @@ After deploy, resubmit the sitemap in Google Search Console and Bing Webmaster T
 
 ---
 
+## Known issues (2026-07-18 — deployed but not resolved)
+
+### 1. Stale CDN cache on FINCH_HANDOFF.md & worker/monitor.js
+
+**Symptom:** These two files still return HTTP 200 on `www.theworkspacepro.com` even though:
+- The filtered build artifact (`scripts/build-for-pages.sh`) does not include them
+- The CI deployment (`e590a67a`) preview URL returns 404 for both
+- `the-workspace-pro.pages.dev` and `pages.theworkspacepro.com` both return 404
+- Zone cache was purged 3× (full + targeted) via API — all returned success
+
+**Diagnosis:** The origin (Cloudflare Pages) returns 404 correctly, but the `www` domain's edge CDN persists in serving stale 200 responses. `cf-cache-status: DYNAMIC` / `HIT` despite purge API acknowledging success. Possibly Argo Smart Tiered Caching or a zone-level edge cache layer that the standard purge API doesn't fully clear.
+
+**Status:** Requires investigation — see if the cached entries eventually clear on their own (s-maxage=604800 = 7 days), or if there's a different cache layer at play. Potential paths:
+- Re-deploy with a no-cache header on those paths via `_headers`
+- Check if Enterprise tiered cache is present and needs a different purge endpoint
+- Dashboard manual purge of the entire zone (may behave differently than API)
+
+### 2. CI deploy overlaps manual wrangler deploys
+
+The git push to `origin/main` triggers `.github/workflows/deploy.yml` which does its own `wrangler pages deploy dist` — creating a new deployment that takes over production aliases, bumping any direct manual wrangler deploy. This is generally correct (CI should be the single source of truth) but means manual deploys get overwritten.
+
+**Resolution:** Already handled — CI build config matches the filtered build script. No action needed, just be aware that a git push will redeploy.
+
+### 3. Zone-level redirect rule was fixed
+
+Previous issue where `theworkspacepro.com/sitemap.xml` → `https://www.theworkspacepro.com/` (dropping path).
+
+**Resolution:** Fixed via API on 2026-07-18. Rule updated to use `concat("https://www.theworkspacepro.com", http.request.uri.path)` with `preserve_query_string: true`. Verified working.
+
+---
+
 ## Do not
 
 - Re-add `assessment.js` sitewide
