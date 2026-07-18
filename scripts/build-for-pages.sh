@@ -1,18 +1,27 @@
 #!/bin/bash
 # Build allowlisted Pages artifact — excludes operational files and unproven assets
-# Called by Cloudflare Pages auto-build on push to main
-set -e
+# Called by local verification and GitHub Actions
+set -euo pipefail
 
-rm -rf _site
-mkdir -p _site/assets/css _site/assets/data _site/assets/fonts _site/assets/js
-mkdir -p _site/assets/images _site/compare _site/embed _site/guides
+OUTPUT_DIR="${1:-_site}"
+case "$OUTPUT_DIR" in
+  _site|dist) ;;
+  *)
+    echo "Usage: $0 [_site|dist]" >&2
+    exit 64
+    ;;
+  esac
+
+rm -rf -- "$OUTPUT_DIR"
+mkdir -p "$OUTPUT_DIR"/assets/css "$OUTPUT_DIR"/assets/data "$OUTPUT_DIR"/assets/fonts "$OUTPUT_DIR"/assets/js
+mkdir -p "$OUTPUT_DIR"/assets/images "$OUTPUT_DIR"/compare "$OUTPUT_DIR"/embed "$OUTPUT_DIR"/guides
 
 echo "Building allowlisted Pages artifact..."
 
 # Allowed CSS and data
-cp -R assets/css/* _site/assets/css/
-cp -R assets/data/* _site/assets/data/
-cp -R assets/fonts/* _site/assets/fonts/
+cp -R assets/css/* "$OUTPUT_DIR"/assets/css/
+cp -R assets/data/* "$OUTPUT_DIR"/assets/data/
+cp -R assets/fonts/* "$OUTPUT_DIR"/assets/fonts/
 
 # Allowed JS (explicit list — no worker/, no operational scripts)
 cp assets/js/analytics.js \
@@ -25,18 +34,18 @@ cp assets/js/analytics.js \
    assets/js/perf-lite.js \
    assets/js/review-injector.js \
    assets/js/site.js \
-   _site/assets/js/
+   "$OUTPUT_DIR"/assets/js/
 
 # Allowed images (favicon + OG only; no product thumbnails)
-cp assets/images/favicon.svg assets/images/og-default.jpg _site/assets/images/
+cp assets/images/favicon.svg assets/images/og-default.jpg "$OUTPUT_DIR"/assets/images/
 
 # Allowed directories
-cp -R compare/* _site/compare/
-cp -R embed/* _site/embed/
-cp -R guides/* _site/guides/
+cp -R compare/* "$OUTPUT_DIR"/compare/
+cp -R embed/* "$OUTPUT_DIR"/embed/
+cp -R guides/* "$OUTPUT_DIR"/guides/
 
 # Allowed root files (HTML, feeds, config — no .md, no worker/, no handoff)
-cp ./*.html ./*.xml ./*.svg _headers _redirects robots.txt _site/ 2>/dev/null || true
+cp ./*.html ./*.xml ./*.svg _headers _redirects robots.txt "$OUTPUT_DIR"/ 2>/dev/null || true
 
-echo "✅ Pages artifact built in _site/"
-echo "Files: $(find _site -type f | wc -l)"
+echo "✅ Pages artifact built in ${OUTPUT_DIR}/"
+echo "Files: $(find "$OUTPUT_DIR" -type f | wc -l)"

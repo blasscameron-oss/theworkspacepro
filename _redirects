@@ -32,6 +32,3 @@
 # Tools hub
 
 /compare  /compare/  301
-
-# Apex → www (path-preserving; zone-level rule must be removed from dashboard for this to take effect)
-https://theworkspacepro.com/* https://www.theworkspacepro.com/:splat 301

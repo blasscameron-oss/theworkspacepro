@@ -1,16 +1,16 @@
 # Finch handoff — The Workspace Pro
 
-**Updated:** 2026-07-18 (final audit sweep complete locally; repair release awaits Finch deploy)
+**Updated:** 2026-07-18 (repair release deployed; handoff corrected for custom-domain cache remediation)
 **Canonical path:** `/home/cameron/.openclaw/workspace/theworkspacepro-v2`
 **Live:** https://www.theworkspacepro.com
 **GitHub:** `https://github.com/blasscameron-oss/theworkspacepro`
 **Hosting:** Cloudflare Pages (static) + required health Worker `twp-monitor`
 
-## ⚠️ STATUS (2026-07-18): v2 is live; final audit repair release is NOT deployed
+## ⚠️ STATUS (2026-07-18): repair release is deployed; two stale custom-domain cache entries need bypass
 
-The live site matches the v2 checkout and commit `668dff9`. The new Luna audit found and repaired several production-critical defects locally: a nonfunctional setup calculator, skipped assessment questions, incorrect product mappings, redirect loops, leaked generator code in guides, malformed analytics markup, weak deployment boundaries, and trust/compliance issues.
+The audit repair commits (`bfa3117`, `5e1682b`, `3179c3a`) and follow-up handoff commit (`27fd147`) are on `origin/main`; the GitHub Actions deployment completed successfully. The Pages origins serve the corrected allowlisted artifact and return 404 for operational files.
 
-**Finch must review, commit, push, and verify this repair release.** Do not deploy from the older `repos/workspace-pro-minimal` checkout. The authoritative checkout is the canonical path above.
+**Do not recommit or manually redeploy the completed repair release.** Finch’s remaining action is the explicit Cloudflare custom-domain cache bypass and purge in **Current custom-domain cache remediation** below. Do not deploy from the older `repos/workspace-pro-minimal` checkout.
 
 ### ⏰ OWNER REMINDER — follow up TOMORROW
 
@@ -70,7 +70,7 @@ The live site matches the v2 checkout and commit `668dff9`. The new Luna audit f
 | PR15 | OSHA/BIFMA source notes (index + about) | ✅ |
 | PR16 | Self-hosted Inter + Fraunces woff2 | ✅ |
 
-Local verify (2026-07-18): JavaScript syntax PASS; all 37 public HTML files have one H1, one main landmark, and a valid skip target. The 64-file allowlisted Pages artifact excludes operational files and unapproved thumbnails; Wrangler parses 26 valid redirect rules and 8 header rules. A 390px preview sweep returned HTTP 200 for all 36 audited public routes, with no horizontal overflow on the repaired guide table, long comparison CTA, or height embed.
+Local verify (2026-07-18): JavaScript syntax PASS; all 37 public HTML files have one H1, one main landmark, and a valid skip target. The 64-file allowlisted Pages artifact excludes operational files and unapproved thumbnails; Wrangler parses 26 valid redirect rules and 10 header rules. A 390px preview sweep returned HTTP 200 for all 36 audited public routes, with no horizontal overflow on the repaired guide table, long comparison CTA, or height embed.
 
 ---
 
@@ -341,28 +341,25 @@ Placeholder HTML pattern (honest):
 - CI now validates JavaScript, corruption signatures, and malformed meta heads, builds an allowlisted dist that excludes operational files and unproven Amazon thumbnails, deploys Pages from dist, deploys the Worker, and runs an authenticated health gate. Operational docs, scripts, Worker source, and handoff notes are no longer published as site files.
 - Final release sweep: contained wide guide tables with horizontal scrolling, made long mobile CTAs wrap safely, gave every long-form guide and the height embed a real main landmark and skip-link target, removed the unsupported absolute apex rule from Pages redirects, and ignored the generated _site build directory.
 
-### One-time owner/dashboard setup before push
+### Current deployment state
 
-1. In Cloudflare Workers, set MONITOR_SECRET for twp-monitor with npx wrangler secret put MONITOR_SECRET; use a long random value.
-2. Add the same value as GitHub Actions secret MONITOR_SECRET. Existing Cloudflare API token and account ID secrets must remain available.
-3. In Cloudflare Redirect Rules, fix the apex-host rule:
-   - Match: http.host eq "theworkspacepro.com"
-   - Dynamic target: concat("https://www.theworkspacepro.com", http.request.uri.path)
-   - Preserve the query string.
-   The current apex rule drops path and query, so theworkspacepro.com/sitemap.xml incorrectly lands on the homepage.
+- `27fd147` is on `origin/main`; GitHub Actions deployment `29660524147` completed successfully.
+- The Worker is deployed, accepts the configured `MONITOR_SECRET`, and correctly returns HTTP 401 without it.
+- The apex sitemap redirect is fixed at the zone level.
+- The only remaining production remediation is the custom-domain stale-cache rule below.
 
-### Commit and deploy
+### Future changes — CI only
 
     cd /home/cameron/.openclaw/workspace/theworkspacepro-v2
     git status --short
     git diff --check
     find assets/js worker -name "*.js" -print0 | xargs -0 -n1 node --check
-    ./scripts/build-for-pages.sh
+    ./scripts/build-for-pages.sh dist
     git add -A
-    git commit -m "fix: complete accessibility and mobile release sweep"
+    git commit -m "<scoped change>"
     git push origin main
 
-The push deploys Pages first, then the monitor, then runs the authenticated smoke check. A smoke failure stops CI but does not automatically roll back an already-live Pages deployment. Do not manually run pages deploy from the repository root; that republishes private repository files.
+The GitHub workflow validates source, builds the allowlisted `dist/` artifact, deploys Pages and the Worker, then runs an authenticated health check. Do not manually deploy Pages from the repository root.
 
 ### Production acceptance checks
 
@@ -395,34 +392,27 @@ After deploy, resubmit the sitemap in Google Search Console and Bing Webmaster T
 
 ---
 
-## Known issues (2026-07-18 — deployed but not resolved)
+## Current custom-domain cache remediation
 
-### 1. Stale CDN cache on FINCH_HANDOFF.md & worker/monitor.js
+### 1. `www` still serves two stale removed files
 
-**Symptom:** These two files still return HTTP 200 on `www.theworkspacepro.com` even though:
-- The filtered build artifact (`scripts/build-for-pages.sh`) does not include them
-- The CI deployment (`e590a67a`) preview URL returns 404 for both
-- `the-workspace-pro.pages.dev` and `pages.theworkspacepro.com` both return 404
-- Zone cache was purged 3× (full + targeted) via API — all returned success
+**Verified evidence (2026-07-18):** the current Pages origin (`the-workspace-pro.pages.dev`) and `pages.theworkspacepro.com` return 404 with `Cache-Control: no-store` for `/FINCH_HANDOFF.md` and `/worker/monitor.js`. Only `www.theworkspacepro.com` returns stale 200 bodies. Its responses carry the old seven-day cache policy (`s-maxage=604800`) and a nonzero `Age`; this is a custom-domain cache-layer issue, not a Pages deploy failure.
 
-**Diagnosis:** The origin (Cloudflare Pages) returns 404 correctly, but the `www` domain's edge CDN persists in serving stale 200 responses. `cf-cache-status: DYNAMIC` / `HIT` despite purge API acknowledging success. Possibly Argo Smart Tiered Caching or a zone-level edge cache layer that the standard purge API doesn't fully clear.
+**Required Cloudflare Dashboard action (Finch):**
 
-**Status:** Requires investigation — see if the cached entries eventually clear on their own (s-maxage=604800 = 7 days), or if there's a different cache layer at play. Potential paths:
-- Re-deploy with a no-cache header on those paths via `_headers`
-- Check if Enterprise tiered cache is present and needs a different purge endpoint
-- Dashboard manual purge of the entire zone (may behave differently than API)
+1. Go to **Caching → Cache Rules** for `theworkspacepro.com`. Find any broad “Cache Everything” / edge-TTL rule for `www` and either exclude these paths or create a higher-priority **Bypass cache** rule: `http.host eq "www.theworkspacepro.com" and (http.request.uri.path eq "/FINCH_HANDOFF.md" or starts_with(http.request.uri.path, "/worker/"))`.
+2. Save the rule, then use **Caching → Configuration → Purge Everything** in the Dashboard. The repository adds `no-store` headers for these paths as a defense after the bypass takes effect.
+3. Verify both now return 404: `curl -sS -o /dev/null -w "%{http_code}\n" https://www.theworkspacepro.com/FINCH_HANDOFF.md` and the same command for `/worker/monitor.js`.
 
-### 2. CI deploy overlaps manual wrangler deploys
+Do not wait for the seven-day TTL and do not redeploy manually to solve this.
 
-The git push to `origin/main` triggers `.github/workflows/deploy.yml` which does its own `wrangler pages deploy dist` — creating a new deployment that takes over production aliases, bumping any direct manual wrangler deploy. This is generally correct (CI should be the single source of truth) but means manual deploys get overwritten.
+### 2. One deploy path
 
-**Resolution:** Already handled — CI build config matches the filtered build script. No action needed, just be aware that a git push will redeploy.
+GitHub Actions is the only production deploy path. It now calls `./scripts/build-for-pages.sh dist`, the same allowlisted builder Finch runs locally; both artifacts were verified identical. Do not use `wrangler pages deploy` by hand, because the next push will replace it.
 
-### 3. Zone-level redirect rule was fixed
+### 3. Apex redirect
 
-Previous issue where `theworkspacepro.com/sitemap.xml` → `https://www.theworkspacepro.com/` (dropping path).
-
-**Resolution:** Fixed via API on 2026-07-18. Rule updated to use `concat("https://www.theworkspacepro.com", http.request.uri.path)` with `preserve_query_string: true`. Verified working.
+The zone-level apex redirect was fixed on 2026-07-18 to preserve both path and query string. The repository deliberately contains no absolute-host `_redirects` rule because Cloudflare Pages ignores it.
 
 ---
 

@@ -6,3 +6,4 @@ node_modules/
 
 # Generated Cloudflare Pages artifact
 _site/
+dist/

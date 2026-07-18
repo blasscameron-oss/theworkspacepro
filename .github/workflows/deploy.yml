@@ -13,26 +13,17 @@ jobs:
       - name: Validate public source
         run: |
           find assets/js worker -name '*.js' -print0 | xargs -0 -n1 node --check
-          if rg -n 'function getBadgeColumnForRow|newsletter-bar",000|data-cf-beacon="\{' --glob '*.html'; then
+          if grep -R -n -E --exclude-dir=.git --exclude-dir=dist --exclude-dir=_site --include="*.html" 'function getBadgeColumnForRow|newsletter-bar",000|data-cf-beacon="\{"' .; then
             echo "Generated-site corruption signature found"
             exit 1
           fi
-          if rg -n -U '<meta name="description"[^>]*"\n' --glob '*.html'; then
+          if grep -R -n -P -z --exclude-dir=.git --exclude-dir=dist --exclude-dir=_site --include="*.html" '<meta name="description"[^>]*"\s*\n' .; then
             echo "Malformed HTML head signature found"
             exit 1
           fi
 
       - name: Build allowlisted public artifact
-        run: |
-          mkdir -p dist
-          mkdir -p dist/assets
-          cp -R assets/css assets/data assets/fonts dist/assets/
-          mkdir -p dist/assets/js
-          cp assets/js/analytics.js assets/js/assessment.js assets/js/bold.js assets/js/build-your-office.js assets/js/compare-matrix.js assets/js/enhancements.js assets/js/height-math.js assets/js/perf-lite.js assets/js/review-injector.js assets/js/site.js dist/assets/js/
-          mkdir -p dist/assets/images
-          cp assets/images/favicon.svg assets/images/og-default.jpg dist/assets/images/
-          cp -R compare embed guides dist/
-          cp ./*.html ./*.xml ./*.svg _headers _redirects robots.txt dist/
+        run: ./scripts/build-for-pages.sh dist
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
