@@ -612,20 +612,20 @@
   <script>
     (function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();
   </script>
+  <link rel="stylesheet" href="/assets/css/premium-studio.css">
 </head>
-<body>
+<body class="ps-shell" data-visual-master="guide-back-pain-reset-v1">
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
  <header class="site-header">
  <div class="site-header__inner">
  <a href="/" class="logo"><span class="logo__mark">W</span><span>The Workspace Pro</span></a>
        <nav class="nav" aria-label="Primary">
-        <a href="/" class="nav__link">Home</a>
-        <a href="/guides" class="nav__link nav__link--active">Guides</a>
+        <a href="/#assessment" class="nav__link nav__cta">Get My Blueprint</a>
         <a href="/tools" class="nav__link">Tools</a>
-        <a href="/tips" class="nav__link">Tips</a>
-        <a href="/about" class="nav__link">About</a>
-        <a href="/#assessment" class="nav__link nav__cta">Take the Quiz</a>
+        <a href="/guides" class="nav__link nav__link--active" aria-current="page">Guides</a>
+        <a href="/compare/" class="nav__link">Compare</a>
+        <a href="/deals" class="nav__link">Deals</a>
       </nav>
  <div class="header-actions">
  <button class="theme-toggle" type="button" aria-label="Toggle dark mode"><span class="theme-toggle__icon">☾</span></button>
@@ -634,27 +634,21 @@
  </div>
  </header>
  <div class="mobile-overlay"></div>
- <nav class="mobile-nav">
+ <nav class="mobile-nav" aria-label="Mobile">
     <div class="mobile-nav__header">
       <span style="font-weight:700;">Menu</span>
-      <button class="menu-toggle" type="button" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      <button class="menu-toggle" type="button" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
-    <a href="/" class="mobile-nav__link">Home</a>
-    <a href="/guides" class="mobile-nav__link">Guides</a>
+    <a href="/#assessment" class="mobile-nav__link">Get My Blueprint</a>
     <a href="/tools" class="mobile-nav__link">Tools</a>
-    <a href="/build-your-office" class="mobile-nav__link">Build Your Office</a>
-    <a href="/ergonomic-height-calculator" class="mobile-nav__link">Height Calculator</a>
-    <a href="/workspace-setup-calculator" class="mobile-nav__link">Setup Calculator</a>
-    <a href="/tips" class="mobile-nav__link">Tips</a>
-    <a href="/podcasts" class="mobile-nav__link">Podcasts</a>
-    <a href="/about" class="mobile-nav__link">About</a>
-    <a href="/contact" class="mobile-nav__link">Contact</a>
-    <a href="/#assessment" class="mobile-nav__cta">Take the Quiz</a>
+    <a href="/guides" class="mobile-nav__link mobile-nav__link--active" aria-current="page">Guides</a>
+    <a href="/compare/" class="mobile-nav__link">Compare</a>
+    <a href="/deals" class="mobile-nav__link">Deals</a>
   </nav>
 
  <main id="main-content">
  <div class="container-prose">
- <div class="article-header">
+ <div class="article-header ps-page-header">
  <div class="article-meta">
  <span>📁 Health</span>
  <span>·</span>
@@ -666,9 +660,30 @@
  <p class="article-lead">If your desk is causing back pain, this guide walks through the exact adjustments and gear that help.</p>
  </div>
  <div class="article-body">
+      <section class="ps-fit-zone ps-stack" data-editorial-plate="back-pain-ergonomic-setup" aria-labelledby="back-pain-ergonomic-setup-plate-title">
+        <span class="ps-kicker">Field diagram</span>
+        <h2 id="back-pain-ergonomic-setup-plate-title">A practical reading of back pain ergonomic setup</h2>
+        <svg viewBox="0 0 320 188" role="img" aria-labelledby="back-pain-ergonomic-setup-diagram-title back-pain-ergonomic-setup-diagram-desc" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <title id="back-pain-ergonomic-setup-diagram-title">Planning diagram for back pain ergonomic setup</title>
+          <desc id="back-pain-ergonomic-setup-diagram-desc">A simplified workspace diagram showing that the guide should be applied as a sequence of fit checks.</desc>
+          <path d="M34 148h252M72 148V74h112v74M184 92h56v56M104 74V48h44v26"/><circle cx="126" cy="37" r="12"/>
+          <path d="M42 168h236" stroke-dasharray="2 8"/><path d="M42 162v12M278 162v12"/>
+        </svg>
+        <div class="ps-grid" style="--ps-columns:2">
+          <div class="ps-stack" style="--ps-stack-gap:.5rem"><span class="ps-card__eyebrow">01 · Reset the foundation</span><p>Set feet, seat, and back support before moving the screen.</p></div>
+          <div class="ps-stack" style="--ps-stack-gap:.5rem"><span class="ps-card__eyebrow">02 · Alternate positions</span><p>Comfort comes from usable variation, not one frozen pose.</p></div>
+        </div>
+        <div class="ps-measure" aria-label="Recommended setup sequence: Seat → input → screen">
+          <span class="ps-measure__value">Seat → input → screen</span><span class="ps-measure__rail" aria-hidden="true"></span>
+        </div>
+      </section>
+      <aside class="ps-evidence" aria-label="How to use this guide">
+        <span class="ps-evidence__label">Evidence rail</span>
+        <div class="ps-evidence__body"><strong>Measure, adjust, then observe.</strong><span>Use the guide as a starting framework, confirm published dimensions where products are involved, and judge the final setup against your own room, body, and work pattern.</span><span class="ps-evidence__source">Method note · No diagram above represents a specific product or guarantees a medical outcome.</span></div>
+      </aside>
 
  <div class="disclosure-box disclosure-box--info">
- <strong>⚠️ Not medical advice.</strong>
+ <strong>Not medical advice.</strong>
  <p style="margin-top:var(--space-sm);">This guide is for informational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. If you're experiencing chronic or severe back pain, consult a qualified healthcare provider before making changes to your workspace or routine. See the full <a href="/affiliate-disclosure">disclaimer</a>.</p>
  <p><strong>Affiliate disclosure:</strong> Some product links are affiliate links. We may earn a commission at no extra cost to you.</p>
  </div>
@@ -1070,7 +1085,7 @@
  </main>
 
  <section class="cta-section" style="max-width:var(--max-width);margin:var(--space-2xl) auto;">
- <div class="container">
+ <div class="container ps-container">
  <h2>Find your perfect setup in 2 minutes</h2>
  <p>Personalized product recommendations based on your body, budget, and work style.</p>
  <a href="/#assessment" class="btn btn--secondary btn--lg">Start Assessment →</a>
@@ -1081,7 +1096,7 @@
  <section class="related-guides">
  <h2 class="related-guides__title">Related Guides</h2>
  <div class="related-guides__carousel">
- <a href="/guides/ergonomic-accessories-home-office" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+ <a href="/guides/ergonomic-accessories-home-office" class="guide-card ps-card" style="text-decoration:none;color:inherit;display:block;">
  <div class="guide-card__content">
  <span class="guide-card__badge">Accessories</span>
  <h3 class="guide-card__title">Ergonomic Accessories for Home Office</h3>
@@ -1089,7 +1104,7 @@
  <span class="guide-card__link">Read guide →</span>
  </div>
  </a>
- <a href="/guides/ergonomic-office-chair-buying-guide" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+ <a href="/guides/ergonomic-office-chair-buying-guide" class="guide-card ps-card" style="text-decoration:none;color:inherit;display:block;">
  <div class="guide-card__content">
  <span class="guide-card__badge">Chairs</span>
  <h3 class="guide-card__title">Ergonomic Office Chair Buying Guide</h3>
@@ -1097,7 +1112,7 @@
  <span class="guide-card__link">Read guide →</span>
  </div>
  </a>
- <a href="/guides/ergonomic-setup-for-gamers" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+ <a href="/guides/ergonomic-setup-for-gamers" class="guide-card ps-card" style="text-decoration:none;color:inherit;display:block;">
  <div class="guide-card__content">
  <span class="guide-card__badge">Gaming</span>
  <h3 class="guide-card__title">Ergonomic Setup for Gamers</h3>
@@ -1105,7 +1120,7 @@
  <span class="guide-card__link">Read guide →</span>
  </div>
  </a>
- <a href="/guides/best-ergonomic-office-chairs-2026" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+ <a href="/guides/best-ergonomic-office-chairs-2026" class="guide-card ps-card" style="text-decoration:none;color:inherit;display:block;">
  <div class="guide-card__content">
  <span class="guide-card__badge">Chairs</span>
  <h3 class="guide-card__title">Best Ergonomic Office Chairs 2026</h3>
@@ -1124,7 +1139,7 @@
 
 
  <section class="newsletter-bar" id="newsletter">
- <div class="container">
+ <div class="container ps-container">
  <h2 class="newsletter-bar__title">Get Weekly Workspace Tips</h2>
  <p class="newsletter-bar__desc">Personalized advice, gear deals, and ergonomic tips — every Wednesday. No spam, unsubscribe anytime.</p>
  <div class="newsletter-form">
@@ -1147,6 +1162,7 @@
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/guides">Guides</a></li>
+          <li><a href="/deals">Deals</a></li>
           <li><a href="/tips">Tips</a></li>
           <li><a href="/podcasts">Podcasts</a></li>
         </ul>

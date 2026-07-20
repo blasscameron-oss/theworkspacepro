@@ -17,19 +17,19 @@
   <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
   <meta name="theme-color" content="#c2410c">
   <script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+  <link rel="stylesheet" href="/assets/css/premium-studio.css">
 </head>
-<body>
+<body class="ps-shell" data-visual-master="changelog-workbench-v1">
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <header class="site-header">
     <div class="site-header__inner">
       <a href="/" class="logo"><span class="logo__mark">W</span><span>The Workspace Pro</span></a>
       <nav class="nav" aria-label="Primary">
-        <a href="/" class="nav__link">Home</a>
-        <a href="/guides" class="nav__link">Guides</a>
+        <a href="/#assessment" class="nav__link nav__cta">Get My Blueprint</a>
         <a href="/tools" class="nav__link">Tools</a>
-        <a href="/tips" class="nav__link">Tips</a>
-        <a href="/about" class="nav__link">About</a>
-        <a href="/#assessment" class="nav__link nav__cta">Take the Quiz</a>
+        <a href="/guides" class="nav__link">Guides</a>
+        <a href="/compare/" class="nav__link">Compare</a>
+        <a href="/deals" class="nav__link">Deals</a>
       </nav>
       <div class="header-actions">
         <button class="theme-toggle" type="button" aria-label="Toggle dark mode"><span class="theme-toggle__icon">☾</span></button>
@@ -39,18 +39,19 @@
   </header>
   <div class="mobile-overlay"></div>
   <nav class="mobile-nav" aria-label="Mobile">
-    <div class="mobile-nav__header"><span style="font-weight:700;">Menu</span>
-      <button class="menu-toggle" type="button" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="mobile-nav__header">
+      <span style="font-weight:700;">Menu</span>
+      <button class="menu-toggle" type="button" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
-    <a href="/" class="mobile-nav__link">Home</a>
-    <a href="/guides" class="mobile-nav__link">Guides</a>
+    <a href="/#assessment" class="mobile-nav__link">Get My Blueprint</a>
     <a href="/tools" class="mobile-nav__link">Tools</a>
-    <a href="/about" class="mobile-nav__link">About</a>
-    <a href="/#assessment" class="mobile-nav__cta">Take the Quiz</a>
+    <a href="/guides" class="mobile-nav__link">Guides</a>
+    <a href="/compare/" class="mobile-nav__link">Compare</a>
+    <a href="/deals" class="mobile-nav__link">Deals</a>
   </nav>
   <main id="main-content">
-    <section class="page-header">
-      <div class="container">
+    <section class="page-header ps-page-header">
+      <div class="container ps-container">
         <div class="page-header__eyebrow">Changelog</div>
         <h1 class="page-header__title">What we shipped</h1>
         <p class="page-header__desc">Honest updates — tools, performance, and affiliate link health. No invented hype.</p>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ergonomic Height Calculator Embed — The Workspace Pro</title>
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Embeddable ergonomic height calculator from The Workspace Pro.">
+  <link rel="canonical" href="https://www.theworkspacepro.com/ergonomic-height-calculator">
+<link rel="stylesheet" href="/assets/css/fonts.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/premium-studio.css">
+  <style>
+    body { background: var(--c-bg); margin: 0; padding: 1rem; font-family: var(--font-body); }
+    .embed-wrap { max-width: 420px; margin: 0 auto; }
+    .embed-card { background: var(--c-surface); border: 1px solid var(--c-border); border-radius: var(--radius-lg); padding: 1.25rem; }
+    .embed-card h1 { font-size: 1.25rem; margin-bottom: 0.35rem; }
+    .embed-card .lead { font-size: 0.9rem; color: var(--c-text-light); margin-bottom: 1rem; max-width: none; }
+    .embed-results { display: grid; gap: 0.5rem; margin-top: 1rem; }
+    .embed-row { display: flex; justify-content: space-between; font-size: 0.9rem; padding: 0.4rem 0; border-bottom: 1px solid var(--c-border); }
+    .embed-row strong { color: var(--c-primary); font-variant-numeric: tabular-nums; }
+    .embed-foot { margin-top: 1rem; font-size: 0.75rem; color: var(--c-text-muted); }
+    .embed-foot a { color: var(--c-primary); }
+    label { display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 0.35rem; }
+    input[type=range] { width: 100%; }
+  </style>
+  <script>
+    (function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+  </script>
+</head>
+<body class="ps-shell">
+  <a class="skip-link" href="#main-content">Skip to calculator</a>
+  <main class="embed-wrap" id="main-content">
+    <div class="embed-card blueprint-panel" data-visual-master="embed-height-measurement-v1">
+      <h1>Height calculator</h1>
+      <p class="lead">Ideal desk, chair, and monitor heights from your height. Free from The Workspace Pro.</p>
+      <label for="h">Your height: <span id="hLabel">5'9"</span></label>
+      <input id="h" type="range" min="54" max="78" value="69" step="1" aria-valuemin="54" aria-valuemax="78" aria-valuenow="69">
+      <div class="embed-results blueprint-panel__measurements" id="results" aria-live="polite" aria-label="Live fit measurements"></div>
+      <p class="embed-foot">
+        Estimates only — not medical advice.
+        <a href="https://www.theworkspacepro.com/ergonomic-height-calculator?utm_source=embed&utm_medium=iframe&utm_campaign=height_calc" target="_blank" rel="noopener">Full tool →</a>
+      </p>
+    </div>
+  </main>
+  <script src="/assets/js/height-math.js"></script>
+  <script src="/assets/js/analytics.js" defer></script>
+  <script>
+  (function () {
+    var slider = document.getElementById('h');
+    var label = document.getElementById('hLabel');
+    var out = document.getElementById('results');
+    function fmtIn(inches) {
+      var f = Math.floor(inches / 12);
+      var r = Math.round(inches % 12);
+      return f + "'" + r + '"';
+    }
+    function render() {
+      var h = parseFloat(slider.value, 10);
+      label.textContent = fmtIn(h);
+      slider.setAttribute('aria-valuenow', String(h));
+      var r = window.TWPHeightMath.computeFromInches(h);
+      out.innerHTML =
+        row('Standing desk', r.standingDesk + ' in') +
+        row('Sitting desk', r.sittingDesk + ' in') +
+        row('Chair seat', r.chair + ' in') +
+        row('Monitor top', r.monitorTop + ' in') +
+        row('Monitor distance', r.monitorDistance + ' in');
+      if (typeof gtag === 'function') {
+        gtag('event', 'tool_use', { tool: 'embed_height_calc' });
+      }
+    }
+    function row(k, v) {
+      return '<div class="embed-row"><span>' + k + '</span><strong>' + v + '</strong></div>';
+    }
+    slider.addEventListener('input', render);
+    if (!window.TWPHeightMath || !window.TWPHeightMath.selfTest()) {
+      out.textContent = 'Calculator failed self-test.';
+      return;
+    }
+    render();
+  })();
+  </script>
+</body>
+</html>

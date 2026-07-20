@@ -32,20 +32,20 @@
   <script>
     (function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();
   </script>
+  <link rel="stylesheet" href="/assets/css/premium-studio.css">
 </head>
-<body>
+<body class="ps-shell" data-visual-master="studio-method-notebook-v1">
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <header class="site-header">
     <div class="site-header__inner">
       <a href="/" class="logo"><span class="logo__mark">W</span><span>The Workspace Pro</span></a>
             <nav class="nav" aria-label="Primary">
-        <a href="/" class="nav__link">Home</a>
-        <a href="/guides" class="nav__link">Guides</a>
+        <a href="/#assessment" class="nav__link nav__cta">Get My Blueprint</a>
         <a href="/tools" class="nav__link">Tools</a>
-        <a href="/tips" class="nav__link">Tips</a>
-        <a href="/about" class="nav__link nav__link--active">About</a>
-        <a href="/#assessment" class="nav__link nav__cta">Take the Quiz</a>
+        <a href="/guides" class="nav__link">Guides</a>
+        <a href="/compare/" class="nav__link">Compare</a>
+        <a href="/deals" class="nav__link">Deals</a>
       </nav>
       <div class="header-actions">
         <button class="theme-toggle" type="button" aria-label="Toggle dark mode"><span class="theme-toggle__icon">☾</span></button>
@@ -54,27 +54,21 @@
     </div>
   </header>
   <div class="mobile-overlay"></div>
-  <nav class="mobile-nav">
+  <nav class="mobile-nav" aria-label="Mobile">
     <div class="mobile-nav__header">
       <span style="font-weight:700;">Menu</span>
-      <button class="menu-toggle" type="button" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      <button class="menu-toggle" type="button" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
-    <a href="/" class="mobile-nav__link">Home</a>
-    <a href="/guides" class="mobile-nav__link">Guides</a>
+    <a href="/#assessment" class="mobile-nav__link">Get My Blueprint</a>
     <a href="/tools" class="mobile-nav__link">Tools</a>
-    <a href="/build-your-office" class="mobile-nav__link">Build Your Office</a>
-    <a href="/ergonomic-height-calculator" class="mobile-nav__link">Height Calculator</a>
-    <a href="/workspace-setup-calculator" class="mobile-nav__link">Setup Calculator</a>
-    <a href="/tips" class="mobile-nav__link">Tips</a>
-    <a href="/podcasts" class="mobile-nav__link">Podcasts</a>
-    <a href="/about" class="mobile-nav__link">About</a>
-    <a href="/contact" class="mobile-nav__link">Contact</a>
-    <a href="/#assessment" class="mobile-nav__cta">Take the Quiz</a>
+    <a href="/guides" class="mobile-nav__link">Guides</a>
+    <a href="/compare/" class="mobile-nav__link">Compare</a>
+    <a href="/deals" class="mobile-nav__link">Deals</a>
   </nav>
 
   <main id="main-content">
-  <section class="page-header">
-    <div class="container">
+  <section class="page-header ps-page-header">
+    <div class="container ps-container">
       <div class="page-header__eyebrow">About</div>
       <h1 class="page-header__title">We do the research so you don't have to.</h1>
       <p class="page-header__desc">The Workspace Pro is an independent resource for ergonomic workspace recommendations. No fake experts, no fluff — just well-researched guidance.</p>
@@ -88,17 +82,17 @@
       
       <div class="card-grid" style="margin: var(--space-xl) 0;">
         <div class="card">
-          <div class="card__icon">📐</div>
+          <div class="card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Specifications"><path d="M4 19L19 4l1 1-15 15H4v-1z"/><path d="M14 7l3 3M11 10l2 2M8 13l3 3"/></svg></div>
           <h3 class="card__title">Spec-Driven</h3>
           <p class="card__desc">We compare actual product specifications — seat pan dimensions, weight capacity, height range, adjustability points — not marketing copy.</p>
         </div>
         <div class="card">
-          <div class="card__icon">🔬</div>
+          <div class="card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Research standards"><path d="M9 3h6M10 3v5l-4 7a4 4 0 003.5 6h5a4 4 0 003.5-6l-4-7V3"/><path d="M8 15h8"/></svg></div>
           <h3 class="card__title">Standards-Based</h3>
           <p class="card__desc">Our ergonomic recommendations are grounded in established standards from OSHA, BIFMA, and peer-reviewed ergonomic research.</p>
         </div>
         <div class="card">
-          <div class="card__icon">🤝</div>
+          <div class="card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Independent"><path d="M8 12l3 3 5-6"/><circle cx="12" cy="12" r="9"/></svg></div>
           <h3 class="card__title">Independent</h3>
           <p class="card__desc">We don't take payment from manufacturers for positive reviews. Affiliate commissions don't influence our recommendations.</p>
         </div>
@@ -133,7 +127,7 @@
   </section>
 
   <section class="cta-section" style="max-width:var(--max-width); margin:var(--space-2xl) auto;">
-    <div class="container">
+    <div class="container ps-container">
       <h2>Ready to find your perfect setup?</h2>
       <p>Take the free 2-minute assessment and get personalized recommendations.</p>
       <a href="/#assessment" class="btn btn--secondary btn--lg">Start Assessment →</a>
@@ -143,7 +137,7 @@
 
   <!-- Newsletter -->
   <section class="newsletter-bar" id="newsletter">
-    <div class="container">
+    <div class="container ps-container">
       <h2 class="newsletter-bar__title">Get Weekly Workspace Tips</h2>
       <p class="newsletter-bar__desc">Personalized advice, gear deals, and ergonomic tips — every Wednesday. No spam, unsubscribe anytime.</p>
       <div class="newsletter-form">
@@ -167,6 +161,7 @@
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/guides">Guides</a></li>
+          <li><a href="/deals">Deals</a></li>
           <li><a href="/tips">Tips</a></li>
           <li><a href="/podcasts">Podcasts</a></li>
         </ul>

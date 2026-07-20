@@ -1,16 +1,24 @@
 # Finch handoff — The Workspace Pro
 
-**Updated:** 2026-07-18 (repair release deployed; handoff corrected for custom-domain cache remediation)
+**Updated:** 2026-07-18 (Deals + body-fit + guide TOC release candidate; awaiting Finch deployment)
 **Canonical path:** `/home/cameron/.openclaw/workspace/theworkspacepro-v2`
 **Live:** https://www.theworkspacepro.com
 **GitHub:** `https://github.com/blasscameron-oss/theworkspacepro`
 **Hosting:** Cloudflare Pages (static) + required health Worker `twp-monitor`
 
-## ⚠️ STATUS (2026-07-18): repair release is deployed; two stale custom-domain cache entries need bypass
+## ⚠️ STATUS (2026-07-18): validated release candidate is local and uncommitted
 
-The audit repair commits (`bfa3117`, `5e1682b`, `3179c3a`) and follow-up handoff commit (`27fd147`) are on `origin/main`; the GitHub Actions deployment completed successfully. The Pages origins serve the corrected allowlisted artifact and return 404 for operational files.
+The canonical worktree is at `d0408db` / `origin/main` plus the complete uncommitted release candidate. Finch must review and commit the **current worktree**, then push `main` so the existing GitHub Actions workflow performs the only production deployment.
 
-**Do not recommit or manually redeploy the completed repair release.** Finch’s remaining action is the explicit Cloudflare custom-domain cache bypass and purge in **Current custom-domain cache remediation** below. Do not deploy from the older `repos/workspace-pro-minimal` checkout.
+This candidate includes:
+
+- `/deals`: 11 static, filterable value picks with truthful price and affiliate disclosures.
+- `/guides/desk-chair-height-chart`: 12-row imperial/metric body-fit reference plus the shared calculator.
+- Corrected shared ergonomic math used by the full calculator, embed, and height chart.
+- Sitewide navigation/SEO/social-image updates and stronger artifact validation.
+- The guide TOC regression fix: TOCs remain in document flow, responsive cards replace the nested sticky scroller, anchor offsets clear the fixed header, and long guides receive an accessible reading-progress accent.
+
+Do **not** deploy from the older `repos/workspace-pro-minimal` checkout and do not use a manual Pages/Wrangler upload. Follow **Current release candidate — Finch deployment runbook** below. The separate custom-domain cache remediation remains a Cloudflare Dashboard task.
 
 ### ⏰ OWNER REMINDER — follow up TOMORROW
 
@@ -32,19 +40,21 @@ The audit repair commits (`bfa3117`, `5e1682b`, `3179c3a`) and follow-up handoff
 | `/` | Assessment quiz (**only** page with `assessment.js`) |
 | `/tools` | Tools hub + height embed snippet |
 | `/embed/height` | Embeddable height calc (`noindex`) |
+| `/deals` | Static, filterable value picks with price and affiliate disclosures |
 | `/compare/` | **Filter matrix** (query-shareable) |
 | `/compare/*` | Long-form written comparisons |
 | `/build-your-office` | Budget builder |
 | `/ergonomic-height-calculator` | Full height tool + `height-math.js` |
+| `/guides/desk-chair-height-chart` | Static imperial + metric height reference, methodology, and calculator bridge |
 | `/workspace-setup-calculator` | Setup planner |
-| `/guides` | 16 guides + search |
+| `/guides` | 17 guides + search |
 | `/changelog` | Honest ship log |
 | Contact / Newsletter | Formspree / Beehiiv |
 | Affiliate | Amazon tag **`workspacepro-20`** |
 | Analytics | **`/assets/js/analytics.js`** only → GA4 `G-2DWRW4PE8Y` |
 | Fonts | **Self-hosted** `/assets/css/fonts.css` + `/assets/fonts/*.woff2` |
 
-**Guardrails:** No fake testimonials, no fabricated stars, no invented sale prices.
+**Guardrails:** No fake testimonials, no fabricated stars, no invented sale prices, countdowns, or unverified discount badges. Deals are value picks, not claims of a live markdown.
 
 ---
 
@@ -62,7 +72,7 @@ The audit repair commits (`bfa3117`, `5e1682b`, `3179c3a`) and follow-up handoff
 | PR7 | Extra product images (BenQ retry optional) | ✅ (most matrix thumbs present) |
 | PR8 | `/embed/height` + header detach | ✅ |
 | PR9 | Branded print CSS | ✅ |
-| PR10 | Sticky guide `.toc` | ✅ |
+| PR10 | Non-sticky responsive guide TOC + reading progress | ✅ |
 | PR11 | `/compare/` matrix + JSON data | ✅ |
 | PR12 | `catalog.json` + optional JS load | ✅ |
 | PR13 | Monitor ASIN sample | ⏸ Disabled to keep the free Worker below its subrequest limit |
@@ -70,7 +80,7 @@ The audit repair commits (`bfa3117`, `5e1682b`, `3179c3a`) and follow-up handoff
 | PR15 | OSHA/BIFMA source notes (index + about) | ✅ |
 | PR16 | Self-hosted Inter + Fraunces woff2 | ✅ |
 
-Local verify (2026-07-18): JavaScript syntax PASS; all 37 public HTML files have one H1, one main landmark, and a valid skip target. The 64-file allowlisted Pages artifact excludes operational files and unapproved thumbnails; Wrangler parses 26 valid redirect rules and 10 header rules. A 390px preview sweep returned HTTP 200 for all 36 audited public routes, with no horizontal overflow on the repaired guide table, long comparison CTA, or height embed.
+Local verify (2026-07-18): JavaScript syntax PASS; ASIN denylist PASS (111 inventoried); shared height-math self-test PASS; the built-artifact validator passes all **39 public HTML files and 67 allowlisted files**. Desktop and 390px browser checks confirm guide TOCs are non-sticky, use visible overflow without a nested scrollbar, scroll away with the article, do not create horizontal overflow, and receive one updating reading-progress indicator. Deals and the new height chart still require the post-deploy smoke tests below.
 
 ---
 
@@ -83,6 +93,7 @@ Local verify (2026-07-18): JavaScript syntax PASS; all 37 public HTML files have
 | `site.js` + `perf-lite.js` | Site chrome |
 | `height-math.js` | Height full tool + embed |
 | `compare-matrix.js` | `/compare/` only |
+| `deals.js` | `/deals` filters + click measurement |
 | `build-your-office.js` | BYO only |
 | `fonts.css` | All pages (replaces Google Fonts) |
 
@@ -105,9 +116,13 @@ Data:
 ### Perf / scripts
 - [ ] Guide Network: **no** `assessment.js`; loads `fonts.css` / woff2 from **self**
 - [ ] Home: one `assessment.js`, one `analytics.js`, no second gtag config
+- [ ] Deals: one `deals.js`, one `analytics.js`, no `assessment.js`
 - [ ] CSP does not need `fonts.googleapis.com` (self-hosted)
 
 ### Features
+- [ ] On `/guides/back-pain-ergonomic-setup` at 1280px and 390px, the TOC scrolls away with the article, never covers content, has no nested scrollbar, and each jump link lands below the fixed header
+- [ ] The guide reading-progress line appears below the header and advances while scrolling; non-guide pages do not receive it
+- [ ] `/deals?category=chair&budget=under-200` restores filters and every product remains present in static HTML
 - [ ] `/compare/?category=chair&budget=under-350` filters restore
 - [ ] Matrix Amazon links include `tag=workspacepro-20`
 - [ ] Quiz share link restores results in private window
@@ -122,6 +137,8 @@ curl -sI https://www.theworkspacepro.com/embed/height | grep -i content-security
 
 ### Ops
 ```bash
+./scripts/build-for-pages.sh dist
+node scripts/validate-public-site.mjs dist
 python3 scripts/check_asins_site.py --fail-on-denylist
 node -e "eval(require('fs').readFileSync('assets/js/height-math.js','utf8')); console.log(TWPHeightMath.selfTest())"
 ```
@@ -133,12 +150,12 @@ node -e "eval(require('fs').readFileSync('assets/js/height-math.js','utf8')); co
 | Output | × body height (inches) |
 |--------|-------------------------|
 | Standing desk | 0.55 |
-| Sitting desk / keyboard | 0.27 |
+| Sitting desk / keyboard | 0.405 |
 | Chair | 0.25 |
-| Monitor top | 0.93 |
+| Monitor top | 0.70 |
 | Monitor distance | clamp(h×0.33, 18–28) |
 
-Golden: 69 in → metric standing intermediate **96.4 cm**.
+Golden: 69 in → standing **38.0 in / 96.5 cm**, sitting/keyboard **27.9 in**, chair **17.3 in**, monitor top **48.3 in**, monitor distance **22.8 in**. These are starting estimates with adjustment ranges, not medical prescriptions.
 
 ---
 
@@ -325,7 +342,83 @@ Placeholder HTML pattern (honest):
 
 ---
 
-## 2026-07-18 audit repair — Finch deployment checklist
+## Current release candidate — Finch deployment runbook
+
+### 1. Confirm the canonical worktree
+
+```bash
+cd /home/cameron/.openclaw/workspace/theworkspacepro-v2
+git rev-parse --show-toplevel
+git status --short
+git diff --check
+```
+
+Expected before Finch commits: `HEAD` and `origin/main` are `d0408db`, with the release changes shown as modified/untracked files. Review that complete diff; do not discard it, switch to the legacy checkout, reset, or force-push.
+
+### 2. Run the exact preflight
+
+```bash
+find assets/js worker scripts -type f \( -name '*.js' -o -name '*.mjs' \) -print0 | xargs -0 -n1 node --check
+node -e "eval(require('fs').readFileSync('assets/js/height-math.js','utf8')); if (!TWPHeightMath.selfTest()) process.exit(1); console.log('Height math self-test passed.')"
+python3 scripts/check_asins_site.py --fail-on-denylist
+./scripts/build-for-pages.sh dist
+node scripts/validate-public-site.mjs dist
+```
+
+Expected final output: `Public artifact validation passed: 39 HTML files, 67 total files.`
+
+### 3. Commit and use the single CI deploy path
+
+```bash
+git add -A
+git status --short
+git commit -m "feat: add deals and body-fit growth release"
+git push origin main
+```
+
+That push triggers `.github/workflows/deploy.yml`, which syntax-checks and validates source, builds the allowlisted `dist/`, validates the artifact, deploys Cloudflare Pages and the `twp-monitor` Worker, then runs the authenticated production monitor. Do not run `wrangler pages deploy` and never deploy the repository root.
+
+If GitHub CLI is authenticated:
+
+```bash
+gh run list --workflow deploy.yml --limit 1
+gh run watch RUN_ID --exit-status
+```
+
+### 4. Post-deploy HTTP checks
+
+```bash
+for path in /deals /guides/desk-chair-height-chart /guides/back-pain-ergonomic-setup /ergonomic-height-calculator /embed/height /sitemap.xml; do
+  curl -fsSIL -o /dev/null -w "%{http_code} %{url_effective}\\n" "https://www.theworkspacepro.com$path"
+done
+curl -sS -o /dev/null -w "%{http_code}\\n" https://www.theworkspacepro.com/FINCH_HANDOFF.md
+curl -sS -o /dev/null -w "%{http_code}\\n" https://www.theworkspacepro.com/worker/monitor.js
+```
+
+Expect every public URL to end at 200 without a redirect loop. Operational files must return 404 once the custom-domain cache remediation below has been completed.
+
+### 5. Browser acceptance at 1280px and 390px
+
+- Back-pain guide: TOC stays in normal flow and scrolls offscreen; no content overlap, nested scrollbar, or horizontal overflow; jump links clear the header; the progress line advances.
+- Deals: query filters restore; visible counts update; all 11 products remain in the static HTML; premium-only and empty-state behavior work.
+- Desk/chair height chart: all 12 anchored rows are readable; imperial/metric display and calculator bridge work.
+- Full height calculator and embed: 69 in produces the golden outputs above.
+- Mobile menu: keyboard open/close, Escape, focus return, and overlay remain correct.
+
+### 6. Rollback
+
+If CI fails before deploy, fix the failing step and push a follow-up; do not bypass the workflow. If production regresses after a successful release, use a recoverable revert:
+
+```bash
+git revert RELEASE_COMMIT_SHA
+git push origin main
+```
+
+Let the same workflow deploy the revert. Do not reset `main`, force-push, or manually upload an older artifact.
+
+---
+
+## Historical: 2026-07-18 audit repair
 
 ### What changed
 
@@ -341,31 +434,34 @@ Placeholder HTML pattern (honest):
 - CI now validates JavaScript, corruption signatures, and malformed meta heads, builds an allowlisted dist that excludes operational files and unproven Amazon thumbnails, deploys Pages from dist, deploys the Worker, and runs an authenticated health gate. Operational docs, scripts, Worker source, and handoff notes are no longer published as site files.
 - Final release sweep: contained wide guide tables with horizontal scrolling, made long mobile CTAs wrap safely, gave every long-form guide and the height embed a real main landmark and skip-link target, removed the unsupported absolute apex rule from Pages redirects, and ignored the generated _site build directory.
 
-### Current deployment state
+### Deployment state recorded for that repair
 
 - `27fd147` is on `origin/main`; GitHub Actions deployment `29660524147` completed successfully.
 - The Worker is deployed, accepts the configured `MONITOR_SECRET`, and correctly returns HTTP 401 without it.
 - The apex sitemap redirect is fixed at the zone level.
 - The only remaining production remediation is the custom-domain stale-cache rule below.
 
-### Future changes — CI only
+### Historical CI notes (superseded by the current runbook above)
 
     cd /home/cameron/.openclaw/workspace/theworkspacepro-v2
     git status --short
     git diff --check
     find assets/js worker -name "*.js" -print0 | xargs -0 -n1 node --check
     ./scripts/build-for-pages.sh dist
+    node scripts/validate-public-site.mjs dist
     git add -A
     git commit -m "<scoped change>"
     git push origin main
 
-The GitHub workflow validates source, builds the allowlisted `dist/` artifact, deploys Pages and the Worker, then runs an authenticated health check. Do not manually deploy Pages from the repository root.
+The GitHub workflow validates source, builds the allowlisted `dist/` artifact, validates the artifact, deploys Pages and the Worker, then runs an authenticated health check. The artifact validator checks page landmarks and skip targets, script scope, local public targets, sitemap mappings, JSON-LD, Amazon partner tags, and the Deals trust guardrails plus height-chart content, sourcing, claims, and shared-math guardrails. Do not manually deploy Pages from the repository root.
 
-### Production acceptance checks
+### Historical expanded acceptance checks
 
     curl -fsSIL -o /dev/null -w '%{http_code} %{url_effective}\n' https://www.theworkspacepro.com/tools
+    curl -fsSIL -o /dev/null -w '%{http_code} %{url_effective}\n' https://www.theworkspacepro.com/guides/desk-chair-height-chart
     curl -fsSIL -o /dev/null -w '%{http_code} %{url_effective}\n' https://www.theworkspacepro.com/embed/height
     curl -fsSIL -o /dev/null -w '%{http_code} %{url_effective}\n' https://www.theworkspacepro.com/changelog
+    curl -fsSIL -o /dev/null -w '%{http_code} %{url_effective}\n' https://www.theworkspacepro.com/deals
     curl -fsSIL -o /dev/null -w '%{http_code} %{url_effective}\n' https://www.theworkspacepro.com/workspace-setup-calculator
     curl -fsSIL -o /dev/null -w '%{http_code} %{url_effective}\n' https://theworkspacepro.com/sitemap.xml
     curl -sS -o /dev/null -w '%{http_code}\n' https://www.theworkspacepro.com/FINCH_HANDOFF.md

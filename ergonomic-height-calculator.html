@@ -3,27 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ergonomic Height Calculator — Find Your Perfect Desk, Chair & Monitor Setup - The Workspace Pro</title>
-  <meta name="description" content="Free interactive ergonomic height calculator. Enter your height to get personalized desk height, chair height, monitor position, and keyboard height recommendations in inches and cm.">
+  <title>Ergonomic Height Calculator — Desk, Chair & Monitor Starting Ranges - The Workspace Pro</title>
+  <meta name="description" content="Free ergonomic height estimator. Enter your height for transparent desk, chair, monitor, and keyboard starting points and adjustment ranges in inches or cm.">
   <meta property="og:title" content="Ergonomic Height Calculator — The Workspace Pro">
-  <meta property="og:description" content="Get personalized desk height, chair height, and monitor position recommendations based on your body height. Free interactive tool.">
+  <meta property="og:description" content="Estimate desk, chair, and monitor starting points and adjustment ranges based on your height. Free interactive tool.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.theworkspacepro.com/ergonomic-height-calculator">
   <meta property="og:image" content="https://www.theworkspacepro.com/assets/images/og-default.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Ergonomic Height Calculator">
-  <meta name="twitter:description" content="Calculate your ideal desk, chair, and monitor height in seconds.">
+  <meta name="twitter:description" content="Estimate desk, chair, and monitor starting ranges in seconds.">
   <link rel="canonical" href="https://www.theworkspacepro.com/ergonomic-height-calculator">
 <link rel="stylesheet" href="/assets/css/fonts.css">
   <link rel="stylesheet" href="/assets/css/style.css">
   <link rel="stylesheet" href="/assets/css/bold.css">
+  <link rel="stylesheet" href="/assets/css/premium-studio.css">
   <!-- JSON-LD structured data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Ergonomic Height Calculator",
-    "description": "Interactive tool that calculates ideal desk height, chair height, and monitor position based on the user's body height.",
+    "description": "Interactive tool that estimates desk, chair, keyboard, and monitor starting points and adjustment ranges based on the user's body height.",
     "url": "https://www.theworkspacepro.com/ergonomic-height-calculator",
     "applicationCategory": "HealthApplication",
     "operatingSystem": "Web Browser",
@@ -70,6 +71,8 @@
     .ehc-result-label small { display: block; font-weight: 400; font-size: 0.8rem; color: var(--c-text-muted); margin-top: 2px; }
     .ehc-result-value { font-family: var(--font-mono); font-size: 1.2rem; font-weight: 700; color: var(--c-text); }
     .ehc-result-unit { font-size: 0.85rem; font-weight: 400; color: var(--c-text-muted); margin-left: var(--space-xs); }
+    .ehc-result-output { text-align: right; flex: 0 0 auto; margin-left: var(--space-md); }
+    .ehc-result-range { display: block; margin-top: 2px; color: var(--c-text-muted); font-size: 0.72rem; font-weight: 500; white-space: nowrap; }
     .ehc-result-icon { font-size: 1.3rem; margin-right: var(--space-sm); }
 
     .ehc-result-highlight { border-left-color: var(--c-accent); }
@@ -91,7 +94,7 @@
     .ehc-info h3 { font-family: var(--font-display); margin-bottom: var(--space-sm); }
     .ehc-info ul { list-style: none; padding: 0; }
     .ehc-info li { padding: var(--space-xs) 0; padding-left: var(--space-lg); position: relative; }
-    .ehc-info li::before { content: '💡'; position: absolute; left: 0; }
+    .ehc-info li::before { content: '—'; position: absolute; left: 0; color: var(--c-primary); }
     .ehc-tip { background: var(--c-surface); border: 1px solid var(--c-border); border-radius: var(--radius); padding: var(--space-md); margin-top: var(--space-md); font-size: 0.9rem; color: var(--c-text-light); }
 
     [data-theme="dark"] .ehc-card { background: var(--c-dark-surface); border-color: var(--c-dark-border); }
@@ -114,19 +117,18 @@
     (function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();
   </script>
 </head>
-<body>
+<body class="ps-shell" data-visual-master="ergonomic-height-live-fit-v1">
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <header class="site-header">
     <div class="site-header__inner">
       <a href="/" class="logo"><span class="logo__mark">W</span><span>The Workspace Pro</span></a>
             <nav class="nav" aria-label="Primary">
-        <a href="/" class="nav__link">Home</a>
-        <a href="/guides" class="nav__link">Guides</a>
+        <a href="/#assessment" class="nav__link">Get My Blueprint</a>
         <a href="/tools" class="nav__link nav__link--active">Tools</a>
-        <a href="/tips" class="nav__link">Tips</a>
-        <a href="/about" class="nav__link">About</a>
-        <a href="/#assessment" class="nav__link nav__cta">Take the Quiz</a>
+        <a href="/guides" class="nav__link">Guides</a>
+        <a href="/compare/" class="nav__link">Compare</a>
+        <a href="/deals" class="nav__link">Deals</a>
       </nav>
       <div class="header-actions">
         <button class="theme-toggle" type="button" aria-label="Toggle dark mode"><span class="theme-toggle__icon">☾</span></button>
@@ -140,25 +142,20 @@
       <span style="font-weight:700;">Menu</span>
       <button class="menu-toggle" type="button" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
-    <a href="/" class="mobile-nav__link">Home</a>
-    <a href="/guides" class="mobile-nav__link">Guides</a>
+    <a href="/#assessment" class="mobile-nav__link">Get My Blueprint</a>
     <a href="/tools" class="mobile-nav__link">Tools</a>
-    <a href="/build-your-office" class="mobile-nav__link">Build Your Office</a>
-    <a href="/ergonomic-height-calculator" class="mobile-nav__link">Height Calculator</a>
-    <a href="/workspace-setup-calculator" class="mobile-nav__link">Setup Calculator</a>
-    <a href="/tips" class="mobile-nav__link">Tips</a>
-    <a href="/podcasts" class="mobile-nav__link">Podcasts</a>
-    <a href="/about" class="mobile-nav__link">About</a>
-    <a href="/contact" class="mobile-nav__link">Contact</a>
-    <a href="/#assessment" class="mobile-nav__cta">Take the Quiz</a>
+    <a href="/guides" class="mobile-nav__link">Guides</a>
+    <a href="/compare/" class="mobile-nav__link">Compare</a>
+    <a href="/deals" class="mobile-nav__link">Deals</a>
   </nav>
 
   <main id="main-content">
-  <section class="page-header">
-    <div class="container">
-      <div class="page-header__eyebrow">Interactive Tool</div>
-      <h1 class="page-header__title">Ergonomic Height Calculator</h1>
-      <p class="page-header__desc">Enter your height to get personalized desk, chair, and monitor measurements. Based on established ergonomic formulas used by occupational health professionals.</p>
+  <section class="ps-page-header" data-visual-master="ergonomic-height-live-fit-v1">
+    <div class="ps-container ps-page-header__grid">
+      <div><span class="ps-kicker">Workspace Lab · Live fit</span>
+      <h1 class="ps-page-header__title">Find your starting heights.</h1>
+      <p class="ps-lede">Translate body height into transparent desk, chair, keyboard, and monitor ranges—then tune for comfort.</p></div>
+      <div class="ps-measure" aria-label="Six live measurements"><span class="ps-measure__rail" aria-hidden="true"></span><span class="ps-measure__value">6 live fit readings</span></div>
     </div>
   </section>
 
@@ -186,7 +183,7 @@
         <p class="form-hint" style="margin-top:var(--space-sm);">Drag to adjust. Measurements update in real time.</p>
 
         <!-- SVG Illustration -->
-        <div class="ehc-svg-wrap" style="margin-top:var(--space-lg);">
+        <div class="ehc-svg-wrap ps-fit-zone" style="margin-top:var(--space-lg);" aria-label="Live workstation fit diagram derived from the calculator outputs">
           <svg viewBox="0 0 200 320" fill="none" xmlns="http://www.w3.org/2000/svg" id="ehcSvg">
             <!-- Floor -->
             <line x1="10" y1="300" x2="190" y2="300" stroke="var(--c-border)" stroke-width="2"/>
@@ -219,45 +216,45 @@
       </div>
 
       <!-- Right: Results -->
-      <div class="ehc-results ehc-animate" id="ehcResults">
-        <h2 style="font-family:var(--font-display);font-size:1.3rem;margin-bottom:var(--space-sm);">Your Ergonomic Measurements</h2>
-        <p style="font-size:0.9rem;color:var(--c-text-light);margin-bottom:var(--space-md);">Based on your height, here are the ideal positions for your workspace.</p>
+      <div class="ehc-results ehc-animate blueprint-panel" id="ehcResults">
+        <h2 style="font-family:var(--font-display);font-size:1.3rem;margin-bottom:var(--space-sm);">Your Estimated Starting Ranges</h2>
+        <p style="font-size:0.9rem;color:var(--c-text-light);margin-bottom:var(--space-md);">Use each point estimate as a starting place, then adjust within the range until your posture feels supported.</p>
 
         <div class="ehc-result-row ehc-result-highlight">
-          <div><span class="ehc-result-icon">🧍</span><span class="ehc-result-label">Standing Desk Height <small>Keyboard surface for standing</small></span></div>
-          <div><span class="ehc-result-value" id="standingDesk">38.0</span><span class="ehc-result-unit" id="standingDeskUnit">in</span></div>
+          <div><span class="ehc-result-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 20h14M7 17V7h10v10M4 7h16M12 4v16"/></svg></span><span class="ehc-result-label">Standing Desk Height <small>Keyboard surface for standing</small></span></div>
+          <div class="ehc-result-output"><span class="ehc-result-value" id="standingDesk">38.0</span><span class="ehc-result-unit" id="standingDeskUnit">in</span><small class="ehc-result-range" id="standingDeskRange">Range 37.0–39.0 in</small></div>
         </div>
 
         <div class="ehc-result-row">
-          <div><span class="ehc-result-icon">🪑</span><span class="ehc-result-label">Sitting Desk Height <small>Keyboard surface for sitting</small></span></div>
-          <div><span class="ehc-result-value" id="sittingDesk">28.0</span><span class="ehc-result-unit" id="sittingDeskUnit">in</span></div>
+          <div><span class="ehc-result-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 20h14M7 17V7h10v10M4 7h16M12 4v16"/></svg></span><span class="ehc-result-label">Sitting Desk Height <small>Keyboard surface for sitting</small></span></div>
+          <div class="ehc-result-output"><span class="ehc-result-value" id="sittingDesk">27.9</span><span class="ehc-result-unit" id="sittingDeskUnit">in</span><small class="ehc-result-range" id="sittingDeskRange">Range 26.9–28.9 in</small></div>
         </div>
 
         <div class="ehc-result-row ehc-result-highlight">
-          <div><span class="ehc-result-icon">💺</span><span class="ehc-result-label">Chair Seat Height <small>Top of seat cushion</small></span></div>
-          <div><span class="ehc-result-value" id="chairHeight">17.3</span><span class="ehc-result-unit" id="chairHeightUnit">in</span></div>
+          <div><span class="ehc-result-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 13h12v7M8 13V7h8v6M6 20v2m12-2v2"/></svg></span><span class="ehc-result-label">Chair Seat Height <small>Top of seat cushion</small></span></div>
+          <div class="ehc-result-output"><span class="ehc-result-value" id="chairHeight">17.3</span><span class="ehc-result-unit" id="chairHeightUnit">in</span><small class="ehc-result-range" id="chairHeightRange">Range 16.8–17.8 in</small></div>
         </div>
 
         <div class="ehc-result-row">
-          <div><span class="ehc-result-icon">🖥️</span><span class="ehc-result-label">Monitor Height <small>Top of screen at eye level</small></span></div>
-          <div><span class="ehc-result-value" id="monitorHeight">48.0</span><span class="ehc-result-unit" id="monitorHeightUnit">in</span></div>
+          <div><span class="ehc-result-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M12 16v4M8 20h8"/></svg></span><span class="ehc-result-label">Monitor Height <small>Top of screen at eye level</small></span></div>
+          <div class="ehc-result-output"><span class="ehc-result-value" id="monitorHeight">48.3</span><span class="ehc-result-unit" id="monitorHeightUnit">in</span><small class="ehc-result-range" id="monitorHeightRange">Range 47.3–49.3 in</small></div>
         </div>
 
         <div class="ehc-result-row">
-          <div><span class="ehc-result-icon">📏</span><span class="ehc-result-label">Monitor Distance <small>Arm's length from eyes</small></span></div>
-          <div><span class="ehc-result-value" id="monitorDistance">24.0</span><span class="ehc-result-unit" id="monitorDistanceUnit">in</span></div>
+          <div><span class="ehc-result-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h18M3 8v8M21 8v8M7 10v4m4-4v4m4-4v4"/></svg></span><span class="ehc-result-label">Monitor Distance <small>Arm's length from eyes</small></span></div>
+          <div class="ehc-result-output"><span class="ehc-result-value" id="monitorDistance">22.8</span><span class="ehc-result-unit" id="monitorDistanceUnit">in</span><small class="ehc-result-range" id="monitorDistanceRange">Range 20.8–24.8 in</small></div>
         </div>
 
         <div class="ehc-result-row">
-          <div><span class="ehc-result-icon">⌨️</span><span class="ehc-result-label">Keyboard Height <small>Elbows at 90°, wrists straight</small></span></div>
-          <div><span class="ehc-result-value" id="keyboardHeight">28.0</span><span class="ehc-result-unit" id="keyboardHeightUnit">in</span></div>
+          <div><span class="ehc-result-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="11" rx="1"/><path d="M6 11h2m2 0h2m2 0h2m2 0h1M7 15h10"/></svg></span><span class="ehc-result-label">Keyboard Height <small>Elbows at 90°, wrists straight</small></span></div>
+          <div class="ehc-result-output"><span class="ehc-result-value" id="keyboardHeight">27.9</span><span class="ehc-result-unit" id="keyboardHeightUnit">in</span><small class="ehc-result-range" id="keyboardHeightRange">Range 26.9–28.9 in</small></div>
         </div>
 
         <div class="ehc-actions">
-          <button class="ehc-action-btn ehc-action-btn--primary" onclick="ehcPrint()">🖨️ Print Measurements</button>
-          <button class="ehc-action-btn" onclick="ehcCopyResults()">📋 Copy Results</button>
-          <button class="ehc-action-btn" onclick="ehcShareTwitter()">𝕏 Share on X</button>
-          <button class="ehc-action-btn" onclick="ehcShareFB()">f Share on Facebook</button>
+          <button type="button" class="ehc-action-btn ehc-action-btn--primary" onclick="ehcPrint()">Print Estimates</button>
+          <button type="button" class="ehc-action-btn" onclick="ehcCopyResults(this)">Copy Results</button>
+          <button type="button" class="ehc-action-btn" onclick="ehcShareTwitter()">𝕏 Share on X</button>
+          <button type="button" class="ehc-action-btn" onclick="ehcShareFB()">f Share on Facebook</button>
         </div>
       </div>
     </div>
@@ -265,20 +262,25 @@
     <!-- Info / tips section -->
     <div class="ehc-info">
       <h3>How These Measurements Work</h3>
-      <p style="margin-bottom:var(--space-md);color:var(--c-text-light);">These calculations are based on standard ergonomic formulas used by occupational health professionals and the OSHA computer workstation guidelines.</p>
+      <p style="margin-bottom:var(--space-md);color:var(--c-text-light);">The numerical coefficients below are transparent <strong>The Workspace Pro heuristics</strong>, not OSHA formulas. They turn standing height into estimated starting points; the displayed ranges encourage individual adjustment.</p>
       <ul>
-        <li><strong>Standing desk height</strong> (keyboard surface) = ~55% of your standing height — elbows at 90° while standing</li>
-        <li><strong>Sitting desk height</strong> = ~27% of your standing height — derived from seated elbow height</li>
-        <li><strong>Chair seat height</strong> = ~25% of your standing height — feet flat on floor, thighs parallel</li>
-        <li><strong>Monitor height</strong> = top of screen at or just below eye level (~93% of height)</li>
-        <li><strong>Monitor distance</strong> = one arm's length (adjusted proportionally)</li>
-        <li><strong>Keyboard height</strong> = elbows at 90°, wrists straight — matches sitting desk surface</li>
+        <li><strong>Standing desk height</strong> = standing height × 0.55, with a ±1 in adjustment range</li>
+        <li><strong>Sitting desk and keyboard height</strong> = standing height × 0.405, with a ±1 in range</li>
+        <li><strong>Chair seat height</strong> = standing height × 0.25, with a ±0.5 in range</li>
+        <li><strong>Monitor top height while seated</strong> = standing height × 0.70, with a ±1 in range</li>
+        <li><strong>Monitor distance</strong> = standing height × 0.33, limited to 18–28 in, with a ±2 in range inside those limits</li>
       </ul>
+      <p style="margin-top:var(--space-md);color:var(--c-text-light);">For posture checkpoints, see OSHA's <a href="https://www.osha.gov/etools/computer-workstations" target="_blank" rel="noopener">Computer Workstations eTool</a>, including its current guidance for <a href="https://www.osha.gov/etools/computer-workstations/components/chairs" target="_blank" rel="noopener">chairs</a> and <a href="https://www.osha.gov/etools/computer-workstations/components/monitors" target="_blank" rel="noopener">monitors</a>. OSHA notes that no single posture or component arrangement fits everyone.</p>
       <div class="ehc-tip">
-        <strong>Note:</strong> These are starting guidelines. Everyone's body proportions are different. Use these as a baseline and adjust based on comfort. The most important rule: <strong>your joints should be at approximately 90° angles</strong> — elbows, hips, knees, and ankles.
+        <strong>Important:</strong> These estimates are educational starting points, not medical advice or an individual fitting. Body proportions, footwear, equipment, vision, mobility, and health needs can change a comfortable setup. Adjust for comfort and neutral posture; consult a qualified clinician or ergonomics professional for pain, injury, disability, or specialized needs.
       </div>
     </div>
   </div>
+
+  <section class="ps-section ps-section--compact" aria-labelledby="height-method-title"><div class="ps-container"><div class="ps-evidence">
+    <div class="ps-evidence__label">Fit method</div>
+    <div class="ps-evidence__body"><h2 id="height-method-title">One calculation source, six visible readings</h2><p>The diagram and result rows read the same tested height outputs. They are adjustable starting ranges—not a diagnosis or a promise of one perfect posture.</p><p class="ps-evidence__source">Evidence rail: transparent Workspace Pro heuristics plus OSHA posture checkpoints linked above.</p></div>
+  </div></div></section>
 
   <!-- CTA Section -->
   <section class="cta-section" style="max-width:var(--max-width);margin:var(--space-2xl) auto;">
@@ -314,6 +316,7 @@
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/guides">Guides</a></li>
+          <li><a href="/deals">Deals</a></li>
           <li><a href="/tips">Tips</a></li>
           <li><a href="/podcasts">Podcasts</a></li>
         </ul>
@@ -376,14 +379,16 @@
       monitorDistanceUnit: document.getElementById('monitorDistanceUnit'),
       keyboardHeight: document.getElementById('keyboardHeight'),
       keyboardHeightUnit: document.getElementById('keyboardHeightUnit'),
+      standingDeskRange: document.getElementById('standingDeskRange'),
+      sittingDeskRange: document.getElementById('sittingDeskRange'),
+      chairHeightRange: document.getElementById('chairHeightRange'),
+      monitorHeightRange: document.getElementById('monitorHeightRange'),
+      monitorDistanceRange: document.getElementById('monitorDistanceRange'),
+      keyboardHeightRange: document.getElementById('keyboardHeightRange')
     };
 
     function getHeightInches() {
       return parseFloat(heightSlider.value);
-    }
-
-    function getHeightCm() {
-      return getHeightInches() * 2.54;
     }
 
     function formatHeight(inches) {
@@ -395,49 +400,48 @@
       return ft + "'" + inchRem + '"';
     }
 
-    function roundVal(v) {
-      return Math.round(v * 10) / 10;
-    }
-
-    function toInchString(v) {
-      if (unit === 'metric') {
-        return roundVal(v * 2.54);
-      }
-      return roundVal(v);
+    function toDisplayValue(inches) {
+      var value = unit === 'metric' ? TWPHeightMath.inchesToCm(inches) : TWPHeightMath.roundVal(inches);
+      return value.toFixed(1);
     }
 
     function toUnitSuffix() {
       return unit === 'metric' ? ' cm' : ' in';
     }
 
+    function formatRange(range) {
+      return 'Range ' + toDisplayValue(range.min) + '–' + toDisplayValue(range.max) + toUnitSuffix();
+    }
+
     function updateAll() {
       var h = getHeightInches(); // total height in inches
 
-      // Ergonomic calculations
-      var standingDeskVal = h * 0.55;      // ~55% of height for standing keyboard surface
-      var sittingDeskVal = h * 0.27;       // ~27% for sitting desk surface
-      var chairVal = h * 0.25;             // ~25% for seat height
-      var monitorHeightVal = h * 0.93;     // ~93% — top of screen at eye level
-      var monitorDistVal = Math.min(28, Math.max(18, h * 0.33)); // arm's length proportional
-      var keyboardVal = sittingDeskVal;    // same as sitting desk surface
+      var estimates = TWPHeightMath.computeFromInches(h);
+      var ranges = TWPHeightMath.computeRangesFromInches(h);
 
       // Update height display
       heightDisplay.textContent = formatHeight(h);
       heightSlider.setAttribute('aria-valuetext', formatHeight(h));
 
       // Update results
-      els.standingDesk.textContent = toInchString(standingDeskVal);
+      els.standingDesk.textContent = toDisplayValue(estimates.standingDesk);
       els.standingDeskUnit.textContent = toUnitSuffix();
-      els.sittingDesk.textContent = toInchString(sittingDeskVal);
+      els.standingDeskRange.textContent = formatRange(ranges.standingDesk);
+      els.sittingDesk.textContent = toDisplayValue(estimates.sittingDesk);
       els.sittingDeskUnit.textContent = toUnitSuffix();
-      els.chairHeight.textContent = toInchString(chairVal);
+      els.sittingDeskRange.textContent = formatRange(ranges.sittingDesk);
+      els.chairHeight.textContent = toDisplayValue(estimates.chair);
       els.chairHeightUnit.textContent = toUnitSuffix();
-      els.monitorHeight.textContent = toInchString(monitorHeightVal);
+      els.chairHeightRange.textContent = formatRange(ranges.chair);
+      els.monitorHeight.textContent = toDisplayValue(estimates.monitorTop);
       els.monitorHeightUnit.textContent = toUnitSuffix();
-      els.monitorDistance.textContent = toInchString(monitorDistVal);
+      els.monitorHeightRange.textContent = formatRange(ranges.monitorTop);
+      els.monitorDistance.textContent = toDisplayValue(estimates.monitorDistance);
       els.monitorDistanceUnit.textContent = toUnitSuffix();
-      els.keyboardHeight.textContent = toInchString(keyboardVal);
+      els.monitorDistanceRange.textContent = formatRange(ranges.monitorDistance);
+      els.keyboardHeight.textContent = toDisplayValue(estimates.keyboard);
       els.keyboardHeightUnit.textContent = toUnitSuffix();
+      els.keyboardHeightRange.textContent = formatRange(ranges.keyboard);
 
       // Update SVG illustration
       updateSvg(h);
@@ -468,7 +472,7 @@
       var eyeLine = document.getElementById('ehcEyeLine');
 
       // Desk height from calculation
-      var standingDeskInches = h * 0.55;
+      var standingDeskInches = TWPHeightMath.computeFromInches(h).standingDesk;
       var deskY = Math.max(100, 320 - standingDeskInches * 2.5); // map inches to SVG coords
       deskY = Math.min(220, deskY);
 
@@ -514,48 +518,70 @@
 
     // ---- Share / Print ----
 
+    function trackAction(action) {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'height_calculator_action', { action: action });
+      }
+    }
+
     function ehcPrint() {
+      trackAction('print');
       window.print();
     }
 
-    function ehcCopyResults() {
+    function ehcCopyResults(button) {
       var h = getHeightInches();
+      var estimates = TWPHeightMath.computeFromInches(h);
+      var ranges = TWPHeightMath.computeRangesFromInches(h);
       var lines = [
-        'My Ergonomic Measurements (via The Workspace Pro)',
+        'My Estimated Ergonomic Starting Ranges (via The Workspace Pro)',
         'Height: ' + formatHeight(h),
         '',
-        '• Standing Desk Height: ' + toInchString(h * 0.55) + toUnitSuffix(),
-        '• Sitting Desk Height: ' + toInchString(h * 0.27) + toUnitSuffix(),
-        '• Chair Seat Height: ' + toInchString(h * 0.25) + toUnitSuffix(),
-        '• Monitor Height (floor to top): ' + toInchString(h * 0.93) + toUnitSuffix(),
-        '• Monitor Distance: ' + toInchString(Math.min(28, Math.max(18, h * 0.33))) + toUnitSuffix(),
-        '• Keyboard Height: ' + toInchString(h * 0.27) + toUnitSuffix(),
+        '• Standing Desk Height: ' + toDisplayValue(estimates.standingDesk) + toUnitSuffix() + ' (' + formatRange(ranges.standingDesk).toLowerCase() + ')',
+        '• Sitting Desk Height: ' + toDisplayValue(estimates.sittingDesk) + toUnitSuffix() + ' (' + formatRange(ranges.sittingDesk).toLowerCase() + ')',
+        '• Chair Seat Height: ' + toDisplayValue(estimates.chair) + toUnitSuffix() + ' (' + formatRange(ranges.chair).toLowerCase() + ')',
+        '• Monitor Top Height (seated): ' + toDisplayValue(estimates.monitorTop) + toUnitSuffix() + ' (' + formatRange(ranges.monitorTop).toLowerCase() + ')',
+        '• Monitor Distance: ' + toDisplayValue(estimates.monitorDistance) + toUnitSuffix() + ' (' + formatRange(ranges.monitorDistance).toLowerCase() + ')',
+        '• Keyboard Height: ' + toDisplayValue(estimates.keyboard) + toUnitSuffix() + ' (' + formatRange(ranges.keyboard).toLowerCase() + ')',
         '',
         'Calculate yours: https://www.theworkspacepro.com/ergonomic-height-calculator'
       ].join('\n');
 
-      navigator.clipboard.writeText(lines).then(function() {
-        var btn = event.target;
-        var orig = btn.textContent;
-        btn.textContent = '✅ Copied!';
-        setTimeout(function() { btn.textContent = orig; }, 2000);
-      }).catch(function() {
+      trackAction('copy');
+
+      function showCopied() {
+        var original = button.textContent;
+        button.textContent = '✅ Copied!';
+        setTimeout(function() { button.textContent = original; }, 2000);
+      }
+
+      function copyFallback() {
         var ta = document.createElement('textarea');
         ta.value = lines;
         document.body.appendChild(ta);
         ta.select();
         document.execCommand('copy');
         document.body.removeChild(ta);
-      });
+        showCopied();
+      }
+
+      if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+        navigator.clipboard.writeText(lines).then(showCopied).catch(copyFallback);
+      } else {
+        copyFallback();
+      }
     }
 
     function ehcShareTwitter() {
       var h = getHeightInches();
-      var text = 'My ideal workspace measurements for ' + formatHeight(h) + ': standing desk ' + toInchString(h * 0.55) + toUnitSuffix() + ', chair ' + toInchString(h * 0.25) + toUnitSuffix() + '. Calculate yours free at ';
+      var estimates = TWPHeightMath.computeFromInches(h);
+      var text = 'My estimated workspace starting points for ' + formatHeight(h) + ': standing desk ' + toDisplayValue(estimates.standingDesk) + toUnitSuffix() + ', chair ' + toDisplayValue(estimates.chair) + toUnitSuffix() + '. Estimate yours free at ';
+      trackAction('share_x');
       window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent('https://www.theworkspacepro.com/ergonomic-height-calculator'), '_blank', 'noopener');
     }
 
     function ehcShareFB() {
+      trackAction('share_facebook');
       window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent('https://www.theworkspacepro.com/ergonomic-height-calculator'), '_blank', 'noopener');
     }
 

@@ -25,6 +25,9 @@ jobs:
       - name: Build allowlisted public artifact
         run: ./scripts/build-for-pages.sh dist
 
+      - name: Validate built public artifact
+        run: node scripts/validate-public-site.mjs dist
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:

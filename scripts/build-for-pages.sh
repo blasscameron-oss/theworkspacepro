@@ -29,6 +29,7 @@ cp assets/js/analytics.js \
    assets/js/bold.js \
    assets/js/build-your-office.js \
    assets/js/compare-matrix.js \
+   assets/js/deals.js \
    assets/js/enhancements.js \
    assets/js/height-math.js \
    assets/js/perf-lite.js \
@@ -38,6 +39,11 @@ cp assets/js/analytics.js \
 
 # Allowed images (favicon + OG only; no product thumbnails)
 cp assets/images/favicon.svg assets/images/og-default.jpg "$OUTPUT_DIR"/assets/images/
+if [ -d assets/images/editorial ]; then
+  mkdir -p "$OUTPUT_DIR"/assets/images/editorial
+  find assets/images/editorial -maxdepth 1 -type f \( -name '*.avif' -o -name '*.webp' \) \
+    -exec cp {} "$OUTPUT_DIR"/assets/images/editorial/ \;
+fi
 
 # Allowed directories
 cp -R compare/* "$OUTPUT_DIR"/compare/

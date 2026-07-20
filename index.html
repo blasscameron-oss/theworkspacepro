@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="/assets/css/fonts.css">
   <link rel="stylesheet" href="/assets/css/style.css">
   <link rel="stylesheet" href="/assets/css/bold.css">
+  <link rel="stylesheet" href="/assets/css/premium-studio.css">
   
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -55,24 +56,23 @@
     (function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();
   </script>
 </head>
-<body>
+<body class="ps-shell" data-visual-master="home-workspace-blueprint-v1">
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
 
   <!-- Header -->
   <header class="site-header">
     <div class="site-header__inner">
-      <a href="/" class="logo">
-        <span class="logo__mark">W</span>
+      <a href="/" class="logo premium-logo">
+        <span class="logo__mark premium-logo__mark" aria-hidden="true">W</span>
         <span>The Workspace Pro</span>
       </a>
             <nav class="nav" aria-label="Primary">
-        <a href="/" class="nav__link nav__link--active">Home</a>
-        <a href="/guides" class="nav__link">Guides</a>
+        <a href="/#assessment" class="nav__link nav__link--active">Get My Blueprint</a>
         <a href="/tools" class="nav__link">Tools</a>
-        <a href="/tips" class="nav__link">Tips</a>
-        <a href="/about" class="nav__link">About</a>
-        <a href="/#assessment" class="nav__link nav__cta">Take the Quiz</a>
+        <a href="/guides" class="nav__link">Guides</a>
+        <a href="/compare/" class="nav__link">Compare</a>
+        <a href="/deals" class="nav__link">Deals</a>
       </nav>
       <div class="header-actions">
         <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
@@ -92,40 +92,56 @@
       <span style="font-weight:700;">Menu</span>
       <button class="menu-toggle" type="button" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
-    <a href="/" class="mobile-nav__link">Home</a>
-    <a href="/guides" class="mobile-nav__link">Guides</a>
+    <a href="/#assessment" class="mobile-nav__link">Get My Blueprint</a>
     <a href="/tools" class="mobile-nav__link">Tools</a>
-    <a href="/build-your-office" class="mobile-nav__link">Build Your Office</a>
-    <a href="/ergonomic-height-calculator" class="mobile-nav__link">Height Calculator</a>
-    <a href="/workspace-setup-calculator" class="mobile-nav__link">Setup Calculator</a>
-    <a href="/tips" class="mobile-nav__link">Tips</a>
-    <a href="/podcasts" class="mobile-nav__link">Podcasts</a>
-    <a href="/about" class="mobile-nav__link">About</a>
-    <a href="/contact" class="mobile-nav__link">Contact</a>
-    <a href="/#assessment" class="mobile-nav__cta">Take the Quiz</a>
+    <a href="/guides" class="mobile-nav__link">Guides</a>
+    <a href="/compare/" class="mobile-nav__link">Compare</a>
+    <a href="/deals" class="mobile-nav__link">Deals</a>
+    <a href="/#assessment" class="mobile-nav__cta">Start my blueprint</a>
   </nav>
 
   <main id="main-content">
   <!-- Hero with Assessment Tool -->
-  <section class="hero" id="assessment" style="position:relative;">
+  <section class="hero premium-hero" id="assessment" style="position:relative;">
     <div class="hero-gradient"></div>
     <div class="container">
       <div class="hero__grid">
         <!-- Left: Pitch -->
-        <div>
+        <div class="premium-hero__content">
           <div class="hero__eyebrow">
-            <span>✦ Free Ergonomic Assessment</span>
+            <span>Workspace Blueprint · Free · No signup</span>
           </div>
-          <h1 class="hero__title">Build a workspace that <em>actually fits</em> your body.</h1>
+          <h1 class="hero__title">A workspace designed around <em>your measurements.</em></h1>
           <p class="hero__desc">
-            Most desk setups are quietly causing back pain, neck strain, and wasted money. 
-            Take our 2-minute assessment to get a personalized setup with specific product 
-            recommendations, ergonomic rationale, and a printable checklist.
+            Turn nine practical answers into a body-fit blueprint: starting measurements,
+            comfort priorities, a transparent product shortlist, and three clear next moves.
           </p>
           <div class="hero__actions">
-            <a href="#assessment-card" class="btn btn--primary btn--lg">Start Assessment →</a>
-            <a href="/guides" class="btn btn--secondary btn--lg">Browse Guides</a>
+            <a href="#assessment-card" class="btn btn--primary btn--lg">Build my blueprint →</a>
+            <a href="/about" class="btn btn--secondary btn--lg">See our method</a>
           </div>
+          <figure class="workspace-instrument" aria-labelledby="instrument-title instrument-desc">
+            <picture class="workspace-instrument__photo">
+              <source media="(max-width: 600px)" type="image/avif" srcset="/assets/images/editorial/home-workspace-blueprint-v1-mobile.avif" width="1080" height="1350">
+              <source media="(max-width: 600px)" type="image/webp" srcset="/assets/images/editorial/home-workspace-blueprint-v1-mobile.webp" width="1080" height="1350">
+              <source type="image/avif" srcset="/assets/images/editorial/home-workspace-blueprint-v1-desktop.avif" width="1920" height="1080">
+              <img src="/assets/images/editorial/home-workspace-blueprint-v1-desktop.webp" alt="Warm editorial home workspace with an adjustable chair, desk, and monitor ready for personalized fit measurements" width="1920" height="1080" sizes="(max-width: 600px) 100vw, (max-width: 1100px) 54vw, 620px" fetchpriority="high" decoding="async">
+            </picture>
+            <svg class="workspace-instrument__drawing" viewBox="0 0 620 300" role="img" aria-labelledby="instrument-title instrument-desc">
+              <title id="instrument-title">Workspace fit blueprint preview</title>
+              <desc id="instrument-desc">A line drawing of a desk, chair, and monitor with measurement rails for sitting desk height, chair height, monitor top, and viewing distance.</desc>
+              <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M245 174h270M278 174v94M482 174v94"/><rect x="352" y="72" width="126" height="82" rx="5"/>
+                <path d="M415 154v20M387 174h56M166 181h72v28h-72zM180 209v57M224 209v57M142 266h104"/>
+              </g>
+              <g class="workspace-instrument__rails" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 6"><path d="M262 174V55M150 181V266M352 58h126M166 128h312"/></g>
+              <g class="workspace-instrument__labels" fill="currentColor" font-size="13" font-family="Inter, sans-serif">
+                <text x="270" y="66">DESK HEIGHT</text><text x="70" y="230">CHAIR HEIGHT</text><text x="370" y="48">MONITOR TOP</text><text x="250" y="119">VIEWING DISTANCE</text>
+              </g>
+              <circle cx="262" cy="174" r="5" fill="currentColor"/><circle cx="150" cy="181" r="5" fill="currentColor"/>
+            </svg>
+            <figcaption>Four verified starting points, calculated from one shared ergonomic model.</figcaption>
+          </figure>
           <div class="hero__stats">
             <div>
               <div class="stat__number" data-counter data-target="16">0</div>
@@ -145,9 +161,10 @@
         <!-- Right: Assessment Card -->
         <div id="assessment-card" class="assessment-card">
           <div class="assessment-card__header">
-            <h2 class="assessment-card__title">Workspace Assessment</h2>
-            <p class="assessment-card__desc">Answer a few questions about your work, body, and space. Get instant recommendations.</p>
-            <div class="assessment-card__time">⏱ ~2 minutes · No signup required</div>
+            <p class="assessment-card__kicker">Guided Fit Journey</p>
+            <h2 class="assessment-card__title">Create My Workspace Blueprint</h2>
+            <p class="assessment-card__desc">Tell us how you work, what hurts, and what fits. We’ll explain every recommendation.</p>
+            <div class="assessment-card__time">About 2 minutes · Private by default</div>
           </div>
 
           <!-- Step indicator -->
@@ -166,22 +183,22 @@
             <div class="step-question">What best describes your work?</div>
             <div class="choice-grid">
               <button class="choice-card" data-question="workType" data-value="developer">
-                <div class="choice-card__icon">💻</div>
+                <div class="choice-card__icon choice-card__icon--instrument" aria-hidden="true"></div>
                 <div class="choice-card__label">Software / Developer</div>
                 <div class="choice-card__desc">Coding, multiple monitors, long focus sessions</div>
               </button>
               <button class="choice-card" data-question="workType" data-value="creative">
-                <div class="choice-card__icon">🎨</div>
+                <div class="choice-card__icon choice-card__icon--instrument" aria-hidden="true"></div>
                 <div class="choice-card__label">Creative / Design</div>
                 <div class="choice-card__desc">Visual work, drawing, editing, color-sensitive</div>
               </button>
               <button class="choice-card" data-question="workType" data-value="writing">
-                <div class="choice-card__icon">✍️</div>
+                <div class="choice-card__icon choice-card__icon--instrument" aria-hidden="true"></div>
                 <div class="choice-card__label">Writing / Admin</div>
                 <div class="choice-card__desc">Documents, email, meetings, research</div>
               </button>
               <button class="choice-card" data-question="workType" data-value="general">
-                <div class="choice-card__icon">📊</div>
+                <div class="choice-card__icon choice-card__icon--instrument" aria-hidden="true"></div>
                 <div class="choice-card__label">General / Mixed</div>
                 <div class="choice-card__desc">A bit of everything throughout the day</div>
               </button>
@@ -193,22 +210,22 @@
             <div class="step-question">How many hours do you sit at your desk daily?</div>
             <div class="choice-grid">
               <button class="choice-card" data-question="hours" data-value="under-4">
-                <div class="choice-card__icon">🌱</div>
+                <div class="choice-card__icon choice-card__icon--instrument" aria-hidden="true"></div>
                 <div class="choice-card__label">Under 4 hours</div>
                 <div class="choice-card__desc">Part-time or desk-light</div>
               </button>
               <button class="choice-card" data-question="hours" data-value="4-6">
-                <div class="choice-card__icon">⏰</div>
+                <div class="choice-card__icon choice-card__icon--instrument" aria-hidden="true"></div>
                 <div class="choice-card__label">4–6 hours</div>
                 <div class="choice-card__desc">Standard workday</div>
               </button>
               <button class="choice-card" data-question="hours" data-value="6-8">
-                <div class="choice-card__icon">💼</div>
+                <div class="choice-card__icon choice-card__icon--instrument" aria-hidden="true"></div>
                 <div class="choice-card__label">6–8 hours</div>
                 <div class="choice-card__desc">Full-time desk work</div>
               </button>
               <button class="choice-card" data-question="hours" data-value="8+">
-                <div class="choice-card__icon">🔥</div>
+                <div class="choice-card__icon choice-card__icon--instrument" aria-hidden="true"></div>
                 <div class="choice-card__label">8+ hours</div>
                 <div class="choice-card__desc">Extended sessions, need max comfort</div>
               </button>
@@ -218,23 +235,23 @@
               <div class="step-question">Any pain or discomfort?</div>
               <div class="choice-grid">
                 <button class="choice-card" data-question="pain" data-value="back">
-                  <div class="choice-card__icon">🔙</div>
+                  <div class="choice-card__icon choice-card__icon--instrument" aria-hidden="true"></div>
                   <div class="choice-card__label">Lower back</div>
                 </button>
                 <button class="choice-card" data-question="pain" data-value="neck">
-                  <div class="choice-card__icon">🦒</div>
+                  <div class="choice-card__icon choice-card__icon--instrument" aria-hidden="true"></div>
                   <div class="choice-card__label">Neck / shoulders</div>
                 </button>
                 <button class="choice-card" data-question="pain" data-value="wrist">
-                  <div class="choice-card__icon">✋</div>
+                  <div class="choice-card__icon choice-card__icon--instrument" aria-hidden="true"></div>
                   <div class="choice-card__label">Wrists / hands</div>
                 </button>
                 <button class="choice-card" data-question="pain" data-value="eyes">
-                  <div class="choice-card__icon">👁️</div>
+                  <div class="choice-card__icon choice-card__icon--instrument" aria-hidden="true"></div>
                   <div class="choice-card__label">Eye strain</div>
                 </button>
                 <button class="choice-card" data-question="pain" data-value="none">
-                  <div class="choice-card__icon">✨</div>
+                  <div class="choice-card__icon choice-card__icon--instrument" aria-hidden="true"></div>
                   <div class="choice-card__label">No pain</div>
                   <div class="choice-card__desc">Just want to prevent issues</div>
                 </button>
@@ -247,17 +264,17 @@
             <div class="step-question">Do you want to stand while working?</div>
             <div class="choice-grid">
               <button class="choice-card" data-question="standing" data-value="yes">
-                <div class="choice-card__icon">🧍</div>
+                <div class="choice-card__icon choice-card__icon--instrument" aria-hidden="true"></div>
                 <div class="choice-card__label">Yes, definitely</div>
                 <div class="choice-card__desc">I want a standing desk</div>
               </button>
               <button class="choice-card" data-question="standing" data-value="sometimes">
-                <div class="choice-card__icon">🔄</div>
+                <div class="choice-card__icon choice-card__icon--instrument" aria-hidden="true"></div>
                 <div class="choice-card__label">Sometimes</div>
                 <div class="choice-card__desc">I like to alternate</div>
               </button>
               <button class="choice-card" data-question="standing" data-value="no">
-                <div class="choice-card__icon">🪑</div>
+                <div class="choice-card__icon choice-card__icon--instrument" aria-hidden="true"></div>
                 <div class="choice-card__label">No, I prefer sitting</div>
                 <div class="choice-card__desc">A good chair is priority</div>
               </button>
@@ -267,17 +284,17 @@
               <div class="step-question">How much space do you have?</div>
               <div class="choice-grid">
                 <button class="choice-card" data-question="space" data-value="small">
-                  <div class="choice-card__icon">📐</div>
+                  <div class="choice-card__icon choice-card__icon--instrument" aria-hidden="true"></div>
                   <div class="choice-card__label">Tight / small</div>
                   <div class="choice-card__desc">Corner of a room, small apartment</div>
                 </button>
                 <button class="choice-card" data-question="space" data-value="medium">
-                  <div class="choice-card__icon">🏠</div>
+                  <div class="choice-card__icon choice-card__icon--instrument" aria-hidden="true"></div>
                   <div class="choice-card__label">Medium</div>
                   <div class="choice-card__desc">Dedicated desk area in a room</div>
                 </button>
                 <button class="choice-card" data-question="space" data-value="large">
-                  <div class="choice-card__icon">🏢</div>
+                  <div class="choice-card__icon choice-card__icon--instrument" aria-hidden="true"></div>
                   <div class="choice-card__label">Large</div>
                   <div class="choice-card__desc">Dedicated home office room</div>
                 </button>
@@ -290,22 +307,22 @@
             <div class="step-question">What's your total budget?</div>
             <div class="choice-grid">
               <button class="choice-card" data-question="budget" data-value="under-500">
-                <div class="choice-card__icon">💵</div>
+                <div class="choice-card__icon choice-card__icon--instrument" aria-hidden="true"></div>
                 <div class="choice-card__label">Under $500</div>
                 <div class="choice-card__desc">Essential upgrades only</div>
               </button>
               <button class="choice-card" data-question="budget" data-value="500-1000">
-                <div class="choice-card__icon">💰</div>
+                <div class="choice-card__icon choice-card__icon--instrument" aria-hidden="true"></div>
                 <div class="choice-card__label">$500 – $1,000</div>
                 <div class="choice-card__desc">Good quality, smart picks</div>
               </button>
               <button class="choice-card" data-question="budget" data-value="1000-2000">
-                <div class="choice-card__icon">💎</div>
+                <div class="choice-card__icon choice-card__icon--instrument" aria-hidden="true"></div>
                 <div class="choice-card__label">$1,000 – $2,000</div>
                 <div class="choice-card__desc">Premium comfort, long-term investment</div>
               </button>
               <button class="choice-card" data-question="budget" data-value="2000+">
-                <div class="choice-card__icon">👑</div>
+                <div class="choice-card__icon choice-card__icon--instrument" aria-hidden="true"></div>
                 <div class="choice-card__label">$2,000+</div>
                 <div class="choice-card__desc">No compromises, top-tier setup</div>
               </button>
@@ -315,17 +332,17 @@
               <div class="step-question">When do you work most?</div>
               <div class="choice-grid">
                 <button class="choice-card" data-question="workTime" data-value="day">
-                  <div class="choice-card__icon">☀️</div>
+                  <div class="choice-card__icon choice-card__icon--instrument" aria-hidden="true"></div>
                   <div class="choice-card__label">Daytime</div>
                   <div class="choice-card__desc">Natural light available</div>
                 </button>
                 <button class="choice-card" data-question="workTime" data-value="evening">
-                  <div class="choice-card__icon">🌆</div>
+                  <div class="choice-card__icon choice-card__icon--instrument" aria-hidden="true"></div>
                   <div class="choice-card__label">Evenings</div>
                   <div class="choice-card__desc">Mix of natural and artificial light</div>
                 </button>
                 <button class="choice-card" data-question="workTime" data-value="night">
-                  <div class="choice-card__icon">🌙</div>
+                  <div class="choice-card__icon choice-card__icon--instrument" aria-hidden="true"></div>
                   <div class="choice-card__label">Late night</div>
                   <div class="choice-card__desc">Eye strain and lighting are critical</div>
                 </button>
@@ -338,22 +355,22 @@
             <div class="step-question">What matters most to you?</div>
             <div class="choice-grid">
               <button class="choice-card" data-question="priority" data-value="budget">
-                <div class="choice-card__icon">🎯</div>
+                <div class="choice-card__icon choice-card__icon--instrument" aria-hidden="true"></div>
                 <div class="choice-card__label">Best value</div>
                 <div class="choice-card__desc">Maximum bang for buck</div>
               </button>
               <button class="choice-card" data-question="priority" data-value="health">
-                <div class="choice-card__icon">❤️</div>
+                <div class="choice-card__icon choice-card__icon--instrument" aria-hidden="true"></div>
                 <div class="choice-card__label">Health & comfort</div>
                 <div class="choice-card__desc">Pain prevention is worth it</div>
               </button>
               <button class="choice-card" data-question="priority" data-value="productivity">
-                <div class="choice-card__icon">⚡</div>
+                <div class="choice-card__icon choice-card__icon--instrument" aria-hidden="true"></div>
                 <div class="choice-card__label">Productivity</div>
                 <div class="choice-card__desc">Gear that helps me work better</div>
               </button>
               <button class="choice-card" data-question="priority" data-value="space">
-                <div class="choice-card__icon">📦</div>
+                <div class="choice-card__icon choice-card__icon--instrument" aria-hidden="true"></div>
                 <div class="choice-card__label">Space-saving</div>
                 <div class="choice-card__desc">Compact and efficient</div>
               </button>
@@ -374,7 +391,7 @@
             
             <div class="assessment-nav" id="assessmentNav" style="display:flex;">
               <button class="btn btn--ghost" data-prev>← Back</button>
-              <button class="btn btn--primary" data-next>Get My Results →</button>
+              <button class="btn btn--primary" data-next>Generate My Blueprint →</button>
             </div>
           </div>
 
@@ -395,7 +412,7 @@
   <section style="padding: var(--space-xl) 0;">
     <div class="container">
       <div class="deal-banner" id="dealBanner">
-        <div class="deal-banner__badge">Editor’s pick</div>
+        <div class="deal-banner__badge">Featured value pick</div>
         <div class="deal-banner__content">
           <div class="deal-banner__title">Branch Ergonomic Chair</div>
           <div class="deal-banner__desc">Strong budget-to-mid pick with real adjustability. Check current price on the maker site — we don’t invent sale badges.</div>
@@ -403,7 +420,7 @@
             <span class="deal-banner__price-new">See live price</span>
           </div>
         </div>
-        <a href="https://www.branchfurniture.com/products/ergonomic-chair" target="_blank" rel="sponsored noopener noreferrer" class="deal-banner__cta">View product →</a>
+        <a href="/deals" class="deal-banner__cta">Browse all deals →</a>
       </div>
     </div>
   </section>
@@ -418,6 +435,7 @@
       <div class="quick-tools" aria-label="Popular free tools">
         <a href="#assessment">🧭 Free quiz</a>
         <a href="/ergonomic-height-calculator">📏 Height calculator</a>
+        <a href="/guides/desk-chair-height-chart">📊 Desk &amp; chair chart</a>
         <a href="/build-your-office">🛠️ Office builder</a>
         <a href="/guides/best-standing-desks-under-500">💰 Desks under $500</a>
         <a href="/compare/">⚖️ Compare products</a>
@@ -562,9 +580,15 @@
           <div class="hero__eyebrow">In-depth Guides</div>
           <h2>Guides for every major workspace decision</h2>
         </div>
-        <a href="/guides" class="btn btn--secondary">All 16 Guides →</a>
+        <a href="/guides" class="btn btn--secondary">All 17 Guides →</a>
       </div>
       <div class="guide-grid">
+        <a href="/guides/desk-chair-height-chart" class="guide-card">
+          <span class="guide-card__category">Ergonomics</span>
+          <h3 class="guide-card__title">Desk &amp; Chair Height Chart</h3>
+          <p class="guide-card__desc">Look up practical chair, seated desk, and standing desk ranges by body height in imperial and metric units.</p>
+          <div class="guide-card__meta"><span>8 min read</span><span>·</span><span>Updated 2026</span></div>
+        </a>
         <a href="/guides/ergonomic-office-chair-buying-guide" class="guide-card">
           <span class="guide-card__category">Chairs</span>
           <h3 class="guide-card__title">Ergonomic Office Chair Buying Guide</h3>
@@ -690,6 +714,7 @@
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/guides">Guides</a></li>
+          <li><a href="/deals">Deals</a></li>
           <li><a href="/tips">Tips</a></li>
           <li><a href="/podcasts">Podcasts</a></li>
         </ul>
@@ -725,6 +750,7 @@
   <script src="/assets/js/analytics.js" defer></script>
   <script src="/assets/js/site.js" defer></script>
   <script src="/assets/js/perf-lite.js" defer></script>
+  <script src="/assets/js/height-math.js" defer></script>
   <script src="/assets/js/assessment.js" defer></script>
   <script src="/assets/js/enhancements.js" defer></script>
   <script src="/assets/js/bold.js" defer></script>

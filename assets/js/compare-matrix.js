@@ -72,6 +72,26 @@
     return '~$' + p.price;
   }
 
+  function budgetLabel(value) {
+    var labels = {
+      'under-150': 'Under ~$150',
+      'under-350': 'Under ~$350',
+      'under-600': 'Under ~$600',
+      'under-1000': 'Under ~$1,000',
+      premium: 'Premium / $1,000+'
+    };
+    return labels[value] || 'Budget not listed';
+  }
+
+  function productMotif() {
+    return '<div class="matrix-card__img matrix-card__img--ph" aria-hidden="true">' +
+      '<svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<rect x="10" y="14" width="52" height="44" rx="4" stroke="currentColor"/>' +
+      '<path d="M18 49V25M27 49V33M36 49V20M45 49V29M54 49V24" stroke="currentColor"/>' +
+      '<path d="M14 54H58M14 51V57M58 51V57" stroke="currentColor"/>' +
+      '</svg></div>';
+  }
+
   function render() {
     var grid = $('#matrixGrid');
     var count = $('#matrixCount');
@@ -91,10 +111,10 @@
           ? '<img class="matrix-card__img" src="' +
             escapeHtml(p.image) +
             '" alt="" width="72" height="72" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">'
-          : '<div class="matrix-card__img matrix-card__img--ph" aria-hidden="true">📦</div>';
+          : productMotif();
         var rel = p.asin ? ' rel="sponsored noopener noreferrer" target="_blank"' : ' rel="noopener noreferrer" target="_blank"';
         return (
-          '<article class="matrix-card">' +
+          '<article class="matrix-card ps-card">' +
           img +
           '<div class="matrix-card__body">' +
           '<div class="matrix-card__cat">' +
@@ -104,6 +124,10 @@
           escapeHtml(p.name) +
           '</h3>' +
           (p.blurb ? '<p class="matrix-card__blurb">' + escapeHtml(p.blurb) + '</p>' : '') +
+          '<dl class="matrix-card__fingerprint" aria-label="Published fit fingerprint">' +
+          '<div><dt>Category</dt><dd>' + escapeHtml(p.categoryLabel || p.category) + '</dd></div>' +
+          '<div><dt>Reference band</dt><dd>' + escapeHtml(budgetLabel(p.budget)) + '</dd></div>' +
+          '</dl>' +
           '<div class="matrix-card__meta">' +
           '<span class="matrix-card__price">' +
           escapeHtml(priceLabel(p)) +

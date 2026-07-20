@@ -129,6 +129,7 @@
     }
   </style>
 <link rel="stylesheet" href="/assets/css/reviews.css">
+  <link rel="stylesheet" href="/assets/css/premium-studio.css">
   <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/images/favicon.svg">
   <meta name="theme-color" content="#c2410c">
@@ -136,19 +137,18 @@
     (function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();
   </script>
 </head>
-<body>
+<body class="ps-shell" data-visual-master="workspace-setup-blueprint-v1">
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <header class="site-header">
     <div class="site-header__inner">
       <a href="/" class="logo"><span class="logo__mark">W</span><span>The Workspace Pro</span></a>
             <nav class="nav" aria-label="Primary">
-        <a href="/" class="nav__link">Home</a>
-        <a href="/guides" class="nav__link">Guides</a>
+        <a href="/#assessment" class="nav__link">Get My Blueprint</a>
         <a href="/tools" class="nav__link nav__link--active">Tools</a>
-        <a href="/tips" class="nav__link">Tips</a>
-        <a href="/about" class="nav__link">About</a>
-        <a href="/#assessment" class="nav__link nav__cta">Take the Quiz</a>
+        <a href="/guides" class="nav__link">Guides</a>
+        <a href="/compare/" class="nav__link">Compare</a>
+        <a href="/deals" class="nav__link">Deals</a>
       </nav>
       <div class="header-actions">
         <button class="theme-toggle" type="button" aria-label="Toggle dark mode"><span class="theme-toggle__icon">☾</span></button>
@@ -162,25 +162,20 @@
       <span style="font-weight:700;">Menu</span>
       <button class="menu-toggle" type="button" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
-    <a href="/" class="mobile-nav__link">Home</a>
-    <a href="/guides" class="mobile-nav__link">Guides</a>
+    <a href="/#assessment" class="mobile-nav__link">Get My Blueprint</a>
     <a href="/tools" class="mobile-nav__link">Tools</a>
-    <a href="/build-your-office" class="mobile-nav__link">Build Your Office</a>
-    <a href="/ergonomic-height-calculator" class="mobile-nav__link">Height Calculator</a>
-    <a href="/workspace-setup-calculator" class="mobile-nav__link">Setup Calculator</a>
-    <a href="/tips" class="mobile-nav__link">Tips</a>
-    <a href="/podcasts" class="mobile-nav__link">Podcasts</a>
-    <a href="/about" class="mobile-nav__link">About</a>
-    <a href="/contact" class="mobile-nav__link">Contact</a>
-    <a href="/#assessment" class="mobile-nav__cta">Take the Quiz</a>
+    <a href="/guides" class="mobile-nav__link">Guides</a>
+    <a href="/compare/" class="mobile-nav__link">Compare</a>
+    <a href="/deals" class="mobile-nav__link">Deals</a>
   </nav>
 
   <main id="main-content">
-  <section class="page-header">
-    <div class="container">
-      <div class="page-header__eyebrow">Interactive Tool</div>
-      <h1 class="page-header__title">Workspace Setup Calculator</h1>
-      <p class="page-header__desc">Tell us your budget, what matters most, and what hurts. We'll build a prioritized shopping list with real products that fit your needs and stay under budget.</p>
+  <section class="ps-page-header" data-visual-master="workspace-setup-blueprint-v1">
+    <div class="ps-container ps-page-header__grid">
+      <div><span class="ps-kicker">Workspace Lab · Setup blueprint</span>
+      <h1 class="ps-page-header__title">Turn constraints into a practical setup.</h1>
+      <p class="ps-lede">Balance budget, priorities, discomfort, and room size into an explainable shopping plan.</p></div>
+      <div class="ps-measure" aria-label="Four planning inputs"><span class="ps-measure__rail" aria-hidden="true"></span><span class="ps-measure__value">4 planning inputs</span></div>
     </div>
   </section>
 
@@ -211,28 +206,28 @@
       <p class="wsc-step-desc">What categories matter most? Your budget will be weighted toward your selections.</p>
       <div class="wsc-grid" id="wscPriorityGrid">
         <label class="wsc-check-card" data-priority="chair">
-          <input type="checkbox"><span>🪑 Chair</span>
+          <input type="checkbox"><span>Chair</span>
         </label>
         <label class="wsc-check-card" data-priority="desk">
-          <input type="checkbox"><span>🪵 Desk</span>
+          <input type="checkbox"><span>Desk</span>
         </label>
         <label class="wsc-check-card" data-priority="monitor">
-          <input type="checkbox"><span>🖥️ Monitor</span>
+          <input type="checkbox"><span>Monitor</span>
         </label>
         <label class="wsc-check-card" data-priority="lighting">
-          <input type="checkbox"><span>💡 Lighting</span>
+          <input type="checkbox"><span>Lighting</span>
         </label>
         <label class="wsc-check-card" data-priority="keyboard">
-          <input type="checkbox"><span>⌨️ Keyboard</span>
+          <input type="checkbox"><span>Keyboard</span>
         </label>
         <label class="wsc-check-card" data-priority="mouse">
-          <input type="checkbox"><span>🖱️ Mouse</span>
+          <input type="checkbox"><span>Mouse</span>
         </label>
         <label class="wsc-check-card" data-priority="accessories">
-          <input type="checkbox"><span>📦 Accessories</span>
+          <input type="checkbox"><span>Accessories</span>
         </label>
         <label class="wsc-check-card" data-priority="cable">
-          <input type="checkbox"><span>🔌 Cable Mgmt</span>
+          <input type="checkbox"><span>Cable Mgmt</span>
         </label>
       </div>
     </div>
@@ -245,11 +240,11 @@
       </div>
       <p class="wsc-step-desc">Select any discomfort you're experiencing. We'll prioritize products that help.</p>
       <div class="wsc-pain-grid" id="wscPainGrid">
-        <button type="button" class="wsc-pain-btn" data-pain="back">🔙 Back Pain</button>
-        <button type="button" class="wsc-pain-btn" data-pain="neck">🦒 Neck Pain</button>
-        <button type="button" class="wsc-pain-btn" data-pain="eyes">👁️ Eye Strain</button>
-        <button type="button" class="wsc-pain-btn" data-pain="wrist">✋ Wrist Pain</button>
-        <button type="button" class="wsc-pain-btn" data-pain="none">✨ None / Prevention</button>
+        <button type="button" class="wsc-pain-btn" data-pain="back">Back Pain</button>
+        <button type="button" class="wsc-pain-btn" data-pain="neck">Neck Pain</button>
+        <button type="button" class="wsc-pain-btn" data-pain="eyes">Eye Strain</button>
+        <button type="button" class="wsc-pain-btn" data-pain="wrist">Wrist Pain</button>
+        <button type="button" class="wsc-pain-btn" data-pain="none">None / Prevention</button>
       </div>
     </div>
 
@@ -262,15 +257,15 @@
       <p class="wsc-step-desc">How much space do you have for your workspace?</p>
       <div class="wsc-radio-grid" id="wscRoomGrid">
         <div class="wsc-radio-card" data-room="small" onclick="wscSelectRoom(this)">
-          <div class="wsc-radio-card__icon">📐</div>
+          <div class="wsc-radio-card__icon" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 26 26 4v22H4Z"/><path d="M10 22h10V12L10 22Z"/></svg></div>
           <div class="wsc-radio-card__label">Small (closet)</div>
         </div>
         <div class="wsc-radio-card" data-room="medium" onclick="wscSelectRoom(this)">
-          <div class="wsc-radio-card__icon">🏠</div>
+          <div class="wsc-radio-card__icon" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 26 26 4v22H4Z"/><path d="M10 22h10V12L10 22Z"/></svg></div>
           <div class="wsc-radio-card__label">Medium (corner)</div>
         </div>
         <div class="wsc-radio-card" data-room="large" onclick="wscSelectRoom(this)">
-          <div class="wsc-radio-card__icon">🏢</div>
+          <div class="wsc-radio-card__icon" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 26 26 4v22H4Z"/><path d="M10 22h10V12L10 22Z"/></svg></div>
           <div class="wsc-radio-card__label">Large (dedicated room)</div>
         </div>
       </div>
@@ -282,10 +277,10 @@
     </div>
 
     <!-- Results -->
-    <div class="wsc-results" id="wscResults">
+    <div class="wsc-results blueprint-panel" id="wscResults">
       <!-- Budget tracker -->
       <div class="wsc-card">
-        <h3 style="font-family:var(--font-display);margin-bottom:var(--space-md);">💰 Budget Overview</h3>
+        <h3 style="font-family:var(--font-display);margin-bottom:var(--space-md);">Budget Overview</h3>
         <div class="wsc-summary-grid">
           <div class="wsc-stat">
             <div class="wsc-stat__value" id="wscTotalBudget">$1,000</div>
@@ -304,7 +299,7 @@
             <div class="wsc-stat__label">Items</div>
           </div>
         </div>
-        <div class="wsc-budget-bar">
+        <div class="wsc-budget-bar ps-measure" aria-label="Live budget allocation">
           <div class="wsc-budget-fill" id="wscBudgetFill" style="width:0%"></div>
         </div>
       </div>
@@ -313,9 +308,9 @@
       <div class="wsc-product-list" id="wscProductList"></div>
 
       <div class="wsc-actions">
-        <button class="wsc-action-btn wsc-action-btn--primary" onclick="wscPrint()">🖨️ Print List</button>
-        <button class="wsc-action-btn" onclick="wscCopyList()">📋 Copy List</button>
-        <button class="wsc-action-btn" onclick="wscReset()">🔄 Start Over</button>
+        <button class="wsc-action-btn wsc-action-btn--primary" onclick="wscPrint()">Print List</button>
+        <button class="wsc-action-btn" onclick="wscCopyList()">Copy List</button>
+        <button class="wsc-action-btn" onclick="wscReset()">Start Over</button>
       </div>
 
       <div class="ehc-info" style="margin-top:var(--space-xl);">
@@ -324,6 +319,11 @@
       </div>
     </div>
   </div>
+
+  <section class="ps-section ps-section--compact" aria-labelledby="setup-method-title"><div class="ps-container"><div class="ps-evidence">
+    <div class="ps-evidence__label">Plan method</div>
+    <div class="ps-evidence__body"><h2 id="setup-method-title">Your constraints stay visible</h2><p>The live allocation bar and shopping plan are derived from the budget, priorities, discomfort flags, and room size selected above. Product links never change the plan’s stated budget.</p><p class="ps-evidence__source">Method: user-controlled weighting against the curated product dataset; prices are estimates and may change.</p></div>
+  </div></div></section>
 
   <!-- CTA Section -->
   <section class="cta-section" style="max-width:var(--max-width);margin:var(--space-2xl) auto;">
@@ -359,6 +359,7 @@
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/guides">Guides</a></li>
+          <li><a href="/deals">Deals</a></li>
           <li><a href="/tips">Tips</a></li>
           <li><a href="/podcasts">Podcasts</a></li>
         </ul>
@@ -710,7 +711,7 @@
           '  <div class="wsc-product-cat">' + item.cat + '</div>',
           '  <div class="wsc-product-name">' + item.name + '</div>',
           '  <div class="wsc-product-price">$' + item.price.toLocaleString() + '</div>',
-          '  <div class="wsc-product-why">💡 <strong>Why this matters:</strong> ' + item.why + '</div>',
+          '  <div class="wsc-product-why"><strong>Why this matters:</strong> ' + item.why + '</div>',
           '  <a href="' + item.url + '" target="_blank" rel="sponsored noopener noreferrer" class="wsc-product-link">View Product →</a>',
           '</div>'
         ].join('');

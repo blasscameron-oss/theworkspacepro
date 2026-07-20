@@ -1,0 +1,360 @@
+{
+  "schemaVersion": 1,
+  "program": "Premium Studio Workspace Blueprint",
+  "updated": "2026-07-18",
+  "masterCount": 36,
+  "routeCount": 39,
+  "variantContract": {
+    "source": "assets/images/editorial/{slug}-master.png",
+    "desktop": {
+      "avif": "assets/images/editorial/{slug}-desktop.avif",
+      "webp": "assets/images/editorial/{slug}-desktop.webp",
+      "width": 1920,
+      "height": 1080,
+      "maxBytes": 122880
+    },
+    "mobile": {
+      "avif": "assets/images/editorial/{slug}-mobile.avif",
+      "webp": "assets/images/editorial/{slug}-mobile.webp",
+      "width": 1080,
+      "height": 1350,
+      "maxBytes": 81920
+    }
+  },
+  "globalConstraints": [
+    "Photorealistic editorial photography with warm natural side light and believable everyday texture.",
+    "No text, logos, watermarks, trademarks, fake interfaces, or recognizable branded products.",
+    "No generated image may represent a specific affiliate product.",
+    "Preserve realistic anatomy, posture, furniture geometry, cable routing, and object scale.",
+    "Use diverse adults and body types without tokenizing, stereotyping, glamorizing, or medicalizing the subject.",
+    "Measurement labels, diagrams, ticks, fit zones, and evidence marks are added later as code-native SVG or CSS."
+  ],
+  "masters": [
+    {
+      "slug": "home-workspace-blueprint-v1",
+      "routes": ["/"],
+      "type": "editorial",
+      "approval": "approved-production",
+      "altText": "A person working comfortably at a thoughtfully arranged home workstation in warm daylight.",
+      "focalPoint": {"desktop": "68% 48%", "mobile": "62% 48%"},
+      "sourceDimensions": {"width": 1672, "height": 941},
+      "reviewNotes": "Approved for composition, anatomy, furniture geometry, absence of readable branding, and generic-product safety. Mobile crop is intentionally shifted toward the person and monitor.",
+      "promptBrief": "Flagship wide home-office scene with one diverse adult in a natural neutral posture, tactile wood, woven fabric, a generic monitor and chair, subtle lived-in detail, and generous uncluttered negative space for headline copy; premium but attainable rather than showroom-perfect."
+    },
+    {
+      "slug": "lost-page-drafting-table-v1",
+      "routes": ["/404.html"],
+      "type": "editorial-utility",
+      "approval": "planned",
+      "altText": "An unfinished workspace plan resting on a quiet drafting table.",
+      "focalPoint": {"desktop": "50% 50%", "mobile": "50% 46%"},
+      "promptBrief": "Quiet still life of an unfinished workspace plan on a drafting table, folded ruler and pencil nearby, gentle afternoon light, ample empty surface, no readable marks."
+    },
+    {
+      "slug": "studio-method-notebook-v1",
+      "routes": ["/about", "/contact"],
+      "type": "editorial-utility",
+      "approval": "planned",
+      "altText": "A design notebook, measuring tools, and material samples on a studio worktable.",
+      "focalPoint": {"desktop": "61% 48%", "mobile": "50% 50%"},
+      "promptBrief": "Studio worktable with an open blank notebook, measuring tools, wood and textile samples, soft window light, evidence of thoughtful human work, no readable writing."
+    },
+    {
+      "slug": "trust-legal-still-life-v1",
+      "routes": ["/affiliate-disclosure", "/privacy", "/terms"],
+      "type": "editorial-utility",
+      "approval": "planned",
+      "altText": "A neatly organized desk with a closed folder and simple measuring tools.",
+      "focalPoint": {"desktop": "55% 50%", "mobile": "50% 50%"},
+      "promptBrief": "Restrained trustworthy still life: closed unbranded document folder, ruler, pencil and warm neutral desk surface, calm even daylight, no readable text or legal symbolism."
+    },
+    {
+      "slug": "office-builder-material-board-v1",
+      "routes": ["/build-your-office"],
+      "type": "editorial",
+      "approval": "planned",
+      "altText": "Workspace materials and furniture silhouettes arranged as a practical planning board.",
+      "focalPoint": {"desktop": "63% 52%", "mobile": "50% 48%"},
+      "promptBrief": "Overhead practical office-planning scene with generic furniture material samples, tape measure, blank cards and simple scale silhouettes, realistic working mess, no labels or product branding."
+    },
+    {
+      "slug": "changelog-workbench-v1",
+      "routes": ["/changelog"],
+      "type": "editorial-utility",
+      "approval": "planned",
+      "altText": "A workspace prototype evolving across sketches and material samples.",
+      "focalPoint": {"desktop": "58% 46%", "mobile": "50% 50%"},
+      "promptBrief": "Workbench showing an evolving generic workspace prototype through layered blank sketches, swatches and repositioned measuring tools, natural documentary realism, no readable text."
+    },
+    {
+      "slug": "compare-fit-fingerprints-v1",
+      "routes": ["/compare/"],
+      "type": "editorial-commerce",
+      "approval": "planned",
+      "altText": "Two generic workspace setups arranged side by side for a careful fit comparison.",
+      "focalPoint": {"desktop": "50% 50%", "mobile": "50% 48%"},
+      "promptBrief": "Balanced split composition of two distinct but unbranded workstation arrangements, honest physical differences in footprint and adjustability, no winner podium, price tag, labels or specific products."
+    },
+    {
+      "slug": "compare-branch-uplift-spaces-v1",
+      "routes": ["/compare/branch-vs-uplift"],
+      "type": "editorial-commerce",
+      "approval": "planned",
+      "altText": "Two generic adjustable desk layouts shown in different room sizes.",
+      "focalPoint": {"desktop": "50% 48%", "mobile": "50% 50%"},
+      "promptBrief": "Two non-branded adjustable desk archetypes in a compact and a generous room, side-by-side editorial comparison focused on space and reach, not identifiable models."
+    },
+    {
+      "slug": "compare-task-chair-geometry-v1",
+      "routes": ["/compare/herman-miller-vs-steelcase"],
+      "type": "editorial-commerce",
+      "approval": "planned",
+      "altText": "Two generic task-chair silhouettes compared through their adjustment geometry.",
+      "focalPoint": {"desktop": "50% 53%", "mobile": "50% 54%"},
+      "promptBrief": "Two original generic ergonomic chair silhouettes with clearly different adjustment geometries, neutral studio setting, no iconic contours, labels, logos or resemblance to named products."
+    },
+    {
+      "slug": "compare-budget-desk-footprints-v1",
+      "routes": ["/compare/shw-vs-flexispot"],
+      "type": "editorial-commerce",
+      "approval": "planned",
+      "altText": "Two practical generic desk footprints arranged for a value-focused comparison.",
+      "focalPoint": {"desktop": "50% 50%", "mobile": "50% 50%"},
+      "promptBrief": "Two attainable unbranded desk setups with different footprints and storage tradeoffs, everyday apartment setting, honest materials, no fake sale cues or recognizable products."
+    },
+    {
+      "slug": "deals-curated-workbench-v1",
+      "routes": ["/deals"],
+      "type": "editorial-commerce",
+      "approval": "planned",
+      "altText": "Useful home-office categories arranged on a warm studio workbench.",
+      "focalPoint": {"desktop": "64% 50%", "mobile": "50% 48%"},
+      "promptBrief": "Curated workbench of generic office-use categories—lighting, cable care, mat texture and posture accessories—without depicting specific sale items, tags, prices or urgency."
+    },
+    {
+      "slug": "embed-height-measurement-v1",
+      "routes": ["/embed/height"],
+      "type": "editorial-utility",
+      "approval": "planned",
+      "altText": "A close detail of a desk edge and chair seat prepared for measurement.",
+      "focalPoint": {"desktop": "54% 50%", "mobile": "50% 50%"},
+      "promptBrief": "Minimal close detail of generic desk edge, chair seat and physical tape measure in soft daylight, quiet enough for a compact embed, no markings readable."
+    },
+    {
+      "slug": "ergonomic-height-live-fit-v1",
+      "routes": ["/ergonomic-height-calculator"],
+      "type": "editorial-tool",
+      "approval": "planned",
+      "altText": "A seated person adjusting a desk and chair to match their body.",
+      "focalPoint": {"desktop": "66% 50%", "mobile": "52% 48%"},
+      "promptBrief": "Side-profile documentary photo of a diverse adult making a realistic chair and desk adjustment, full torso-to-feet relationship visible, generic furniture, relaxed neutral posture."
+    },
+    {
+      "slug": "guides-editorial-library-v1",
+      "routes": ["/guides"],
+      "type": "editorial",
+      "approval": "planned",
+      "altText": "An inviting workspace library with material samples and practical reference notes.",
+      "focalPoint": {"desktop": "62% 45%", "mobile": "50% 48%"},
+      "promptBrief": "Inviting reference-library corner beside a home workspace, books without readable spines, blank notes and material samples, warm daylight, editorial depth."
+    },
+    {
+      "slug": "guide-back-pain-reset-v1",
+      "routes": ["/guides/back-pain-ergonomic-setup"],
+      "type": "editorial-guide",
+      "approval": "planned",
+      "altText": "A person calmly resetting their seated work posture beside a window.",
+      "focalPoint": {"desktop": "67% 48%", "mobile": "52% 45%"},
+      "promptBrief": "Empathetic non-medical scene of an adult pausing to reset seated posture, natural movement and neutral expression, believable desk geometry, no pain dramatization."
+    },
+    {
+      "slug": "guide-chair-fit-studio-v1",
+      "routes": ["/guides/best-ergonomic-office-chairs-2026"],
+      "type": "editorial-guide",
+      "approval": "planned",
+      "altText": "Several original generic task-chair forms arranged for fit evaluation.",
+      "focalPoint": {"desktop": "58% 52%", "mobile": "50% 55%"},
+      "promptBrief": "Editorial studio of several original generic task-chair forms emphasizing distinct fit ranges and adjustment zones, no recognizable models, logos or ranking cues."
+    },
+    {
+      "slug": "guide-standing-mat-concrete-v1",
+      "routes": ["/guides/best-standing-desk-mat-for-concrete-floors"],
+      "type": "editorial-guide",
+      "approval": "planned",
+      "altText": "A person standing naturally on a textured mat over a concrete floor.",
+      "focalPoint": {"desktop": "62% 60%", "mobile": "50% 62%"},
+      "promptBrief": "Low editorial angle of natural lower-body stance on a generic textured mat over residential concrete, realistic shoes and weight distribution, no product markings."
+    },
+    {
+      "slug": "guide-desk-value-workshop-v1",
+      "routes": ["/guides/best-standing-desks-under-500"],
+      "type": "editorial-guide",
+      "approval": "planned",
+      "altText": "An attainable adjustable workstation in a bright compact room.",
+      "focalPoint": {"desktop": "65% 48%", "mobile": "50% 48%"},
+      "promptBrief": "Attainable unbranded adjustable workstation in a compact room, honest economical materials, tidy cable path and daylight, premium composition without luxury signaling."
+    },
+    {
+      "slug": "guide-cable-routing-detail-v1",
+      "routes": ["/guides/cable-management-solutions"],
+      "type": "editorial-guide",
+      "approval": "planned",
+      "altText": "A clean, realistic cable route beneath a wooden desk.",
+      "focalPoint": {"desktop": "57% 58%", "mobile": "50% 55%"},
+      "promptBrief": "Close documentary view under a wooden desk showing plausible unbranded cable routing, slack at moving joints and everyday power accessories, clean but not impossibly perfect."
+    },
+    {
+      "slug": "guide-chair-height-reference-v1",
+      "routes": ["/guides/desk-chair-height-chart"],
+      "type": "editorial-guide",
+      "approval": "planned",
+      "altText": "A chair seat and desk surface aligned for a body-height reference.",
+      "focalPoint": {"desktop": "59% 52%", "mobile": "50% 52%"},
+      "promptBrief": "Side-on generic chair and desk alignment with an adult standing nearby for scale, clean neutral setting, all numeric measurement graphics reserved for code overlay."
+    },
+    {
+      "slug": "guide-dual-monitor-room-v1",
+      "routes": ["/guides/dual-monitor-home-office"],
+      "type": "editorial-guide",
+      "approval": "planned",
+      "altText": "A balanced dual-monitor workstation fitted into a lived-in home office.",
+      "focalPoint": {"desktop": "63% 45%", "mobile": "50% 46%"},
+      "promptBrief": "Wide lived-in room view of two generic blank monitors balanced with window glare control, realistic depth and cable management, no interface content."
+    },
+    {
+      "slug": "guide-dual-monitor-focus-v1",
+      "routes": ["/guides/dual-monitor-setup-productivity"],
+      "type": "editorial-guide",
+      "approval": "planned",
+      "altText": "A focused worker moving naturally between two blank monitors.",
+      "focalPoint": {"desktop": "66% 48%", "mobile": "54% 48%"},
+      "promptBrief": "Candid three-quarter view of a diverse adult working across two blank generic monitors with natural gaze and hand placement, uncluttered focus, no screen content."
+    },
+    {
+      "slug": "guide-accessory-reach-zones-v1",
+      "routes": ["/guides/ergonomic-accessories-home-office"],
+      "type": "editorial-guide",
+      "approval": "planned",
+      "altText": "Practical workstation accessories arranged within easy reach.",
+      "focalPoint": {"desktop": "58% 48%", "mobile": "50% 50%"},
+      "promptBrief": "Overhead editorial scene of a generic keyboard, pointing device, foot support and task light arranged within plausible reach, tactile neutral materials, no brands."
+    },
+    {
+      "slug": "guide-chair-adjustment-hand-v1",
+      "routes": ["/guides/ergonomic-office-chair-buying-guide"],
+      "type": "editorial-guide",
+      "approval": "planned",
+      "altText": "A hand testing the adjustment controls of a generic office chair.",
+      "focalPoint": {"desktop": "62% 54%", "mobile": "50% 55%"},
+      "promptBrief": "Close human-centered view of a hand testing original generic chair adjustment controls, upholstery weave and mechanism detail visible, no recognizable industrial design."
+    },
+    {
+      "slug": "guide-gaming-neutral-posture-v1",
+      "routes": ["/guides/ergonomic-setup-for-gamers"],
+      "type": "editorial-guide",
+      "approval": "planned",
+      "altText": "An adult gaming in a comfortable neutral posture at a restrained setup.",
+      "focalPoint": {"desktop": "66% 48%", "mobile": "52% 47%"},
+      "promptBrief": "Mature restrained gaming workspace with a diverse adult in neutral posture, subtle ambient light, generic equipment and blank screen, no neon cliché or branded gear."
+    },
+    {
+      "slug": "guide-budget-office-plan-v1",
+      "routes": ["/guides/home-office-budget-setup-under-1000"],
+      "type": "editorial-guide",
+      "approval": "planned",
+      "altText": "A complete attainable home office arranged in a modest room.",
+      "focalPoint": {"desktop": "64% 48%", "mobile": "50% 48%"},
+      "promptBrief": "Complete attainable home-office setup in a modest apartment room, smart reuse and honest materials, cohesive but not luxury, no price tags or sale cues."
+    },
+    {
+      "slug": "guide-desk-depth-planning-v1",
+      "routes": ["/guides/home-office-desk-guide-2026"],
+      "type": "editorial-guide",
+      "approval": "planned",
+      "altText": "A deep work surface arranged to show comfortable reach and viewing distance.",
+      "focalPoint": {"desktop": "62% 48%", "mobile": "50% 50%"},
+      "promptBrief": "Oblique view across a generous generic desktop showing believable monitor distance, working depth and reachable objects, physical marks left for later SVG overlay."
+    },
+    {
+      "slug": "guide-daylight-task-light-v1",
+      "routes": ["/guides/home-office-lighting-guide"],
+      "type": "editorial-guide",
+      "approval": "planned",
+      "altText": "A home workspace balanced between soft window light and a task lamp.",
+      "focalPoint": {"desktop": "64% 45%", "mobile": "52% 46%"},
+      "promptBrief": "Home workspace at late afternoon balancing soft side-window daylight and a warm generic task lamp, controlled screen glare, realistic shadow falloff."
+    },
+    {
+      "slug": "guide-night-shift-layers-v1",
+      "routes": ["/guides/night-shift-lighting-guide"],
+      "type": "editorial-guide",
+      "approval": "planned",
+      "altText": "A calm night workspace using layered low-glare lighting.",
+      "focalPoint": {"desktop": "64% 46%", "mobile": "52% 46%"},
+      "promptBrief": "Calm realistic night workspace with layered indirect and task light, blank generic monitor, preserved dark areas and no saturated gamer neon."
+    },
+    {
+      "slug": "guide-focus-ritual-v1",
+      "routes": ["/guides/productive-workspace-mindset"],
+      "type": "editorial-guide",
+      "approval": "planned",
+      "altText": "A person beginning a focused work session at a calm uncluttered desk.",
+      "focalPoint": {"desktop": "67% 48%", "mobile": "53% 46%"},
+      "promptBrief": "Candid start-of-session ritual: adult settling at a calm desk, placing a blank notebook beside a generic keyboard, soft morning light, grounded not aspirational perfection."
+    },
+    {
+      "slug": "guide-small-office-vertical-v1",
+      "routes": ["/guides/small-home-office-organization-hacks"],
+      "type": "editorial-guide",
+      "approval": "planned",
+      "altText": "A compact home office using vertical storage without feeling crowded.",
+      "focalPoint": {"desktop": "62% 48%", "mobile": "50% 50%"},
+      "promptBrief": "Tiny-room office using realistic vertical storage, clear floor space and reachable supplies, warm lived-in character, no impossible wide-angle distortion."
+    },
+    {
+      "slug": "home-office-setup-sequence-v1",
+      "routes": ["/home-office-setup-guide"],
+      "type": "editorial-guide",
+      "approval": "planned",
+      "altText": "A home workstation being assembled in a practical step-by-step sequence.",
+      "focalPoint": {"desktop": "62% 50%", "mobile": "50% 50%"},
+      "promptBrief": "Editorial in-progress workstation assembly with one adult aligning generic desk, chair and screen, tools used safely, coherent realistic geometry, no instruction text."
+    },
+    {
+      "slug": "podcast-listening-workspace-v1",
+      "routes": ["/podcasts"],
+      "type": "editorial",
+      "approval": "planned",
+      "altText": "A person listening thoughtfully beside a warm, comfortable workspace.",
+      "focalPoint": {"desktop": "65% 46%", "mobile": "52% 46%"},
+      "promptBrief": "Thoughtful adult listening with simple unbranded headphones beside a warm home workspace, relaxed candid mood, blank devices, room for episode copy."
+    },
+    {
+      "slug": "tips-measure-adjust-repeat-v1",
+      "routes": ["/tips"],
+      "type": "editorial",
+      "approval": "planned",
+      "altText": "Hands making a small practical adjustment to a home workstation.",
+      "focalPoint": {"desktop": "62% 52%", "mobile": "50% 52%"},
+      "promptBrief": "Close candid hands making one small useful workstation adjustment with a physical tape measure nearby, practical and approachable, no readable numbers."
+    },
+    {
+      "slug": "workspace-lab-instruments-v1",
+      "routes": ["/tools"],
+      "type": "editorial-tool",
+      "approval": "planned",
+      "altText": "A workspace lab combining measuring tools with a comfortable desk setup.",
+      "focalPoint": {"desktop": "62% 47%", "mobile": "50% 48%"},
+      "promptBrief": "Premium Workspace Lab scene combining a realistic generic desk setup with tape measure, angle tool and blank planning cards, refined but human, no faux technology displays."
+    },
+    {
+      "slug": "workspace-setup-blueprint-v1",
+      "routes": ["/workspace-setup-calculator"],
+      "type": "editorial-tool",
+      "approval": "planned",
+      "altText": "A person reviewing a personalized workspace arrangement beside their desk.",
+      "focalPoint": {"desktop": "66% 48%", "mobile": "52% 46%"},
+      "promptBrief": "Adult reviewing a blank physical planning sheet beside their real home workstation, relationship between body, desk and room visible, no readable data or digital UI."
+    }
+  ]
+}

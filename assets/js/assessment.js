@@ -718,6 +718,35 @@ function generateChecklist() {
   return items;
 }
 
+function formatFitRange(range) {
+  if (!range) return "Not available";
+  return range.min.toFixed(1) + "–" + range.max.toFixed(1) + " in";
+}
+
+function getFitBlueprint() {
+  var math = window.TWPHeightMath;
+  var height = Number(AssessmentState.answers.height);
+  if (!math || typeof math.computeRangesFromInches !== "function" || !isFinite(height)) return null;
+  try { return math.computeRangesFromInches(height); } catch (e) { return null; }
+}
+
+function getBlueprintPriorities() {
+  var a = AssessmentState.answers;
+  var labels = {
+    back: "Lumbar support and seat fit", neck: "Monitor alignment and shoulder relief",
+    wrist: "Neutral keyboard and pointing posture", eyes: "Viewing distance and lighting",
+    none: "Prevention and movement variety"
+  };
+  var work = a.hours === "8+" ? "Movement breaks for extended sessions" : "A repeatable neutral starting posture";
+  var constraint = a.space === "small" ? "Compact adjustability" : (a.priority === "budget" ? "High-value upgrades first" : "Long-term adjustability");
+  return [labels[a.pain] || labels.none, work, constraint];
+}
+
+function trackBlueprintAction(action, destination) {
+  if (typeof gtag === "undefined") return;
+  gtag("event", "blueprint_action", { action: action, destination: destination || "", persona: determinePersona() });
+}
+
 function showResults() {
   // Hide steps, show results
   document.querySelectorAll('.assessment-step').forEach(s => s.classList.remove('active'));
@@ -731,6 +760,8 @@ function showResults() {
   const { persona, recommendations, total } = generateRecommendations();
   const personaData = PERSONAS[persona];
   const checklist = generateChecklist();
+  const fit = getFitBlueprint();
+  const priorities = getBlueprintPriorities();
   
   resultsEl.classList.add('active');
   resultsEl.setAttribute('tabindex', '-1');
@@ -739,10 +770,31 @@ function showResults() {
   let html = `
     <div class="result-hero">
       <span class="result-persona">${personaData.name}</span>
-      <h2 class="result-title">Your Personalized Workspace Setup</h2>
+      <p class="result-kicker">Guided Fit Journey · Complete</p>
+      <h2 class="result-title">My Workspace Blueprint</h2>
       <p class="result-summary">${personaData.desc}</p>
     </div>
-    
+
+    <section class="blueprint-fit" aria-labelledby="blueprint-fit-title">
+      <div class="blueprint-section-heading"><span>01 · Body fit</span><h3 id="blueprint-fit-title">Verified starting measurements</h3></div>
+      ${fit ? `
+      <div class="blueprint-fit__grid">
+        <div class="blueprint-metric"><span>Chair seat</span><strong>${formatFitRange(fit.chair)}</strong><small>Floor to seat</small></div>
+        <div class="blueprint-metric"><span>Seated desk</span><strong>${formatFitRange(fit.sittingDesk)}</strong><small>Floor to work surface</small></div>
+        <div class="blueprint-metric"><span>Standing desk</span><strong>${formatFitRange(fit.standingDesk)}</strong><small>Floor to work surface</small></div>
+        <div class="blueprint-metric"><span>Monitor top</span><strong>${formatFitRange(fit.monitorTop)}</strong><small>Floor to top edge</small></div>
+        <div class="blueprint-metric"><span>Viewing distance</span><strong>${formatFitRange(fit.monitorDistance)}</strong><small>Eyes to screen</small></div>
+      </div>` : `<p>Open the height calculator to generate verified fit ranges.</p>`}
+      <p class="blueprint-fit__note">Starting ranges, not medical advice. Adjust for footwear, proportions, equipment, and comfort.</p>
+    </section>
+
+    <section class="blueprint-priorities" aria-labelledby="blueprint-priorities-title">
+      <div class="blueprint-section-heading"><span>02 · Focus</span><h3 id="blueprint-priorities-title">Your setup priorities</h3></div>
+      <ol>${priorities.map(function (item) { return `<li>${item}</li>`; }).join("")}</ol>
+    </section>
+
+    <div class="blueprint-section-heading"><span>03 · Shortlist</span><h3>Products matched to your answers</h3></div>
+
     <div class="recommendation-list">
   `;
   
@@ -756,7 +808,7 @@ function showResults() {
           <div class="recommendation__name">${rec.name}</div>
           <div class="recommendation__why">${rec.why}</div>
           <div class="recommendation__price">~$${rec.price} <span class="recommendation__price-note">check live price</span></div>
-          <a href="${rec.url}" target="_blank" rel="sponsored noopener noreferrer" class="recommendation__link">
+          <a href="${rec.url}" target="_blank" rel="sponsored noopener noreferrer" class="recommendation__link" data-blueprint-action="product" data-blueprint-destination="${rec.name}">
             View product →
           </a>
         </div>
@@ -774,26 +826,25 @@ function showResults() {
     </div>
     
     <div class="checklist">
-      <h3 class="checklist__title">📋 Your Ergonomic Setup Checklist</h3>
+      <h3 class="checklist__title">04 · Your ergonomic setup checklist</h3>
       ${checklist.map(item => `<div class="checklist__item">${item}</div>`).join('')}
     </div>
     
     <div class="result-next-steps">
       <h3 class="result-next-steps__title">What to do next</h3>
       <div class="result-next-steps__grid">
-        <a href="/ergonomic-height-calculator" class="result-next-steps__card">📏 Dial in desk &amp; chair height</a>
-        <a href="/build-your-office" class="result-next-steps__card">🛠️ Refine with Build Your Office</a>
-        <a href="/guides" class="result-next-steps__card">📚 Read the deep-dive guides</a>
-        <a href="/tools" class="result-next-steps__card">🧰 Browse all free tools</a>
+        <a href="/ergonomic-height-calculator" class="result-next-steps__card" data-blueprint-action="tool" data-blueprint-destination="height-calculator"><span>Measure</span>Dial in desk and chair height →</a>
+        <a href="/guides" class="result-next-steps__card" data-blueprint-action="guide" data-blueprint-destination="guides"><span>Understand</span>Read the setup guides →</a>
+        <a href="/deals" class="result-next-steps__card" data-blueprint-action="product" data-blueprint-destination="deals"><span>Shop</span>Check fit-aware value picks →</a>
       </div>
     </div>
 
     <div class="result-actions">
-      <button type="button" id="restartAssessment" class="btn btn--secondary">↻ Retake</button>
-      <button type="button" id="printAssessmentResults" class="btn btn--secondary">🖨 Print / PDF</button>
-      <button type="button" id="copyAssessmentResults" class="btn btn--secondary">📋 Copy summary</button>
-      <button type="button" id="shareAssessmentResults" class="btn btn--secondary">🔗 Share results</button>
-      <button type="button" id="saveAssessmentResults" class="btn btn--outline result-save-btn">💾 Save my results</button>
+      <button type="button" id="restartAssessment" class="btn btn--secondary">Retake</button>
+      <button type="button" id="printAssessmentResults" class="btn btn--secondary">Print / PDF</button>
+      <button type="button" id="copyAssessmentResults" class="btn btn--secondary">Copy summary</button>
+      <button type="button" id="shareAssessmentResults" class="btn btn--secondary">Share blueprint</button>
+      <button type="button" id="saveAssessmentResults" class="btn btn--outline result-save-btn">Save blueprint</button>
       <a href="#newsletter" class="btn btn--primary">Get Weekly Tips</a>
     </div>
     <p class="result-actions__hint" id="resultActionHint" aria-live="polite"></p>
@@ -801,19 +852,28 @@ function showResults() {
   
   resultsEl.innerHTML = html;
   resultsEl.focus();
+  resultsEl.querySelectorAll("[data-blueprint-action]").forEach(function (link) {
+    link.addEventListener("click", function () {
+      trackBlueprintAction(link.dataset.blueprintAction, link.dataset.blueprintDestination);
+    });
+  });
   
   // Prepare an optional local save; persistence happens only when the user selects Save.
   var payload = {
+    version: 2,
     persona: persona,
     personaName: personaData.name,
     recommendedProducts: recommendations.map(function (r) { return { name: r.name, price: r.price, category: r.category, url: r.url }; }),
     checklist: checklist,
+    fit: fit,
+    priorities: priorities,
+    recommendationIds: recommendations.map(function (r) { return r.name; }),
     total: total,
     answers: AssessmentState.answers,
     timestamp: Date.now()
   };
   // Build a share URL in memory; the address bar changes only if the user shares it.
-  var shareUrl = buildShareUrl(AssessmentState.answers, persona);
+  var shareUrl = buildShareUrl(AssessmentState.answers, persona, recommendations, fit, priorities);
 
   function setHint(msg) {
     var el = document.getElementById('resultActionHint');
@@ -822,8 +882,9 @@ function showResults() {
 
   function buildSummaryText() {
     var lines = [
-      'The Workspace Pro — My Setup',
-      'Persona: ' + personaData.name,
+      'The Workspace Pro — My Workspace Blueprint',
+      "Profile: " + personaData.name,
+      "Fit priorities: " + priorities.join("; "),
       'Estimated total: ~$' + total,
       '',
       'Recommendations:'
@@ -839,7 +900,8 @@ function showResults() {
 
   document.getElementById('restartAssessment')?.addEventListener('click', restartAssessment);
 
-  document.getElementById('printAssessmentResults')?.addEventListener('click', function () {
+  document.getElementById("printAssessmentResults")?.addEventListener("click", function () {
+    trackBlueprintAction("print", "blueprint");
     window.print();
   });
 
@@ -866,16 +928,19 @@ function showResults() {
     if (navigator.share) {
       navigator.share({ title: title, text: text, url: absolute }).then(function () {
         setHint('Shared — thanks for spreading the free tools.');
-        if (typeof gtag !== 'undefined') gtag('event', 'assessment_share', { method: 'web_share' });
+        if (typeof gtag !== "undefined") gtag("event", "assessment_share", { method: "web_share" });
+        trackBlueprintAction("share", "web_share");
       }).catch(function () { /* user cancelled */ });
     } else if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(absolute).then(function () {
         setHint('Share link copied. Anyone with it can reopen these results.');
-        if (typeof gtag !== 'undefined') gtag('event', 'assessment_share', { method: 'copy_link' });
+        if (typeof gtag !== "undefined") gtag("event", "assessment_share", { method: "copy_link" });
+        trackBlueprintAction("share", "copy_link");
       });
     } else {
       window.prompt('Copy this share link:', absolute);
-      setHint('Share link ready to paste.');
+      setHint("Share link ready to paste.");
+      trackBlueprintAction("share", "prompt");
     }
   });
 
@@ -890,9 +955,10 @@ function showResults() {
       btn.style.background = 'var(--c-accent)';
       btn.style.color = '#fff';
       btn.style.borderColor = 'var(--c-accent)';
-      setHint('Saved in this browser. Use Share for a permanent link you can open later.');
+      setHint("Saved in this browser. Use Share for a permanent link you can open later.");
+      trackBlueprintAction("save", "local_storage");
       setTimeout(function () {
-        btn.textContent = '💾 Save my results';
+        btn.textContent = "Save blueprint";
         btn.style.background = 'transparent';
         btn.style.color = 'var(--c-primary)';
         btn.style.borderColor = 'var(--c-primary)';
@@ -913,9 +979,16 @@ function showResults() {
 }
 
 /** Compact share URL: /#assessment&a=base64url(answers json) */
-function buildShareUrl(answers, persona) {
+function buildShareUrl(answers, persona, recommendations, fit, priorities) {
   try {
-    var data = { a: answers, p: persona, v: 1 };
+    var data = {
+      v: 2,
+      a: answers,
+      p: persona,
+      f: fit,
+      pr: priorities,
+      r: (recommendations || []).map(function (item) { return item.name; })
+    };
     var json = JSON.stringify(data);
     var b64 = btoa(unescape(encodeURIComponent(json)))
       .replace(/\+/g, '-')
@@ -945,7 +1018,9 @@ function parseSharePayload() {
     var b64 = m[1].replace(/-/g, '+').replace(/_/g, '/');
     while (b64.length % 4) b64 += '=';
     var json = decodeURIComponent(escape(atob(b64)));
-    return JSON.parse(json);
+    var data = JSON.parse(json);
+    if (!data || (data.v !== 1 && data.v !== 2) || !data.a) return null;
+    return data;
   } catch (e) {
     return null;
   }
@@ -977,7 +1052,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Restore from share link if present (answers only — no PII)
   var shared = parseSharePayload();
-  if (shared && isValidSharedAnswers(shared.a)) {
+  if (shared && (shared.v === 1 || shared.v === 2) && isValidSharedAnswers(shared.a)) {
     AssessmentState.answers = shared.a;
     AssessmentState.step = AssessmentState.totalSteps - 1;
     try {

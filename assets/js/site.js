@@ -81,10 +81,50 @@
     setMenuOpen(willOpen);
   }
 
+  function initReadingProgress() {
+    var article = document.querySelector('.article-body');
+    if (!article || !article.querySelector('.toc')) return;
+
+    var progress = document.createElement('div');
+    progress.className = 'reading-progress';
+    progress.setAttribute('role', 'progressbar');
+    progress.setAttribute('aria-label', 'Article reading progress');
+    progress.setAttribute('aria-valuemin', '0');
+    progress.setAttribute('aria-valuemax', '100');
+    progress.setAttribute('aria-valuenow', '0');
+
+    var bar = document.createElement('span');
+    bar.className = 'reading-progress__bar';
+    progress.appendChild(bar);
+    document.body.appendChild(progress);
+
+    var queued = false;
+    function update() {
+      queued = false;
+      var articleTop = article.getBoundingClientRect().top + window.scrollY;
+      var articleBottom = articleTop + article.offsetHeight;
+      var start = articleTop - 64;
+      var distance = Math.max(1, articleBottom - window.innerHeight - start);
+      var value = Math.min(1, Math.max(0, (window.scrollY - start) / distance));
+      bar.style.transform = 'scaleX(' + value.toFixed(4) + ')';
+      progress.setAttribute('aria-valuenow', String(Math.round(value * 100)));
+    }
+    function requestUpdate() {
+      if (queued) return;
+      queued = true;
+      window.requestAnimationFrame(update);
+    }
+
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate);
+    update();
+  }
+
   applyTheme(getPreferredTheme());
 
   document.addEventListener('DOMContentLoaded', function () {
     applyTheme(getPreferredTheme());
+    initReadingProgress();
 
     var nav = document.querySelector('.mobile-nav');
     if (nav) {

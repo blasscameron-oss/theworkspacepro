@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="/assets/css/fonts.css">
   <link rel="stylesheet" href="/assets/css/style.css">
   <link rel="stylesheet" href="/assets/css/bold.css">
+  <link rel="stylesheet" href="/assets/css/premium-studio.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -156,19 +157,18 @@
     (function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();
   </script>
 </head>
-<body>
+<body class="ps-shell" data-visual-master="office-builder-material-board-v1">
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <header class="site-header">
     <div class="site-header__inner">
       <a href="/" class="logo"><span class="logo__mark">W</span><span>The Workspace Pro</span></a>
             <nav class="nav" aria-label="Primary">
-        <a href="/" class="nav__link">Home</a>
-        <a href="/guides" class="nav__link">Guides</a>
+        <a href="/#assessment" class="nav__link">Get My Blueprint</a>
         <a href="/tools" class="nav__link nav__link--active">Tools</a>
-        <a href="/tips" class="nav__link">Tips</a>
-        <a href="/about" class="nav__link">About</a>
-        <a href="/#assessment" class="nav__link nav__cta">Take the Quiz</a>
+        <a href="/guides" class="nav__link">Guides</a>
+        <a href="/compare/" class="nav__link">Compare</a>
+        <a href="/deals" class="nav__link">Deals</a>
       </nav>
       <div class="header-actions">
         <button class="theme-toggle" type="button" aria-label="Toggle dark mode"><span class="theme-toggle__icon">☾</span></button>
@@ -182,25 +182,20 @@
       <span style="font-weight:700;">Menu</span>
       <button class="menu-toggle" type="button" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
-    <a href="/" class="mobile-nav__link">Home</a>
-    <a href="/guides" class="mobile-nav__link">Guides</a>
+    <a href="/#assessment" class="mobile-nav__link">Get My Blueprint</a>
     <a href="/tools" class="mobile-nav__link">Tools</a>
-    <a href="/build-your-office" class="mobile-nav__link">Build Your Office</a>
-    <a href="/ergonomic-height-calculator" class="mobile-nav__link">Height Calculator</a>
-    <a href="/workspace-setup-calculator" class="mobile-nav__link">Setup Calculator</a>
-    <a href="/tips" class="mobile-nav__link">Tips</a>
-    <a href="/podcasts" class="mobile-nav__link">Podcasts</a>
-    <a href="/about" class="mobile-nav__link">About</a>
-    <a href="/contact" class="mobile-nav__link">Contact</a>
-    <a href="/#assessment" class="mobile-nav__cta">Take the Quiz</a>
+    <a href="/guides" class="mobile-nav__link">Guides</a>
+    <a href="/compare/" class="mobile-nav__link">Compare</a>
+    <a href="/deals" class="mobile-nav__link">Deals</a>
   </nav>
 
   <main id="main-content">
-  <section class="page-header">
-    <div class="container">
-      <div class="page-header__eyebrow">Interactive Tool</div>
-      <h1 class="page-header__title">Build Your Office</h1>
-      <p class="page-header__desc">Enter your budget and work style. Get a complete home office setup with real products, prices, and links — all in real-time.</p>
+  <section class="ps-page-header" data-visual-master="office-builder-material-board-v1">
+    <div class="ps-container ps-page-header__grid">
+      <div><span class="ps-kicker">Workspace Lab · Office builder</span>
+      <h1 class="ps-page-header__title">Allocate your budget with intention.</h1>
+      <p class="ps-lede">Build a complete office around the way you work, the room you have, and the tradeoffs you value.</p></div>
+      <div class="ps-measure" aria-label="Five-step office plan"><span class="ps-measure__rail" aria-hidden="true"></span><span class="ps-measure__value">5-step material plan</span></div>
     </div>
   </section>
 
@@ -240,32 +235,32 @@
       <div class="byo-hint">This determines what gear we prioritize for your setup.</div>
       <div class="byo-options">
         <div class="byo-option" data-value="general" onclick="byoSelect(this)">
-          <div class="byo-option__icon">💼</div>
+          <div class="byo-option__icon" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 25h22M8 25V11h16v14M11 11V6h10v5M12 18h8"/><path d="M16 3v6M13 6h6"/></svg></div>
           <div class="byo-option__label">General Office</div>
           <div class="byo-option__desc">Emails, docs, video calls</div>
         </div>
         <div class="byo-option" data-value="developer" onclick="byoSelect(this)">
-          <div class="byo-option__icon">⌨️</div>
+          <div class="byo-option__icon" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 25h22M8 25V11h16v14M11 11V6h10v5M12 18h8"/><path d="M16 3v6M13 6h6"/></svg></div>
           <div class="byo-option__label">Developer</div>
           <div class="byo-option__desc">Multi-monitor, coding all day</div>
         </div>
         <div class="byo-option" data-value="creative" onclick="byoSelect(this)">
-          <div class="byo-option__icon">🎨</div>
+          <div class="byo-option__icon" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 25h22M8 25V11h16v14M11 11V6h10v5M12 18h8"/><path d="M16 3v6M13 6h6"/></svg></div>
           <div class="byo-option__label">Creative</div>
           <div class="byo-option__desc">Design, video, photo editing</div>
         </div>
         <div class="byo-option" data-value="writer" onclick="byoSelect(this)">
-          <div class="byo-option__icon">✍️</div>
+          <div class="byo-option__icon" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 25h22M8 25V11h16v14M11 11V6h10v5M12 18h8"/><path d="M16 3v6M13 6h6"/></svg></div>
           <div class="byo-option__label">Writer</div>
           <div class="byo-option__desc">Long typing sessions, focus</div>
         </div>
         <div class="byo-option" data-value="gaming" onclick="byoSelect(this)">
-          <div class="byo-option__icon">🎮</div>
+          <div class="byo-option__icon" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 25h22M8 25V11h16v14M11 11V6h10v5M12 18h8"/><path d="M16 3v6M13 6h6"/></svg></div>
           <div class="byo-option__label">Gaming</div>
           <div class="byo-option__desc">Performance and comfort</div>
         </div>
         <div class="byo-option" data-value="hybrid" onclick="byoSelect(this)">
-          <div class="byo-option__icon">🏠</div>
+          <div class="byo-option__icon" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 25h22M8 25V11h16v14M11 11V6h10v5M12 18h8"/><path d="M16 3v6M13 6h6"/></svg></div>
           <div class="byo-option__label">Hybrid</div>
           <div class="byo-option__desc">Mix of everything</div>
         </div>
@@ -282,17 +277,17 @@
       <div class="byo-hint">This affects desk size and monitor recommendations.</div>
       <div class="byo-options">
         <div class="byo-option" data-value="small" onclick="byoSelect(this)">
-          <div class="byo-option__icon">📐</div>
+          <div class="byo-option__icon" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 25h22M8 25V11h16v14M11 11V6h10v5M12 18h8"/><path d="M16 3v6M13 6h6"/></svg></div>
           <div class="byo-option__label">Tight Space</div>
           <div class="byo-option__desc">Corner of a room, &lt;30 sq ft</div>
         </div>
         <div class="byo-option" data-value="medium" onclick="byoSelect(this)">
-          <div class="byo-option__icon">🚪</div>
+          <div class="byo-option__icon" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 25h22M8 25V11h16v14M11 11V6h10v5M12 18h8"/><path d="M16 3v6M13 6h6"/></svg></div>
           <div class="byo-option__label">Dedicated Nook</div>
           <div class="byo-option__desc">Small room or alcove, 30-80 sq ft</div>
         </div>
         <div class="byo-option" data-value="large" onclick="byoSelect(this)">
-          <div class="byo-option__icon">🏢</div>
+          <div class="byo-option__icon" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 25h22M8 25V11h16v14M11 11V6h10v5M12 18h8"/><path d="M16 3v6M13 6h6"/></svg></div>
           <div class="byo-option__label">Full Room</div>
           <div class="byo-option__desc">Dedicated home office, 80+ sq ft</div>
         </div>
@@ -309,22 +304,22 @@
       <div class="byo-hint">We'll allocate more budget to your top priority.</div>
       <div class="byo-options">
         <div class="byo-option" data-value="ergonomics" onclick="byoSelect(this)">
-          <div class="byo-option__icon">🦴</div>
+          <div class="byo-option__icon" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 25h22M8 25V11h16v14M11 11V6h10v5M12 18h8"/><path d="M16 3v6M13 6h6"/></svg></div>
           <div class="byo-option__label">Ergonomics</div>
           <div class="byo-option__desc">Back support, posture, comfort</div>
         </div>
         <div class="byo-option" data-value="productivity" onclick="byoSelect(this)">
-          <div class="byo-option__icon">⚡</div>
+          <div class="byo-option__icon" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 25h22M8 25V11h16v14M11 11V6h10v5M12 18h8"/><path d="M16 3v6M13 6h6"/></svg></div>
           <div class="byo-option__label">Productivity</div>
           <div class="byo-option__desc">Multi-monitor, fast setup</div>
         </div>
         <div class="byo-option" data-value="aesthetics" onclick="byoSelect(this)">
-          <div class="byo-option__icon">✨</div>
+          <div class="byo-option__icon" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 25h22M8 25V11h16v14M11 11V6h10v5M12 18h8"/><path d="M16 3v6M13 6h6"/></svg></div>
           <div class="byo-option__label">Aesthetics</div>
           <div class="byo-option__desc">Looks as good as it works</div>
         </div>
         <div class="byo-option" data-value="budget" onclick="byoSelect(this)">
-          <div class="byo-option__icon">💰</div>
+          <div class="byo-option__icon" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 25h22M8 25V11h16v14M11 11V6h10v5M12 18h8"/><path d="M16 3v6M13 6h6"/></svg></div>
           <div class="byo-option__label">Max Value</div>
           <div class="byo-option__desc">Best bang for the buck</div>
         </div>
@@ -341,17 +336,17 @@
       <div class="byo-hint">Standing desks cost more but add flexibility. We can also recommend converters.</div>
       <div class="byo-options">
         <div class="byo-option" data-value="yes" onclick="byoSelect(this)">
-          <div class="byo-option__icon">🧍</div>
+          <div class="byo-option__icon" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 25h22M8 25V11h16v14M11 11V6h10v5M12 18h8"/><path d="M16 3v6M13 6h6"/></svg></div>
           <div class="byo-option__label">Yes, standing</div>
           <div class="byo-option__desc">Full electric standing desk</div>
         </div>
         <div class="byo-option" data-value="converter" onclick="byoSelect(this)">
-          <div class="byo-option__icon">🔄</div>
+          <div class="byo-option__icon" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 25h22M8 25V11h16v14M11 11V6h10v5M12 18h8"/><path d="M16 3v6M13 6h6"/></svg></div>
           <div class="byo-option__label">Converter</div>
           <div class="byo-option__desc">Riser on existing desk</div>
         </div>
         <div class="byo-option" data-value="no" onclick="byoSelect(this)">
-          <div class="byo-option__icon">🪑</div>
+          <div class="byo-option__icon" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 25h22M8 25V11h16v14M11 11V6h10v5M12 18h8"/><path d="M16 3v6M13 6h6"/></svg></div>
           <div class="byo-option__label">Sitting only</div>
           <div class="byo-option__desc">Standard desk, spend elsewhere</div>
         </div>
@@ -363,7 +358,7 @@
     </div>
 
     <!-- Results -->
-    <div class="byo-results" id="byoResults">
+    <div class="byo-results blueprint-panel" id="byoResults">
       <div class="byo-budget-tracker" id="budgetTracker">
         <div class="byo-budget-row">
           <span class="byo-budget-label">Your Budget</span>
@@ -377,7 +372,7 @@
           <span class="byo-budget-label" id="trackerRemainingLabel">Remaining</span>
           <span class="byo-budget-amount" id="trackerRemaining">$0</span>
         </div>
-        <div class="byo-budget-bar">
+        <div class="byo-budget-bar ps-measure" aria-label="Live office budget allocation">
           <div class="byo-budget-fill" id="budgetFill" style="width:0%"></div>
         </div>
       </div>
@@ -387,12 +382,17 @@
       <div class="byo-summary" id="setupSummary"></div>
 
       <div class="byo-share">
-        <button class="byo-share-btn" onclick="byoShare()">📋 Copy Setup List</button>
-        <button class="byo-share-btn" onclick="window.print()">🖨️ Print / Save PDF</button>
-        <button class="byo-share-btn" onclick="byoRestart()">🔄 Start Over</button>
+        <button class="byo-share-btn" onclick="byoShare()">Copy Setup List</button>
+        <button class="byo-share-btn" onclick="window.print()">Print / Save PDF</button>
+        <button class="byo-share-btn" onclick="byoRestart()">Start Over</button>
       </div>
     </div>
   </div>
+
+  <section class="ps-section ps-section--compact" aria-labelledby="builder-method-title"><div class="ps-container"><div class="ps-evidence">
+    <div class="ps-evidence__label">Allocation method</div>
+    <div class="ps-evidence__body"><h2 id="builder-method-title">A budget plan you can interrogate</h2><p>The live tracker and recommendations use the five choices above. Change the budget or restart to compare tradeoffs; product prices remain estimates rather than urgency cues.</p><p class="ps-evidence__source">Method: work-style, space, priority, and sit–stand preferences applied to the existing researched product set.</p></div>
+  </div></div></section>
 
   <!-- SEO content below the tool -->
   <section class="section">
@@ -485,6 +485,7 @@
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/guides">Guides</a></li>
+          <li><a href="/deals">Deals</a></li>
           <li><a href="/tips">Tips</a></li>
           <li><a href="/podcasts">Podcasts</a></li>
         </ul>

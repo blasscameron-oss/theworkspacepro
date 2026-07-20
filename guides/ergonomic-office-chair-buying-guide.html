@@ -612,20 +612,20 @@
   <script>
     (function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();
   </script>
+  <link rel="stylesheet" href="/assets/css/premium-studio.css">
 </head>
-<body>
+<body class="ps-shell" data-visual-master="guide-chair-adjustment-hand-v1">
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
  <header class="site-header">
  <div class="site-header__inner">
  <a href="/" class="logo"><span class="logo__mark">W</span><span>The Workspace Pro</span></a>
        <nav class="nav" aria-label="Primary">
-        <a href="/" class="nav__link">Home</a>
-        <a href="/guides" class="nav__link nav__link--active">Guides</a>
+        <a href="/#assessment" class="nav__link nav__cta">Get My Blueprint</a>
         <a href="/tools" class="nav__link">Tools</a>
-        <a href="/tips" class="nav__link">Tips</a>
-        <a href="/about" class="nav__link">About</a>
-        <a href="/#assessment" class="nav__link nav__cta">Take the Quiz</a>
+        <a href="/guides" class="nav__link nav__link--active" aria-current="page">Guides</a>
+        <a href="/compare/" class="nav__link">Compare</a>
+        <a href="/deals" class="nav__link">Deals</a>
       </nav>
  <div class="header-actions">
  <button class="theme-toggle" type="button" aria-label="Toggle dark mode"><span class="theme-toggle__icon">☾</span></button>
@@ -634,27 +634,21 @@
  </div>
  </header>
  <div class="mobile-overlay"></div>
- <nav class="mobile-nav">
+ <nav class="mobile-nav" aria-label="Mobile">
     <div class="mobile-nav__header">
       <span style="font-weight:700;">Menu</span>
-      <button class="menu-toggle" type="button" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      <button class="menu-toggle" type="button" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
-    <a href="/" class="mobile-nav__link">Home</a>
-    <a href="/guides" class="mobile-nav__link">Guides</a>
+    <a href="/#assessment" class="mobile-nav__link">Get My Blueprint</a>
     <a href="/tools" class="mobile-nav__link">Tools</a>
-    <a href="/build-your-office" class="mobile-nav__link">Build Your Office</a>
-    <a href="/ergonomic-height-calculator" class="mobile-nav__link">Height Calculator</a>
-    <a href="/workspace-setup-calculator" class="mobile-nav__link">Setup Calculator</a>
-    <a href="/tips" class="mobile-nav__link">Tips</a>
-    <a href="/podcasts" class="mobile-nav__link">Podcasts</a>
-    <a href="/about" class="mobile-nav__link">About</a>
-    <a href="/contact" class="mobile-nav__link">Contact</a>
-    <a href="/#assessment" class="mobile-nav__cta">Take the Quiz</a>
+    <a href="/guides" class="mobile-nav__link mobile-nav__link--active" aria-current="page">Guides</a>
+    <a href="/compare/" class="mobile-nav__link">Compare</a>
+    <a href="/deals" class="mobile-nav__link">Deals</a>
   </nav>
 
  <main id="main-content">
  <div class="container-prose">
- <div class="article-header">
+ <div class="article-header ps-page-header">
  <div class="article-meta">
  <span>📁 Chairs</span>
  <span>·</span>
@@ -666,6 +660,27 @@
  <p class="article-lead">Everything you need to know about seat height, lumbar support, armrests, and choosing the right chair for your body and budget.</p>
  </div>
  <div class="article-body">
+      <section class="ps-fit-zone ps-stack" data-editorial-plate="ergonomic-office-chair-buying-guide" aria-labelledby="ergonomic-office-chair-buying-guide-plate-title">
+        <span class="ps-kicker">Field diagram</span>
+        <h2 id="ergonomic-office-chair-buying-guide-plate-title">A practical reading of ergonomic office chair buying guide</h2>
+        <svg viewBox="0 0 320 188" role="img" aria-labelledby="ergonomic-office-chair-buying-guide-diagram-title ergonomic-office-chair-buying-guide-diagram-desc" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <title id="ergonomic-office-chair-buying-guide-diagram-title">Planning diagram for ergonomic office chair buying guide</title>
+          <desc id="ergonomic-office-chair-buying-guide-diagram-desc">A simplified workspace diagram showing that the guide should be applied as a sequence of fit checks.</desc>
+          <path d="M42 148h236M74 148V88h176v60M96 88V52h64v36M184 88V38h42v50"/><circle cx="128" cy="40" r="9"/>
+          <path d="M42 168h236" stroke-dasharray="2 8"/><path d="M42 162v12M278 162v12"/>
+        </svg>
+        <div class="ps-grid" style="--ps-columns:2">
+          <div class="ps-stack" style="--ps-stack-gap:.5rem"><span class="ps-card__eyebrow">01 · Fit the seat first</span><p>Seat height and depth establish whether the rest of the chair can work.</p></div>
+          <div class="ps-stack" style="--ps-stack-gap:.5rem"><span class="ps-card__eyebrow">02 · Test usable controls</span><p>Adjustment features only help when they are reachable and intuitive.</p></div>
+        </div>
+        <div class="ps-measure" aria-label="Recommended setup sequence: Seat → support → controls">
+          <span class="ps-measure__value">Seat → support → controls</span><span class="ps-measure__rail" aria-hidden="true"></span>
+        </div>
+      </section>
+      <aside class="ps-evidence" aria-label="How to use this guide">
+        <span class="ps-evidence__label">Evidence rail</span>
+        <div class="ps-evidence__body"><strong>Measure, adjust, then observe.</strong><span>Use the guide as a starting framework, confirm published dimensions where products are involved, and judge the final setup against your own room, body, and work pattern.</span><span class="ps-evidence__source">Method note · No diagram above represents a specific product or guarantees a medical outcome.</span></div>
+      </aside>
 
  <div class="disclosure-box disclosure-box--warning">
  <strong>🔗 Affiliate Disclosure</strong>
@@ -872,7 +887,7 @@
  </div>
 
  <div class="disclosure-box disclosure-box--info">
- <strong>💡 Pro tip: Buy used or refurbished.</strong>
+ <strong>Practical tip: Buy used or refurbished.</strong>
  <p style="margin-top:var(--space-sm);">Premium chairs like the Steelcase Leap and Herman Miller Aeron are built to last 15+ years, which makes the used market a fantastic option. You can often find refurbished Aerons and Leaps from office liquidators for $400-700 — a fraction of retail. Check places like Crandall Office Furniture, BTOD.com, or local used office furniture dealers. Just make sure any used chair comes with a warranty from the refurbisher.</p>
  </div>
 
@@ -1141,7 +1156,7 @@
  </main>
 
  <section class="cta-section" style="max-width:var(--max-width);margin:var(--space-2xl) auto;">
- <div class="container">
+ <div class="container ps-container">
  <h2>Find your perfect setup in 2 minutes</h2>
  <p>Personalized product recommendations based on your body, budget, and work style.</p>
  <a href="/#assessment" class="btn btn--secondary btn--lg">Start Assessment →</a>
@@ -1152,7 +1167,7 @@
  <section class="related-guides">
  <h2 class="related-guides__title">Related Guides</h2>
  <div class="related-guides__carousel">
- <a href="/guides/best-ergonomic-office-chairs-2026" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+ <a href="/guides/best-ergonomic-office-chairs-2026" class="guide-card ps-card" style="text-decoration:none;color:inherit;display:block;">
  <div class="guide-card__content">
  <span class="guide-card__badge">Chairs</span>
  <h3 class="guide-card__title">Best Ergonomic Office Chairs 2026</h3>
@@ -1160,7 +1175,7 @@
  <span class="guide-card__link">Read guide →</span>
  </div>
  </a>
- <a href="/guides/back-pain-ergonomic-setup" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+ <a href="/guides/back-pain-ergonomic-setup" class="guide-card ps-card" style="text-decoration:none;color:inherit;display:block;">
  <div class="guide-card__content">
  <span class="guide-card__badge">Ergonomics</span>
  <h3 class="guide-card__title">Back Pain Ergonomic Setup</h3>
@@ -1168,7 +1183,7 @@
  <span class="guide-card__link">Read guide →</span>
  </div>
  </a>
- <a href="/guides/ergonomic-accessories-home-office" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+ <a href="/guides/ergonomic-accessories-home-office" class="guide-card ps-card" style="text-decoration:none;color:inherit;display:block;">
  <div class="guide-card__content">
  <span class="guide-card__badge">Accessories</span>
  <h3 class="guide-card__title">Ergonomic Accessories for Home Office</h3>
@@ -1176,7 +1191,7 @@
  <span class="guide-card__link">Read guide →</span>
  </div>
  </a>
- <a href="/guides/ergonomic-setup-for-gamers" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+ <a href="/guides/ergonomic-setup-for-gamers" class="guide-card ps-card" style="text-decoration:none;color:inherit;display:block;">
  <div class="guide-card__content">
  <span class="guide-card__badge">Gaming</span>
  <h3 class="guide-card__title">Ergonomic Setup for Gamers</h3>
@@ -1195,7 +1210,7 @@
 
 
  <section class="newsletter-bar" id="newsletter">
- <div class="container">
+ <div class="container ps-container">
  <h2 class="newsletter-bar__title">Get Weekly Workspace Tips</h2>
  <p class="newsletter-bar__desc">Personalized advice, gear deals, and ergonomic tips — every Wednesday. No spam, unsubscribe anytime.</p>
  <div class="newsletter-form">
@@ -1207,7 +1222,7 @@
  <footer>
  <div class="site-footer__grid">
  <div class="footer-brand"><div style="display:flex;align-items:center;gap:var(--space-sm);font-family:var(--font-display);font-weight:700;font-size:1.125rem;"><span class="logo__mark">W</span><span>The Workspace Pro</span></div><p>Helping you build a workspace that fits your body, your work, and your budget.</p></div>
- <div class="footer-col"><h4>Explore</h4><ul><li><a href="/">Home</a></li><li><a href="/guides">Guides</a></li><li><a href="/tips">Tips</a></li><li><a href="/podcasts">Podcasts</a></li></ul></div>
+ <div class="footer-col"><h4>Explore</h4><ul><li><a href="/">Home</a></li><li><a href="/guides">Guides</a></li><li><a href="/deals">Deals</a></li><li><a href="/tips">Tips</a></li><li><a href="/podcasts">Podcasts</a></li></ul></div>
  <div class="footer-col"><h4>About</h4><ul><li><a href="/about">About Us</a></li><li><a href="/contact">Contact</a></li><li><a href="/affiliate-disclosure">Affiliate Disclosure</a></li></ul></div>
  <div class="footer-col"><h4>Legal</h4><ul><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms of Service</a></li></ul></div>
  </div>

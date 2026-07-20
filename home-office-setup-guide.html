@@ -109,20 +109,20 @@
   <script>
     (function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();
   </script>
+  <link rel="stylesheet" href="/assets/css/premium-studio.css">
 </head>
-<body>
+<body class="ps-shell" data-visual-master="home-office-setup-sequence-v1">
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <header class="site-header">
     <div class="site-header__inner">
       <a href="/" class="logo"><span class="logo__mark">W</span><span>The Workspace Pro</span></a>
             <nav class="nav" aria-label="Primary">
-        <a href="/" class="nav__link">Home</a>
-        <a href="/guides" class="nav__link">Guides</a>
+        <a href="/#assessment" class="nav__link nav__cta">Get My Blueprint</a>
         <a href="/tools" class="nav__link">Tools</a>
-        <a href="/tips" class="nav__link">Tips</a>
-        <a href="/about" class="nav__link">About</a>
-        <a href="/#assessment" class="nav__link nav__cta">Take the Quiz</a>
+        <a href="/guides" class="nav__link">Guides</a>
+        <a href="/compare/" class="nav__link">Compare</a>
+        <a href="/deals" class="nav__link">Deals</a>
       </nav>
       <div class="header-actions">
         <button class="theme-toggle" type="button" aria-label="Toggle dark mode"><span class="theme-toggle__icon">☾</span></button>
@@ -134,26 +134,40 @@
   <nav class="mobile-nav" aria-label="Mobile">
     <div class="mobile-nav__header">
       <span style="font-weight:700;">Menu</span>
-      <button class="menu-toggle" type="button" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      <button class="menu-toggle" type="button" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
-    <a href="/" class="mobile-nav__link">Home</a>
-    <a href="/guides" class="mobile-nav__link">Guides</a>
+    <a href="/#assessment" class="mobile-nav__link">Get My Blueprint</a>
     <a href="/tools" class="mobile-nav__link">Tools</a>
-    <a href="/build-your-office" class="mobile-nav__link">Build Your Office</a>
-    <a href="/ergonomic-height-calculator" class="mobile-nav__link">Height Calculator</a>
-    <a href="/workspace-setup-calculator" class="mobile-nav__link">Setup Calculator</a>
-    <a href="/tips" class="mobile-nav__link">Tips</a>
-    <a href="/podcasts" class="mobile-nav__link">Podcasts</a>
-    <a href="/about" class="mobile-nav__link">About</a>
-    <a href="/contact" class="mobile-nav__link">Contact</a>
-    <a href="/#assessment" class="mobile-nav__cta">Take the Quiz</a>
+    <a href="/guides" class="mobile-nav__link">Guides</a>
+    <a href="/compare/" class="mobile-nav__link">Compare</a>
+    <a href="/deals" class="mobile-nav__link">Deals</a>
   </nav>
 
   <main id="main-content">
+    <div class="ps-container ps-section--compact">
+      <section class="ps-fit-zone ps-stack" data-editorial-plate="home-office-setup-guide" aria-labelledby="home-office-setup-guide-plate-title">
+        <span class="ps-kicker">Planning sequence</span>
+        <h2 id="home-office-setup-guide-plate-title">Build the room from constraints outward</h2>
+        <svg viewBox="0 0 320 188" role="img" aria-labelledby="setup-sequence-title setup-sequence-desc" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <title id="setup-sequence-title">Home-office planning sequence</title>
+          <desc id="setup-sequence-desc">A simplified room, desk, and chair diagram showing that space planning precedes equipment selection.</desc>
+          <path d="M38 150h244M38 44v106M38 44h244"/><path d="M76 150V86h134v64M210 112h48v38"/><circle cx="132" cy="64" r="13"/><path d="M132 77v38M112 96h40"/>
+          <path d="M52 168h216" stroke-dasharray="2 8"/><path d="M52 162v12M268 162v12"/>
+        </svg>
+        <div class="ps-grid" style="--ps-columns:2">
+          <div class="ps-stack" style="--ps-stack-gap:.5rem"><span class="ps-card__eyebrow">01 · Plan the sequence</span><p>Set the room and working dimensions before choosing finishing details.</p></div>
+          <div class="ps-stack" style="--ps-stack-gap:.5rem"><span class="ps-card__eyebrow">02 · Refine after use</span><p>Leave room to adjust the setup once daily work reveals the real constraints.</p></div>
+        </div>
+        <div class="ps-measure" aria-label="Recommended setup sequence: Room, fit, workflow">
+          <span class="ps-measure__value">Room → fit → workflow</span><span class="ps-measure__rail" aria-hidden="true"></span>
+        </div>
+      </section>
+      <aside class="ps-evidence" aria-label="How to use this guide"><span class="ps-evidence__label">Evidence rail</span><div class="ps-evidence__body"><strong>Measure, prioritize, then refine.</strong><span>Treat the sequence as a planning framework and verify dimensions against your actual room and equipment.</span><span class="ps-evidence__source">Method note · The diagram is conceptual and does not represent a specific product.</span></div></aside>
+    </div>
 
   <!-- Hero -->
   <section class="hub-hero">
-    <div class="container">
+    <div class="container ps-container">
       <h1>The Complete Home Office Setup Guide</h1>
       <p>Everything you need to build a workspace that's comfortable, productive, and fits your budget. 10 in-depth guides, 3 head-to-head comparisons, and an interactive tool that builds your setup for you.</p>
       <div class="hub-hero-stats">
@@ -167,9 +181,9 @@
 
   <!-- Interactive Tool CTA -->
   <section class="hub-section">
-    <div class="container">
+    <div class="container ps-container">
       <div class="hub-tool-banner">
-        <h2>🛠️ Build Your Office in 60 Seconds</h2>
+        <h2>Build Your Office in 60 Seconds</h2>
         <p>Enter your budget, work style, and space constraints. Get a complete product setup with real prices and links — instantly.</p>
         <a href="/build-your-office" class="btn btn--primary btn--lg">Try the Calculator →</a>
       </div>
@@ -178,7 +192,7 @@
 
   <!-- Guides Grid -->
   <section class="hub-section">
-    <div class="container">
+    <div class="container ps-container">
       <h2 class="hub-section__title">In-Depth Guides</h2>
       <p class="hub-section__desc">Research-backed, spec-checked, and regularly updated. Each guide runs 3,000-5,000 words with product recommendations, comparison tables, and FAQs.</p>
 
@@ -258,7 +272,7 @@
 
   <!-- Comparison Pages -->
   <section class="hub-section" style="background:var(--c-bg-alt);">
-    <div class="container">
+    <div class="container ps-container">
       <h2 class="hub-section__title">Head-to-Head Comparisons</h2>
       <p class="hub-section__desc">High-intent buyer guides. If you're deciding between two specific products, these pages give you the side-by-side breakdown you need.</p>
 
@@ -286,7 +300,7 @@
 
   <!-- Buying Path CTA -->
   <section class="hub-section">
-    <div class="container">
+    <div class="container ps-container">
       <div class="hub-cta-banner">
         <h2>Not sure where to start?</h2>
         <p>Take the free 2-minute ergonomic assessment. Get personalized product recommendations based on your height, budget, and work style.</p>
@@ -297,7 +311,7 @@
 
   <!-- SEO Content: Buying Guide -->
   <section class="hub-section">
-    <div class="container">
+    <div class="container ps-container">
       <div style="max-width:var(--max-width-prose);margin:0 auto;">
         <h2 style="font-family:var(--font-display);font-size:1.75rem;margin-bottom:var(--space-lg);">How to Choose the Right Home Office Setup</h2>
 
@@ -332,7 +346,7 @@
 
   <!-- FAQ Section -->
   <section class="hub-section" style="background:var(--c-bg-alt);">
-    <div class="container">
+    <div class="container ps-container">
       <h2 class="hub-section__title" style="text-align:center;">Frequently Asked Questions</h2>
       <p class="hub-section__desc" style="text-align:center;">Quick answers to the most common home office setup questions.</p>
 
@@ -375,7 +389,7 @@
 
   <!-- Newsletter -->
   <section class="newsletter-bar" id="newsletter">
-    <div class="container">
+    <div class="container ps-container">
       <h2 class="newsletter-bar__title">Get Weekly Workspace Tips</h2>
       <p class="newsletter-bar__desc">Personalized advice, gear deals, and ergonomic tips - every Wednesday. No spam, unsubscribe anytime.</p>
       <div class="newsletter-form">
@@ -400,6 +414,7 @@
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/guides">Guides</a></li>
+          <li><a href="/deals">Deals</a></li>
           <li><a href="/tips">Tips</a></li>
           <li><a href="/podcasts">Podcasts</a></li>
         </ul>

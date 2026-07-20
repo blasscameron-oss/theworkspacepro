@@ -10,11 +10,12 @@ const URLS_TO_CHECK = [
   '/', '/guides', '/tips', '/podcasts', '/about', '/contact',
   '/affiliate-disclosure', '/privacy', '/terms', '/tools', '/compare/',
   '/embed/height', '/build-your-office', '/ergonomic-height-calculator',
+  '/guides/desk-chair-height-chart',
   '/workspace-setup-calculator', '/guides/ergonomic-office-chair-buying-guide',
   '/guides/best-standing-desks-under-500', '/guides/home-office-lighting-guide',
   '/guides/back-pain-ergonomic-setup', '/compare/branch-vs-uplift',
   '/assets/css/style.css', '/assets/js/assessment.js', '/robots.txt', '/sitemap.xml',
-  '/deals/', '/quiz/', '/community-setups/', '/resources/',
+  '/deals', '/quiz/', '/community-setups/', '/resources/',
 ];
 
 
@@ -59,7 +60,6 @@ async function softAsinSample(results) {
 
 
 const EXPECTED_REDIRECTS = {
-  '/deals/': '/guides',
   '/quiz/': '/#assessment',
   '/community-setups/': '/',
   '/resources/': '/guides',

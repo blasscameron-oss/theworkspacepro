@@ -13,6 +13,7 @@
   <link rel="canonical" href="https://www.theworkspacepro.com/compare/">
 <link rel="stylesheet" href="/assets/css/fonts.css">
   <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/premium-studio.css">
   <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
   <meta name="theme-color" content="#c2410c">
   <script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);else if(matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
@@ -20,18 +21,17 @@
   {"@context":"https://schema.org","@type":"CollectionPage","name":"Compare Workspace Products","url":"https://www.theworkspacepro.com/compare/","isPartOf":{"@type":"WebSite","name":"The Workspace Pro","url":"https://www.theworkspacepro.com"}}
   </script>
 </head>
-<body>
+<body class="ps-shell" data-visual-master="compare-fit-fingerprints-v1">
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <header class="site-header">
     <div class="site-header__inner">
       <a href="/" class="logo"><span class="logo__mark">W</span><span>The Workspace Pro</span></a>
       <nav class="nav" aria-label="Primary">
-        <a href="/" class="nav__link">Home</a>
-        <a href="/guides" class="nav__link">Guides</a>
+        <a href="/#assessment" class="nav__link">Get My Blueprint</a>
         <a href="/tools" class="nav__link">Tools</a>
-        <a href="/compare/" class="nav__link nav__link--active">Compare</a>
-        <a href="/about" class="nav__link">About</a>
-        <a href="/#assessment" class="nav__link nav__cta">Take the Quiz</a>
+        <a href="/guides" class="nav__link">Guides</a>
+        <a href="/compare/" class="nav__link nav__link--active" aria-current="page">Compare</a>
+        <a href="/deals" class="nav__link">Deals</a>
       </nav>
       <div class="header-actions">
         <button class="theme-toggle" type="button" aria-label="Toggle dark mode"><span class="theme-toggle__icon">☾</span></button>
@@ -41,22 +41,24 @@
   </header>
   <div class="mobile-overlay"></div>
   <nav class="mobile-nav" aria-label="Mobile">
-    <div class="mobile-nav__header"><span style="font-weight:700;">Menu</span>
-      <button class="menu-toggle" type="button" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="mobile-nav__header">
+      <span style="font-weight:700;">Menu</span>
+      <button class="menu-toggle" type="button" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
-    <a href="/" class="mobile-nav__link">Home</a>
-    <a href="/guides" class="mobile-nav__link">Guides</a>
+    <a href="/#assessment" class="mobile-nav__link">Get My Blueprint</a>
     <a href="/tools" class="mobile-nav__link">Tools</a>
-    <a href="/compare/" class="mobile-nav__link">Compare</a>
-    <a href="/#assessment" class="mobile-nav__cta">Take the Quiz</a>
+    <a href="/guides" class="mobile-nav__link">Guides</a>
+    <a href="/compare/" class="mobile-nav__link" aria-current="page">Compare</a>
+    <a href="/deals" class="mobile-nav__link">Deals</a>
   </nav>
 
   <main id="main-content">
-    <section class="page-header">
-      <div class="container">
-        <div class="page-header__eyebrow">Compare</div>
-        <h1 class="page-header__title">Filter products by category &amp; budget</h1>
-        <p class="page-header__desc">Spec-based shortlist from our tools and guides. Prices are approximate — always check the live listing. Affiliate links may earn us a commission at no extra cost to you. <strong>No fabricated star ratings.</strong></p>
+    <section class="page-header ps-page-header">
+      <div class="container ps-container">
+        <div class="page-header__eyebrow ps-kicker">Compare by fit signal</div>
+        <h1 class="page-header__title ps-page-header__title">Filter products by category &amp; budget</h1>
+        <p class="page-header__desc">Spec-based shortlist from our tools and guides. Looking for timely picks? Browse our <a href="/deals">current deals and value picks</a>. Prices are approximate — always check the live listing. Affiliate links may earn us a commission at no extra cost to you. <strong>No fabricated star ratings.</strong></p>
+        <div class="ps-evidence" aria-label="Comparison methodology"><div class="ps-evidence__label">What the fingerprint means</div><div class="ps-evidence__body"><strong>Published facts, not a synthetic score.</strong><span>Each product fingerprint repeats only its catalog category, reference budget band, and editorial fit note. It does not imply testing, ratings, or a universal winner.</span></div></div>
       </div>
     </section>
 
@@ -101,20 +103,20 @@
           <p class="matrix-empty">Loading products…</p>
         </div>
 
-        <div class="matrix-deep" style="margin-top:var(--space-2xl);">
+        <div class="matrix-deep ps-section--compact" style="margin-top:var(--space-2xl);">
           <h2>Longer written comparisons</h2>
           <div class="guide-grid" style="margin-top:var(--space-lg);">
-            <a class="guide-card" href="/compare/branch-vs-uplift">
+            <a class="guide-card ps-card" href="/compare/branch-vs-uplift">
               <span class="guide-card__category">Desks</span>
               <h3 class="guide-card__title">Branch vs Uplift</h3>
               <p class="guide-card__desc">Standing desk trade-offs: assembly, motors, customization.</p>
             </a>
-            <a class="guide-card" href="/compare/herman-miller-vs-steelcase">
+            <a class="guide-card ps-card" href="/compare/herman-miller-vs-steelcase">
               <span class="guide-card__category">Chairs</span>
               <h3 class="guide-card__title">Herman Miller vs Steelcase</h3>
               <p class="guide-card__desc">Premium chair ecosystems and when each makes sense.</p>
             </a>
-            <a class="guide-card" href="/compare/shw-vs-flexispot">
+            <a class="guide-card ps-card" href="/compare/shw-vs-flexispot">
               <span class="guide-card__category">Desks</span>
               <h3 class="guide-card__title">SHW vs FlexiSpot</h3>
               <p class="guide-card__desc">Budget standing desks compared by value and build.</p>

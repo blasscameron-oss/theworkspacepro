@@ -603,20 +603,20 @@
   <script>
     (function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();
   </script>
+  <link rel="stylesheet" href="/assets/css/premium-studio.css">
 </head>
-<body>
+<body class="ps-shell" data-visual-master="guide-budget-office-plan-v1">
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
  <header class="site-header">
  <div class="site-header__inner">
  <a href="/" class="logo"><span class="logo__mark">W</span><span>The Workspace Pro</span></a>
        <nav class="nav" aria-label="Primary">
-        <a href="/" class="nav__link">Home</a>
-        <a href="/guides" class="nav__link nav__link--active">Guides</a>
+        <a href="/#assessment" class="nav__link nav__cta">Get My Blueprint</a>
         <a href="/tools" class="nav__link">Tools</a>
-        <a href="/tips" class="nav__link">Tips</a>
-        <a href="/about" class="nav__link">About</a>
-        <a href="/#assessment" class="nav__link nav__cta">Take the Quiz</a>
+        <a href="/guides" class="nav__link nav__link--active" aria-current="page">Guides</a>
+        <a href="/compare/" class="nav__link">Compare</a>
+        <a href="/deals" class="nav__link">Deals</a>
       </nav>
  <div class="header-actions">
  <button class="theme-toggle" type="button" aria-label="Toggle dark mode"><span class="theme-toggle__icon">☾</span></button>
@@ -629,27 +629,21 @@
 
 
  <div class="mobile-overlay"></div>
- <nav class="mobile-nav">
+ <nav class="mobile-nav" aria-label="Mobile">
     <div class="mobile-nav__header">
       <span style="font-weight:700;">Menu</span>
-      <button class="menu-toggle" type="button" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      <button class="menu-toggle" type="button" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
-    <a href="/" class="mobile-nav__link">Home</a>
-    <a href="/guides" class="mobile-nav__link">Guides</a>
+    <a href="/#assessment" class="mobile-nav__link">Get My Blueprint</a>
     <a href="/tools" class="mobile-nav__link">Tools</a>
-    <a href="/build-your-office" class="mobile-nav__link">Build Your Office</a>
-    <a href="/ergonomic-height-calculator" class="mobile-nav__link">Height Calculator</a>
-    <a href="/workspace-setup-calculator" class="mobile-nav__link">Setup Calculator</a>
-    <a href="/tips" class="mobile-nav__link">Tips</a>
-    <a href="/podcasts" class="mobile-nav__link">Podcasts</a>
-    <a href="/about" class="mobile-nav__link">About</a>
-    <a href="/contact" class="mobile-nav__link">Contact</a>
-    <a href="/#assessment" class="mobile-nav__cta">Take the Quiz</a>
+    <a href="/guides" class="mobile-nav__link mobile-nav__link--active" aria-current="page">Guides</a>
+    <a href="/compare/" class="mobile-nav__link">Compare</a>
+    <a href="/deals" class="mobile-nav__link">Deals</a>
   </nav>
 
  <main id="main-content">
  <div class="container-prose">
- <div class="article-header">
+ <div class="article-header ps-page-header">
  <div class="article-meta">
  <span>📁 Budget</span>
  <span>·</span>
@@ -661,6 +655,27 @@
  <p class="article-lead">Complete home office setup guide with three budget tiers ($500, $750, $1,000). Honest recommendations for chairs, desks, monitor arms, and lighting.</p>
  </div>
  <div class="article-body">
+      <section class="ps-fit-zone ps-stack" data-editorial-plate="home-office-budget-setup-under-1000" aria-labelledby="home-office-budget-setup-under-1000-plate-title">
+        <span class="ps-kicker">Field diagram</span>
+        <h2 id="home-office-budget-setup-under-1000-plate-title">A practical reading of home office budget setup under 1000</h2>
+        <svg viewBox="0 0 320 188" role="img" aria-labelledby="home-office-budget-setup-under-1000-diagram-title home-office-budget-setup-under-1000-diagram-desc" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <title id="home-office-budget-setup-under-1000-diagram-title">Planning diagram for home office budget setup under 1000</title>
+          <desc id="home-office-budget-setup-under-1000-diagram-desc">A simplified workspace diagram showing that the guide should be applied as a sequence of fit checks.</desc>
+          <path d="M44 150h236M82 150V62h92v88M174 94h72v56M100 62l28-28 28 28"/><path d="M62 122h20M246 122h20"/>
+          <path d="M42 168h236" stroke-dasharray="2 8"/><path d="M42 162v12M278 162v12"/>
+        </svg>
+        <div class="ps-grid" style="--ps-columns:2">
+          <div class="ps-stack" style="--ps-stack-gap:.5rem"><span class="ps-card__eyebrow">01 · Fund the foundation</span><p>Prioritize fit and daily function before cosmetic upgrades.</p></div>
+          <div class="ps-stack" style="--ps-stack-gap:.5rem"><span class="ps-card__eyebrow">02 · Reserve flexibility</span><p>Keep part of the budget available for changes after real use.</p></div>
+        </div>
+        <div class="ps-measure" aria-label="Recommended setup sequence: Needs → fit → refinement">
+          <span class="ps-measure__value">Needs → fit → refinement</span><span class="ps-measure__rail" aria-hidden="true"></span>
+        </div>
+      </section>
+      <aside class="ps-evidence" aria-label="How to use this guide">
+        <span class="ps-evidence__label">Evidence rail</span>
+        <div class="ps-evidence__body"><strong>Measure, adjust, then observe.</strong><span>Use the guide as a starting framework, confirm published dimensions where products are involved, and judge the final setup against your own room, body, and work pattern.</span><span class="ps-evidence__source">Method note · No diagram above represents a specific product or guarantees a medical outcome.</span></div>
+      </aside>
 
  <p>If you've priced out a home office lately, you already know the problem: a decent ergonomic chair runs $800+. A standing desk is another $500. Before you've thought about a monitor arm or lighting, you're staring at $1,500 — minimum.</p>
 
@@ -1081,7 +1096,7 @@
  </main>
 
  <section class="cta-section" style="max-width:var(--max-width);margin:var(--space-2xl) auto;">
- <div class="container">
+ <div class="container ps-container">
  <h2>Find your perfect setup in 2 minutes</h2>
  <p>Personalized product recommendations based on your body, budget, and work style.</p>
  <a href="/#assessment" class="btn btn--secondary btn--lg">Start Assessment →</a>
@@ -1093,10 +1108,10 @@
 <section class="internal-links" style="background:var(--c-surface,#f8f6f3);border-radius:12px;padding:24px;margin:32px 0;">
 <h2 style="font-size:1.25rem;margin-bottom:12px;">Explore More Workspace Guides</h2>
 <ul style="list-style:none;padding:0;">
-<li style="margin-bottom:8px;">🪑 <a href="/guides/best-ergonomic-office-chairs-2026">Best Ergonomic Office Chairs 2026</a></li>
+<li style="margin-bottom:8px;"> <a href="/guides/best-ergonomic-office-chairs-2026">Best Ergonomic Office Chairs 2026</a></li>
 <li style="margin-bottom:8px;">🧳 <a href="/guides/best-standing-desks-under-500">Best Standing Desks Under $500</a></li>
-<li style="margin-bottom:8px;">🖥️ <a href="/guides/dual-monitor-home-office">Dual Monitor Home Office Setup</a></li>
-<li style="margin-bottom:8px;">💡 <a href="/guides/home-office-lighting-guide">Home Office Lighting Guide</a></li>
+<li style="margin-bottom:8px;"> <a href="/guides/dual-monitor-home-office">Dual Monitor Home Office Setup</a></li>
+<li style="margin-bottom:8px;"> <a href="/guides/home-office-lighting-guide">Home Office Lighting Guide</a></li>
 <li>🎮 <a href="/guides/ergonomic-setup-for-gamers">Ergonomic Setup for Gamers</a></li>
 </ul>
 </section>
@@ -1104,7 +1119,7 @@
 <section class="related-guides">
  <h2 class="related-guides__title">Related Guides</h2>
  <div class="related-guides__carousel">
- <a href="/guides/best-standing-desks-under-500" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+ <a href="/guides/best-standing-desks-under-500" class="guide-card ps-card" style="text-decoration:none;color:inherit;display:block;">
  <div class="guide-card__content">
  <span class="guide-card__badge">Desks</span>
  <h3 class="guide-card__title">Best Standing Desks Under $500</h3>
@@ -1112,7 +1127,7 @@
  <span class="guide-card__link">Read guide →</span>
  </div>
  </a>
- <a href="/guides/dual-monitor-home-office" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+ <a href="/guides/dual-monitor-home-office" class="guide-card ps-card" style="text-decoration:none;color:inherit;display:block;">
  <div class="guide-card__content">
  <span class="guide-card__badge">Monitors</span>
  <h3 class="guide-card__title">Dual Monitor Home Office Setup</h3>
@@ -1120,7 +1135,7 @@
  <span class="guide-card__link">Read guide →</span>
  </div>
  </a>
- <a href="/guides/ergonomic-accessories-home-office" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+ <a href="/guides/ergonomic-accessories-home-office" class="guide-card ps-card" style="text-decoration:none;color:inherit;display:block;">
  <div class="guide-card__content">
  <span class="guide-card__badge">Accessories</span>
  <h3 class="guide-card__title">Ergonomic Accessories for Home Office</h3>
@@ -1128,7 +1143,7 @@
  <span class="guide-card__link">Read guide →</span>
  </div>
  </a>
- <a href="/guides/ergonomic-setup-for-gamers" class="guide-card" style="text-decoration:none;color:inherit;display:block;">
+ <a href="/guides/ergonomic-setup-for-gamers" class="guide-card ps-card" style="text-decoration:none;color:inherit;display:block;">
  <div class="guide-card__content">
  <span class="guide-card__badge">Gaming</span>
  <h3 class="guide-card__title">Ergonomic Setup for Gamers</h3>
@@ -1153,7 +1168,7 @@
 
 
  <section class="newsletter-bar" id="newsletter">
- <div class="container">
+ <div class="container ps-container">
  <h2 class="newsletter-bar__title">Get Weekly Workspace Tips</h2>
  <p class="newsletter-bar__desc">Personalized advice, gear deals, and ergonomic tips — every Wednesday. No spam, unsubscribe anytime.</p>
  <div class="newsletter-form">
@@ -1176,6 +1191,7 @@
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/guides">Guides</a></li>
+          <li><a href="/deals">Deals</a></li>
           <li><a href="/tips">Tips</a></li>
           <li><a href="/podcasts">Podcasts</a></li>
         </ul>
