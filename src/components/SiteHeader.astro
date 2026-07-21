@@ -1,0 +1,27 @@
+---
+const { active = '' } = Astro.props;
+const items = [
+  ['guides', '/guides', 'Guides'],
+  ['compare', '/compare/', 'Compare'],
+  ['tools', '/tools', 'Tools'],
+  ['deals', '/deals', 'Verified picks'],
+];
+---
+<header class="editorial-header">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="editorial-header__inner">
+    <a class="wordmark" href="/" aria-label="The Workspace Pro home">
+      <span class="wordmark__mark" aria-hidden="true">W</span>
+      <span>The Workspace Pro</span>
+    </a>
+    <button class="menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false">
+      <span>Menu</span>
+    </button>
+    <nav id="site-navigation" class="editorial-nav" aria-label="Primary navigation">
+      {items.map(([key, href, label]) => (
+        <a href={href} aria-current={active === key ? 'page' : undefined}>{label}</a>
+      ))}
+      <a class="button-link" href="/#assessment">Build my workspace</a>
+    </nav>
+  </div>
+</header>

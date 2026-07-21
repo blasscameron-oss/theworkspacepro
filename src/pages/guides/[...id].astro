@@ -1,0 +1,29 @@
+---
+import { getCollection, render } from 'astro:content';
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export async function getStaticPaths() {
+  const guides = await getCollection('guides', ({ data }) => data.status === 'published');
+  const canonicals = new Set<string>();
+  for (const entry of guides) {
+    const expected = `/guides/${entry.id}`;
+    if (entry.data.canonical !== expected) {
+      throw new Error(`Guide ${entry.id} must use canonical ${expected}`);
+    }
+    if (entry.data.updated < entry.data.published) {
+      throw new Error(`Guide ${entry.id} has an updated date before its published date`);
+    }
+    if (canonicals.has(entry.data.canonical)) {
+      throw new Error(`Duplicate guide canonical: ${entry.data.canonical}`);
+    }
+    canonicals.add(entry.data.canonical);
+  }
+  return guides.map((entry) => ({ params: { id: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+<GuideLayout entry={entry}>
+  <Content />
+</GuideLayout>

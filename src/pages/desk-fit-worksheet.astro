@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const checks = [
+  ['Feet', 'Feet rest fully on the floor or a stable footrest.'],
+  ['Seat', 'The seat supports my thighs without pressing behind my knees.'],
+  ['Back', 'The backrest supports me in the position I actually use.'],
+  ['Keyboard', 'My shoulders stay relaxed and my wrists remain close to straight.'],
+  ['Mouse', 'The mouse is beside the keyboard and does not require reaching.'],
+  ['Monitor', 'The main screen is roughly an arm’s length away with its top at or below eye level.'],
+  ['Glare', 'Windows and lights do not force me to lean or squint.'],
+  ['Movement', 'I can change position and take short movement breaks.'],
+];
+---
+<BaseLayout
+  title="Printable Desk-Fit Worksheet | The Workspace Pro"
+  description="Measure your desk, chair, monitor, and reach; identify the first workspace constraint; and print a practical adjustment plan."
+  canonical="/desk-fit-worksheet"
+  active="tools"
+>
+  <article class="worksheet">
+    <header class="worksheet__header">
+      <p class="eyebrow">Free printable worksheet</p>
+      <h1>My desk-fit check</h1>
+      <p>Measure first. Change one constraint at a time. Recheck after several work sessions.</p>
+      <button class="button-link worksheet__print" type="button" onclick="window.print()">Print or save as PDF</button>
+    </header>
+    <section class="worksheet__section" aria-labelledby="measure-title">
+      <h2 id="measure-title">1. Record the setup</h2>
+      <div class="worksheet__fields">
+        <label>My height <input type="text" inputmode="decimal" placeholder="in / cm" /></label>
+        <label>Chair seat height <input type="text" inputmode="decimal" placeholder="in / cm" /></label>
+        <label>Keyboard surface <input type="text" inputmode="decimal" placeholder="in / cm" /></label>
+        <label>Monitor distance <input type="text" inputmode="decimal" placeholder="in / cm" /></label>
+      </div>
+    </section>
+    <section class="worksheet__section" aria-labelledby="check-title">
+      <h2 id="check-title">2. Check the working position</h2>
+      <p>Mark “needs work” wherever your normal position fails the check.</p>
+      <div class="worksheet__checks">
+        {checks.map(([label, text]) => (
+          <fieldset class="worksheet__check">
+            <legend><strong>{label}</strong><span>{text}</span></legend>
+            <label><input type="radio" name={label} /> Works</label>
+            <label><input type="radio" name={label} /> Needs work</label>
+          </fieldset>
+        ))}
+      </div>
+    </section>
+    <section class="worksheet__section" aria-labelledby="plan-title">
+      <h2 id="plan-title">3. Choose the first change</h2>
+      <label class="worksheet__notes">The clearest constraint<textarea rows="3"></textarea></label>
+      <label class="worksheet__notes">The smallest reversible change to test<textarea rows="3"></textarea></label>
+      <label class="worksheet__notes">Date I will recheck<textarea rows="2"></textarea></label>
+    </section>
+    <footer class="worksheet__notice">
+      <strong>Use this as a screening worksheet, not a diagnosis.</strong>
+      <span>Persistent or significant pain, weakness, numbness, or vision problems warrant qualified professional care.</span>
+    </footer>
+  </article>
+</BaseLayout>

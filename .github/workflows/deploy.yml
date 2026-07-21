@@ -10,6 +10,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install locked dependencies
+        run: npm ci
+
       - name: Validate public source
         run: |
           find assets/js worker -name '*.js' -print0 | xargs -0 -n1 node --check
@@ -22,8 +30,11 @@ jobs:
             exit 1
           fi
 
-      - name: Build allowlisted public artifact
-        run: ./scripts/build-for-pages.sh dist
+      - name: Build component-based public artifact
+        run: npm run build
+
+      - name: Check types and content contracts
+        run: npm run check
 
       - name: Validate built public artifact
         run: node scripts/validate-public-site.mjs dist

@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { legacySection } from '../lib/legacy';
+
+const assessment = legacySection('index.html', 'assessment');
+const paths = [
+  { label: 'Fix discomfort', title: 'Start with your body', text: 'Use height, reach, and posture checks to find the constraint before buying equipment.', href: '/guides/desk-chair-height-chart' },
+  { label: 'Choose equipment', title: 'Compare by fit', text: 'See the trade-offs that matter: range, dimensions, stability, adjustability, and warranty.', href: '/compare/' },
+  { label: 'Plan a complete setup', title: 'Work within your budget', text: 'Build a coherent setup instead of collecting upgrades that do not work together.', href: '/build-your-office' },
+];
+---
+<BaseLayout
+  title="The Workspace Pro — A Home Office That Fits Your Body"
+  description="Build a healthier home workspace with a free fit assessment, practical measurements, transparent product research, and useful planning tools."
+  canonical="/"
+  visualMaster="home-workspace-blueprint-v1"
+>
+  <div class="migrated-assessment" set:html={assessment} />
+
+  <section class="editorial-section editorial-intro">
+    <p class="eyebrow">A better way to improve your desk</p>
+    <h2>Fix the constraint before you buy the product.</h2>
+    <p>Most workspace advice starts with a shopping list. We start with fit: your body, available space, work pattern, and budget. The result is a shorter list of changes that have a reason to exist.</p>
+  </section>
+
+  <section class="editorial-section path-grid" aria-labelledby="paths-title">
+    <div class="section-heading">
+      <p class="eyebrow">Choose a path</p>
+      <h2 id="paths-title">Start with the decision in front of you.</h2>
+    </div>
+    <div class="path-grid__items">
+      {paths.map((path, index) => (
+        <a class="path-card" href={path.href}>
+          <span class="path-card__number">0{index + 1}</span>
+          <span class="eyebrow">{path.label}</span>
+          <h3>{path.title}</h3>
+          <p>{path.text}</p>
+          <span class="text-link">Open this path <span aria-hidden="true">→</span></span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="editorial-section evidence-band">
+    <div>
+      <p class="eyebrow">Research standard</p>
+      <h2>Specific about the evidence. Honest about the limits.</h2>
+    </div>
+    <div>
+      <p>Our recommendations are based on published specifications, authoritative ergonomics guidance, fit constraints, warranties, and clearly described editorial judgment.</p>
+      <p>We label research-led recommendations accurately and never substitute a generic stock photo for a specific product.</p>
+      <a class="text-link" href="/about">How we research <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <Fragment slot="scripts">
+    <script is:inline src="/assets/js/height-math.js" defer></script>
+    <script is:inline src="/assets/js/assessment.js" defer></script>
+  </Fragment>
+</BaseLayout>

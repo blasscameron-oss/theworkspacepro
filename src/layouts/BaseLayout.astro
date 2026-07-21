@@ -1,0 +1,82 @@
+---
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  active?: string;
+  type?: 'website' | 'article';
+  published?: Date;
+  updated?: Date;
+  author?: string;
+  visualMaster?: string;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  active = '',
+  type = 'website',
+  published,
+  updated,
+  author = 'The Workspace Pro Editorial Team',
+  visualMaster,
+} = Astro.props;
+const canonicalUrl = new URL(canonical, Astro.site);
+const schema = type === 'article'
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: title,
+      description,
+      datePublished: published?.toISOString(),
+      dateModified: updated?.toISOString(),
+      author: { '@type': 'Organization', name: author },
+      publisher: { '@type': 'Organization', name: 'The Workspace Pro' },
+      mainEntityOfPage: canonicalUrl.href,
+    }
+  : {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: title,
+      description,
+      url: canonicalUrl.href,
+    };
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content="https://www.theworkspacepro.com/assets/images/og-default.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/assets/images/favicon.svg" />
+    <link rel="stylesheet" href="/assets/css/fonts.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/premium-studio.css" />
+    <link rel="stylesheet" href="/assets/css/worksheet.css" />
+    <link rel="stylesheet" href="/assets/css/editorial-v4.css" />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+  </head>
+  <body class="ps-shell editorial-shell" data-visual-master={visualMaster}>
+    <SiteHeader active={active} />
+    <main id="main-content">
+      <slot />
+    </main>
+    <SiteFooter />
+    <script is:inline src="/assets/js/analytics.js" defer></script>
+    <script is:inline src="/assets/js/site.js" defer></script>
+    <script is:inline src="/assets/js/perf-lite.js" defer></script>
+    <slot name="scripts" />
+  </body>
+</html>

@@ -1,0 +1,30 @@
+.worksheet { width: min(calc(100% - 40px), 920px); margin: 0 auto; padding-block: clamp(70px, 9vw, 120px); }
+.worksheet__header { max-width: 760px; margin-bottom: 70px; }
+.worksheet__header h1 { margin: 0 0 20px; font-size: clamp(3rem, 7vw, 6rem); }
+.worksheet__header p { color: var(--editorial-muted); font-size: 1.12rem; }
+.worksheet__print { margin-top: 18px; padding: 12px 18px; border: 0; border-radius: 3px; color: white; background: var(--editorial-accent); cursor: pointer; font: inherit; }
+.worksheet__section { margin-top: 54px; padding-top: 32px; border-top: 1px solid var(--editorial-line); }
+.worksheet__section h2 { font-size: 2rem; }
+.worksheet__fields { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.worksheet__fields label, .worksheet__notes { display: grid; gap: 8px; color: var(--editorial-muted); font-size: .86rem; font-weight: 700; }
+.worksheet input[type="text"], .worksheet textarea { width: 100%; padding: 13px; border: 1px solid var(--editorial-line); color: var(--editorial-ink); background: var(--editorial-white); font: inherit; }
+.worksheet__check { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 20px; align-items: center; padding: 18px 0; border-bottom: 1px solid var(--editorial-line); }
+.worksheet__check { min-width: 0; margin: 0; border-width: 0 0 1px; }
+.worksheet__check legend { display: grid; gap: 3px; width: 100%; padding: 0; }
+.worksheet__check span { color: var(--editorial-muted); font-size: .9rem; }
+.worksheet__check label { font-size: .82rem; white-space: nowrap; }
+.worksheet__notes { margin-top: 20px; }
+.worksheet__notice { margin-top: 50px; padding: 24px; display: grid; gap: 6px; background: #ece9e0; font-size: .85rem; }
+@media (max-width: 560px) {
+  .worksheet__fields { grid-template-columns: 1fr; }
+  .worksheet__check { grid-template-columns: 1fr 1fr; }
+  .worksheet__check legend { grid-column: 1 / -1; }
+}
+@media print {
+  .editorial-header, .editorial-footer, .worksheet__print { display: none !important; }
+  body.editorial-shell { background: white; }
+  .worksheet { width: 100%; padding: 0; }
+  .worksheet__header { margin-bottom: 24px; }
+  .worksheet__header h1 { font-size: 32pt; }
+  .worksheet__section { break-inside: avoid; margin-top: 22px; padding-top: 16px; }
+}

@@ -1,0 +1,66 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const newGuides = (await getCollection('guides', ({ data }) => data.status === 'published'))
+  .sort((a, b) => b.data.updated.valueOf() - a.data.updated.valueOf());
+const library = [
+  ['body-fit', 'Desk and Chair Height Chart', 'Starting measurements in imperial and metric, with adjustment guidance.', '/guides/desk-chair-height-chart'],
+  ['chairs', 'Ergonomic Office Chair Buying Guide', 'Seat fit, adjustability, support, and warranty—without invented test claims.', '/guides/ergonomic-office-chair-buying-guide'],
+  ['desks', 'Standing Desks Under $500', 'Budget desk trade-offs, height range, stability, and warranty.', '/guides/best-standing-desks-under-500'],
+  ['setups', 'Home Office Under $1,000', 'A complete setup with spending priorities and alternatives.', '/guides/home-office-budget-setup-under-1000'],
+  ['monitors', 'Dual-Monitor Setup', 'Placement, reach, mounting, and desk-depth considerations.', '/guides/dual-monitor-setup-productivity'],
+  ['lighting', 'Home Office Lighting', 'Control glare and layer daylight, ambient, and task lighting.', '/guides/home-office-lighting-guide'],
+  ['setups', 'Small Home Office Organization', 'Make limited space work without sacrificing reach or movement.', '/guides/small-home-office-organization-hacks'],
+  ['setups', 'Cable Management', 'Route power and signal cables for fixed and standing desks.', '/guides/cable-management-solutions'],
+];
+---
+<BaseLayout
+  title="Practical Home Office Guides | The Workspace Pro"
+  description="Research-led guides for workspace fit, ergonomic chairs, standing desks, monitors, lighting, and complete home-office setups."
+  canonical="/guides"
+  active="guides"
+  visualMaster="guides-editorial-library-v1"
+>
+  <header class="library-hero">
+    <p class="eyebrow">The field guide</p>
+    <h1>Make one confident workspace decision at a time.</h1>
+    <p>Measurements, trade-offs, and practical fixes for real rooms and real budgets. No manufactured urgency and no unsupported testing claims.</p>
+  </header>
+
+  {newGuides.length > 0 && (
+    <section class="library-section" id="body-fit" aria-labelledby="new-guides-title">
+      <div class="section-heading">
+        <p class="eyebrow">New and substantially revised</p>
+        <h2 id="new-guides-title">Body-fit guides</h2>
+      </div>
+      <div class="guide-card-grid">
+        {newGuides.map(({ data }) => (
+          <a class="library-card library-card--featured" href={data.canonical}>
+            <span class="eyebrow">{data.category.replace('-', ' ')}</span>
+            <h3>{data.title}</h3>
+            <p>{data.description}</p>
+            <span class="library-card__meta">Updated {data.updated.toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' })}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <section class="library-section" id="library" aria-labelledby="library-title">
+    <div class="section-heading">
+      <p class="eyebrow">Core library</p>
+      <h2 id="library-title">Browse by the problem you are solving.</h2>
+    </div>
+    <div class="guide-card-grid">
+      {library.map(([category, title, description, href]) => (
+        <a class="library-card" href={href}>
+          <span class="eyebrow">{category}</span>
+          <h3>{title}</h3>
+          <p>{description}</p>
+          <span class="text-link">Read guide <span aria-hidden="true">→</span></span>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

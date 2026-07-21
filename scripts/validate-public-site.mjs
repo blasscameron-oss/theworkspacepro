@@ -177,12 +177,18 @@ for (const file of htmlFiles) {
     }
   }
 
-  for (const attribute of html.matchAll(/\b(href|src)\s*=\s*(["'])([^"']*)\2/gi)) {
+  for (const attribute of html.matchAll(/\b(href|src|content)\s*=\s*(["'])([^"']*)\2/gi)) {
     const kind = attribute[1].toLowerCase();
     const value = decodeEntities(attribute[3].trim());
-    if (!value.startsWith('/') || value.startsWith('//')) continue;
+    let localValue = value;
+    if (/^https?:\/\//i.test(value)) {
+      const absolute = new URL(value);
+      if (absolute.origin !== 'https://www.theworkspacepro.com') continue;
+      localValue = `${absolute.pathname}${absolute.search}${absolute.hash}`;
+    }
+    if (!localValue.startsWith('/') || localValue.startsWith('//')) continue;
 
-    const route = normalizePublicPath(value);
+    const route = normalizePublicPath(localValue);
     if (!route) {
       fail(scope, `invalid local ${kind} target: ${value}`);
       continue;
@@ -196,9 +202,9 @@ for (const file of htmlFiles) {
       continue;
     }
 
-    const hashIndex = value.indexOf('#');
+    const hashIndex = localValue.indexOf('#');
     if (kind === 'href' && target && hashIndex !== -1) {
-      const fragment = value.slice(hashIndex + 1).split('?', 1)[0];
+      const fragment = localValue.slice(hashIndex + 1).split('?', 1)[0];
       if (fragment) {
         const targetHtml = fs.readFileSync(target, 'utf8');
         if (idCount(stripComments(targetHtml), decodeEntities(fragment)) !== 1) {

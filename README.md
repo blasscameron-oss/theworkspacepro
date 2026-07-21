@@ -9,7 +9,7 @@ Ergonomic home-office site: free workspace assessment, calculators, and research
 
 ## Stack
 
-- Static HTML/CSS/JS on **Cloudflare Pages**
+- Astro-generated static HTML plus controlled legacy routes on **Cloudflare Pages**
 - Weekly health monitor: **Cloudflare Worker** (`worker/monitor.js`) + KV
 - Newsletter: **Beehiiv**
 - Contact form: **Formspree**
@@ -19,9 +19,9 @@ Ergonomic home-office site: free workspace assessment, calculators, and research
 ## Local preview
 
 ```bash
-./scripts/build-for-pages.sh dist
-node scripts/validate-public-site.mjs dist
-npx --yes serve -l 4173 .
+npm run build
+npm run validate
+npx serve dist -l 4173 --no-clipboard
 # open http://localhost:4173
 ```
 

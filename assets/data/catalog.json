@@ -20,7 +20,11 @@
       ],
       "asin": null,
       "retailer": "ikea",
-      "image": null
+      "image": null,
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "B06Y3PGPR2",
@@ -28,7 +32,7 @@
       "price": 379,
       "url": "https://www.amazon.com/dp/B06Y3PGPR2/?tag=workspacepro-20",
       "category": "Chair",
-      "desc": "Mesh task chair with lumbar support \u2014 strong value pick for full workdays. Confirm current price on Amazon.",
+      "desc": "Mesh task chair with lumbar support — strong value pick for full workdays. Confirm current price on Amazon.",
       "tiers": [
         "budget",
         "mid"
@@ -42,7 +46,11 @@
       ],
       "asin": "B06Y3PGPR2",
       "retailer": "amazon",
-      "image": ""
+      "image": "",
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "branch-ergonomic-chair",
@@ -64,7 +72,11 @@
       ],
       "asin": null,
       "retailer": "branch",
-      "image": null
+      "image": null,
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "B092ZNFF8P",
@@ -83,7 +95,11 @@
       ],
       "asin": "B092ZNFF8P",
       "retailer": "amazon",
-      "image": ""
+      "image": "",
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "B07R62FKFZ",
@@ -105,7 +121,11 @@
       ],
       "asin": "B07R62FKFZ",
       "retailer": "amazon",
-      "image": ""
+      "image": "",
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "B07NH69TWB",
@@ -113,7 +133,7 @@
       "price": 1395,
       "url": "https://www.amazon.com/dp/B07NH69TWB/?tag=workspacepro-20",
       "category": "Chair",
-      "desc": "Premium posture-focused chair for long sessions. High price \u2014 only if budget allows.",
+      "desc": "Premium posture-focused chair for long sessions. High price — only if budget allows.",
       "tiers": [
         "premium"
       ],
@@ -126,7 +146,11 @@
       ],
       "asin": "B07NH69TWB",
       "retailer": "amazon",
-      "image": ""
+      "image": "",
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "ikea-lagkapten-desk",
@@ -146,7 +170,11 @@
       ],
       "asin": null,
       "retailer": "ikea",
-      "image": null
+      "image": null,
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "B085KBN2DN",
@@ -154,7 +182,7 @@
       "price": 299,
       "url": "https://www.amazon.com/dp/B085KBN2DN/?tag=workspacepro-20",
       "category": "Desk",
-      "desc": "Budget electric standing desk with drawer options. Popular Amazon pick \u2014 verify capacity and height range for your body.",
+      "desc": "Budget electric standing desk with drawer options. Popular Amazon pick — verify capacity and height range for your body.",
       "tiers": [
         "budget",
         "mid"
@@ -167,7 +195,11 @@
       ],
       "asin": "B085KBN2DN",
       "retailer": "amazon",
-      "image": ""
+      "image": "",
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "branch-standing-desk",
@@ -191,7 +223,11 @@
       ],
       "asin": null,
       "retailer": "branch",
-      "image": null
+      "image": null,
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "uplift-v2-standing-desk",
@@ -212,7 +248,11 @@
       ],
       "asin": null,
       "retailer": "other",
-      "image": null
+      "image": null,
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "B07DHK5DHN",
@@ -220,7 +260,7 @@
       "price": 25,
       "url": "https://www.amazon.com/dp/B07DHK5DHN/?tag=workspacepro-20",
       "category": "Monitor Stand",
-      "desc": "Simple riser for eye-level monitors when a full arm isn\u2019t in budget. Not a sit-stand converter.",
+      "desc": "Simple riser for eye-level monitors when a full arm isn’t in budget. Not a sit-stand converter.",
       "tiers": [
         "budget"
       ],
@@ -232,7 +272,11 @@
       ],
       "asin": "B07DHK5DHN",
       "retailer": "amazon",
-      "image": ""
+      "image": "",
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "B018MSDG84",
@@ -240,7 +284,7 @@
       "price": 35,
       "url": "https://www.amazon.com/dp/B018MSDG84/?tag=workspacepro-20",
       "category": "Monitor Stand",
-      "desc": "Freestanding dual monitor stand \u2014 frees desk depth without clamp mounts.",
+      "desc": "Freestanding dual monitor stand — frees desk depth without clamp mounts.",
       "tiers": [
         "budget",
         "mid"
@@ -252,7 +296,11 @@
       ],
       "asin": "B018MSDG84",
       "retailer": "amazon",
-      "image": ""
+      "image": "",
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "B088BC5HMM",
@@ -275,7 +323,11 @@
       ],
       "asin": "B088BC5HMM",
       "retailer": "amazon",
-      "image": ""
+      "image": "",
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "B09DTDRJWP",
@@ -283,7 +335,7 @@
       "price": 350,
       "url": "https://www.amazon.com/dp/B09DTDRJWP/?tag=workspacepro-20",
       "category": "Monitor",
-      "desc": "4K with USB-C \u2014 sharper text and laptop charging for a cleaner setup.",
+      "desc": "4K with USB-C — sharper text and laptop charging for a cleaner setup.",
       "tiers": [
         "mid"
       ],
@@ -295,7 +347,11 @@
       ],
       "asin": "B09DTDRJWP",
       "retailer": "amazon",
-      "image": ""
+      "image": "",
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "B09TQZP9CL",
@@ -303,7 +359,7 @@
       "price": 480,
       "url": "https://www.amazon.com/dp/B09TQZP9CL/?tag=workspacepro-20",
       "category": "Monitor",
-      "desc": "4K USB-C hub monitor \u2014 strong productivity pick. Prices fluctuate; check Amazon.",
+      "desc": "4K USB-C hub monitor — strong productivity pick. Prices fluctuate; check Amazon.",
       "tiers": [
         "mid",
         "premium"
@@ -316,7 +372,11 @@
       ],
       "asin": "B09TQZP9CL",
       "retailer": "amazon",
-      "image": ""
+      "image": "",
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "B08BCR862L",
@@ -324,7 +384,7 @@
       "price": 550,
       "url": "https://www.amazon.com/dp/B08BCR862L/?tag=workspacepro-20",
       "category": "Monitor",
-      "desc": "32\\\" 4K with Ergo stand \u2014 lots of space for multi-window work.",
+      "desc": "32\\\" 4K with Ergo stand — lots of space for multi-window work.",
       "tiers": [
         "premium"
       ],
@@ -336,7 +396,11 @@
       ],
       "asin": "B08BCR862L",
       "retailer": "amazon",
-      "image": ""
+      "image": "",
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "B00358RIRC",
@@ -357,7 +421,11 @@
       ],
       "asin": "B00358RIRC",
       "retailer": "amazon",
-      "image": ""
+      "image": "",
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "B00P9JULWE",
@@ -365,7 +433,7 @@
       "price": 299,
       "url": "https://www.amazon.com/dp/B00P9JULWE/?tag=workspacepro-20",
       "category": "Monitor Arm",
-      "desc": "Dual-arm Ergotron for two monitors \u2014 clean dual setup without freestanding base bulk.",
+      "desc": "Dual-arm Ergotron for two monitors — clean dual setup without freestanding base bulk.",
       "tiers": [
         "premium"
       ],
@@ -375,7 +443,11 @@
       ],
       "asin": "B00P9JULWE",
       "retailer": "amazon",
-      "image": ""
+      "image": "",
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "ikea-tertial-work-lamp",
@@ -395,7 +467,11 @@
       ],
       "asin": null,
       "retailer": "ikea",
-      "image": null
+      "image": null,
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "B071CXPSDN",
@@ -403,7 +479,7 @@
       "price": 30,
       "url": "https://www.amazon.com/dp/B071CXPSDN/?tag=workspacepro-20",
       "category": "Lighting",
-      "desc": "Multi-angle LED desk lamp \u2014 solid budget task light.",
+      "desc": "Multi-angle LED desk lamp — solid budget task light.",
       "tiers": [
         "budget"
       ],
@@ -414,7 +490,11 @@
       ],
       "asin": "B071CXPSDN",
       "retailer": "amazon",
-      "image": ""
+      "image": "",
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "B076VNFZJG",
@@ -422,7 +502,7 @@
       "price": 99,
       "url": "https://www.amazon.com/dp/B076VNFZJG/?tag=workspacepro-20",
       "category": "Lighting",
-      "desc": "Monitor light bar \u2014 zero desk footprint, reduces glare.",
+      "desc": "Monitor light bar — zero desk footprint, reduces glare.",
       "tiers": [
         "mid"
       ],
@@ -434,7 +514,11 @@
       ],
       "asin": "B076VNFZJG",
       "retailer": "amazon",
-      "image": ""
+      "image": "",
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "B07DP7RYXV",
@@ -458,7 +542,11 @@
       ],
       "asin": "B07DP7RYXV",
       "retailer": "amazon",
-      "image": ""
+      "image": "",
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "B07C7WJSQL",
@@ -466,7 +554,7 @@
       "price": 25,
       "url": "https://www.amazon.com/dp/B07C7WJSQL/?tag=workspacepro-20",
       "category": "Keyboard Acc",
-      "desc": "Wrist pad for TKL keyboards \u2014 small comfort upgrade if you type all day.",
+      "desc": "Wrist pad for TKL keyboards — small comfort upgrade if you type all day.",
       "tiers": [
         "budget",
         "mid"
@@ -478,7 +566,11 @@
       ],
       "asin": "B07C7WJSQL",
       "retailer": "amazon",
-      "image": ""
+      "image": "",
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "B09HM94VDS",
@@ -499,7 +591,11 @@
       ],
       "asin": "B09HM94VDS",
       "retailer": "amazon",
-      "image": ""
+      "image": "",
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "B087Z6LSHW",
@@ -507,7 +603,7 @@
       "price": 40,
       "url": "https://www.amazon.com/dp/B087Z6LSHW/?tag=workspacepro-20",
       "category": "Mouse",
-      "desc": "Multi-device wireless mouse \u2014 solid budget productivity pick.",
+      "desc": "Multi-device wireless mouse — solid budget productivity pick.",
       "tiers": [
         "budget"
       ],
@@ -517,7 +613,11 @@
       ],
       "asin": "B087Z6LSHW",
       "retailer": "amazon",
-      "image": ""
+      "image": "",
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "B00OUFX0YY",
@@ -536,7 +636,11 @@
       ],
       "asin": "B00OUFX0YY",
       "retailer": "amazon",
-      "image": ""
+      "image": "",
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "B01H6AZC5Y",
@@ -554,7 +658,11 @@
       ],
       "asin": "B01H6AZC5Y",
       "retailer": "amazon",
-      "image": ""
+      "image": "",
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "B06Y1DVNQD",
@@ -574,7 +682,11 @@
       ],
       "asin": "B06Y1DVNQD",
       "retailer": "amazon",
-      "image": ""
+      "image": "",
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "B0002DR45E",
@@ -582,7 +694,7 @@
       "price": 45,
       "url": "https://www.amazon.com/dp/B0002DR45E/?tag=workspacepro-20",
       "category": "Accessory",
-      "desc": "Adjustable footrest for better seated posture when feet don\u2019t plant flat.",
+      "desc": "Adjustable footrest for better seated posture when feet don’t plant flat.",
       "tiers": [
         "budget",
         "mid"
@@ -593,7 +705,11 @@
       ],
       "asin": "B0002DR45E",
       "retailer": "amazon",
-      "image": ""
+      "image": "",
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "ikea-markus",
@@ -611,7 +727,11 @@
       ],
       "asin": null,
       "retailer": "ikea",
-      "image": null
+      "image": null,
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "B0C83YRK84",
@@ -630,7 +750,11 @@
       ],
       "asin": "B0C83YRK84",
       "retailer": "amazon",
-      "image": ""
+      "image": "",
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "ikea-trotten-standing-desk",
@@ -647,7 +771,11 @@
       ],
       "asin": null,
       "retailer": "ikea",
-      "image": null
+      "image": null,
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "fully-jarvis-bamboo",
@@ -665,7 +793,11 @@
       ],
       "asin": null,
       "retailer": "other",
-      "image": null
+      "image": null,
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "ikea-tertial-work-lamp",
@@ -682,7 +814,11 @@
       ],
       "asin": null,
       "retailer": "ikea",
-      "image": null
+      "image": null,
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "B087Z6LSHW",
@@ -700,7 +836,11 @@
       ],
       "asin": "B087Z6LSHW",
       "retailer": "amazon",
-      "image": ""
+      "image": "",
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     },
     {
       "id": "B08BLCZDYL",
@@ -718,7 +858,11 @@
       ],
       "asin": "B08BLCZDYL",
       "retailer": "amazon",
-      "image": ""
+      "image": "",
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
+      ]
     }
   ]
 }

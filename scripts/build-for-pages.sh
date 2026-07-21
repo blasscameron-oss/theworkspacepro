@@ -2,6 +2,12 @@
 # Build allowlisted Pages artifact — excludes operational files and unproven assets
 # Called by local verification and GitHub Actions
 set -euo pipefail
+# Compatibility entry point: production now uses the component build directly.
+if [ "${1:-dist}" = "dist" ]; then
+  exec npm run build
+fi
+
+# Retain the old _site-only path for historical local workflows.
 
 OUTPUT_DIR="${1:-_site}"
 case "$OUTPUT_DIR" in

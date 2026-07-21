@@ -1,0 +1,62 @@
+---
+import BaseLayout from './BaseLayout.astro';
+const { entry } = Astro.props;
+const { data } = entry;
+---
+<BaseLayout
+  title={data.title}
+  description={data.description}
+  canonical={data.canonical}
+  active="guides"
+  type="article"
+  published={data.published}
+  updated={data.updated}
+  author={data.author}
+>
+  <article class="guide-layout">
+    <header class="guide-hero">
+      <nav class="guide-breadcrumbs" aria-label="Breadcrumb">
+        <a href="/guides">Guides</a><span aria-hidden="true">/</span>
+        <a href="/guides#body-fit">{data.category.replace('-', ' ')}</a>
+      </nav>
+      <h1>{data.title}</h1>
+      <p class="guide-hero__dek">{data.description}</p>
+      <div class="guide-byline">
+        <span>{data.author}</span>
+        <span>Updated {data.updated.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}</span>
+        <span>Research-led</span>
+      </div>
+    </header>
+    <div class="guide-frame">
+      <aside class="guide-method" aria-label="Research method">
+        <strong>How this guide was prepared</strong>
+        <p>{data.methodology}</p>
+        <a href="/about">Read our methodology</a>
+      </aside>
+      <div class="guide-prose">
+        <slot />
+        <section class="source-list" aria-labelledby="sources-title">
+          <h2 id="sources-title">Sources</h2>
+          <ol>
+            {data.sources.map((source: { label: string; url: string }) => <li><a href={source.url} rel="external">{source.label}</a></li>)}
+          </ol>
+        </section>
+        {(data.relatedTools.length > 0 || data.relatedGuides.length > 0) && (
+          <section class="related-reading" aria-labelledby="related-title">
+            <h2 id="related-title">Keep working on your setup</h2>
+            <ul>
+              {data.relatedTools.map((href: string) => <li><a href={href}>Use the related workspace tool</a></li>)}
+              {data.relatedGuides.map((href: string) => <li><a href={href}>Read the related guide</a></li>)}
+            </ul>
+          </section>
+        )}
+        {data.medicalDisclaimer && (
+          <p class="disclosure">This guide provides general educational information, not diagnosis or medical treatment. Seek qualified care for persistent or severe symptoms.</p>
+        )}
+        {data.affiliateDisclosure && (
+          <p class="disclosure">Some merchant links may be affiliate links. We may earn a commission at no additional cost to you.</p>
+        )}
+      </div>
+    </div>
+  </article>
+</BaseLayout>

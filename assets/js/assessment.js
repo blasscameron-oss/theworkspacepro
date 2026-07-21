@@ -845,7 +845,7 @@ function showResults() {
       <button type="button" id="copyAssessmentResults" class="btn btn--secondary">Copy summary</button>
       <button type="button" id="shareAssessmentResults" class="btn btn--secondary">Share blueprint</button>
       <button type="button" id="saveAssessmentResults" class="btn btn--outline result-save-btn">Save blueprint</button>
-      <a href="#newsletter" class="btn btn--primary">Get Weekly Tips</a>
+      <a href="/guides" class="btn btn--primary">Explore practical guides</a>
     </div>
     <p class="result-actions__hint" id="resultActionHint" aria-live="polite"></p>
   `;
