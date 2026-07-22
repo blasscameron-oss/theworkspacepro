@@ -46,12 +46,13 @@ const managedGuideIds = new Set(
     .filter((file) => /\.mdx?$/i.test(file))
     .map((file) => file.replace(/\.mdx?$/i, '')),
 );
+const isPatchArtifact = (source) => /\.(?:orig|rej)$/i.test(source);
 for (const directory of ['compare', 'embed']) {
-  copyTree(path.join(root, directory), path.join(out, directory), { overwrite: false });
+  copyTree(path.join(root, directory), path.join(out, directory), { overwrite: false, skip: isPatchArtifact });
 }
 copyTree(path.join(root, 'guides'), path.join(out, 'guides'), {
   overwrite: false,
-  skip: (source) => managedGuideIds.has(path.basename(source, '.html')),
+  skip: (source) => isPatchArtifact(source) || managedGuideIds.has(path.basename(source, '.html')),
 });
 for (const file of fs.readdirSync(root)) {
   if (!file.endsWith('.html') || file === 'index.html' || file === 'guides.html') continue;

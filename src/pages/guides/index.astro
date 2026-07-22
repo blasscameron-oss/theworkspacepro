@@ -14,6 +14,14 @@ const library = [
   ['setups', 'Small Home Office Organization', 'Make limited space work without sacrificing reach or movement.', '/guides/small-home-office-organization-hacks'],
   ['setups', 'Cable Management', 'Route power and signal cables for fixed and standing desks.', '/guides/cable-management-solutions'],
 ];
+const buyingGuides = [
+  ['chairs', 'Best Ergonomic Office Chairs', 'A research-led shortlist with adjustability, price, and warranty trade-offs.', '/guides/best-ergonomic-office-chairs-2026'],
+  ['desks', 'Home Office Desk Buying Guide', 'Compare fixed and standing desks by usable range, stability, depth, and budget.', '/guides/home-office-desk-guide-2026'],
+  ['accessories', 'Ergonomic Accessories', 'Prioritize the smaller upgrades most likely to solve a specific constraint.', '/guides/ergonomic-accessories-home-office'],
+  ['standing', 'Standing Desk Mats for Hard Floors', 'Compare cushioning, movement, durability, and cleaning trade-offs.', '/guides/best-standing-desk-mat-for-concrete-floors'],
+  ['monitors', 'Dual-Monitor Home Office', 'Choose displays, arms, and placement for a practical two-screen setup.', '/guides/dual-monitor-home-office'],
+  ['gaming', 'Ergonomic Gaming Setup', 'Build a gaming and work setup around reach, display position, and adjustability.', '/guides/ergonomic-setup-for-gamers'],
+];
 ---
 <BaseLayout
   title="Practical Home Office Guides | The Workspace Pro"
@@ -27,12 +35,30 @@ const library = [
     <h1>Make one confident workspace decision at a time.</h1>
     <p>Measurements, trade-offs, and practical fixes for real rooms and real budgets. No manufactured urgency and no unsupported testing claims.</p>
   </header>
+  <section class="library-section" id="buying-guides" aria-labelledby="buying-guides-title">
+    <div class="section-heading">
+      <p class="eyebrow">Buying guides and shortlists</p>
+      <h2 id="buying-guides-title">Move from a known constraint to a researched shortlist.</h2>
+      <p>These guides name products and explain the trade-offs. Affiliate relationships are disclosed in each guide that contains merchant links.</p>
+    </div>
+    <div class="guide-card-grid">
+      {buyingGuides.map(([category, title, description, href]) => (
+        <a class="library-card library-card--buying" href={href}>
+          <span class="eyebrow">{category}</span>
+          <h3>{title}</h3>
+          <p>{description}</p>
+          <span class="text-link">Open buying guide <span aria-hidden="true">→</span></span>
+        </a>
+      ))}
+    </div>
+    <p class="library-disclosure">Affiliate relationships never change the price you pay. <a href="/affiliate-disclosure">Read the full disclosure.</a></p>
+  </section>
 
   {newGuides.length > 0 && (
     <section class="library-section" id="body-fit" aria-labelledby="new-guides-title">
       <div class="section-heading">
         <p class="eyebrow">New and substantially revised</p>
-        <h2 id="new-guides-title">Body-fit guides</h2>
+        <h2 id="new-guides-title">New practical guides</h2>
       </div>
       <div class="guide-card-grid">
         {newGuides.map(({ data }) => (

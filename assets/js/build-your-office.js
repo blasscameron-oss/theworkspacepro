@@ -320,7 +320,7 @@ const BYO_PRODUCTS = {
 function byoNext() {
   if (BYOState.step < BYOState.totalSteps - 1) {
     BYOState.step++;
-    byoRenderStep();
+    byoRenderStep(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   } else {
     byoShowResults();
@@ -330,7 +330,7 @@ function byoNext() {
 function byoPrev() {
   if (BYOState.step > 0) {
     BYOState.step--;
-    byoRenderStep();
+    byoRenderStep(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
@@ -352,10 +352,19 @@ function byoSelect(el) {
   }
 }
 
-function byoRenderStep() {
+function byoRenderStep(moveFocus) {
   document.querySelectorAll('.byo-step').forEach(s => s.classList.remove('active'));
   const step = document.querySelector('[data-step="' + BYOState.step + '"]');
-  if (step) step.classList.add('active');
+  if (step) {
+    step.classList.add('active');
+    if (moveFocus) {
+      const question = step.querySelector('.byo-question');
+      if (question) {
+        question.setAttribute('tabindex', '-1');
+        question.focus({ preventScroll: true });
+      }
+    }
+  }
 
   // Update progress bars
   const bars = document.querySelectorAll('.byo-progress__bar');
@@ -408,6 +417,9 @@ function byoShowResults() {
   // Build the product selection
   const setup = byoBuildSetup();
   byoRenderResults(setup);
+  const results = document.getElementById('byoResults');
+  results.setAttribute('tabindex', '-1');
+  results.focus({ preventScroll: true });
 }
 
 function byoBuildSetup() {
@@ -629,7 +641,7 @@ function byoRestart() {
   document.querySelectorAll('[id^="byoNext"]').forEach(b => {
     if (b.id !== 'byoNext0') b.disabled = true;
   });
-  byoRenderStep();
+  byoRenderStep(true);
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 

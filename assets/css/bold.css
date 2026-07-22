@@ -466,7 +466,8 @@ article p img {
 }
 
 /* Guide comparison tables: alternating row colors, sticky header on scroll */
-.article-body .table-wrapper {
+.article-body .table-wrapper,
+.article-body .table-wrap {
   max-width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;

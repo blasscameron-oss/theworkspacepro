@@ -4,7 +4,7 @@
  * Results stored in KV
  */
 
-const SITE_URL = 'https://www.theworkspacepro.com';
+const DEFAULT_SITE_URL = 'https://www.theworkspacepro.com';
 
 const URLS_TO_CHECK = [
   '/', '/guides', '/tips', '/podcasts', '/about', '/contact',
@@ -16,7 +16,18 @@ const URLS_TO_CHECK = [
   '/guides/back-pain-ergonomic-setup', '/compare/branch-vs-uplift',
   '/assets/css/style.css', '/assets/js/assessment.js', '/robots.txt', '/sitemap.xml',
   '/deals', '/quiz/', '/community-setups/', '/resources/',
+  '/desk-fit-worksheet',
+  '/guides/chair-seat-depth-by-height', '/guides/low-cost-ergonomic-workspace-fixes',
+  '/guides/monitor-arms-for-thick-or-shallow-desks',
+  '/guides/standing-desks-for-short-users', '/guides/standing-desks-for-tall-users',
 ];
+
+const BODY_MARKERS = {
+  '/': ['id="assessment-card"', 'class="commercial-grid"', 'tag=workspacepro-20'],
+  '/deals': ['id="dealGrid"', 'deal-card', 'tag=workspacepro-20'],
+  '/guides': ['id="buying-guides"', 'id="body-fit"'],
+  '/compare/': ['id="matrixGrid"', 'src="/assets/js/compare-matrix.js"'],
+};
 
 
 // Soft Amazon ASIN sample (warnings only — flaky / ToS-sensitive)
@@ -118,6 +129,7 @@ function json(data, status = 200) {
 }
 
 async function runHealthCheck(env) {
+  const siteUrl = env.SITE_URL || DEFAULT_SITE_URL;
   const results = {
     timestamp: new Date().toISOString(),
     totalChecked: 0,
@@ -130,7 +142,7 @@ async function runHealthCheck(env) {
   };
 
   for (const path of URLS_TO_CHECK) {
-    const url = SITE_URL + path;
+    const url = siteUrl + path;
     const start = Date.now();
 
     try {
@@ -149,7 +161,7 @@ async function runHealthCheck(env) {
       if (expectedRedirects) {
         const location = response.headers.get('location');
         const actualTarget = location ? new URL(location, url) : null;
-        const expectedTarget = new URL(expectedRedirects, SITE_URL);
+        const expectedTarget = new URL(expectedRedirects, siteUrl);
         const locationMatches = actualTarget &&
           actualTarget.origin === expectedTarget.origin &&
           actualTarget.pathname === expectedTarget.pathname &&
@@ -175,6 +187,18 @@ async function runHealthCheck(env) {
           });
         }
       } else if (status === 200) {
+        const markers = BODY_MARKERS[path] || [];
+        if (markers.length) {
+          const body = await response.text();
+          const missing = markers.filter((marker) => !body.includes(marker));
+          if (missing.length) {
+            results.failed++;
+            results.errors.push({
+              path, status, expected: 'Required body markers', missing, elapsed,
+            });
+            continue;
+          }
+        }
         results.passed++;
         if (elapsed > 2000) {
           results.warnings++;

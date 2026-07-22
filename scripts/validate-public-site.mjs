@@ -126,6 +126,11 @@ if (!fs.existsSync(artifactDir) || !fs.statSync(artifactDir).isDirectory()) {
 const allFiles = walk(artifactDir);
 const htmlFiles = allFiles.filter((file) => file.endsWith('.html'));
 const redirectSources = parseRedirectSources();
+for (const file of allFiles) {
+  if (/\.(?:orig|rej)$/i.test(file)) {
+    fail('artifact', `contains forbidden patch artifact: ${rel(file)}`);
+  }
+}
 
 if (htmlFiles.length === 0) fail('artifact', 'contains no HTML files');
 

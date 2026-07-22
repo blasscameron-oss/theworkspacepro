@@ -23,6 +23,9 @@ export const catalogSchema = z.object({
   updated: z.iso.date(),
   affiliateTag: z.literal('workspacepro-20'),
   products: z.array(productSchema).max(40),
-});
+}).refine(
+  (catalog) => new Set(catalog.products.map((product) => product.id)).size === catalog.products.length,
+  { message: 'Product IDs must be unique', path: ['products'] },
+);
 
 export type Product = z.infer<typeof productSchema>;

@@ -31,7 +31,7 @@ npm run test:e2e
 
 New guides live in `src/content/guides`. Their frontmatter is validated for category, intent, dates, methodology, authoritative sources, disclosures, canonical path, and publication status. Draft or review content is not emitted publicly.
 
-The structured product catalog remains capped at 40 entries. The current 36 products should be verified or removed before adding breadth. Research-led recommendations must not be labeled hands-on.
+The structured product catalog remains capped at 40 entries. The current 34 unique products should be verified or removed before adding breadth. Research-led recommendations must not be labeled hands-on.
 
 ## Deployment and rollback
 

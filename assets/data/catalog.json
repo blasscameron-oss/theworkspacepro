@@ -455,7 +455,7 @@
       "price": 15,
       "url": "https://www.ikea.com/us/en/p/tertial-work-lamp-gray-80342987/",
       "category": "Lighting",
-      "desc": "Classic adjustable desk lamp. Add a warm LED bulb for evening use.",
+      "desc": "Adjustable IKEA task-lamp listing; confirm dimensions, bulb requirements, availability, and current price.",
       "tiers": [
         "budget"
       ],
@@ -603,7 +603,7 @@
       "price": 40,
       "url": "https://www.amazon.com/dp/B087Z6LSHW/?tag=workspacepro-20",
       "category": "Mouse",
-      "desc": "Multi-device wireless mouse — solid budget productivity pick.",
+      "desc": "Multi-device wireless mouse listing; verify operating-system support, connection options, seller, and warranty.",
       "tiers": [
         "budget"
       ],
@@ -717,7 +717,7 @@
       "price": 229,
       "url": "https://www.ikea.com/us/en/p/markus-office-chair-vissle-dark-gray-70261150/",
       "category": "Chair",
-      "desc": "",
+      "desc": "High-back office chair listing; verify current dimensions, adjustments, upholstery, return policy, and warranty.",
       "tiers": [
         "budget",
         "mid"
@@ -739,7 +739,7 @@
       "price": 349,
       "url": "https://www.amazon.com/dp/B0C83YRK84/?tag=workspacepro-20",
       "category": "Chair",
-      "desc": "",
+      "desc": "HON Ignition task-chair listing; confirm the exact configuration, adjustment range, seller, condition, and warranty.",
       "tiers": [
         "budget",
         "mid"
@@ -762,7 +762,7 @@
       "price": 199,
       "url": "https://www.ikea.com/us/en/p/trotten-desk-stand-up-black-s09322329/",
       "category": "Desk",
-      "desc": "",
+      "desc": "IKEA sit-stand desk listing; confirm the selected desktop, adjustment method, working-height range, and warranty.",
       "tiers": [
         "budget"
       ],
@@ -783,7 +783,7 @@
       "price": 549,
       "url": "https://www.fully.com/standing-desks/jarvis.html",
       "category": "Desk",
-      "desc": "",
+      "desc": "Jarvis bamboo sit-stand desk listing; verify the current seller, desktop size, height range, capacity, and warranty.",
       "tiers": [
         "mid"
       ],
@@ -800,55 +800,12 @@
       ]
     },
     {
-      "id": "ikea-tertial-work-lamp",
-      "name": "IKEA TERTIAL Work Lamp",
-      "price": 15,
-      "url": "https://www.ikea.com/us/en/p/tertial-work-lamp-dark-gray-80342987/",
-      "category": "Lighting",
-      "desc": "",
-      "tiers": [
-        "budget"
-      ],
-      "bestFor": [
-        "budget"
-      ],
-      "asin": null,
-      "retailer": "ikea",
-      "image": null,
-      "evidenceLevel": "research",
-      "limitations": [
-        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
-      ]
-    },
-    {
-      "id": "B087Z6LSHW",
-      "name": "Logitech M720 Triathlon Mouse",
-      "price": 40,
-      "url": "https://www.amazon.com/dp/B087Z6LSHW/?tag=workspacepro-20",
-      "category": "Accessory",
-      "desc": "",
-      "tiers": [
-        "budget"
-      ],
-      "bestFor": [
-        "budget",
-        "general"
-      ],
-      "asin": "B087Z6LSHW",
-      "retailer": "amazon",
-      "image": "",
-      "evidenceLevel": "research",
-      "limitations": [
-        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
-      ]
-    },
-    {
       "id": "B08BLCZDYL",
       "name": "VELCRO Brand Cable Ties (100-pack)",
       "price": 12,
       "url": "https://www.amazon.com/dp/B08BLCZDYL/?tag=workspacepro-20",
       "category": "Accessory",
-      "desc": "",
+      "desc": "Reusable cable-tie pack for routing workspace cables; verify quantity, dimensions, seller, and current price.",
       "tiers": [
         "budget"
       ],

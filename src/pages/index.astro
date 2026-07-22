@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import DealHighlights from '../components/DealHighlights.astro';
 import { legacySection } from '../lib/legacy';
 
 const assessment = legacySection('index.html', 'assessment');
@@ -40,6 +41,8 @@ const paths = [
       ))}
     </div>
   </section>
+
+  <DealHighlights />
 
   <section class="editorial-section evidence-band">
     <div>

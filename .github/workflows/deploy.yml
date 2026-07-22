@@ -4,9 +4,14 @@ on:
   push:
     branches: [main]
 
+concurrency:
+  group: theworkspacepro-production
+  cancel-in-progress: false
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
 
@@ -38,6 +43,15 @@ jobs:
 
       - name: Validate built public artifact
         run: node scripts/validate-public-site.mjs dist
+      - name: Run release contract tests
+        run: node --test tests/*.test.mjs
+
+
+      - name: Install browser for release checks
+        run: npx playwright install --with-deps chromium
+
+      - name: Run desktop and mobile release flows
+        run: npm run test:e2e
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
@@ -57,7 +71,7 @@ jobs:
         env:
           MONITOR_SECRET: ${{ secrets.MONITOR_SECRET }}
         run: |
-          curl --fail --silent --show-error --retry 5 --retry-delay 3 --retry-all-errors \
+          curl --fail-with-body --silent --show-error --retry 5 --retry-delay 3 --retry-all-errors --max-time 180 \
             --header "X-Monitor-Key: $MONITOR_SECRET" \
             --output monitor-result.json \
             https://twp-monitor.blasscameron.workers.dev

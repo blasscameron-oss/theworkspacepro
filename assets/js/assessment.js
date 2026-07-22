@@ -793,7 +793,8 @@ function showResults() {
       <ol>${priorities.map(function (item) { return `<li>${item}</li>`; }).join("")}</ol>
     </section>
 
-    <div class="blueprint-section-heading"><span>03 · Shortlist</span><h3>Products matched to your answers</h3></div>
+    <div class="blueprint-section-heading"><span>03 · Shortlist</span><h3>Research-led products to check against your measurements</h3></div>
+    <p class="result-total__note result-affiliate-note">Some retailer links below are affiliate links; we may earn a commission at no extra cost to you. Check live specifications, seller, condition, warranty, and price before buying.</p>
 
     <div class="recommendation-list">
   `;
@@ -809,7 +810,7 @@ function showResults() {
           <div class="recommendation__why">${rec.why}</div>
           <div class="recommendation__price">~$${rec.price} <span class="recommendation__price-note">check live price</span></div>
           <a href="${rec.url}" target="_blank" rel="sponsored noopener noreferrer" class="recommendation__link" data-blueprint-action="product" data-blueprint-destination="${rec.name}">
-            View product →
+            Check live price →
           </a>
         </div>
       </div>
@@ -822,7 +823,7 @@ function showResults() {
     <div class="result-total">
       <div class="result-total__label">Estimated Total</div>
       <div class="result-total__amount">~$${total}</div>
-      <p class="result-total__note">Prices are approximate — always check the live price on the retailer. Some links are affiliate links; we may earn a commission at no extra cost to you.</p>
+      <p class="result-total__note">This is a reference-price estimate, not a guaranteed bundle price.</p>
     </div>
     
     <div class="checklist">

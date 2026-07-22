@@ -1,0 +1,47 @@
+---
+import rawCatalog from '../../assets/data/catalog.json';
+import { catalogSchema } from '../data/product-schema';
+const catalog = catalogSchema.parse(rawCatalog);
+const catalogReviewed = new Date(`${catalog.updated}T00:00:00Z`).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+const featuredIds = ['B06Y3PGPR2', 'B085KBN2DN', 'B00358RIRC', 'B071CXPSDN'];
+const featured = featuredIds.map((id) => {
+  const product = catalog.products.find((candidate) => candidate.id === id);
+  if (!product) throw new Error(`Featured deal ${id} is missing from the product catalog`);
+  return product;
+});
+const hrefFor = (category: string) => `/deals?category=${category}`;
+---
+<section class="editorial-section commercial-section" aria-labelledby="commercial-title">
+  <div class="commercial-heading">
+    <div>
+      <p class="eyebrow">Deals and researched value picks</p>
+      <h2 id="commercial-title">A shorter path from fit to a product worth checking.</h2>
+      <p>These are research-led starting points from our bounded catalog—not claims of hands-on testing or guaranteed sale prices.</p>
+    </div>
+    <a class="button-link commercial-heading__cta" href="/deals">Browse all 11 value picks</a>
+  </div>
+  <p class="commercial-disclosure"><strong>Catalog reviewed {catalogReviewed}.</strong> Some retailer links are affiliate links. We may earn a commission at no additional cost to you. Prices and availability change; verify the current listing, specifications, seller, condition, and warranty before buying. <a href="/affiliate-disclosure">Full disclosure.</a></p>
+  <div class="commercial-grid">
+    {featured.map((product) => product && (
+      <article class="commercial-card">
+        <div class="commercial-card__topline">
+          <span>{product.category}</span>
+          <span>{product.evidenceLevel === 'research' ? 'Research-led' : product.evidenceLevel}</span>
+        </div>
+        <h3>{product.name.replaceAll('\\"', '"')}</h3>
+        <p>{product.desc.replaceAll('\\"', '"')}</p>
+        <p class="commercial-card__price">Catalog reference: about ${product.price}</p>
+        <a class="commercial-card__link" href={product.url} target="_blank" rel="sponsored noopener noreferrer" data-deal-id={product.id}>
+          Check live price <span aria-hidden="true">↗</span>
+        </a>
+      </article>
+    ))}
+  </div>
+  <div class="commercial-categories" aria-label="Browse deals by category">
+    <strong>Shop by constraint:</strong>
+    <a href={hrefFor('chair')}>Chairs</a>
+    <a href={hrefFor('desk')}>Desks</a>
+    <a href={hrefFor('monitor')}>Monitors and arms</a>
+    <a href={hrefFor('lighting')}>Lighting</a>
+  </div>
+</section>

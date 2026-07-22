@@ -2,6 +2,16 @@
 import BaseLayout from './BaseLayout.astro';
 const { entry } = Astro.props;
 const { data } = entry;
+const dealCategoryByGuide: Record<string, string> = {
+  chairs: 'chair',
+  desks: 'desk',
+  monitors: 'monitor',
+  lighting: 'lighting',
+  'body-fit': 'accessory',
+  setups: 'all',
+};
+const dealCategory = dealCategoryByGuide[data.category] || 'all';
+
 ---
 <BaseLayout
   title={data.title}
@@ -47,6 +57,7 @@ const { data } = entry;
             <ul>
               {data.relatedTools.map((href: string) => <li><a href={href}>Use the related workspace tool</a></li>)}
               {data.relatedGuides.map((href: string) => <li><a href={href}>Read the related guide</a></li>)}
+              <li><a href={`/deals${dealCategory === 'all' ? '' : `?category=${dealCategory}`}`}>Browse current {data.category.replace('-', ' ')} value picks</a></li>
             </ul>
           </section>
         )}

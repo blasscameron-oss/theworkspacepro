@@ -36,6 +36,7 @@ test('desktop navigation remains visible and interactive', async ({ page, isMobi
   await expect(nav).toBeVisible();
   await expect(nav).not.toHaveAttribute('aria-hidden', 'true');
   expect(await nav.evaluate((element) => element.inert)).toBe(false);
+  await expect(nav.getByRole('link', { name: /Deals|Verified picks/i })).toHaveAttribute('href', '/deals');
   await nav.getByRole('link', { name: 'Tools' }).click();
   await expect(page).toHaveURL(/\/tools(?:\.html)?$/);
 });
@@ -48,7 +49,9 @@ test('mobile menu exposes navigation and restores state', async ({ page, isMobil
   await expect(menu).toHaveAttribute('aria-expanded', 'false');
   await menu.click();
   await expect(menu).toHaveAttribute('aria-expanded', 'true');
-  await expect(page.getByRole('navigation', { name: 'Primary navigation' })).toBeVisible();
+  const nav = page.getByRole('navigation', { name: 'Primary navigation' });
+  await expect(nav).toBeVisible();
+  await expect(nav.getByRole('link', { name: /Deals|Verified picks/i })).toHaveAttribute('href', '/deals');
   await page.keyboard.press('Escape');
   await expect(menu).toHaveAttribute('aria-expanded', 'false');
 });
@@ -62,6 +65,52 @@ test('guide research and disclosure contract is visible', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'Keep working on your setup' })).toBeVisible();
 });
 
+test('deals expose visible picks, an affiliate disclosure, and tagged Amazon links', async ({ page }) => {
+  await page.goto('/deals');
+  await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+
+  const cards = page.locator('#dealGrid .deal-card');
+  expect(await cards.count()).toBeGreaterThan(0);
+  await expect(cards.first()).toBeVisible();
+
+  const disclosure = page.locator('.deals-disclosure');
+  await expect(disclosure).toBeVisible();
+  await expect(disclosure).toContainText(/affiliate links/i);
+  await expect(disclosure.getByRole('link', { name: /disclosure/i })).toHaveAttribute('href', '/affiliate-disclosure');
+
+  const amazonLinks = page.locator('#dealGrid a[href*="amazon.com"]');
+  const hrefs = await amazonLinks.evaluateAll((links) => links.map((link) => link.href));
+  expect(hrefs.length).toBeGreaterThan(0);
+  for (const href of hrefs) {
+    expect(new URL(href).searchParams.get('tag'), href).toBe('workspacepro-20');
+  }
+});
+
+test('comparison shoppers can discover the deals route', async ({ page }) => {
+  await page.goto('/compare/');
+  await expect(page.locator('main').getByRole('link', { name: /deals|value picks/i })).toHaveAttribute('href', '/deals');
+});
+
+test('homepage commercial picks are visible, disclosed, sponsored, and tagged', async ({ page }) => {
+  await page.goto('/');
+
+  const section = page.locator('.commercial-section');
+  await expect(section).toBeVisible();
+  await expect(section.locator('.commercial-disclosure')).toContainText(/affiliate links/i);
+  await expect(section.getByRole('link', { name: /Browse all .* value picks/i })).toHaveAttribute('href', '/deals');
+
+  const cards = section.locator('.commercial-card');
+  await expect(cards).toHaveCount(4);
+  const links = cards.locator('a[href*="amazon.com"]');
+  await expect(links).toHaveCount(4);
+  for (const link of await links.all()) {
+    const href = await link.getAttribute('href');
+    expect(new URL(href).searchParams.get('tag'), href).toBe('workspacepro-20');
+    await expect(link).toHaveAttribute('rel', /\bsponsored\b/);
+    await expect(link).toBeVisible();
+  }
+});
+
 test('printable worksheet accepts measurements', async ({ page }) => {
   await page.goto('/desk-fit-worksheet');
   await expect(page.getByRole('heading', { name: 'My desk-fit check' })).toBeVisible();
@@ -71,4 +120,31 @@ test('printable worksheet accepts measurements', async ({ page }) => {
   await expect(page.getByRole('button', { name: 'Print or save as PDF' })).toBeVisible();
   const feet = page.getByRole('group', { name: /Feet/ });
   await expect(feet.getByRole('radio', { name: 'Works' })).toBeVisible();
+});
+
+test('guide comparison tables stay contained on mobile', async ({ page, isMobile }) => {
+  test.skip(!isMobile, 'mobile overflow contract');
+  await page.goto('/guides/small-home-office-organization-hacks');
+  const widths = await page.evaluate(() => ({
+    viewport: document.documentElement.clientWidth,
+    document: document.documentElement.scrollWidth,
+    tableOverflow: getComputedStyle(document.querySelector('.table-wrap')).overflowX,
+  }));
+  expect(widths.document).toBeLessThanOrEqual(widths.viewport);
+  expect(widths.tableOverflow).toBe('auto');
+});
+
+test('office builder moves keyboard focus as steps change', async ({ page }) => {
+  await page.goto('/build-your-office');
+  await page.getByRole('button', { name: /Next/ }).click();
+  const question = page.getByText('How do you work?', { exact: true });
+  await expect(question).toBeVisible();
+  await expect(question).toBeFocused();
+  const general = page.locator('.byo-step.active [data-value="general"]');
+  await general.focus();
+  await page.keyboard.press('Enter');
+  await expect(general).toHaveAttribute('aria-checked', 'true');
+  await page.locator('.byo-step.active #byoNext1').focus();
+  await page.keyboard.press('Enter');
+  await expect(page.getByText('How much space do you have?', { exact: true })).toBeFocused();
 });
