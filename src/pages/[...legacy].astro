@@ -1,0 +1,18 @@
+---
+import LegacyRootPage from '../components/LegacyRootPage.astro';
+import { legacyRootPages, type LegacyRootPage as LegacyRootPageData } from '../lib/legacy';
+
+export function getStaticPaths() {
+  return legacyRootPages().map((page) => ({
+    params: { legacy: page.slug },
+    props: { page },
+  }));
+}
+
+interface Props {
+  page: LegacyRootPageData;
+}
+
+const { page } = Astro.props;
+---
+<LegacyRootPage page={page} />

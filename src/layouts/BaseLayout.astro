@@ -12,6 +12,10 @@ interface Props {
   updated?: Date;
   author?: string;
   visualMaster?: string;
+  mainClass?: string;
+  styles?: string[];
+  robots?: string;
+  structuredData?: unknown[];
 }
 
 const {
@@ -24,8 +28,14 @@ const {
   updated,
   author = 'The Workspace Pro Editorial Team',
   visualMaster,
+  mainClass,
+  styles = [],
+  robots,
+  structuredData = [],
 } = Astro.props;
 const canonicalUrl = new URL(canonical, Astro.site);
+const releaseSha = import.meta.env.PUBLIC_RELEASE_SHA || 'dev';
+const assetUrl = (path: string) => `${path}?v=${encodeURIComponent(releaseSha)}`;
 const schema = type === 'article'
   ? {
       '@context': 'https://schema.org',
@@ -45,6 +55,9 @@ const schema = type === 'article'
       description,
       url: canonicalUrl.href,
     };
+const schemas = [...new Map(
+  [schema, ...structuredData].map((entry) => [JSON.stringify(entry), entry]),
+).values()];
 ---
 <!doctype html>
 <html lang="en">
@@ -53,6 +66,8 @@ const schema = type === 'article'
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {robots && <meta name="robots" content={robots} />}
+    <meta name="twp-release" content={releaseSha} />
     <link rel="canonical" href={canonicalUrl} />
     <meta property="og:type" content={type} />
     <meta property="og:title" content={title} />
@@ -61,22 +76,25 @@ const schema = type === 'article'
     <meta property="og:image" content="https://www.theworkspacepro.com/assets/images/og-default.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="/assets/images/favicon.svg" />
-    <link rel="stylesheet" href="/assets/css/fonts.css" />
-    <link rel="stylesheet" href="/assets/css/style.css" />
-    <link rel="stylesheet" href="/assets/css/premium-studio.css" />
-    <link rel="stylesheet" href="/assets/css/worksheet.css" />
-    <link rel="stylesheet" href="/assets/css/editorial-v4.css" />
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+    <link rel="stylesheet" href={assetUrl('/assets/css/fonts.css')} />
+    <link rel="stylesheet" href={assetUrl('/assets/css/style.css')} />
+    <link rel="stylesheet" href={assetUrl('/assets/css/premium-studio.css')} />
+    <link rel="stylesheet" href={assetUrl('/assets/css/worksheet.css')} />
+    <link rel="stylesheet" href={assetUrl('/assets/css/editorial-v4.css')} />
+    {styles.map((href) => <link rel="stylesheet" href={assetUrl(href)} />)}
+    {schemas.map((entry) => (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(entry)} />
+    ))}
   </head>
   <body class="ps-shell editorial-shell" data-visual-master={visualMaster}>
     <SiteHeader active={active} />
-    <main id="main-content">
+    <main id="main-content" class={mainClass}>
       <slot />
     </main>
     <SiteFooter />
-    <script is:inline src="/assets/js/analytics.js" defer></script>
-    <script is:inline src="/assets/js/site.js" defer></script>
-    <script is:inline src="/assets/js/perf-lite.js" defer></script>
+    <script is:inline src={assetUrl('/assets/js/analytics.js')} defer></script>
+    <script is:inline src={assetUrl('/assets/js/site.js')} defer></script>
+    <script is:inline src={assetUrl('/assets/js/perf-lite.js')} defer></script>
     <slot name="scripts" />
   </body>
 </html>

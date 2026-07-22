@@ -1,0 +1,160 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/deals.css';
+
+const deals = [
+  { category: 'chair', categoryLabel: 'Chair', budget: 'under-400', band: 'Mid-range', title: 'HON Ignition 2.0', description: 'A mesh task chair with adjustable lumbar support and a strong feature set for full workdays.', price: 379, note: 'Confirm seller, condition, warranty, and current price.', href: 'https://www.amazon.com/dp/B06Y3PGPR2/?tag=workspacepro-20', id: 'B06Y3PGPR2', retailer: 'amazon' },
+  { category: 'chair', categoryLabel: 'Chair', budget: 'under-400', band: 'Adjustable', title: 'Branch Ergonomic Chair', description: 'Seven adjustment points make this a flexible shortlist option for people who want more tuning than a basic task chair.', price: 329, note: 'Configuration and current pricing may vary.', href: 'https://www.branchfurniture.com/products/ergonomic-chair', id: 'branch-ergonomic-chair', retailer: 'branch' },
+  { category: 'desk', categoryLabel: 'Standing desk', budget: 'under-400', band: 'Budget motorized', title: 'SHW Electric Standing Desk 55"', description: 'A lower-cost entry into sit-stand work. Check the exact height range, surface, and load capacity against your setup.', price: 299, note: 'Verify model details and current price.', href: 'https://www.amazon.com/dp/B085KBN2DN/?tag=workspacepro-20', id: 'B085KBN2DN', retailer: 'amazon' },
+  { category: 'desk', categoryLabel: 'Standing desk', budget: 'premium', band: 'Premium shortlist', title: 'Branch Standing Desk', description: 'A clean dual-motor option for shoppers prioritizing a stronger warranty and a more finished look over the lowest entry price.', price: 499, note: 'Configuration and current pricing may vary.', href: 'https://www.branchfurniture.com/products/standing-desk', id: 'branch-standing-desk', retailer: 'branch' },
+  { category: 'desk', categoryLabel: 'Sitting desk', budget: 'under-200', band: 'Small-space', title: 'IKEA LAGKAPTEN Desk', description: 'A simple, inexpensive surface for compact rooms. Pair it with a riser or monitor arm to improve screen height.', price: 89, note: 'Size, finish, and current price can change.', href: 'https://www.ikea.com/us/en/p/lagkapten-desk-black-brown-bamboo-00503604/', id: 'ikea-lagkapten-desk', retailer: 'ikea' },
+  { category: 'monitor', categoryLabel: 'Monitor', budget: 'under-400', band: 'Creative work', title: 'ASUS ProArt PA278QV 27"', description: 'A 27-inch 1440p IPS display with a productivity-friendly resolution and color-focused positioning.', price: 299, note: 'Check panel details and current listing.', href: 'https://www.amazon.com/dp/B088BC5HMM/?tag=workspacepro-20', id: 'B088BC5HMM', retailer: 'amazon' },
+  { category: 'monitor', categoryLabel: 'Monitor', budget: 'under-400', band: 'USB-C', title: 'Dell S2722QC 27" 4K', description: 'Sharp 4K text plus USB-C connectivity can simplify a laptop workstation and reduce cable clutter.', price: 350, note: 'Verify ports, power delivery, and current price.', href: 'https://www.amazon.com/dp/B09DTDRJWP/?tag=workspacepro-20', id: 'B09DTDRJWP', retailer: 'amazon' },
+  { category: 'monitor', categoryLabel: 'Monitor arm', budget: 'under-200', band: 'Heavy-duty', title: 'Ergotron LX Single Monitor Arm', description: 'A premium gas-spring arm suited to heavier monitors or people who frequently change screen position.', price: 189, note: 'Confirm monitor weight and VESA compatibility.', href: 'https://www.amazon.com/dp/B00358RIRC/?tag=workspacepro-20', id: 'B00358RIRC', retailer: 'amazon' },
+  { category: 'lighting', categoryLabel: 'Lighting', budget: 'under-50', band: 'Low-cost upgrade', title: 'IKEA TERTIAL Work Lamp', description: 'A simple adjustable task lamp. Choose a bulb color and brightness that fit when and how you work.', price: 15, note: 'Bulb may be separate; verify current listing.', href: 'https://www.ikea.com/us/en/p/tertial-work-lamp-gray-80342987/', id: 'ikea-tertial-work-lamp', retailer: 'ikea' },
+  { category: 'lighting', categoryLabel: 'Lighting', budget: 'under-50', band: 'LED task light', title: 'tomons LED Desk Lamp', description: 'A multi-angle task lamp for adding focused light without rebuilding the room’s lighting.', price: 30, note: 'Confirm dimensions and current price.', href: 'https://www.amazon.com/dp/B071CXPSDN/?tag=workspacepro-20', id: 'B071CXPSDN', retailer: 'amazon' },
+  { category: 'accessory', categoryLabel: 'Accessory', budget: 'under-50', band: 'Quick height fix', title: 'Amazon Basics Monitor Stand', description: 'A basic screen riser for people who need more monitor height but do not need a moving arm.', price: 25, note: 'Measure the needed lift and verify current price.', href: 'https://www.amazon.com/dp/B07DHK5DHN/?tag=workspacepro-20', id: 'B07DHK5DHN', retailer: 'amazon' },
+];
+---
+<BaseLayout
+  title="Workspace Deals & Value Picks | The Workspace Pro"
+  description="Browse honest workspace value picks by category and budget. Compare chairs, desks, monitors, lighting, and accessories, then check current retailer pricing."
+  canonical="/deals"
+  active="deals"
+  visualMaster="deals-curated-workbench-v1"
+>
+  <div class="deals-page">
+    <header class="deals-hero">
+      <div class="deals-hero__copy">
+        <p class="eyebrow">Deals without the discount theater</p>
+        <h1>Useful workspace picks, priced in the real world.</h1>
+        <p class="deals-hero__lede">A focused shortlist of chairs, desks, monitors, lighting, and practical upgrades. Start with fit, use the reference price to plan, then verify the live listing before you buy.</p>
+      </div>
+      <aside class="deals-principles" aria-label="How this list works">
+        <p class="eyebrow">Our standard</p>
+        <ol>
+          <li><span>01</span>34-product catalog reviewed</li>
+          <li><span>02</span>No fabricated markdowns</li>
+          <li><span>03</span>No signup required</li>
+        </ol>
+      </aside>
+      <p class="deals-disclosure"><strong>How pricing works:</strong> Dollar amounts below are reference prices from our catalog review on <time datetime="2026-07-18">July 18, 2026</time>, not promises of a current price. Retail pricing and availability can change; use “Check live price” to verify before buying. Some retailer links are affiliate links, and we may earn a commission at no extra cost to you. <a href="/affiliate-disclosure">Read our disclosure.</a></p>
+    </header>
+
+    <section class="deals-catalog" aria-labelledby="value-picks-title">
+      <div class="deals-heading">
+        <div><p class="eyebrow">Filterable shortlist</p><h2 id="value-picks-title">Find the right value for your setup.</h2></div>
+        <p>Reference prices make the budget filters useful. Retailer pages remain the source of truth.</p>
+      </div>
+      <div class="deals-workbench">
+        <aside class="deal-filter-panel" aria-label="Filter value picks">
+          <div class="deal-filters" id="dealFilters">
+            <div class="deal-filter">
+              <label class="deal-filter__label" for="dealCategory">Category</label>
+              <select class="deal-filter__select" id="dealCategory">
+                <option value="all">All categories</option><option value="chair">Chairs</option><option value="desk">Desks</option><option value="monitor">Monitors & arms</option><option value="lighting">Lighting</option><option value="accessory">Accessories</option>
+              </select>
+            </div>
+            <div class="deal-filter">
+              <label class="deal-filter__label" for="dealBudget">Reference budget</label>
+              <select class="deal-filter__select" id="dealBudget">
+                <option value="all">Any budget</option><option value="under-50">Under about $50</option><option value="under-200">Under about $200</option><option value="under-400">Under about $400</option><option value="premium">Premium picks</option>
+              </select>
+            </div>
+            <button class="deal-filter__reset" id="dealReset" type="button">Clear filters</button>
+          </div>
+          <p class="deal-count" id="dealCount" aria-live="polite">11 value picks</p>
+          <div class="deal-method">
+            <span class="deal-method__rule" aria-hidden="true"></span>
+            <p class="eyebrow">Selection signal</p>
+            <strong>Fit first. Live price second.</strong>
+            <p>Each pick calls out its category, reference budget, and the detail worth checking before purchase.</p>
+          </div>
+        </aside>
+        <div>
+          <div class="deal-grid" id="dealGrid">
+            {deals.map((deal, index) => (
+              <article class="deal-card" data-category={deal.category} data-budget={deal.budget}>
+                <div class="deal-card__number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</div>
+                <div class="deal-card__topline"><span class="deal-card__category">{deal.categoryLabel}</span><span class="deal-card__budget">{deal.band}</span></div>
+                <h3 class="deal-card__title">{deal.title}</h3>
+                <p class="deal-card__desc">{deal.description}</p>
+                <div class="deal-card__value">
+                  <div><span class="deal-card__price-label">Catalog reference</span><span class="deal-card__price">About ${deal.price}</span></div>
+                  <span class="deal-card__price-note">{deal.note}</span>
+                  <a class="deal-card__cta" href={deal.href} target="_blank" rel="sponsored noopener noreferrer" data-deal-id={deal.id} data-deal-category={deal.category} data-retailer={deal.retailer} data-reference-price={deal.price}>Check live price <span aria-hidden="true">↗</span></a>
+                </div>
+              </article>
+            ))}
+          </div>
+          <div class="deal-empty" id="dealEmpty" hidden><h3>No picks match those filters yet.</h3><p>Clear the filters or use the <a href="/compare/">full comparison matrix</a> for a broader shortlist.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="deals-next" aria-labelledby="shop-smarter-title">
+      <div class="deals-next__heading"><p class="eyebrow">Before you buy</p><h2 id="shop-smarter-title">Match the product to your body and room.</h2></div>
+      <div class="deals-related">
+        <a href="/ergonomic-height-calculator"><span>01</span><strong>Calculate your fit</strong><p>Get target chair, desk, and monitor heights before comparing dimensions.</p></a>
+        <a href="/compare/"><span>02</span><strong>Compare the full catalog</strong><p>Filter all catalog picks by category, search term, and reference budget.</p></a>
+        <a href="/guides"><span>03</span><strong>Read the buying guides</strong><p>Understand the trade-offs behind chairs, desks, monitors, lighting, and accessories.</p></a>
+      </div>
+    </section>
+  </div>
+
+  <script slot="scripts" is:inline>
+    (() => {
+      const controls = document.getElementById('dealFilters');
+      const grid = document.getElementById('dealGrid');
+      const count = document.getElementById('dealCount');
+      const empty = document.getElementById('dealEmpty');
+      const category = document.getElementById('dealCategory');
+      const budget = document.getElementById('dealBudget');
+      const reset = document.getElementById('dealReset');
+      if (!controls || !grid || !count || !(category instanceof HTMLSelectElement) || !(budget instanceof HTMLSelectElement)) return;
+      const cards = [...grid.querySelectorAll('.deal-card')];
+      const validCategories = [...category.options].map((option) => option.value);
+      const validBudgets = [...budget.options].map((option) => option.value);
+      const track = (name, params) => { if (typeof window.gtag === 'function') window.gtag('event', name, params || {}); };
+      const updateQuery = () => {
+        if (!window.history?.replaceState) return;
+        const params = new URLSearchParams(window.location.search);
+        category.value === 'all' ? params.delete('category') : params.set('category', category.value);
+        budget.value === 'all' ? params.delete('budget') : params.set('budget', budget.value);
+        const query = params.toString();
+        window.history.replaceState(null, '', `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`);
+      };
+      const applyFilters = (shouldTrack = false) => {
+        let shown = 0;
+        cards.forEach((card) => {
+          if (!(card instanceof HTMLElement)) return;
+          const link = card.querySelector('.deal-card__cta');
+          const referencePrice = Number(link instanceof HTMLElement ? link.dataset.referencePrice : 0) || 0;
+          const budgetLimit = budget.value.startsWith('under-') ? Number(budget.value.slice(6)) : 0;
+          const matchesCategory = category.value === 'all' || card.dataset.category === category.value;
+          const matchesBudget = budget.value === 'all' || (budget.value === 'premium' && referencePrice >= 400) || (budgetLimit > 0 && referencePrice > 0 && referencePrice <= budgetLimit);
+          card.hidden = !(matchesCategory && matchesBudget);
+          if (!card.hidden) shown += 1;
+        });
+        count.textContent = shown === cards.length ? `${cards.length} value picks` : `Showing ${shown} of ${cards.length} value picks`;
+        if (empty instanceof HTMLElement) empty.hidden = shown !== 0;
+        updateQuery();
+        if (shouldTrack) track('deal_filter', { deal_category: category.value, deal_budget: budget.value, result_count: shown, page_path: window.location.pathname });
+      };
+      const params = new URLSearchParams(window.location.search);
+      const queryCategory = params.get('category') || 'all';
+      const queryBudget = params.get('budget') || 'all';
+      if (validCategories.includes(queryCategory)) category.value = queryCategory;
+      if (validBudgets.includes(queryBudget)) budget.value = queryBudget;
+      controls.addEventListener('change', (event) => { if (event.target === category || event.target === budget) applyFilters(true); });
+      reset?.addEventListener('click', () => { category.value = 'all'; budget.value = 'all'; applyFilters(true); category.focus(); });
+      grid.addEventListener('click', (event) => {
+        const target = event.target;
+        const link = target instanceof Element ? target.closest('.deal-card__cta') : null;
+        if (!(link instanceof HTMLElement)) return;
+        track('deal_click', { deal_id: link.dataset.dealId || '', deal_category: link.dataset.dealCategory || '', retailer: link.dataset.retailer || '', reference_price: Number(link.dataset.referencePrice) || 0, page_path: window.location.pathname });
+      });
+      applyFilters();
+    })();
+  </script>
+</BaseLayout>

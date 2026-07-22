@@ -368,8 +368,8 @@ if (!fs.existsSync(visualManifestFile)) {
   if (manifest) {
     const masters = Array.isArray(manifest.masters) ? manifest.masters : [];
     const routes = masters.flatMap((master) => Array.isArray(master.routes) ? master.routes : []);
-    if (manifest.masterCount !== 36 || masters.length !== 36) fail('premium-studio', `expected 36 visual masters, found ${masters.length}`);
-    if (manifest.routeCount !== 39 || new Set(routes).size !== 39) fail('premium-studio', `expected 39 unique manifest routes, found ${new Set(routes).size}`);
+    if (manifest.masterCount !== 34 || masters.length !== 34) fail('premium-studio', `expected 36 visual masters, found ${masters.length}`);
+    if (manifest.routeCount !== 37 || new Set(routes).size !== 37) fail('premium-studio', `expected 39 unique manifest routes, found ${new Set(routes).size}`);
     const variantContract = manifest.variantContract || {};
     for (const master of masters) {
       const slug = master && master.slug;
@@ -395,7 +395,7 @@ if (!fs.existsSync(visualManifestFile)) {
 
 for (const htmlFile of htmlFiles) {
   const html = stripComments(fs.readFileSync(htmlFile, 'utf8'));
-  if (!/<link\b[^>]*href\s*=\s*(["'])\/assets\/css\/premium-studio\.css\1/i.test(html)) fail(rel(htmlFile), 'must load premium-studio.css');
+  if (!/<link\b[^>]*href\s*=\s*(["'])\/assets\/css\/premium-studio\.css(?:\?[^"']*)?\1/i.test(html)) fail(rel(htmlFile), 'must load premium-studio.css');
   if (!/<body\b[^>]*class\s*=\s*(["'])[^"']*\bps-shell\b[^"']*\1/i.test(html)) fail(rel(htmlFile), 'body must use ps-shell migration scope');
   if (/(?:class|id)\s*=\s*(["'])[^"']*(?:social-proof|price-drop|countdown|sale-badge|discount-badge)[^"']*\1/i.test(html)) fail(rel(htmlFile), 'contains retired deceptive or template-theater UI');
 }

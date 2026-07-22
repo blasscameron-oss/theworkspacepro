@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Page Not Found — The Workspace Pro"
+  description="That Workspace Pro page could not be found. Return to our guides, tools, and research-backed workspace recommendations."
+  canonical="/404"
+  robots="noindex, follow"
+  visualMaster="lost-page-drafting-table-v1"
+>
+  <section class="ps-page-header" data-visual-master="lost-page-drafting-table-v1">
+    <div class="ps-container ps-page-header__grid">
+      <div>
+        <span class="ps-kicker">404 · Measurement missing</span>
+        <h1 class="ps-page-header__title">This page is off the drafting table.</h1>
+        <p class="ps-lede">The address may have changed, or the page may no longer be part of the current Workspace Pro library.</p>
+      </div>
+      <div class="ps-measure" aria-label="Page not found">
+        <span class="ps-measure__rail" aria-hidden="true"></span>
+        <span class="ps-measure__value">No matching route</span>
+      </div>
+    </div>
+  </section>
+  <section class="ps-section">
+    <div class="ps-container container-prose">
+      <h2>Keep building your workspace</h2>
+      <p>Start with the complete guide library, use a fit tool, or return home for a personalized workspace blueprint.</p>
+      <div class="button-row">
+        <a class="btn btn--primary" href="/guides">Browse guides</a>
+        <a class="btn btn--secondary" href="/tools">Open tools</a>
+        <a class="btn btn--secondary" href="/">Return home</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

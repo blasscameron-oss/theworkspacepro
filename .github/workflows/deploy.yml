@@ -36,6 +36,8 @@ jobs:
           fi
 
       - name: Build component-based public artifact
+        env:
+          PUBLIC_RELEASE_SHA: ${{ github.sha }}
         run: npm run build
 
       - name: Check types and content contracts
@@ -56,7 +58,6 @@ jobs:
       - name: Generate release metadata
         run: |
           echo '{"sha":"${{ github.sha }}","ref":"${{ github.ref }}","run":"${{ github.run_id }}","ts":"$(date -u +%Y-%m-%dT%H:%M:%SZ)"}' > dist/release.json
-          echo '<meta name="twp-release" content="${{ github.sha }}">' >> dist/index.html
 
       - name: Harden — verify latest-main SHA before deploy
         run: |

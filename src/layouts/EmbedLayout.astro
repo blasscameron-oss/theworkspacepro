@@ -1,0 +1,62 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  visualMaster?: string;
+}
+
+const { title, description, canonical, visualMaster } = Astro.props;
+const canonicalUrl = new URL(canonical, Astro.site);
+const releaseSha = import.meta.env.PUBLIC_RELEASE_SHA || 'dev';
+const assetUrl = (path: string) => `${path}?v=${encodeURIComponent(releaseSha)}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="twp-release" content={releaseSha} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" href="/assets/images/favicon.svg" />
+    <link rel="stylesheet" href={assetUrl('/assets/css/fonts.css')} />
+    <link rel="stylesheet" href={assetUrl('/assets/css/premium-studio.css')} />
+  </head>
+  <body class="ps-shell" data-visual-master={visualMaster}>
+    <slot />
+    <script is:inline src={assetUrl('/assets/js/analytics.js')} defer></script>
+    <slot name="scripts" />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    color-scheme: light;
+    --embed-ink: #16231d;
+    --embed-muted: #65716b;
+    --embed-line: #cfd6d1;
+    --embed-paper: #f5f3ec;
+    --embed-card: #fffefa;
+    --embed-accent: #186a48;
+    font-family: Inter, system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--embed-paper); }
+  body { margin: 0; color: var(--embed-ink); background: var(--embed-paper); }
+  a { color: inherit; }
+  .skip-link {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 10;
+    padding: 8px 12px;
+    color: white;
+    background: var(--embed-ink);
+    transform: translateY(-160%);
+  }
+  .skip-link:focus { transform: translateY(0); }
+</style>

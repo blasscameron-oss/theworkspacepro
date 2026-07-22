@@ -1,0 +1,181 @@
+import fs from 'node:fs';
+import path from 'node:path';
+
+export const legacyGuideIds = [
+  'back-pain-ergonomic-setup',
+  'best-ergonomic-office-chairs-2026',
+  'best-standing-desk-mat-for-concrete-floors',
+  'best-standing-desks-under-500',
+  'cable-management-solutions',
+  'desk-chair-height-chart',
+  'dual-monitor-home-office',
+  'dual-monitor-setup-productivity',
+  'ergonomic-accessories-home-office',
+  'ergonomic-office-chair-buying-guide',
+  'ergonomic-setup-for-gamers',
+  'home-office-budget-setup-under-1000',
+  'home-office-desk-guide-2026',
+  'home-office-lighting-guide',
+  'night-shift-lighting-guide',
+  'productive-workspace-mindset',
+  'small-home-office-organization-hacks',
+] as const;
+
+export type LegacyGuideId = (typeof legacyGuideIds)[number];
+
+export interface LegacyGuide {
+  id: LegacyGuideId;
+  title: string;
+  description: string;
+  canonical: string;
+  category: string;
+  readingTime: string;
+  published: Date;
+  updated: Date;
+  author: string;
+  content: string;
+  faqSchema?: Record<string, unknown>;
+  hasFaq: boolean;
+  hasAffiliateLinks: boolean;
+}
+
+const entityNames: Record<string, string> = {
+  amp: '&', apos: "'", gt: '>', lt: '<', nbsp: '\u00a0', quot: '"',
+  ndash: '–', mdash: '—', lsquo: '‘', rsquo: '’', ldquo: '“', rdquo: '”',
+};
+
+function decodeHtml(value: string): string {
+  return value.replace(/&(#x[\da-f]+|#\d+|[a-z]+);/gi, (entity, code: string) => {
+    if (code[0] === '#') {
+      const radix = code[1]?.toLowerCase() === 'x' ? 16 : 10;
+      const number = Number.parseInt(code.slice(radix === 16 ? 2 : 1), radix);
+      return Number.isFinite(number) ? String.fromCodePoint(number) : entity;
+    }
+    return entityNames[code.toLowerCase()] ?? entity;
+  });
+}
+
+function plainText(value: string): string {
+  return decodeHtml(value.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim());
+}
+
+function attrValue(tag: string, name: string): string | undefined {
+  return tag.match(new RegExp(`\\b${name}\\s*=\\s*(["'])(.*?)\\1`, 'i'))?.[2];
+}
+
+function extractElementBody(source: string, tagName: string, openingPattern: RegExp): string {
+  const opening = source.match(openingPattern);
+  if (!opening || opening.index === undefined) throw new Error(`Unable to find ${tagName} matching ${openingPattern}`);
+  const openEnd = opening.index + opening[0].length;
+  const tags = new RegExp(`<\\/?${tagName}\\b[^>]*>`, 'gi');
+  tags.lastIndex = opening.index;
+  let depth = 0;
+  for (let match = tags.exec(source); match; match = tags.exec(source)) {
+    depth += /^<\//.test(match[0]) ? -1 : 1;
+    if (depth === 0) return source.slice(openEnd, match.index);
+  }
+  throw new Error(`Unable to close ${tagName} matching ${openingPattern}`);
+}
+
+function firstMatch(source: string, pattern: RegExp, label: string): string {
+  const match = source.match(pattern)?.[1];
+  if (!match) throw new Error(`Unable to find ${label}`);
+  return match.trim();
+}
+
+function parseJsonLd(source: string): Record<string, unknown>[] {
+  return [...source.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)]
+    .flatMap((match) => {
+      try { return [JSON.parse(match[1]) as Record<string, unknown>]; }
+      catch { return []; }
+    });
+}
+
+function normalizeAmazonLinks(html: string): string {
+  return html.replace(/<a\b[^>]*>/gi, (tag) => {
+    const href = attrValue(tag, 'href');
+    if (!href) return tag;
+    let url: URL;
+    try { url = new URL(decodeHtml(href)); }
+    catch { return tag; }
+    const host = url.hostname.toLowerCase();
+    if (!(host === 'amzn.to' || host === 'amazon.com' || host.endsWith('.amazon.com'))) return tag;
+    url.searchParams.set('tag', 'workspacepro-20');
+    const normalizedHref = url.href.replaceAll('&', '&amp;');
+    let normalized = tag.replace(/\bhref\s*=\s*(["']).*?\1/i, `href="${normalizedHref}"`);
+    const rel = new Set((attrValue(normalized, 'rel') ?? '').split(/\s+/).filter(Boolean));
+    for (const token of ['sponsored', 'noopener', 'noreferrer']) rel.add(token);
+    if (/\brel\s*=/i.test(normalized)) normalized = normalized.replace(/\brel\s*=\s*(["']).*?\1/i, `rel="${[...rel].join(' ')}"`);
+    else normalized = normalized.replace(/>$/, ` rel="${[...rel].join(' ')}">`);
+    return normalized;
+  });
+}
+
+function sanitizeContent(html: string): string {
+  const sanitized = normalizeAmazonLinks(html)
+    .replace(/<script\b[\s\S]*?<\/script>/gi, '')
+    .replace(/<style\b[\s\S]*?<\/style>/gi, '')
+    .replace(/\sstyle=(["'])[^"']*\1/gi, '')
+    .trim();
+  if (/<(?:html|head|body|header|footer|main|h1)\b/i.test(sanitized)) {
+    throw new Error('Legacy guide body contains a forbidden document-shell or h1 element');
+  }
+  return sanitized;
+}
+
+function buildLegacyGuide(id: LegacyGuideId): LegacyGuide {
+  const file = path.resolve(process.cwd(), 'guides', `${id}.html`);
+  const source = fs.readFileSync(file, 'utf8');
+  const canonicalHref = firstMatch(source, /<link\b[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)["'][^>]*>/i, `${id} canonical`);
+  const canonicalUrl = new URL(canonicalHref);
+  const expectedCanonical = `/guides/${id}`;
+  if (canonicalUrl.origin !== 'https://www.theworkspacepro.com' || canonicalUrl.pathname.replace(/\/$/, '') !== expectedCanonical) {
+    throw new Error(`${id} must use canonical https://www.theworkspacepro.com${expectedCanonical}`);
+  }
+
+  const descriptionTag = source.match(/<meta\b[^>]*name=["']description["'][^>]*>/i)?.[0] ?? '';
+  const description = decodeHtml(attrValue(descriptionTag, 'content') ?? '');
+  if (!description) throw new Error(`Unable to find ${id} description`);
+  const main = extractElementBody(source, 'main', /<main\b[^>]*>/i);
+  const schemas = parseJsonLd(source);
+  const articleSchema = schemas.find((schema) => schema['@type'] === 'Article');
+  const faqSchema = schemas.find((schema) => schema['@type'] === 'FAQPage');
+
+  let title: string;
+  let content: string;
+  let category = 'Workspace guide';
+  let readingTime = 'Practical reference';
+  if (id === 'desk-chair-height-chart') {
+    const hero = extractElementBody(main, 'header', /<header\b[^>]*class=["'][^"']*\bhero\b[^"']*["'][^>]*>/i);
+    title = plainText(firstMatch(hero, /<h1\b[^>]*>([\s\S]*?)<\/h1>/i, `${id} title`));
+    content = sanitizeContent(extractElementBody(main, 'div', /<div\b[^>]*class=["'][^"']*\bcontent\b[^"']*["'][^>]*>/i));
+    category = 'Body fit';
+    readingTime = 'Reference chart';
+  } else {
+    const header = extractElementBody(main, 'div', /<div\b[^>]*class=["'][^"']*\barticle-header\b[^"']*["'][^>]*>/i);
+    title = plainText(firstMatch(header, /<h1\b[^>]*>([\s\S]*?)<\/h1>/i, `${id} title`));
+    const meta = plainText(header.match(/<div\b[^>]*class=["'][^"']*\barticle-meta\b[^"']*["'][^>]*>([\s\S]*?)<\/div>/i)?.[1] ?? '');
+    const bits = meta.split('·').map((part) => part.replace(/^[^\p{L}\p{N}]+/u, '').trim()).filter(Boolean);
+    category = bits.find((part) => !/min read|all guides/i.test(part)) ?? category;
+    readingTime = bits.find((part) => /min read/i.test(part)) ?? readingTime;
+    content = sanitizeContent(extractElementBody(main, 'div', /<div\b[^>]*class=["'][^"']*\barticle-body\b[^"']*["'][^>]*>/i));
+  }
+
+  const published = new Date(String(articleSchema?.datePublished ?? '2026-06-15'));
+  const updated = new Date(String(articleSchema?.dateModified ?? '2026-07-18'));
+  if (Number.isNaN(published.valueOf()) || Number.isNaN(updated.valueOf()) || updated < published) throw new Error(`${id} has invalid article dates`);
+
+  return {
+    id, title, description, canonical: expectedCanonical, category, readingTime, published, updated,
+    author: typeof articleSchema?.author === 'object' && articleSchema.author !== null
+      ? String((articleSchema.author as Record<string, unknown>).name ?? 'The Workspace Pro Editorial Team')
+      : 'The Workspace Pro Editorial Team',
+    content, faqSchema,
+    hasFaq: /class=["'][^"']*\bfaq-question\b/i.test(content),
+    hasAffiliateLinks: /(?:amazon\.com|amzn\.to)[^"']*[?&](?:amp;)?tag=workspacepro-20/i.test(content),
+  };
+}
+
+export function getLegacyGuides(): LegacyGuide[] {
+  return legacyGuideIds.map(buildLegacyGuide);
+}

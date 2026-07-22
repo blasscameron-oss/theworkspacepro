@@ -1,524 +1,234 @@
-# Finch handoff — The Workspace Pro
+# Finch handoff — restore one correct production release
 
-**Updated:** 2026-07-18 (Deals + body-fit + guide TOC release candidate; awaiting Finch deployment)
-**Canonical path:** `/home/cameron/.openclaw/workspace/theworkspacepro-v2`
-**Live:** https://www.theworkspacepro.com
-**GitHub:** `https://github.com/blasscameron-oss/theworkspacepro`
-**Hosting:** Cloudflare Pages (static) + required health Worker `twp-monitor`
+- **Prepared:** 2026-07-22
+- **Priority:** Production incident; finish before more design/content work
+- **Canonical repo:** `/home/cameron/.openclaw/workspace/theworkspacepro-v2`
+- **GitHub:** `blasscameron-oss/theworkspacepro`
+- **Pages project:** `the-workspace-pro`
+- **Production:** `https://www.theworkspacepro.com`
+- **Worker:** `twp-monitor`
 
-## ⚠️ STATUS (2026-07-18): validated release candidate is local and uncommitted
+## UI follow-up ready for Finch (2026-07-22)
 
-The canonical worktree is at `d0408db` / `origin/main` plus the complete uncommitted release candidate. Finch must review and commit the **current worktree**, then push `main` so the existing GitHub Actions workflow performs the only production deployment.
+Commit `6a32dad` repaired the main production-origin failure: new HTML is live,
+slash redirects are consistent, and the five formerly blank July guides now have
+content. The screenshot breakage that remains live is an asset-generation split:
+Cloudflare still serves old unversioned `style.css` and `site.js` objects while
+cache-busted requests return the current files.
 
-This candidate includes:
+The canonical worktree now contains a tested, uncommitted UI follow-up:
 
-- `/deals`: 11 static, filterable value picks with truthful price and affiliate disclosures.
-- `/guides/desk-chair-height-chart`: 12-row imperial/metric body-fit reference plus the shared calculator.
-- Corrected shared ergonomic math used by the full calculator, embed, and height chart.
-- Sitewide navigation/SEO/social-image updates and stronger artifact validation.
-- The guide TOC regression fix: TOCs remain in document flow, responsive cards replace the nested sticky scroller, anchor offsets clear the fixed header, and long guides receive an accessible reading-progress accent.
+- Home metrics are truthful static values: 22 guides, 7 profiles, 34 products.
+- Home's measurement visual, metrics, actions, and assessment card have deliberate
+  desktop and mobile layouts.
+- Deals, Tools, and Compare now use the same Astro BaseLayout, header, footer,
+  light palette, typography, navigation order, and mobile breakpoint as Home and
+  Guides.
+- Deals retains exactly 11 picks, all retailer URLs, `workspacepro-20`,
+  sponsored attributes, disclosures, query filters, reset, and analytics. The
+  cramped JS-injected fingerprint rows are removed.
+- Shared CSS/JS and page scripts use the deployment SHA as a query version;
+  `PUBLIC_RELEASE_SHA` is supplied during the GitHub build.
+- Release meta is emitted inside each shared page head, not after `</html>`.
+- Merge ownership prevents legacy Deals/Tools/Compare from overwriting Astro.
 
-Do **not** deploy from the older `repos/workspace-pro-minimal` checkout and do not use a manual Pages/Wrangler upload. Follow **Current release candidate — Finch deployment runbook** below. The separate custom-domain cache remediation remains a Cloudflare Dashboard task.
+Local verification is green: Astro 0 diagnostics; validator 45 HTML/223 total
+files; 19 Node contracts; Playwright 24 passed with 4 expected project skips.
+Review the diff, commit it, push `main` through the supported workflow, verify
+the unique deployment, and then purge/remove stale unversioned asset objects and
+rules. Do not deploy an old directory manually.
 
-### ⏰ OWNER REMINDER — follow up TOMORROW
+## Required outcome
 
-**Cameron:** Enable / apply for official **Amazon Creators API** (successor to Product Advertising API — PA-API deprecated May 2026). ⚠️ Requires **10+ qualified sales in past 30 days**. Then hand credentials to Finch (or set secrets) so Finch can implement **§ Amazon product images (API build plan)** below.
+Make the custom domain, stable Pages hostname, and latest production deployment serve the same Git commit and site. Remove the old/new route split, preserve Deals and every affiliate link, remove accidental `noindex` from public pages, and make CI fail if this happens again.
 
-| Doc | Purpose |
-|-----|---------|
-| `DESIGN-polish-roadmap-7eaaef60.md` | Approved design + PR plan |
-| `TRAFFIC_GROWTH.md` | Growth / SEO ideas |
-| `scripts/ASIN_RUNBOOK.md` | Monthly affiliate health |
-| **This file § Amazon product images** | **API build plan when keys arrive** |
+This incident has three overlapping causes:
 
----
+1. The latest correct artifact reached a unique Pages preview but not the stable production aliases.
+2. A seven-day custom-domain HTML cache preserves different releases per URL.
+3. The built artifact intentionally combines new Astro pages with legacy HTML.
 
-## What this site is
+## Historical incident state (superseded by the update above)
 
-| Surface | Role |
-|---------|------|
-| `/` | Assessment quiz (**only** page with `assessment.js`) |
-| `/tools` | Tools hub + height embed snippet |
-| `/embed/height` | Embeddable height calc (`noindex`) |
-| `/deals` | Static, filterable value picks with price and affiliate disclosures |
-| `/compare/` | **Filter matrix** (query-shareable) |
-| `/compare/*` | Long-form written comparisons |
-| `/build-your-office` | Budget builder |
-| `/ergonomic-height-calculator` | Full height tool + `height-math.js` |
-| `/guides/desk-chair-height-chart` | Static imperial + metric height reference, methodology, and calculator bridge |
-| `/workspace-setup-calculator` | Setup planner |
-| `/guides` | 17 guides + search |
-| `/changelog` | Honest ship log |
-| Contact / Newsletter | Formspree / Beehiiv |
-| Affiliate | Amazon tag **`workspacepro-20`** |
-| Analytics | **`/assets/js/analytics.js`** only → GA4 `G-2DWRW4PE8Y` |
-| Fonts | **Self-hosted** `/assets/css/fonts.css` + `/assets/fonts/*.woff2` |
+- Canonical repo is clean: `main == origin/main == 02279ab`.
+- Successful run: `29881060473`.
+- Correct preview: `https://7e3c9d2f.the-workspace-pro.pages.dev/`.
+- `https://the-workspace-pro.pages.dev/` serves an older 4 KB fallback.
+- Production homepage is legacy; `/guides` is new but `/guides/` is old.
+- `/compare/` is new while `/compare` can be blank; Tools variants also disagree.
+- `/deals` is the old April 2026 design.
+- Five July guides linked from Guides return HTTP 200 with effectively empty bodies.
+- Cached new responses have carried `s-maxage=604800`, nonzero `Age`, and `X-Robots-Tag: noindex`.
+- Cache-busting queries can turn working pages or CSS into the old HTML fallback.
+- Old `/content/...` articles coexist with canonical `/guides/...` versions.
 
-**Guardrails:** No fake testimonials, no fabricated stars, no invented sale prices, countdowns, or unverified discount badges. Deals are value picks, not claims of a live markdown.
+## Critical safety rule
 
----
+> **Do not purge Cloudflare first.** Correct and verify the Pages production deployment before purging. A purge now can remove the surviving new cached pages and expose the broken fallback everywhere.
 
-## Design plan status — ALL PRs
+Do not upload an old directory, deploy the repository root, or deploy from any other checkout.
 
-| PR | Title | Status |
-|----|--------|--------|
-| PR1 | `assessment.js` only on `index.html` | ✅ |
-| PR1b | Sitewide `analytics.js`, no double GA | ✅ |
-| PR2 | Mobile a11y (`aria-expanded`, focus return) | ✅ |
-| PR3 | `.result-total` + guide `--c-*` tokens | ✅ |
-| PR4 | OG compress (~44KB) + img dimensions | ✅ |
-| PR5 | Gate `enhancements.js` by page type | ✅ |
-| PR6 | ASIN inventory + denylist + runbook | ✅ |
-| PR7 | Extra product images (BenQ retry optional) | ✅ (most matrix thumbs present) |
-| PR8 | `/embed/height` + header detach | ✅ |
-| PR9 | Branded print CSS | ✅ |
-| PR10 | Non-sticky responsive guide TOC + reading progress | ✅ |
-| PR11 | `/compare/` matrix + JSON data | ✅ |
-| PR12 | `catalog.json` + optional JS load | ✅ |
-| PR13 | Monitor ASIN sample | ⏸ Disabled to keep the free Worker below its subrequest limit |
-| PR14 | `/changelog` + sitemap + monitor | ✅ |
-| PR15 | OSHA/BIFMA source notes (index + about) | ✅ |
-| PR16 | Self-hosted Inter + Fraunces woff2 | ✅ |
+## 1. Establish one deployment authority
 
-Local verify (2026-07-18): JavaScript syntax PASS; ASIN denylist PASS (111 inventoried); shared height-math self-test PASS; the built-artifact validator passes all **39 public HTML files and 67 allowlisted files**. Desktop and 390px browser checks confirm guide TOCs are non-sticky, use visible overflow without a nested scrollbar, scroll away with the article, do not create horizontal overflow, and receive one updating reading-progress indicator. Deals and the new height chart still require the post-deploy smoke tests below.
+In Cloudflare Pages project `the-workspace-pro`, record:
 
----
+- configured production branch;
+- current production deployment ID, branch, commit SHA, timestamp, and source;
+- attached custom domains;
+- whether Cloudflare native Git builds are enabled;
+- recent Direct Upload deployments and their actor/source.
 
-## Script allowlist
+Then:
 
-| Script | Where |
-|--------|--------|
-| `assessment.js` | **`index.html` only** |
-| `analytics.js` | All public HTML (once) |
-| `site.js` + `perf-lite.js` | Site chrome |
-| `height-math.js` | Height full tool + embed |
-| `compare-matrix.js` | `/compare/` only |
-| `deals.js` | `/deals` filters + click measurement |
-| `build-your-office.js` | BYO only |
-| `fonts.css` | All pages (replaces Google Fonts) |
+1. Set the production branch to `main`.
+2. Keep GitHub Actions as the sole deploy authority; disable duplicate native Git builds.
+3. Confirm `www.theworkspacepro.com` and `pages.theworkspacepro.com` bind to this exact project, not an older project or Worker route.
+4. Review Direct Upload/API access and retire obsolete automation only after identifying it.
+5. Do not delete deployment history.
 
-Data:
+Stop if the account, project, or production branch is ambiguous. Resolve ownership before changing cache state.
 
-- `assets/data/products-matrix.json` — compare UI
-- `assets/data/catalog.json` — product export / optional runtime load
+Before promotion, disable the broad seven-day HTML cache rule and any public-route
+`X-Robots-Tag: noindex` or homepage-fallback rewrite at the zone level, but **do
+not purge existing objects yet**. The safest incident setting is to bypass edge
+caching for the entire `www` host temporarily. Inspect Cache Rules, legacy Page
+Rules, Response Header Transform Rules, Workers routes, Snippets, Bulk Redirects,
+and Origin Rules. Preserve the apex-to-`www` redirect with path and query intact.
 
----
+## 2. Harden GitHub deployment
 
-## Headers (Cloudflare Pages)
+Update `.github/workflows/deploy.yml` so deployment explicitly identifies production and its commit:
 
-- Global: CSP (self fonts/styles), `X-Frame-Options: DENY`, asset cache
-- **`/embed/*`:** detach with `! X-Frame-Options` and `! Content-Security-Policy`, then re-set CSP with **`frame-ancestors *`**
-
----
-
-## Smoke tests (post-deploy)
-
-### Perf / scripts
-- [ ] Guide Network: **no** `assessment.js`; loads `fonts.css` / woff2 from **self**
-- [ ] Home: one `assessment.js`, one `analytics.js`, no second gtag config
-- [ ] Deals: one `deals.js`, one `analytics.js`, no `assessment.js`
-- [ ] CSP does not need `fonts.googleapis.com` (self-hosted)
-
-### Features
-- [ ] On `/guides/back-pain-ergonomic-setup` at 1280px and 390px, the TOC scrolls away with the article, never covers content, has no nested scrollbar, and each jump link lands below the fixed header
-- [ ] The guide reading-progress line appears below the header and advances while scrolling; non-guide pages do not receive it
-- [ ] `/deals?category=chair&budget=under-200` restores filters and every product remains present in static HTML
-- [ ] `/compare/?category=chair&budget=under-350` filters restore
-- [ ] Matrix Amazon links include `tag=workspacepro-20`
-- [ ] Quiz share link restores results in private window
-- [ ] `/embed/height` works in iframe; full tool UTM link works
-
-### Headers
-```bash
-curl -sI https://www.theworkspacepro.com/ | grep -i x-frame   # expect DENY
-curl -sI https://www.theworkspacepro.com/embed/height | grep -i x-frame  # expect empty
-curl -sI https://www.theworkspacepro.com/embed/height | grep -i content-security  # frame-ancestors *
+```yaml
+- name: Deploy to Cloudflare Pages production
+  id: pages_deploy
+  uses: cloudflare/wrangler-action@v3
+  with:
+    apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    command: >-
+      pages deploy dist
+      --project-name=the-workspace-pro
+      --branch=main
+      --commit-hash=${{ github.sha }}
+      --commit-dirty=false
 ```
 
-### Ops
-```bash
-./scripts/build-for-pages.sh dist
-node scripts/validate-public-site.mjs dist
-python3 scripts/check_asins_site.py --fail-on-denylist
-node -e "eval(require('fs').readFileSync('assets/js/height-math.js','utf8')); console.log(TWPHeightMath.selfTest())"
-```
-
----
-
-## Height math (frozen)
+Before committing, confirm the pinned Wrangler version supports those flags. Pin Wrangler rather than accepting a dynamic install. Configure the Pages output directory as `dist` in a supported Pages configuration to remove the current warning. The existing root `wrangler.toml` names and configures the `twp-monitor` Worker; plain `wrangler deploy` deploys that Worker, not Pages. Do not accidentally replace its Worker configuration with Pages configuration.
 
-| Output | × body height (inches) |
-|--------|-------------------------|
-| Standing desk | 0.55 |
-| Sitting desk / keyboard | 0.405 |
-| Chair | 0.25 |
-| Monitor top | 0.70 |
-| Monitor distance | clamp(h×0.33, 18–28) |
-
-Golden: 69 in → standing **38.0 in / 96.5 cm**, sitting/keyboard **27.9 in**, chair **17.3 in**, monitor top **48.3 in**, monitor distance **22.8 in**. These are starting estimates with adjustment ranges, not medical prescriptions.
-
----
-
-## Affiliate / ASIN
-
-- Tag: **`workspacepro-20`**
-- Denylist: `B0B7865Z11` (bimini), `B09RK8XWJB` (mural)
-- Monthly: `scripts/ASIN_RUNBOOK.md`
-- Soft Amazon checks in Worker: **warnings only**, never hard-fail
-
----
-
-## Amazon product images — policy + API build plan
-
-> **Priority follow-up for Cameron (tomorrow):** get official API access for Associates product images.
-> **Priority for Finch (when credentials arrive):** implement the pipeline below. Do **not** “fix” images with Unsplash/stock lookalikes or more browser scrapes of `m.media-amazon.com` as the long-term system.
-
-### Why this is important
-
-Wrong or non-compliant product photos:
-
-- Break trust (user sees product A, clicks product B)
-- Risk **Associates / API license** issues if Amazon product photography is used outside approved channels
-- Go stale when Amazon changes the main image
-
-**Do not use generic stock photos** of “an office chair” on a specific ASIN link. Empty placeholder + “View on Amazon” is better than a lookalike.
-
-### What is OK vs not OK
-
-| Approach | Verdict |
-|----------|---------|
-| Official **Amazon Creators API** / Associates product API image fields | ✅ Correct long-term path |
-| SiteStripe / official Associate embed tools (manual, small scale) | ✅ OK if still offered for the account |
-| Your own photos of gear you own | ✅ Always OK |
-| Brand press kits (Branch, Uplift, etc.) with permission | ✅ For non-Amazon SKUs |
-| Honest placeholder (icon + name + CTA) until API image exists | ✅ Temporary OK |
-| Scraping product pages / saving CDN JPGs by hand as permanent source of truth | ⚠️ Temporary scaffolding only — replace with API |
-| Generic stock “ergonomic chair” on a specific ASIN | ❌ Never |
-| Reusing one product’s photo for a different ASIN | ❌ Never |
-
-### Current site state (as of handoff)
-
-- Legacy local files remain in the repository for provenance review, but the allowlisted Pages build does not deploy either product-image directory.
-- Guides, assessment results, matrix, and catalog no longer reference those files; public product cards use text/icon presentation.
-- Restore Amazon imagery only from an authorized API/embed source or documented licensed assets.
-
-### Owner steps (Cameron)
-
-**Prerequisite:** Associates account must have **10+ qualified sales in the past 30 days**. Without this, the Creators API tab won't appear in your dashboard.
-
-1. Log into **Amazon.com** → Your Account → Your Associates Account (or go to `amazon.com/associates`). The old `affiliate-program.amazon.com` URLs may redirect unpredictably per region.
-2. In Associates Central, go to **Tools → Product Advertising API** (may show as "Creators API" or "API Credentials").
-3. If you don't see the Tools tab or API option, you haven't met the 10-sale threshold yet. No way around it — focus on driving qualified sales first.
-4. Once accessible, create API credentials (**Access Key**, **Secret**, **Partner Tag** = `workspacepro-20`, marketplace `www.amazon.com` / locale `US`).
-5. **Never commit secrets to git.** Give Finch secrets via:
-   - Cloudflare Workers secrets / Pages env, and/or
-   - Local `.env` (gitignored) for a one-shot sync script
-6. Tell Finch: "API credentials are set — run Amazon images pipeline."
-
-### Finch build plan when API arrives
-
-Implement as **one focused PR** (or PR stack): `feat: Amazon Creators API product image sync`.
-
-#### Architecture (target)
-
-```
-ASIN list (scripts/check_asins_site.py inventory
-         + assets/data/catalog.json)
-        │
-        ▼
-sync job (Node or Python CLI, or CF Worker cron)
-  - GetItems / equivalent Creators API call
-  - Pull: title, primary image URL(s), detail URL, optional price
-        │
-        ▼
-assets/data/catalog.json  (imageUrl from Amazon CDN or allowed cache)
-assets/data/products-matrix.json  (same)
-optional: refresh guide primary-pick metadata only if automated safely
-        │
-        ▼
-Frontend: quiz / matrix / guides read imageUrl from catalog
-  - Prefer API image URL (Amazon-hosted) if license allows
-  - Placeholder if missing
-  - Stop depending on hand-scraped local JPGs long-term
-```
+Also:
 
-#### Step-by-step implementation
+- Prevent superseded runs from later publishing obsolete commits, either by safe concurrency cancellation before deploy or a latest-`main` SHA guard immediately before deploy.
+- Keep all build, Astro, artifact, contract, Playwright, Worker, and monitor checks.
+- Generate `dist/release.json` and a `<meta name="twp-release">` value from `GITHUB_SHA`.
+- Capture the unique deployment URL/ID and smoke-test it.
+- Require the stable Pages hostname and custom domain to report the expected SHA. A green preview upload is insufficient.
 
-**1. Secrets & config (no secrets in repo)**
+Never print secret values. Verify only these secret names: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, and `MONITOR_SECRET`.
 
-- Add `.env.example` (values blank):
-  ```
-  AMAZON_ACCESS_KEY=
-  AMAZON_SECRET_KEY=
-  AMAZON_PARTNER_TAG=workspacepro-20
-  AMAZON_HOST=webservices.amazon.com
-  AMAZON_REGION=us-east-1
-  AMAZON_MARKETPLACE=www.amazon.com
-  ```
-- Ensure `.env` is in `.gitignore`.
-- For production sync: `wrangler secret put …` on a Worker, or run sync only on owner machine and commit **JSON outputs only** (image URLs, not keys).
+## 3. Deploy and prove the origin
 
-**2. ASIN source of truth**
+Commit the workflow/provenance changes to `main`, push once, and watch the complete run. Before touching cache, test the unique deployment and stable Pages hostname:
 
-```bash
-python3 scripts/check_asins_site.py
-# reads scripts/asin_inventory.json → unique ASINs sitewide
-```
+- `/`, `/guides`, `/deals`, `/compare/`, and `/tools` contain expected body markers.
+- These five routes contain real article content, not shell-only 200s:
+  - `/guides/chair-seat-depth-by-height`
+  - `/guides/low-cost-ergonomic-workspace-fixes`
+  - `/guides/monitor-arms-for-thick-or-shallow-desks`
+  - `/guides/standing-desks-for-short-users`
+  - `/guides/standing-desks-for-tall-users`
+- `/assets/css/style.css`, with and without a query, returns CSS and a CSS content type.
+- Release JSON/meta equals the deployed commit.
+- Deals contains all 11 intended cards.
+- Every Amazon URL retains `tag=workspacepro-20` and `rel="sponsored"`.
 
-Also read `assets/data/catalog.json` products with `asin` set. Merge + unique. Skip denylist (`scripts/asin_denylist.json`).
+If stable Pages still differs from the unique URL, do not purge. Fix the Pages project/production binding first.
 
-**3. New script: `scripts/sync_amazon_catalog.py` (or `.mjs`)**
+## 4. Correct cache rules, then purge once
 
-Responsibilities:
+Inspect Cache Rules, legacy Page Rules, Workers routes, Transform Rules, redirects, and origin rules for the domain.
 
-1. Load ASINs from inventory + catalog.
-2. Batch API requests (respect rate limits; e.g. chunks of 10 ASINs).
-3. For each item, extract:
-   - `asin`
-   - `title` (optional sanity check vs our `name`)
-   - `imageUrl` (primary large image from API response)
-   - `detailPageUrl` (must still include / preserve `tag=workspacepro-20` on outbound links)
-4. Write/update:
-   - `assets/data/catalog.json` → each product: `"imageUrl": "https://…"` (API URL), `"imageSource": "amazon-api"`, `"imageSyncedAt": ISO date`
-   - `assets/data/products-matrix.json` → same `image` / `imageUrl` field
-5. Log mismatches (API title very different from our name → warning, do not auto-overwrite name without review).
-6. Exit non-zero if denylisted ASIN appears or API auth fails.
+1. Disable/narrow any broad `Cache Everything` or seven-day edge-TTL rule for HTML.
+2. Public HTML should bypass edge caching or revalidate with `Cache-Control: public, max-age=0, must-revalidate`.
+3. Removed operational paths must return real, uncached 404s.
+4. Use long immutable caching only for content-hashed assets. Non-fingerprinted assets must revalidate.
+5. Ensure queries do not route valid pages/assets to fallback HTML.
 
-**Do not** invent images when API returns nothing — leave `imageUrl: null`.
+Remember that matching Cloudflare Pages `_headers` rules can inherit/combine.
+Detach an inherited header before replacing it in a narrower rule. Dashboard
+Transform Rules, Workers, and already-cached responses can override or outlive
+repository `_headers`, so repository changes alone are not sufficient.
 
-**4. Frontend consumers (in order)**
+Only after stable Pages is correct, perform one full zone purge. This is justified once because stale objects span HTML, redirects, CSS, slash variants, and several releases.
 
-| Surface | File(s) | Change |
-|---------|---------|--------|
-| Compare matrix | `assets/js/compare-matrix.js` | Prefer `p.imageUrl \|\| p.image`; on error / null → placeholder tile (no stock photo) |
-| Quiz results thumbs | `assets/js/assessment.js` | Prefer catalog `imageUrl` if `__TWP_CATALOG__` loaded; else local `/assets/images/products/{ASIN}.jpg` if exists; else icon only |
-| Build Your Office | `assets/js/build-your-office.js` | Same pattern if product cards show images |
-| Guides | `guides/*.html` | Longer term: inject from catalog or keep manual; **do not** scrape new local JPGs |
+Immediately verify from multiple edges if available. Check status, final URL, `Content-Type`, body marker, release SHA, `CF-Cache-Status`, `Age`, `Cache-Control`, and robots headers—not just HTTP 200.
 
-Placeholder HTML pattern (honest):
+## 5. Fix routing, duplicates, and indexing
 
-```html
-<div class="product-thumb product-thumb--empty" aria-hidden="true">📦</div>
-```
+- Enforce one canonical form. Recommended: `/guides`, `/tools`, `/compare/`, and `/deals`.
+- Permanently redirect noncanonical slash variants. They must never resolve to different artifacts.
+- Remove the catch-all that returns the 4 KB empty shell with HTTP 200. Unknown routes must be genuine 404s.
+- Redirect old `/content/<slug>/` and root article aliases to corresponding `/guides/<slug>` canonicals.
+- Put only canonical URLs in canonical tags and sitemap.
+- Public custom-domain pages must not send `X-Robots-Tag: noindex` or contain a noindex meta tag. Preview deployments may remain noindexed.
+- Keep intentionally private/embed surfaces noindexed.
 
-**5. Caching policy**
+After verification, submit the sitemap and request indexing for Home, Deals, Guides, and the five new guides in Search Console.
 
-- **Preferred:** use **Amazon CDN image URLs** returned by the API (no re-host), if license allows.
-- **Only cache to disk** (`assets/images/products/{ASIN}.jpg`) if the API license explicitly permits offline/cache use; document that in script header.
-- If re-hosting is not allowed, delete reliance on scraped JPGs gradually (keep files only as fallback until all pages read `imageUrl`).
+## 6. Finish the visual migration without losing revenue
 
-**6. Non-Amazon products (Branch, IKEA, Uplift, Fully…)**
+The build currently runs Astro, then `scripts/merge-legacy-public.mjs` copies legacy HTML into `dist`. Even a correct deploy therefore remains visually mixed.
 
-- Do **not** pull from Amazon API.
-- Options: brand asset (with permission), own photo, or placeholder.
-- Matrix already has ~10 non-Amazon rows — leave without Amazon photos.
+After production is stable:
 
-**7. Worker / CI (optional later)**
+1. Move Deals first into the shared Astro layout without changing product inventory, disclosures, affiliate tags, filters, or analytics.
+2. Migrate About, calculators/tools, budget builder, and remaining guides to the same shell and design system.
+3. Replace broad root-HTML copying with an explicit temporary legacy-route manifest.
+4. Fail builds on every Astro/legacy collision.
+5. Add a contract assigning one owner and expected shell marker to every public URL.
+6. Remove the merge script when the last legacy route is migrated.
 
-- Do **not** hard-fail site health on Amazon image 404s.
-- Optional: monthly GitHub Action runs `sync_amazon_catalog` with secrets → opens PR with JSON diff only.
-- The soft ASIN sample is disabled in the free Worker; run it separately only when the subrequest budget allows.
+Do not “clean up” affiliate content by deleting commercial sections. Preserve 11 Deals picks, comparison CTAs, guide recommendations, `workspacepro-20`, disclosures, and sponsored attributes.
 
-**8. Acceptance criteria (Finch smoke after API PR)**
+## Acceptance checklist
 
-- [ ] Secrets not in git (`git grep -i secret` clean of real keys)
-- [ ] `sync_amazon_catalog` succeeds for ≥ sample of 10 ASINs
-- [ ] `/compare/` shows real API images for Amazon rows; placeholders for missing
-- [ ] Quiz results show thumbs only when `imageUrl` or verified local file exists
-- [ ] No stock/Unsplash product photos on ASIN links
-- [ ] Outbound Amazon URLs still have `tag=workspacepro-20`
-- [ ] Denylist ASINs never requested
+- [ ] Git `main`, successful Actions run, Pages production deployment, release JSON, and page meta report one SHA.
+- [ ] Unique URL, stable Pages, `pages.theworkspacepro.com`, and `www.theworkspacepro.com` have matching content markers.
+- [ ] Slash variants never serve different designs.
+- [ ] Query strings preserve correct page/asset and content type.
+- [ ] No canonical route is blank or shell-only HTTP 200.
+- [ ] Unknown URLs and operational Markdown return 404.
+- [ ] No public custom-domain page is noindexed.
+- [ ] All five July guides are complete and in the sitemap.
+- [ ] Old content duplicates redirect to canonical guides.
+- [ ] Deals has 11 intended products and works at desktop and 390 px.
+- [ ] Automated scan confirms every Amazon link has `workspacepro-20` and `rel="sponsored"`.
+- [ ] Remaining pages share one navigation and design system.
+- [ ] Monitor checks release SHA, body markers, content type, robots state, and representative routes.
+- [ ] CI fails if production aliases do not serve the just-deployed SHA.
 
-**9. Rollback**
+When inspecting headers with curl, use `--http1.1` so an HTTP/2 `103 Early
+Hints` block is not mistaken for the final response.
 
-- Revert frontend to local path / placeholder if API outage.
-- Catalog keeps last good `imageUrl`; do not wipe on failed sync.
+## Separate credential safety action
 
-### Interim (until API is live)
-
-- Ship the release-safe text/icon product presentation; local Amazon thumbnails are excluded from Pages.
-- Prefer **placeholder** over new scrapes.
-- Owner enables API tomorrow → Finch runs this section.
-
----
-
-## Current release candidate — Finch deployment runbook
-
-### 1. Confirm the canonical worktree
-
-```bash
-cd /home/cameron/.openclaw/workspace/theworkspacepro-v2
-git rev-parse --show-toplevel
-git status --short
-git diff --check
-```
-
-Expected before Finch commits: `HEAD` and `origin/main` are `d0408db`, with the release changes shown as modified/untracked files. Review that complete diff; do not discard it, switch to the legacy checkout, reset, or force-push.
-
-### 2. Run the exact preflight
-
-```bash
-find assets/js worker scripts -type f \( -name '*.js' -o -name '*.mjs' \) -print0 | xargs -0 -n1 node --check
-node -e "eval(require('fs').readFileSync('assets/js/height-math.js','utf8')); if (!TWPHeightMath.selfTest()) process.exit(1); console.log('Height math self-test passed.')"
-python3 scripts/check_asins_site.py --fail-on-denylist
-./scripts/build-for-pages.sh dist
-node scripts/validate-public-site.mjs dist
-```
-
-Expected final output: `Public artifact validation passed: 39 HTML files, 67 total files.`
-
-### 3. Commit and use the single CI deploy path
-
-```bash
-git add -A
-git status --short
-git commit -m "feat: add deals and body-fit growth release"
-git push origin main
-```
-
-That push triggers `.github/workflows/deploy.yml`, which syntax-checks and validates source, builds the allowlisted `dist/`, validates the artifact, deploys Cloudflare Pages and the `twp-monitor` Worker, then runs the authenticated production monitor. Do not run `wrangler pages deploy` and never deploy the repository root.
-
-If GitHub CLI is authenticated:
-
-```bash
-gh run list --workflow deploy.yml --limit 1
-gh run watch RUN_ID --exit-status
-```
-
-### 4. Post-deploy HTTP checks
-
-```bash
-for path in /deals /guides/desk-chair-height-chart /guides/back-pain-ergonomic-setup /ergonomic-height-calculator /embed/height /sitemap.xml; do
-  curl -fsSIL -o /dev/null -w "%{http_code} %{url_effective}\\n" "https://www.theworkspacepro.com$path"
-done
-curl -sS -o /dev/null -w "%{http_code}\\n" https://www.theworkspacepro.com/FINCH_HANDOFF.md
-curl -sS -o /dev/null -w "%{http_code}\\n" https://www.theworkspacepro.com/worker/monitor.js
-```
-
-Expect every public URL to end at 200 without a redirect loop. Operational files must return 404 once the custom-domain cache remediation below has been completed.
-
-### 5. Browser acceptance at 1280px and 390px
-
-- Back-pain guide: TOC stays in normal flow and scrolls offscreen; no content overlap, nested scrollbar, or horizontal overflow; jump links clear the header; the progress line advances.
-- Deals: query filters restore; visible counts update; all 11 products remain in the static HTML; premium-only and empty-state behavior work.
-- Desk/chair height chart: all 12 anchored rows are readable; imperial/metric display and calculator bridge work.
-- Full height calculator and embed: 69 in produces the golden outputs above.
-- Mobile menu: keyboard open/close, Escape, focus return, and overlay remain correct.
-
-### 6. Rollback
-
-If CI fails before deploy, fix the failing step and push a follow-up; do not bypass the workflow. If production regresses after a successful release, use a recoverable revert:
-
-```bash
-git revert RELEASE_COMMIT_SHA
-git push origin main
-```
-
-Let the same workflow deploy the revert. Do not reset `main`, force-push, or manually upload an older artifact.
-
----
-
-## Historical: 2026-07-18 audit repair
-
-### What changed
-
-- Repaired workspace-setup-calculator.html malformed product JavaScript; recommendations and affiliate CTAs parse again.
-- Changed the homepage assessment to explicit validated navigation so all 9 answers are collected; corrected chair, lighting, and accessory mappings; validated shared-result payloads.
-- Removed leaked getBadgeColumnForRow generator code and malformed newsletter fragments from affected guides.
-- Removed unproven Amazon thumbnails from public output until authorized API assets are available; removed the fake local-only price alert and corrected unsupported “Tested & Ranked” claims to research-based language.
-- Added the exact Amazon Associates disclosure, accurate assessment privacy copy, and GA4 events for affiliate clicks, newsletter actions, quiz starts, and tool actions.
-- Fixed Cloudflare beacon JSON quoting and malformed metadata heads across public HTML; filled missing Open Graph URLs.
-- Removed the three redirect rules that looped tools, embed/height, and changelog. Canonicals, sitemap entries, internal links, and old redirect targets now use terminal no-slash URLs; compare remains a real directory URL.
-- Made mutable asset caches revalidate.
-- Hardened the monitor: authenticated runs fail closed, query-string secrets are gone, redirect loops fail, terminal 200 is required, and the check uses 28 planned URLs and at most 32 external subrequests.
-- CI now validates JavaScript, corruption signatures, and malformed meta heads, builds an allowlisted dist that excludes operational files and unproven Amazon thumbnails, deploys Pages from dist, deploys the Worker, and runs an authenticated health gate. Operational docs, scripts, Worker source, and handoff notes are no longer published as site files.
-- Final release sweep: contained wide guide tables with horizontal scrolling, made long mobile CTAs wrap safely, gave every long-form guide and the height embed a real main landmark and skip-link target, removed the unsupported absolute apex rule from Pages redirects, and ignored the generated _site build directory.
-
-### Deployment state recorded for that repair
-
-- `27fd147` is on `origin/main`; GitHub Actions deployment `29660524147` completed successfully.
-- The Worker is deployed, accepts the configured `MONITOR_SECRET`, and correctly returns HTTP 401 without it.
-- The apex sitemap redirect is fixed at the zone level.
-- The only remaining production remediation is the custom-domain stale-cache rule below.
-
-### Historical CI notes (superseded by the current runbook above)
-
-    cd /home/cameron/.openclaw/workspace/theworkspacepro-v2
-    git status --short
-    git diff --check
-    find assets/js worker -name "*.js" -print0 | xargs -0 -n1 node --check
-    ./scripts/build-for-pages.sh dist
-    node scripts/validate-public-site.mjs dist
-    git add -A
-    git commit -m "<scoped change>"
-    git push origin main
-
-The GitHub workflow validates source, builds the allowlisted `dist/` artifact, validates the artifact, deploys Pages and the Worker, then runs an authenticated health check. The artifact validator checks page landmarks and skip targets, script scope, local public targets, sitemap mappings, JSON-LD, Amazon partner tags, and the Deals trust guardrails plus height-chart content, sourcing, claims, and shared-math guardrails. Do not manually deploy Pages from the repository root.
-
-### Historical expanded acceptance checks
-
-    curl -fsSIL -o /dev/null -w '%{http_code} %{url_effective}\n' https://www.theworkspacepro.com/tools
-    curl -fsSIL -o /dev/null -w '%{http_code} %{url_effective}\n' https://www.theworkspacepro.com/guides/desk-chair-height-chart
-    curl -fsSIL -o /dev/null -w '%{http_code} %{url_effective}\n' https://www.theworkspacepro.com/embed/height
-    curl -fsSIL -o /dev/null -w '%{http_code} %{url_effective}\n' https://www.theworkspacepro.com/changelog
-    curl -fsSIL -o /dev/null -w '%{http_code} %{url_effective}\n' https://www.theworkspacepro.com/deals
-    curl -fsSIL -o /dev/null -w '%{http_code} %{url_effective}\n' https://www.theworkspacepro.com/workspace-setup-calculator
-    curl -fsSIL -o /dev/null -w '%{http_code} %{url_effective}\n' https://theworkspacepro.com/sitemap.xml
-    curl -sS -o /dev/null -w '%{http_code}\n' https://www.theworkspacepro.com/FINCH_HANDOFF.md
-    curl -sS -o /dev/null -w '%{http_code}\n' https://www.theworkspacepro.com/worker/monitor.js
-    curl --fail --silent --show-error --header "X-Monitor-Key: YOUR_SECRET" --output /tmp/twp-monitor.json https://twp-monitor.blasscameron.workers.dev
-    node -e "const r=require('/tmp/twp-monitor.json'); if(r.failed!==0){console.error(r);process.exit(1)}; console.log(r)"
-
-Expected: public pages end at HTTP 200 without loops; apex sitemap preserves the path; handoff and Worker source return 404; monitor returns JSON with failed equal to 0. In a browser, complete all 9 assessment answers, verify Night Owl recommends a BenQ light, run the workspace setup calculator, open and close the mobile menu by keyboard, and inspect GA4 DebugView for assessment_start, affiliate_click, newsletter_click, and tool_action.
-
-After deploy, resubmit the sitemap in Google Search Console and Bing Webmaster Tools. Mark affiliate and newsletter events as GA4 key events after confirming live traffic.
-
-## Follow-ups
-
-### ⏰ Tomorrow (owner + Finch)
-
-1. **Cameron:** Associates → Creators / product API credentials + partner tag `workspacepro-20`.
-2. **Finch:** Implement **§ Amazon product images — Finch build plan** (above).
-
-### Other optional polish
-
-- PR11 UX: sort by price, more deep-links from guide CTAs
-- Real citation links for any remaining soft claims in older guide prose
-- CWV measure after deploy; further font subsetting only if needed
-
----
-
-## Current custom-domain cache remediation
-
-### 1. `www` still serves two stale removed files
-
-**Verified evidence (2026-07-18):** the current Pages origin (`the-workspace-pro.pages.dev`) and `pages.theworkspacepro.com` return 404 with `Cache-Control: no-store` for `/FINCH_HANDOFF.md` and `/worker/monitor.js`. Only `www.theworkspacepro.com` returns stale 200 bodies. Its responses carry the old seven-day cache policy (`s-maxage=604800`) and a nonzero `Age`; this is a custom-domain cache-layer issue, not a Pages deploy failure.
-
-**Required Cloudflare Dashboard action (Finch):**
-
-1. Go to **Caching → Cache Rules** for `theworkspacepro.com`. Find any broad “Cache Everything” / edge-TTL rule for `www` and either exclude these paths or create a higher-priority **Bypass cache** rule: `http.host eq "www.theworkspacepro.com" and (http.request.uri.path eq "/FINCH_HANDOFF.md" or starts_with(http.request.uri.path, "/worker/"))`.
-2. Save the rule, then use **Caching → Configuration → Purge Everything** in the Dashboard. The repository adds `no-store` headers for these paths as a defense after the bypass takes effect.
-3. Verify both now return 404: `curl -sS -o /dev/null -w "%{http_code}\n" https://www.theworkspacepro.com/FINCH_HANDOFF.md` and the same command for `/worker/monitor.js`.
-
-Do not wait for the seven-day TTL and do not redeploy manually to solve this.
-
-### 2. One deploy path
-
-GitHub Actions is the only production deploy path. It now calls `./scripts/build-for-pages.sh dist`, the same allowlisted builder Finch runs locally; both artifacts were verified identical. Do not use `wrangler pages deploy` by hand, because the next push will replace it.
-
-### 3. Apex redirect
-
-The zone-level apex redirect was fixed on 2026-07-18 to preserve both path and query string. The repository deliberately contains no absolute-host `_redirects` rule because Cloudflare Pages ignores it.
-
----
-
-## Do not
-
-- Re-add `assessment.js` sitewide
-- Double-load GA4
-- Invent reviews / sale theater
-- **Use stock photos for specific Amazon ASINs**
-- **Scrape Amazon product images as the permanent image system**
-- Hard-fail health checks on Amazon bot walls
-- Commit API keys / secrets
-- Force-push without owner approval
+A credential-looking Cloudflare token was found in a local workspace memory file
+during the audit. Do not copy it into this handoff, a terminal transcript, a Git
+commit, or CI output. Identify it by fingerprint/account in a secure interface,
+revoke or rotate it, replace it only in the appropriate secret stores, and scrub
+the plaintext from local operational notes/history as a separate security task.
+
+## Completion evidence for Cameron
+
+Return one report with:
+
+- deployed commit and Actions run URL;
+- Pages deployment ID and unique URL;
+- production branch and confirmation duplicate deploy sources are disabled;
+- cache/routing rules changed and purge timestamp;
+- route table with status, final URL, content type, SHA, cache status, Age, and robots header;
+- affiliate scan totals and Deals-card count;
+- desktop/mobile screenshots of Home, Guides, Deals, and one new guide;
+- every remaining legacy route with an owner and migration date.
+
+Do not call this complete based only on a green workflow or HTTP 200.

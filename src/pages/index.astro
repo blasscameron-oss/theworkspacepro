@@ -4,6 +4,7 @@ import DealHighlights from '../components/DealHighlights.astro';
 import { legacySection } from '../lib/legacy';
 
 const assessment = legacySection('index.html', 'assessment');
+const releaseSha = import.meta.env.PUBLIC_RELEASE_SHA || 'dev';
 const paths = [
   { label: 'Fix discomfort', title: 'Start with your body', text: 'Use height, reach, and posture checks to find the constraint before buying equipment.', href: '/guides/desk-chair-height-chart' },
   { label: 'Choose equipment', title: 'Compare by fit', text: 'See the trade-offs that matter: range, dimensions, stability, adjustability, and warranty.', href: '/compare/' },
@@ -58,7 +59,7 @@ const paths = [
   </section>
 
   <Fragment slot="scripts">
-    <script is:inline src="/assets/js/height-math.js" defer></script>
-    <script is:inline src="/assets/js/assessment.js" defer></script>
+    <script is:inline src={`/assets/js/height-math.js?v=${encodeURIComponent(releaseSha)}`} defer></script>
+    <script is:inline src={`/assets/js/assessment.js?v=${encodeURIComponent(releaseSha)}`} defer></script>
   </Fragment>
 </BaseLayout>

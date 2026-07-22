@@ -1,0 +1,78 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import type { LegacyGuide } from '../data/legacy-guides';
+import '../styles/legacy-guides.css';
+
+interface Props { guide: LegacyGuide; visualMaster?: string }
+const { guide, visualMaster } = Astro.props;
+const updatedLabel = guide.updated.toLocaleDateString('en-US', {
+  month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC',
+});
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.theworkspacepro.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Guides', item: 'https://www.theworkspacepro.com/guides' },
+    { '@type': 'ListItem', position: 3, name: guide.title, item: `https://www.theworkspacepro.com${guide.canonical}` },
+  ],
+};
+
+const structuredData = [breadcrumbSchema];
+if (guide.faqSchema) structuredData.push(guide.faqSchema);
+---
+<BaseLayout
+  title={guide.title}
+  description={guide.description}
+  canonical={guide.canonical}
+  active="guides"
+  type="article"
+  published={guide.published}
+  updated={guide.updated}
+  author={guide.author}
+  visualMaster={visualMaster}
+  structuredData={structuredData}
+>
+  <article class="legacy-guide" data-astro-guide={guide.id}>
+    <header class="legacy-guide__hero">
+      <div class="legacy-guide__hero-inner">
+        <nav class="legacy-guide__breadcrumbs" aria-label="Breadcrumb">
+          <a href="/guides">Guides</a><span aria-hidden="true">/</span><span>{guide.category}</span>
+        </nav>
+        <p class="legacy-guide__kicker">Research-backed workspace guidance</p>
+        <h1>{guide.title}</h1>
+        <p class="legacy-guide__lede">{guide.description}</p>
+        <div class="legacy-guide__byline">
+          <span>{guide.author}</span>
+          <span>Updated {updatedLabel}</span>
+          <span>{guide.readingTime}</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="legacy-guide__frame">
+      <aside class="legacy-guide__rail" aria-label="Guide method">
+        <p class="legacy-guide__rail-label">How to use this guide</p>
+        <strong>Start with fit, then compare features.</strong>
+        <p>Use measurements and specifications as starting points. Confirm current product details with the retailer and adjust the final setup to your body and room.</p>
+        {guide.hasAffiliateLinks && <a href="/affiliate-disclosure">Affiliate disclosure</a>}
+      </aside>
+      <div class="article-body legacy-guide__body" set:html={guide.content} />
+    </div>
+  </article>
+  {guide.hasFaq && (
+    <script is:inline slot="scripts">
+      document.addEventListener('click', function (event) {
+        const button = event.target instanceof Element ? event.target.closest('.faq-question') : null;
+        if (!(button instanceof HTMLButtonElement)) return;
+        const answerId = button.getAttribute('aria-controls');
+        const answer = answerId ? document.getElementById(answerId) : button.nextElementSibling;
+        if (!(answer instanceof HTMLElement)) return;
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        button.setAttribute('aria-expanded', String(!expanded));
+        answer.hidden = expanded;
+      });
+    </script>
+  )}
+</BaseLayout>

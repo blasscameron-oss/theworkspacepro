@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CompareArticle from '../../components/CompareArticle.astro';
+import { legacyMain } from '../../lib/legacy';
+
+const articles = {
+  'branch-vs-uplift': {
+    title: 'Branch vs Uplift V2 Standing Desk: Which Is Worth It? - The Workspace Pro',
+    description: 'Head-to-head comparison of the Branch Standing Desk ($499) vs Uplift V2 ($599). Stability, motors, warranty, desktop options, and value compared.',
+    visualMaster: 'compare-branch-uplift-spaces-v1',
+  },
+  'herman-miller-vs-steelcase': {
+    title: 'Herman Miller vs Steelcase: Which Premium Office Chair Wins? - The Workspace Pro',
+    description: 'Herman Miller Aeron vs Steelcase Leap V2 compared on ergonomics, lumbar support, build quality, warranty, and value. Which $1,000+ chair is right for you?',
+    visualMaster: 'compare-task-chair-geometry-v1',
+  },
+  'shw-vs-flexispot': {
+    title: 'SHW vs FlexiSpot Standing Desk: Best Budget Pick? - The Workspace Pro',
+    description: 'SHW Electric vs FlexiSpot E1/E7 compared on price, stability, motor quality, and value. Which budget standing desk is the better buy?',
+    visualMaster: 'compare-budget-desk-footprints-v1',
+  },
+} as const;
+
+export function getStaticPaths() {
+  const staticArticles = {
+    'branch-vs-uplift': {
+      title: 'Branch vs Uplift V2 Standing Desk: Which Is Worth It? - The Workspace Pro',
+      description: 'Head-to-head comparison of the Branch Standing Desk ($499) vs Uplift V2 ($599). Stability, motors, warranty, desktop options, and value compared.',
+      visualMaster: 'compare-branch-uplift-spaces-v1',
+    },
+    'herman-miller-vs-steelcase': {
+      title: 'Herman Miller vs Steelcase: Which Premium Office Chair Wins? - The Workspace Pro',
+      description: 'Herman Miller Aeron vs Steelcase Leap V2 compared on ergonomics, lumbar support, build quality, warranty, and value. Which $1,000+ chair is right for you?',
+      visualMaster: 'compare-task-chair-geometry-v1',
+    },
+    'shw-vs-flexispot': {
+      title: 'SHW vs FlexiSpot Standing Desk: Best Budget Pick? - The Workspace Pro',
+      description: 'SHW Electric vs FlexiSpot E1/E7 compared on price, stability, motor quality, and value. Which budget standing desk is the better buy?',
+      visualMaster: 'compare-budget-desk-footprints-v1',
+    },
+  };
+  return Object.entries(staticArticles).map(([slug, article]) => ({ params: { slug }, props: { slug, article } }));
+}
+
+interface Props {
+  slug: keyof typeof articles;
+  article: (typeof articles)[keyof typeof articles];
+}
+
+const { slug, article } = Astro.props;
+const content = legacyMain(`compare/${slug}.html`);
+---
+
+<BaseLayout
+  title={article.title}
+  description={article.description}
+  canonical={`/compare/${slug}`}
+  active="compare"
+  type="article"
+  updated={new Date('2026-06-30T00:00:00Z')}
+  visualMaster={article.visualMaster}
+>
+  <CompareArticle content={content} />
+</BaseLayout>

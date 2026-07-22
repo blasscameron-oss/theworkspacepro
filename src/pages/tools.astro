@@ -1,0 +1,198 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const tools = [
+  {
+    eyebrow: 'Guided assessment',
+    title: 'Workspace blueprint',
+    description: 'Work through six short steps and nine answers covering your work, body, space, budget, and priorities. Leave with a practical starting plan in about two minutes.',
+    href: '/#assessment',
+    cta: 'Start the assessment',
+    featured: true,
+    marker: '01',
+  },
+  {
+    eyebrow: 'Room and budget',
+    title: 'Build your office',
+    description: 'Assemble a chair, desk, monitor, lighting, and accessories around the room and budget you actually have.',
+    href: '/build-your-office',
+    cta: 'Open the planner',
+    marker: '02',
+  },
+  {
+    eyebrow: 'Body measurements',
+    title: 'Ergonomic height calculator',
+    description: 'Estimate seated and standing desk height, chair height, and monitor position from one consistent measurement model.',
+    href: '/ergonomic-height-calculator',
+    cta: 'Calculate heights',
+    marker: '03',
+  },
+  {
+    eyebrow: 'Budget and priorities',
+    title: 'Workspace setup calculator',
+    description: 'Turn your budget, priorities, pain points, and room type into a practical product shopping list with spending trade-offs explained.',
+    href: '/workspace-setup-calculator',
+    cta: 'Build a shopping list',
+    marker: '04',
+  },
+  {
+    eyebrow: 'Product research',
+    title: 'Compare workspace products',
+    description: 'Filter chairs, desks, monitors, and accessories by category and reference budget without synthetic scores or fake ratings.',
+    href: '/compare/',
+    cta: 'Open the comparison matrix',
+    marker: '05',
+  },
+];
+
+const guideLinks = [
+  ['Chair fit', 'Ergonomic Office Chair Buying Guide', '/guides/ergonomic-office-chair-buying-guide'],
+  ['Desk fit', 'Best Standing Desks Under $500', '/guides/best-standing-desks-under-500'],
+  ['Measurements', 'Desk and Chair Height Chart', '/guides/desk-chair-height-chart'],
+  ['Full library', 'Browse all 22 built guides', '/guides'],
+];
+---
+<BaseLayout
+  title="Free Workspace Tools | The Workspace Pro"
+  description="Free, private workspace assessment, office planner, ergonomic height calculator, setup calculator, and product comparison tools."
+  canonical="/tools"
+  active="tools"
+  visualMaster="workspace-lab-instruments-v1"
+>
+  <div class="tools-page">
+    <header class="tools-hero">
+      <p class="eyebrow">Workspace tools · Free and private</p>
+      <h1>Measure first. Buy with a reason.</h1>
+      <p class="tools-hero__lede">Turn body measurements, room constraints, and a real budget into useful starting points. No signup wall and no false precision.</p>
+      <dl class="tools-hero__facts" aria-label="Tools at a glance">
+        <div><dt>5</dt><dd>focused tools</dd></div>
+        <div><dt>2 min</dt><dd>for the blueprint</dd></div>
+        <div><dt>0</dt><dd>accounts required</dd></div>
+      </dl>
+    </header>
+
+    <section class="tools-section" aria-labelledby="tools-title">
+      <div class="tools-section__heading">
+        <p class="eyebrow">Choose your starting point</p>
+        <h2 id="tools-title">One useful answer at a time.</h2>
+        <p>Start with the constraint you already know. Each tool explains its assumptions and gives you something concrete to check in your own setup.</p>
+      </div>
+      <div class="tool-grid">
+        {tools.map((tool) => (
+          <a class:list={['tool-panel', { 'tool-panel--featured': tool.featured }]} href={tool.href}>
+            <span class="tool-panel__number" aria-hidden="true">{tool.marker}</span>
+            <span class="eyebrow">{tool.eyebrow}</span>
+            <h3>{tool.title}</h3>
+            <p>{tool.description}</p>
+            <span class="tool-panel__cta">{tool.cta} <span aria-hidden="true">→</span></span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="tools-method" aria-labelledby="method-title">
+      <div>
+        <p class="eyebrow">How the tools work</p>
+        <h2 id="method-title">Starting ranges, clearly explained.</h2>
+      </div>
+      <div>
+        <p>Height outputs use one shared calculation model. Planners expose their assumptions and let you adjust them. Product dimensions and prices should always be confirmed on the manufacturer or retailer page.</p>
+        <p>These tools provide general ergonomic starting points—not medical advice, a diagnosis, or a substitute for checking comfort and movement over time.</p>
+      </div>
+    </section>
+
+    <section class="tools-section tools-reading" aria-labelledby="reading-title">
+      <div class="tools-section__heading">
+        <p class="eyebrow">Prefer to read first?</p>
+        <h2 id="reading-title">Understand the trade-offs before you calculate.</h2>
+      </div>
+      <div class="reading-grid">
+        {guideLinks.map(([label, title, href]) => (
+          <a href={href}>
+            <span class="eyebrow">{label}</span>
+            <h3>{title}</h3>
+            <span>Read guide <span aria-hidden="true">→</span></span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="embed-note" aria-labelledby="embed-title">
+      <div>
+        <p class="eyebrow">For publishers and teams</p>
+        <h2 id="embed-title">Embed the height calculator.</h2>
+        <p>The compact calculator is free for blogs, resource pages, and internal documentation. Keep the attribution link so readers can open the full tool.</p>
+      </div>
+      <div class="embed-note__action">
+        <a href="/embed/height">Preview embeddable calculator</a>
+        <code>&lt;iframe src="https://www.theworkspacepro.com/embed/height" …&gt;</code>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .tools-page { overflow: clip; }
+  .tools-hero,
+  .tools-section,
+  .tools-method,
+  .embed-note {
+    width: min(calc(100% - 40px), var(--editorial-max));
+    margin-inline: auto;
+  }
+  .tools-hero { padding-block: clamp(76px, 10vw, 138px) clamp(64px, 8vw, 100px); }
+  .tools-hero h1 { max-width: 880px; margin: 0 0 28px; font-size: clamp(3.1rem, 7.5vw, 6.8rem); }
+  .tools-hero__lede { max-width: 700px; margin: 0; color: var(--editorial-muted); font-size: clamp(1.05rem, 2vw, 1.25rem); }
+  .tools-hero__facts { max-width: 760px; margin: clamp(44px, 7vw, 76px) 0 0; display: grid; grid-template-columns: repeat(3, 1fr); border-block: 1px solid var(--editorial-line); }
+  .tools-hero__facts div { padding: 23px 20px; border-right: 1px solid var(--editorial-line); }
+  .tools-hero__facts div:last-child { border-right: 0; }
+  .tools-hero__facts dt { color: var(--editorial-ink); font: 500 clamp(1.8rem, 4vw, 2.8rem)/1 Fraunces, Georgia, serif; }
+  .tools-hero__facts dd { margin: 8px 0 0; color: var(--editorial-muted); font-size: .76rem; letter-spacing: .07em; text-transform: uppercase; }
+  .tools-section { padding-block: clamp(72px, 9vw, 112px); border-top: 1px solid var(--editorial-line); }
+  .tools-section__heading { max-width: 760px; margin-bottom: 44px; }
+  .tools-section__heading h2,
+  .tools-method h2,
+  .embed-note h2 { margin: 0 0 20px; font-size: clamp(2.2rem, 4.8vw, 4.3rem); }
+  .tools-section__heading > p:last-child,
+  .tools-method p,
+  .embed-note p { color: var(--editorial-muted); }
+  .tool-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; border: 1px solid var(--editorial-line); background: var(--editorial-line); }
+  .tool-panel { position: relative; min-width: 0; min-height: 340px; display: flex; flex-direction: column; padding: clamp(28px, 4vw, 46px); color: var(--editorial-ink); background: var(--editorial-white); text-decoration: none; }
+  .tool-panel--featured { grid-column: 1 / -1; min-height: 380px; padding-right: min(35%, 390px); background: linear-gradient(115deg, #fffefa 0 68%, #e5ebe5 68%); }
+  .tool-panel:hover { background-color: #edf3ee; }
+  .tool-panel__number { position: absolute; top: 30px; right: 30px; color: #98a29c; font: 600 .75rem/1 ui-monospace, monospace; }
+  .tool-panel h3 { max-width: 15ch; margin: 8px 0 18px; font-size: clamp(1.9rem, 3.5vw, 3rem); }
+  .tool-panel p { max-width: 610px; margin: 0; color: var(--editorial-muted); }
+  .tool-panel__cta { margin-top: auto; padding-top: 36px; color: var(--editorial-accent-dark); font-size: .9rem; font-weight: 700; }
+  .tools-method { padding-block: clamp(72px, 9vw, 112px); display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(42px, 8vw, 110px); border-top: 1px solid var(--editorial-line); }
+  .tools-method p:first-child { margin-top: 7px; }
+  .tools-reading { padding-bottom: clamp(80px, 10vw, 130px); }
+  .reading-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; border: 1px solid var(--editorial-line); background: var(--editorial-line); }
+  .reading-grid a { min-width: 0; padding: 30px; color: var(--editorial-ink); background: var(--editorial-white); text-decoration: none; }
+  .reading-grid a:hover { background: #edf3ee; }
+  .reading-grid h3 { margin: 10px 0 40px; font-size: clamp(1.45rem, 2.8vw, 2rem); }
+  .reading-grid a > span:last-child { color: var(--editorial-accent-dark); font-size: .85rem; font-weight: 700; }
+  .embed-note { margin-bottom: clamp(80px, 10vw, 130px); padding: clamp(30px, 5vw, 55px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, .75fr); gap: clamp(34px, 7vw, 90px); align-items: center; color: white; background: var(--editorial-ink); }
+  .embed-note h2 { color: white; }
+  .embed-note p { color: #bac6c0; }
+  .embed-note__action { min-width: 0; display: grid; gap: 18px; }
+  .embed-note__action a { justify-self: start; padding: 12px 16px; color: var(--editorial-ink); background: white; border-radius: 3px; font-weight: 700; text-decoration: none; }
+  .embed-note code { max-width: 100%; padding: 16px; overflow: hidden; color: #b9d6c9; background: #111b17; font-size: .76rem; text-overflow: ellipsis; white-space: nowrap; }
+  @media (max-width: 760px) {
+    .tools-hero,
+    .tools-section,
+    .tools-method,
+    .embed-note { width: min(calc(100% - 28px), var(--editorial-max)); }
+    .tools-hero h1 { font-size: clamp(2.7rem, 14vw, 4.4rem); }
+    .tools-hero__facts { grid-template-columns: 1fr; }
+    .tools-hero__facts div { border-right: 0; border-bottom: 1px solid var(--editorial-line); }
+    .tools-hero__facts div:last-child { border-bottom: 0; }
+    .tool-grid,
+    .reading-grid,
+    .tools-method,
+    .embed-note { grid-template-columns: 1fr; }
+    .tool-panel,
+    .tool-panel--featured { grid-column: auto; min-height: 310px; padding-right: 28px; background: var(--editorial-white); }
+    .embed-note { margin-inline: 14px; }
+  }
+</style>

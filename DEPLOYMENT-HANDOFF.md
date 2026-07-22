@@ -1,5 +1,10 @@
 # Deployment handoff — The Workspace Pro
 
+> **SUPERSEDED 2026-07-22:** Do not execute the release-state or deployment
+> instructions below. They describe an older commit and predate the confirmed
+> production-origin/cache split. Finch must use `FINCH_HANDOFF.md` as the
+> authoritative recovery runbook. This file remains only as historical context.
+
 **Prepared:** 2026-07-21  
 **Canonical repository:** `/home/cameron/.openclaw/workspace/theworkspacepro-v2`  
 **Production:** `https://www.theworkspacepro.com`  
@@ -141,4 +146,3 @@ Re-run the HTTP/browser smoke checks after the revert. Do not reset `main`, forc
 - Amazon prices and availability are reference data and can change. Product imagery remains intentionally constrained; do not invent reviews/sale claims, substitute stock images for specific ASINs, or make scraping the permanent image source. Affiliate links must retain `workspacepro-20` and `rel="sponsored"`.
 - The Amazon ASIN sample in the Worker is disabled to stay within the free Worker subrequest budget. Run the repository ASIN audit separately when needed; Amazon bot-wall results are warnings, not site-health failures.
 - Search indexing, GA4 reporting latency, retailer availability, third-party Formspree/Beehiiv behavior, and CDN cache propagation are external and cannot be guaranteed by a successful build.
-

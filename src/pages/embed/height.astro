@@ -1,0 +1,88 @@
+---
+import EmbedLayout from '../../layouts/EmbedLayout.astro';
+const releaseSha = import.meta.env.PUBLIC_RELEASE_SHA || 'dev';
+---
+
+<EmbedLayout
+  title="Ergonomic Height Calculator Embed — The Workspace Pro"
+  description="Embeddable ergonomic height calculator from The Workspace Pro."
+  canonical="/ergonomic-height-calculator"
+  visualMaster="embed-height-measurement-v1"
+>
+  <a class="skip-link" href="#main-content">Skip to calculator</a>
+  <main class="embed-wrap" id="main-content">
+    <section class="embed-card" aria-labelledby="embed-title">
+      <p class="embed-eyebrow">The Workspace Pro</p>
+      <h1 id="embed-title">Height calculator</h1>
+      <p class="embed-lead">Useful desk, chair, and monitor starting points calculated from your height.</p>
+      <div class="embed-control">
+        <label for="h">Your height <output id="hLabel" for="h">5'9&quot;</output></label>
+        <input id="h" type="range" min="54" max="78" value="69" step="1" aria-valuemin="54" aria-valuemax="78" aria-valuenow="69" />
+        <div class="range-ends" aria-hidden="true"><span>4'6&quot;</span><span>6'6&quot;</span></div>
+      </div>
+      <div class="embed-results" id="results" aria-live="polite" aria-label="Live fit measurements"></div>
+      <p class="embed-foot">
+        Estimates only — not medical advice.
+        <a href="https://www.theworkspacepro.com/ergonomic-height-calculator?utm_source=embed&utm_medium=iframe&utm_campaign=height_calc" target="_blank" rel="noopener noreferrer">Open the full calculator <span aria-hidden="true">→</span></a>
+      </p>
+    </section>
+  </main>
+  <script slot="scripts" is:inline src={`/assets/js/height-math.js?v=${encodeURIComponent(releaseSha)}`}></script>
+  <script slot="scripts" is:inline>
+    (function () {
+      var slider = document.getElementById('h');
+      var label = document.getElementById('hLabel');
+      var out = document.getElementById('results');
+      function fmtIn(inches) {
+        var feet = Math.floor(inches / 12);
+        var remaining = Math.round(inches % 12);
+        return feet + "'" + remaining + '"';
+      }
+      function row(key, value) {
+        return '<div class="embed-row"><span>' + key + '</span><strong>' + value + '</strong></div>';
+      }
+      function render() {
+        var height = parseFloat(slider.value, 10);
+        label.textContent = fmtIn(height);
+        slider.setAttribute('aria-valuenow', String(height));
+        var result = window.TWPHeightMath.computeFromInches(height);
+        out.innerHTML =
+          row('Standing desk', result.standingDesk + ' in') +
+          row('Sitting desk', result.sittingDesk + ' in') +
+          row('Chair seat', result.chair + ' in') +
+          row('Monitor top', result.monitorTop + ' in') +
+          row('Monitor distance', result.monitorDistance + ' in');
+      }
+      slider.addEventListener('input', function () {
+        render();
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'tool_use', { tool: 'embed_height_calc' });
+        }
+      });
+      if (!window.TWPHeightMath || !window.TWPHeightMath.selfTest()) {
+        out.textContent = 'Calculator failed self-test.';
+        return;
+      }
+      render();
+    })();
+  </script>
+</EmbedLayout>
+
+<style>
+  .embed-wrap { width: min(calc(100% - 24px), 440px); margin-inline: auto; padding-block: 12px; }
+  .embed-card { padding: clamp(22px, 6vw, 32px); border: 1px solid var(--embed-line); background: var(--embed-card); }
+  .embed-eyebrow { margin: 0 0 10px; color: var(--embed-accent); font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+  h1 { margin: 0 0 10px; font: 700 clamp(1.7rem, 8vw, 2.3rem)/1.05 Fraunces, Georgia, serif; letter-spacing: -.035em; }
+  .embed-lead { margin: 0 0 28px; color: var(--embed-muted); font-size: .9rem; line-height: 1.55; }
+  .embed-control { padding: 18px 0 22px; border-block: 1px solid var(--embed-line); }
+  label { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 14px; font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+  output { color: var(--embed-accent); font: 700 1.25rem/1 Fraunces, Georgia, serif; letter-spacing: 0; }
+  input[type='range'] { width: 100%; accent-color: var(--embed-accent); cursor: pointer; }
+  .range-ends { display: flex; justify-content: space-between; margin-top: 4px; color: var(--embed-muted); font-size: .67rem; }
+  .embed-results { display: grid; margin-top: 20px; border-top: 1px solid var(--embed-line); }
+  .embed-row { display: flex; justify-content: space-between; gap: 20px; padding: 11px 0; border-bottom: 1px solid var(--embed-line); font-size: .82rem; }
+  .embed-row span { color: var(--embed-muted); }
+  .embed-row strong { color: var(--embed-ink); font-variant-numeric: tabular-nums; }
+  .embed-foot { margin: 20px 0 0; color: var(--embed-muted); font-size: .68rem; line-height: 1.55; }
+  .embed-foot a { display: block; margin-top: 7px; color: var(--embed-accent); font-weight: 700; text-underline-offset: 3px; }
+</style>

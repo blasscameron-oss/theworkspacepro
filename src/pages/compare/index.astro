@@ -1,0 +1,184 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const releaseSha = import.meta.env.PUBLIC_RELEASE_SHA || 'dev';
+
+const comparisons = [
+  ['Desks', 'Branch vs Uplift', 'Assembly, motors, customization, and who each desk is built for.', '/compare/branch-vs-uplift'],
+  ['Chairs', 'Herman Miller vs Steelcase', 'Two premium chair ecosystems compared by adjustability and ownership trade-offs.', '/compare/herman-miller-vs-steelcase'],
+  ['Desks', 'SHW vs FlexiSpot', 'Budget standing desks compared by usable range, stability, and value.', '/compare/shw-vs-flexispot'],
+];
+---
+<BaseLayout
+  title="Compare Workspace Products | The Workspace Pro"
+  description="Filter workspace chairs, desks, monitors, and accessories by category and reference budget, with practical fit notes and live retailer links."
+  canonical="/compare/"
+  active="compare"
+  visualMaster="compare-fit-fingerprints-v1"
+>
+  <div class="compare-page">
+    <header class="compare-hero">
+      <p class="eyebrow">Product comparison · 36 catalog entries</p>
+      <h1>Shortlist by fit, not hype.</h1>
+      <p>Search chairs, desks, monitors, lighting, and accessories using published specifications and practical fit notes. Reference prices are approximate; the retailer page remains the source of truth.</p>
+      <div class="compare-principles" aria-label="Comparison principles">
+        <span>No fabricated ratings</span>
+        <span>No universal winners</span>
+        <span>Live retailer links</span>
+      </div>
+    </header>
+
+    <section class="compare-section" aria-labelledby="matrix-title">
+      <div class="compare-heading">
+        <p class="eyebrow">Filterable shortlist</p>
+        <h2 id="matrix-title">Find a useful starting set.</h2>
+        <p>Affiliate links may earn us a commission at no extra cost to you. Looking for the most timely shortlist? Browse <a href="/deals">current deals and value picks</a>.</p>
+      </div>
+
+      <div class="matrix-filters" role="search" aria-label="Filter product comparisons">
+        <div class="matrix-filters__row matrix-filters__row--search">
+          <label class="matrix-label" for="filterSearch">Search products</label>
+          <input type="search" id="filterSearch" class="matrix-input" placeholder="Standing desk, monitor arm…" autocomplete="off" />
+        </div>
+        <div class="matrix-filters__row">
+          <label class="matrix-label" for="filterCategory">Category</label>
+          <select id="filterCategory" class="matrix-select">
+            <option value="all">All categories</option>
+            <option value="chair">Chairs</option>
+            <option value="desk">Desks</option>
+            <option value="monitor">Monitors</option>
+            <option value="arm">Monitor arms / stands</option>
+            <option value="lighting">Lighting</option>
+            <option value="input">Keyboards / mice</option>
+            <option value="accessory">Accessories</option>
+          </select>
+        </div>
+        <div class="matrix-filters__row">
+          <label class="matrix-label" for="filterBudget">Reference budget</label>
+          <select id="filterBudget" class="matrix-select">
+            <option value="all">Any budget</option>
+            <option value="under-150">Under ~$150</option>
+            <option value="under-350">Under ~$350</option>
+            <option value="under-600">Under ~$600</option>
+            <option value="under-1000">Under ~$1,000</option>
+            <option value="premium">Premium / $1,000+</option>
+          </select>
+        </div>
+        <div class="matrix-filters__actions">
+          <button type="button" id="filterClear">Clear filters</button>
+          <p class="matrix-count" id="matrixCount" aria-live="polite">Loading products…</p>
+        </div>
+      </div>
+
+      <div class="compare-method" aria-label="Comparison methodology">
+        <strong>What each fit note means</strong>
+        <p>Cards repeat catalog category, reference budget, and an editorial fit consideration. They do not imply hands-on testing, a synthetic score, or that one product fits everyone.</p>
+      </div>
+
+      <div class="matrix-grid" id="matrixGrid">
+        <p class="matrix-empty">Loading products…</p>
+        <noscript>
+          <div class="matrix-empty">Product filters require JavaScript. You can still browse our <a href="/deals">current value picks</a>, <a href="/guides/best-ergonomic-office-chairs-2026">chair shortlist</a>, or <a href="/guides/home-office-desk-guide-2026">desk buying guide</a>.</div>
+        </noscript>
+      </div>
+    </section>
+
+    <section class="written-section" aria-labelledby="written-title">
+      <div class="compare-heading">
+        <p class="eyebrow">Deeper comparisons</p>
+        <h2 id="written-title">Read the trade-offs in context.</h2>
+      </div>
+      <div class="written-grid">
+        {comparisons.map(([category, title, description, href], index) => (
+          <a href={href}>
+            <span class="written-grid__number" aria-hidden="true">0{index + 1}</span>
+            <span class="eyebrow">{category}</span>
+            <h3>{title}</h3>
+            <p>{description}</p>
+            <span class="written-grid__cta">Read comparison <span aria-hidden="true">→</span></span>
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+  <script slot="scripts" is:inline src={`/assets/js/compare-matrix.js?v=${encodeURIComponent(releaseSha)}`} defer></script>
+</BaseLayout>
+
+<style is:global>
+  .compare-page { overflow: clip; }
+  .compare-hero,
+  .compare-section,
+  .written-section { width: min(calc(100% - 40px), var(--editorial-max)); margin-inline: auto; }
+  .compare-hero { padding-block: clamp(76px, 10vw, 138px) clamp(62px, 8vw, 96px); }
+  .compare-hero h1 { max-width: 900px; margin: 0 0 28px; font-size: clamp(3.1rem, 7.5vw, 6.8rem); }
+  .compare-hero > p:not(.eyebrow) { max-width: 760px; margin: 0; color: var(--editorial-muted); font-size: clamp(1.05rem, 2vw, 1.22rem); }
+  .compare-principles { margin-top: 42px; display: flex; flex-wrap: wrap; gap: 10px; }
+  .compare-principles span { padding: 8px 12px; border: 1px solid var(--editorial-line); color: var(--editorial-muted); background: var(--editorial-white); font-size: .75rem; font-weight: 700; letter-spacing: .045em; text-transform: uppercase; }
+  .compare-section,
+  .written-section { padding-block: clamp(70px, 9vw, 112px); border-top: 1px solid var(--editorial-line); }
+  .compare-heading { max-width: 760px; margin-bottom: 44px; }
+  .compare-heading h2 { margin: 0 0 20px; font-size: clamp(2.2rem, 4.8vw, 4.3rem); }
+  .compare-heading > p:last-child { color: var(--editorial-muted); }
+  .compare-heading a { color: var(--editorial-accent-dark); font-weight: 700; }
+  .compare-page .matrix-filters { margin: 0 0 28px; padding: clamp(22px, 4vw, 34px); display: grid; grid-template-columns: minmax(220px, 1.45fr) repeat(2, minmax(170px, 1fr)); gap: 20px; align-items: end; border: 1px solid var(--editorial-line); border-radius: 0; color: var(--editorial-ink); background: var(--editorial-white); box-shadow: none; }
+  .compare-page .matrix-label { margin-bottom: 7px; color: var(--editorial-muted); font-size: .7rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
+  .compare-page .matrix-input,
+  .compare-page .matrix-select { width: 100%; min-width: 0; min-height: 48px; padding: 10px 12px; border: 1px solid #aeb7b1; border-radius: 3px; color: var(--editorial-ink); background: white; font: inherit; }
+  .compare-page .matrix-input:focus,
+  .compare-page .matrix-select:focus,
+  .compare-page #filterClear:focus { outline: 3px solid color-mix(in srgb, var(--editorial-accent) 30%, transparent); outline-offset: 2px; }
+  .compare-page .matrix-filters__actions { grid-column: 1 / -1; display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 18px; padding-top: 2px; }
+  .compare-page #filterClear { min-height: 44px; padding: 9px 15px; border: 1px solid var(--editorial-ink); border-radius: 3px; color: var(--editorial-ink); background: transparent; font: 700 .82rem/1 Inter, sans-serif; cursor: pointer; }
+  .compare-page #filterClear:hover { color: white; background: var(--editorial-ink); }
+  .compare-page .matrix-count { margin: 0; color: var(--editorial-muted); font-size: .82rem; text-align: right; }
+  .compare-method { margin-bottom: 42px; padding: 22px 24px; display: grid; grid-template-columns: minmax(170px, .35fr) minmax(0, 1fr); gap: 28px; border-block: 1px solid var(--editorial-line); }
+  .compare-method strong { color: var(--editorial-accent-dark); font-size: .76rem; letter-spacing: .07em; text-transform: uppercase; }
+  .compare-method p { margin: 0; color: var(--editorial-muted); font-size: .9rem; }
+  .compare-page .matrix-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; border: 1px solid var(--editorial-line); background: var(--editorial-line); }
+  .compare-page .matrix-card { min-width: 0; min-height: 410px; display: flex; flex-direction: column; gap: 0; padding: 28px; overflow: hidden; border: 0; border-radius: 0; color: var(--editorial-ink); background: var(--editorial-white); box-shadow: none; transform: none; }
+  .compare-page .matrix-card:hover { border-color: transparent; background: #f0f4f0; box-shadow: none; transform: none; }
+  .compare-page .matrix-card__img { width: 58px; height: 58px; margin-bottom: 24px; object-fit: contain; flex: 0 0 auto; border: 1px solid var(--editorial-line); border-radius: 2px; background: #f3f1ea; }
+  .compare-page .matrix-card__img--ph { display: grid; place-items: center; color: #7c8982; }
+  .compare-page .matrix-card__img--ph svg { width: 42px; height: 42px; }
+  .compare-page .matrix-card__body { min-width: 0; display: flex; flex: 1; flex-direction: column; }
+  .compare-page .matrix-card__cat { margin-bottom: 8px; color: var(--editorial-accent); font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+  .compare-page .matrix-card__title { margin: 0 0 12px; overflow-wrap: anywhere; color: var(--editorial-ink); font: 500 1.55rem/1.12 Fraunces, Georgia, serif; letter-spacing: -.025em; }
+  .compare-page .matrix-card__blurb { margin: 0 0 22px; color: var(--editorial-muted); font-size: .88rem; }
+  .compare-page .matrix-card__fingerprint { margin: auto 0 20px; display: grid; gap: 8px; }
+  .compare-page .matrix-card__fingerprint div { min-width: 0; padding-top: 8px; display: flex; justify-content: space-between; gap: 12px; border-top: 1px solid var(--editorial-line); }
+  .compare-page .matrix-card__fingerprint dt { color: var(--editorial-muted); font-size: .7rem; }
+  .compare-page .matrix-card__fingerprint dd { min-width: 0; margin: 0; overflow-wrap: anywhere; color: var(--editorial-ink); font-size: .72rem; font-weight: 700; text-align: right; }
+  .compare-page .matrix-card__meta { margin-bottom: 14px; display: flex; align-items: baseline; gap: 7px; }
+  .compare-page .matrix-card__price { color: var(--editorial-ink); font-weight: 700; }
+  .compare-page .matrix-card__price-note { color: var(--editorial-muted); font-size: .68rem; }
+  .compare-page .matrix-card__link { align-self: flex-start; padding: 10px 13px; color: white; background: var(--editorial-accent); border-radius: 3px; font-size: .8rem; font-weight: 700; text-decoration: none; }
+  .compare-page .matrix-card__link:hover { background: var(--editorial-accent-dark); }
+  .compare-page .matrix-empty { grid-column: 1 / -1; margin: 0; padding: 40px; color: var(--editorial-muted); background: var(--editorial-white); }
+  .compare-page .matrix-empty a { color: var(--editorial-accent-dark); font-weight: 700; }
+  .written-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; border: 1px solid var(--editorial-line); background: var(--editorial-line); }
+  .written-grid a { position: relative; min-width: 0; min-height: 330px; display: flex; flex-direction: column; padding: 32px; color: var(--editorial-ink); background: var(--editorial-white); text-decoration: none; }
+  .written-grid a:hover { background: #edf3ee; }
+  .written-grid__number { position: absolute; top: 30px; right: 30px; color: #98a29c; font: 600 .72rem/1 ui-monospace, monospace; }
+  .written-grid h3 { margin: 8px 0 16px; font-size: clamp(1.65rem, 3vw, 2.35rem); }
+  .written-grid p { margin: 0; color: var(--editorial-muted); font-size: .9rem; }
+  .written-grid__cta { margin-top: auto; padding-top: 34px; color: var(--editorial-accent-dark); font-size: .84rem; font-weight: 700; }
+  @media (max-width: 980px) {
+    .compare-page .matrix-filters { grid-template-columns: 1fr 1fr; }
+    .compare-page .matrix-filters__row--search { grid-column: 1 / -1; }
+    .compare-page .matrix-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 680px) {
+    .compare-hero,
+    .compare-section,
+    .written-section { width: min(calc(100% - 28px), var(--editorial-max)); }
+    .compare-hero h1 { font-size: clamp(2.7rem, 14vw, 4.4rem); }
+    .compare-page .matrix-filters { grid-template-columns: minmax(0, 1fr); padding: 18px; }
+    .compare-page .matrix-filters__row--search { grid-column: auto; }
+    .compare-page .matrix-filters__actions { align-items: stretch; flex-direction: column; }
+    .compare-page .matrix-count { text-align: left; }
+    .compare-method { grid-template-columns: 1fr; gap: 10px; }
+    .compare-page .matrix-grid,
+    .written-grid { grid-template-columns: minmax(0, 1fr); }
+    .compare-page .matrix-card { min-height: 0; padding: 24px 20px; }
+    .written-grid a { min-height: 290px; }
+  }
+</style>

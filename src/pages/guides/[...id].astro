@@ -1,11 +1,32 @@
 ---
 import { getCollection, render } from 'astro:content';
 import GuideLayout from '../../layouts/GuideLayout.astro';
+import LegacyGuideLayout from '../../layouts/LegacyGuideLayout.astro';
+import { getLegacyGuides } from '../../data/legacy-guides';
 
 export async function getStaticPaths() {
-  const guides = await getCollection('guides', ({ data }) => data.status === 'published');
+  const visualMasterMap: Record<string, string> = {
+    'back-pain-ergonomic-setup': 'guide-back-pain-reset-v1',
+    'best-ergonomic-office-chairs-2026': 'guide-chair-fit-studio-v1',
+    'best-standing-desk-mat-for-concrete-floors': 'guide-standing-mat-concrete-v1',
+    'best-standing-desks-under-500': 'guide-desk-value-workshop-v1',
+    'cable-management-solutions': 'guide-cable-routing-detail-v1',
+    'desk-chair-height-chart': 'guide-chair-height-reference-v1',
+    'dual-monitor-home-office': 'guide-dual-monitor-room-v1',
+    'dual-monitor-setup-productivity': 'guide-dual-monitor-focus-v1',
+    'ergonomic-accessories-home-office': 'guide-accessory-reach-zones-v1',
+    'ergonomic-office-chair-buying-guide': 'guide-chair-adjustment-hand-v1',
+    'ergonomic-setup-for-gamers': 'guide-gaming-neutral-posture-v1',
+    'home-office-budget-setup-under-1000': 'guide-budget-office-plan-v1',
+    'home-office-desk-guide-2026': 'guide-desk-depth-planning-v1',
+    'home-office-lighting-guide': 'guide-daylight-task-light-v1',
+    'night-shift-lighting-guide': 'guide-night-shift-layers-v1',
+    'productive-workspace-mindset': 'guide-focus-ritual-v1',
+    'small-home-office-organization-hacks': 'guide-small-office-vertical-v1',
+  };
+  const mdGuides = await getCollection('guides', ({ data }) => data.status === 'published');
   const canonicals = new Set<string>();
-  for (const entry of guides) {
+  for (const entry of mdGuides) {
     const expected = `/guides/${entry.id}`;
     if (entry.data.canonical !== expected) {
       throw new Error(`Guide ${entry.id} must use canonical ${expected}`);
@@ -18,12 +39,42 @@ export async function getStaticPaths() {
     }
     canonicals.add(entry.data.canonical);
   }
-  return guides.map((entry) => ({ params: { id: entry.id }, props: { entry } }));
+
+  const legacyGuides = getLegacyGuides();
+  for (const guide of legacyGuides) {
+    if (canonicals.has(guide.canonical)) {
+      throw new Error(`Legacy guide conflicts with content guide canonical: ${guide.canonical}`);
+    }
+    canonicals.add(guide.canonical);
+  }
+
+  return [
+    ...mdGuides.map((entry) => ({ params: { id: entry.id }, props: { entry, kind: 'markdown' as const } })),
+    ...legacyGuides.map((guide) => ({
+      params: { id: guide.id },
+      props: {
+        guide,
+        kind: 'legacy' as const,
+        visualMaster: visualMasterMap[guide.id] || 'guides-editorial-library-v1',
+      },
+    })),
+  ];
 }
 
-const { entry } = Astro.props;
-const { Content } = await render(entry);
+const { entry, guide, kind, visualMaster } = Astro.props;
 ---
-<GuideLayout entry={entry}>
-  <Content />
-</GuideLayout>
+
+{
+  kind === 'markdown' && entry ? (
+    (async () => {
+      const { Content } = await render(entry);
+      return (
+        <GuideLayout entry={entry}>
+          <Content />
+        </GuideLayout>
+      );
+    })()
+  ) : kind === 'legacy' && guide ? (
+    <LegacyGuideLayout guide={guide} visualMaster={visualMaster} />
+  ) : null
+}

@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import type { LegacyRootPage as LegacyRootPageData } from '../lib/legacy';
+import { versionLegacyAssetReferences } from '../lib/legacy';
+
+interface Props {
+  page: LegacyRootPageData;
+}
+
+const { page } = Astro.props;
+const releaseSha = import.meta.env.PUBLIC_RELEASE_SHA || 'dev';
+const main = versionLegacyAssetReferences(page.main, releaseSha);
+const scripts = versionLegacyAssetReferences(page.scripts, releaseSha);
+---
+<BaseLayout
+  title={page.title}
+  description={page.description}
+  canonical={page.canonical}
+  active={page.active}
+  visualMaster={page.visualMaster}
+  mainClass={page.mainClass}
+  styles={page.styles}
+  structuredData={page.structuredData}
+>
+  <Fragment set:html={main} />
+  {scripts && <Fragment slot="scripts" set:html={scripts} />}
+</BaseLayout>

@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "program": "Premium Studio Workspace Blueprint",
   "updated": "2026-07-18",
-  "masterCount": 36,
-  "routeCount": 39,
+  "masterCount": 34,
+  "routeCount": 37,
   "variantContract": {
     "source": "assets/images/editorial/{slug}-master.png",
     "desktop": {
@@ -109,20 +109,6 @@
       "promptBrief": "Overhead practical office-planning scene with generic furniture material samples, tape measure, blank cards and simple scale silhouettes, realistic working mess, no labels or product branding."
     },
     {
-      "slug": "changelog-workbench-v1",
-      "routes": [
-        "/changelog"
-      ],
-      "type": "editorial-utility",
-      "approval": "approved-production",
-      "altText": "A workspace prototype evolving across sketches and material samples.",
-      "focalPoint": {
-        "desktop": "58% 46%",
-        "mobile": "50% 50%"
-      },
-      "promptBrief": "Workbench showing an evolving generic workspace prototype through layered blank sketches, swatches and repositioned measuring tools, natural documentary realism, no readable text."
-    },
-    {
       "slug": "compare-fit-fingerprints-v1",
       "routes": [
         "/compare/"
@@ -190,7 +176,7 @@
         "desktop": "64% 50%",
         "mobile": "50% 48%"
       },
-      "promptBrief": "Curated workbench of generic office-use categories—lighting, cable care, mat texture and posture accessories—without depicting specific sale items, tags, prices or urgency."
+      "promptBrief": "Curated workbench of generic office-use categories\u2014lighting, cable care, mat texture and posture accessories\u2014without depicting specific sale items, tags, prices or urgency."
     },
     {
       "slug": "embed-height-measurement-v1",
@@ -386,7 +372,7 @@
         "desktop": "66% 48%",
         "mobile": "52% 47%"
       },
-      "promptBrief": "Mature restrained gaming workspace with a diverse adult in neutral posture, subtle ambient light, generic equipment and blank screen, no neon cliché or branded gear."
+      "promptBrief": "Mature restrained gaming workspace with a diverse adult in neutral posture, subtle ambient light, generic equipment and blank screen, no neon clich\u00e9 or branded gear."
     },
     {
       "slug": "guide-budget-office-plan-v1",
@@ -485,20 +471,6 @@
         "mobile": "50% 50%"
       },
       "promptBrief": "Editorial in-progress workstation assembly with one adult aligning generic desk, chair and screen, tools used safely, coherent realistic geometry, no instruction text."
-    },
-    {
-      "slug": "podcast-listening-workspace-v1",
-      "routes": [
-        "/podcasts"
-      ],
-      "type": "editorial",
-      "approval": "approved-production",
-      "altText": "A person listening thoughtfully beside a warm, comfortable workspace.",
-      "focalPoint": {
-        "desktop": "65% 46%",
-        "mobile": "52% 46%"
-      },
-      "promptBrief": "Thoughtful adult listening with simple unbranded headphones beside a warm home workspace, relaxed candid mood, blank devices, room for episode copy."
     },
     {
       "slug": "tips-measure-adjust-repeat-v1",
