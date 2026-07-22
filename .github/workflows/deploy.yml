@@ -53,12 +53,45 @@ jobs:
       - name: Run desktop and mobile release flows
         run: npm run test:e2e
 
-      - name: Deploy to Cloudflare Pages
+      - name: Generate release metadata
+        run: |
+          echo '{"sha":"${{ github.sha }}","ref":"${{ github.ref }}","run":"${{ github.run_id }}","ts":"$(date -u +%Y-%m-%dT%H:%M:%SZ)"}' > dist/release.json
+          echo '<meta name="twp-release" content="${{ github.sha }}">' >> dist/index.html
+
+      - name: Harden — verify latest-main SHA before deploy
+        run: |
+          LATEST=$(git ls-remote origin main | cut -f1)
+          if [ "$LATEST" != "${{ github.sha }}" ]; then
+            echo "ABORT: HEAD ${{ github.sha }} !== origin/main $LATEST — superseded run"
+            exit 1
+          fi
+
+      - name: Deploy to Cloudflare Pages production
+        id: pages_deploy
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=the-workspace-pro
+          command: >-
+            pages deploy dist
+            --project-name=the-workspace-pro
+            --branch=main
+            --commit-hash=${{ github.sha }}
+            --commit-dirty=false
+
+      - name: Smoke test — unique deployment URL
+        run: |
+          UNIQUE_URL=$(echo '${{ steps.pages_deploy.outputs.deployment-url }}' || true)
+          if [ -z "$UNIQUE_URL" ]; then
+            echo "ERROR: no deployment URL captured"
+            exit 1
+          fi
+          echo "Deployed to: $UNIQUE_URL"
+          for path in / /guides /deals /compare/ /tools; do
+            STATUS=$(curl -fsSIL -o /dev/null -w '%{http_code}' --http1.1 "${UNIQUE_URL}${path}")
+            echo "  $path → $STATUS"
+            if [ "$STATUS" != "200" ]; then echo "FAIL $path"; exit 1; fi
+          done
 
       - name: Deploy health monitor Worker
         uses: cloudflare/wrangler-action@v3
