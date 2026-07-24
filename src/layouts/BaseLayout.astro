@@ -14,6 +14,7 @@ interface Props {
   visualMaster?: string;
   mainClass?: string;
   styles?: string[];
+  inlineStyle?: string;
   robots?: string;
   structuredData?: unknown[];
 }
@@ -30,6 +31,7 @@ const {
   visualMaster,
   mainClass,
   styles = [],
+  inlineStyle,
   robots,
   structuredData = [],
 } = Astro.props;
@@ -82,6 +84,7 @@ const schemas = [...new Map(
     <link rel="stylesheet" href={assetUrl('/assets/css/worksheet.css')} />
     <link rel="stylesheet" href={assetUrl('/assets/css/editorial-v4.css')} />
     {styles.map((href) => <link rel="stylesheet" href={assetUrl(href)} />)}
+    {inlineStyle && <style set:html={inlineStyle} />}
     {schemas.map((entry) => (
       <script is:inline type="application/ld+json" set:html={JSON.stringify(entry)} />
     ))}

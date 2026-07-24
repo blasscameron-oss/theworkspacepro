@@ -12,6 +12,7 @@ export interface LegacyRootPage {
   mainClass?: string;
   main: string;
   styles: string[];
+  inlineStyle: string;
   scripts: string;
   structuredData: unknown[];
 }
@@ -61,11 +62,11 @@ function attribute(source: string, pattern: RegExp, name: string): string {
   return decodeAttribute(match[1].trim());
 }
 
-function extractMain(source: string, fileName: string): { html: string; className?: string; end: number } {
+function extractMain(source: string, fileName: string): { html: string; className?: string; start: number; end: number } {
   const match = /<main\b([^>]*)>([\s\S]*?)<\/main>/i.exec(source);
   if (!match) throw new Error(`Unable to find <main> in ${fileName}`);
   const className = match[1].match(/\bclass=["']([^"']+)["']/i)?.[1];
-  return { html: match[2], className, end: match.index + match[0].length };
+  return { html: match[2], className, start: match.index, end: match.index + match[0].length };
 }
 
 function pageSpecificScripts(source: string, mainEnd: number): string {
@@ -88,6 +89,12 @@ function pageSpecificStyles(source: string): string[] {
     .map((match) => match[1])
     .filter((href) => !COMMON_STYLES.has(href));
   return [...new Set(styles)];
+}
+
+function pageSpecificInlineStyle(source: string, mainStart: number): string {
+  return [...source.slice(0, mainStart).matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gi)]
+    .map((match) => match[1])
+    .join('\n');
 }
 
 function structuredData(source: string, fileName: string): unknown[] {
@@ -133,6 +140,7 @@ export function legacyRootPages(): LegacyRootPage[] {
       mainClass: main.className,
       main: main.html,
       styles: pageSpecificStyles(source),
+      inlineStyle: pageSpecificInlineStyle(source, main.start),
       scripts: pageSpecificScripts(source, main.end),
       structuredData: structuredData(source, fileName),
     };
