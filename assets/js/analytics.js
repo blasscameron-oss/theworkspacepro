@@ -50,11 +50,4 @@
       track("tool_action", { page_path: location.pathname, action_text: (toolButton.textContent || "").trim().slice(0, 100) });
     }
   });
-
-  document.addEventListener("submit", function (event) {
-    var form = event.target;
-    if (form && (/beehiiv\.com/i.test(form.action || "") || form.classList.contains("newsletter-form"))) {
-      track("newsletter_submit", { page_path: location.pathname });
-    }
-  });
 })();
