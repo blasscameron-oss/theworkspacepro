@@ -37,9 +37,12 @@ if (!fs.existsSync(out)) throw new Error('Astro output directory is missing');
 for (const directory of ['css', 'data', 'fonts', 'js']) {
   copyTree(path.join(root, 'assets', directory), path.join(out, 'assets', directory));
 }
-for (const file of ['favicon.svg', 'og-default.jpg']) {
+for (const file of ['favicon.svg', 'favicon.ico', 'og-default.jpg']) {
   copyFile(path.join(root, 'assets', 'images', file), path.join(out, 'assets', 'images', file));
 }
+// Browsers and crawlers request /favicon.ico at the site root regardless of
+// the <link rel="icon"> value; ship the same file there so that request 200s.
+copyFile(path.join(root, 'assets', 'images', 'favicon.ico'), path.join(out, 'favicon.ico'));
 copyTree(
   path.join(root, 'assets', 'images', 'editorial'),
   path.join(out, 'assets', 'images', 'editorial'),
