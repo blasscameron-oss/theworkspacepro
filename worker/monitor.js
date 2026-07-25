@@ -74,6 +74,7 @@ const EXPECTED_REDIRECTS = {
   '/quiz/': '/#assessment',
   '/community-setups/': '/',
   '/resources/': '/guides',
+  '/podcasts': '/guides',
 };
 
 function authorized(request, env) {
