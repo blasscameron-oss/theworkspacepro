@@ -42,8 +42,9 @@ const buyingGuides = [
       <p>These guides name products and explain the trade-offs. Affiliate relationships are disclosed in each guide that contains merchant links.</p>
     </div>
     <div class="guide-card-grid">
-      {buyingGuides.map(([category, title, description, href]) => (
-        <a class="library-card library-card--buying" href={href}>
+      {buyingGuides.map(([category, title, description, href], index) => (
+        <a class={`library-card library-card--buying${index === 0 ? ' library-card--feature' : ''}`} href={href}>
+          <span class="library-card__number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
           <span class="eyebrow">{category}</span>
           <h3>{title}</h3>
           <p>{description}</p>
@@ -79,8 +80,9 @@ const buyingGuides = [
       <h2 id="library-title">Browse by the problem you are solving.</h2>
     </div>
     <div class="guide-card-grid">
-      {library.map(([category, title, description, href]) => (
-        <a class="library-card" href={href}>
+      {library.map(([category, title, description, href], index) => (
+        <a class={`library-card${index === 0 ? ' library-card--feature' : ''}`} href={href}>
+          <span class="library-card__number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
           <span class="eyebrow">{category}</span>
           <h3>{title}</h3>
           <p>{description}</p>

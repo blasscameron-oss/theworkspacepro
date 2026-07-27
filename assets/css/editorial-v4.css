@@ -144,27 +144,58 @@ body.editorial-shell {
 .section-heading h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.5rem); }
 
 .path-grid { border-top: 1px solid var(--editorial-line); }
-.path-grid__items,
+/* Asymmetric lead: card 01 is a tall feature spanning both rows on the left;
+   cards 02/03 stack to its right. Hairline gaps read as drafting rules. */
+.path-grid__items {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 1px;
+  background: var(--editorial-line);
+  border: 1px solid var(--editorial-line);
+}
+.path-grid__items .path-card:first-child { grid-row: span 2; }
 .guide-card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--editorial-line); border: 1px solid var(--editorial-line); }
+/* Feature lead card in a library section: double-wide with a bigger head. */
+.guide-card-grid .library-card--feature { grid-column: span 2; }
+.guide-card-grid .library-card--feature h3 { font-size: clamp(2rem, 3.4vw, 2.9rem); }
+.guide-card-grid .library-card--feature p { max-width: 44ch; font-size: 1.02rem; }
 
 .path-card,
 .library-card {
   position: relative;
   min-height: 330px;
   padding: clamp(26px, 4vw, 42px);
+  padding-top: clamp(46px, 5vw, 66px);
   color: var(--editorial-ink);
   background: var(--editorial-white);
   text-decoration: none;
-  transition: background .2s ease, transform .2s ease;
+  transition: background .2s ease, box-shadow .2s ease, transform .2s ease;
 }
+.path-grid__items .path-card:first-child { display: flex; flex-direction: column; justify-content: flex-end; }
+.path-grid__items .path-card:first-child h3 { font-size: clamp(2rem, 3.2vw, 2.9rem); }
 
 .path-card:hover,
-.library-card:hover { background: #edf3ee; }
+.library-card:hover {
+  background: #edf3ee;
+  box-shadow: inset 0 3px 0 var(--ps-terracotta-600, #b84d2a);
+  transform: translateY(-3px);
+}
 .path-card h3,
 .library-card h3 { margin: 0 0 18px; font-size: 1.75rem; }
 .path-card p,
 .library-card p { color: var(--editorial-muted); }
-.path-card__number { position: absolute; top: 24px; right: 24px; color: #98a29c; font-family: ui-monospace, monospace; font-size: .76rem; }
+/* Oversized plate index numeral, top-left in the mono voice. */
+.path-card__number,
+.library-card__number {
+  position: absolute;
+  top: clamp(18px, 2.4vw, 26px);
+  left: clamp(26px, 4vw, 42px);
+  color: var(--ps-line-strong, #b7beb6);
+  font: 700 clamp(1.5rem, 2.6vw, 2.2rem)/1 var(--ps-font-data, ui-monospace, monospace);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.01em;
+}
+.path-grid__items .path-card:first-child .path-card__number { color: var(--ps-terracotta-600, #b84d2a); }
 
 .text-link { display: inline-block; margin-top: 20px; color: var(--editorial-accent-dark); font-size: .88rem; font-weight: 700; }
 
@@ -408,6 +439,8 @@ body.editorial-shell {
   .editorial-nav a { min-height: 44px; display: flex; align-items: center; padding: 8px; }
   .path-grid__items,
   .guide-card-grid { grid-template-columns: 1fr; }
+  .path-grid__items .path-card:first-child,
+  .guide-card-grid .library-card--feature { grid-row: auto; grid-column: auto; }
   .commercial-grid { grid-template-columns: repeat(2, 1fr); }
   .commercial-heading { grid-template-columns: 1fr; align-items: start; }
   .commercial-heading__cta { justify-self: start; }

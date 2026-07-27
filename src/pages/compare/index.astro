@@ -90,7 +90,7 @@ const comparisons = [
       </div>
       <div class="written-grid">
         {comparisons.map(([category, title, description, href], index) => (
-          <a href={href}>
+          <a href={href} class={index === 0 ? 'written-grid__feature' : undefined}>
             <span class="written-grid__number" aria-hidden="true">0{index + 1}</span>
             <span class="eyebrow">{category}</span>
             <h3>{title}</h3>
@@ -156,9 +156,12 @@ const comparisons = [
   .compare-page .matrix-empty { grid-column: 1 / -1; margin: 0; padding: 40px; color: var(--editorial-muted); background: var(--editorial-white); }
   .compare-page .matrix-empty a { color: var(--editorial-accent-dark); font-weight: 700; }
   .written-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; border: 1px solid var(--editorial-line); background: var(--editorial-line); }
-  .written-grid a { position: relative; min-width: 0; min-height: 330px; display: flex; flex-direction: column; padding: 32px; color: var(--editorial-ink); background: var(--editorial-white); text-decoration: none; }
-  .written-grid a:hover { background: #edf3ee; }
-  .written-grid__number { position: absolute; top: 30px; right: 30px; color: #98a29c; font: 600 .72rem/1 ui-monospace, monospace; }
+  .written-grid a { position: relative; min-width: 0; min-height: 330px; display: flex; flex-direction: column; padding: 32px; padding-top: 60px; color: var(--editorial-ink); background: var(--editorial-white); text-decoration: none; transition: background .2s ease, box-shadow .2s ease, transform .2s ease; }
+  .written-grid a:hover { background: #edf3ee; box-shadow: inset 0 3px 0 var(--ps-terracotta-600, #b84d2a); transform: translateY(-3px); }
+  .written-grid__feature { grid-column: span 2; justify-content: flex-end; }
+  .written-grid__feature h3 { font-size: clamp(2rem, 3.6vw, 3rem); }
+  .written-grid__feature .written-grid__number { color: var(--ps-terracotta-600, #b84d2a); }
+  .written-grid__number { position: absolute; top: 26px; left: 32px; color: var(--ps-line-strong, #b7beb6); font: 700 clamp(1.5rem, 2.6vw, 2.2rem)/1 var(--ps-font-data, ui-monospace, monospace); font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
   .written-grid h3 { margin: 8px 0 16px; font-size: clamp(1.65rem, 3vw, 2.35rem); }
   .written-grid p { margin: 0; color: var(--editorial-muted); font-size: .9rem; }
   .written-grid__cta { margin-top: auto; padding-top: 34px; color: var(--editorial-accent-dark); font-size: .84rem; font-weight: 700; }
