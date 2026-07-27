@@ -29,7 +29,34 @@ in code now: `src/lib/release.ts` derives a real short SHA when
 `node --test tests/*.test.mjs` (44/44), `npx playwright test` (24 passed,
 4 expected skips). WCAG AA contrast verified for changed pairs in both themes.
 
-**Steps:**
+**First task — fix the push path itself.** The owner reports git pushes to
+this repo "usually end up having issues," which is why past releases were
+wrangler-deployed by hand — and every production incident in this repo's
+history traces back to that workaround (untested deploys, `?v=dev` cache
+breakage, untraceable prod lineage). Do not route around the problem again.
+Diagnose and fix the root cause before shipping:
+1. Reproduce it: `git push origin fix/ci-content-contracts` (a non-main
+   branch — pushing it cannot trigger a deploy) and capture the exact error.
+2. Check the usual suspects in order: `git remote -v` (SSH vs HTTPS; is the
+   remote `blasscameron-oss/theworkspacepro`?); `gh auth status` (expired or
+   wrongly-scoped token — needs `repo` + `workflow` scope; pushes touching
+   `.github/workflows/` fail with a misleading error without `workflow`
+   scope, and this branch DOES edit deploy.yml); branch protection rules on
+   `main` (`gh api repos/blasscameron-oss/theworkspacepro/branches/main/protection`);
+   any credential-helper mismatch between this machine's stored credentials
+   and the `blasscameron-oss` account.
+3. Also review why past deploy.yml runs failed:
+   `gh run list --workflow deploy.yml --limit 10` — if the workflow itself
+   was the "push issue," note that this branch already fixes its known
+   failure (the monitor-test mock) and the full CI-equivalent suite is green
+   locally, including Playwright.
+4. Fix what you find, document the cause and fix in this file, and only then
+   proceed with the ship steps below. If the push path is genuinely
+   unfixable from this machine (e.g. account-level access the owner must
+   grant), say so explicitly and STOP — ask the owner rather than falling
+   back to a manual wrangler deploy.
+
+**Ship steps (after the push path works):**
 1. `git push origin fix/ci-content-contracts redesign/premium-2026-07-26`
    (backup both; pushing non-main branches does not deploy).
 2. Open a PR `redesign/premium-2026-07-26` → `main`, review the diff, merge.
