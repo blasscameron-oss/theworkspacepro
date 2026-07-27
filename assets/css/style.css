@@ -1759,10 +1759,6 @@ body.menu-open {
 }
 .research-badge__text strong { color: var(--c-text); }
 
-/* Hide old review widgets if any cached HTML leftover */
-.review-widget { display: none !important; }
-.expert-review-badge { display: none !important; }
-
 /* Deal banner without fake strikethrough clutter */
 .deal-banner__price-old[style*="display: none"] + .deal-banner__price-new,
 .deal-banner__price-new {
