@@ -21,6 +21,9 @@
     document.querySelectorAll('.theme-toggle__icon').forEach(function (icon) {
       icon.textContent = theme === 'dark' ? '☀' : '☾';
     });
+    document.querySelectorAll('.theme-toggle').forEach(function (btn) {
+      btn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+    });
   }
 
   function getPreferredTheme() {

@@ -34,7 +34,7 @@ const paths = [
     <div class="path-grid__items">
       {paths.map((path, index) => (
         <a class="path-card" href={path.href}>
-          <span class="path-card__number">0{index + 1}</span>
+          <span class="path-card__number" aria-hidden="true">0{index + 1}</span>
           <span class="eyebrow">{path.label}</span>
           <h3>{path.title}</h3>
           <p>{path.text}</p>
