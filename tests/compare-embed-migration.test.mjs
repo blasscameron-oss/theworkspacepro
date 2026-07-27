@@ -29,7 +29,7 @@ for (const [file, heading, affiliateCount] of comparisons) {
     for (const link of html.match(/<a[^>]+href="[^"]*(?:amazon\.com|amzn\.to)[^"]*"[^>]*>/g) || []) {
       assert.match(link, /rel="[^"]*sponsored[^"]*"/);
     }
-    assert.doesNotMatch(html, /class="(?:site-header|mobile-nav|theme-toggle)"/);
+    assert.doesNotMatch(html, /class="(?:site-header|mobile-nav)"/);
   });
 }
 

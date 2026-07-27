@@ -60,13 +60,40 @@ body.editorial-shell {
    producing ink-on-dark buttons (black-on-black on .btn--secondary). */
 .editorial-shell a:not([class]) { color: inherit; }
 
-/* Explicit dark theme only. editorial-v4 ships no dark palette, so its fixed
-   light paper/ink otherwise fights style.css's flipped [data-theme="dark"]
-   tokens (light body text stranded on a forced-cream editorial body). Until
-   dark mode is redesigned, keep the shell coherent by following the dark
-   surface/text tokens. Light rendering is untouched. */
-[data-theme="dark"] body.editorial-shell { color: var(--c-text); background: var(--c-bg); }
-[data-theme="dark"] .editorial-shell :where(h1, h2, h3) { color: var(--c-text); }
+/* Explicit dark theme (opt-in only — no auto-detection). Warm charcoal paper,
+   not pure black; remaps the whole editorial palette so cards, rules, accents
+   and links all track the drafting studio's dark tokens. Every pair here is
+   verified to meet WCAG AA (see the contrast report). */
+[data-theme="dark"] body.editorial-shell {
+  --editorial-paper: #141714;
+  --editorial-white: #1e231f;
+  --editorial-ink: #f4efe7;
+  --editorial-muted: #c3c0b8;
+  --editorial-line: rgba(244, 239, 231, .16);
+  --editorial-accent: #86c4aa;
+  --editorial-accent-dark: #9ad0b7;
+  color: var(--editorial-ink);
+}
+[data-theme="dark"] .editorial-shell :where(h1, h2, h3) { color: var(--editorial-ink); }
+/* Repaint the hardcoded light-hex surfaces for dark. */
+[data-theme="dark"] .path-card:hover,
+[data-theme="dark"] .library-card:hover,
+[data-theme="dark"] .written-grid a:hover { background: #262c27; }
+[data-theme="dark"] .disclosure,
+[data-theme="dark"] .commercial-disclosure { color: var(--editorial-muted); background: rgba(244, 239, 231, .05); }
+[data-theme="dark"] .migrated-assessment .hero { background: var(--editorial-paper) !important; }
+[data-theme="dark"] .migrated-assessment .workspace-instrument { background-color: #1a1f1b; }
+[data-theme="dark"] .migrated-assessment .hero__stats,
+[data-theme="dark"] .migrated-assessment .hero__stats > div,
+[data-theme="dark"] .migrated-assessment .assessment-card { background: var(--editorial-white); }
+[data-theme="dark"] .migrated-assessment .stat__number,
+[data-theme="dark"] .migrated-assessment .gradient-text { color: var(--editorial-ink) !important; }
+[data-theme="dark"] .migrated-assessment .workspace-instrument__photo img { opacity: .18; }
+/* Filled CTAs keep white text on a solid spruce (not the light text-accent),
+   so white-on-green never drops below AA in dark. */
+[data-theme="dark"] .editorial-nav .button-link,
+[data-theme="dark"] .commercial-card__link { color: #fff; background: #2a6553; }
+[data-theme="dark"] .commercial-card__link:hover { background: #327a63; }
 
 .editorial-header {
   position: relative;
@@ -119,6 +146,29 @@ body.editorial-shell {
 }
 
 .menu-toggle { display: none; }
+
+/* Header actions cluster: nav + theme toggle grouped to the right. */
+.editorial-header__inner { justify-content: flex-start; }
+.editorial-nav { margin-left: auto; }
+.editorial-header__actions { display: inline-flex; align-items: center; gap: 8px; }
+.editorial-shell .theme-toggle {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: var(--editorial-muted);
+  background: transparent;
+  border: 1px solid var(--editorial-line);
+  border-radius: 4px;
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color .18s ease, border-color .18s ease, background .18s ease;
+}
+.editorial-shell .theme-toggle:hover { color: var(--editorial-ink); border-color: var(--editorial-muted); }
+.editorial-shell .theme-toggle:focus-visible { outline: 3px solid color-mix(in srgb, var(--editorial-accent) 45%, transparent); outline-offset: 2px; }
 
 .editorial-section,
 .library-section,
@@ -223,7 +273,7 @@ body.editorial-shell {
   position: absolute;
   top: clamp(18px, 2.4vw, 26px);
   left: clamp(26px, 4vw, 42px);
-  color: var(--ps-line-strong, #b7beb6);
+  color: color-mix(in srgb, var(--ps-text, #171a17) 50%, transparent);
   font: 700 clamp(1.5rem, 2.6vw, 2.2rem)/1 var(--ps-font-data, ui-monospace, monospace);
   font-variant-numeric: tabular-nums;
   letter-spacing: -.01em;
@@ -359,7 +409,7 @@ body.editorial-shell {
   fill: var(--ps-text-soft, #3d443e);
 }
 .migrated-assessment .workspace-instrument__labels text:nth-of-type(4) {
-  fill: var(--ps-terracotta-600, #b84d2a);
+  fill: var(--ps-brand, #b84d2a);
 }
 /* Draw-the-drawing-in on load: solid structure lines animate their stroke,
    then rails/labels/nodes fade up. Motion is opt-in only. */

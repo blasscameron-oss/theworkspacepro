@@ -161,10 +161,19 @@ const comparisons = [
   .written-grid__feature { grid-column: span 2; justify-content: flex-end; }
   .written-grid__feature h3 { font-size: clamp(2rem, 3.6vw, 3rem); }
   .written-grid__feature .written-grid__number { color: var(--ps-terracotta-600, #b84d2a); }
-  .written-grid__number { position: absolute; top: 26px; left: 32px; color: var(--ps-line-strong, #b7beb6); font: 700 clamp(1.5rem, 2.6vw, 2.2rem)/1 var(--ps-font-data, ui-monospace, monospace); font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
+  .written-grid__number { position: absolute; top: 26px; left: 32px; color: color-mix(in srgb, var(--ps-text, #171a17) 50%, transparent); font: 700 clamp(1.5rem, 2.6vw, 2.2rem)/1 var(--ps-font-data, ui-monospace, monospace); font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
   .written-grid h3 { margin: 8px 0 16px; font-size: clamp(1.65rem, 3vw, 2.35rem); }
   .written-grid p { margin: 0; color: var(--editorial-muted); font-size: .9rem; }
   .written-grid__cta { margin-top: auto; padding-top: 34px; color: var(--editorial-accent-dark); font-size: .84rem; font-weight: 700; }
+  /* Dark-theme repaints for the compare surfaces' hardcoded light hexes. */
+  [data-theme="dark"] .compare-principles span { background: var(--editorial-white); }
+  [data-theme="dark"] .compare-page .matrix-input,
+  [data-theme="dark"] .compare-page .matrix-select { color: var(--editorial-ink); background: #12160f; border-color: rgba(244,239,231,.28); }
+  [data-theme="dark"] .compare-page #filterClear:hover { color: #141714; background: var(--editorial-ink); }
+  [data-theme="dark"] .compare-page .matrix-card__img { background: #12160f; }
+  [data-theme="dark"] .compare-page .matrix-card:hover { background: #262c27; }
+  [data-theme="dark"] .compare-page .matrix-card__link { color: #fff; background: #2a6553; }
+  [data-theme="dark"] .compare-page .matrix-card__link:hover { background: #327a63; }
   @media (max-width: 980px) {
     .compare-page .matrix-filters { grid-template-columns: 1fr 1fr; }
     .compare-page .matrix-filters__row--search { grid-column: 1 / -1; }

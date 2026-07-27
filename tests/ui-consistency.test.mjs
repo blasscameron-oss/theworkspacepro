@@ -12,7 +12,7 @@ test('primary discovery routes share one editorial shell and navigation order', 
     assert.match(html, /<body[^>]*class="[^"]*\beditorial-shell\b/, file);
     assert.equal((html.match(/class="editorial-header"/g) || []).length, 1, file);
     assert.equal((html.match(/class="editorial-footer"/g) || []).length, 1, file);
-    assert.doesNotMatch(html, /class="(?:site-header|mobile-nav|theme-toggle)"/, file);
+    assert.doesNotMatch(html, /class="(?:site-header|mobile-nav)"/, file);
     const nav = html.match(/<nav[^>]*aria-label="Primary navigation"[^>]*>[\s\S]*?<\/nav>/i)?.[0] || '';
     const positions = ['Guides', 'Compare', 'Tools', 'Deals'].map((label) => nav.indexOf(`>${label}</a>`));
     assert.ok(positions.every((position) => position >= 0), `${file} has every primary link`);

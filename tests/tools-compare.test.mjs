@@ -13,7 +13,7 @@ for (const [route, active] of [['tools.html', 'Tools'], ['compare/index.html', '
     assert.equal((html.match(/class="editorial-header"/g) || []).length, 1, 'one shared header');
     assert.equal((html.match(/<footer\b/g) || []).length, 1, 'one shared footer');
     assert.match(html, new RegExp(`<a[^>]*aria-current="page"[^>]*>${active}</a>|<a[^>]*>${active}</a>`));
-    assert.doesNotMatch(html, /class="(?:site-header|mobile-nav|theme-toggle)"/);
+    assert.doesNotMatch(html, /class="(?:site-header|mobile-nav)"/);
   });
 }
 
