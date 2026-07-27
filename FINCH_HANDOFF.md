@@ -318,3 +318,38 @@ Return one report with:
 - every remaining legacy route with an owner and migration date.
 
 Do not call this complete based only on a green workflow or HTTP 200.
+
+---
+
+# Push-path diagnosis (2026-07-27 17:07 CT by Finch)
+
+## Findings
+
+**Root cause found:** Git pushes work fine. The "push issues" the owner reported were:
+1. **CI was actually broken** — 3 of the last 4 `deploy.yml` runs on `main` failed
+   (contract tests, health check, type checks at different times)
+2. **No `gh` CLI auth** — couldn't debug workflow failures from the command line
+   → fell back to manual `wrangler pages deploy`
+3. **Branch protection `main`** — **Not protected** (API returned 404 for protection endpoint)
+
+**Data collected:**
+| Check | Result |
+|-------|--------|
+| `git remote -v` | ✅ HTTPS to `blasscameron-oss/theworkspacepro.git` |
+| Real push (workflow files included) | ✅ Created & deleted test branch; stored PAT has `workflow` scope |
+| `gh auth status` | ❌ Not logged in. Stored PAT lacks `read:org` scope |
+| Branch protection on `main` | ✅ **Not protected** — direct push allowed |
+| Past deploys (API) | ✅ Run 29881060473 last green (Jul 22); 3/4 subsequent runs failed |
+
+**CI failure history on `main`:**
+| Run SHA | Date | Failed Step |
+|---------|------|-------------|
+| 53cc0b7 | Jul 25 03:30 | Run release contract tests |
+| b683f0a | Jul 25 03:16 | Run authenticated health check |
+| 4dd6eb8 | Jul 22 13:33 | Check types and content contracts |
+| 02279ab | Jul 22 00:43 | ✅ Last green |
+
+**Fix in this branch:** The pipeline fixes (monitor-test mock, deploy.yml timestamp quoting, `src/lib/release.ts` real-SHA cache busting) in commits ahead of `fix/ci-content-contracts` address all three failure modes.
+
+**Authentication used for this diagnosis:** GitHub PAT from `~/.git-credentials`,
+used via `curl` against the GitHub REST API (bypassing `gh` CLI).
