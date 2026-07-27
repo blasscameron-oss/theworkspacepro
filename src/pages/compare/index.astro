@@ -1,7 +1,14 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getReleaseSha } from '../../lib/release';
+import rawCatalog from '../../../assets/data/catalog.json';
+import { catalogSchema } from '../../data/product-schema';
 const releaseSha = getReleaseSha();
+// The comparison matrix is generated from this same catalog at build time
+// (see src/pages/assets/data/products-matrix.json.ts), so the entry count shown
+// here is derived from the one source of truth rather than hardcoded.
+const catalog = catalogSchema.parse(rawCatalog);
+const catalogEntryCount = catalog.products.length;
 
 const comparisons = [
   ['Desks', 'Branch vs Uplift', 'Assembly, motors, customization, and who each desk is built for.', '/compare/branch-vs-uplift'],
@@ -18,7 +25,7 @@ const comparisons = [
 >
   <div class="compare-page">
     <header class="compare-hero">
-      <p class="eyebrow">Product comparison · 36 catalog entries</p>
+      <p class="eyebrow">Product comparison · {catalogEntryCount} catalog entries</p>
       <h1>Shortlist by fit, not hype.</h1>
       <p>Search chairs, desks, monitors, lighting, and accessories using published specifications and practical fit notes. Reference prices are approximate; the retailer page remains the source of truth.</p>
       <div class="compare-principles" aria-label="Comparison principles">
