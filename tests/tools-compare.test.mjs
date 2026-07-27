@@ -34,6 +34,14 @@ test('comparison page keeps its filter contract and one matrix script', () => {
     assert.match(html, new RegExp(`id="${id}"`), id);
   }
   assert.equal((html.match(/\/assets\/js\/compare-matrix\.js\?v=/g) || []).length, 1);
-  assert.match(html, /36 catalog entries/i);
+  // The entry count is derived from the catalog (single source), not hardcoded.
+  const catalog = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'assets/data/catalog.json'), 'utf8'));
+  assert.match(html, new RegExp(`${catalog.products.length} catalog entries`, 'i'));
   assert.match(html, /href="\/deals"/);
+
+  // The generated matrix feeds the same page and must stay deduped and derived.
+  const matrix = JSON.parse(read('assets/data/products-matrix.json'));
+  assert.equal(matrix.products.length, catalog.products.length, 'matrix mirrors the catalog 1:1');
+  assert.equal(new Set(matrix.products.map((p) => p.id)).size, matrix.products.length, 'no duplicate matrix ids');
+  assert.equal(new Set(matrix.products.map((p) => p.url)).size, matrix.products.length, 'no duplicate matrix URLs');
 });
