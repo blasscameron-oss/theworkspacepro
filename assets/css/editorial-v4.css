@@ -31,7 +31,19 @@ body.editorial-shell {
   line-height: 1.08;
 }
 
-.editorial-shell a { color: inherit; }
+/* Only unclassed links inherit the editorial ink. Classed anchors (buttons,
+   cards, nav, disclosures) carry their own colors; letting this rule (0,1,1)
+   win over e.g. `.btn--secondary` (0,1,0) made `<a class="btn">` inherit ink,
+   producing ink-on-dark buttons (black-on-black on .btn--secondary). */
+.editorial-shell a:not([class]) { color: inherit; }
+
+/* Explicit dark theme only. editorial-v4 ships no dark palette, so its fixed
+   light paper/ink otherwise fights style.css's flipped [data-theme="dark"]
+   tokens (light body text stranded on a forced-cream editorial body). Until
+   dark mode is redesigned, keep the shell coherent by following the dark
+   surface/text tokens. Light rendering is untouched. */
+[data-theme="dark"] body.editorial-shell { color: var(--c-text); background: var(--c-bg); }
+[data-theme="dark"] .editorial-shell :where(h1, h2, h3) { color: var(--c-text); }
 
 .editorial-header {
   position: relative;

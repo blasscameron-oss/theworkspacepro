@@ -83,6 +83,21 @@
 /* Layout and editorial type */
 .ps-shell { color: var(--ps-text); background: var(--ps-paper); font-family: var(--ps-font-body); }
 .ps-shell :where(h1, h2, h3, h4) { color: var(--ps-text); font-family: var(--ps-font-display); text-wrap: balance; }
+/* Cascade guard: pages built through BaseLayout carry BOTH ps-shell and
+   editorial-shell, so editorial-v4's `.editorial-shell h1/h2/h3` (0,1,1)
+   overrides the zero-specificity :where() rule above and paints premium-studio
+   headings editorial-ink — invisible on dark ps surfaces. These component
+   titles must track the ps palette (theme-correct in light and dark). */
+.ps-shell .ps-page-header__title,
+.ps-shell .ps-fingerprint__title,
+.ps-shell .ps-card__title,
+.ps-shell .ps-display,
+.ps-shell .ps-hero__copy :is(h1, h2) { color: var(--ps-text); }
+/* Always-dark surfaces keep light text in BOTH themes. */
+.ps-shell .ps-section--ink,
+.ps-shell .ps-section--ink :is(h1, h2, h3, h4, p) { color: #f8f2e8; }
+.ps-shell .ps-lab-card__preview,
+.ps-shell .ps-lab-card__preview :is(h1, h2, h3, h4) { color: #dcebe4; }
 .ps-shell :where(p, li) { text-wrap: pretty; }
 .ps-container { width: min(100% - (2 * var(--ps-gutter)), var(--ps-content)); margin-inline: auto; }
 .ps-prose { width: min(100%, var(--ps-prose)); }
