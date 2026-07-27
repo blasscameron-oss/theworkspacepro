@@ -16,7 +16,12 @@ html { scroll-behavior: smooth; }
 body.editorial-shell {
   margin: 0;
   color: var(--editorial-ink);
-  background: var(--editorial-paper);
+  background-color: var(--editorial-paper);
+  /* Barely-there drafting-paper grid — a couple percent ink, sits behind the
+     white cards so measured text contrast is unaffected. */
+  background-image:
+    repeating-linear-gradient(0deg, rgba(29,40,36,.022) 0 1px, transparent 1px 32px),
+    repeating-linear-gradient(90deg, rgba(29,40,36,.022) 0 1px, transparent 1px 32px);
   font-family: Inter, ui-sans-serif, system-ui, sans-serif;
   line-height: 1.65;
 }
@@ -25,13 +30,70 @@ body.editorial-shell {
 .editorial-shell h2,
 .editorial-shell h3 {
   color: var(--editorial-ink);
-  font-family: Fraunces, Georgia, serif;
-  font-weight: 500;
+  font-family: var(--font-display, Fraunces, Georgia, serif);
+  font-weight: 560;
+  font-optical-sizing: auto;
+  /* SOFT rounds the terminals for warmth; WONK 0 keeps glyphs legible. opsz
+     stays automatic (driven by font-optical-sizing + rendered size). */
+  font-variation-settings: "SOFT" 26, "WONK" 0;
   letter-spacing: -.035em;
   line-height: 1.08;
 }
 
-.editorial-shell a { color: inherit; }
+/* Big optical-size display cuts: confident weight, high opsz, tighter track.
+   Applied to the largest headlines across the editorial surfaces. */
+.editorial-intro h2,
+.library-hero h1,
+.guide-hero h1,
+.compare-hero h1,
+.editorial-shell .ps-display,
+.migrated-assessment .hero__title {
+  font-weight: 600;
+  font-variation-settings: "opsz" 108, "wght" 600, "SOFT" 34, "WONK" 0;
+  letter-spacing: -.05em;
+  line-height: .98;
+}
+
+/* Only unclassed links inherit the editorial ink. Classed anchors (buttons,
+   cards, nav, disclosures) carry their own colors; letting this rule (0,1,1)
+   win over e.g. `.btn--secondary` (0,1,0) made `<a class="btn">` inherit ink,
+   producing ink-on-dark buttons (black-on-black on .btn--secondary). */
+.editorial-shell a:not([class]) { color: inherit; }
+
+/* Explicit dark theme (opt-in only — no auto-detection). Warm charcoal paper,
+   not pure black; remaps the whole editorial palette so cards, rules, accents
+   and links all track the drafting studio's dark tokens. Every pair here is
+   verified to meet WCAG AA (see the contrast report). */
+[data-theme="dark"] body.editorial-shell {
+  --editorial-paper: #141714;
+  --editorial-white: #1e231f;
+  --editorial-ink: #f4efe7;
+  --editorial-muted: #c3c0b8;
+  --editorial-line: rgba(244, 239, 231, .16);
+  --editorial-accent: #86c4aa;
+  --editorial-accent-dark: #9ad0b7;
+  color: var(--editorial-ink);
+}
+[data-theme="dark"] .editorial-shell :where(h1, h2, h3) { color: var(--editorial-ink); }
+/* Repaint the hardcoded light-hex surfaces for dark. */
+[data-theme="dark"] .path-card:hover,
+[data-theme="dark"] .library-card:hover,
+[data-theme="dark"] .written-grid a:hover { background: #262c27; }
+[data-theme="dark"] .disclosure,
+[data-theme="dark"] .commercial-disclosure { color: var(--editorial-muted); background: rgba(244, 239, 231, .05); }
+[data-theme="dark"] .migrated-assessment .hero { background: var(--editorial-paper) !important; }
+[data-theme="dark"] .migrated-assessment .workspace-instrument { background-color: #1a1f1b; }
+[data-theme="dark"] .migrated-assessment .hero__stats,
+[data-theme="dark"] .migrated-assessment .hero__stats > div,
+[data-theme="dark"] .migrated-assessment .assessment-card { background: var(--editorial-white); }
+[data-theme="dark"] .migrated-assessment .stat__number,
+[data-theme="dark"] .migrated-assessment .gradient-text { color: var(--editorial-ink) !important; }
+[data-theme="dark"] .migrated-assessment .workspace-instrument__photo img { opacity: .18; }
+/* Filled CTAs keep white text on a solid spruce (not the light text-accent),
+   so white-on-green never drops below AA in dark. */
+[data-theme="dark"] .editorial-nav .button-link,
+[data-theme="dark"] .commercial-card__link { color: #fff; background: #2a6553; }
+[data-theme="dark"] .commercial-card__link:hover { background: #327a63; }
 
 .editorial-header {
   position: relative;
@@ -85,6 +147,43 @@ body.editorial-shell {
 
 .menu-toggle { display: none; }
 
+/* Header actions cluster: nav + theme toggle grouped to the right. */
+.editorial-header__inner { justify-content: flex-start; }
+.editorial-nav { margin-left: auto; }
+.editorial-header__actions { display: inline-flex; align-items: center; gap: 8px; }
+.editorial-shell .theme-toggle {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: var(--editorial-muted);
+  background: transparent;
+  border: 1px solid var(--editorial-line);
+  border-radius: 4px;
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color .18s ease, border-color .18s ease, background .18s ease;
+}
+.editorial-shell .theme-toggle:hover { color: var(--editorial-ink); border-color: var(--editorial-muted); }
+.editorial-shell .theme-toggle:focus-visible { outline: 3px solid color-mix(in srgb, var(--editorial-accent) 45%, transparent); outline-offset: 2px; }
+
+/* Micro-interactions: unified focus ring + a small arrow nudge on card hover.
+   All motion is short, eased, and disabled under reduced-motion. */
+.editorial-shell a:focus-visible,
+.editorial-shell button:focus-visible { outline: 3px solid color-mix(in srgb, var(--editorial-accent) 50%, transparent); outline-offset: 3px; border-radius: 2px; }
+.text-link span[aria-hidden],
+.written-grid__cta span[aria-hidden] { display: inline-block; transition: transform .24s var(--ps-ease, cubic-bezier(.22,1,.36,1)); }
+.path-card:hover .text-link span[aria-hidden],
+.library-card:hover .text-link span[aria-hidden],
+.written-grid a:hover .written-grid__cta span[aria-hidden] { transform: translateX(4px); }
+@media (prefers-reduced-motion: reduce) {
+  .text-link span[aria-hidden],
+  .written-grid__cta span[aria-hidden] { transition: none; transform: none; }
+}
+
 .editorial-section,
 .library-section,
 .guide-layout,
@@ -99,11 +198,39 @@ body.editorial-shell {
   display: block;
   margin: 0 0 14px;
   color: var(--editorial-accent);
-  font-size: .72rem;
+  font-family: var(--ps-font-data, ui-monospace, monospace);
+  font-size: .7rem;
   font-weight: 700;
   letter-spacing: .13em;
   text-decoration: none;
   text-transform: uppercase;
+}
+/* Engineering-tick kicker: a hairline measure rule before the eyebrow. */
+.section-heading .eyebrow,
+.compare-heading .eyebrow,
+.library-hero .eyebrow,
+.editorial-intro .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-heading .eyebrow::before,
+.compare-heading .eyebrow::before,
+.editorial-intro .eyebrow::before {
+  width: 1.7rem;
+  height: .55rem;
+  content: "";
+  background: repeating-linear-gradient(90deg, currentColor 0 1px, transparent 1px 5px);
+  border-block: 1px solid currentColor;
+}
+/* Mono metadata voice: dates, toplines, prices, meta lines, bylines. */
+.library-card__meta,
+.commercial-card__topline,
+.commercial-card__price,
+.guide-byline,
+.compare-principles span {
+  font-family: var(--ps-font-data, ui-monospace, monospace);
+  font-variant-numeric: tabular-nums;
 }
 
 .editorial-intro { max-width: 920px; text-align: center; }
@@ -114,27 +241,58 @@ body.editorial-shell {
 .section-heading h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.5rem); }
 
 .path-grid { border-top: 1px solid var(--editorial-line); }
-.path-grid__items,
+/* Asymmetric lead: card 01 is a tall feature spanning both rows on the left;
+   cards 02/03 stack to its right. Hairline gaps read as drafting rules. */
+.path-grid__items {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 1px;
+  background: var(--editorial-line);
+  border: 1px solid var(--editorial-line);
+}
+.path-grid__items .path-card:first-child { grid-row: span 2; }
 .guide-card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--editorial-line); border: 1px solid var(--editorial-line); }
+/* Feature lead card in a library section: double-wide with a bigger head. */
+.guide-card-grid .library-card--feature { grid-column: span 2; }
+.guide-card-grid .library-card--feature h3 { font-size: clamp(2rem, 3.4vw, 2.9rem); }
+.guide-card-grid .library-card--feature p { max-width: 44ch; font-size: 1.02rem; }
 
 .path-card,
 .library-card {
   position: relative;
   min-height: 330px;
   padding: clamp(26px, 4vw, 42px);
+  padding-top: clamp(46px, 5vw, 66px);
   color: var(--editorial-ink);
   background: var(--editorial-white);
   text-decoration: none;
-  transition: background .2s ease, transform .2s ease;
+  transition: background .2s ease, box-shadow .2s ease, transform .2s ease;
 }
+.path-grid__items .path-card:first-child { display: flex; flex-direction: column; justify-content: flex-end; }
+.path-grid__items .path-card:first-child h3 { font-size: clamp(2rem, 3.2vw, 2.9rem); }
 
 .path-card:hover,
-.library-card:hover { background: #edf3ee; }
+.library-card:hover {
+  background: #edf3ee;
+  box-shadow: inset 0 3px 0 var(--ps-terracotta-600, #b84d2a);
+  transform: translateY(-3px);
+}
 .path-card h3,
 .library-card h3 { margin: 0 0 18px; font-size: 1.75rem; }
 .path-card p,
 .library-card p { color: var(--editorial-muted); }
-.path-card__number { position: absolute; top: 24px; right: 24px; color: #98a29c; font-family: ui-monospace, monospace; font-size: .76rem; }
+/* Oversized plate index numeral, top-left in the mono voice. */
+.path-card__number,
+.library-card__number {
+  position: absolute;
+  top: clamp(18px, 2.4vw, 26px);
+  left: clamp(26px, 4vw, 42px);
+  color: color-mix(in srgb, var(--ps-text, #171a17) 50%, transparent);
+  font: 700 clamp(1.5rem, 2.6vw, 2.2rem)/1 var(--ps-font-data, ui-monospace, monospace);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.01em;
+}
+.path-grid__items .path-card:first-child .path-card__number { color: var(--ps-terracotta-600, #b84d2a); }
 
 .text-link { display: inline-block; margin-top: 20px; color: var(--editorial-accent-dark); font-size: .88rem; font-weight: 700; }
 
@@ -199,13 +357,23 @@ body.editorial-shell {
 .source-list { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--editorial-line); }
 .disclosure { padding: 18px 20px; background: #ece9e0; font-size: .84rem; }
 
-.editorial-footer { padding: 72px max(20px, calc((100% - var(--editorial-max)) / 2)); color: #d9e0dc; background: var(--editorial-ink); }
-.editorial-footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 70px; }
+/* Footer as an engineering-drawing title block: boxed corner stamp, hairline
+   rules dividing labelled cells, all metadata in the mono instrument voice. */
+.editorial-footer { padding: clamp(48px, 7vw, 84px) max(20px, calc((100% - var(--editorial-max)) / 2)); color: #d9e0dc; background: var(--editorial-ink); background-image: repeating-linear-gradient(0deg, rgba(255,255,255,.022) 0 1px, transparent 1px 30px), repeating-linear-gradient(90deg, rgba(255,255,255,.022) 0 1px, transparent 1px 30px); }
+.editorial-footer__stamp { border: 1px solid rgba(217,224,220,.36); }
+.editorial-footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr; }
+.editorial-footer__grid > * { padding: clamp(22px, 3vw, 34px); border-left: 1px solid rgba(217,224,220,.18); }
+.editorial-footer__grid > *:first-child { border-left: 0; }
+.editorial-footer .wordmark--footer { display: flex; align-items: center; gap: 11px; margin: 0 0 14px; color: #fff; font-family: var(--font-display, Fraunces, Georgia, serif); font-size: 1.25rem; }
+.editorial-footer .wordmark--footer .wordmark__mark { border-color: currentColor; }
 .editorial-footer p { max-width: 430px; color: #aebbb4; }
 .editorial-footer nav { display: grid; align-content: start; gap: 10px; }
-.editorial-footer nav strong { margin-bottom: 8px; color: white; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; }
+.editorial-footer nav strong { margin-bottom: 10px; color: #fff; font-family: var(--ps-font-data, ui-monospace, monospace); font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
 .editorial-footer a { color: #bac6c0; font-size: .9rem; text-decoration: none; }
-.editorial-footer__legal { margin-top: 64px; padding-top: 22px; display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid #42504a; color: #96a49d; font-size: .78rem; }
+.editorial-footer a:hover { color: #fff; }
+.editorial-footer__legal { margin: 0; padding: 16px clamp(22px, 3vw, 34px); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 20px; border: 1px solid rgba(217,224,220,.36); border-top: 0; color: #96a49d; font-family: var(--ps-font-data, ui-monospace, monospace); font-size: .72rem; letter-spacing: .03em; }
+.editorial-footer__legal span { display: inline-flex; align-items: center; gap: 9px; }
+.editorial-footer__legal span:first-child::before { content: "◵"; color: var(--ps-terracotta-500, #cf643d); font-size: .95rem; }
 
 /* Transitional assessment: keep its tested behavior, remove visual gimmicks. */
 .migrated-assessment .hero { min-height: auto; padding-block: clamp(56px, 8vw, 100px); background: var(--editorial-paper) !important; }
@@ -239,7 +407,48 @@ body.editorial-shell {
   border: 1px solid var(--editorial-line);
   border-radius: 5px;
   color: var(--editorial-ink);
-  background: #ebe8df;
+  background: var(--ps-paper-alt, #ebe8df);
+  /* Drafting-paper ground: a faint blueprint grid behind the line drawing. */
+  background-image:
+    repeating-linear-gradient(90deg, var(--ps-line, rgba(23,26,23,.06)) 0 1px, transparent 1px 26px),
+    repeating-linear-gradient(0deg, var(--ps-line, rgba(23,26,23,.06)) 0 1px, transparent 1px 26px);
+  background-position: -1px -1px;
+}
+/* Mono instrument labels; one measurement reads terracotta as the accent. */
+.migrated-assessment .workspace-instrument__labels text {
+  font-family: var(--ps-font-data, ui-monospace, monospace);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .09em;
+  fill: var(--ps-text-soft, #3d443e);
+}
+.migrated-assessment .workspace-instrument__labels text:nth-of-type(4) {
+  fill: var(--ps-brand, #b84d2a);
+}
+/* Draw-the-drawing-in on load: solid structure lines animate their stroke,
+   then rails/labels/nodes fade up. Motion is opt-in only. */
+@media (prefers-reduced-motion: no-preference) {
+  .migrated-assessment .workspace-instrument__drawing > g:first-of-type > * {
+    stroke-dasharray: 1300;
+    stroke-dashoffset: 1300;
+    animation: ps-draw-in 1.5s var(--ps-ease, cubic-bezier(.22,1,.36,1)) forwards;
+  }
+  .migrated-assessment .workspace-instrument__drawing > g:first-of-type > *:nth-child(2) { animation-delay: .18s; }
+  .migrated-assessment .workspace-instrument__drawing > g:first-of-type > *:nth-child(3) { animation-delay: .34s; }
+  .migrated-assessment .workspace-instrument__rails { opacity: 0; animation: ps-fade-in .6s ease .95s forwards; }
+  .migrated-assessment .workspace-instrument__labels { opacity: 0; animation: ps-fade-in .7s ease 1.15s forwards; }
+  .migrated-assessment .workspace-instrument__drawing > circle { opacity: 0; animation: ps-fade-in .5s ease 1.4s forwards; }
+}
+@keyframes ps-draw-in { to { stroke-dashoffset: 0; } }
+@keyframes ps-fade-in { from { opacity: 0; } to { opacity: 1; } }
+.migrated-assessment .workspace-instrument__rails { stroke: var(--ps-instrument, #28614f); }
+/* FIG-NN plate marker prefixes the caption in the mono instrument voice. */
+.migrated-assessment .workspace-instrument figcaption::before {
+  content: "FIG-01";
+  margin-right: 12px;
+  color: var(--ps-instrument, #28614f);
+  font: 700 .72rem/1.5 var(--ps-font-data, ui-monospace, monospace);
+  letter-spacing: .09em;
 }
 .migrated-assessment .workspace-instrument__photo,
 .migrated-assessment .workspace-instrument__drawing {
@@ -274,31 +483,46 @@ body.editorial-shell {
   background: var(--editorial-white);
   font-size: .84rem;
 }
+/* Title-block plate: reads like the data block on an engineering drawing —
+   mono figures over hairline rules, tracked-out labels, a leading rule. */
 .migrated-assessment .hero__stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1px;
-  margin-top: 28px;
+  gap: 0;
+  margin-top: 30px;
   padding: 0;
   overflow: hidden;
-  border: 1px solid var(--editorial-line);
-  background: var(--editorial-line);
+  border: 1px solid var(--ps-line-strong, var(--editorial-line));
+  background: var(--editorial-white);
 }
 .migrated-assessment .hero__stats > div {
   min-width: 0;
-  padding: 18px;
+  padding: 16px 18px;
   background: var(--editorial-white);
+  border-left: 1px solid var(--ps-line, var(--editorial-line));
 }
+.migrated-assessment .hero__stats > div:first-child { border-left: 0; }
 .migrated-assessment .stat__number {
   color: var(--editorial-ink);
-  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  font-family: var(--ps-font-data, ui-monospace, monospace);
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  font-variation-settings: normal;
+  letter-spacing: -.01em;
+  line-height: 1;
 }
 .migrated-assessment .stat__label {
-  margin-top: 5px;
-  color: var(--editorial-muted);
-  font-size: .68rem;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--ps-line, var(--editorial-line));
+  color: var(--ps-instrument, var(--editorial-muted));
+  font-family: var(--ps-font-data, ui-monospace, monospace);
+  font-size: .62rem;
+  font-weight: 700;
   line-height: 1.4;
-  letter-spacing: .07em;
+  letter-spacing: .11em;
+  text-transform: uppercase;
 }
 .migrated-assessment .assessment-card { border: 1px solid var(--editorial-line); border-radius: 6px; background: var(--editorial-white); box-shadow: 0 18px 50px rgba(29, 40, 36, .08); }
 .migrated-assessment .assessment-card__kicker {
@@ -322,6 +546,8 @@ body.editorial-shell {
   .editorial-nav a { min-height: 44px; display: flex; align-items: center; padding: 8px; }
   .path-grid__items,
   .guide-card-grid { grid-template-columns: 1fr; }
+  .path-grid__items .path-card:first-child,
+  .guide-card-grid .library-card--feature { grid-row: auto; grid-column: auto; }
   .commercial-grid { grid-template-columns: repeat(2, 1fr); }
   .commercial-heading { grid-template-columns: 1fr; align-items: start; }
   .commercial-heading__cta { justify-self: start; }
@@ -351,8 +577,11 @@ body.editorial-shell {
   .migrated-assessment .workspace-instrument__photo,
   .migrated-assessment .workspace-instrument__photo img { min-height: 220px; }
   .migrated-assessment .workspace-instrument__drawing { width: calc(100% - 18px); }
-  .migrated-assessment .hero__stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .migrated-assessment .hero__stats > div { padding: 14px 10px; }
+  /* Let the three stats reflow instead of staying locked to 3 cramped columns:
+     ~2-across on typical phones, single column with breathing room on the
+     narrowest screens (<~380px). */
+  .migrated-assessment .hero__stats { grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr)); }
+  .migrated-assessment .hero__stats > div { padding: 16px 14px; }
   .migrated-assessment .stat__number { font-size: 1.55rem; }
   .migrated-assessment .assessment-card { padding: 24px 18px; }
   .commercial-grid { grid-template-columns: 1fr; }

@@ -27,7 +27,7 @@ test('all retained root routes are emitted by the shared Astro shell', () => {
     assert.equal((html.match(/class="editorial-footer"/g) || []).length, 1, route);
     assert.equal((html.match(/<main\b/g) || []).length, 1, route);
     assert.equal((html.match(/\/assets\/js\/analytics\.js/g) || []).length, 1, route);
-    assert.doesNotMatch(html, /class="(?:site-header|mobile-nav|theme-toggle)"/, route);
+    assert.doesNotMatch(html, /class="(?:site-header|mobile-nav)"/, route);
     assert.match(html, new RegExp(`rel="canonical" href="https://www\\.theworkspacepro\\.com/${route}"`), route);
   }
 });

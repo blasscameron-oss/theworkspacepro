@@ -8,24 +8,31 @@
 
   var lastMenuTrigger = null;
 
-  function applyTheme(theme) {
+  function applyTheme(theme, persist) {
     document.documentElement.setAttribute('data-theme', theme);
-    try {
-      localStorage.setItem('theme', theme);
-    } catch (e) {}
+    // Only write to storage on an explicit user choice. Applying a theme on
+    // page load must never persist, so an auto-detected value can't silently
+    // lock a visitor in (see theme-lock bug).
+    if (persist) {
+      try {
+        localStorage.setItem('theme', theme);
+      } catch (e) {}
+    }
     document.querySelectorAll('.theme-toggle__icon').forEach(function (icon) {
       icon.textContent = theme === 'dark' ? '☀' : '☾';
+    });
+    document.querySelectorAll('.theme-toggle').forEach(function (btn) {
+      btn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
     });
   }
 
   function getPreferredTheme() {
+    // Honor only an explicit, user-set preference. Dark mode is being
+    // reintroduced deliberately later; do not fall back to matchMedia.
     try {
       var saved = localStorage.getItem('theme');
       if (saved === 'dark' || saved === 'light') return saved;
     } catch (e) {}
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
-    }
     return 'light';
   }
 
@@ -170,7 +177,7 @@
       if (!btn.hasAttribute('type')) btn.setAttribute('type', 'button');
       btn.addEventListener('click', function () {
         var current = document.documentElement.getAttribute('data-theme') || 'light';
-        applyTheme(current === 'dark' ? 'light' : 'dark');
+        applyTheme(current === 'dark' ? 'light' : 'dark', true);
       });
     });
 

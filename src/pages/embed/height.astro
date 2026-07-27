@@ -1,6 +1,7 @@
 ---
 import EmbedLayout from '../../layouts/EmbedLayout.astro';
-const releaseSha = import.meta.env.PUBLIC_RELEASE_SHA || 'dev';
+import { getReleaseSha } from '../../lib/release';
+const releaseSha = getReleaseSha();
 ---
 
 <EmbedLayout

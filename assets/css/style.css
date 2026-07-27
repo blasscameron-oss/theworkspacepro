@@ -27,7 +27,7 @@
   --c-error: #b91c1c;
 
   /* Typography */
-  --font-display: 'Fraunces', Georgia, serif;
+  --font-display: 'Fraunces Variable', 'Fraunces', Georgia, serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
@@ -98,7 +98,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 input, textarea, select { font-family: inherit; font-size: inherit; }
 
 /* Typography */
-h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height: 1.2; letter-spacing: -0.02em; }
+/* Fraunces self-hosts only 500 & 700; 600 synthesized a faux bold. Match
+   editorial-v4's true 500 weight. */
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; line-height: 1.2; letter-spacing: -0.02em; }
 h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
 h2 { font-size: clamp(1.5rem, 3.5vw, 2.25rem); }
 h3 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); }
@@ -761,7 +763,8 @@ input[type="range"]::-moz-range-thumb {
   border-radius: var(--radius);
   background: var(--c-dark-surface);
   color: var(--c-dark-text);
-  font-size: 0.9375rem;
+  /* 16px minimum: below this iOS auto-zooms the viewport on focus. */
+  font-size: 1rem;
 }
 [data-theme="dark"] .newsletter-form__input {
   background: var(--c-bg-alt);
@@ -846,15 +849,19 @@ input[type="range"]::-moz-range-thumb {
 }
 .tip-item:hover { box-shadow: var(--shadow-md); }
 .tip-number {
-  font-family: var(--font-display);
-  font-size: 2rem;
+  /* Mono plate numeral — matches .path-card__number's instrument voice
+     (mono stack, tabular, ink/spruce at ~50% opacity) instead of the
+     legacy display-serif treatment. */
+  font-family: var(--ps-font-data, var(--font-mono), monospace);
+  font-size: 1.5rem;
   font-weight: 700;
-  color: var(--c-primary-soft);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.01em;
+  color: color-mix(in srgb, var(--ps-text, var(--c-text)) 50%, transparent);
   line-height: 1;
   flex-shrink: 0;
   width: 48px;
 }
-[data-theme="dark"] .tip-number { color: var(--c-primary); }
 .tip-content h3 { font-size: 1.125rem; margin-bottom: var(--space-xs); }
 .tip-content p { font-size: 0.9375rem; color: var(--c-text-light); }
 
@@ -1482,6 +1489,10 @@ textarea.text-input { min-height: 120px; resize: vertical; }
   margin-bottom: var(--space-sm);
 }
 .filter-chip {
+  display: inline-flex;
+  align-items: center;
+  /* 44px minimum touch target; visual height held by centered content. */
+  min-height: 44px;
   padding: 0.4rem 0.85rem;
   border-radius: var(--radius-full);
   border: 1px solid var(--c-border);
@@ -1752,10 +1763,6 @@ body.menu-open {
 }
 .research-badge__text strong { color: var(--c-text); }
 
-/* Hide old review widgets if any cached HTML leftover */
-.review-widget { display: none !important; }
-.expert-review-badge { display: none !important; }
-
 /* Deal banner without fake strikethrough clutter */
 .deal-banner__price-old[style*="display: none"] + .deal-banner__price-new,
 .deal-banner__price-new {
@@ -1798,7 +1805,10 @@ img.product-thumb {
 /* ---- Performance: content-visibility for long sections ---- */
 .section, .guide-grid, .tools-grid {
   content-visibility: auto;
-  contain-intrinsic-size: 1px 480px;
+  /* Realistic placeholder height: a 480px estimate under-counts most of these
+     sections, so as off-screen blocks render the page height corrected upward
+     and the scrollbar jumped. ~1200px is closer to their real rendered size. */
+  contain-intrinsic-size: 1px 1200px;
 }
 
 .reduce-motion *,
@@ -1866,6 +1876,8 @@ img.product-thumb {
 .quick-tools a {
   display: inline-flex;
   align-items: center;
+  /* 44px minimum touch target. */
+  min-height: 44px;
   gap: 0.35rem;
   padding: 0.45rem 0.9rem;
   border-radius: var(--radius-full);
@@ -1994,13 +2006,15 @@ img.product-thumb {
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
 }
-.article-body [id] { scroll-margin-top: 88px; }
+/* The shipped header (.editorial-header) is position:relative and scrolls
+   away, so anchors only need a small breathing gap, not a sticky-header offset. */
+.article-body [id] { scroll-margin-top: 16px; }
 
 /* Thin, non-interactive article progress accent for long guides. */
 .reading-progress {
   position: fixed;
   z-index: 95;
-  top: 64px;
+  top: 0;
   right: 0;
   left: 0;
   height: 3px;
@@ -2179,7 +2193,7 @@ img.product-thumb {
 .deal-card__topline{display:flex;align-items:center;justify-content:space-between;gap:var(--space-sm);margin-bottom:var(--space-md)}
 .deal-card__category{color:var(--c-primary);font-size:.72rem;font-weight:750;letter-spacing:.07em;text-transform:uppercase}.deal-card__budget{padding:.2rem .55rem;border-radius:var(--radius-full);background:var(--c-bg-alt);color:var(--c-text-light);font-size:.7rem;font-weight:650}
 .deal-card__title{margin-bottom:var(--space-sm);font-size:1.3rem}.deal-card__desc{margin-bottom:var(--space-lg);max-width:none;color:var(--c-text-light);font-size:.9rem}
-.deal-card__value{margin-top:auto;padding-top:var(--space-md);border-top:1px solid var(--c-border)}.deal-card__price-label{display:block;color:var(--c-text-muted);font-size:.72rem;letter-spacing:.045em;text-transform:uppercase}.deal-card__price{display:block;color:var(--c-text);font:650 1.55rem/1.25 var(--font-display)}.deal-card__price-note{display:block;margin:.2rem 0 var(--space-md);color:var(--c-text-muted);font-size:.72rem}.deal-card__cta{width:100%;justify-content:center}
+.deal-card__value{margin-top:auto;padding-top:var(--space-md);border-top:1px solid var(--c-border)}.deal-card__price-label{display:block;color:var(--c-text-muted);font-size:.72rem;letter-spacing:.045em;text-transform:uppercase}.deal-card__price{display:block;color:var(--c-text);font:700 1.55rem/1.25 var(--font-display)}.deal-card__price-note{display:block;margin:.2rem 0 var(--space-md);color:var(--c-text-muted);font-size:.72rem}.deal-card__cta{width:100%;justify-content:center}
 .deal-empty{padding:var(--space-2xl);border:1px dashed var(--c-border);border-radius:var(--radius-lg);text-align:center;color:var(--c-text-light)}
 .deals-related{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-lg);margin-top:var(--space-xl)}.deals-related a{display:block;padding:var(--space-lg);border:1px solid var(--c-border);border-radius:var(--radius-lg);background:var(--c-surface);color:var(--c-text)}.deals-related a:hover{border-color:var(--c-primary);color:var(--c-primary)}.deals-related strong{display:block;margin-bottom:var(--space-xs)}.deals-related span{color:var(--c-text-light);font-size:.875rem}
 @media(max-width:900px){.deal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}

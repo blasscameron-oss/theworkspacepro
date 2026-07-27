@@ -4,7 +4,7 @@
 .editorial-shell .deals-hero__lede { max-width: 690px; margin: 30px 0 0; color: var(--editorial-muted); font-size: clamp(1.03rem, 1.8vw, 1.2rem); }
 .editorial-shell .deals-principles { padding: 24px 0 0; border-top: 2px solid var(--editorial-ink); }
 .editorial-shell .deals-principles ol { margin: 0; padding: 0; list-style: none; }
-.editorial-shell .deals-principles li { padding: 13px 0; display: grid; grid-template-columns: 34px 1fr; gap: 12px; border-bottom: 1px solid var(--editorial-line); color: #34423c; font-size: .88rem; }
+.editorial-shell .deals-principles li { padding: 13px 0; display: grid; grid-template-columns: 34px 1fr; gap: 12px; border-bottom: 1px solid var(--editorial-line); color: var(--editorial-ink); font-size: .88rem; }
 .editorial-shell .deals-principles li span { color: var(--editorial-accent); font-family: ui-monospace, monospace; font-size: .72rem; }
 .editorial-shell .deals-disclosure { grid-column: 1 / -1; max-width: none; margin: 0; padding: 22px 0 0; border: 0; border-top: 1px solid var(--editorial-line); border-radius: 0; background: transparent; color: var(--editorial-muted); font-size: .82rem; }
 .editorial-shell .deals-disclosure strong { color: var(--editorial-ink); }
@@ -31,6 +31,11 @@
 .editorial-shell .deal-card:hover { transform: none; background: #f0f4ef; box-shadow: none; }
 .editorial-shell .deal-card[hidden] { display: none; }
 .editorial-shell .deal-card__number { margin-bottom: 54px; color: #8c9992; font-family: ui-monospace, monospace; font-size: .72rem; }
+/* Optional licensed-image slot. Renders only when a catalog entry carries a
+   non-empty `image`; every entry is empty today, so nothing shows and the
+   card layout is unchanged. Future-proofs for later imagery. */
+.editorial-shell .deal-card__media { margin: -34px 0 22px; }
+.editorial-shell .deal-card__img { display: block; width: 120px; height: 120px; object-fit: contain; border: 1px solid var(--editorial-line); border-radius: 3px; background: var(--editorial-white); }
 .editorial-shell .deal-card__topline { margin: 0 0 13px; display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-start; gap: 8px 12px; }
 .editorial-shell .deal-card__category { color: var(--editorial-accent); font-size: .68rem; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
 .editorial-shell .deal-card__budget { padding: 2px 8px; border: 1px solid var(--editorial-line); border-radius: 999px; color: var(--editorial-muted); background: transparent; font-size: .66rem; }
@@ -84,3 +89,18 @@
   .editorial-shell .deals-related a:last-child { border-bottom: 0; }
 }
 @media (prefers-reduced-motion: reduce) { .editorial-shell .deal-card { transition: none; } }
+
+/* Dark-theme repaints. The base rules above bake in light hexes that flash or
+   drop below AA under the drafting-studio dark palette; these mirror the
+   editorial-v4 dark treatments so every text/UI pair stays >= AA. */
+/* Filled CTA: white on the pale dark-mode accent fails contrast, so use the
+   same solid spruce the commercial cards use in dark (mirrors editorial-v4). */
+[data-theme="dark"] .editorial-shell .deal-card__cta { color: #fff; background: #2a6553; }
+[data-theme="dark"] .editorial-shell .deal-card__cta:hover { color: #fff; background: #327a63; }
+/* Reset button hover: white-on-ink becomes white-on-near-white in dark. */
+[data-theme="dark"] .editorial-shell .deal-filter__reset:hover { color: #141714; background: var(--editorial-ink); }
+/* Card + related-link hovers used hardcoded light greens that flashed in dark. */
+[data-theme="dark"] .editorial-shell .deal-card:hover { background: #262c27; }
+[data-theme="dark"] .editorial-shell .deals-related a:hover { color: var(--editorial-ink); background: #262c27; }
+/* Image slot surface tracks the dark card tone. */
+[data-theme="dark"] .editorial-shell .deal-card__img { background: #12160f; }

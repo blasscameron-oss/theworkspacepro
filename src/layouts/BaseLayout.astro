@@ -1,6 +1,7 @@
 ---
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import { getReleaseSha } from '../lib/release';
 
 interface Props {
   title: string;
@@ -36,7 +37,7 @@ const {
   structuredData = [],
 } = Astro.props;
 const canonicalUrl = new URL(canonical, Astro.site);
-const releaseSha = import.meta.env.PUBLIC_RELEASE_SHA || 'dev';
+const releaseSha = getReleaseSha();
 const assetUrl = (path: string) => `${path}?v=${encodeURIComponent(releaseSha)}`;
 const schema = type === 'article'
   ? {
@@ -78,6 +79,9 @@ const schemas = [...new Map(
     <meta property="og:image" content="https://www.theworkspacepro.com/assets/images/og-default.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="/assets/images/favicon.svg" />
+    <script is:inline>
+      (function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+    </script>
     <link rel="stylesheet" href={assetUrl('/assets/css/fonts.css')} />
     <link rel="stylesheet" href={assetUrl('/assets/css/style.css')} />
     <link rel="stylesheet" href={assetUrl('/assets/css/premium-studio.css')} />

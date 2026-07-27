@@ -16,7 +16,6 @@
   <link rel="canonical" href="https://www.theworkspacepro.com/workspace-setup-calculator">
 <link rel="stylesheet" href="/assets/css/fonts.css">
   <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="/assets/css/bold.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -47,7 +46,7 @@
     .wsc-card { background: var(--c-surface); border: 1px solid var(--c-border); border-radius: var(--radius-lg); padding: var(--space-xl); box-shadow: var(--shadow-md); margin-bottom: var(--space-xl); }
     .wsc-card::before { content: ''; display: block; height: 4px; background: linear-gradient(90deg, var(--c-primary), var(--c-accent)); border-radius: var(--radius-lg) var(--radius-lg) 0 0; margin: calc(-1 * var(--space-xl)) calc(-1 * var(--space-xl)) var(--space-lg); }
 
-    .wsc-step-title { font-family: var(--font-display); font-size: 1.3rem; font-weight: 600; margin-bottom: var(--space-xs); }
+    .wsc-step-title { font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; margin-bottom: var(--space-xs); }
     .wsc-step-desc { font-size: 0.95rem; color: var(--c-text-light); margin-bottom: var(--space-lg); }
 
     /* Budget slider */
@@ -98,7 +97,7 @@
     .wsc-product-item { display: flex; gap: var(--space-lg); padding: var(--space-lg); background: var(--c-surface); border: 1px solid var(--c-border); border-radius: var(--radius); transition: box-shadow var(--t-fast); }
     .wsc-product-item:hover { box-shadow: var(--shadow-md); }
     .wsc-product-cat { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--c-primary); font-weight: 700; margin-bottom: var(--space-xs); }
-    .wsc-product-name { font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; margin-bottom: var(--space-xs); }
+    .wsc-product-name { font-family: var(--font-display); font-weight: 500; font-size: 1.1rem; margin-bottom: var(--space-xs); }
     .wsc-product-price { font-family: var(--font-mono); font-size: 1.1rem; font-weight: 700; color: var(--c-text); margin-bottom: var(--space-xs); }
     .wsc-product-why { font-size: 0.9rem; color: var(--c-text-light); line-height: 1.5; }
     .wsc-product-link { display: inline-block; margin-top: var(--space-sm); padding: var(--space-xs) var(--space-md); background: var(--c-primary); color: white; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: background var(--t-fast); }
@@ -128,13 +127,12 @@
       .wsc-product-item { flex-direction: column; }
     }
   </style>
-<link rel="stylesheet" href="/assets/css/reviews.css">
   <link rel="stylesheet" href="/assets/css/premium-studio.css">
   <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/images/favicon.svg">
   <meta name="theme-color" content="#c2410c">
   <script>
-    (function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();
+    (function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
   </script>
 </head>
 <body class="ps-shell" data-visual-master="workspace-setup-blueprint-v1">

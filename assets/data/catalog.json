@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-07-15",
+  "updated": "2026-07-27",
   "affiliateTag": "workspacepro-20",
   "products": [
     {
@@ -28,6 +28,7 @@
     },
     {
       "id": "B06Y3PGPR2",
+      "dealsShortlist": true,
       "name": "HON Ignition 2.0 Mid-Back",
       "price": 379,
       "url": "https://www.amazon.com/dp/B06Y3PGPR2/?tag=workspacepro-20",
@@ -54,6 +55,7 @@
     },
     {
       "id": "branch-ergonomic-chair",
+      "dealsShortlist": true,
       "name": "Branch Ergonomic Chair",
       "price": 329,
       "url": "https://www.branchfurniture.com/products/ergonomic-chair",
@@ -154,6 +156,7 @@
     },
     {
       "id": "ikea-lagkapten-desk",
+      "dealsShortlist": true,
       "name": "IKEA LAGKAPTEN Desk",
       "price": 89,
       "url": "https://www.ikea.com/us/en/p/lagkapten-desk-black-brown-bamboo-00503604/",
@@ -178,6 +181,7 @@
     },
     {
       "id": "B085KBN2DN",
+      "dealsShortlist": true,
       "name": "SHW Electric Standing Desk 55\\\"",
       "price": 299,
       "url": "https://www.amazon.com/dp/B085KBN2DN/?tag=workspacepro-20",
@@ -203,6 +207,7 @@
     },
     {
       "id": "branch-standing-desk",
+      "dealsShortlist": true,
       "name": "Branch Standing Desk",
       "price": 499,
       "url": "https://www.branchfurniture.com/products/standing-desk",
@@ -256,6 +261,7 @@
     },
     {
       "id": "B07DHK5DHN",
+      "dealsShortlist": true,
       "name": "Amazon Basics Monitor Stand (height)",
       "price": 25,
       "url": "https://www.amazon.com/dp/B07DHK5DHN/?tag=workspacepro-20",
@@ -304,6 +310,7 @@
     },
     {
       "id": "B088BC5HMM",
+      "dealsShortlist": true,
       "name": "ASUS ProArt PA278QV 27\\\" 1440p",
       "price": 299,
       "url": "https://www.amazon.com/dp/B088BC5HMM/?tag=workspacepro-20",
@@ -331,6 +338,7 @@
     },
     {
       "id": "B09DTDRJWP",
+      "dealsShortlist": true,
       "name": "Dell S2722QC 27\\\" 4K USB-C",
       "price": 350,
       "url": "https://www.amazon.com/dp/B09DTDRJWP/?tag=workspacepro-20",
@@ -404,6 +412,7 @@
     },
     {
       "id": "B00358RIRC",
+      "dealsShortlist": true,
       "name": "Ergotron LX Single Monitor Arm",
       "price": 189,
       "url": "https://www.amazon.com/dp/B00358RIRC/?tag=workspacepro-20",
@@ -451,6 +460,7 @@
     },
     {
       "id": "ikea-tertial-work-lamp",
+      "dealsShortlist": true,
       "name": "IKEA TERTIAL Work Lamp",
       "price": 15,
       "url": "https://www.ikea.com/us/en/p/tertial-work-lamp-gray-80342987/",
@@ -475,6 +485,7 @@
     },
     {
       "id": "B071CXPSDN",
+      "dealsShortlist": true,
       "name": "tomons LED Desk Lamp",
       "price": 30,
       "url": "https://www.amazon.com/dp/B071CXPSDN/?tag=workspacepro-20",
@@ -706,28 +717,6 @@
       "asin": "B0002DR45E",
       "retailer": "amazon",
       "image": "",
-      "evidenceLevel": "research",
-      "limitations": [
-        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
-      ]
-    },
-    {
-      "id": "ikea-markus",
-      "name": "IKEA Markus",
-      "price": 229,
-      "url": "https://www.ikea.com/us/en/p/markus-office-chair-vissle-dark-gray-70261150/",
-      "category": "Chair",
-      "desc": "High-back office chair listing; verify current dimensions, adjustments, upholstery, return policy, and warranty.",
-      "tiers": [
-        "budget",
-        "mid"
-      ],
-      "bestFor": [
-        "budget"
-      ],
-      "asin": null,
-      "retailer": "ikea",
-      "image": null,
       "evidenceLevel": "research",
       "limitations": [
         "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."

@@ -1,4 +1,6 @@
 ---
+import { getReleaseSha } from '../lib/release';
+
 interface Props {
   title: string;
   description: string;
@@ -8,7 +10,7 @@ interface Props {
 
 const { title, description, canonical, visualMaster } = Astro.props;
 const canonicalUrl = new URL(canonical, Astro.site);
-const releaseSha = import.meta.env.PUBLIC_RELEASE_SHA || 'dev';
+const releaseSha = getReleaseSha();
 const assetUrl = (path: string) => `${path}?v=${encodeURIComponent(releaseSha)}`;
 ---
 
