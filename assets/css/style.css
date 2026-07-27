@@ -849,15 +849,19 @@ input[type="range"]::-moz-range-thumb {
 }
 .tip-item:hover { box-shadow: var(--shadow-md); }
 .tip-number {
-  font-family: var(--font-display);
-  font-size: 2rem;
+  /* Mono plate numeral — matches .path-card__number's instrument voice
+     (mono stack, tabular, ink/spruce at ~50% opacity) instead of the
+     legacy display-serif treatment. */
+  font-family: var(--ps-font-data, var(--font-mono), monospace);
+  font-size: 1.5rem;
   font-weight: 700;
-  color: var(--c-primary-soft);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.01em;
+  color: color-mix(in srgb, var(--ps-text, var(--c-text)) 50%, transparent);
   line-height: 1;
   flex-shrink: 0;
   width: 48px;
 }
-[data-theme="dark"] .tip-number { color: var(--c-primary); }
 .tip-content h3 { font-size: 1.125rem; margin-bottom: var(--space-xs); }
 .tip-content p { font-size: 0.9375rem; color: var(--c-text-light); }
 
