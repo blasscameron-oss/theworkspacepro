@@ -1,4 +1,63 @@
-# Finch handoff — restore one correct production release
+# Finch handoff
+
+## CURRENT HANDOFF (2026-07-27): ship branch `redesign/premium-2026-07-26`
+
+**State.** Production currently serves a manually-deployed build of
+`fix/ci-content-contracts` (all six of that branch's fixes verified live on
+2026-07-26, but stamped `twp-release: dev`, so its assets are versioned
+`?v=dev`). Local branch `redesign/premium-2026-07-26` (tip `bc7e8f1` + deals
+work, ~24 commits) contains `fix/ci-content-contracts` in its ancestry plus:
+pipeline fixes (monitor-test mock, deploy.yml release-timestamp quoting,
+`src/lib/release.ts` real-SHA cache busting), the legibility/theme repairs
+(theme is now opt-in via the header toggle; auto-dark removed; cascade
+collisions fixed), the full blueprint redesign (variable Fraunces, drafting
+hero, magazine grids, title-block footer, warm-charcoal dark mode), and the
+deals consolidation (catalog.json is the single product source — 33 products,
+counts/dates derived, matrix generated at build, original category diagrams
+with "not a product photo" captions in all 11 deal cards).
+
+**Deploy path — unchanged rule.** Do NOT run `wrangler pages deploy`
+manually; per `DEPLOYMENT-HANDOFF.md` the only supported path is a push to
+`main`, which runs `.github/workflows/deploy.yml` (build → astro check →
+validator → node tests → Playwright → Pages deploy → Worker deploy →
+authenticated monitor). The manual-deploy cache problem is additionally fixed
+in code now: `src/lib/release.ts` derives a real short SHA when
+`PUBLIC_RELEASE_SHA` is unset, so `?v=dev` can never ship again.
+
+**Verified locally on this branch (2026-07-27):** `npm run build` (43 pages),
+`npm run validate` (43 HTML / 271 files), `npm run check` (0 diagnostics),
+`node --test tests/*.test.mjs` (44/44), `npx playwright test` (24 passed,
+4 expected skips). WCAG AA contrast verified for changed pairs in both themes.
+
+**Steps:**
+1. `git push origin fix/ci-content-contracts redesign/premium-2026-07-26`
+   (backup both; pushing non-main branches does not deploy).
+2. Open a PR `redesign/premium-2026-07-26` → `main`, review the diff, merge.
+   The merge commit triggers the single production deployment. Do not also
+   merge `fix/ci-content-contracts` separately — it is already contained.
+3. Watch the run: `gh run list --workflow deploy.yml --limit 1`.
+
+**Post-deploy smoke checks:**
+- `curl -s https://www.theworkspacepro.com | grep twp-release` → real SHA, not `dev`.
+- Assets referenced as `?v=<sha>`; old `?v=dev` objects become unreferenced (no purge needed).
+- `/deals` → 11 cards, each with a FIG category diagram and the
+  "CATEGORY DIAGRAM — NOT A PRODUCT PHOTO" caption; totals read 33/11 (derived).
+- Theme toggle in header works; site defaults to light; no auto-dark.
+- `/podcasts` → 301 `/guides`; `/favicon.ico` → 200; `release.json` `ts` is a real ISO timestamp.
+- `/build-your-office` hero title legible in both themes (was the invisible-text bug).
+
+**Still open (not blockers):** rotate the Cloudflare API token flagged in the
+2026-07-22 section below; archive the superseded `workspace-pro-minimal` repo;
+owner is Amazon-only by choice — no PA-API/images until 3 qualifying sales
+(never hotlink Amazon image URLs; category diagrams are the compliant visual).
+
+Sections below this line are historical (2026-07-22 incident, since resolved);
+note their "34 products / exactly 11 hardcoded picks" descriptions predate the
+catalog consolidation and no longer describe the code.
+
+---
+
+# Previous handoff — restore one correct production release (historical)
 
 - **Prepared:** 2026-07-22
 - **Priority:** Production incident; finish before more design/content work
