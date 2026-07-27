@@ -64,15 +64,21 @@
 
     /* Results grid */
     .ehc-results { display: flex; flex-direction: column; gap: var(--space-md); }
-    .ehc-result-row { display: flex; justify-content: space-between; align-items: center; padding: var(--space-md) var(--space-lg); background: var(--c-bg-alt); border-radius: var(--radius); border-left: 4px solid var(--c-primary); transition: background var(--t-fast); }
+    .ehc-result-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: var(--space-md) var(--space-lg); background: var(--c-bg-alt); border-radius: var(--radius); border-left: 4px solid var(--c-primary); transition: background var(--t-fast); }
     .ehc-result-row:hover { background: var(--c-border); }
     .ehc-result-label { font-weight: 500; font-size: 0.95rem; }
     .ehc-result-label small { display: block; font-weight: 400; font-size: 0.8rem; color: var(--c-text-muted); margin-top: 2px; }
-    .ehc-result-value { font-family: var(--font-mono); font-size: 1.2rem; font-weight: 700; color: var(--c-text); }
+    .ehc-result-value { font-family: var(--font-mono); font-size: 1.2rem; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--c-text); }
     .ehc-result-unit { font-size: 0.85rem; font-weight: 400; color: var(--c-text-muted); margin-left: var(--space-xs); }
     .ehc-result-output { text-align: right; flex: 0 0 auto; margin-left: var(--space-md); }
-    .ehc-result-range { display: block; margin-top: 2px; color: var(--c-text-muted); font-size: 0.72rem; font-weight: 500; white-space: nowrap; }
+    .ehc-result-range { display: block; margin-top: 2px; color: var(--c-text-muted); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; font-variant-numeric: tabular-nums; white-space: nowrap; }
     .ehc-result-icon { font-size: 1.3rem; margin-right: var(--space-sm); }
+    /* Fit-fingerprint rail: terracotta fill on a hairline-ticked cream track;
+       one bar per row, spanning full width beneath the value. */
+    .ehc-bar { flex-basis: 100%; height: 0.5rem; margin-top: 12px; border: 1px solid var(--ps-line-strong, rgba(23,26,23,.28)); border-radius: 999px; background-color: var(--ps-cream-200, #eee6da); background-image: repeating-linear-gradient(90deg, var(--ps-line, rgba(23,26,23,.14)) 0 1px, transparent 1px 8%); overflow: hidden; }
+    .ehc-bar__fill { display: block; width: 0; height: 100%; background: var(--ps-brand, #b84d2a); border-radius: inherit; transition: width 0.34s var(--ps-ease, cubic-bezier(.22,1,.36,1)); }
+    [data-theme="dark"] .ehc-bar { background-color: rgba(244,239,231,.08); }
+    @media (prefers-reduced-motion: reduce) { .ehc-bar__fill { transition: none; } }
 
     .ehc-result-highlight { border-left-color: var(--c-accent); }
     .ehc-result-highlight .ehc-result-value { color: var(--c-accent); }
@@ -443,6 +449,53 @@
 
       // Update SVG illustration
       updateSvg(h);
+
+      // Update the fit-fingerprint bars
+      updateBars(estimates);
+    }
+
+    // ---- Fit-fingerprint bars ----
+    // Each metric's value is mapped to its position across the full slider
+    // span (shortest to tallest supported height), so the terracotta fill
+    // tracks the slider live.
+    var barFills = [];
+    var BAR_LO = null, BAR_HI = null;
+
+    function setupBars() {
+      var map = [
+        ['standingDesk', 'standingDesk'],
+        ['sittingDesk', 'sittingDesk'],
+        ['chairHeight', 'chair'],
+        ['monitorHeight', 'monitorTop'],
+        ['monitorDistance', 'monitorDistance'],
+        ['keyboardHeight', 'keyboard']
+      ];
+      BAR_LO = TWPHeightMath.computeFromInches(parseFloat(heightSlider.min) || 48);
+      BAR_HI = TWPHeightMath.computeFromInches(parseFloat(heightSlider.max) || 84);
+      map.forEach(function (pair) {
+        var valEl = document.getElementById(pair[0]);
+        if (!valEl) return;
+        var row = valEl.closest('.ehc-result-row');
+        if (!row) return;
+        var track = document.createElement('div');
+        track.className = 'ehc-bar';
+        track.setAttribute('aria-hidden', 'true');
+        var fill = document.createElement('span');
+        fill.className = 'ehc-bar__fill';
+        track.appendChild(fill);
+        row.appendChild(track);
+        barFills.push({ key: pair[1], fill: fill });
+      });
+    }
+
+    function updateBars(estimates) {
+      if (!BAR_LO) return;
+      barFills.forEach(function (b) {
+        var lo = BAR_LO[b.key], hi = BAR_HI[b.key], v = estimates[b.key];
+        var pct = hi > lo ? ((v - lo) / (hi - lo)) * 100 : 50;
+        pct = Math.max(3, Math.min(100, pct));
+        b.fill.style.width = pct.toFixed(1) + '%';
+      });
     }
 
     function updateSvg(h) {
@@ -618,7 +671,8 @@
     // ---- Event listeners ----
     heightSlider.addEventListener('input', updateAll);
 
-    // Initial update
+    // Build the fingerprint bars, then run the first render
+    setupBars();
     updateAll();
   })();
   </script>
