@@ -170,6 +170,20 @@ body.editorial-shell {
 .editorial-shell .theme-toggle:hover { color: var(--editorial-ink); border-color: var(--editorial-muted); }
 .editorial-shell .theme-toggle:focus-visible { outline: 3px solid color-mix(in srgb, var(--editorial-accent) 45%, transparent); outline-offset: 2px; }
 
+/* Micro-interactions: unified focus ring + a small arrow nudge on card hover.
+   All motion is short, eased, and disabled under reduced-motion. */
+.editorial-shell a:focus-visible,
+.editorial-shell button:focus-visible { outline: 3px solid color-mix(in srgb, var(--editorial-accent) 50%, transparent); outline-offset: 3px; border-radius: 2px; }
+.text-link span[aria-hidden],
+.written-grid__cta span[aria-hidden] { display: inline-block; transition: transform .24s var(--ps-ease, cubic-bezier(.22,1,.36,1)); }
+.path-card:hover .text-link span[aria-hidden],
+.library-card:hover .text-link span[aria-hidden],
+.written-grid a:hover .written-grid__cta span[aria-hidden] { transform: translateX(4px); }
+@media (prefers-reduced-motion: reduce) {
+  .text-link span[aria-hidden],
+  .written-grid__cta span[aria-hidden] { transition: none; transform: none; }
+}
+
 .editorial-section,
 .library-section,
 .guide-layout,
