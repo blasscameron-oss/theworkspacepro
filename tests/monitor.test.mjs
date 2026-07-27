@@ -17,6 +17,7 @@ const redirects = {
   '/quiz/': '/#assessment',
   '/community-setups/': '/',
   '/resources/': '/guides',
+  '/podcasts': '/guides',
 };
 
 function createFetch({ dealsBody = bodies['/deals'] } = {}) {
