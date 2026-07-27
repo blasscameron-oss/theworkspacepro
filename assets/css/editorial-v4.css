@@ -16,7 +16,12 @@ html { scroll-behavior: smooth; }
 body.editorial-shell {
   margin: 0;
   color: var(--editorial-ink);
-  background: var(--editorial-paper);
+  background-color: var(--editorial-paper);
+  /* Barely-there drafting-paper grid — a couple percent ink, sits behind the
+     white cards so measured text contrast is unaffected. */
+  background-image:
+    repeating-linear-gradient(0deg, rgba(29,40,36,.022) 0 1px, transparent 1px 32px),
+    repeating-linear-gradient(90deg, rgba(29,40,36,.022) 0 1px, transparent 1px 32px);
   font-family: Inter, ui-sans-serif, system-ui, sans-serif;
   line-height: 1.65;
 }
@@ -129,11 +134,39 @@ body.editorial-shell {
   display: block;
   margin: 0 0 14px;
   color: var(--editorial-accent);
-  font-size: .72rem;
+  font-family: var(--ps-font-data, ui-monospace, monospace);
+  font-size: .7rem;
   font-weight: 700;
   letter-spacing: .13em;
   text-decoration: none;
   text-transform: uppercase;
+}
+/* Engineering-tick kicker: a hairline measure rule before the eyebrow. */
+.section-heading .eyebrow,
+.compare-heading .eyebrow,
+.library-hero .eyebrow,
+.editorial-intro .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-heading .eyebrow::before,
+.compare-heading .eyebrow::before,
+.editorial-intro .eyebrow::before {
+  width: 1.7rem;
+  height: .55rem;
+  content: "";
+  background: repeating-linear-gradient(90deg, currentColor 0 1px, transparent 1px 5px);
+  border-block: 1px solid currentColor;
+}
+/* Mono metadata voice: dates, toplines, prices, meta lines, bylines. */
+.library-card__meta,
+.commercial-card__topline,
+.commercial-card__price,
+.guide-byline,
+.compare-principles span {
+  font-family: var(--ps-font-data, ui-monospace, monospace);
+  font-variant-numeric: tabular-nums;
 }
 
 .editorial-intro { max-width: 920px; text-align: center; }
@@ -260,13 +293,23 @@ body.editorial-shell {
 .source-list { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--editorial-line); }
 .disclosure { padding: 18px 20px; background: #ece9e0; font-size: .84rem; }
 
-.editorial-footer { padding: 72px max(20px, calc((100% - var(--editorial-max)) / 2)); color: #d9e0dc; background: var(--editorial-ink); }
-.editorial-footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 70px; }
+/* Footer as an engineering-drawing title block: boxed corner stamp, hairline
+   rules dividing labelled cells, all metadata in the mono instrument voice. */
+.editorial-footer { padding: clamp(48px, 7vw, 84px) max(20px, calc((100% - var(--editorial-max)) / 2)); color: #d9e0dc; background: var(--editorial-ink); background-image: repeating-linear-gradient(0deg, rgba(255,255,255,.022) 0 1px, transparent 1px 30px), repeating-linear-gradient(90deg, rgba(255,255,255,.022) 0 1px, transparent 1px 30px); }
+.editorial-footer__stamp { border: 1px solid rgba(217,224,220,.36); }
+.editorial-footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr; }
+.editorial-footer__grid > * { padding: clamp(22px, 3vw, 34px); border-left: 1px solid rgba(217,224,220,.18); }
+.editorial-footer__grid > *:first-child { border-left: 0; }
+.editorial-footer .wordmark--footer { display: flex; align-items: center; gap: 11px; margin: 0 0 14px; color: #fff; font-family: var(--font-display, Fraunces, Georgia, serif); font-size: 1.25rem; }
+.editorial-footer .wordmark--footer .wordmark__mark { border-color: currentColor; }
 .editorial-footer p { max-width: 430px; color: #aebbb4; }
 .editorial-footer nav { display: grid; align-content: start; gap: 10px; }
-.editorial-footer nav strong { margin-bottom: 8px; color: white; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; }
+.editorial-footer nav strong { margin-bottom: 10px; color: #fff; font-family: var(--ps-font-data, ui-monospace, monospace); font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
 .editorial-footer a { color: #bac6c0; font-size: .9rem; text-decoration: none; }
-.editorial-footer__legal { margin-top: 64px; padding-top: 22px; display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid #42504a; color: #96a49d; font-size: .78rem; }
+.editorial-footer a:hover { color: #fff; }
+.editorial-footer__legal { margin: 0; padding: 16px clamp(22px, 3vw, 34px); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 20px; border: 1px solid rgba(217,224,220,.36); border-top: 0; color: #96a49d; font-family: var(--ps-font-data, ui-monospace, monospace); font-size: .72rem; letter-spacing: .03em; }
+.editorial-footer__legal span { display: inline-flex; align-items: center; gap: 9px; }
+.editorial-footer__legal span:first-child::before { content: "◵"; color: var(--ps-terracotta-500, #cf643d); font-size: .95rem; }
 
 /* Transitional assessment: keep its tested behavior, remove visual gimmicks. */
 .migrated-assessment .hero { min-height: auto; padding-block: clamp(56px, 8vw, 100px); background: var(--editorial-paper) !important; }
