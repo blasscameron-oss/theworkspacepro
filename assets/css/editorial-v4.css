@@ -269,7 +269,48 @@ body.editorial-shell {
   border: 1px solid var(--editorial-line);
   border-radius: 5px;
   color: var(--editorial-ink);
-  background: #ebe8df;
+  background: var(--ps-paper-alt, #ebe8df);
+  /* Drafting-paper ground: a faint blueprint grid behind the line drawing. */
+  background-image:
+    repeating-linear-gradient(90deg, var(--ps-line, rgba(23,26,23,.06)) 0 1px, transparent 1px 26px),
+    repeating-linear-gradient(0deg, var(--ps-line, rgba(23,26,23,.06)) 0 1px, transparent 1px 26px);
+  background-position: -1px -1px;
+}
+/* Mono instrument labels; one measurement reads terracotta as the accent. */
+.migrated-assessment .workspace-instrument__labels text {
+  font-family: var(--ps-font-data, ui-monospace, monospace);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .09em;
+  fill: var(--ps-text-soft, #3d443e);
+}
+.migrated-assessment .workspace-instrument__labels text:nth-of-type(4) {
+  fill: var(--ps-terracotta-600, #b84d2a);
+}
+/* Draw-the-drawing-in on load: solid structure lines animate their stroke,
+   then rails/labels/nodes fade up. Motion is opt-in only. */
+@media (prefers-reduced-motion: no-preference) {
+  .migrated-assessment .workspace-instrument__drawing > g:first-of-type > * {
+    stroke-dasharray: 1300;
+    stroke-dashoffset: 1300;
+    animation: ps-draw-in 1.5s var(--ps-ease, cubic-bezier(.22,1,.36,1)) forwards;
+  }
+  .migrated-assessment .workspace-instrument__drawing > g:first-of-type > *:nth-child(2) { animation-delay: .18s; }
+  .migrated-assessment .workspace-instrument__drawing > g:first-of-type > *:nth-child(3) { animation-delay: .34s; }
+  .migrated-assessment .workspace-instrument__rails { opacity: 0; animation: ps-fade-in .6s ease .95s forwards; }
+  .migrated-assessment .workspace-instrument__labels { opacity: 0; animation: ps-fade-in .7s ease 1.15s forwards; }
+  .migrated-assessment .workspace-instrument__drawing > circle { opacity: 0; animation: ps-fade-in .5s ease 1.4s forwards; }
+}
+@keyframes ps-draw-in { to { stroke-dashoffset: 0; } }
+@keyframes ps-fade-in { from { opacity: 0; } to { opacity: 1; } }
+.migrated-assessment .workspace-instrument__rails { stroke: var(--ps-instrument, #28614f); }
+/* FIG-NN plate marker prefixes the caption in the mono instrument voice. */
+.migrated-assessment .workspace-instrument figcaption::before {
+  content: "FIG-01";
+  margin-right: 12px;
+  color: var(--ps-instrument, #28614f);
+  font: 700 .72rem/1.5 var(--ps-font-data, ui-monospace, monospace);
+  letter-spacing: .09em;
 }
 .migrated-assessment .workspace-instrument__photo,
 .migrated-assessment .workspace-instrument__drawing {
@@ -304,31 +345,46 @@ body.editorial-shell {
   background: var(--editorial-white);
   font-size: .84rem;
 }
+/* Title-block plate: reads like the data block on an engineering drawing —
+   mono figures over hairline rules, tracked-out labels, a leading rule. */
 .migrated-assessment .hero__stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1px;
-  margin-top: 28px;
+  gap: 0;
+  margin-top: 30px;
   padding: 0;
   overflow: hidden;
-  border: 1px solid var(--editorial-line);
-  background: var(--editorial-line);
+  border: 1px solid var(--ps-line-strong, var(--editorial-line));
+  background: var(--editorial-white);
 }
 .migrated-assessment .hero__stats > div {
   min-width: 0;
-  padding: 18px;
+  padding: 16px 18px;
   background: var(--editorial-white);
+  border-left: 1px solid var(--ps-line, var(--editorial-line));
 }
+.migrated-assessment .hero__stats > div:first-child { border-left: 0; }
 .migrated-assessment .stat__number {
   color: var(--editorial-ink);
-  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  font-family: var(--ps-font-data, ui-monospace, monospace);
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  font-variation-settings: normal;
+  letter-spacing: -.01em;
+  line-height: 1;
 }
 .migrated-assessment .stat__label {
-  margin-top: 5px;
-  color: var(--editorial-muted);
-  font-size: .68rem;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--ps-line, var(--editorial-line));
+  color: var(--ps-instrument, var(--editorial-muted));
+  font-family: var(--ps-font-data, ui-monospace, monospace);
+  font-size: .62rem;
+  font-weight: 700;
   line-height: 1.4;
-  letter-spacing: .07em;
+  letter-spacing: .11em;
+  text-transform: uppercase;
 }
 .migrated-assessment .assessment-card { border: 1px solid var(--editorial-line); border-radius: 6px; background: var(--editorial-white); box-shadow: 0 18px 50px rgba(29, 40, 36, .08); }
 .migrated-assessment .assessment-card__kicker {
