@@ -112,7 +112,7 @@
 .ps-grid { display: grid; grid-template-columns: repeat(var(--ps-columns, 3), minmax(0, 1fr)); gap: clamp(1rem, 2.2vw, 2rem); }
 .ps-kicker { display: inline-flex; align-items: center; gap: var(--ps-space-3); color: var(--ps-instrument); font: 700 var(--ps-step--1)/1.2 var(--ps-font-data); letter-spacing: .11em; text-transform: uppercase; }
 .ps-kicker::before { width: 1.7rem; height: .65rem; content: ""; background: repeating-linear-gradient(90deg, var(--ps-instrument) 0 1px, transparent 1px 5px); border-block: 1px solid var(--ps-instrument); }
-.ps-display { max-width: 15ch; margin: 0; font-size: var(--ps-step-5); font-weight: 550; line-height: .98; letter-spacing: -.045em; }
+.ps-display { max-width: 15ch; margin: 0; font-size: var(--ps-step-5); font-weight: 500; line-height: .98; letter-spacing: -.045em; }
 .ps-lede { max-width: 38rem; color: var(--ps-text-soft); font-size: var(--ps-step-1); line-height: 1.65; }
 
 /* Editorial hero and page headers */

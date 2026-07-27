@@ -98,7 +98,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 input, textarea, select { font-family: inherit; font-size: inherit; }
 
 /* Typography */
-h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height: 1.2; letter-spacing: -0.02em; }
+/* Fraunces self-hosts only 500 & 700; 600 synthesized a faux bold. Match
+   editorial-v4's true 500 weight. */
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; line-height: 1.2; letter-spacing: -0.02em; }
 h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
 h2 { font-size: clamp(1.5rem, 3.5vw, 2.25rem); }
 h3 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); }
@@ -2191,7 +2193,7 @@ img.product-thumb {
 .deal-card__topline{display:flex;align-items:center;justify-content:space-between;gap:var(--space-sm);margin-bottom:var(--space-md)}
 .deal-card__category{color:var(--c-primary);font-size:.72rem;font-weight:750;letter-spacing:.07em;text-transform:uppercase}.deal-card__budget{padding:.2rem .55rem;border-radius:var(--radius-full);background:var(--c-bg-alt);color:var(--c-text-light);font-size:.7rem;font-weight:650}
 .deal-card__title{margin-bottom:var(--space-sm);font-size:1.3rem}.deal-card__desc{margin-bottom:var(--space-lg);max-width:none;color:var(--c-text-light);font-size:.9rem}
-.deal-card__value{margin-top:auto;padding-top:var(--space-md);border-top:1px solid var(--c-border)}.deal-card__price-label{display:block;color:var(--c-text-muted);font-size:.72rem;letter-spacing:.045em;text-transform:uppercase}.deal-card__price{display:block;color:var(--c-text);font:650 1.55rem/1.25 var(--font-display)}.deal-card__price-note{display:block;margin:.2rem 0 var(--space-md);color:var(--c-text-muted);font-size:.72rem}.deal-card__cta{width:100%;justify-content:center}
+.deal-card__value{margin-top:auto;padding-top:var(--space-md);border-top:1px solid var(--c-border)}.deal-card__price-label{display:block;color:var(--c-text-muted);font-size:.72rem;letter-spacing:.045em;text-transform:uppercase}.deal-card__price{display:block;color:var(--c-text);font:700 1.55rem/1.25 var(--font-display)}.deal-card__price-note{display:block;margin:.2rem 0 var(--space-md);color:var(--c-text-muted);font-size:.72rem}.deal-card__cta{width:100%;justify-content:center}
 .deal-empty{padding:var(--space-2xl);border:1px dashed var(--c-border);border-radius:var(--radius-lg);text-align:center;color:var(--c-text-light)}
 .deals-related{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-lg);margin-top:var(--space-xl)}.deals-related a{display:block;padding:var(--space-lg);border:1px solid var(--c-border);border-radius:var(--radius-lg);background:var(--c-surface);color:var(--c-text)}.deals-related a:hover{border-color:var(--c-primary);color:var(--c-primary)}.deals-related strong{display:block;margin-bottom:var(--space-xs)}.deals-related span{color:var(--c-text-light);font-size:.875rem}
 @media(max-width:900px){.deal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
