@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-const releaseSha = import.meta.env.PUBLIC_RELEASE_SHA || 'dev';
+import { getReleaseSha } from '../../lib/release';
+const releaseSha = getReleaseSha();
 
 const comparisons = [
   ['Desks', 'Branch vs Uplift', 'Assembly, motors, customization, and who each desk is built for.', '/compare/branch-vs-uplift'],
