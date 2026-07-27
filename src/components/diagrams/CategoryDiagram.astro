@@ -1,0 +1,360 @@
+---
+/*
+ * CategoryDiagram — original, brand-neutral blueprint line art for each product
+ * category on /deals and the homepage. These are honest technical archetypes
+ * (a generic task chair, a generic sit-stand desk, ...), NOT product photos and
+ * NOT any brand's distinctive design. Every card carries a "not a product photo"
+ * caption so the drawing can never be mistaken for real imagery.
+ *
+ * Theming: structure lines use `currentColor` (the card ink, which flips per
+ * theme automatically); measurement rails/arrows/labels use --editorial-accent
+ * (themed). Both pairs clear WCAG 3:1 against the card surfaces in light + dark.
+ * Dimensions are plausible ergonomic ranges consistent with height-math.js.
+ */
+type DiagramType =
+  | 'chair'
+  | 'standing-desk'
+  | 'desk'
+  | 'monitor'
+  | 'monitor-arm'
+  | 'lamp'
+  | 'riser';
+
+interface Props {
+  type: DiagramType;
+  class?: string;
+}
+
+const { type, class: className } = Astro.props;
+
+const META: Record<DiagramType, { fig: string; label: string; title: string; desc: string }> = {
+  chair: {
+    fig: 'FIG-02',
+    label: 'Task chair',
+    title: 'Task chair — schematic',
+    desc: 'Side-profile line drawing of a generic five-star office task chair with a measurement rail marking a 16 to 21 inch seat-height range.',
+  },
+  'standing-desk': {
+    fig: 'FIG-03',
+    label: 'Sit-stand desk',
+    title: 'Sit-stand desk — schematic',
+    desc: 'Line drawing of a generic motorized sit-stand desk with two-stage legs and a rail marking a 25 to 50 inch surface-height range.',
+  },
+  desk: {
+    fig: 'FIG-04',
+    label: 'Fixed desk',
+    title: 'Fixed-height desk — schematic',
+    desc: 'Line drawing of a generic fixed-height work desk with rails marking an approximately 29 inch surface height and 24 inch depth.',
+  },
+  monitor: {
+    fig: 'FIG-05',
+    label: 'Monitor',
+    title: 'Monitor on stand — schematic',
+    desc: 'Line drawing of a generic 27-inch monitor on a stand with rails marking the diagonal and an 18 to 28 inch viewing distance.',
+  },
+  'monitor-arm': {
+    fig: 'FIG-06',
+    label: 'Monitor arm',
+    title: 'Monitor arm — schematic',
+    desc: 'Line drawing of a generic desk-clamp gas-spring monitor arm with a VESA mount and a rail marking horizontal reach.',
+  },
+  lamp: {
+    fig: 'FIG-07',
+    label: 'Task light',
+    title: 'Task lamp — schematic',
+    desc: 'Line drawing of a generic articulated task lamp with a clamp base and a rail marking its adjustable reach.',
+  },
+  riser: {
+    fig: 'FIG-08',
+    label: 'Monitor riser',
+    title: 'Monitor riser — schematic',
+    desc: 'Line drawing of a generic monitor riser shelf lifting a screen, with a rail marking the added height.',
+  },
+};
+
+const meta = META[type];
+const uid = `diag-${type}-${Math.random().toString(36).slice(2, 8)}`;
+const titleId = `${uid}-t`;
+const descId = `${uid}-d`;
+---
+<figure class:list={['cat-diagram', className]} aria-labelledby={`${titleId} ${descId}`}>
+  <span class="cat-diagram__index" aria-hidden="true">{meta.fig}</span>
+  <svg class="cat-diagram__svg" viewBox="0 0 320 200" role="img" aria-labelledby={`${titleId} ${descId}`}>
+    <title id={titleId}>{meta.title}</title>
+    <desc id={descId}>{meta.desc}</desc>
+
+    {type === 'chair' && (
+      <>
+        <g class="cat-diagram__struct" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          {/* five-star base + casters (side profile) */}
+          <circle cx="70" cy="181" r="7" /><circle cx="150" cy="181" r="7" />
+          <path d="M110 168 L70 178 M110 168 L150 178 M110 168 L110 140" />
+          {/* seat pan wedge */}
+          <path d="M96 143 L92 132 L166 129 L170 139 Z" />
+          {/* reclined mesh backrest (two edges + top rail) */}
+          <path d="M101 132 C95 104 96 82 108 56 M114 130 C110 106 111 88 120 62 M108 56 L120 62" />
+          {/* armrest */}
+          <path d="M128 130 L128 111 L152 111" />
+        </g>
+        <g class="cat-diagram__rail" fill="none" stroke-width="1.5" stroke-dasharray="5 6">
+          <path d="M196 181 L196 130" />
+          <path d="M164 111 L164 130" />
+        </g>
+        <g class="cat-diagram__arrow" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M191 175 L196 181 L201 175 M191 136 L196 130 L201 136 M189 181 L203 181 M189 130 L203 130" />
+        </g>
+        <g class="cat-diagram__labels">
+          <text x="210" y="152">SEAT HT</text>
+          <text x="210" y="165">16–21″</text>
+          <text x="172" y="106">ARM 8″</text>
+        </g>
+      </>
+    )}
+
+    {type === 'standing-desk' && (
+      <>
+        <g class="cat-diagram__struct" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          {/* worktop */}
+          <path d="M60 96 L236 96 L236 106 L60 106 Z" />
+          {/* two-stage telescoping legs */}
+          <path d="M84 106 L84 176 M96 106 L96 176 M212 106 L212 176 M224 106 L224 176" />
+          {/* inner stage seam */}
+          <path d="M84 138 L96 138 M212 138 L224 138" />
+          {/* feet */}
+          <path d="M74 176 L106 176 M202 176 L234 176" />
+          {/* control keypad on the underside */}
+          <path d="M150 106 L150 118 M142 118 L158 118" />
+        </g>
+        <g class="cat-diagram__rail" fill="none" stroke-width="1.5" stroke-dasharray="5 6">
+          <path d="M270 96 L270 176" />
+          <path d="M60 74 L236 74" />
+        </g>
+        <g class="cat-diagram__arrow" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M265 102 L270 96 L275 102 M265 170 L270 176 L275 170 M263 96 L277 96 M263 176 L277 176" />
+          <path d="M66 69 L60 74 L66 79 M230 69 L236 74 L230 79 M60 72 L60 76 M236 72 L236 76" />
+        </g>
+        <g class="cat-diagram__labels">
+          <text x="252" y="132" transform="rotate(-90 252 132)">HEIGHT 25–50″</text>
+          <text x="112" y="66">SURFACE 48″</text>
+        </g>
+      </>
+    )}
+
+    {type === 'desk' && (
+      <>
+        <g class="cat-diagram__struct" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          {/* worktop (slight 3/4 depth read) */}
+          <path d="M56 100 L232 100 L232 110 L56 110 Z" />
+          <path d="M232 100 L252 88 L76 88 L56 100" />
+          {/* fixed legs */}
+          <path d="M74 110 L74 178 M92 110 L92 178 M214 110 L214 178 M232 110 L232 178" />
+          {/* modesty stretcher */}
+          <path d="M92 150 L214 150" />
+        </g>
+        <g class="cat-diagram__rail" fill="none" stroke-width="1.5" stroke-dasharray="5 6">
+          <path d="M266 100 L266 178" />
+          <path d="M74 190 L232 190" />
+        </g>
+        <g class="cat-diagram__arrow" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M261 106 L266 100 L271 106 M261 172 L266 178 L271 172 M259 100 L273 100 M259 178 L273 178" />
+          <path d="M80 185 L74 190 L80 195 M226 185 L232 190 L226 195 M74 188 L74 192 M232 188 L232 192" />
+        </g>
+        <g class="cat-diagram__labels">
+          <text x="248" y="143" transform="rotate(-90 248 143)">HEIGHT 29″</text>
+          <text x="126" y="184">DEPTH 24″</text>
+        </g>
+      </>
+    )}
+
+    {type === 'monitor' && (
+      <>
+        <g class="cat-diagram__struct" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          {/* panel + bezel */}
+          <path d="M96 44 L224 44 L224 132 L96 132 Z" />
+          <path d="M106 54 L214 54 L214 122 L106 122 Z" />
+          {/* neck + foot */}
+          <path d="M160 132 L160 158 M138 172 L182 172 L176 158 L144 158 Z" />
+          <path d="M138 172 L120 178 M182 172 L200 178" />
+        </g>
+        <g class="cat-diagram__rail" fill="none" stroke-width="1.5" stroke-dasharray="5 6">
+          <path d="M106 122 L214 54" />
+          <path d="M96 152 L224 152" />
+        </g>
+        <g class="cat-diagram__arrow" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M102 148 L96 152 L102 156 M218 148 L224 152 L218 156 M96 150 L96 154 M224 150 L224 154" />
+        </g>
+        <g class="cat-diagram__labels">
+          <text x="150" y="92" transform="rotate(-32 150 92)">27″ DIAG</text>
+          <text x="112" y="167">VIEW DIST 18–28″</text>
+        </g>
+      </>
+    )}
+
+    {type === 'monitor-arm' && (
+      <>
+        <g class="cat-diagram__struct" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          {/* desk edge + C-clamp */}
+          <path d="M40 150 L150 150 L150 160 L40 160" />
+          <path d="M60 150 L60 138 L74 138 L74 172 L60 172 L60 160" />
+          {/* riser post */}
+          <path d="M67 138 L67 92" />
+          {/* two-segment articulating arm */}
+          <path d="M67 100 L128 82 L196 104" />
+          {/* joints */}
+          <circle cx="67" cy="100" r="4" /><circle cx="128" cy="82" r="4" /><circle cx="196" cy="104" r="4" />
+          {/* VESA head + panel */}
+          <path d="M196 104 L214 104 M214 82 L246 82 L246 126 L214 126 Z" />
+        </g>
+        <g class="cat-diagram__rail" fill="none" stroke-width="1.5" stroke-dasharray="5 6">
+          <path d="M67 60 L214 60" />
+          <path d="M67 92 L67 60 M214 82 L214 60" />
+        </g>
+        <g class="cat-diagram__arrow" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M73 55 L67 60 L73 65 M208 55 L214 60 L208 65 M67 58 L67 62 M214 58 L214 62" />
+        </g>
+        <g class="cat-diagram__labels">
+          <text x="96" y="52">REACH ~13″</text>
+          <text x="212" y="146">VESA 75/100</text>
+        </g>
+      </>
+    )}
+
+    {type === 'lamp' && (
+      <>
+        <g class="cat-diagram__struct" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          {/* clamp base on desk edge */}
+          <path d="M56 168 L120 168 L120 178 L56 178" />
+          <path d="M70 168 L70 156 L84 156 L84 188 L70 188 L70 178" />
+          {/* sprung lower + upper arms */}
+          <path d="M77 156 L112 104 L176 120" />
+          <circle cx="77" cy="156" r="4" /><circle cx="112" cy="104" r="4" /><circle cx="176" cy="120" r="4" />
+          {/* lamp head (cone) */}
+          <path d="M176 120 L214 96 L232 120 L196 142 Z" />
+          {/* light throw */}
+        </g>
+        <g class="cat-diagram__rail" fill="none" stroke-width="1.5" stroke-dasharray="5 6">
+          <path d="M77 74 L214 74" />
+          <path d="M77 156 L77 74 M214 96 L214 74" />
+          <path d="M214 150 L192 172 M224 150 L202 172 M234 152 L212 174" />
+        </g>
+        <g class="cat-diagram__arrow" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M83 69 L77 74 L83 79 M208 69 L214 74 L208 79 M77 72 L77 76 M214 72 L214 76" />
+        </g>
+        <g class="cat-diagram__labels">
+          <text x="104" y="66">REACH ~24″</text>
+        </g>
+      </>
+    )}
+
+    {type === 'riser' && (
+      <>
+        <g class="cat-diagram__struct" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          {/* desk surface */}
+          <path d="M36 176 L284 176" />
+          {/* riser shelf (legs + top) */}
+          <path d="M78 176 L78 150 L242 150 L242 176" />
+          <path d="M78 150 L242 150" />
+          {/* small screen resting on the riser */}
+          <path d="M132 88 L208 88 L208 148 L132 148 Z" />
+          <path d="M140 96 L200 96 L200 140 L140 140 Z" />
+          {/* under-riser clearance hint */}
+          <path d="M100 176 L100 158 M120 176 L120 158" />
+        </g>
+        <g class="cat-diagram__rail" fill="none" stroke-width="1.5" stroke-dasharray="5 6">
+          <path d="M60 176 L60 150" />
+          <path d="M78 138 L242 138" />
+        </g>
+        <g class="cat-diagram__arrow" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M55 156 L60 150 L65 156 M55 170 L60 176 L65 170 M53 150 L67 150 M53 176 L67 176" />
+        </g>
+        <g class="cat-diagram__labels">
+          <text x="18" y="140" transform="rotate(-90 18 140)">LIFT 4″</text>
+          <text x="120" y="132">RISER 22″ W</text>
+        </g>
+      </>
+    )}
+  </svg>
+  <figcaption class="cat-diagram__caption">
+    <span class="cat-diagram__kind">{meta.label}</span>
+    <span class="cat-diagram__honesty">Category diagram — not a product photo</span>
+  </figcaption>
+</figure>
+
+<style>
+  .cat-diagram {
+    position: relative;
+    margin: 0;
+    display: grid;
+    gap: 8px;
+  }
+  .cat-diagram__svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 320 / 200;
+    color: var(--editorial-ink, #1d2824);
+    background-color: var(--editorial-paper, #f5f2eb);
+    /* Faint drafting-paper grid behind the line art (mirrors the homepage plate). */
+    background-image:
+      repeating-linear-gradient(90deg, var(--diagram-grid, rgba(23, 40, 36, .07)) 0 1px, transparent 1px 20px),
+      repeating-linear-gradient(0deg, var(--diagram-grid, rgba(23, 40, 36, .07)) 0 1px, transparent 1px 20px);
+    background-position: -1px -1px;
+    border: 1px solid var(--editorial-line, #cfd5cf);
+    border-radius: 4px;
+  }
+  .cat-diagram__rail,
+  .cat-diagram__arrow { stroke: var(--editorial-accent, #176b4d); }
+  .cat-diagram__labels text {
+    fill: var(--editorial-accent, #176b4d);
+    font: 700 11px/1 ui-monospace, "SF Mono", Menlo, monospace;
+    letter-spacing: .06em;
+  }
+  .cat-diagram__index {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    padding: 3px 6px;
+    color: var(--editorial-accent-dark, #0d4934);
+    background: color-mix(in srgb, var(--editorial-paper, #f5f2eb) 82%, transparent);
+    border: 1px solid var(--editorial-line, #cfd5cf);
+    border-radius: 3px;
+    font: 700 .62rem/1 ui-monospace, monospace;
+    letter-spacing: .08em;
+  }
+  .cat-diagram__caption {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 10px;
+    font: 700 .6rem/1.3 ui-monospace, monospace;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+  }
+  .cat-diagram__kind { color: var(--editorial-accent, #176b4d); }
+  .cat-diagram__honesty {
+    color: var(--editorial-muted, #5b6862);
+    font-weight: 600;
+    letter-spacing: .03em;
+  }
+
+  /* Subtle draw-in of the structure outline; opt-in only, one shot. */
+  @media (prefers-reduced-motion: no-preference) {
+    .cat-diagram__struct > * {
+      stroke-dasharray: 900;
+      stroke-dashoffset: 900;
+      animation: cat-diagram-draw 1.1s cubic-bezier(.22, 1, .36, 1) forwards;
+    }
+    .cat-diagram__rail,
+    .cat-diagram__arrow,
+    .cat-diagram__labels {
+      opacity: 0;
+      animation: cat-diagram-fade .5s ease .75s forwards;
+    }
+  }
+  @keyframes cat-diagram-draw { to { stroke-dashoffset: 0; } }
+  @keyframes cat-diagram-fade { to { opacity: 1; } }
+
+  :global([data-theme="dark"]) .cat-diagram__svg {
+    --diagram-grid: rgba(244, 239, 231, .08);
+  }
+</style>

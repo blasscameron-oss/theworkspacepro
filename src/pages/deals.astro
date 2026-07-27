@@ -1,8 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import CategoryDiagram from '../components/diagrams/CategoryDiagram.astro';
 import rawCatalog from '../../assets/data/catalog.json';
 import { catalogSchema } from '../data/product-schema';
 import '../styles/deals.css';
+
+// Original blueprint archetype drawn per card (see CategoryDiagram.astro). This
+// is presentation only — it never touches prices, links, or catalog data.
+type DiagramKind = 'chair' | 'standing-desk' | 'desk' | 'monitor' | 'monitor-arm' | 'lamp' | 'riser';
 
 // Single source of product facts: prices, URLs, ASINs and retailers all come
 // from the Zod-validated catalog. Only editorial framing (order, the deals
@@ -21,18 +26,18 @@ const catalogReviewed = new Date(`${catalog.updated}T00:00:00Z`).toLocaleDateStr
 // Editorial overlay, keyed by catalog id. Order here is the render order.
 // Everything factual is looked up from the catalog below.
 const shortlistPresentation = [
-  { id: 'B06Y3PGPR2', category: 'chair', categoryLabel: 'Chair', band: 'Mid-range', title: 'HON Ignition 2.0', description: 'A mesh task chair with adjustable lumbar support and a strong feature set for full workdays.', note: 'Confirm seller, condition, warranty, and current price.' },
-  { id: 'branch-ergonomic-chair', category: 'chair', categoryLabel: 'Chair', band: 'Adjustable', title: 'Branch Ergonomic Chair', description: 'Seven adjustment points make this a flexible shortlist option for people who want more tuning than a basic task chair.', note: 'Configuration and current pricing may vary.' },
-  { id: 'B085KBN2DN', category: 'desk', categoryLabel: 'Standing desk', band: 'Budget motorized', title: 'SHW Electric Standing Desk 55"', description: 'A lower-cost entry into sit-stand work. Check the exact height range, surface, and load capacity against your setup.', note: 'Verify model details and current price.' },
-  { id: 'branch-standing-desk', category: 'desk', categoryLabel: 'Standing desk', band: 'Premium shortlist', title: 'Branch Standing Desk', description: 'A clean dual-motor option for shoppers prioritizing a stronger warranty and a more finished look over the lowest entry price.', note: 'Configuration and current pricing may vary.' },
-  { id: 'ikea-lagkapten-desk', category: 'desk', categoryLabel: 'Sitting desk', band: 'Small-space', title: 'IKEA LAGKAPTEN Desk', description: 'A simple, inexpensive surface for compact rooms. Pair it with a riser or monitor arm to improve screen height.', note: 'Size, finish, and current price can change.' },
-  { id: 'B088BC5HMM', category: 'monitor', categoryLabel: 'Monitor', band: 'Creative work', title: 'ASUS ProArt PA278QV 27"', description: 'A 27-inch 1440p IPS display with a productivity-friendly resolution and color-focused positioning.', note: 'Check panel details and current listing.' },
-  { id: 'B09DTDRJWP', category: 'monitor', categoryLabel: 'Monitor', band: 'USB-C', title: 'Dell S2722QC 27" 4K', description: 'Sharp 4K text plus USB-C connectivity can simplify a laptop workstation and reduce cable clutter.', note: 'Verify ports, power delivery, and current price.' },
-  { id: 'B00358RIRC', category: 'monitor', categoryLabel: 'Monitor arm', band: 'Heavy-duty', title: 'Ergotron LX Single Monitor Arm', description: 'A premium gas-spring arm suited to heavier monitors or people who frequently change screen position.', note: 'Confirm monitor weight and VESA compatibility.' },
-  { id: 'ikea-tertial-work-lamp', category: 'lighting', categoryLabel: 'Lighting', band: 'Low-cost upgrade', title: 'IKEA TERTIAL Work Lamp', description: 'A simple adjustable task lamp. Choose a bulb color and brightness that fit when and how you work.', note: 'Bulb may be separate; verify current listing.' },
-  { id: 'B071CXPSDN', category: 'lighting', categoryLabel: 'Lighting', band: 'LED task light', title: 'tomons LED Desk Lamp', description: 'A multi-angle task lamp for adding focused light without rebuilding the room’s lighting.', note: 'Confirm dimensions and current price.' },
-  { id: 'B07DHK5DHN', category: 'accessory', categoryLabel: 'Accessory', band: 'Quick height fix', title: 'Amazon Basics Monitor Stand', description: 'A basic screen riser for people who need more monitor height but do not need a moving arm.', note: 'Measure the needed lift and verify current price.' },
-];
+  { id: 'B06Y3PGPR2', category: 'chair', categoryLabel: 'Chair', diagram: 'chair', band: 'Mid-range', title: 'HON Ignition 2.0', description: 'A mesh task chair with adjustable lumbar support and a strong feature set for full workdays.', note: 'Confirm seller, condition, warranty, and current price.' },
+  { id: 'branch-ergonomic-chair', category: 'chair', categoryLabel: 'Chair', diagram: 'chair', band: 'Adjustable', title: 'Branch Ergonomic Chair', description: 'Seven adjustment points make this a flexible shortlist option for people who want more tuning than a basic task chair.', note: 'Configuration and current pricing may vary.' },
+  { id: 'B085KBN2DN', category: 'desk', categoryLabel: 'Standing desk', diagram: 'standing-desk', band: 'Budget motorized', title: 'SHW Electric Standing Desk 55"', description: 'A lower-cost entry into sit-stand work. Check the exact height range, surface, and load capacity against your setup.', note: 'Verify model details and current price.' },
+  { id: 'branch-standing-desk', category: 'desk', categoryLabel: 'Standing desk', diagram: 'standing-desk', band: 'Premium shortlist', title: 'Branch Standing Desk', description: 'A clean dual-motor option for shoppers prioritizing a stronger warranty and a more finished look over the lowest entry price.', note: 'Configuration and current pricing may vary.' },
+  { id: 'ikea-lagkapten-desk', category: 'desk', categoryLabel: 'Sitting desk', diagram: 'desk', band: 'Small-space', title: 'IKEA LAGKAPTEN Desk', description: 'A simple, inexpensive surface for compact rooms. Pair it with a riser or monitor arm to improve screen height.', note: 'Size, finish, and current price can change.' },
+  { id: 'B088BC5HMM', category: 'monitor', categoryLabel: 'Monitor', diagram: 'monitor', band: 'Creative work', title: 'ASUS ProArt PA278QV 27"', description: 'A 27-inch 1440p IPS display with a productivity-friendly resolution and color-focused positioning.', note: 'Check panel details and current listing.' },
+  { id: 'B09DTDRJWP', category: 'monitor', categoryLabel: 'Monitor', diagram: 'monitor', band: 'USB-C', title: 'Dell S2722QC 27" 4K', description: 'Sharp 4K text plus USB-C connectivity can simplify a laptop workstation and reduce cable clutter.', note: 'Verify ports, power delivery, and current price.' },
+  { id: 'B00358RIRC', category: 'monitor', categoryLabel: 'Monitor arm', diagram: 'monitor-arm', band: 'Heavy-duty', title: 'Ergotron LX Single Monitor Arm', description: 'A premium gas-spring arm suited to heavier monitors or people who frequently change screen position.', note: 'Confirm monitor weight and VESA compatibility.' },
+  { id: 'ikea-tertial-work-lamp', category: 'lighting', categoryLabel: 'Lighting', diagram: 'lamp', band: 'Low-cost upgrade', title: 'IKEA TERTIAL Work Lamp', description: 'A simple adjustable task lamp. Choose a bulb color and brightness that fit when and how you work.', note: 'Bulb may be separate; verify current listing.' },
+  { id: 'B071CXPSDN', category: 'lighting', categoryLabel: 'Lighting', diagram: 'lamp', band: 'LED task light', title: 'tomons LED Desk Lamp', description: 'A multi-angle task lamp for adding focused light without rebuilding the room’s lighting.', note: 'Confirm dimensions and current price.' },
+  { id: 'B07DHK5DHN', category: 'accessory', categoryLabel: 'Accessory', diagram: 'riser', band: 'Quick height fix', title: 'Amazon Basics Monitor Stand', description: 'A basic screen riser for people who need more monitor height but do not need a moving arm.', note: 'Measure the needed lift and verify current price.' },
+] satisfies ReadonlyArray<{ id: string; category: string; categoryLabel: string; diagram: DiagramKind; band: string; title: string; description: string; note: string }>;
 
 // The deals card price filter uses coarser reference buckets than /compare; the
 // bucket is derived from the catalog price so it can never drift from it.
@@ -126,9 +131,11 @@ const shortlistCount = deals.length;
             {deals.map((deal, index) => (
               <article class="deal-card" data-category={deal.category} data-budget={deal.budget}>
                 <div class="deal-card__number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</div>
-                {deal.image && (
-                  <div class="deal-card__media"><img class="deal-card__img" src={deal.image} alt="" width="120" height="120" loading="lazy" decoding="async" /></div>
-                )}
+                <div class="deal-card__media">
+                  {deal.image
+                    ? <img class="deal-card__img" src={deal.image} alt="" width="120" height="120" loading="lazy" decoding="async" />
+                    : <CategoryDiagram type={deal.diagram} class="deal-card__diagram" />}
+                </div>
                 <div class="deal-card__topline"><span class="deal-card__category">{deal.categoryLabel}</span><span class="deal-card__budget">{deal.band}</span></div>
                 <h3 class="deal-card__title">{deal.title}</h3>
                 <p class="deal-card__desc">{deal.description}</p>
