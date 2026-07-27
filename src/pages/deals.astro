@@ -1,20 +1,70 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import rawCatalog from '../../assets/data/catalog.json';
+import { catalogSchema } from '../data/product-schema';
 import '../styles/deals.css';
 
-const deals = [
-  { category: 'chair', categoryLabel: 'Chair', budget: 'under-400', band: 'Mid-range', title: 'HON Ignition 2.0', description: 'A mesh task chair with adjustable lumbar support and a strong feature set for full workdays.', price: 379, note: 'Confirm seller, condition, warranty, and current price.', href: 'https://www.amazon.com/dp/B06Y3PGPR2/?tag=workspacepro-20', id: 'B06Y3PGPR2', retailer: 'amazon' },
-  { category: 'chair', categoryLabel: 'Chair', budget: 'under-400', band: 'Adjustable', title: 'Branch Ergonomic Chair', description: 'Seven adjustment points make this a flexible shortlist option for people who want more tuning than a basic task chair.', price: 329, note: 'Configuration and current pricing may vary.', href: 'https://www.branchfurniture.com/products/ergonomic-chair', id: 'branch-ergonomic-chair', retailer: 'branch' },
-  { category: 'desk', categoryLabel: 'Standing desk', budget: 'under-400', band: 'Budget motorized', title: 'SHW Electric Standing Desk 55"', description: 'A lower-cost entry into sit-stand work. Check the exact height range, surface, and load capacity against your setup.', price: 299, note: 'Verify model details and current price.', href: 'https://www.amazon.com/dp/B085KBN2DN/?tag=workspacepro-20', id: 'B085KBN2DN', retailer: 'amazon' },
-  { category: 'desk', categoryLabel: 'Standing desk', budget: 'premium', band: 'Premium shortlist', title: 'Branch Standing Desk', description: 'A clean dual-motor option for shoppers prioritizing a stronger warranty and a more finished look over the lowest entry price.', price: 499, note: 'Configuration and current pricing may vary.', href: 'https://www.branchfurniture.com/products/standing-desk', id: 'branch-standing-desk', retailer: 'branch' },
-  { category: 'desk', categoryLabel: 'Sitting desk', budget: 'under-200', band: 'Small-space', title: 'IKEA LAGKAPTEN Desk', description: 'A simple, inexpensive surface for compact rooms. Pair it with a riser or monitor arm to improve screen height.', price: 89, note: 'Size, finish, and current price can change.', href: 'https://www.ikea.com/us/en/p/lagkapten-desk-black-brown-bamboo-00503604/', id: 'ikea-lagkapten-desk', retailer: 'ikea' },
-  { category: 'monitor', categoryLabel: 'Monitor', budget: 'under-400', band: 'Creative work', title: 'ASUS ProArt PA278QV 27"', description: 'A 27-inch 1440p IPS display with a productivity-friendly resolution and color-focused positioning.', price: 299, note: 'Check panel details and current listing.', href: 'https://www.amazon.com/dp/B088BC5HMM/?tag=workspacepro-20', id: 'B088BC5HMM', retailer: 'amazon' },
-  { category: 'monitor', categoryLabel: 'Monitor', budget: 'under-400', band: 'USB-C', title: 'Dell S2722QC 27" 4K', description: 'Sharp 4K text plus USB-C connectivity can simplify a laptop workstation and reduce cable clutter.', price: 350, note: 'Verify ports, power delivery, and current price.', href: 'https://www.amazon.com/dp/B09DTDRJWP/?tag=workspacepro-20', id: 'B09DTDRJWP', retailer: 'amazon' },
-  { category: 'monitor', categoryLabel: 'Monitor arm', budget: 'under-200', band: 'Heavy-duty', title: 'Ergotron LX Single Monitor Arm', description: 'A premium gas-spring arm suited to heavier monitors or people who frequently change screen position.', price: 189, note: 'Confirm monitor weight and VESA compatibility.', href: 'https://www.amazon.com/dp/B00358RIRC/?tag=workspacepro-20', id: 'B00358RIRC', retailer: 'amazon' },
-  { category: 'lighting', categoryLabel: 'Lighting', budget: 'under-50', band: 'Low-cost upgrade', title: 'IKEA TERTIAL Work Lamp', description: 'A simple adjustable task lamp. Choose a bulb color and brightness that fit when and how you work.', price: 15, note: 'Bulb may be separate; verify current listing.', href: 'https://www.ikea.com/us/en/p/tertial-work-lamp-gray-80342987/', id: 'ikea-tertial-work-lamp', retailer: 'ikea' },
-  { category: 'lighting', categoryLabel: 'Lighting', budget: 'under-50', band: 'LED task light', title: 'tomons LED Desk Lamp', description: 'A multi-angle task lamp for adding focused light without rebuilding the room’s lighting.', price: 30, note: 'Confirm dimensions and current price.', href: 'https://www.amazon.com/dp/B071CXPSDN/?tag=workspacepro-20', id: 'B071CXPSDN', retailer: 'amazon' },
-  { category: 'accessory', categoryLabel: 'Accessory', budget: 'under-50', band: 'Quick height fix', title: 'Amazon Basics Monitor Stand', description: 'A basic screen riser for people who need more monitor height but do not need a moving arm.', price: 25, note: 'Measure the needed lift and verify current price.', href: 'https://www.amazon.com/dp/B07DHK5DHN/?tag=workspacepro-20', id: 'B07DHK5DHN', retailer: 'amazon' },
+// Single source of product facts: prices, URLs, ASINs and retailers all come
+// from the Zod-validated catalog. Only editorial framing (order, the deals
+// category slug, the presentation band, and the shopper-facing note) lives on
+// the page. Membership in this shortlist is the catalog's `dealsShortlist` flag.
+const catalog = catalogSchema.parse(rawCatalog);
+
+const catalogSize = catalog.products.length;
+const catalogReviewed = new Date(`${catalog.updated}T00:00:00Z`).toLocaleDateString('en-US', {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric',
+  timeZone: 'UTC',
+});
+
+// Editorial overlay, keyed by catalog id. Order here is the render order.
+// Everything factual is looked up from the catalog below.
+const shortlistPresentation = [
+  { id: 'B06Y3PGPR2', category: 'chair', categoryLabel: 'Chair', band: 'Mid-range', title: 'HON Ignition 2.0', description: 'A mesh task chair with adjustable lumbar support and a strong feature set for full workdays.', note: 'Confirm seller, condition, warranty, and current price.' },
+  { id: 'branch-ergonomic-chair', category: 'chair', categoryLabel: 'Chair', band: 'Adjustable', title: 'Branch Ergonomic Chair', description: 'Seven adjustment points make this a flexible shortlist option for people who want more tuning than a basic task chair.', note: 'Configuration and current pricing may vary.' },
+  { id: 'B085KBN2DN', category: 'desk', categoryLabel: 'Standing desk', band: 'Budget motorized', title: 'SHW Electric Standing Desk 55"', description: 'A lower-cost entry into sit-stand work. Check the exact height range, surface, and load capacity against your setup.', note: 'Verify model details and current price.' },
+  { id: 'branch-standing-desk', category: 'desk', categoryLabel: 'Standing desk', band: 'Premium shortlist', title: 'Branch Standing Desk', description: 'A clean dual-motor option for shoppers prioritizing a stronger warranty and a more finished look over the lowest entry price.', note: 'Configuration and current pricing may vary.' },
+  { id: 'ikea-lagkapten-desk', category: 'desk', categoryLabel: 'Sitting desk', band: 'Small-space', title: 'IKEA LAGKAPTEN Desk', description: 'A simple, inexpensive surface for compact rooms. Pair it with a riser or monitor arm to improve screen height.', note: 'Size, finish, and current price can change.' },
+  { id: 'B088BC5HMM', category: 'monitor', categoryLabel: 'Monitor', band: 'Creative work', title: 'ASUS ProArt PA278QV 27"', description: 'A 27-inch 1440p IPS display with a productivity-friendly resolution and color-focused positioning.', note: 'Check panel details and current listing.' },
+  { id: 'B09DTDRJWP', category: 'monitor', categoryLabel: 'Monitor', band: 'USB-C', title: 'Dell S2722QC 27" 4K', description: 'Sharp 4K text plus USB-C connectivity can simplify a laptop workstation and reduce cable clutter.', note: 'Verify ports, power delivery, and current price.' },
+  { id: 'B00358RIRC', category: 'monitor', categoryLabel: 'Monitor arm', band: 'Heavy-duty', title: 'Ergotron LX Single Monitor Arm', description: 'A premium gas-spring arm suited to heavier monitors or people who frequently change screen position.', note: 'Confirm monitor weight and VESA compatibility.' },
+  { id: 'ikea-tertial-work-lamp', category: 'lighting', categoryLabel: 'Lighting', band: 'Low-cost upgrade', title: 'IKEA TERTIAL Work Lamp', description: 'A simple adjustable task lamp. Choose a bulb color and brightness that fit when and how you work.', note: 'Bulb may be separate; verify current listing.' },
+  { id: 'B071CXPSDN', category: 'lighting', categoryLabel: 'Lighting', band: 'LED task light', title: 'tomons LED Desk Lamp', description: 'A multi-angle task lamp for adding focused light without rebuilding the room’s lighting.', note: 'Confirm dimensions and current price.' },
+  { id: 'B07DHK5DHN', category: 'accessory', categoryLabel: 'Accessory', band: 'Quick height fix', title: 'Amazon Basics Monitor Stand', description: 'A basic screen riser for people who need more monitor height but do not need a moving arm.', note: 'Measure the needed lift and verify current price.' },
 ];
+
+// The deals card price filter uses coarser reference buckets than /compare; the
+// bucket is derived from the catalog price so it can never drift from it.
+const referenceBudget = (price: number | undefined) => {
+  if (price == null) return 'premium';
+  if (price >= 400) return 'premium';
+  if (price <= 50) return 'under-50';
+  if (price <= 200) return 'under-200';
+  return 'under-400';
+};
+
+const deals = shortlistPresentation.map((entry) => {
+  const product = catalog.products.find((candidate) => candidate.id === entry.id);
+  if (!product) throw new Error(`Deals shortlist references ${entry.id}, which is missing from the catalog`);
+  if (!product.dealsShortlist) throw new Error(`Deals shortlist references ${entry.id}, but it is not flagged dealsShortlist in the catalog`);
+  return {
+    ...entry,
+    budget: referenceBudget(product.price),
+    price: product.price ?? 0,
+    href: product.url,
+    retailer: product.retailer,
+    image: product.image && product.image.trim() ? product.image : null,
+  };
+});
+
+// Guard against drift: every flagged catalog product must be presented, and
+// every presented card must map to a flagged product (checked in the loop).
+const flaggedCount = catalog.products.filter((product) => product.dealsShortlist).length;
+if (flaggedCount !== deals.length) {
+  throw new Error(`Catalog flags ${flaggedCount} dealsShortlist products but the page presents ${deals.length}`);
+}
+const shortlistCount = deals.length;
 ---
 <BaseLayout
   title="Workspace Deals & Value Picks | The Workspace Pro"
@@ -33,12 +83,12 @@ const deals = [
       <aside class="deals-principles" aria-label="How this list works">
         <p class="eyebrow">Our standard</p>
         <ol>
-          <li><span>01</span>34-product catalog reviewed</li>
+          <li><span>01</span>{catalogSize}-product catalog reviewed</li>
           <li><span>02</span>No fabricated markdowns</li>
           <li><span>03</span>No signup required</li>
         </ol>
       </aside>
-      <p class="deals-disclosure"><strong>How pricing works:</strong> Dollar amounts below are reference prices from our catalog review on <time datetime="2026-07-18">July 18, 2026</time>, not promises of a current price. Retail pricing and availability can change; use “Check live price” to verify before buying. Some retailer links are affiliate links, and we may earn a commission at no extra cost to you. <a href="/affiliate-disclosure">Read our disclosure.</a></p>
+      <p class="deals-disclosure"><strong>How pricing works:</strong> Dollar amounts below are reference prices from our catalog review on <time datetime={catalog.updated}>{catalogReviewed}</time>, not promises of a current price. Retail pricing and availability can change; use “Check live price” to verify before buying. Some retailer links are affiliate links, and we may earn a commission at no extra cost to you. <a href="/affiliate-disclosure">Read our disclosure.</a></p>
     </header>
 
     <section class="deals-catalog" aria-labelledby="value-picks-title">
@@ -63,7 +113,7 @@ const deals = [
             </div>
             <button class="deal-filter__reset" id="dealReset" type="button">Clear filters</button>
           </div>
-          <p class="deal-count" id="dealCount" aria-live="polite">11 value picks</p>
+          <p class="deal-count" id="dealCount" aria-live="polite">{shortlistCount} value picks</p>
           <div class="deal-method">
             <span class="deal-method__rule" aria-hidden="true"></span>
             <p class="eyebrow">Selection signal</p>
@@ -76,6 +126,9 @@ const deals = [
             {deals.map((deal, index) => (
               <article class="deal-card" data-category={deal.category} data-budget={deal.budget}>
                 <div class="deal-card__number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</div>
+                {deal.image && (
+                  <div class="deal-card__media"><img class="deal-card__img" src={deal.image} alt="" width="120" height="120" loading="lazy" decoding="async" /></div>
+                )}
                 <div class="deal-card__topline"><span class="deal-card__category">{deal.categoryLabel}</span><span class="deal-card__budget">{deal.band}</span></div>
                 <h3 class="deal-card__title">{deal.title}</h3>
                 <p class="deal-card__desc">{deal.description}</p>
