@@ -363,8 +363,11 @@ body.editorial-shell {
   .migrated-assessment .workspace-instrument__photo,
   .migrated-assessment .workspace-instrument__photo img { min-height: 220px; }
   .migrated-assessment .workspace-instrument__drawing { width: calc(100% - 18px); }
-  .migrated-assessment .hero__stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .migrated-assessment .hero__stats > div { padding: 14px 10px; }
+  /* Let the three stats reflow instead of staying locked to 3 cramped columns:
+     ~2-across on typical phones, single column with breathing room on the
+     narrowest screens (<~380px). */
+  .migrated-assessment .hero__stats { grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr)); }
+  .migrated-assessment .hero__stats > div { padding: 16px 14px; }
   .migrated-assessment .stat__number { font-size: 1.55rem; }
   .migrated-assessment .assessment-card { padding: 24px 18px; }
   .commercial-grid { grid-template-columns: 1fr; }

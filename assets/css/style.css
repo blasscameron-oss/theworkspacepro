@@ -761,7 +761,8 @@ input[type="range"]::-moz-range-thumb {
   border-radius: var(--radius);
   background: var(--c-dark-surface);
   color: var(--c-dark-text);
-  font-size: 0.9375rem;
+  /* 16px minimum: below this iOS auto-zooms the viewport on focus. */
+  font-size: 1rem;
 }
 [data-theme="dark"] .newsletter-form__input {
   background: var(--c-bg-alt);
@@ -1482,6 +1483,10 @@ textarea.text-input { min-height: 120px; resize: vertical; }
   margin-bottom: var(--space-sm);
 }
 .filter-chip {
+  display: inline-flex;
+  align-items: center;
+  /* 44px minimum touch target; visual height held by centered content. */
+  min-height: 44px;
   padding: 0.4rem 0.85rem;
   border-radius: var(--radius-full);
   border: 1px solid var(--c-border);
@@ -1798,7 +1803,10 @@ img.product-thumb {
 /* ---- Performance: content-visibility for long sections ---- */
 .section, .guide-grid, .tools-grid {
   content-visibility: auto;
-  contain-intrinsic-size: 1px 480px;
+  /* Realistic placeholder height: a 480px estimate under-counts most of these
+     sections, so as off-screen blocks render the page height corrected upward
+     and the scrollbar jumped. ~1200px is closer to their real rendered size. */
+  contain-intrinsic-size: 1px 1200px;
 }
 
 .reduce-motion *,
@@ -1866,6 +1874,8 @@ img.product-thumb {
 .quick-tools a {
   display: inline-flex;
   align-items: center;
+  /* 44px minimum touch target. */
+  min-height: 44px;
   gap: 0.35rem;
   padding: 0.45rem 0.9rem;
   border-radius: var(--radius-full);
@@ -1994,13 +2004,15 @@ img.product-thumb {
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
 }
-.article-body [id] { scroll-margin-top: 88px; }
+/* The shipped header (.editorial-header) is position:relative and scrolls
+   away, so anchors only need a small breathing gap, not a sticky-header offset. */
+.article-body [id] { scroll-margin-top: 16px; }
 
 /* Thin, non-interactive article progress accent for long guides. */
 .reading-progress {
   position: fixed;
   z-index: 95;
-  top: 64px;
+  top: 0;
   right: 0;
   left: 0;
   height: 3px;
