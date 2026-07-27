@@ -25,10 +25,28 @@ body.editorial-shell {
 .editorial-shell h2,
 .editorial-shell h3 {
   color: var(--editorial-ink);
-  font-family: Fraunces, Georgia, serif;
-  font-weight: 500;
+  font-family: var(--font-display, Fraunces, Georgia, serif);
+  font-weight: 560;
+  font-optical-sizing: auto;
+  /* SOFT rounds the terminals for warmth; WONK 0 keeps glyphs legible. opsz
+     stays automatic (driven by font-optical-sizing + rendered size). */
+  font-variation-settings: "SOFT" 26, "WONK" 0;
   letter-spacing: -.035em;
   line-height: 1.08;
+}
+
+/* Big optical-size display cuts: confident weight, high opsz, tighter track.
+   Applied to the largest headlines across the editorial surfaces. */
+.editorial-intro h2,
+.library-hero h1,
+.guide-hero h1,
+.compare-hero h1,
+.editorial-shell .ps-display,
+.migrated-assessment .hero__title {
+  font-weight: 600;
+  font-variation-settings: "opsz" 108, "wght" 600, "SOFT" 34, "WONK" 0;
+  letter-spacing: -.05em;
+  line-height: .98;
 }
 
 /* Only unclassed links inherit the editorial ink. Classed anchors (buttons,

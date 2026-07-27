@@ -39,8 +39,9 @@
   --ps-step-1: clamp(1.18rem, 1.05rem + .45vw, 1.42rem);
   --ps-step-2: clamp(1.46rem, 1.2rem + .9vw, 1.95rem);
   --ps-step-3: clamp(1.9rem, 1.4rem + 1.75vw, 2.8rem);
-  --ps-step-4: clamp(2.55rem, 1.65rem + 3.2vw, 4.65rem);
-  --ps-step-5: clamp(3.25rem, 1.8rem + 5vw, 6.4rem);
+  --ps-step-4: clamp(2.7rem, 1.7rem + 3.5vw, 5.1rem);
+  --ps-step-5: clamp(3.4rem, 1.85rem + 5.4vw, 7rem);
+  --ps-step-6: clamp(4rem, 2rem + 7vw, 8.4rem);
   --ps-space-1: .25rem;
   --ps-space-2: .5rem;
   --ps-space-3: .75rem;
