@@ -1,5 +1,16 @@
 # Finch handoff
 
+> **How to use this file.** The top section is the only live handoff; everything
+> below the first `---` is history, newest first. **When you finish, update this
+> file yourself**: move the current section down into the history with an outcome
+> line (`DONE, shipped as <sha>` or `BLOCKED — <reason>`), and write a new
+> CURRENT section describing the state you are leaving behind — deployed SHA,
+> what you verified after deploying, anything that surprised you, and what the
+> next person should pick up. Record what you *observed*, not what you expected;
+> the July 22 incident cost days because a handoff described an intended state
+> rather than the real one. If you deviate from the steps below, say so and say
+> why. Commit that update on the branch you shipped.
+
 ## CURRENT HANDOFF (2026-07-28): ship branch `fix/contrast-light-2026-07-28`
 
 The redesign shipped successfully (main = `2d67817`, live). The owner then
@@ -40,9 +51,54 @@ picked up automatically.
 (26 passed / 6 skipped), full contrast sweep (42 routes, 0 failures).
 
 **Ship it:** same route as last time — push the branch, PR into `main`, merge
-once, watch the single deploy run. Post-deploy, re-run the smoke checks below
-plus: scroll to the bottom of `/tips` and `/about` in both themes and confirm
-the newsletter band and CTA headings are legible.
+once, watch the single deploy run (`gh run list --workflow deploy.yml --limit 1`).
+Do NOT hand-deploy with `wrangler`; the contrast guard only protects the site if
+releases go through CI, which runs `npm run test:e2e` (deploy.yml:56) and would
+have caught every bug fixed here.
+
+**Post-deploy checks (in addition to the standard ones below):**
+- Scroll to the bottom of `/tips` and `/about` in BOTH themes — the newsletter
+  band ("Get Weekly Workspace Tips") and the terracotta CTA heading above it
+  must be clearly legible. This is the owner-reported symptom; verify it on the
+  real site, not just locally.
+- Toggle dark mode and open `/compare/herman-miller-vs-steelcase`,
+  `/guides/chair-seat-depth-by-height`, and `/ergonomic-height-calculator` —
+  all body copy readable, no white-on-white.
+- Serve the deployed `dist` locally and run `node scripts/audit-contrast.mjs`
+  once more against it; expect exit 0.
+
+### Open item for the OWNER, not for you to decide alone
+
+`node scripts/audit-links.mjs` (new, not in CI) found **5 of 8 non-Amazon
+product links no longer reach the product**: the four IKEA URLs
+(`ikea-markus-office-chair`, `ikea-lagkapten-desk`, `ikea-tertial-work-lamp`,
+`ikea-trotten-standing-desk`) all redirect to a generic IKEA category page, and
+`fully-jarvis-bamboo` lands on a Herman Miller brand page because Fully was
+absorbed into Herman Miller. `uplift-v2-standing-desk` redirects to a tidied URL
+that still looks like the right product. Branch links rate-limited (429,
+inconclusive — retry).
+
+This matters because each still displays a price the reader now cannot verify,
+and the owner has been explicit about not wanting anything dishonest. It is not
+a code fix: deciding whether to re-point a URL, re-price, or drop a product is
+a content/business call. **Surface it to the owner; do not silently rewrite the
+catalog.** Amazon links were left unchecked by default (they cloak and
+rate-limit non-browser clients, so results are meaningless) — the last real
+audit found all 116 correctly tagged.
+
+### Also parked (deliberate, not forgotten)
+
+- `assets/css/bold.css` is dead weight — still linked from the `index.html`
+  master, but that link never ships (only the `#assessment` block is extracted),
+  so no built page loads it. Safe to delete along with that `<link>`; left alone
+  because it is not causing harm and deletion is unrelated to this fix.
+- Amazon PA-API / Creators API imagery stays blocked until 3 qualifying sales.
+  Never hotlink `m.media-amazon.com` — it is a ToS violation that gets Associates
+  accounts terminated. The category diagrams on `/deals` are the compliant
+  stand-in, and `catalog.json`'s `image` field plus the card's image slot are
+  already wired for the day real licensed photos exist.
+- Hover/focus colour pairs outside the primary and accent families were never
+  swept; the static audit does not exercise them.
 
 ---
 
