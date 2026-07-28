@@ -20,8 +20,8 @@ const BYO_PRODUCTS = {
   chairs: [
     {
       name: "IKEA MARKUS Office Chair",
-      price: 229,
-      url: "https://www.ikea.com/us/en/p/markus-office-chair-vissle-dark-gray-70261150/",
+      price: 299.99,
+      url: "https://www.ikea.com/us/en/p/markus-office-chair-vissle-dark-gray-90289172/",
       category: "Chair",
       desc: "Basic ergonomic office chair with built-in lumbar support and mesh back. Good entry-level option.",
       tiers: ["budget"],
@@ -29,7 +29,7 @@ const BYO_PRODUCTS = {
     },
     {
       name: "HON Ignition 2.0 Mid-Back",
-      price: 379,
+      price: 461.98,
       url: "https://www.amazon.com/dp/B06Y3PGPR2/?tag=workspacepro-20",
       category: "Chair",
       desc: "Mesh task chair with lumbar support — strong value pick for full workdays. Confirm current price on Amazon.",
@@ -38,7 +38,7 @@ const BYO_PRODUCTS = {
     },
     {
       name: "Branch Ergonomic Chair",
-      price: 329,
+      price: 359,
       url: "https://www.branchfurniture.com/products/ergonomic-chair",
       category: "Chair",
       desc: "Seven points of adjustment including lumbar, armrests, seat depth, and tilt. Modern design from Branch.",
@@ -76,17 +76,17 @@ const BYO_PRODUCTS = {
 
   desks: [
     {
-      name: "IKEA LAGKAPTEN Desk",
-      price: 89,
-      url: "https://www.ikea.com/us/en/p/lagkapten-desk-black-brown-bamboo-00503604/",
+      name: "FLEXISPOT EN1 Standing Desk 48×24",
+      price: 109.97,
+      url: "https://www.amazon.com/dp/B08BHPMYGK/?tag=workspacepro-20",
       category: "Desk",
-      desc: "Simple sitting desk. Budget-friendly for tight spaces. Pair with a monitor arm for height.",
+      desc: "Electric sit-stand desk with a one-piece top, four memory presets, and a 28.9 to 46.5 inch height range. The 28.9 inch floor is high if you are under about 5'2\".",
       tiers: ["budget"],
-      bestFor: ["general", "writer", "budget", "small"]
+      bestFor: ["general", "writer", "budget", "small", "standing"]
     },
     {
-      name: "SHW Electric Standing Desk 55\"",
-      price: 299,
+      name: "SHW Electric Standing Desk 55\" w/Drawer",
+      price: 189.87,
       url: "https://www.amazon.com/dp/B085KBN2DN/?tag=workspacepro-20",
       category: "Desk",
       desc: "Budget electric standing desk with drawer options. Popular Amazon pick — verify capacity and height range for your body.",
@@ -94,18 +94,18 @@ const BYO_PRODUCTS = {
       bestFor: ["general", "developer", "budget", "standing"]
     },
     {
-      name: "Branch Standing Desk",
-      price: 499,
-      url: "https://www.branchfurniture.com/products/standing-desk",
+      name: "FLEXISPOT E6 Dual-Motor Standing Desk 55×28",
+      price: 284.99,
+      url: "https://www.amazon.com/dp/B0BVQMQMY2/?tag=workspacepro-20",
       category: "Desk",
-      desc: "Dual-motor standing desk from Branch with solid warranty and clean design.",
+      desc: "Three-stage dual-motor frame: 23.6 to 48.8 inch range, 220 lb capacity, one-piece FSC-certified desktop, five-year frame and motor warranty.",
       tiers: ["mid"],
-      bestFor: ["general", "developer", "creative", "ergonomics", "aesthetics", "productivity", "standing", "large"]
+      bestFor: ["general", "developer", "ergonomics", "productivity", "standing", "large"]
     },
     {
-      name: "Uplift V2 Standing Desk",
+      name: "UPLIFT V3 Standing Desk",
       price: 599,
-      url: "https://www.upliftdesk.com/uplift-v2-standing-desk-v2-or-v2-commercial/",
+      url: "https://www.upliftdesk.com/2-leg-standing-desk/",
       category: "Desk",
       desc: "Highly configurable dual-motor frame. Check live configuration pricing on Uplift.",
       tiers: ["premium"],

@@ -95,11 +95,11 @@ document.addEventListener('DOMContentLoaded', function () {
       },
       {
         badge: 'Standing desks',
-        title: 'Uplift V2 Standing Desk',
+        title: 'UPLIFT V3 Standing Desk',
         desc: 'Highly configurable frame. Check current configuration pricing on Uplift.',
         priceLabel: 'See live price',
         cta: 'View product',
-        url: 'https://www.upliftdesk.com/uplift-v2-standing-desk-v2-or-v2-commercial/'
+        url: 'https://www.upliftdesk.com/2-leg-standing-desk/'
       },
       {
         badge: 'Lighting',
