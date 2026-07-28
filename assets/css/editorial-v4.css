@@ -21,6 +21,12 @@
   --editorial-tint-warm: #ece9e0;
   --editorial-stripe: #f7f6f1;
   --editorial-white: #fffefa;
+  /* Long-form body copy: one step softer than --editorial-ink so the headline
+     ramp still reads at essay length. This was a hardcoded #34423c on
+     `.guide-prose p, li` with no dark counterpart, so every content-collection
+     guide rendered slate-on-charcoal — 1.71:1 for body and links, 1.54:1 for
+     the .disclosure block on its tinted panel. */
+  --editorial-prose: #34423c;
   /* The footer title block is a deliberately dark band in BOTH themes, so it
      needs a surface token of its own. It used to paint itself
      `var(--editorial-ink)`, which is the page *ink* — in dark that flips to
@@ -104,6 +110,9 @@ body.editorial-shell {
   --editorial-tint: #1e2521;
   --editorial-tint-warm: #23201c;
   --editorial-stripe: #181c19;
+  /* Same one-step-softer relationship to the cream ink, inverted: 11.5–12.9:1
+     on the dark paper, cards and tinted panels prose actually lands on. */
+  --editorial-prose: #ded9d0;
   /* Half a step below the dark paper so the title block still reads as a
      separate plate; its light ink then clears 7.3–14:1. */
   --editorial-band: #0f120f;
@@ -376,7 +385,7 @@ body.editorial-shell {
 .guide-prose h2 { margin: 2.7em 0 .7em; font-size: clamp(1.8rem, 4vw, 2.7rem); }
 .guide-prose h3 { margin: 2.2em 0 .55em; font-size: 1.55rem; }
 .guide-prose p,
-.guide-prose li { color: #34423c; }
+.guide-prose li { color: var(--editorial-prose); }
 /* `:not(:where(.btn))` for the same reason as `a:not([class])` above: prose-link rules
    outrank `.btn--primary` (0,1,0) and repainted CTA buttons spruce-on-terracotta. */
 .guide-prose a:not(:where(.btn)) { color: var(--editorial-accent-dark); text-decoration-thickness: 1px; text-underline-offset: 3px; }
@@ -385,7 +394,9 @@ body.editorial-shell {
 .guide-prose td { padding: 13px 12px; border-bottom: 1px solid var(--editorial-line); text-align: left; vertical-align: top; }
 .guide-prose blockquote { margin: 32px 0; padding: 20px 26px; border-left: 3px solid var(--editorial-accent); background: var(--editorial-white); }
 .source-list { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--editorial-line); }
-.disclosure { padding: 18px 20px; background: var(--editorial-tint-warm); font-size: .84rem; }
+/* Owns its surface, so it owns its ink: it is also used outside .guide-prose,
+   where it would otherwise inherit whatever ink the surrounding block carries. */
+.disclosure { padding: 18px 20px; color: var(--editorial-prose); background: var(--editorial-tint-warm); font-size: .84rem; }
 
 /* Footer as an engineering-drawing title block: boxed corner stamp, hairline
    rules dividing labelled cells, all metadata in the mono instrument voice. */

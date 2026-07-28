@@ -8,29 +8,63 @@
  * Standalone:   node scripts/audit-contrast.mjs [baseUrl]
  *               (defaults to http://localhost:4331 — a `serve dist` / static
  *                server pointed at ./dist)
- *               Exits 1 if EITHER theme has any failure.
+ *               Sweeps EVERY route in ./dist, discovered from the build, and
+ *               exits 1 if either theme has any failure. Run it before a
+ *               release; it is the exhaustive check.
  *
  * As a library:  tests/e2e/contrast.spec.mjs imports PAGES + collectFailures
  *                so the same rules run as a permanent regression guard.
+ *
+ * The split: PAGES below is one route per LAYOUT, which is what the e2e guard
+ * asserts on every run — cheap, and a layout is the unit that actually breaks.
+ * The CLI ignores PAGES and walks the whole build, because the miss that cost
+ * us 111 failures was a layout nobody had listed (content-collection guides
+ * render through GuideLayout, not the LegacyGuideLayout route we had pinned).
+ * If you add a layout, add a route here; if you add a page, the CLI finds it.
  */
 
+/** One route per layout — see the split explained in the header. */
 export const PAGES = [
-  '/',
-  '/guides.html',
-  '/deals.html',
-  '/tools.html',
-  '/tips.html',
+  '/',                                              // index.astro
+  '/guides.html',                                   // guides/index.astro
+  '/deals.html',                                    // deals.astro + category diagrams
+  '/tools.html',                                    // legacy root page
+  '/tips.html',                                     // legacy root page, plate numerals
   '/about.html',
-  '/contact.html',
-  '/compare/',
-  '/build-your-office.html',
+  '/contact.html',                                  // forms
+  '/compare/',                                      // compare/index.astro
+  '/build-your-office.html',                        // legacy wizard, inline <style>
   '/home-office-setup-guide.html',
-  '/ergonomic-height-calculator.html',
+  '/ergonomic-height-calculator.html',              // calculator + fingerprint rails
   '/workspace-setup-calculator.html',
-  '/desk-fit-worksheet.html',
-  '/guides/back-pain-ergonomic-setup.html',
-  '/compare/branch-vs-uplift.html',
+  '/desk-fit-worksheet.html',                       // worksheet.css
+  '/guides/back-pain-ergonomic-setup.html',         // LegacyGuideLayout
+  '/guides/chair-seat-depth-by-height.html',        // GuideLayout (.guide-prose)
+  '/compare/branch-vs-uplift.html',                 // CompareArticle
+  '/compare/herman-miller-vs-steelcase.html',       // CompareArticle, price tiers
 ];
+
+/**
+ * Every route in the build, derived from ./dist. Used by the CLI sweep so a
+ * page can never go unmeasured just because nobody remembered to list it.
+ */
+export const allBuiltRoutes = async (distDir = 'dist') => {
+  const { readdir } = await import('node:fs/promises');
+  const { join, relative, sep } = await import('node:path');
+  const walk = async (dir) => {
+    const out = [];
+    for (const entry of await readdir(dir, { withFileTypes: true })) {
+      const full = join(dir, entry.name);
+      if (entry.isDirectory()) out.push(...(await walk(full)));
+      else if (entry.name.endsWith('.html')) out.push(full);
+    }
+    return out;
+  };
+  return (await walk(distDir))
+    .map((f) => '/' + relative(distDir, f).split(sep).join('/'))
+    .filter((r) => r !== '/404.html')
+    .sort();
+};
 
 /**
  * Runs in the page. Returns every text node below its AA threshold, worst first.
@@ -149,10 +183,12 @@ if (isCli) {
   const baseUrl = process.argv[2] || 'http://localhost:4331';
   const browser = await chromium.launch();
   const totals = {};
+  const routes = await allBuiltRoutes();
+  console.log(`Sweeping ${routes.length} built route(s) in both themes at 375px.`);
   for (const theme of ['light', 'dark']) {
     const context = await browser.newContext({ viewport: { width: 375, height: 812 } });
     await seedTheme(theme)(context);
-    for (const { path, failures } of await collectFailures(context, baseUrl)) {
+    for (const { path, failures } of await collectFailures(context, baseUrl, routes)) {
       totals[theme] = (totals[theme] ?? 0) + failures.length;
       console.log(`\n=== ${theme.toUpperCase()} ${path}`);
       failures.forEach((f) => console.log(`  ${formatFailure(f)}`));
