@@ -26,7 +26,9 @@
 .editorial-shell .legacy-guide__body :is(p, ul, ol) { margin-block: 0 18px; }
 .editorial-shell .legacy-guide__body :is(ul, ol) { padding-left: 1.4rem; }
 .editorial-shell .legacy-guide__body li { margin-bottom: 8px; }
-.editorial-shell .legacy-guide__body a { color: var(--editorial-accent-dark); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+/* `:not(:where(.btn))` (zero added specificity) — this (0,2,1) rule outranks `.btn--primary` (0,1,0) and was
+   painting the in-body CTA spruce-on-terracotta (2.01:1). */
+.editorial-shell .legacy-guide__body a:not(:where(.btn)) { color: var(--editorial-accent-dark); text-decoration-thickness: 1px; text-underline-offset: 3px; }
 .editorial-shell .legacy-guide__body :is(.toc, .quick-nav) { margin: 42px 0; padding: 28px; border: 1px solid var(--editorial-line); border-radius: 0; background: var(--editorial-white); }
 .editorial-shell .legacy-guide__body :is(.toc, .quick-nav) h2 { margin: 0 0 16px; padding: 0; border: 0; font-size: 1.45rem; }
 .editorial-shell .legacy-guide__body :is(.disclosure-box, .callout, .note) { margin: 30px 0; padding: 22px 24px; border: 0; border-left: 3px solid var(--editorial-accent); border-radius: 0; background: #edf1eb; }

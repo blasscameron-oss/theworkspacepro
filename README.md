@@ -25,6 +25,47 @@ npx serve dist -l 4173 --no-clipboard
 # open http://localhost:4173
 ```
 
+## Tests
+
+```bash
+npm test          # build + validate public artifact + node --test tests/*.test.mjs
+npx playwright test   # e2e flows + the contrast guard below
+```
+
+### Contrast guard
+
+`tests/e2e/contrast.spec.mjs` fails the build if any text node on a key route
+drops below WCAG AA (4.5:1, or 3:1 for large text). It walks every visible leaf
+text node at 375px, resolves the nearest solid background, and diffs against the
+threshold — it runs in the existing Playwright suite, so there is no extra CI
+service to keep alive.
+
+To see a full report (both themes, worst ratio first) against a running
+`dist` server:
+
+```bash
+npm run build
+npx serve dist -l 4331 --no-clipboard    # any static server on ./dist
+node scripts/audit-contrast.mjs          # exits 1 if LIGHT theme has failures
+```
+
+The spec asserts the **light** theme only. Dark theme still has known failures,
+so `scripts/audit-contrast.mjs` reports it but the test does not gate on it —
+flip `themes` in the spec to `['light', 'dark']` once dark is cleared.
+
+**When this test fails**, the cause is almost always one of two things:
+
+1. A deliberately dark or saturated band (`.newsletter-bar`, `.cta-section`)
+   getting repainted with page ink by a broad rule in a later stylesheet. Such a
+   surface must publish `--surface-ink` / `--surface-ink-soft`; generic heading
+   and prose rules read `var(--surface-ink, <page default>)` so the surface wins
+   without a specificity fight.
+2. A text token in `:root` drifting too light for the cream surfaces. Every step
+   of the `--c-text` / `--c-text-light` / `--c-text-muted` ramp must clear 4.5:1
+   against `#faf8f5`, `#ffffff`, `#f3efe9`, and `#f5f2eb`.
+
+Fix the surface contract or the token, not the individual element.
+
 ## Deploy
 
 See **FINCH_HANDOFF.md** for the full handoff. Production Pages and Worker deploys run through GitHub Actions after the allowlisted artifact passes validation:

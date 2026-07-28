@@ -10,7 +10,9 @@
   --ps-cream-200: #eee6da;
   --ps-ink-900: #171a17;
   --ps-ink-700: #3d443e;
-  --ps-ink-500: #6b716b;
+  /* Was #6b716b: 4.47:1 on the #f5f2eb evidence rail — a hair under AA.
+     #656b65 clears 4.5:1 on every ps surface (cream-50/100/200, paper, white). */
+  --ps-ink-500: #656b65;
   --ps-terracotta-700: #973d21;
   --ps-terracotta-600: #b84d2a;
   --ps-terracotta-500: #cf643d;
@@ -211,7 +213,10 @@
 .ps-utility { width: min(100% - (2 * var(--ps-gutter)), var(--ps-prose)); margin-inline: auto; padding-block: clamp(3rem, 8vw, 6rem); }
 .ps-utility h1 { font-size: var(--ps-step-3); }
 .ps-utility :where(h2, h3) { margin-top: 2.2em; }
-.ps-utility :where(p, li) { color: var(--ps-text-soft); }
+/* Same --surface-ink contract as the editorial headings: a deliberately dark
+   band inside a utility page (the newsletter bar on /contact) keeps its own
+   light prose colour instead of inheriting page ink at 1.77:1. */
+.ps-utility :where(p, li) { color: var(--surface-ink-soft, var(--ps-text-soft)); }
 .ps-shell :where(.hero-gradient, .mesh-bg)::before,
 .ps-shell :where(.hero-gradient, .mesh-bg)::after { animation: none; }
 .ps-shell .hero-gradient { display: none; }

@@ -43,8 +43,11 @@ const { content } = Astro.props;
     text-transform: uppercase;
   }
 
-  .comparison-article .article-meta a,
-  .comparison-article .article-body a {
+  /* `:not(:where(.btn))` (zero added specificity) — this (0,2,1) rule outranks `.btn--primary` (0,1,0), and the
+     `.comparison-article .btn` rule below already paints the CTA spruce, so
+     without the exclusion the button rendered accent-on-accent (1:1). */
+  .comparison-article .article-meta a:not(:where(.btn)),
+  .comparison-article .article-body a:not(:where(.btn)) {
     color: var(--editorial-accent-dark);
     text-underline-offset: 3px;
   }

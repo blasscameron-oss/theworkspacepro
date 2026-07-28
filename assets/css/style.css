@@ -9,8 +9,13 @@
   --c-bg-alt: #f3efe9;
   --c-surface: #ffffff;
   --c-text: #1a1815;
-  --c-text-light: #6b6660;
-  --c-text-muted: #9a948c;
+  /* Three-step text ramp. Every step clears WCAG AA (4.5:1) against every
+     light surface we paint on — #faf8f5, #ffffff, #f3efe9, #f5f2eb, #fffefa
+     and the compare table's #edf3ee. The old --c-text-muted (#9a948c) sat at
+     2.6–3.0:1 and was unreadable; --c-text-light moved down with it so the
+     hierarchy between "secondary" and "quiet" survives the darkening. */
+  --c-text-light: #5f5a54;
+  --c-text-muted: #716b63;
   --c-border: #e8e2d9;
   --c-primary: #c2410c;
   --c-primary-light: #ea580c;
@@ -744,6 +749,14 @@ input[type="range"]::-moz-range-thumb {
   color: var(--c-dark-text);
   padding: var(--space-xl) 0;
   text-align: center;
+  /* Deliberately-dark surface: publish the ink this band expects so the
+     generic prose/heading rules in later sheets (editorial-v4's
+     `.editorial-shell h1,h2,h3`, premium-studio's `.ps-utility :where(p,li)`)
+     paint light text here instead of the page's dark ink. Both tokens
+     resolve to the same value in either theme, so this needs no dark
+     counterpart. */
+  --surface-ink: var(--c-dark-text);
+  --surface-ink-soft: var(--c-dark-text-light);
 }
 [data-theme="dark"] .newsletter-bar { background: var(--c-surface); }
 .newsletter-bar__title { color: var(--c-dark-text); margin-bottom: var(--space-sm); }
@@ -771,7 +784,9 @@ input[type="range"]::-moz-range-thumb {
   color: var(--c-text);
   border: 1px solid var(--c-border);
 }
-.newsletter-form__input::placeholder { color: var(--c-text-muted); }
+/* Placeholder sits on the dark input, so it tracks the dark-surface ramp —
+   not --c-text-muted, which is tuned for light surfaces. */
+.newsletter-form__input::placeholder { color: var(--c-dark-text-light); }
 
 /* Footer */
 .site-footer {
@@ -916,6 +931,9 @@ textarea.text-input { min-height: 120px; resize: vertical; }
 .cta-section {
   background: var(--c-primary);
   color: white;
+  /* Saturated terracotta surface — see .newsletter-bar for why these exist. */
+  --surface-ink: #fff;
+  --surface-ink-soft: rgba(255,255,255,0.85);
   border-radius: var(--radius-lg);
   padding: var(--space-2xl);
   text-align: center;
@@ -1304,8 +1322,10 @@ textarea.text-input { min-height: 120px; resize: vertical; }
   top: 0;
   z-index: 10000;
   padding: 0.75rem 1.25rem;
-  background: var(--c-primary);
-  color: #fff;
+  /* Ink chip, not --c-primary: terracotta is only 5.2:1 with white in light
+     and 2.8:1 in dark. --c-dark / --c-dark-text clear AA in both themes. */
+  background: var(--c-dark);
+  color: var(--c-dark-text);
   font-weight: 600;
   border-radius: 0 0 var(--radius) 0;
 }

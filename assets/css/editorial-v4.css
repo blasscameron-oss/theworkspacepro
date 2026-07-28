@@ -29,7 +29,12 @@ body.editorial-shell {
 .editorial-shell h1,
 .editorial-shell h2,
 .editorial-shell h3 {
-  color: var(--editorial-ink);
+  /* This sheet loads last, so (0,1,1) here beats component rules like
+     `.newsletter-bar__title` (0,1,0) and ties-and-wins against
+     `.cta-section h2` — which painted page ink onto deliberately dark or
+     saturated bands (1.17:1 on the newsletter bar). Surfaces that own their
+     ink publish --surface-ink; everything else falls back to editorial ink. */
+  color: var(--surface-ink, var(--editorial-ink));
   font-family: var(--font-display, Fraunces, Georgia, serif);
   font-weight: 560;
   font-optical-sizing: auto;
@@ -349,7 +354,9 @@ body.editorial-shell {
 .guide-prose h3 { margin: 2.2em 0 .55em; font-size: 1.55rem; }
 .guide-prose p,
 .guide-prose li { color: #34423c; }
-.guide-prose a { color: var(--editorial-accent-dark); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+/* `:not(:where(.btn))` for the same reason as `a:not([class])` above: prose-link rules
+   outrank `.btn--primary` (0,1,0) and repainted CTA buttons spruce-on-terracotta. */
+.guide-prose a:not(:where(.btn)) { color: var(--editorial-accent-dark); text-decoration-thickness: 1px; text-underline-offset: 3px; }
 .guide-prose table { width: 100%; margin: 32px 0; border-collapse: collapse; font-size: .92rem; }
 .guide-prose th,
 .guide-prose td { padding: 13px 12px; border-bottom: 1px solid var(--editorial-line); text-align: left; vertical-align: top; }
