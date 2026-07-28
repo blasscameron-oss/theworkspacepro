@@ -97,8 +97,8 @@
 
     .byo-nav { display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-xl); }
     .byo-btn { padding: var(--space-md) var(--space-xl); border-radius: var(--radius); font-weight: 600; font-size: 1rem; cursor: pointer; border: none; transition: all var(--t-fast); text-decoration: none; display: inline-flex; align-items: center; gap: var(--space-xs); }
-    .byo-btn--primary { background: var(--c-primary); color: white; }
-    .byo-btn--primary:hover { background: var(--c-primary-dark); }
+    .byo-btn--primary { background: var(--c-primary-fill); color: var(--c-on-primary); }
+    .byo-btn--primary:hover { background: var(--c-primary-fill-hover); }
     .byo-btn--secondary { background: transparent; color: var(--c-text-light); border: 1px solid var(--c-border); }
     .byo-btn--secondary:hover { background: var(--c-bg-alt); }
     .byo-btn:disabled { opacity: 0.4; cursor: not-allowed; }
@@ -126,8 +126,8 @@
     .byo-product-card__name { font-family: var(--font-display); font-size: 1.2rem; font-weight: 500; margin-bottom: var(--space-xs); }
     .byo-product-card__price { font-size: 1.3rem; font-weight: 700; color: var(--c-text); margin-bottom: var(--space-sm); }
     .byo-product-card__desc { font-size: 0.9rem; color: var(--c-text-light); margin-bottom: var(--space-md); line-height: 1.5; }
-    .byo-product-card__cta { display: inline-block; padding: var(--space-sm) var(--space-lg); background: var(--c-primary); color: white; border-radius: var(--radius); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: background var(--t-fast); }
-    .byo-product-card__cta:hover { background: var(--c-primary-dark); }
+    .byo-product-card__cta { display: inline-block; padding: var(--space-sm) var(--space-lg); background: var(--c-primary-fill); color: var(--c-on-primary); border-radius: var(--radius); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: background var(--t-fast); }
+    .byo-product-card__cta:hover { background: var(--c-primary-fill-hover); }
     .byo-product-card__swap { font-size: 0.8rem; color: var(--c-text-muted); text-decoration: underline; cursor: pointer; margin-left: var(--space-sm); }
 
     .byo-summary { background: var(--c-bg-alt); border-radius: var(--radius-lg); padding: var(--space-xl); margin-bottom: var(--space-xl); }
@@ -143,7 +143,7 @@
     .byo-savings-badge { display: inline-block; background: var(--c-accent-soft); color: var(--c-accent); padding: 2px 8px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 700; margin-left: var(--space-sm); }
 
     [data-theme="dark"] .byo-option { background: var(--c-dark-surface); border-color: var(--c-dark-border); }
-    [data-theme="dark"] .byo-option.selected { background: var(--c-primary-dark); border-color: var(--c-primary); }
+    [data-theme="dark"] .byo-option.selected { background: var(--c-primary-fill); border-color: var(--c-primary); color: var(--c-on-primary); }
     [data-theme="dark"] .byo-product-card { background: var(--c-dark-surface); border-color: var(--c-dark-border); }
     [data-theme="dark"] .byo-budget-tracker { background: var(--c-dark-surface); }
     [data-theme="dark"] .byo-summary { background: var(--c-dark-surface); }

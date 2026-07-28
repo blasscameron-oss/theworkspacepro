@@ -74,7 +74,6 @@
     .wsc-pain-btn { padding: var(--space-sm) var(--space-lg); border: 2px solid var(--c-border); border-radius: var(--radius-full); background: var(--c-surface); cursor: pointer; font-size: 0.9rem; font-weight: 500; transition: all var(--t-fast); }
     .wsc-pain-btn:hover { border-color: var(--c-primary-light); background: var(--c-bg-alt); }
     .wsc-pain-btn.selected { border-color: var(--c-primary); background: var(--c-primary-soft); color: var(--c-primary-dark); }
-    [data-theme="dark"] .wsc-pain-btn.selected { background: var(--c-primary-dark); color: var(--c-primary-soft); }
 
     /* Generate button */
     .wsc-generate { text-align: center; margin: var(--space-xl) 0; }
@@ -100,23 +99,23 @@
     .wsc-product-name { font-family: var(--font-display); font-weight: 500; font-size: 1.1rem; margin-bottom: var(--space-xs); }
     .wsc-product-price { font-family: var(--font-mono); font-size: 1.1rem; font-weight: 700; color: var(--c-text); margin-bottom: var(--space-xs); }
     .wsc-product-why { font-size: 0.9rem; color: var(--c-text-light); line-height: 1.5; }
-    .wsc-product-link { display: inline-block; margin-top: var(--space-sm); padding: var(--space-xs) var(--space-md); background: var(--c-primary); color: white; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: background var(--t-fast); }
-    .wsc-product-link:hover { background: var(--c-primary-dark); }
+    .wsc-product-link { display: inline-block; margin-top: var(--space-sm); padding: var(--space-xs) var(--space-md); background: var(--c-primary-fill); color: var(--c-on-primary); border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: background var(--t-fast); }
+    .wsc-product-link:hover { background: var(--c-primary-fill-hover); }
     .wsc-product-alloc { font-size: 0.8rem; color: var(--c-accent); font-weight: 600; margin-left: var(--space-xs); }
 
     .wsc-actions { display: flex; gap: var(--space-sm); flex-wrap: wrap; margin-top: var(--space-xl); }
     .wsc-action-btn { padding: var(--space-sm) var(--space-lg); border: 1px solid var(--c-border); border-radius: var(--radius); background: var(--c-surface); cursor: pointer; font-size: 0.85rem; font-weight: 500; transition: all var(--t-fast); }
     .wsc-action-btn:hover { background: var(--c-bg-alt); border-color: var(--c-primary); }
-    .wsc-action-btn--primary { background: var(--c-primary); color: white; border-color: var(--c-primary); }
-    .wsc-action-btn--primary:hover { background: var(--c-primary-dark); }
+    .wsc-action-btn--primary { background: var(--c-primary-fill); color: var(--c-on-primary); border-color: var(--c-primary-fill); }
+    .wsc-action-btn--primary:hover { background: var(--c-primary-fill-hover); }
 
     [data-theme="dark"] .wsc-card { background: var(--c-dark-surface); border-color: var(--c-dark-border); }
     [data-theme="dark"] .wsc-check-card { background: var(--c-dark-surface); border-color: var(--c-dark-border); }
-    [data-theme="dark"] .wsc-check-card.selected { background: var(--c-primary-dark); }
+    [data-theme="dark"] .wsc-check-card.selected { background: var(--c-primary-fill); color: var(--c-on-primary); }
     [data-theme="dark"] .wsc-radio-card { background: var(--c-dark-surface); border-color: var(--c-dark-border); }
     [data-theme="dark"] .wsc-radio-card.selected { background: color-mix(in srgb, var(--c-primary) 15%, var(--c-dark-surface)); }
     [data-theme="dark"] .wsc-pain-btn { background: var(--c-dark-surface); border-color: var(--c-dark-border); }
-    [data-theme="dark"] .wsc-pain-btn.selected { background: var(--c-primary-dark); }
+    [data-theme="dark"] .wsc-pain-btn.selected { background: var(--c-primary-fill); color: var(--c-on-primary); }
     [data-theme="dark"] .wsc-product-item { background: var(--c-dark-surface); border-color: var(--c-dark-border); }
     [data-theme="dark"] .wsc-stat { background: var(--c-dark-surface); }
     [data-theme="dark"] .wsc-action-btn { background: var(--c-dark-surface); border-color: var(--c-dark-border); }
@@ -181,7 +180,7 @@
     <!-- Step 1: Budget -->
     <div class="wsc-card wsc-animate" id="stepBudget">
       <div style="display:flex;align-items:center;gap:var(--space-sm);margin-bottom:var(--space-sm);">
-        <span style="background:var(--c-primary);color:white;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;">1</span>
+        <span style="background:var(--c-primary-fill);color:var(--c-on-primary);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;">1</span>
         <span class="wsc-step-title">Your Budget</span>
       </div>
       <p class="wsc-step-desc">How much are you planning to spend on your workspace setup?</p>
@@ -198,7 +197,7 @@
     <!-- Step 2: Priorities -->
     <div class="wsc-card wsc-animate" id="stepPriorities">
       <div style="display:flex;align-items:center;gap:var(--space-sm);margin-bottom:var(--space-sm);">
-        <span style="background:var(--c-primary);color:white;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;">2</span>
+        <span style="background:var(--c-primary-fill);color:var(--c-on-primary);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;">2</span>
         <span class="wsc-step-title">Select Priorities</span>
       </div>
       <p class="wsc-step-desc">What categories matter most? Your budget will be weighted toward your selections.</p>
@@ -233,7 +232,7 @@
     <!-- Step 3: Pain Points -->
     <div class="wsc-card wsc-animate" id="stepPain">
       <div style="display:flex;align-items:center;gap:var(--space-sm);margin-bottom:var(--space-sm);">
-        <span style="background:var(--c-primary);color:white;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;">3</span>
+        <span style="background:var(--c-primary-fill);color:var(--c-on-primary);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;">3</span>
         <span class="wsc-step-title">Pain Points</span>
       </div>
       <p class="wsc-step-desc">Select any discomfort you're experiencing. We'll prioritize products that help.</p>
@@ -249,7 +248,7 @@
     <!-- Step 4: Room Size -->
     <div class="wsc-card wsc-animate" id="stepRoom">
       <div style="display:flex;align-items:center;gap:var(--space-sm);margin-bottom:var(--space-sm);">
-        <span style="background:var(--c-primary);color:white;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;">4</span>
+        <span style="background:var(--c-primary-fill);color:var(--c-on-primary);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;">4</span>
         <span class="wsc-step-title">Room Size</span>
       </div>
       <p class="wsc-step-desc">How much space do you have for your workspace?</p>
