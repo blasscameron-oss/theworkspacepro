@@ -46,9 +46,12 @@ non-vacuous by injecting a bad token — it reported 98 failures and exited 1.
 release.** If you add a new *layout*, add one route to `PAGES`; new *pages* are
 picked up automatically.
 
-**Verified 2026-07-28:** build (43 pages), validate (43 HTML / 270 files),
-`npm run check` (0 diagnostics), `node --test` (44/44), `npx playwright test`
-(26 passed / 6 skipped), full contrast sweep (42 routes, 0 failures).
+**Verified 2026-07-28 (final):** build (43 pages), validate (43 HTML / 270
+files), `npm run check` (0 diagnostics), `node --test` (44/44), `npx playwright
+test` (26 passed / 6 skipped), contrast sweep (42 routes × 2 themes, 0
+failures), link audit (0 dead, 0 redirected). `dist/deals.html` renders 11
+cards, 11 category diagrams, 11 "not a product photo" captions, 10 tagged
+Amazon links, and zero untagged Amazon links anywhere in `dist`.
 
 **Ship it:** same route as last time — push the branch, PR into `main`, merge
 once, watch the single deploy run (`gh run list --workflow deploy.yml --limit 1`).
@@ -66,25 +69,51 @@ have caught every bug fixed here.
   all body copy readable, no white-on-white.
 - Serve the deployed `dist` locally and run `node scripts/audit-contrast.mjs`
   once more against it; expect exit 0.
+- `/deals` shows **11 cards, 10 with Amazon links**; header reads "35-product
+  catalog reviewed July 28, 2026" and the homepage "Browse all 11 value picks".
+- Click through two or three deal links and confirm they land on the product
+  page (not a category page) at roughly the price shown.
+- Confirm `/compare` and `/deals` show inch marks as `27″`, not `27\`.
 
-### Open item for the OWNER, not for you to decide alone
+### The product-data correction (done — context for your smoke checks)
 
-`node scripts/audit-links.mjs` (new, not in CI) found **5 of 8 non-Amazon
-product links no longer reach the product**: the four IKEA URLs
-(`ikea-markus-office-chair`, `ikea-lagkapten-desk`, `ikea-tertial-work-lamp`,
-`ikea-trotten-standing-desk`) all redirect to a generic IKEA category page, and
-`fully-jarvis-bamboo` lands on a Herman Miller brand page because Fully was
-absorbed into Herman Miller. `uplift-v2-standing-desk` redirects to a tidied URL
-that still looks like the right product. Branch links rate-limited (429,
-inconclusive — retry).
+The link audit found **5 of 8 non-Amazon product links no longer reached the
+product**, and following that thread turned up worse: prices across the catalog
+were stale by up to 2×, and two shortlisted Amazon items were out of stock. All
+of it was verified against live retailer pages on 2026-07-28 and corrected.
 
-This matters because each still displays a price the reader now cannot verify,
-and the owner has been explicit about not wanting anything dishonest. It is not
-a code fix: deciding whether to re-point a URL, re-price, or drop a product is
-a content/business call. **Surface it to the owner; do not silently rewrite the
-catalog.** Amazon links were left unchecked by default (they cloak and
-rate-limit non-browser clients, so results are meaningless) — the last real
-audit found all 116 correctly tagged.
+- **Retired 4 products** that no longer exist as described: IKEA LAGKAPTEN (the
+  bamboo variant never existed — LAGKAPTEN is a tabletop), IKEA TROTTEN (every
+  variant on clearance/last-chance), Fully Jarvis (brand absorbed by Herman
+  Miller; real price ~$1,175 vs the $549 we published), and Branch Standing Desk
+  (**its old URL now serves a $749 desk while we advertised $499** — the most
+  urgent find).
+- **Corrected** the two live IKEA URLs (the old slugs used IKEA's global item
+  ids; the US site keys on different ones), renamed UPLIFT V2 → V3, and refreshed
+  ~10 stale prices — including HON Ignition $379 → **$461.98** and ASUS ProArt
+  $299 → **$229**.
+- **Added 6 verified Amazon products**, taking Desk coverage from 1 Amazon entry
+  to 4. Desks were the gap: the catalog had exactly one Amazon desk.
+- **Deals shortlist is now 10 of 11 earning**, up from 7. Nothing was added
+  because it pays — two Amazon items were *removed* for being out of stock, and
+  the non-earning Branch chair ($359) was deliberately **kept** because it is the
+  best chair at that price and no Amazon option at $330–400 is honest
+  competition. That call is the owner's standing preference: quality over
+  commission.
+- **Guide prose was reconciled** with the corrected catalog — dead links
+  repointed, retired picks replaced, and budget-tier tables recomputed so the
+  arithmetic matches the line items. Where a pick changed, the guide says plainly
+  what happened and why, rather than quietly swapping the name; a reader who
+  bought on the old advice deserves that.
+
+Amazon links are skipped by `audit-links.mjs` by default — Amazon cloaks and
+rate-limits non-browser clients, so results would be noise. All 116 were verified
+correctly tagged in an earlier audit, and `dist` currently has **zero** untagged
+Amazon links.
+
+**Run `node scripts/audit-links.mjs` quarterly.** This class of rot is silent:
+the page still renders, the link still returns 200, and it lands on a category
+page next to a price the reader cannot check.
 
 ### Also parked (deliberate, not forgotten)
 
