@@ -2,7 +2,7 @@
 .worksheet__header { max-width: 760px; margin-bottom: 70px; }
 .worksheet__header h1 { margin: 0 0 20px; font-size: clamp(3rem, 7vw, 6rem); }
 .worksheet__header p { color: var(--editorial-muted); font-size: 1.12rem; }
-.worksheet__print { margin-top: 18px; padding: 12px 18px; border: 0; border-radius: 3px; color: white; background: var(--editorial-accent); cursor: pointer; font: inherit; }
+.worksheet__print { margin-top: 18px; padding: 12px 18px; border: 0; border-radius: 3px; color: var(--editorial-on-accent); background: var(--editorial-accent-fill); cursor: pointer; font: inherit; }
 .worksheet__section { margin-top: 54px; padding-top: 32px; border-top: 1px solid var(--editorial-line); }
 .worksheet__section h2 { font-size: 2rem; }
 .worksheet__fields { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
@@ -14,7 +14,7 @@
 .worksheet__check span { color: var(--editorial-muted); font-size: .9rem; }
 .worksheet__check label { font-size: .82rem; white-space: nowrap; }
 .worksheet__notes { margin-top: 20px; }
-.worksheet__notice { margin-top: 50px; padding: 24px; display: grid; gap: 6px; background: #ece9e0; font-size: .85rem; }
+.worksheet__notice { margin-top: 50px; padding: 24px; display: grid; gap: 6px; background: var(--editorial-tint-warm); font-size: .85rem; }
 @media (max-width: 560px) {
   .worksheet__fields { grid-template-columns: 1fr; }
   .worksheet__check { grid-template-columns: 1fr 1fr; }

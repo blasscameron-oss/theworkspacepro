@@ -128,7 +128,7 @@ const { content } = Astro.props;
     margin: 38px 0;
     padding: 26px 28px;
     border: 1px solid var(--editorial-line);
-    background: #edf3ee;
+    background: var(--editorial-tint);
   }
 
   .comparison-article .ps-fingerprint__header {
@@ -177,8 +177,8 @@ const { content } = Astro.props;
     text-align: left;
   }
 
-  .comparison-article .comparison-table th { background: #edf3ee; }
-  .comparison-article .comparison-table tr:nth-child(even) td { background: #f7f6f1; }
+  .comparison-article .comparison-table th { background: var(--editorial-tint); }
+  .comparison-article .comparison-table tr:nth-child(even) td { background: var(--editorial-stripe); }
 
   .comparison-article .product-card,
   .comparison-article .verdict-card {
@@ -198,10 +198,10 @@ const { content } = Astro.props;
     align-items: center;
     justify-content: center;
     padding: 11px 16px;
-    border: 1px solid var(--editorial-accent-dark);
+    border: 1px solid var(--editorial-accent-fill);
     border-radius: 3px;
-    color: white;
-    background: var(--editorial-accent-dark);
+    color: var(--editorial-on-accent);
+    background: var(--editorial-accent-fill);
     font-size: .84rem;
     font-weight: 700;
     text-decoration: none;
