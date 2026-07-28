@@ -24,6 +24,7 @@ export const PAGES = [
   '/contact.html',
   '/compare/',
   '/build-your-office.html',
+  '/home-office-setup-guide.html',
   '/ergonomic-height-calculator.html',
   '/workspace-setup-calculator.html',
   '/desk-fit-worksheet.html',
