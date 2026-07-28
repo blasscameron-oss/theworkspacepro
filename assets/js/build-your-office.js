@@ -207,7 +207,7 @@ const BYO_PRODUCTS = {
     {
       name: "IKEA TERTIAL Work Lamp",
       price: 15,
-      url: "https://www.ikea.com/us/en/p/tertial-work-lamp-gray-80342987/",
+      url: "https://www.ikea.com/us/en/p/tertial-work-lamp-dark-gray-20355434/",
       category: "Lighting",
       desc: "Classic adjustable desk lamp. Add a warm LED bulb for evening use.",
       tiers: ["budget"],
