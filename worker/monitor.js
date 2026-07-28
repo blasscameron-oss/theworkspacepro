@@ -26,7 +26,7 @@ const BODY_MARKERS = {
   '/': ['id="assessment-card"', 'class="commercial-grid"', 'tag=workspacepro-20'],
   '/deals': ['id="dealGrid"', 'deal-card', 'tag=workspacepro-20'],
   '/guides': ['id="buying-guides"', 'id="body-fit"'],
-  '/compare/': ['id="matrixGrid"', 'src="/assets/js/compare-matrix.js"'],
+  '/compare/': ['id="matrixGrid"', '/assets/js/compare-matrix.js'],
 };
 
 
