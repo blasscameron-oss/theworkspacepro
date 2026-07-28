@@ -5,7 +5,29 @@
   --editorial-line: #cfd5cf;
   --editorial-accent: #176b4d;
   --editorial-accent-dark: #0d4934;
+  /* Spruce, like terracotta, does two jobs: link ink on paper, and a filled
+     CTA carrying white text. Dark theme has to lighten the ink token to stay
+     readable on charcoal, which then makes white-on-fill 1.7–2.0:1 — so
+     filled CTAs take this always-solid pair instead of the ink tokens. */
+  --editorial-accent-fill: var(--editorial-accent);
+  --editorial-accent-fill-hover: var(--editorial-accent-dark);
+  --editorial-on-accent: #ffffff;
+  /* Tinted panels: table heads, callouts, fingerprint blocks, zebra stripes.
+     These were hardcoded light hexes (#edf3ee / #e9eee9 / #edf1eb / #ece9e0 /
+     #f7f6f1) that stayed light in dark theme while the ink flipped to cream,
+     which is where most of the unreadable dark surfaces came from. The three
+     near-identical cool tints are now one token. */
+  --editorial-tint: #edf3ee;
+  --editorial-tint-warm: #ece9e0;
+  --editorial-stripe: #f7f6f1;
   --editorial-white: #fffefa;
+  /* The footer title block is a deliberately dark band in BOTH themes, so it
+     needs a surface token of its own. It used to paint itself
+     `var(--editorial-ink)`, which is the page *ink* — in dark that flips to
+     cream while the band's own light text stays put, turning the whole footer
+     into cream-on-cream (1.02–1.17:1) on every single route. A band that owns
+     its surface must own its ink too. */
+  --editorial-band: #1d2824;
   --editorial-max: 1180px;
 }
 
@@ -77,6 +99,14 @@ body.editorial-shell {
   --editorial-line: rgba(244, 239, 231, .16);
   --editorial-accent: #86c4aa;
   --editorial-accent-dark: #9ad0b7;
+  --editorial-accent-fill: #2a6553;
+  --editorial-accent-fill-hover: #327a63;
+  --editorial-tint: #1e2521;
+  --editorial-tint-warm: #23201c;
+  --editorial-stripe: #181c19;
+  /* Half a step below the dark paper so the title block still reads as a
+     separate plate; its light ink then clears 7.3–14:1. */
+  --editorial-band: #0f120f;
   color: var(--editorial-ink);
 }
 [data-theme="dark"] .editorial-shell :where(h1, h2, h3) { color: var(--editorial-ink); }
@@ -84,8 +114,6 @@ body.editorial-shell {
 [data-theme="dark"] .path-card:hover,
 [data-theme="dark"] .library-card:hover,
 [data-theme="dark"] .written-grid a:hover { background: #262c27; }
-[data-theme="dark"] .disclosure,
-[data-theme="dark"] .commercial-disclosure { color: var(--editorial-muted); background: rgba(244, 239, 231, .05); }
 [data-theme="dark"] .migrated-assessment .hero { background: var(--editorial-paper) !important; }
 [data-theme="dark"] .migrated-assessment .workspace-instrument { background-color: #1a1f1b; }
 [data-theme="dark"] .migrated-assessment .hero__stats,
@@ -94,11 +122,6 @@ body.editorial-shell {
 [data-theme="dark"] .migrated-assessment .stat__number,
 [data-theme="dark"] .migrated-assessment .gradient-text { color: var(--editorial-ink) !important; }
 [data-theme="dark"] .migrated-assessment .workspace-instrument__photo img { opacity: .18; }
-/* Filled CTAs keep white text on a solid spruce (not the light text-accent),
-   so white-on-green never drops below AA in dark. */
-[data-theme="dark"] .editorial-nav .button-link,
-[data-theme="dark"] .commercial-card__link { color: #fff; background: #2a6553; }
-[data-theme="dark"] .commercial-card__link:hover { background: #327a63; }
 
 .editorial-header {
   position: relative;
@@ -146,8 +169,8 @@ body.editorial-shell {
 .editorial-nav .button-link {
   padding: 10px 16px;
   border-radius: 4px;
-  color: white;
-  background: var(--editorial-accent);
+  color: var(--editorial-on-accent);
+  background: var(--editorial-accent-fill);
 }
 
 .menu-toggle { display: none; }
@@ -278,7 +301,7 @@ body.editorial-shell {
 
 .path-card:hover,
 .library-card:hover {
-  background: #edf3ee;
+  background: var(--editorial-tint);
   box-shadow: inset 0 3px 0 var(--ps-terracotta-600, #b84d2a);
   transform: translateY(-3px);
 }
@@ -312,12 +335,12 @@ body.editorial-shell {
 .commercial-card h3 { min-height: 2.2em; margin: 28px 0 14px; font-size: 1.55rem; }
 .commercial-card > p { color: var(--editorial-muted); font-size: .9rem; }
 .commercial-card .commercial-card__price { margin-top: 24px; color: var(--editorial-ink); font-size: .78rem; font-weight: 700; }
-.commercial-card__link { display: inline-flex; margin-top: 14px; color: white !important; background: var(--editorial-accent); padding: 11px 14px; border-radius: 3px; font-size: .84rem; font-weight: 700; text-decoration: none; }
-.commercial-card__link:hover { background: var(--editorial-accent-dark); }
+.commercial-card__link { display: inline-flex; margin-top: 14px; color: var(--editorial-on-accent) !important; background: var(--editorial-accent-fill); padding: 11px 14px; border-radius: 3px; font-size: .84rem; font-weight: 700; text-decoration: none; }
+.commercial-card__link:hover { background: var(--editorial-accent-fill-hover); }
 .commercial-categories { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 10px 18px; color: var(--editorial-muted); font-size: .86rem; }
 .commercial-categories strong { color: var(--editorial-ink); }
 .commercial-categories a { color: var(--editorial-accent-dark); font-weight: 700; }
-.commercial-disclosure { margin: 0 0 24px; padding: 18px 20px; background: #ece9e0; color: var(--editorial-muted); font-size: .78rem; }
+.commercial-disclosure { margin: 0 0 24px; padding: 18px 20px; background: var(--editorial-tint-warm); color: var(--editorial-muted); font-size: .78rem; }
 .commercial-disclosure a { color: var(--editorial-accent-dark); font-weight: 700; }
 .evidence-band {
   display: grid;
@@ -362,11 +385,11 @@ body.editorial-shell {
 .guide-prose td { padding: 13px 12px; border-bottom: 1px solid var(--editorial-line); text-align: left; vertical-align: top; }
 .guide-prose blockquote { margin: 32px 0; padding: 20px 26px; border-left: 3px solid var(--editorial-accent); background: var(--editorial-white); }
 .source-list { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--editorial-line); }
-.disclosure { padding: 18px 20px; background: #ece9e0; font-size: .84rem; }
+.disclosure { padding: 18px 20px; background: var(--editorial-tint-warm); font-size: .84rem; }
 
 /* Footer as an engineering-drawing title block: boxed corner stamp, hairline
    rules dividing labelled cells, all metadata in the mono instrument voice. */
-.editorial-footer { padding: clamp(48px, 7vw, 84px) max(20px, calc((100% - var(--editorial-max)) / 2)); color: #d9e0dc; background: var(--editorial-ink); background-image: repeating-linear-gradient(0deg, rgba(255,255,255,.022) 0 1px, transparent 1px 30px), repeating-linear-gradient(90deg, rgba(255,255,255,.022) 0 1px, transparent 1px 30px); }
+.editorial-footer { padding: clamp(48px, 7vw, 84px) max(20px, calc((100% - var(--editorial-max)) / 2)); color: #d9e0dc; background: var(--editorial-band); background-image: repeating-linear-gradient(0deg, rgba(255,255,255,.022) 0 1px, transparent 1px 30px), repeating-linear-gradient(90deg, rgba(255,255,255,.022) 0 1px, transparent 1px 30px); }
 .editorial-footer__stamp { border: 1px solid rgba(217,224,220,.36); }
 .editorial-footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr; }
 .editorial-footer__grid > * { padding: clamp(22px, 3vw, 34px); border-left: 1px solid rgba(217,224,220,.18); }
