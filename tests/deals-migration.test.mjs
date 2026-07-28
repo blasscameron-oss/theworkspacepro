@@ -73,7 +73,9 @@ test('every deal link carries sponsored rel and the analytics contract', () => {
     for (const token of ['sponsored', 'noopener', 'noreferrer']) {
       assert.ok(card.rel.split(/\s+/).includes(token), `rel for ${card.id} must include ${token}`);
     }
-    assert.match(card.referencePrice, /^\d+$/, `reference price must be numeric for ${card.id}`);
+    // Catalog prices are the retailer's live price, so cents are expected
+    // (189.87, 19.48). The contract is "a plain number", not "a whole dollar".
+    assert.match(card.referencePrice, /^\d+(?:\.\d+)?$/, `reference price must be numeric for ${card.id}`);
     assert.ok(card.category, `missing data-deal-category for ${card.id}`);
   }
   for (const match of html.matchAll(/href="(https:\/\/[^"\s]*amazon\.com[^"\s]*)"/gi)) {

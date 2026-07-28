@@ -14,8 +14,11 @@ test('comparison filters render products and preserve shareable state', async ({
   await expect(page.locator('#matrixGrid .matrix-card').first()).toBeVisible();
   await expect(page.locator('#filterCategory')).toHaveValue('chair');
   await expect(page.locator('#filterBudget')).toHaveValue('under-350');
-  await page.locator('#filterSearch').fill('HON');
-  await expect(page).toHaveURL(/q=HON/);
+  // Catalog fixture: the SIHOO M57 is the only chair matching this search
+  // inside the under-$350 band (the HON pair moved above it on the 2026-07-28
+  // price review, so "HON" no longer returns a row here).
+  await page.locator('#filterSearch').fill('SIHOO');
+  await expect(page).toHaveURL(/q=SIHOO/);
   await expect(page.locator('#matrixGrid .matrix-card')).toHaveCount(1);
   const widths = await page.evaluate(() => ({ viewport: document.documentElement.clientWidth, document: document.documentElement.scrollWidth }));
   expect(widths.document).toBeLessThanOrEqual(widths.viewport);

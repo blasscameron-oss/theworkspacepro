@@ -4,10 +4,14 @@ import { catalogSchema } from '../data/product-schema';
 const catalog = catalogSchema.parse(rawCatalog);
 const catalogReviewed = new Date(`${catalog.updated}T00:00:00Z`).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 const shortlistCount = catalog.products.filter((product) => product.dealsShortlist).length;
-const featuredIds = ['B06Y3PGPR2', 'B085KBN2DN', 'B00358RIRC', 'B071CXPSDN'];
+// Four Amazon picks from the deals shortlist, one per major category. They must
+// stay flagged in the catalog: the homepage must never feature a product the
+// shortlist has dropped over price or availability.
+const featuredIds = ['B0H1GYHM1F', 'B08BHPMYGK', 'B00358RIRC', 'B07C82HPM7'];
 const featured = featuredIds.map((id) => {
   const product = catalog.products.find((candidate) => candidate.id === id);
   if (!product) throw new Error(`Featured deal ${id} is missing from the product catalog`);
+  if (!product.dealsShortlist) throw new Error(`Featured deal ${id} is no longer on the deals shortlist`);
   return product;
 });
 const hrefFor = (category: string) => `/deals?category=${category}`;
