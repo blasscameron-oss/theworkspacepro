@@ -1,13 +1,13 @@
 {
   "version": 1,
-  "updated": "2026-07-27",
+  "updated": "2026-07-28",
   "affiliateTag": "workspacepro-20",
   "products": [
     {
       "id": "ikea-markus-office-chair",
       "name": "IKEA MARKUS Office Chair",
-      "price": 229,
-      "url": "https://www.ikea.com/us/en/p/markus-office-chair-vissle-dark-gray-70261150/",
+      "price": 299.99,
+      "url": "https://www.ikea.com/us/en/p/markus-office-chair-vissle-dark-gray-90289172/",
       "category": "Chair",
       "desc": "Basic ergonomic office chair with built-in lumbar support and mesh back. Good entry-level option.",
       "tiers": [
@@ -24,13 +24,13 @@
       "evidenceLevel": "research",
       "limitations": [
         "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
-      ]
+      ],
+      "verifiedAt": "2026-07-28"
     },
     {
       "id": "B06Y3PGPR2",
-      "dealsShortlist": true,
       "name": "HON Ignition 2.0 Mid-Back",
-      "price": 379,
+      "price": 461.98,
       "url": "https://www.amazon.com/dp/B06Y3PGPR2/?tag=workspacepro-20",
       "category": "Chair",
       "desc": "Mesh task chair with lumbar support — strong value pick for full workdays. Confirm current price on Amazon.",
@@ -51,13 +51,14 @@
       "evidenceLevel": "research",
       "limitations": [
         "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
-      ]
+      ],
+      "verifiedAt": "2026-07-28"
     },
     {
       "id": "branch-ergonomic-chair",
       "dealsShortlist": true,
       "name": "Branch Ergonomic Chair",
-      "price": 329,
+      "price": 359,
       "url": "https://www.branchfurniture.com/products/ergonomic-chair",
       "category": "Chair",
       "desc": "Seven points of adjustment including lumbar, armrests, seat depth, and tilt. Modern design from Branch.",
@@ -78,7 +79,8 @@
       "evidenceLevel": "research",
       "limitations": [
         "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
-      ]
+      ],
+      "verifiedAt": "2026-07-28"
     },
     {
       "id": "B092ZNFF8P",
@@ -155,35 +157,10 @@
       ]
     },
     {
-      "id": "ikea-lagkapten-desk",
-      "dealsShortlist": true,
-      "name": "IKEA LAGKAPTEN Desk",
-      "price": 89,
-      "url": "https://www.ikea.com/us/en/p/lagkapten-desk-black-brown-bamboo-00503604/",
-      "category": "Desk",
-      "desc": "Simple sitting desk. Budget-friendly for tight spaces. Pair with a monitor arm for height.",
-      "tiers": [
-        "budget"
-      ],
-      "bestFor": [
-        "general",
-        "writer",
-        "budget",
-        "small"
-      ],
-      "asin": null,
-      "retailer": "ikea",
-      "image": null,
-      "evidenceLevel": "research",
-      "limitations": [
-        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
-      ]
-    },
-    {
       "id": "B085KBN2DN",
       "dealsShortlist": true,
-      "name": "SHW Electric Standing Desk 55\\\"",
-      "price": 299,
+      "name": "SHW Electric Standing Desk 55\" w/Drawer",
+      "price": 189.87,
       "url": "https://www.amazon.com/dp/B085KBN2DN/?tag=workspacepro-20",
       "category": "Desk",
       "desc": "Budget electric standing desk with drawer options. Popular Amazon pick — verify capacity and height range for your body.",
@@ -203,42 +180,14 @@
       "evidenceLevel": "research",
       "limitations": [
         "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
-      ]
-    },
-    {
-      "id": "branch-standing-desk",
-      "dealsShortlist": true,
-      "name": "Branch Standing Desk",
-      "price": 499,
-      "url": "https://www.branchfurniture.com/products/standing-desk",
-      "category": "Desk",
-      "desc": "Dual-motor standing desk from Branch with solid warranty and clean design.",
-      "tiers": [
-        "mid"
       ],
-      "bestFor": [
-        "general",
-        "developer",
-        "creative",
-        "ergonomics",
-        "aesthetics",
-        "productivity",
-        "standing",
-        "large"
-      ],
-      "asin": null,
-      "retailer": "branch",
-      "image": null,
-      "evidenceLevel": "research",
-      "limitations": [
-        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
-      ]
+      "verifiedAt": "2026-07-28"
     },
     {
       "id": "uplift-v2-standing-desk",
-      "name": "Uplift V2 Standing Desk",
+      "name": "UPLIFT V3 Standing Desk",
       "price": 599,
-      "url": "https://www.upliftdesk.com/uplift-v2-standing-desk-v2-or-v2-commercial/",
+      "url": "https://www.upliftdesk.com/2-leg-standing-desk/",
       "category": "Desk",
       "desc": "Highly configurable dual-motor frame. Check live configuration pricing on Uplift.",
       "tiers": [
@@ -257,13 +206,14 @@
       "evidenceLevel": "research",
       "limitations": [
         "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
-      ]
+      ],
+      "verifiedAt": "2026-07-28"
     },
     {
       "id": "B07DHK5DHN",
       "dealsShortlist": true,
       "name": "Amazon Basics Monitor Stand (height)",
-      "price": 25,
+      "price": 30.23,
       "url": "https://www.amazon.com/dp/B07DHK5DHN/?tag=workspacepro-20",
       "category": "Monitor Stand",
       "desc": "Simple riser for eye-level monitors when a full arm isn’t in budget. Not a sit-stand converter.",
@@ -282,7 +232,8 @@
       "evidenceLevel": "research",
       "limitations": [
         "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
-      ]
+      ],
+      "verifiedAt": "2026-07-28"
     },
     {
       "id": "B018MSDG84",
@@ -311,8 +262,8 @@
     {
       "id": "B088BC5HMM",
       "dealsShortlist": true,
-      "name": "ASUS ProArt PA278QV 27\\\" 1440p",
-      "price": 299,
+      "name": "ASUS ProArt PA278QV 27″ 1440p",
+      "price": 229,
       "url": "https://www.amazon.com/dp/B088BC5HMM/?tag=workspacepro-20",
       "category": "Monitor",
       "desc": "27\\\" 1440p IPS with strong color coverage for office and light creative work.",
@@ -334,12 +285,12 @@
       "evidenceLevel": "research",
       "limitations": [
         "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
-      ]
+      ],
+      "verifiedAt": "2026-07-28"
     },
     {
       "id": "B09DTDRJWP",
-      "dealsShortlist": true,
-      "name": "Dell S2722QC 27\\\" 4K USB-C",
+      "name": "Dell S2722QC 27″ 4K USB-C",
       "price": 350,
       "url": "https://www.amazon.com/dp/B09DTDRJWP/?tag=workspacepro-20",
       "category": "Monitor",
@@ -359,11 +310,12 @@
       "evidenceLevel": "research",
       "limitations": [
         "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
-      ]
+      ],
+      "verifiedAt": "2026-07-28"
     },
     {
       "id": "B09TQZP9CL",
-      "name": "Dell UltraSharp U2723QE 27\\\" 4K",
+      "name": "Dell UltraSharp U2723QE 27″ 4K",
       "price": 480,
       "url": "https://www.amazon.com/dp/B09TQZP9CL/?tag=workspacepro-20",
       "category": "Monitor",
@@ -388,7 +340,7 @@
     },
     {
       "id": "B08BCR862L",
-      "name": "LG 32UN880-B 32\\\" 4K Ergo",
+      "name": "LG 32UN880-B 32″ 4K Ergo",
       "price": 550,
       "url": "https://www.amazon.com/dp/B08BCR862L/?tag=workspacepro-20",
       "category": "Monitor",
@@ -414,7 +366,7 @@
       "id": "B00358RIRC",
       "dealsShortlist": true,
       "name": "Ergotron LX Single Monitor Arm",
-      "price": 189,
+      "price": 194.99,
       "url": "https://www.amazon.com/dp/B00358RIRC/?tag=workspacepro-20",
       "category": "Monitor Arm",
       "desc": "Premium gas-spring arm with smooth motion. Worth it for heavy monitors or frequent height changes.",
@@ -434,7 +386,8 @@
       "evidenceLevel": "research",
       "limitations": [
         "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
-      ]
+      ],
+      "verifiedAt": "2026-07-28"
     },
     {
       "id": "B00P9JULWE",
@@ -460,10 +413,9 @@
     },
     {
       "id": "ikea-tertial-work-lamp",
-      "dealsShortlist": true,
       "name": "IKEA TERTIAL Work Lamp",
-      "price": 15,
-      "url": "https://www.ikea.com/us/en/p/tertial-work-lamp-gray-80342987/",
+      "price": 19.99,
+      "url": "https://www.ikea.com/us/en/p/tertial-work-lamp-dark-gray-20355434/",
       "category": "Lighting",
       "desc": "Adjustable IKEA task-lamp listing; confirm dimensions, bulb requirements, availability, and current price.",
       "tiers": [
@@ -481,11 +433,11 @@
       "evidenceLevel": "research",
       "limitations": [
         "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
-      ]
+      ],
+      "verifiedAt": "2026-07-28"
     },
     {
       "id": "B071CXPSDN",
-      "dealsShortlist": true,
       "name": "tomons LED Desk Lamp",
       "price": 30,
       "url": "https://www.amazon.com/dp/B071CXPSDN/?tag=workspacepro-20",
@@ -505,12 +457,14 @@
       "evidenceLevel": "research",
       "limitations": [
         "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
-      ]
+      ],
+      "verifiedAt": "2026-07-28"
     },
     {
       "id": "B076VNFZJG",
+      "dealsShortlist": true,
       "name": "BenQ ScreenBar",
-      "price": 99,
+      "price": 109,
       "url": "https://www.amazon.com/dp/B076VNFZJG/?tag=workspacepro-20",
       "category": "Lighting",
       "desc": "Monitor light bar — zero desk footprint, reduces glare.",
@@ -529,7 +483,8 @@
       "evidenceLevel": "research",
       "limitations": [
         "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
-      ]
+      ],
+      "verifiedAt": "2026-07-28"
     },
     {
       "id": "B07DP7RYXV",
@@ -725,7 +680,7 @@
     {
       "id": "B0C83YRK84",
       "name": "HON Ignition 2.0 Low-Back",
-      "price": 349,
+      "price": 444.74,
       "url": "https://www.amazon.com/dp/B0C83YRK84/?tag=workspacepro-20",
       "category": "Chair",
       "desc": "HON Ignition task-chair listing; confirm the exact configuration, adjustment range, seller, condition, and warranty.",
@@ -743,50 +698,8 @@
       "evidenceLevel": "research",
       "limitations": [
         "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
-      ]
-    },
-    {
-      "id": "ikea-trotten-standing-desk",
-      "name": "IKEA TROTTEN Standing Desk",
-      "price": 199,
-      "url": "https://www.ikea.com/us/en/p/trotten-desk-stand-up-black-s09322329/",
-      "category": "Desk",
-      "desc": "IKEA sit-stand desk listing; confirm the selected desktop, adjustment method, working-height range, and warranty.",
-      "tiers": [
-        "budget"
       ],
-      "bestFor": [
-        "budget"
-      ],
-      "asin": null,
-      "retailer": "ikea",
-      "image": null,
-      "evidenceLevel": "research",
-      "limitations": [
-        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
-      ]
-    },
-    {
-      "id": "fully-jarvis-bamboo",
-      "name": "Fully Jarvis Bamboo",
-      "price": 549,
-      "url": "https://www.fully.com/standing-desks/jarvis.html",
-      "category": "Desk",
-      "desc": "Jarvis bamboo sit-stand desk listing; verify the current seller, desktop size, height range, capacity, and warranty.",
-      "tiers": [
-        "mid"
-      ],
-      "bestFor": [
-        "general",
-        "premium"
-      ],
-      "asin": null,
-      "retailer": "other",
-      "image": null,
-      "evidenceLevel": "research",
-      "limitations": [
-        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
-      ]
+      "verifiedAt": "2026-07-28"
     },
     {
       "id": "B08BLCZDYL",
@@ -809,6 +722,168 @@
       "limitations": [
         "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying."
       ]
+    },
+    {
+      "id": "B08BHPMYGK",
+      "dealsShortlist": true,
+      "name": "FLEXISPOT EN1 One-Piece Standing Desk 48×24",
+      "price": 109.97,
+      "url": "https://www.amazon.com/dp/B08BHPMYGK/?tag=workspacepro-20",
+      "category": "Desk",
+      "desc": "Electric sit-stand desk with a one-piece 48 by 24 inch top, four memory presets, a 28.9 to 46.5 inch height range, and a 176 lb capacity.",
+      "tiers": [
+        "budget"
+      ],
+      "bestFor": [
+        "general",
+        "budget",
+        "standing",
+        "small"
+      ],
+      "asin": "B08BHPMYGK",
+      "retailer": "amazon",
+      "image": "",
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying.",
+        "Single-motor two-stage frame: the 28.9 inch minimum height is too high for many people under about 5 feet 2 inches."
+      ],
+      "verifiedAt": "2026-07-28"
+    },
+    {
+      "id": "B0BVQMQMY2",
+      "dealsShortlist": true,
+      "name": "FLEXISPOT E6 3-Stage Dual Motor Standing Desk 55×28",
+      "price": 284.99,
+      "url": "https://www.amazon.com/dp/B0BVQMQMY2/?tag=workspacepro-20",
+      "category": "Desk",
+      "desc": "Dual-motor sit-stand desk on three-stage legs: a 23.6 to 48.8 inch height range, 220 lb capacity, one-piece FSC-certified desktop, and a five-year frame and motor warranty.",
+      "tiers": [
+        "budget",
+        "mid"
+      ],
+      "bestFor": [
+        "general",
+        "developer",
+        "ergonomics",
+        "standing"
+      ],
+      "asin": "B0BVQMQMY2",
+      "retailer": "amazon",
+      "image": "",
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying.",
+        "Electronics carry a shorter two-year warranty than the five-year frame and motor cover."
+      ],
+      "verifiedAt": "2026-07-28"
+    },
+    {
+      "id": "B0GR2R91W3",
+      "dealsShortlist": true,
+      "name": "FLEXISPOT Comhar 55\" Electric Standing Desk with Drawers",
+      "price": 299.98,
+      "url": "https://www.amazon.com/dp/B0GR2R91W3/?tag=workspacepro-20",
+      "category": "Desk",
+      "desc": "All-in-one electric standing desk with a built-in drawer and USB charging on the control panel.",
+      "tiers": [
+        "budget",
+        "mid"
+      ],
+      "bestFor": [
+        "general",
+        "standing",
+        "small"
+      ],
+      "asin": "B0GR2R91W3",
+      "retailer": "amazon",
+      "image": "",
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying.",
+        "The listing does not state a height range, so check the sitting and standing heights you need before ordering."
+      ],
+      "verifiedAt": "2026-07-28"
+    },
+    {
+      "id": "B07JFFZGC4",
+      "name": "VIVO Electric 63×32 Standing Desk (2E Series)",
+      "price": 299.99,
+      "url": "https://www.amazon.com/dp/B07JFFZGC4/?tag=workspacepro-20",
+      "category": "Desk",
+      "desc": "Large 63 by 32 inch electric sit-stand desk on three-stage legs, with a 24.6 to 50.2 inch height range, 220 lb capacity, and a three-year warranty.",
+      "tiers": [
+        "budget",
+        "mid"
+      ],
+      "bestFor": [
+        "general",
+        "developer",
+        "standing",
+        "large"
+      ],
+      "asin": "B07JFFZGC4",
+      "retailer": "amazon",
+      "image": "",
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying.",
+        "Three-piece desktop, so the surface has seams, and the frame is likely single-motor."
+      ],
+      "verifiedAt": "2026-07-28"
+    },
+    {
+      "id": "B0H1GYHM1F",
+      "dealsShortlist": true,
+      "name": "SIHOO M57 Ergonomic Office Chair",
+      "price": 189.99,
+      "url": "https://www.amazon.com/dp/B0H1GYHM1F/?tag=workspacepro-20",
+      "category": "Chair",
+      "desc": "Budget ergonomic task chair rated to 330 lb, with BIFMA and SGS certification stated on the listing and a three-year warranty.",
+      "tiers": [
+        "budget"
+      ],
+      "bestFor": [
+        "general",
+        "budget",
+        "ergonomics"
+      ],
+      "asin": "B0H1GYHM1F",
+      "retailer": "amazon",
+      "image": "",
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying.",
+        "Amazon's detail table lists a different model number than the title, so confirm the exact chair with the seller."
+      ],
+      "verifiedAt": "2026-07-28"
+    },
+    {
+      "id": "B07C82HPM7",
+      "dealsShortlist": true,
+      "name": "Bostitch Office VLF100 LED Swing Arm Desk Lamp",
+      "price": 19.48,
+      "url": "https://www.amazon.com/dp/B07C82HPM7/?tag=workspacepro-20",
+      "category": "Lighting",
+      "desc": "All-metal clamp-mount swing arm lamp with a 36 inch reach and a replaceable LED, so it adds task light without using desk surface.",
+      "tiers": [
+        "budget"
+      ],
+      "bestFor": [
+        "general",
+        "writer",
+        "budget",
+        "small"
+      ],
+      "asin": "B07C82HPM7",
+      "retailer": "amazon",
+      "image": "",
+      "evidenceLevel": "research",
+      "limitations": [
+        "Confirm current specifications, price, availability, condition, and warranty with the retailer before buying.",
+        "Warranty is one year."
+      ],
+      "verifiedAt": "2026-07-28"
     }
   ]
 }

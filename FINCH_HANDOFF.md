@@ -1,6 +1,137 @@
 # Finch handoff
 
-## CURRENT HANDOFF (2026-07-27): ship branch `redesign/premium-2026-07-26`
+> **How to use this file.** The top section is the only live handoff; everything
+> below the first `---` is history, newest first. **When you finish, update this
+> file yourself**: move the current section down into the history with an outcome
+> line (`DONE, shipped as <sha>` or `BLOCKED — <reason>`), and write a new
+> CURRENT section describing the state you are leaving behind — deployed SHA,
+> what you verified after deploying, anything that surprised you, and what the
+> next person should pick up. Record what you *observed*, not what you expected;
+> the July 22 incident cost days because a handoff described an intended state
+> rather than the real one. If you deviate from the steps below, say so and say
+> why. Commit that update on the branch you shipped.
+
+## CURRENT HANDOFF (2026-07-28): ship branch `fix/contrast-light-2026-07-28`
+
+The redesign shipped successfully (main = `2d67817`, live). The owner then
+reported "a couple of spots towards the bottom of the page where the contrast
+gets weird and its hard to see." Confirmed and fixed.
+
+**What it was.** `.newsletter-bar__title` ("Get Weekly Workspace Tips") rendered
+page ink on the deliberately dark newsletter band at **1.17:1 — effectively
+invisible** — near the bottom of most pages, exactly as described. The terracotta
+CTA headings above it sat at 2.94:1. An automated sweep then found the same class
+of bug everywhere: **440 sub-AA text nodes across all 42 routes** (5 light + ~329
+dark + 111 on routes that were never being measured).
+
+**Root cause, one sentence:** a surface that paints its own background but lets
+text colour come from elsewhere — so a light-theme background meets cream
+dark-theme ink, or a dark band meets page ink. Fixed structurally: any surface
+owning its background now owns its ink too, via themed tokens
+(`--editorial-band`, `--editorial-tint`/`-warm`, `--editorial-stripe`,
+`--editorial-prose`, `--c-primary-fill`/`--c-on-primary`,
+`--editorial-accent-fill`/`--editorial-on-accent`, price-tier trio). Several
+real bugs surfaced beyond the reported one, including an in-body CTA button
+rendering at **1:1** on compare pages and `button` inheriting the UA
+`buttontext` keyword (black on charcoal) on both calculators.
+
+**Now: 0 failures on all 42 routes in both themes** (was 440).
+
+**Permanent guard.** `scripts/audit-contrast.mjs` derives its route list from
+the build and sweeps every page in both themes at 375px (exit 1 on any
+failure); `tests/e2e/contrast.spec.mjs` runs the same rules on one route per
+layout as part of the normal Playwright suite. The guard was verified
+non-vacuous by injecting a bad token — it reported 98 failures and exited 1.
+**Run `node scripts/audit-contrast.mjs` against a served `dist` before any
+release.** If you add a new *layout*, add one route to `PAGES`; new *pages* are
+picked up automatically.
+
+**Verified 2026-07-28 (final):** build (43 pages), validate (43 HTML / 270
+files), `npm run check` (0 diagnostics), `node --test` (44/44), `npx playwright
+test` (26 passed / 6 skipped), contrast sweep (42 routes × 2 themes, 0
+failures), link audit (0 dead, 0 redirected). `dist/deals.html` renders 11
+cards, 11 category diagrams, 11 "not a product photo" captions, 10 tagged
+Amazon links, and zero untagged Amazon links anywhere in `dist`.
+
+**Ship it:** same route as last time — push the branch, PR into `main`, merge
+once, watch the single deploy run (`gh run list --workflow deploy.yml --limit 1`).
+Do NOT hand-deploy with `wrangler`; the contrast guard only protects the site if
+releases go through CI, which runs `npm run test:e2e` (deploy.yml:56) and would
+have caught every bug fixed here.
+
+**Post-deploy checks (in addition to the standard ones below):**
+- Scroll to the bottom of `/tips` and `/about` in BOTH themes — the newsletter
+  band ("Get Weekly Workspace Tips") and the terracotta CTA heading above it
+  must be clearly legible. This is the owner-reported symptom; verify it on the
+  real site, not just locally.
+- Toggle dark mode and open `/compare/herman-miller-vs-steelcase`,
+  `/guides/chair-seat-depth-by-height`, and `/ergonomic-height-calculator` —
+  all body copy readable, no white-on-white.
+- Serve the deployed `dist` locally and run `node scripts/audit-contrast.mjs`
+  once more against it; expect exit 0.
+- `/deals` shows **11 cards, 10 with Amazon links**; header reads "35-product
+  catalog reviewed July 28, 2026" and the homepage "Browse all 11 value picks".
+- Click through two or three deal links and confirm they land on the product
+  page (not a category page) at roughly the price shown.
+- Confirm `/compare` and `/deals` show inch marks as `27″`, not `27\`.
+
+### The product-data correction (done — context for your smoke checks)
+
+The link audit found **5 of 8 non-Amazon product links no longer reached the
+product**, and following that thread turned up worse: prices across the catalog
+were stale by up to 2×, and two shortlisted Amazon items were out of stock. All
+of it was verified against live retailer pages on 2026-07-28 and corrected.
+
+- **Retired 4 products** that no longer exist as described: IKEA LAGKAPTEN (the
+  bamboo variant never existed — LAGKAPTEN is a tabletop), IKEA TROTTEN (every
+  variant on clearance/last-chance), Fully Jarvis (brand absorbed by Herman
+  Miller; real price ~$1,175 vs the $549 we published), and Branch Standing Desk
+  (**its old URL now serves a $749 desk while we advertised $499** — the most
+  urgent find).
+- **Corrected** the two live IKEA URLs (the old slugs used IKEA's global item
+  ids; the US site keys on different ones), renamed UPLIFT V2 → V3, and refreshed
+  ~10 stale prices — including HON Ignition $379 → **$461.98** and ASUS ProArt
+  $299 → **$229**.
+- **Added 6 verified Amazon products**, taking Desk coverage from 1 Amazon entry
+  to 4. Desks were the gap: the catalog had exactly one Amazon desk.
+- **Deals shortlist is now 10 of 11 earning**, up from 7. Nothing was added
+  because it pays — two Amazon items were *removed* for being out of stock, and
+  the non-earning Branch chair ($359) was deliberately **kept** because it is the
+  best chair at that price and no Amazon option at $330–400 is honest
+  competition. That call is the owner's standing preference: quality over
+  commission.
+- **Guide prose was reconciled** with the corrected catalog — dead links
+  repointed, retired picks replaced, and budget-tier tables recomputed so the
+  arithmetic matches the line items. Where a pick changed, the guide says plainly
+  what happened and why, rather than quietly swapping the name; a reader who
+  bought on the old advice deserves that.
+
+Amazon links are skipped by `audit-links.mjs` by default — Amazon cloaks and
+rate-limits non-browser clients, so results would be noise. All 116 were verified
+correctly tagged in an earlier audit, and `dist` currently has **zero** untagged
+Amazon links.
+
+**Run `node scripts/audit-links.mjs` quarterly.** This class of rot is silent:
+the page still renders, the link still returns 200, and it lands on a category
+page next to a price the reader cannot check.
+
+### Also parked (deliberate, not forgotten)
+
+- `assets/css/bold.css` is dead weight — still linked from the `index.html`
+  master, but that link never ships (only the `#assessment` block is extracted),
+  so no built page loads it. Safe to delete along with that `<link>`; left alone
+  because it is not causing harm and deletion is unrelated to this fix.
+- Amazon PA-API / Creators API imagery stays blocked until 3 qualifying sales.
+  Never hotlink `m.media-amazon.com` — it is a ToS violation that gets Associates
+  accounts terminated. The category diagrams on `/deals` are the compliant
+  stand-in, and `catalog.json`'s `image` field plus the card's image slot are
+  already wired for the day real licensed photos exist.
+- Hover/focus colour pairs outside the primary and accent families were never
+  swept; the static audit does not exercise them.
+
+---
+
+## PREVIOUS HANDOFF (2026-07-27): ship branch `redesign/premium-2026-07-26` — DONE, shipped as 2d67817
 
 **State.** Production currently serves a manually-deployed build of
 `fix/ci-content-contracts` (all six of that branch's fixes verified live on

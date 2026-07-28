@@ -45,8 +45,8 @@
 .editorial-shell .deal-card__price-label { display: block; color: var(--editorial-muted); font-size: .64rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
 .editorial-shell .deal-card__price { display: block; color: var(--editorial-ink); font-family: Fraunces, Georgia, serif; font-size: 1.38rem; }
 .editorial-shell .deal-card__price-note { grid-column: 1 / -1; color: var(--editorial-muted); font-size: .7rem; }
-.editorial-shell .deal-card__cta { min-height: 42px; padding: 9px 13px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 3px; color: white; background: var(--editorial-accent); font-size: .76rem; font-weight: 750; text-decoration: none; }
-.editorial-shell .deal-card__cta:hover { color: white; background: var(--editorial-accent-dark); }
+.editorial-shell .deal-card__cta { min-height: 42px; padding: 9px 13px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 3px; color: var(--editorial-on-accent); background: var(--editorial-accent-fill); font-size: .76rem; font-weight: 750; text-decoration: none; }
+.editorial-shell .deal-card__cta:hover { color: var(--editorial-on-accent); background: var(--editorial-accent-fill-hover); }
 .editorial-shell :is(.deal-filter__select, .deal-filter__reset, .deal-card__cta, .deals-related a):focus-visible { outline: 3px solid #4f9b7d; outline-offset: 3px; }
 .editorial-shell .deal-empty { padding: 54px 28px; border: 1px solid var(--editorial-line); text-align: center; }
 .editorial-shell .deal-empty h3 { margin: 0 0 8px; font-size: 1.8rem; }
@@ -57,7 +57,7 @@
 .editorial-shell .deals-related { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-block: 1px solid var(--editorial-line); }
 .editorial-shell .deals-related a { min-width: 0; padding: 30px; display: block; border-right: 1px solid var(--editorial-line); color: var(--editorial-ink); text-decoration: none; }
 .editorial-shell .deals-related a:last-child { border-right: 0; }
-.editorial-shell .deals-related a:hover { color: var(--editorial-ink); background: #e9eee9; }
+.editorial-shell .deals-related a:hover { color: var(--editorial-ink); background: var(--editorial-tint); }
 .editorial-shell .deals-related a > span { display: block; margin-bottom: 36px; color: var(--editorial-accent); font-family: ui-monospace, monospace; font-size: .7rem; }
 .editorial-shell .deals-related strong { display: block; font-family: Fraunces, Georgia, serif; font-size: 1.35rem; font-weight: 500; }
 .editorial-shell .deals-related p { margin: 10px 0 0; color: var(--editorial-muted); font-size: .82rem; }
@@ -93,14 +93,11 @@
 /* Dark-theme repaints. The base rules above bake in light hexes that flash or
    drop below AA under the drafting-studio dark palette; these mirror the
    editorial-v4 dark treatments so every text/UI pair stays >= AA. */
-/* Filled CTA: white on the pale dark-mode accent fails contrast, so use the
-   same solid spruce the commercial cards use in dark (mirrors editorial-v4). */
-[data-theme="dark"] .editorial-shell .deal-card__cta { color: #fff; background: #2a6553; }
-[data-theme="dark"] .editorial-shell .deal-card__cta:hover { color: #fff; background: #327a63; }
 /* Reset button hover: white-on-ink becomes white-on-near-white in dark. */
 [data-theme="dark"] .editorial-shell .deal-filter__reset:hover { color: #141714; background: var(--editorial-ink); }
-/* Card + related-link hovers used hardcoded light greens that flashed in dark. */
-[data-theme="dark"] .editorial-shell .deal-card:hover { background: #262c27; }
-[data-theme="dark"] .editorial-shell .deals-related a:hover { color: var(--editorial-ink); background: #262c27; }
+/* Hover surfaces lift a step past --editorial-tint so the feedback still reads
+   against the dark cards — same value as editorial-v4's card hovers. */
+[data-theme="dark"] .editorial-shell .deal-card:hover,
+[data-theme="dark"] .editorial-shell .deals-related a:hover { background: #262c27; }
 /* Image slot surface tracks the dark card tone. */
 [data-theme="dark"] .editorial-shell .deal-card__img { background: #12160f; }

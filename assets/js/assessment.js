@@ -58,21 +58,23 @@ function isValidSharedAnswers(answers) {
   return Number.isInteger(height) && height >= 54 && height <= 78;
 }
 
-// Product database — Amazon links verified live (browser, Jul 2026) with tag=workspacepro-20
-// Non-Amazon maker links kept for Branch / IKEA / etc.
+// Product database — every link and price below was read on the live
+// retailer page on 2026-07-28 and mirrors assets/data/catalog.json.
+// Retired there (LAGKAPTEN, TROTTEN, Fully Jarvis, Branch Standing Desk) means
+// retired here: a dead link in this tool is the same broken promise.
 const PRODUCTS = {
   chairs: [
     {
       name: "IKEA Markus",
-      price: 229,
-      url: "https://www.ikea.com/us/en/p/markus-office-chair-vissle-dark-gray-70261150/",
+      price: 299.99,
+      url: "https://www.ikea.com/us/en/p/markus-office-chair-vissle-dark-gray-90289172/",
       heightRange: "5'6\" - 6'2\"",
       adjustability: "low",
       bestFor: ["budget"]
     },
     {
       name: "Branch Ergonomic Chair",
-      price: 329,
+      price: 359,
       url: "https://www.branchfurniture.com/products/ergonomic-chair",
       heightRange: "5'0\" - 6'3\"",
       adjustability: "high",
@@ -80,7 +82,7 @@ const PRODUCTS = {
     },
     {
       name: "HON Ignition 2.0 Mid-Back",
-      price: 379,
+      price: 461.98,
       url: "https://www.amazon.com/dp/B06Y3PGPR2/?tag=workspacepro-20",
       heightRange: "5'2\" - 6'4\"",
       adjustability: "medium",
@@ -88,7 +90,7 @@ const PRODUCTS = {
     },
     {
       name: "HON Ignition 2.0 Low-Back",
-      price: 349,
+      price: 444.74,
       url: "https://www.amazon.com/dp/B0C83YRK84/?tag=workspacepro-20",
       heightRange: "5'0\" - 6'2\"",
       adjustability: "medium",
@@ -121,37 +123,37 @@ const PRODUCTS = {
   ],
   desks: [
     {
-      name: "IKEA TROTTEN Standing Desk",
-      price: 199,
-      url: "https://www.ikea.com/us/en/p/trotten-desk-stand-up-black-s09322329/",
+      name: "FLEXISPOT EN1 Standing Desk 48×24",
+      price: 109.97,
+      url: "https://www.amazon.com/dp/B08BHPMYGK/?tag=workspacepro-20",
       type: "standing",
       bestFor: ["budget"]
     },
     {
-      name: "SHW Electric Standing Desk 55\"",
-      price: 299,
+      name: "SHW Electric Standing Desk 55\" w/Drawer",
+      price: 189.87,
       url: "https://www.amazon.com/dp/B085KBN2DN/?tag=workspacepro-20",
       type: "standing",
       bestFor: ["budget", "general"]
     },
     {
-      name: "Branch Standing Desk",
-      price: 499,
-      url: "https://www.branchfurniture.com/products/standing-desk",
+      name: "FLEXISPOT E6 Dual-Motor Standing Desk 55×28",
+      price: 284.99,
+      url: "https://www.amazon.com/dp/B0BVQMQMY2/?tag=workspacepro-20",
       type: "standing",
-      bestFor: ["general", "budget"]
+      bestFor: ["general", "tall"]
     },
     {
-      name: "Fully Jarvis Bamboo",
-      price: 549,
-      url: "https://www.fully.com/standing-desks/jarvis.html",
+      name: "VIVO Electric 63×32 Standing Desk (2E Series)",
+      price: 299.99,
+      url: "https://www.amazon.com/dp/B07JFFZGC4/?tag=workspacepro-20",
       type: "standing",
-      bestFor: ["general", "premium"]
+      bestFor: ["general", "large"]
     },
     {
-      name: "Uplift V2 Standing Desk",
+      name: "UPLIFT V3 Standing Desk",
       price: 599,
-      url: "https://www.upliftdesk.com/uplift-v2-standing-desk-v2-or-v2-commercial/",
+      url: "https://www.upliftdesk.com/2-leg-standing-desk/",
       type: "standing",
       bestFor: ["general", "premium", "tall"]
     }
@@ -159,7 +161,7 @@ const PRODUCTS = {
   monitors: [
     {
       name: "ASUS ProArt PA278QV 27\" 1440p",
-      price: 299,
+      price: 229,
       url: "https://www.amazon.com/dp/B088BC5HMM/?tag=workspacepro-20",
       bestFor: ["budget", "general"]
     },
@@ -191,7 +193,7 @@ const PRODUCTS = {
     },
     {
       name: "Ergotron LX Single Monitor Arm",
-      price: 189,
+      price: 194.99,
       url: "https://www.amazon.com/dp/B00358RIRC/?tag=workspacepro-20",
       bestFor: ["general", "premium", "back-pain"]
     },
@@ -205,8 +207,8 @@ const PRODUCTS = {
   lighting: [
     {
       name: "IKEA TERTIAL Work Lamp",
-      price: 15,
-      url: "https://www.ikea.com/us/en/p/tertial-work-lamp-dark-gray-80342987/",
+      price: 19.99,
+      url: "https://www.ikea.com/us/en/p/tertial-work-lamp-dark-gray-20355434/",
       bestFor: ["budget"]
     },
     {
@@ -217,7 +219,7 @@ const PRODUCTS = {
     },
     {
       name: "BenQ ScreenBar",
-      price: 99,
+      price: 109,
       url: "https://www.amazon.com/dp/B076VNFZJG/?tag=workspacepro-20",
       bestFor: ["general", "night-shift"]
     },
@@ -591,11 +593,16 @@ function generateRecommendations() {
   });
   
   // Desk recommendation
+  // Select by tag, not by array index: the desk list changes whenever a
+  // product is retired, and index-based picks silently recommend the wrong
+  // desk when it does.
   let desk;
   if (a.standing === 'yes' || a.standing === 'sometimes') {
-    desk = a.budget === 'under-500' ? PRODUCTS.desks[0] : PRODUCTS.desks[2];
+    desk = a.budget === 'under-500'
+      ? PRODUCTS.desks.find(item => item.bestFor.includes('budget'))
+      : PRODUCTS.desks.find(item => item.bestFor.includes('premium'));
   } else {
-    desk = PRODUCTS.desks[1];
+    desk = PRODUCTS.desks.find(item => item.bestFor.includes('general'));
   }
   recs.push({
     category: 'Desk',

@@ -9,15 +9,40 @@
   --c-bg-alt: #f3efe9;
   --c-surface: #ffffff;
   --c-text: #1a1815;
-  --c-text-light: #6b6660;
-  --c-text-muted: #9a948c;
+  /* Three-step text ramp. Every step clears WCAG AA (4.5:1) against every
+     light surface we paint on — #faf8f5, #ffffff, #f3efe9, #f5f2eb, #fffefa
+     and the compare table's #edf3ee. The old --c-text-muted (#9a948c) sat at
+     2.6–3.0:1 and was unreadable; --c-text-light moved down with it so the
+     hierarchy between "secondary" and "quiet" survives the darkening. */
+  --c-text-light: #5f5a54;
+  --c-text-muted: #716b63;
   --c-border: #e8e2d9;
   --c-primary: #c2410c;
   --c-primary-light: #ea580c;
   --c-primary-dark: #9a3412;
   --c-primary-soft: #fed7aa;
-  --c-accent: #4a7c59;
+  /* Terracotta has to do two incompatible jobs: ink on the page surface, and
+     a filled band/button with light text on it. In light theme one value can
+     serve both. In dark it cannot — ink on #1a1815 needs luminance ≥ .218,
+     white-on-fill needs ≤ .183 — so `--c-primary` stays the *ink* token and
+     filled surfaces take these two, which are always a matched pair. */
+  --c-primary-fill: var(--c-primary);
+  --c-primary-fill-hover: var(--c-primary-dark);
+  --c-on-primary: #ffffff;
+  /* Was #4a7c59, which is 4.0–4.5:1 as ink on the light surfaces it lands on —
+     the compare tables' #f7f6f1 zebra stripe put `.comparison-table__check`
+     at 4.49:1, and the pale `--c-accent-soft` badges at 3.7:1. Deepened one
+     step so spruce clears AA on every light surface in the system while the
+     two places that use it as a *fill* only gain white-on-green contrast. */
+  --c-accent: #3f6b4c;
   --c-accent-soft: #d1e7d5;
+  /* Price tiers in the comparison tables. Budget rides spruce; the other two
+     were hardcoded (#2563eb / #b8860b) with a dark override only on the pair,
+     so premium gold shipped at 2.7–3.2:1 on every light surface. Tokenised as
+     a themed trio like the rest of the ramp. */
+  --c-tier-budget: var(--c-accent);
+  --c-tier-mid: #1d4ed8;
+  --c-tier-premium: #806107;
   --c-dark: #1a1815;
   --c-dark-surface: #26221e;
   --c-dark-border: #3a3530;
@@ -64,14 +89,27 @@
   --c-surface: #2a2622;
   --c-text: #e8e2d9;
   --c-text-light: #a8a098;
-  --c-text-muted: #78706a;
+  /* Was #78706a — 3.1–3.7:1 against the dark surfaces it is used on
+     (#1a1815, #26221e, #2a2622), i.e. below AA everywhere it appeared.
+     #9a938b clears 4.5:1 on the lightest of them and keeps the one-step
+     drop below --c-text-light that the light ramp has. */
+  --c-text-muted: #9a938b;
   --c-border: #3a3530;
   --c-primary: #f97316;
   --c-primary-light: #fb923c;
   --c-primary-dark: #ea580c;
   --c-primary-soft: #431407;
+  /* Bright orange only works as ink here; white on it is 2.8:1. Filled
+     terracotta drops to a deep tone that carries white at 6.4:1. */
+  --c-primary-fill: #a83b0e;
+  /* --c-primary-dark is #ea580c here, i.e. *lighter* than the fill; hovering
+     onto it would drop white to 3.6:1. Hover deepens instead, as in light. */
+  --c-primary-fill-hover: #8d3009;
+  --c-on-primary: #ffffff;
   --c-accent: #86efac;
   --c-accent-soft: #14532d;
+  --c-tier-mid: #60a5fa;
+  --c-tier-premium: #f0c040;
   --c-dark: #0f0d0b;
   --c-dark-surface: #1a1815;
   --c-dark-border: #2a2622;
@@ -94,7 +132,11 @@ body {
 img { max-width: 100%; height: auto; display: block; }
 a { color: var(--c-primary); text-decoration: none; transition: color var(--t-fast); }
 a:hover { color: var(--c-primary-dark); }
-button { font-family: inherit; cursor: pointer; border: none; background: none; }
+/* `color: inherit` is load-bearing: the UA default is the system `buttontext`
+   keyword, which is black in both themes. Every button that paints its own
+   surface but not its own ink (.ehc-action-btn, .wsc-pain-btn) therefore
+   rendered black-on-charcoal at 1.19:1 in dark. */
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
 input, textarea, select { font-family: inherit; font-size: inherit; }
 
 /* Typography */
@@ -146,12 +188,12 @@ p { max-width: var(--max-width-prose); }
 .logo__mark {
   width: 32px;
   height: 32px;
-  background: var(--c-primary);
+  background: var(--c-primary-fill);
   border-radius: var(--radius);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--c-on-primary);
   font-size: 1rem;
   font-weight: 800;
   font-family: var(--font-body);
@@ -168,13 +210,13 @@ p { max-width: var(--max-width-prose); }
 .nav__link:hover { color: var(--c-text); background: var(--c-bg-alt); }
 .nav__link--active { color: var(--c-primary); }
 .nav__cta {
-  background: var(--c-primary);
-  color: white !important;
+  background: var(--c-primary-fill);
+  color: var(--c-on-primary) !important;
   padding: var(--space-sm) var(--space-lg);
   border-radius: var(--radius-full);
   font-weight: 600;
 }
-.nav__cta:hover { background: var(--c-primary-dark); }
+.nav__cta:hover { background: var(--c-primary-fill-hover); }
 
 .header-actions { display: flex; align-items: center; gap: var(--space-sm); }
 .theme-toggle, .menu-toggle {
@@ -225,8 +267,8 @@ p { max-width: var(--max-width-prose); }
 .mobile-nav__link:hover { background: var(--c-bg-alt); }
 .mobile-nav__cta {
   margin: var(--space-lg);
-  background: var(--c-primary);
-  color: white;
+  background: var(--c-primary-fill);
+  color: var(--c-on-primary);
   text-align: center;
   padding: var(--space-md);
   border-radius: var(--radius);
@@ -355,10 +397,10 @@ p { max-width: var(--max-width-prose); }
   white-space: nowrap;
 }
 .btn--primary {
-  background: var(--c-primary);
-  color: white;
+  background: var(--c-primary-fill);
+  color: var(--c-on-primary);
 }
-.btn--primary:hover { background: var(--c-primary-dark); color: white; transform: translateY(-1px); }
+.btn--primary:hover { background: var(--c-primary-fill-hover); color: var(--c-on-primary); transform: translateY(-1px); }
 .btn--secondary {
   background: var(--c-bg-alt);
   color: var(--c-text);
@@ -744,6 +786,14 @@ input[type="range"]::-moz-range-thumb {
   color: var(--c-dark-text);
   padding: var(--space-xl) 0;
   text-align: center;
+  /* Deliberately-dark surface: publish the ink this band expects so the
+     generic prose/heading rules in later sheets (editorial-v4's
+     `.editorial-shell h1,h2,h3`, premium-studio's `.ps-utility :where(p,li)`)
+     paint light text here instead of the page's dark ink. Both tokens
+     resolve to the same value in either theme, so this needs no dark
+     counterpart. */
+  --surface-ink: var(--c-dark-text);
+  --surface-ink-soft: var(--c-dark-text-light);
 }
 [data-theme="dark"] .newsletter-bar { background: var(--c-surface); }
 .newsletter-bar__title { color: var(--c-dark-text); margin-bottom: var(--space-sm); }
@@ -771,7 +821,9 @@ input[type="range"]::-moz-range-thumb {
   color: var(--c-text);
   border: 1px solid var(--c-border);
 }
-.newsletter-form__input::placeholder { color: var(--c-text-muted); }
+/* Placeholder sits on the dark input, so it tracks the dark-surface ramp —
+   not --c-text-muted, which is tuned for light surfaces. */
+.newsletter-form__input::placeholder { color: var(--c-dark-text-light); }
 
 /* Footer */
 .site-footer {
@@ -892,7 +944,7 @@ input[type="range"]::-moz-range-thumb {
   color: var(--c-text);
   transition: all var(--t-fast);
 }
-.podcast-card__link:hover { background: var(--c-primary); color: white; }
+.podcast-card__link:hover { background: var(--c-primary-fill); color: var(--c-on-primary); }
 
 /* Contact form */
 .contact-form { display: flex; flex-direction: column; gap: var(--space-md); max-width: 560px; }
@@ -914,17 +966,22 @@ textarea.text-input { min-height: 120px; resize: vertical; }
 
 /* CTA section */
 .cta-section {
-  background: var(--c-primary);
-  color: white;
+  background: var(--c-primary-fill);
+  color: var(--c-on-primary);
+  /* Saturated terracotta surface — see .newsletter-bar for why these exist.
+     0.85 alpha composited onto the light-theme fill is 4.16:1; 0.92 clears AA
+     on both fills while still reading as secondary. */
+  --surface-ink: var(--c-on-primary);
+  --surface-ink-soft: rgba(255,255,255,0.92);
   border-radius: var(--radius-lg);
   padding: var(--space-2xl);
   text-align: center;
   margin: var(--space-2xl) 0;
 }
-.cta-section h2 { color: white; margin-bottom: var(--space-md); }
-.cta-section p { color: rgba(255,255,255,0.85); margin: 0 auto var(--space-lg); }
+.cta-section h2 { color: var(--c-on-primary); margin-bottom: var(--space-md); }
+.cta-section p { color: var(--surface-ink-soft); margin: 0 auto var(--space-lg); }
 .cta-section .btn { max-width: 100%; white-space: normal; text-align: center; }
-.cta-section .btn--secondary { background: white; color: var(--c-primary); }
+.cta-section .btn--secondary { background: white; color: var(--c-primary-fill); }
 .cta-section .btn--secondary:hover { background: rgba(255,255,255,0.9); }
 
 /* 404 */
@@ -1154,23 +1211,15 @@ textarea.text-input { min-height: 120px; resize: vertical; }
 }
 
 .comparison-table__price--budget {
-  color: var(--c-accent);
+  color: var(--c-tier-budget);
 }
 
 .comparison-table__price--mid {
-  color: #2563eb;
-}
-
-[data-theme="dark"] .comparison-table__price--mid {
-  color: #60a5fa;
+  color: var(--c-tier-mid);
 }
 
 .comparison-table__price--premium {
-  color: #b8860b;
-}
-
-[data-theme="dark"] .comparison-table__price--premium {
-  color: #f0c040;
+  color: var(--c-tier-premium);
 }
 
 /* ---- Checkmark & cross ---- */
@@ -1304,8 +1353,10 @@ textarea.text-input { min-height: 120px; resize: vertical; }
   top: 0;
   z-index: 10000;
   padding: 0.75rem 1.25rem;
-  background: var(--c-primary);
-  color: #fff;
+  /* Ink chip, not --c-primary: terracotta is only 5.2:1 with white in light
+     and 2.8:1 in dark. --c-dark / --c-dark-text clear AA in both themes. */
+  background: var(--c-dark);
+  color: var(--c-dark-text);
   font-weight: 600;
   border-radius: 0 0 var(--radius) 0;
 }
@@ -1344,8 +1395,8 @@ textarea.text-input { min-height: 120px; resize: vertical; }
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: var(--c-primary);
-  color: #fff;
+  background: var(--c-primary-fill);
+  color: var(--c-on-primary);
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -1507,9 +1558,9 @@ textarea.text-input { min-height: 120px; resize: vertical; }
   color: var(--c-primary);
 }
 .filter-chip.is-active {
-  background: var(--c-primary);
-  border-color: var(--c-primary);
-  color: #fff;
+  background: var(--c-primary-fill);
+  border-color: var(--c-primary-fill);
+  color: var(--c-on-primary);
 }
 .guide-filter-count {
   font-size: 0.875rem;
@@ -1570,8 +1621,8 @@ body.menu-open {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  background: var(--c-primary);
-  color: #fff;
+  background: var(--c-primary-fill);
+  color: var(--c-on-primary);
   padding: 0.25rem 0.6rem;
   border-radius: var(--radius-full);
 }

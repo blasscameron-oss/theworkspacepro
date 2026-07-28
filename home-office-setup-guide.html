@@ -61,11 +61,14 @@
     .hub-stat__num { font-family: var(--font-display); font-size: 2.5rem; font-weight: 700; color: var(--c-primary); }
     .hub-stat__label { font-size: 0.85rem; color: var(--c-text-light); text-transform: uppercase; letter-spacing: 0.05em; }
 
-    .hub-cta-banner { background: var(--c-primary); color: white; padding: var(--space-xl); border-radius: var(--radius-lg); text-align: center; margin: var(--space-2xl) 0; }
-    .hub-cta-banner h2 { color: white; margin-bottom: var(--space-sm); }
-    .hub-cta-banner p { color: rgba(255,255,255,0.9); margin-bottom: var(--space-lg); }
-    .hub-cta-banner .btn { background: white; color: var(--c-primary); }
-    .hub-cta-banner .btn:hover { background: var(--c-bg-alt); }
+    .hub-cta-banner { background: var(--c-primary-fill); color: var(--c-on-primary); padding: var(--space-xl); border-radius: var(--radius-lg); text-align: center; margin: var(--space-2xl) 0; }
+    .hub-cta-banner h2 { color: var(--c-on-primary); margin-bottom: var(--space-sm); }
+    .hub-cta-banner p { color: rgba(255,255,255,0.94); margin-bottom: var(--space-lg); }
+    /* Same pairing rule as .cta-section: the chip sits on the terracotta fill,
+       so it takes the fill colour as ink and never --c-primary (bright orange
+       in dark, 2.8:1 on white) or --c-bg-alt (dark charcoal, 2.0:1). */
+    .hub-cta-banner .btn { background: #fff; color: var(--c-primary-fill); }
+    .hub-cta-banner .btn:hover { background: rgba(255,255,255,0.9); }
 
     .hub-section { padding: var(--space-2xl) 0; }
     .hub-section__title { font-family: var(--font-display); font-size: 1.75rem; font-weight: 500; margin-bottom: var(--space-sm); }
