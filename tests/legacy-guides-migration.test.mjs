@@ -65,11 +65,22 @@ test('every legacy guide has substantive article content (>2000 chars body)', ()
   }
 });
 
+/**
+ * Guards against silently LOSING affiliate links, which is the failure this was
+ * written for. It asserts a floor rather than an exact count on purpose: adding
+ * Amazon links is a legitimate outcome — retiring a discontinued non-Amazon
+ * product and replacing it with a stocked Amazon one fixes a dead link *and*
+ * earns — and an equality check turns that improvement into a red build. Raise
+ * the floor when a change intentionally adds links, so the guard ratchets.
+ */
+const MIN_AMAZON_LINKS = 288;
+
 test('every legacy guide retains all Amazon and amzn.to links', () => {
   const totalAmazonLinks = legacyIds.reduce((sum, id) => sum + countPattern(readGuide(id), /https?:\/\/(?:www\.)?amazon\.com\b/g), 0);
   const totalAmznLinks = legacyIds.reduce((sum, id) => sum + countPattern(readGuide(id), /https?:\/\/amzn\.to\b/g), 0);
-  assert.equal(totalAmazonLinks + totalAmznLinks, 280,
-    `Expected 280 total Amazon/amzn.to links across all guides, got ${totalAmazonLinks + totalAmznLinks}`);
+  const total = totalAmazonLinks + totalAmznLinks;
+  assert.ok(total >= MIN_AMAZON_LINKS,
+    `Expected at least ${MIN_AMAZON_LINKS} Amazon/amzn.to links across all guides, got ${total} — links appear to have been removed`);
 });
 
 test('every Amazon link has tag=workspacepro-20', () => {
