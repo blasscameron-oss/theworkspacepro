@@ -1,6 +1,52 @@
 # Finch handoff
 
-## CURRENT HANDOFF (2026-07-27): ship branch `redesign/premium-2026-07-26`
+## CURRENT HANDOFF (2026-07-28): ship branch `fix/contrast-light-2026-07-28`
+
+The redesign shipped successfully (main = `2d67817`, live). The owner then
+reported "a couple of spots towards the bottom of the page where the contrast
+gets weird and its hard to see." Confirmed and fixed.
+
+**What it was.** `.newsletter-bar__title` ("Get Weekly Workspace Tips") rendered
+page ink on the deliberately dark newsletter band at **1.17:1 — effectively
+invisible** — near the bottom of most pages, exactly as described. The terracotta
+CTA headings above it sat at 2.94:1. An automated sweep then found the same class
+of bug everywhere: **440 sub-AA text nodes across all 42 routes** (5 light + ~329
+dark + 111 on routes that were never being measured).
+
+**Root cause, one sentence:** a surface that paints its own background but lets
+text colour come from elsewhere — so a light-theme background meets cream
+dark-theme ink, or a dark band meets page ink. Fixed structurally: any surface
+owning its background now owns its ink too, via themed tokens
+(`--editorial-band`, `--editorial-tint`/`-warm`, `--editorial-stripe`,
+`--editorial-prose`, `--c-primary-fill`/`--c-on-primary`,
+`--editorial-accent-fill`/`--editorial-on-accent`, price-tier trio). Several
+real bugs surfaced beyond the reported one, including an in-body CTA button
+rendering at **1:1** on compare pages and `button` inheriting the UA
+`buttontext` keyword (black on charcoal) on both calculators.
+
+**Now: 0 failures on all 42 routes in both themes** (was 440).
+
+**Permanent guard.** `scripts/audit-contrast.mjs` derives its route list from
+the build and sweeps every page in both themes at 375px (exit 1 on any
+failure); `tests/e2e/contrast.spec.mjs` runs the same rules on one route per
+layout as part of the normal Playwright suite. The guard was verified
+non-vacuous by injecting a bad token — it reported 98 failures and exited 1.
+**Run `node scripts/audit-contrast.mjs` against a served `dist` before any
+release.** If you add a new *layout*, add one route to `PAGES`; new *pages* are
+picked up automatically.
+
+**Verified 2026-07-28:** build (43 pages), validate (43 HTML / 270 files),
+`npm run check` (0 diagnostics), `node --test` (44/44), `npx playwright test`
+(26 passed / 6 skipped), full contrast sweep (42 routes, 0 failures).
+
+**Ship it:** same route as last time — push the branch, PR into `main`, merge
+once, watch the single deploy run. Post-deploy, re-run the smoke checks below
+plus: scroll to the bottom of `/tips` and `/about` in both themes and confirm
+the newsletter band and CTA headings are legible.
+
+---
+
+## PREVIOUS HANDOFF (2026-07-27): ship branch `redesign/premium-2026-07-26` — DONE, shipped as 2d67817
 
 **State.** Production currently serves a manually-deployed build of
 `fix/ci-content-contracts` (all six of that branch's fixes verified live on
