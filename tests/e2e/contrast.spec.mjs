@@ -9,11 +9,13 @@ import { PAGES, collectFailures, formatFailure, seedTheme } from '../../scripts/
  * Only the mobile project runs it — the audit is defined at 375px, and running
  * it twice would just double the page loads for identical results.
  *
- * Dark theme is audited by `node scripts/audit-contrast.mjs` but not asserted
- * here yet; it still has known failures (footer, orange CTAs). Flip the
- * `themes` array below to ['light', 'dark'] once those are cleared.
+ * Both themes are asserted. Dark is the easier one to regress silently — it is
+ * opt-in, so nobody sees it by accident — and its failure mode here is always
+ * the same: a surface that hardcodes a light background meeting ink that
+ * flipped to cream. Anything that paints its own surface must paint its own
+ * ink too, in both themes.
  */
-const themes = ['light'];
+const themes = ['light', 'dark'];
 
 test.describe('WCAG AA text contrast', () => {
   test.slow();
