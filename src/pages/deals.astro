@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CategoryDiagram from '../components/diagrams/CategoryDiagram.astro';
+import EditorialHero from '../components/EditorialHero.astro';
 import rawCatalog from '../../assets/data/catalog.json';
 import { catalogSchema } from '../data/product-schema';
 import '../styles/deals.css';
@@ -95,6 +96,8 @@ const shortlistCount = deals.length;
       </aside>
       <p class="deals-disclosure"><strong>How pricing works:</strong> Dollar amounts below are reference prices from our catalog review on <time datetime={catalog.updated}>{catalogReviewed}</time>, not promises of a current price. Retail pricing and availability can change; use “Check live price” to verify before buying. Some retailer links are affiliate links, and we may earn a commission at no extra cost to you. <a href="/affiliate-disclosure">Read our disclosure.</a></p>
     </header>
+
+    <EditorialHero slug="deals-curated-workbench-v1" priority class="deals-figure" />
 
     <section class="deals-catalog" aria-labelledby="value-picks-title">
       <div class="deals-heading">

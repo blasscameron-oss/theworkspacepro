@@ -2,6 +2,13 @@
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import { getReleaseSha } from '../lib/release';
+import { readdirSync } from 'node:fs';
+
+const ogCards = new Set(
+  readdirSync('assets/images/og')
+    .filter((file) => file.endsWith('.jpg'))
+    .map((file) => file.replace(/\.jpg$/, '')),
+);
 
 interface Props {
   title: string;
@@ -37,6 +44,19 @@ const {
   structuredData = [],
 } = Astro.props;
 const canonicalUrl = new URL(canonical, Astro.site);
+
+// Per-route social card, drawn by scripts/generate-og-cards.mjs. Cards are
+// committed, so a page falls back to the shared default only when one is
+// genuinely missing rather than silently shipping a broken image URL.
+// Legacy root pages carry an absolute canonical lifted from their source HTML,
+// while Astro pages pass a relative one — slug off the parsed pathname so both agree.
+const ogPath = canonicalUrl.pathname.replace(/\.html$/, '');
+const ogSlug = ogPath === '/' ? 'home' : ogPath.replace(/^\//, '').replace(/\/+$/, '').replace(/\//g, '-');
+const ogImageUrl = new URL(
+  ogCards.has(ogSlug) ? `/assets/images/og/${ogSlug}.jpg` : '/assets/images/og-default.jpg',
+  Astro.site,
+).href;
+
 const releaseSha = getReleaseSha();
 const assetUrl = (path: string) => `${path}?v=${encodeURIComponent(releaseSha)}`;
 const schema = type === 'article'
@@ -76,8 +96,13 @@ const schemas = [...new Map(
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:image" content="https://www.theworkspacepro.com/assets/images/og-default.jpg" />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={title} />
+    <meta property="og:site_name" content="The Workspace Pro" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImageUrl} />
     <link rel="icon" href="/assets/images/favicon.svg" />
     <script is:inline>
       (function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();

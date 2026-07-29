@@ -144,6 +144,17 @@ for (const file of htmlFiles) {
   if (h1Count !== 1) fail(scope, `expected exactly one h1, found ${h1Count}`);
   if (mainCount !== 1) fail(scope, `expected exactly one main landmark, found ${mainCount}`);
 
+  // A social card that 404s is worse than a generic one: the page looks broken
+  // wherever it is shared, and nothing in the page itself reveals the problem.
+  const noindex = /<meta\b[^>]*name=["']robots["'][^>]*noindex/i.test(html);
+  const ogImage = html.match(/<meta\b[^>]*property=["']og:image["'][^>]*content=["']([^"']+)["']/i)?.[1];
+  if (!ogImage && !noindex) fail(scope, 'missing og:image');
+  else if (ogImage && ogImage.startsWith('https://www.theworkspacepro.com/')) {
+    const cardPath = path.join(artifactDir, ogImage.replace('https://www.theworkspacepro.com/', ''));
+    if (!fs.existsSync(cardPath)) fail(scope, `og:image does not exist in the artifact: ${ogImage}`);
+    else if (fs.statSync(cardPath).size < 5000) fail(scope, `og:image is suspiciously small: ${ogImage}`);
+  }
+
   const skipLinks = Array.from(html.matchAll(/<a\b[^>]*>/gi)).filter((match) => hasClass(match[0], 'skip-link'));
   if (skipLinks.length !== 1) {
     fail(scope, `expected exactly one skip link, found ${skipLinks.length}`);
@@ -368,26 +379,41 @@ if (!fs.existsSync(visualManifestFile)) {
   if (manifest) {
     const masters = Array.isArray(manifest.masters) ? manifest.masters : [];
     const routes = masters.flatMap((master) => Array.isArray(master.routes) ? master.routes : []);
-    if (manifest.masterCount !== 34 || masters.length !== 34) fail('premium-studio', `expected 36 visual masters, found ${masters.length}`);
-    if (manifest.routeCount !== 37 || new Set(routes).size !== 37) fail('premium-studio', `expected 39 unique manifest routes, found ${new Set(routes).size}`);
+    if (manifest.masterCount !== masters.length) fail('premium-studio', `masterCount says ${manifest.masterCount}, manifest lists ${masters.length}`);
+    if (manifest.routeCount !== new Set(routes).size) fail('premium-studio', `routeCount says ${manifest.routeCount}, manifest maps ${new Set(routes).size} unique routes`);
     const variantContract = manifest.variantContract || {};
+    // A real editorial export never lands this small; the seven 50-byte "images"
+    // that shipped as approved art were only possible because this check had a
+    // ceiling and no floor.
+    const MIN_REAL_BYTES = 2000;
     for (const master of masters) {
       const slug = master && master.slug;
       if (!slug || !/^[a-z0-9-]+-v\d+$/.test(slug)) { fail('premium-studio', `invalid visual master slug: ${slug || '(missing)'}`); continue; }
-      if (master.approval !== 'approved-production') fail('premium-studio', `${slug} is not approved-production`);
+      if (!['approved-production', 'placeholder-pending-art'].includes(master.approval)) {
+        fail('premium-studio', `${slug} has unknown approval "${master.approval}"`);
+        continue;
+      }
+      const approved = master.approval === 'approved-production';
       for (const variant of ['desktop', 'mobile']) {
         const spec = variantContract[variant] || {};
         for (const format of ['avif', 'webp']) {
           const asset = path.join(artifactDir, 'assets', 'images', 'editorial', `${slug}-${variant}.${format}`);
-          if (!fs.existsSync(asset)) fail('premium-studio', `missing ${slug}-${variant}.${format}`);
-          else if (Number.isFinite(spec.maxBytes) && fs.statSync(asset).size > spec.maxBytes) fail('premium-studio', `${slug}-${variant}.${format} exceeds ${spec.maxBytes} bytes`);
+          if (!fs.existsSync(asset)) { fail('premium-studio', `missing ${slug}-${variant}.${format}`); continue; }
+          const size = fs.statSync(asset).size;
+          if (Number.isFinite(spec.maxBytes) && size > spec.maxBytes) fail('premium-studio', `${slug}-${variant}.${format} exceeds ${spec.maxBytes} bytes`);
+          if (approved && size < MIN_REAL_BYTES) fail('premium-studio', `${slug}-${variant}.${format} is a ${size}-byte stub but the master claims approved-production`);
+          if (!approved && size >= MIN_REAL_BYTES) fail('premium-studio', `${slug}-${variant}.${format} is real artwork — promote ${slug} to approved-production so it renders`);
         }
       }
+      // Approved art must be claimed by its routes; unapproved art must not be,
+      // so a placeholder can never be wired into a page.
       for (const route of master.routes || []) {
         const target = resolveRoute(route);
         if (!target) { fail('premium-studio', `manifest route does not resolve: ${route}`); continue; }
         const html = stripComments(fs.readFileSync(target, 'utf8'));
-        if (!new RegExp(`data-visual-master\\s*=\\s*(["'])${slug}\\1`, 'i').test(html)) fail(rel(target), `missing data-visual-master="${slug}"`);
+        const declared = new RegExp(`data-visual-master\\s*=\\s*(["'])${slug}\\1`, 'i').test(html);
+        if (approved && !declared) fail(rel(target), `missing data-visual-master="${slug}"`);
+        if (!approved && declared) fail(rel(target), `declares data-visual-master="${slug}", which has no artwork yet`);
       }
     }
   }

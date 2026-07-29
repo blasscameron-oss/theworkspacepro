@@ -10,3 +10,6 @@ playwright-report/
 # Generated Cloudflare Pages artifact
 _site/
 dist/
+
+# Local caches
+.cache/

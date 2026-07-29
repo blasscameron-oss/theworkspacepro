@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import EditorialHero from '../../components/EditorialHero.astro';
 
 const newGuides = (await getCollection('guides', ({ data }) => data.status === 'published'))
   .sort((a, b) => b.data.updated.valueOf() - a.data.updated.valueOf());
@@ -35,6 +36,7 @@ const buyingGuides = [
     <h1>Make one confident workspace decision at a time.</h1>
     <p>Measurements, trade-offs, and practical fixes for real rooms and real budgets. No manufactured urgency and no unsupported testing claims.</p>
   </header>
+  <EditorialHero slug="guides-editorial-library-v1" priority class="library-figure" />
   <section class="library-section" id="buying-guides" aria-labelledby="buying-guides-title">
     <div class="section-heading">
       <p class="eyebrow">Buying guides and shortlists</p>

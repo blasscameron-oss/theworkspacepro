@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import EditorialHero from '../components/EditorialHero.astro';
 import type { LegacyGuide } from '../data/legacy-guides';
 import '../styles/legacy-guides.css';
 
@@ -50,6 +51,8 @@ if (guide.faqSchema) structuredData.push(guide.faqSchema);
         </div>
       </div>
     </header>
+
+    <EditorialHero slug={visualMaster} route={guide.canonical} priority class="legacy-guide__figure" />
 
     <div class="legacy-guide__frame">
       <aside class="legacy-guide__rail" aria-label="Guide method">

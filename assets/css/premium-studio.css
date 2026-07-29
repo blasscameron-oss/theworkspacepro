@@ -33,7 +33,7 @@
   --ps-brand-hover: var(--ps-terracotta-700);
   --ps-instrument: var(--ps-spruce-700);
   --ps-instrument-soft: var(--ps-spruce-100);
-  --ps-font-display: var(--font-display, 'Fraunces', Georgia, serif);
+  --ps-font-display: var(--font-display);
   --ps-font-body: var(--font-body, 'Inter', system-ui, sans-serif);
   --ps-font-data: var(--font-mono, 'JetBrains Mono', ui-monospace, monospace);
   --ps-step--1: clamp(.78rem, .75rem + .1vw, .84rem);
@@ -274,4 +274,47 @@
   .ps-card__media { max-height: 2.25in; }
   .blueprint-panel__measurements { grid-template-columns: repeat(3, 1fr); }
   .ps-evidence { break-inside: avoid; }
+}
+
+/* ---------------------------------------------------------------------------
+   Pointer target sizing (WCAG 2.5.8, 24x24 minimum)
+   ---------------------------------------------------------------------------
+   An audit at 375px found 432 undersized targets across 41 distinct controls —
+   footer navigation, category chips, breadcrumbs, height-chart links and the
+   worksheet checkboxes, most of them a pixel or two short. These add the
+   missing height without moving anything: the extra space is padding inside
+   controls that already sit in their own row, or a centred min-height.
+
+   The rail disclosure link and the compare-page "All Comparisons" kicker were
+   missed on the first pass: both read as standalone navigation, so neither
+   qualifies for the inline exemption. Direct-child selectors keep the rule off
+   any prose that shares those containers.
+
+   Links inside running prose are deliberately untouched — WCAG exempts them,
+   and padding them would break line spacing in the guides.
+   --------------------------------------------------------------------------- */
+.editorial-footer__grid nav a,
+.legacy-guide__breadcrumbs a,
+.legacy-guide__rail > a,
+.article-meta a,
+.commercial-categories a,
+.height-links a,
+.funnel-card > a,
+.guide-method > a,
+.guide-breadcrumbs a,
+a.text-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+}
+
+/* Checkbox and radio controls must be hittable, not just visible. */
+.worksheet__check input[type='checkbox'],
+.worksheet__check input[type='radio'],
+input[type='checkbox'],
+input[type='radio'] {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
 }
