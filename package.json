@@ -9,7 +9,9 @@
     "check": "astro check",
     "validate": "node scripts/validate-public-site.mjs dist",
     "test": "npm run build && npm run validate && node --test tests/*.test.mjs",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "audit": "node scripts/run-audits.mjs",
+    "audit:links": "node scripts/audit-links.mjs"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",

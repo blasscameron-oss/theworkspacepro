@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "program": "Premium Studio Workspace Blueprint",
-  "updated": "2026-07-18",
+  "updated": "2026-07-28",
   "masterCount": 34,
   "routeCount": 37,
   "variantContract": {
@@ -47,7 +47,17 @@
         "height": 941
       },
       "reviewNotes": "Approved for composition, anatomy, furniture geometry, absence of readable branding, and generic-product safety. Mobile crop is intentionally shifted toward the person and monitor.",
-      "promptBrief": "Flagship wide home-office scene with one diverse adult in a natural neutral posture, tactile wood, woven fabric, a generic monitor and chair, subtle lived-in detail, and generous uncluttered negative space for headline copy; premium but attainable rather than showroom-perfect."
+      "promptBrief": "Flagship wide home-office scene with one diverse adult in a natural neutral posture, tactile wood, woven fabric, a generic monitor and chair, subtle lived-in detail, and generous uncluttered negative space for headline copy; premium but attainable rather than showroom-perfect.",
+      "variantDimensions": {
+        "desktop": {
+          "width": 1920,
+          "height": 1080
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1350
+        }
+      }
     },
     {
       "slug": "lost-page-drafting-table-v1",
@@ -61,7 +71,21 @@
         "desktop": "50% 50%",
         "mobile": "50% 46%"
       },
-      "promptBrief": "Quiet still life of an unfinished workspace plan on a drafting table, folded ruler and pencil nearby, gentle afternoon light, ample empty surface, no readable marks."
+      "promptBrief": "Quiet still life of an unfinished workspace plan on a drafting table, folded ruler and pencil nearby, gentle afternoon light, ample empty surface, no readable marks.",
+      "variantDimensions": {
+        "desktop": {
+          "width": 1920,
+          "height": 1080
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1350
+        }
+      },
+      "sourceDimensions": {
+        "width": 1920,
+        "height": 1080
+      }
     },
     {
       "slug": "studio-method-notebook-v1",
@@ -76,7 +100,21 @@
         "desktop": "61% 48%",
         "mobile": "50% 50%"
       },
-      "promptBrief": "Studio worktable with an open blank notebook, measuring tools, wood and textile samples, soft window light, evidence of thoughtful human work, no readable writing."
+      "promptBrief": "Studio worktable with an open blank notebook, measuring tools, wood and textile samples, soft window light, evidence of thoughtful human work, no readable writing.",
+      "variantDimensions": {
+        "desktop": {
+          "width": 1920,
+          "height": 1080
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1350
+        }
+      },
+      "sourceDimensions": {
+        "width": 1920,
+        "height": 1080
+      }
     },
     {
       "slug": "trust-legal-still-life-v1",
@@ -92,7 +130,21 @@
         "desktop": "55% 50%",
         "mobile": "50% 50%"
       },
-      "promptBrief": "Restrained trustworthy still life: closed unbranded document folder, ruler, pencil and warm neutral desk surface, calm even daylight, no readable text or legal symbolism."
+      "promptBrief": "Restrained trustworthy still life: closed unbranded document folder, ruler, pencil and warm neutral desk surface, calm even daylight, no readable text or legal symbolism.",
+      "variantDimensions": {
+        "desktop": {
+          "width": 1920,
+          "height": 1080
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1350
+        }
+      },
+      "sourceDimensions": {
+        "width": 1920,
+        "height": 1080
+      }
     },
     {
       "slug": "office-builder-material-board-v1",
@@ -106,7 +158,21 @@
         "desktop": "63% 52%",
         "mobile": "50% 48%"
       },
-      "promptBrief": "Overhead practical office-planning scene with generic furniture material samples, tape measure, blank cards and simple scale silhouettes, realistic working mess, no labels or product branding."
+      "promptBrief": "Overhead practical office-planning scene with generic furniture material samples, tape measure, blank cards and simple scale silhouettes, realistic working mess, no labels or product branding.",
+      "variantDimensions": {
+        "desktop": {
+          "width": 1920,
+          "height": 1080
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1350
+        }
+      },
+      "sourceDimensions": {
+        "width": 1920,
+        "height": 1080
+      }
     },
     {
       "slug": "compare-fit-fingerprints-v1",
@@ -120,7 +186,21 @@
         "desktop": "50% 50%",
         "mobile": "50% 48%"
       },
-      "promptBrief": "Balanced split composition of two distinct but unbranded workstation arrangements, honest physical differences in footprint and adjustability, no winner podium, price tag, labels or specific products."
+      "promptBrief": "Balanced split composition of two distinct but unbranded workstation arrangements, honest physical differences in footprint and adjustability, no winner podium, price tag, labels or specific products.",
+      "variantDimensions": {
+        "desktop": {
+          "width": 1920,
+          "height": 1080
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1350
+        }
+      },
+      "sourceDimensions": {
+        "width": 1920,
+        "height": 1080
+      }
     },
     {
       "slug": "compare-branch-uplift-spaces-v1",
@@ -134,7 +214,21 @@
         "desktop": "50% 48%",
         "mobile": "50% 50%"
       },
-      "promptBrief": "Two non-branded adjustable desk archetypes in a compact and a generous room, side-by-side editorial comparison focused on space and reach, not identifiable models."
+      "promptBrief": "Two non-branded adjustable desk archetypes in a compact and a generous room, side-by-side editorial comparison focused on space and reach, not identifiable models.",
+      "variantDimensions": {
+        "desktop": {
+          "width": 1920,
+          "height": 1080
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1350
+        }
+      },
+      "sourceDimensions": {
+        "width": 1920,
+        "height": 1080
+      }
     },
     {
       "slug": "compare-task-chair-geometry-v1",
@@ -148,7 +242,21 @@
         "desktop": "50% 53%",
         "mobile": "50% 54%"
       },
-      "promptBrief": "Two original generic ergonomic chair silhouettes with clearly different adjustment geometries, neutral studio setting, no iconic contours, labels, logos or resemblance to named products."
+      "promptBrief": "Two original generic ergonomic chair silhouettes with clearly different adjustment geometries, neutral studio setting, no iconic contours, labels, logos or resemblance to named products.",
+      "variantDimensions": {
+        "desktop": {
+          "width": 1920,
+          "height": 1080
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1350
+        }
+      },
+      "sourceDimensions": {
+        "width": 1920,
+        "height": 1080
+      }
     },
     {
       "slug": "compare-budget-desk-footprints-v1",
@@ -162,7 +270,21 @@
         "desktop": "50% 50%",
         "mobile": "50% 50%"
       },
-      "promptBrief": "Two attainable unbranded desk setups with different footprints and storage tradeoffs, everyday apartment setting, honest materials, no fake sale cues or recognizable products."
+      "promptBrief": "Two attainable unbranded desk setups with different footprints and storage tradeoffs, everyday apartment setting, honest materials, no fake sale cues or recognizable products.",
+      "variantDimensions": {
+        "desktop": {
+          "width": 1920,
+          "height": 1080
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1350
+        }
+      },
+      "sourceDimensions": {
+        "width": 1920,
+        "height": 1080
+      }
     },
     {
       "slug": "deals-curated-workbench-v1",
@@ -176,7 +298,21 @@
         "desktop": "64% 50%",
         "mobile": "50% 48%"
       },
-      "promptBrief": "Curated workbench of generic office-use categories\u2014lighting, cable care, mat texture and posture accessories\u2014without depicting specific sale items, tags, prices or urgency."
+      "promptBrief": "Curated workbench of generic office-use categories—lighting, cable care, mat texture and posture accessories—without depicting specific sale items, tags, prices or urgency.",
+      "variantDimensions": {
+        "desktop": {
+          "width": 1920,
+          "height": 1080
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1350
+        }
+      },
+      "sourceDimensions": {
+        "width": 1920,
+        "height": 1080
+      }
     },
     {
       "slug": "embed-height-measurement-v1",
@@ -184,13 +320,14 @@
         "/embed/height"
       ],
       "type": "editorial-utility",
-      "approval": "approved-production",
+      "approval": "placeholder-pending-art",
       "altText": "A close detail of a desk edge and chair seat prepared for measurement.",
       "focalPoint": {
         "desktop": "54% 50%",
         "mobile": "50% 50%"
       },
-      "promptBrief": "Minimal close detail of generic desk edge, chair seat and physical tape measure in soft daylight, quiet enough for a compact embed, no markings readable."
+      "promptBrief": "Minimal close detail of generic desk edge, chair seat and physical tape measure in soft daylight, quiet enough for a compact embed, no markings readable.",
+      "reviewNotes": "Variant files are byte-stubs, not artwork. Marked approved-production in error by commit 7b3d2ff, which generated empty placeholders alongside the status flip. Do not render until real art exists; scripts/audit-visuals.mjs enforces this."
     },
     {
       "slug": "ergonomic-height-live-fit-v1",
@@ -198,13 +335,14 @@
         "/ergonomic-height-calculator"
       ],
       "type": "editorial-tool",
-      "approval": "approved-production",
+      "approval": "placeholder-pending-art",
       "altText": "A seated person adjusting a desk and chair to match their body.",
       "focalPoint": {
         "desktop": "66% 50%",
         "mobile": "52% 48%"
       },
-      "promptBrief": "Side-profile documentary photo of a diverse adult making a realistic chair and desk adjustment, full torso-to-feet relationship visible, generic furniture, relaxed neutral posture."
+      "promptBrief": "Side-profile documentary photo of a diverse adult making a realistic chair and desk adjustment, full torso-to-feet relationship visible, generic furniture, relaxed neutral posture.",
+      "reviewNotes": "Variant files are byte-stubs, not artwork. Marked approved-production in error by commit 7b3d2ff, which generated empty placeholders alongside the status flip. Do not render until real art exists; scripts/audit-visuals.mjs enforces this."
     },
     {
       "slug": "guides-editorial-library-v1",
@@ -218,7 +356,21 @@
         "desktop": "62% 45%",
         "mobile": "50% 48%"
       },
-      "promptBrief": "Inviting reference-library corner beside a home workspace, books without readable spines, blank notes and material samples, warm daylight, editorial depth."
+      "promptBrief": "Inviting reference-library corner beside a home workspace, books without readable spines, blank notes and material samples, warm daylight, editorial depth.",
+      "variantDimensions": {
+        "desktop": {
+          "width": 1920,
+          "height": 1080
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1350
+        }
+      },
+      "sourceDimensions": {
+        "width": 1920,
+        "height": 1080
+      }
     },
     {
       "slug": "guide-back-pain-reset-v1",
@@ -232,7 +384,21 @@
         "desktop": "67% 48%",
         "mobile": "52% 45%"
       },
-      "promptBrief": "Empathetic non-medical scene of an adult pausing to reset seated posture, natural movement and neutral expression, believable desk geometry, no pain dramatization."
+      "promptBrief": "Empathetic non-medical scene of an adult pausing to reset seated posture, natural movement and neutral expression, believable desk geometry, no pain dramatization.",
+      "variantDimensions": {
+        "desktop": {
+          "width": 1920,
+          "height": 1080
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1350
+        }
+      },
+      "sourceDimensions": {
+        "width": 1920,
+        "height": 1080
+      }
     },
     {
       "slug": "guide-chair-fit-studio-v1",
@@ -246,7 +412,21 @@
         "desktop": "58% 52%",
         "mobile": "50% 55%"
       },
-      "promptBrief": "Editorial studio of several original generic task-chair forms emphasizing distinct fit ranges and adjustment zones, no recognizable models, logos or ranking cues."
+      "promptBrief": "Editorial studio of several original generic task-chair forms emphasizing distinct fit ranges and adjustment zones, no recognizable models, logos or ranking cues.",
+      "variantDimensions": {
+        "desktop": {
+          "width": 1920,
+          "height": 1080
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1350
+        }
+      },
+      "sourceDimensions": {
+        "width": 1920,
+        "height": 1080
+      }
     },
     {
       "slug": "guide-standing-mat-concrete-v1",
@@ -260,7 +440,21 @@
         "desktop": "62% 60%",
         "mobile": "50% 62%"
       },
-      "promptBrief": "Low editorial angle of natural lower-body stance on a generic textured mat over residential concrete, realistic shoes and weight distribution, no product markings."
+      "promptBrief": "Low editorial angle of natural lower-body stance on a generic textured mat over residential concrete, realistic shoes and weight distribution, no product markings.",
+      "variantDimensions": {
+        "desktop": {
+          "width": 1920,
+          "height": 1080
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1350
+        }
+      },
+      "sourceDimensions": {
+        "width": 1920,
+        "height": 1080
+      }
     },
     {
       "slug": "guide-desk-value-workshop-v1",
@@ -274,7 +468,21 @@
         "desktop": "65% 48%",
         "mobile": "50% 48%"
       },
-      "promptBrief": "Attainable unbranded adjustable workstation in a compact room, honest economical materials, tidy cable path and daylight, premium composition without luxury signaling."
+      "promptBrief": "Attainable unbranded adjustable workstation in a compact room, honest economical materials, tidy cable path and daylight, premium composition without luxury signaling.",
+      "variantDimensions": {
+        "desktop": {
+          "width": 1920,
+          "height": 1080
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1350
+        }
+      },
+      "sourceDimensions": {
+        "width": 1920,
+        "height": 1080
+      }
     },
     {
       "slug": "guide-cable-routing-detail-v1",
@@ -288,7 +496,21 @@
         "desktop": "57% 58%",
         "mobile": "50% 55%"
       },
-      "promptBrief": "Close documentary view under a wooden desk showing plausible unbranded cable routing, slack at moving joints and everyday power accessories, clean but not impossibly perfect."
+      "promptBrief": "Close documentary view under a wooden desk showing plausible unbranded cable routing, slack at moving joints and everyday power accessories, clean but not impossibly perfect.",
+      "variantDimensions": {
+        "desktop": {
+          "width": 1920,
+          "height": 1080
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1350
+        }
+      },
+      "sourceDimensions": {
+        "width": 1920,
+        "height": 1080
+      }
     },
     {
       "slug": "guide-chair-height-reference-v1",
@@ -302,7 +524,21 @@
         "desktop": "59% 52%",
         "mobile": "50% 52%"
       },
-      "promptBrief": "Side-on generic chair and desk alignment with an adult standing nearby for scale, clean neutral setting, all numeric measurement graphics reserved for code overlay."
+      "promptBrief": "Side-on generic chair and desk alignment with an adult standing nearby for scale, clean neutral setting, all numeric measurement graphics reserved for code overlay.",
+      "variantDimensions": {
+        "desktop": {
+          "width": 1920,
+          "height": 1080
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1350
+        }
+      },
+      "sourceDimensions": {
+        "width": 1920,
+        "height": 1080
+      }
     },
     {
       "slug": "guide-dual-monitor-room-v1",
@@ -316,7 +552,21 @@
         "desktop": "63% 45%",
         "mobile": "50% 46%"
       },
-      "promptBrief": "Wide lived-in room view of two generic blank monitors balanced with window glare control, realistic depth and cable management, no interface content."
+      "promptBrief": "Wide lived-in room view of two generic blank monitors balanced with window glare control, realistic depth and cable management, no interface content.",
+      "variantDimensions": {
+        "desktop": {
+          "width": 1920,
+          "height": 1080
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1350
+        }
+      },
+      "sourceDimensions": {
+        "width": 1920,
+        "height": 1080
+      }
     },
     {
       "slug": "guide-dual-monitor-focus-v1",
@@ -330,7 +580,21 @@
         "desktop": "66% 48%",
         "mobile": "54% 48%"
       },
-      "promptBrief": "Candid three-quarter view of a diverse adult working across two blank generic monitors with natural gaze and hand placement, uncluttered focus, no screen content."
+      "promptBrief": "Candid three-quarter view of a diverse adult working across two blank generic monitors with natural gaze and hand placement, uncluttered focus, no screen content.",
+      "variantDimensions": {
+        "desktop": {
+          "width": 1920,
+          "height": 1080
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1350
+        }
+      },
+      "sourceDimensions": {
+        "width": 1920,
+        "height": 1080
+      }
     },
     {
       "slug": "guide-accessory-reach-zones-v1",
@@ -338,13 +602,14 @@
         "/guides/ergonomic-accessories-home-office"
       ],
       "type": "editorial-guide",
-      "approval": "approved-production",
+      "approval": "placeholder-pending-art",
       "altText": "Practical workstation accessories arranged within easy reach.",
       "focalPoint": {
         "desktop": "58% 48%",
         "mobile": "50% 50%"
       },
-      "promptBrief": "Overhead editorial scene of a generic keyboard, pointing device, foot support and task light arranged within plausible reach, tactile neutral materials, no brands."
+      "promptBrief": "Overhead editorial scene of a generic keyboard, pointing device, foot support and task light arranged within plausible reach, tactile neutral materials, no brands.",
+      "reviewNotes": "Variant files are byte-stubs, not artwork. Marked approved-production in error by commit 7b3d2ff, which generated empty placeholders alongside the status flip. Do not render until real art exists; scripts/audit-visuals.mjs enforces this."
     },
     {
       "slug": "guide-chair-adjustment-hand-v1",
@@ -352,13 +617,14 @@
         "/guides/ergonomic-office-chair-buying-guide"
       ],
       "type": "editorial-guide",
-      "approval": "approved-production",
+      "approval": "placeholder-pending-art",
       "altText": "A hand testing the adjustment controls of a generic office chair.",
       "focalPoint": {
         "desktop": "62% 54%",
         "mobile": "50% 55%"
       },
-      "promptBrief": "Close human-centered view of a hand testing original generic chair adjustment controls, upholstery weave and mechanism detail visible, no recognizable industrial design."
+      "promptBrief": "Close human-centered view of a hand testing original generic chair adjustment controls, upholstery weave and mechanism detail visible, no recognizable industrial design.",
+      "reviewNotes": "Variant files are byte-stubs, not artwork. Marked approved-production in error by commit 7b3d2ff, which generated empty placeholders alongside the status flip. Do not render until real art exists; scripts/audit-visuals.mjs enforces this."
     },
     {
       "slug": "guide-gaming-neutral-posture-v1",
@@ -366,13 +632,14 @@
         "/guides/ergonomic-setup-for-gamers"
       ],
       "type": "editorial-guide",
-      "approval": "approved-production",
+      "approval": "placeholder-pending-art",
       "altText": "An adult gaming in a comfortable neutral posture at a restrained setup.",
       "focalPoint": {
         "desktop": "66% 48%",
         "mobile": "52% 47%"
       },
-      "promptBrief": "Mature restrained gaming workspace with a diverse adult in neutral posture, subtle ambient light, generic equipment and blank screen, no neon clich\u00e9 or branded gear."
+      "promptBrief": "Mature restrained gaming workspace with a diverse adult in neutral posture, subtle ambient light, generic equipment and blank screen, no neon cliché or branded gear.",
+      "reviewNotes": "Variant files are byte-stubs, not artwork. Marked approved-production in error by commit 7b3d2ff, which generated empty placeholders alongside the status flip. Do not render until real art exists; scripts/audit-visuals.mjs enforces this."
     },
     {
       "slug": "guide-budget-office-plan-v1",
@@ -386,7 +653,21 @@
         "desktop": "64% 48%",
         "mobile": "50% 48%"
       },
-      "promptBrief": "Complete attainable home-office setup in a modest apartment room, smart reuse and honest materials, cohesive but not luxury, no price tags or sale cues."
+      "promptBrief": "Complete attainable home-office setup in a modest apartment room, smart reuse and honest materials, cohesive but not luxury, no price tags or sale cues.",
+      "variantDimensions": {
+        "desktop": {
+          "width": 1920,
+          "height": 1080
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1350
+        }
+      },
+      "sourceDimensions": {
+        "width": 1920,
+        "height": 1080
+      }
     },
     {
       "slug": "guide-desk-depth-planning-v1",
@@ -400,7 +681,21 @@
         "desktop": "62% 48%",
         "mobile": "50% 50%"
       },
-      "promptBrief": "Oblique view across a generous generic desktop showing believable monitor distance, working depth and reachable objects, physical marks left for later SVG overlay."
+      "promptBrief": "Oblique view across a generous generic desktop showing believable monitor distance, working depth and reachable objects, physical marks left for later SVG overlay.",
+      "variantDimensions": {
+        "desktop": {
+          "width": 1920,
+          "height": 1080
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1350
+        }
+      },
+      "sourceDimensions": {
+        "width": 1920,
+        "height": 1080
+      }
     },
     {
       "slug": "guide-daylight-task-light-v1",
@@ -414,7 +709,21 @@
         "desktop": "64% 45%",
         "mobile": "52% 46%"
       },
-      "promptBrief": "Home workspace at late afternoon balancing soft side-window daylight and a warm generic task lamp, controlled screen glare, realistic shadow falloff."
+      "promptBrief": "Home workspace at late afternoon balancing soft side-window daylight and a warm generic task lamp, controlled screen glare, realistic shadow falloff.",
+      "variantDimensions": {
+        "desktop": {
+          "width": 1920,
+          "height": 1080
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1350
+        }
+      },
+      "sourceDimensions": {
+        "width": 1920,
+        "height": 1080
+      }
     },
     {
       "slug": "guide-night-shift-layers-v1",
@@ -428,7 +737,21 @@
         "desktop": "64% 46%",
         "mobile": "52% 46%"
       },
-      "promptBrief": "Calm realistic night workspace with layered indirect and task light, blank generic monitor, preserved dark areas and no saturated gamer neon."
+      "promptBrief": "Calm realistic night workspace with layered indirect and task light, blank generic monitor, preserved dark areas and no saturated gamer neon.",
+      "variantDimensions": {
+        "desktop": {
+          "width": 1920,
+          "height": 1080
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1350
+        }
+      },
+      "sourceDimensions": {
+        "width": 1920,
+        "height": 1080
+      }
     },
     {
       "slug": "guide-focus-ritual-v1",
@@ -442,7 +765,21 @@
         "desktop": "67% 48%",
         "mobile": "53% 46%"
       },
-      "promptBrief": "Candid start-of-session ritual: adult settling at a calm desk, placing a blank notebook beside a generic keyboard, soft morning light, grounded not aspirational perfection."
+      "promptBrief": "Candid start-of-session ritual: adult settling at a calm desk, placing a blank notebook beside a generic keyboard, soft morning light, grounded not aspirational perfection.",
+      "variantDimensions": {
+        "desktop": {
+          "width": 1920,
+          "height": 1080
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1350
+        }
+      },
+      "sourceDimensions": {
+        "width": 1920,
+        "height": 1080
+      }
     },
     {
       "slug": "guide-small-office-vertical-v1",
@@ -456,7 +793,21 @@
         "desktop": "62% 48%",
         "mobile": "50% 50%"
       },
-      "promptBrief": "Tiny-room office using realistic vertical storage, clear floor space and reachable supplies, warm lived-in character, no impossible wide-angle distortion."
+      "promptBrief": "Tiny-room office using realistic vertical storage, clear floor space and reachable supplies, warm lived-in character, no impossible wide-angle distortion.",
+      "variantDimensions": {
+        "desktop": {
+          "width": 1920,
+          "height": 1080
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1350
+        }
+      },
+      "sourceDimensions": {
+        "width": 1920,
+        "height": 1080
+      }
     },
     {
       "slug": "home-office-setup-sequence-v1",
@@ -470,7 +821,21 @@
         "desktop": "62% 50%",
         "mobile": "50% 50%"
       },
-      "promptBrief": "Editorial in-progress workstation assembly with one adult aligning generic desk, chair and screen, tools used safely, coherent realistic geometry, no instruction text."
+      "promptBrief": "Editorial in-progress workstation assembly with one adult aligning generic desk, chair and screen, tools used safely, coherent realistic geometry, no instruction text.",
+      "variantDimensions": {
+        "desktop": {
+          "width": 1920,
+          "height": 1080
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1350
+        }
+      },
+      "sourceDimensions": {
+        "width": 1920,
+        "height": 1080
+      }
     },
     {
       "slug": "tips-measure-adjust-repeat-v1",
@@ -484,7 +849,21 @@
         "desktop": "62% 52%",
         "mobile": "50% 52%"
       },
-      "promptBrief": "Close candid hands making one small useful workstation adjustment with a physical tape measure nearby, practical and approachable, no readable numbers."
+      "promptBrief": "Close candid hands making one small useful workstation adjustment with a physical tape measure nearby, practical and approachable, no readable numbers.",
+      "variantDimensions": {
+        "desktop": {
+          "width": 1920,
+          "height": 1080
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1350
+        }
+      },
+      "sourceDimensions": {
+        "width": 1920,
+        "height": 1080
+      }
     },
     {
       "slug": "workspace-lab-instruments-v1",
@@ -492,13 +871,14 @@
         "/tools"
       ],
       "type": "editorial-tool",
-      "approval": "approved-production",
+      "approval": "placeholder-pending-art",
       "altText": "A workspace lab combining measuring tools with a comfortable desk setup.",
       "focalPoint": {
         "desktop": "62% 47%",
         "mobile": "50% 48%"
       },
-      "promptBrief": "Premium Workspace Lab scene combining a realistic generic desk setup with tape measure, angle tool and blank planning cards, refined but human, no faux technology displays."
+      "promptBrief": "Premium Workspace Lab scene combining a realistic generic desk setup with tape measure, angle tool and blank planning cards, refined but human, no faux technology displays.",
+      "reviewNotes": "Variant files are byte-stubs, not artwork. Marked approved-production in error by commit 7b3d2ff, which generated empty placeholders alongside the status flip. Do not render until real art exists; scripts/audit-visuals.mjs enforces this."
     },
     {
       "slug": "workspace-setup-blueprint-v1",
@@ -506,13 +886,14 @@
         "/workspace-setup-calculator"
       ],
       "type": "editorial-tool",
-      "approval": "approved-production",
+      "approval": "placeholder-pending-art",
       "altText": "A person reviewing a personalized workspace arrangement beside their desk.",
       "focalPoint": {
         "desktop": "66% 48%",
         "mobile": "52% 46%"
       },
-      "promptBrief": "Adult reviewing a blank physical planning sheet beside their real home workstation, relationship between body, desk and room visible, no readable data or digital UI."
+      "promptBrief": "Adult reviewing a blank physical planning sheet beside their real home workstation, relationship between body, desk and room visible, no readable data or digital UI.",
+      "reviewNotes": "Variant files are byte-stubs, not artwork. Marked approved-production in error by commit 7b3d2ff, which generated empty placeholders alongside the status flip. Do not render until real art exists; scripts/audit-visuals.mjs enforces this."
     }
   ]
 }

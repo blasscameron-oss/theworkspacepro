@@ -113,8 +113,38 @@ function normalizeAmazonLinks(html: string): string {
   });
 }
 
+/**
+ * Guide tables are styled `min-width: 620px`, so one that is not inside a
+ * scrolling wrapper drags the whole document past a phone viewport. The legacy
+ * source files use four different wrapper class names and nine tables use none
+ * at all, so containment is guaranteed here rather than trusted to the markup.
+ */
+const TABLE_SCROLL_WRAPPERS = ['table-wrap', 'table-wrapper', 'comparison-table-wrapper', 'table-shell'];
+
+function containTables(html: string): string {
+  const wrapperPattern = new RegExp(
+    `<div\\b[^>]*class=["'][^"']*\\b(?:${TABLE_SCROLL_WRAPPERS.join('|')})\\b[^"']*["'][^>]*>\\s*$`,
+    'i',
+  );
+  let result = '';
+  let cursor = 0;
+  const openings = /<table\b[^>]*>/gi;
+  for (let match = openings.exec(html); match; match = openings.exec(html)) {
+    if (match.index < cursor) continue;
+    const closeIndex = html.toLowerCase().indexOf('</table>', match.index);
+    if (closeIndex === -1) break;
+    const end = closeIndex + '</table>'.length;
+    const before = html.slice(cursor, match.index);
+    const table = html.slice(match.index, end);
+    result += wrapperPattern.test(before) ? before + table : `${before}<div class="table-wrap">${table}</div>`;
+    cursor = end;
+    openings.lastIndex = end;
+  }
+  return result + html.slice(cursor);
+}
+
 function sanitizeContent(html: string): string {
-  const sanitized = normalizeAmazonLinks(html)
+  const sanitized = containTables(normalizeAmazonLinks(html))
     .replace(/<script\b[\s\S]*?<\/script>/gi, '')
     .replace(/<style\b[\s\S]*?<\/style>/gi, '')
     .replace(/\sstyle=(["'])[^"']*\1/gi, '')

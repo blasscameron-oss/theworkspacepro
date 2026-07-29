@@ -11,7 +11,216 @@
 > rather than the real one. If you deviate from the steps below, say so and say
 > why. Commit that update on the branch you shipped.
 
-## CURRENT HANDOFF (2026-07-28): ship branch `fix/contrast-light-2026-07-28`
+## CURRENT HANDOFF (2026-07-28, later): ship branch `audit/2026-07-28-improvements`
+
+The contrast branch shipped and **CI went green for the first time in this
+repo's history** (run `30401516333`). Live `twp-release` = `0a7a7ff` = `origin/main`
+= local HEAD, verified by curl. Deploy lineage is finally trustworthy; keep it
+that way by shipping through CI.
+
+A fresh audit of that healthy state found four things worth fixing. All are
+done on this branch and verified; nothing here is speculative.
+
+**1. Eight guide pages scrolled sideways on phones.** Comparison tables sat in a
+bare `<div>`, and guide tables are styled `min-width: 620px`, so the document
+went to 634–727px at a 375px viewport. The legacy sources use *five* different
+wrapper conventions (`table-wrap`, `table-wrapper`, `comparison-table-wrapper`,
+`table-shell`, and nothing at all). Fixed in `sanitizeContent()` in
+`src/data/legacy-guides.ts`, which now guarantees containment at build time
+instead of trusting the markup.
+
+The reason this survived: `core-flows.spec.mjs` had a test named "guide
+comparison tables stay contained on mobile" that **pinned one route** which
+happened to use a scrolling wrapper. It passed on every run while eight pages
+failed — the same hand-maintained-coverage rot that once hid 111 contrast
+failures. Replaced by `tests/e2e/mobile-overflow.spec.mjs`, which derives its
+route list from `dist` and asserts each page is actually reachable so an
+unreachable page cannot become a vacuous pass. **Verified non-vacuous**: with the
+fix reverted it fails and names the offending routes.
+
+**2. The visual manifest was lying, and the validator caused it.** Seven of 34
+masters were marked `approved-production` while their variant files were
+**50-byte WebP / 296-byte AVIF stubs** — commit `7b3d2ff` flipped the statuses in
+the same change that generated the empty placeholders. The root cause is that
+`validate-public-site.mjs` *required* every master be `approved-production`, so
+shipping a placeholder meant lying to get a green build; it also checked only a
+`maxBytes` ceiling and never a floor, so 50-byte "images" passed.
+
+The validator now encodes the honest contract: a master is either
+`approved-production` (real bytes ≥ 2 KB, and its routes must declare it) or
+`placeholder-pending-art` (routes must *not* declare it, so a stub can never be
+wired into a page). `tests/visual-manifest.test.mjs` guards the same invariants.
+Writing that test immediately caught a second gap — 33 of 34 masters had no
+`sourceDimensions` at all — now populated from the real WebP headers.
+
+**3. 33 of 34 approved editorial images had never rendered.** A complete,
+art-directed program (34 masters → 37 routes, each with alt text, focal points
+and review notes, in desktop/mobile AVIF+WebP) was sitting in the repo with only
+the homepage hero wired up: ~4.9 MB deployed and referenced by nothing. The
+route→artwork plumbing existed (`data-visual-master`) but nothing consumed it.
+`src/lib/visuals.ts` + `src/components/EditorialHero.astro` now render it, gated
+on approval so placeholders cannot leak. **27 pages now carry photography, up
+from 1**, and the seven stub routes had their `data-visual-master` declarations
+removed until real art exists.
+
+**4. Every page shared one social card.** All 42 pages pointed at
+`og-default.jpg`, so a shared calculator, guide and comparison looked identical.
+`scripts/generate-og-cards.mjs` now draws a 1200×630 card per route in the
+blueprint language — the route's editorial photograph under a spruce scrim, the
+title in real Fraunces, terracotta kicker, measurement rail, wordmark. **41
+distinct cards** (1.7 MB total), 28 with photography. Every indexable page now
+has its own; `404.html` keeps the shared default and `embed/height.html` carries
+no card by design, since it is `noindex` and not shareable. The brand fonts are converted from the
+shipped woff2 via fontTools so cards use the real faces rather than a system
+serif; cards are committed so a build never depends on the script running.
+
+Two traps here that a reviewer should know about: the cards were initially
+**broken links on every page**, because `finalize-public-site.mjs` copies only a
+whitelist of asset directories — caught by checking that each referenced
+`og:image` exists in the artifact, which is now a validator rule (proved
+non-vacuous by hiding the directory). And legacy root pages pass an *absolute*
+canonical lifted from their source HTML while Astro pages pass a relative one,
+so the card slug is derived from `canonicalUrl.pathname`, not the raw prop.
+
+**Also done:** fonts cut 35 KB/page — several sheets hardcoded bare `Fraunces`,
+pulling the static 500/700 files down *alongside* the 118 KB variable font;
+everything now routes through `var(--font-display)` and the static files are
+deleted (verified: headings still compute to `Fraunces Variable`, and true
+variable weights 560/600 render instead of static approximations). `bold.css`
+(20 KB, zero referencing pages) deleted. Pointer targets below the WCAG 2.5.8
+24×24 minimum went **432 → 2**, and the two that remain are links inside running
+sentences, which WCAG genuinely exempts. Heading-order jumps **4 → 0**. Sitemap `lastmod` now covers
+**41/41** URLs, filled from the last git commit that touched each page's source
+rather than the build clock — a sitemap claiming everything changed on every
+deploy is a signal crawlers learn to ignore. ~6,300 lines of unreferenced cruft
+removed (one-off ASIN audit JSON, dead generators, `.orig` files); the three
+files `ASIN_RUNBOOK.md` actually references were kept.
+
+**New tooling — `npm run audit`.** The exhaustive contrast sweep is what catches
+a layout nobody listed; the e2e guard only covers one route per layout, and the
+CLI sweep existed solely as a step someone had to remember. It is now a command
+you can find in `npm run`: `scripts/run-audits.mjs` boots a static server over
+`dist`, runs `audit-contrast` (**blocking**) and `audit-a11y` (advisory, new —
+pointer targets, heading order, accessible names, labelling, overflow, alt
+text), then tears the server down. `npm run audit:links` stays separate because
+it makes live retailer requests and belongs on a quarterly cadence.
+
+That command immediately paid for itself: it caught **two tap-target contexts I
+had wrongly written off as prose-inline** — the affiliate-disclosure link in the
+guide sidebar rail (16 pages) and the "All Comparisons"/"All Guides" kicker on
+compare pages. Both read as standalone navigation and neither qualifies for the
+inline exemption. Fixed with direct-child selectors so the rule cannot reach
+prose sharing those containers; that is what moved the count 21 → 2.
+
+**Verified on this branch, re-run against the exact tree you are committing:**
+build (43 pages), validate (43 HTML / 308 files), `npm run check` (0
+diagnostics), `node --test` (49/49), `npm run audit` (contrast **exit 0**;
+2 advisory tap targets, both exempt), `npx playwright test` (27 passed / 7
+skipped), `npm run audit:links` (0 dead, 0 redirected). Guide, compare and deals
+pages screenshotted in both themes at 390px.
+
+---
+
+### Commit and push — this is your job, nothing is committed yet
+
+The work is complete and verified but **entirely uncommitted**, deliberately: the
+previous session had no authorisation to commit. Branch is already
+`audit/2026-07-28-improvements`. `dist/` is gitignored — confirm that stays true.
+
+Working tree: **24 deletions already staged**, 34 modified and 8 untracked files
+unstaged. The staged deletions are all genuine cruft (one-off ASIN audit JSON
+dumps, dead generator scripts, two `.orig` patch artifacts, `bold.css`, the two
+static Fraunces woff2 files). The 8 untracked paths are all new work and all
+belong in the commit:
+
+```
+assets/images/og/                     41 social cards, 1.7 MB
+scripts/generate-og-cards.mjs         draws them
+scripts/run-audits.mjs                npm run audit
+scripts/audit-a11y.mjs                accessibility sweep
+src/lib/visuals.ts                    manifest -> route resolver
+src/components/EditorialHero.astro    renders the editorial art
+tests/e2e/mobile-overflow.spec.mjs    build-derived overflow guard
+tests/visual-manifest.test.mjs        manifest integrity guard
+```
+
+```sh
+git add -A
+git status            # expect ~66 paths; no dist/, no .cache/, no *.orig remaining
+npm run build && npm run validate && npm run check && node --test tests/*.test.mjs
+git commit
+```
+
+Suggested subject and body:
+
+```
+Fix mobile overflow, wire the editorial image program, add per-route OG cards
+
+Eight guide pages scrolled sideways at 375px because comparison tables sat in
+bare divs while guide tables are styled min-width: 620px. Containment now
+happens in sanitizeContent() rather than being trusted to markup, which uses
+five different wrapper conventions.
+
+The test that should have caught it pinned a single route that happened to use
+a wrapper, so it passed while eight pages failed. Replaced with a sweep that
+derives routes from dist and asserts each is reachable.
+
+The visual manifest marked seven byte-stub placeholders as approved-production
+because the validator required that status to build — a guard that forbids an
+honest state forces dishonesty. The schema now has a placeholder state whose
+routes must not declare it, plus a byte floor.
+
+33 of 34 art-directed editorial images had never rendered; 27 pages now carry
+photography. All 42 pages shared one social card; there are now 41 per-route
+cards. Fonts drop 35 KB/page, tap targets 432 -> 2, heading jumps 4 -> 0,
+sitemap lastmod 25/41 -> 41/41 from git commit dates. ~6,300 lines of cruft
+removed.
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+```
+
+Then:
+
+```sh
+git push -u origin audit/2026-07-28-improvements
+gh pr create --base main --title "Audit fixes: mobile overflow, editorial imagery, OG cards" --body-file - <<'EOF'
+See the CURRENT section of FINCH_HANDOFF.md for the full write-up.
+EOF
+```
+
+**Stop at the PR and let the owner look before merging.** Merging to `main` is
+what deploys — the merge is the irreversible step, not the commit. When it is
+approved, merge **once** and watch the single run in
+`.github/workflows/deploy.yml`. Do **not** hand-deploy with `wrangler`; every
+green deploy in this repo's history came through CI, and there is only one.
+
+If CI fails, read the failing step before touching anything — the pipeline runs
+`validate → build → check → validate artifact → unit tests → e2e`, and all six
+pass locally, so a failure most likely means an environment difference rather
+than a bad change.
+
+**Post-deploy checks:**
+- Open a guide, a comparison and `/deals` on a phone in both themes — each
+  should show its editorial photograph, and **nothing should scroll sideways**.
+  Swipe the comparison tables; they scroll within their own frame.
+- Paste `https://www.theworkspacepro.com/compare/herman-miller-vs-steelcase`
+  into Slack/iMessage/X and confirm the card shows that page's chairs and title,
+  not the generic default. Spot-check a guide and a calculator too.
+- Confirm no page requests `fraunces-latin-500-normal.woff2` or `-700-` any more.
+
+**Known gap — needs the owner, deliberately not guessed:** the newsletter CTA on
+7+ pages links off-site to `theworkspacepro.beehiiv.com/subscribe`. That
+publication **is live** (it returns 403 to curl but 200 in a real browser with a
+working email field — beehiiv bot-blocks, the same trap as Amazon; earlier notes
+calling it dead were wrong). An inline on-site form would convert better than
+the off-site hop, but wiring one needs the publication's embed endpoint, which
+is not in the repo. Fabricating an endpoint would replace a working link with a
+silently broken form, so it was left alone. Supply the beehiiv embed URL and it
+is a small change.
+
+---
+
+## PREVIOUS HANDOFF (2026-07-28): ship branch `fix/contrast-light-2026-07-28` — DONE, shipped as 0a7a7ff (first green CI deploy)
 
 The redesign shipped successfully (main = `2d67817`, live). The owner then
 reported "a couple of spots towards the bottom of the page where the contrast

@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { execFileSync } from 'node:child_process';
 
 const root = process.cwd();
 const out = path.join(root, 'dist');
@@ -53,6 +54,12 @@ copyTree(
   path.join(out, 'assets', 'images', 'products'),
   (source) => /\.(?:avif|webp|jpe?g|png)$/i.test(source),
 );
+// Per-route social cards from scripts/generate-og-cards.mjs.
+copyTree(
+  path.join(root, 'assets', 'images', 'og'),
+  path.join(out, 'assets', 'images', 'og'),
+  (source) => /\.jpe?g$/i.test(source),
+);
 for (const file of ['_headers', '_redirects', 'robots.txt']) {
   copyFile(path.join(root, file), path.join(out, file));
 }
@@ -62,6 +69,38 @@ const compareEntry = path.join(out, 'compare.html');
 if (fs.existsSync(compareEntry)) {
   copyFile(compareEntry, path.join(out, 'compare', 'index.html'));
   fs.unlinkSync(compareEntry);
+}
+
+/**
+ * `lastmod` for pages that carry no JSON-LD `dateModified` — the tools, legal
+ * pages and section indexes, which was 16 of 41 URLs.
+ *
+ * The date comes from the last commit that touched the page's own source, not
+ * from the build clock: a sitemap that claims every page changed on every
+ * deploy is a crawl signal search engines learn to ignore. Pages whose source
+ * cannot be identified keep no lastmod at all, which is honest.
+ */
+function sourceLastModified(pathname) {
+  const slug = pathname === '/' ? 'index' : pathname.replace(/^\//, '').replace(/\/$/, '');
+  const candidates = [
+    `${slug}.html`,
+    path.join('src', 'pages', `${slug}.astro`),
+    path.join('src', 'pages', slug, 'index.astro'),
+  ];
+  for (const candidate of candidates) {
+    if (!fs.existsSync(path.join(root, candidate))) continue;
+    try {
+      const stdout = execFileSync('git', ['log', '-1', '--format=%cs', '--', candidate], {
+        cwd: root,
+        encoding: 'utf8',
+        stdio: ['ignore', 'pipe', 'ignore'],
+      }).trim();
+      if (/^\d{4}-\d{2}-\d{2}$/.test(stdout)) return stdout;
+    } catch {
+      return undefined;
+    }
+  }
+  return undefined;
 }
 
 const urls = new Map();
@@ -78,7 +117,7 @@ for (const file of walk(out).filter((name) => name.endsWith('.html'))) {
   if (urls.has(href)) {
     throw new Error(`Duplicate canonical ${href} in ${path.relative(out, file)}`);
   }
-  urls.set(href, { url, lastmod: modified?.[1] });
+  urls.set(href, { url, lastmod: modified?.[1] ?? sourceLastModified(url.pathname) });
 }
 
 const sitemap = [

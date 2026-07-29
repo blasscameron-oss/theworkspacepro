@@ -1,0 +1,81 @@
+---
+import { visualForRoute, visualBySlug, variantSources } from '../lib/visuals';
+
+interface Props {
+  /** Explicit master slug; falls back to the manifest's route mapping. */
+  slug?: string;
+  route?: string;
+  /** The first image on the page should not lazy-load. */
+  priority?: boolean;
+  class?: string;
+}
+
+const { slug, route, priority = false, class: className } = Astro.props;
+const master = visualBySlug(slug) ?? visualForRoute(route ?? Astro.url.pathname);
+const sources = master ? variantSources(master) : null;
+---
+
+{master && sources && (
+  <figure class:list={['editorial-figure', className]}>
+    <picture class="editorial-figure__picture">
+      <source
+        media="(max-width: 600px)"
+        type="image/avif"
+        srcset={sources.mobileAvif}
+        width={sources.mobile.width}
+        height={sources.mobile.height}
+      />
+      <source
+        media="(max-width: 600px)"
+        type="image/webp"
+        srcset={sources.mobileWebp}
+        width={sources.mobile.width}
+        height={sources.mobile.height}
+      />
+      <source
+        type="image/avif"
+        srcset={sources.desktopAvif}
+        width={sources.desktop.width}
+        height={sources.desktop.height}
+      />
+      <img
+        src={sources.desktopWebp}
+        alt={master.altText}
+        width={sources.desktop.width}
+        height={sources.desktop.height}
+        sizes="(max-width: 700px) 100vw, 760px"
+        loading={priority ? 'eager' : 'lazy'}
+        fetchpriority={priority ? 'high' : 'auto'}
+        decoding="async"
+        style={`object-position: ${master.focalPoint?.desktop ?? '50% 50%'};`}
+      />
+    </picture>
+  </figure>
+)}
+
+<style>
+  .editorial-figure {
+    margin: 0 0 clamp(1.5rem, 4vw, 2.5rem);
+    border: 1px solid var(--editorial-line, #d9d2c7);
+    background: var(--editorial-tint, #f4f0e9);
+    overflow: hidden;
+  }
+
+  .editorial-figure__picture {
+    display: block;
+  }
+
+  .editorial-figure img {
+    display: block;
+    width: 100%;
+    height: clamp(200px, 34vw, 340px);
+    object-fit: cover;
+  }
+
+  @media (max-width: 600px) {
+    .editorial-figure img {
+      height: clamp(220px, 56vw, 300px);
+      object-position: var(--editorial-focal-mobile, 50% 50%);
+    }
+  }
+</style>

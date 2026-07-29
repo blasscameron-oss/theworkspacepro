@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import EditorialHero from '../components/EditorialHero.astro';
 const { entry } = Astro.props;
 const { data } = entry;
 const dealCategoryByGuide: Record<string, string> = {
@@ -37,6 +38,8 @@ const dealCategory = dealCategoryByGuide[data.category] || 'all';
         <span>Research-led</span>
       </div>
     </header>
+    <EditorialHero route={data.canonical} priority class="guide-figure" />
+
     <div class="guide-frame">
       <aside class="guide-method" aria-label="Research method">
         <strong>How this guide was prepared</strong>

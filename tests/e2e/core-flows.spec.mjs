@@ -122,16 +122,21 @@ test('printable worksheet accepts measurements', async ({ page }) => {
   await expect(feet.getByRole('radio', { name: 'Works' })).toBeVisible();
 });
 
-test('guide comparison tables stay contained on mobile', async ({ page, isMobile }) => {
+test('every guide table sits in a scrolling wrapper', async ({ page, isMobile }) => {
   test.skip(!isMobile, 'mobile overflow contract');
-  await page.goto('/guides/small-home-office-organization-hacks');
-  const widths = await page.evaluate(() => ({
-    viewport: document.documentElement.clientWidth,
-    document: document.documentElement.scrollWidth,
-    tableOverflow: getComputedStyle(document.querySelector('.table-wrap')).overflowX,
-  }));
-  expect(widths.document).toBeLessThanOrEqual(widths.viewport);
-  expect(widths.tableOverflow).toBe('auto');
+  // Document-level overflow is swept across all built routes in
+  // mobile-overflow.spec.mjs; this asserts the containment mechanism itself.
+  await page.goto('/guides/best-ergonomic-office-chairs-2026');
+  const tables = await page.evaluate(() =>
+    [...document.querySelectorAll('.legacy-guide__body table')].map((table) => ({
+      parentOverflowX: getComputedStyle(table.parentElement).overflowX,
+      parentClass: table.parentElement.className,
+    })),
+  );
+  expect(tables.length).toBeGreaterThan(0);
+  for (const table of tables) {
+    expect(table.parentOverflowX, `table wrapped by "${table.parentClass}" must scroll`).toBe('auto');
+  }
 });
 
 test('office builder moves keyboard focus as steps change', async ({ page }) => {

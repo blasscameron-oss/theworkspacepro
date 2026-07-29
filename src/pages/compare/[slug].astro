@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CompareArticle from '../../components/CompareArticle.astro';
+import EditorialHero from '../../components/EditorialHero.astro';
 import { legacyMain } from '../../lib/legacy';
 
 const articles = {
@@ -60,5 +61,6 @@ const content = legacyMain(`compare/${slug}.html`);
   updated={new Date('2026-06-30T00:00:00Z')}
   visualMaster={article.visualMaster}
 >
+  <EditorialHero slug={article.visualMaster} priority class="compare-figure" />
   <CompareArticle content={content} />
 </BaseLayout>
